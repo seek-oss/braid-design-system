@@ -51,7 +51,14 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
   return (
     <Bleed left="medium">
       <SideNavigationCategory dividers={false} size="small">
-        <SideNavigationCategoryItem label="Getting started">
+        <SideNavigationCategoryItem
+          label="Getting started"
+          defaultExpanded={
+            isActive('/releases') ||
+            Object.keys(guides).some((path) => isActive(path)) ||
+            Object.keys(examples).some((path) => isActive(path))
+          }
+        >
           <Stack space="large">
             <SideNavigationSection
               title="Resources"
@@ -102,7 +109,12 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           </Stack>
         </SideNavigationCategoryItem>
 
-        <SideNavigationCategoryItem label="Foundations">
+        <SideNavigationCategoryItem
+          label="Foundations"
+          defaultExpanded={Object.keys(foundations).some((path) =>
+            isActive(path),
+          )}
+        >
           <SideNavigationSection
             title="Foundations"
             hideTitle={true}
@@ -116,7 +128,12 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           />
         </SideNavigationCategoryItem>
 
-        <SideNavigationCategoryItem label="Components">
+        <SideNavigationCategoryItem
+          label="Components"
+          defaultExpanded={componentsList.some((docs) =>
+            isActive(`/components/${docs.name}`),
+          )}
+        >
           <SideNavigationSection
             title="Components"
             hideTitle={true}
@@ -130,7 +147,15 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           />
         </SideNavigationCategoryItem>
 
-        <SideNavigationCategoryItem label="Utilities">
+        <SideNavigationCategoryItem
+          label="Utilities"
+          defaultExpanded={
+            documentedCss.some((doc) => isActive(`/css/${doc.name}`)) ||
+            categorisedComponents.Logic.some((docs) =>
+              isActive(`/components/${docs.name}`),
+            )
+          }
+        >
           <Stack space="large">
             <SideNavigationSection
               title="CSS"

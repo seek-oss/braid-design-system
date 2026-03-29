@@ -13,6 +13,7 @@ const defaultSize = 'large';
 export interface SideNavigationCategoryItemProps {
   label: string;
   children: ReactNode;
+  defaultExpanded?: boolean;
   size?: SideNavigationCategoryContextValue['size'];
   tone?: SideNavigationCategoryContextValue['tone'];
   weight?: SideNavigationCategoryContextValue['weight'];
@@ -23,13 +24,14 @@ export const SideNavigationCategoryItem: FC<
 > = ({
   label,
   children,
+  defaultExpanded = false,
   size: sizeProp,
   tone: toneProp,
   weight: weightProp,
 }) => {
   const categoryContext = useContext(SideNavigationCategoryContext);
   const contentId = useId();
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(defaultExpanded);
 
   const size = categoryContext?.size ?? sizeProp ?? defaultSize;
   const tone = categoryContext?.tone ?? toneProp ?? 'neutral';
