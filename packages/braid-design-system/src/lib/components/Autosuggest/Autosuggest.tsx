@@ -559,7 +559,11 @@ export const Autosuggest = forwardRef(function <Value>(
       ? document.getElementById(getItemId(resolvedId, highlightedIndex))
       : null;
 
-  highlightedItem?.scrollIntoView({ block: 'nearest' });
+  useEffect(() => {
+    if (highlightedItem) {
+      highlightedItem.scrollIntoView({ block: 'nearest' });
+    }
+  }, [highlightedItem]);
 
   useEffect(() => {
     dispatch({
