@@ -14,6 +14,7 @@ import {
   useCallback,
   useEffect,
   forwardRef,
+  useLayoutEffect,
 } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 
@@ -559,13 +560,7 @@ export const Autosuggest = forwardRef(function <Value>(
       ? document.getElementById(getItemId(resolvedId, highlightedIndex))
       : null;
 
-  useEffect(() => {
-    if (highlightedItem) {
-      highlightedItem.scrollIntoView({ block: 'nearest' });
-    }
-  }, [highlightedItem]);
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch({
       type: HAS_SUGGESTIONS_CHANGED,
     });
@@ -575,6 +570,12 @@ export const Autosuggest = forwardRef(function <Value>(
     mobile: true,
     tablet: false,
   });
+
+  useEffect(() => {
+    if (highlightedItem) {
+      highlightedItem.scrollIntoView({ block: 'nearest' });
+    }
+  }, [highlightedItem]);
 
   useEffect(() => {
     if (menuRef.current && isOpen && !isMobile) {
