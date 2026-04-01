@@ -60,9 +60,9 @@ export const DocDetails = () => {
 
   /*
     Build the ToC sections
-      - Accessibility (top-level when no bestPractices section, otherwise nested within it)
+      - Accessibility
       - Each docSection and their children. When bestPractices is present,
-        accessibility and alternatives are nested as children within it.
+        alternatives is nested as a child within it.
       - Each additional section. Additional is kept
         as for now as it's where most content sits currently,
         but will likely be deprecated in the future as we
@@ -77,7 +77,7 @@ export const DocDetails = () => {
 
     const sections: TocSection[] = [];
 
-    if (!hasBestPractices && 'accessibility' in docs && docs.accessibility) {
+    if ('accessibility' in docs && docs.accessibility) {
       sections.push({
         id: 'accessibility',
         label: 'Accessibility',
@@ -110,17 +110,7 @@ export const DocDetails = () => {
             });
 
           if (sectionKey === 'bestPractices') {
-            const bestPracticesChildren: TocSection[] = [];
-
-            if ('accessibility' in docs && docs.accessibility) {
-              bestPracticesChildren.push({
-                id: 'accessibility',
-                label: 'Accessibility',
-                href: '#accessibility',
-              });
-            }
-
-            bestPracticesChildren.push(...children);
+            const bestPracticesChildren: TocSection[] = [...children];
 
             if ('alternatives' in docs && docs.alternatives.length > 0) {
               bestPracticesChildren.push({
@@ -204,7 +194,7 @@ export const DocDetails = () => {
                 </PlayroomStateProvider>
               ) : null}
 
-              {'accessibility' in docs && !hasBestPractices ? (
+              {'accessibility' in docs ? (
                 <Stack space={headingSpacing}>
                   <LinkableHeading level="3">Accessibility</LinkableHeading>
                   {docs.accessibility}
@@ -222,15 +212,6 @@ export const DocDetails = () => {
                         {getSectionHeading(sectionKey)}
                       </LinkableHeading>
                       <Stack space={innerSectionSpacing}>
-                        {sectionKey === 'bestPractices' &&
-                        'accessibility' in docs ? (
-                          <Stack space={headingSpacing}>
-                            <LinkableHeading level="3">
-                              Accessibility
-                            </LinkableHeading>
-                            {docs.accessibility}
-                          </Stack>
-                        ) : null}
                         {docSectionChildren.map(
                           (example: { label?: string }, index: number) => (
                             <DocSection
