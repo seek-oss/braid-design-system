@@ -33,9 +33,11 @@ const screenBorderWidth = vars.borderWidth.large;
 export const ContainerForPageDocs = ({
   children,
   screenHeight = 350,
+  hideOverflow = false,
 }: {
   children: ReactNode;
   screenHeight?: number;
+  hideOverflow?: boolean;
 }) => (
   <Box display="flex" justifyContent="center">
     <Box
@@ -50,6 +52,8 @@ export const ContainerForPageDocs = ({
             .toString(),
         }),
         maxWidth: screenHeight * 1.6,
+        height: hideOverflow ? screenHeight : undefined,
+        overflow: hideOverflow ? 'hidden' : undefined,
       }}
     >
       <ScreenOverlay screenHeight={screenHeight} />

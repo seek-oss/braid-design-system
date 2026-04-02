@@ -1,3 +1,4 @@
+import buildingAComponentGuide from './building-a-component';
 import contribution from './contribution';
 import designWorkflow from './design-workflow';
 import developmentWorkflow from './development-workflow';
@@ -10,4 +11,5 @@ export default {
   '/guides/playroom-prototyping': playroomPrototyping,
   '/guides/contribution': contribution,
   '/guides/testing-guide': testingGuide,
+  '/guides/building-a-component': buildingAComponentGuide,
 };

@@ -31,7 +31,7 @@ export type Page = RouteProps & {
 type NavigationSection =
   | 'guides'
   | 'foundations'
-  | 'examples'
+  | 'templates'
   | 'components'
   | 'css'
   | 'logic';
@@ -73,6 +73,16 @@ export interface CssDoc {
   usage: ReactNodeNoStrings;
   docSections?: DocSections;
   additional?: ComponentExample[];
+}
+
+export interface TemplateDocs {
+  title?: string;
+  description?: ReactNodeNoStrings;
+  usage?: ReactNodeNoStrings;
+  Example?: (
+    props: ExampleProps & PlayroomExampleProps,
+  ) => Source<ReactElement>;
+  Container?: (props: { children: ReactNode }) => ReactElement;
 }
 
 interface ExampleProps {

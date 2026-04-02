@@ -9,8 +9,8 @@ import {
   categorisedComponents,
   documentedComponents,
   documentedCss,
+  templateGroupNames,
 } from '../navigationHelpers';
-import examples from '../routes/examples';
 import foundations from '../routes/foundations';
 import guides from '../routes/guides';
 
@@ -94,12 +94,12 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
       />
 
       <SideNavigationSection
-        title="Examples"
-        items={Object.entries(examples).map(([path, example]) => ({
-          name: example.title,
-          badge: example.badge,
-          path,
-          active: isActive(path),
+        title="Templates"
+        items={templateGroupNames.map((group) => ({
+          name: group.charAt(0).toUpperCase() + group.slice(1),
+          path: `/templates/${group}`,
+          badge: 'New',
+          active: currentPath.startsWith(`/templates/${group}`),
           onClick: onSelect,
         }))}
       />

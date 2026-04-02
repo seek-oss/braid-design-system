@@ -8,6 +8,7 @@ import type {
   ComponentExample,
   CssDoc,
   GalleryComponent,
+  TemplateDocs,
 } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
@@ -25,6 +26,12 @@ const galleryContext = require.context(
   'braid-src/lib/components/',
   true,
   /.gallery\.tsx$/,
+);
+
+const templateDocsContext = require.context(
+  'braid-src/lib/playroom/templates/',
+  true,
+  /\.docs\.tsx$/,
 );
 
 export const getComponentDocs = (componentName: string) => {
@@ -123,3 +130,30 @@ export const galleryComponents = galleryContext.keys().map((filename) => ({
   examples: galleryContext(filename).galleryItems
     .examples as ComponentExample[],
 }));
+
+// Template docs — path format: ./layouts/StandardPage/StandardPage.docs.tsx
+const getTemplateGroupAndNameFromFilename = (filename: string) => {
+  const match = filename.match(/^\.\/([^/]+)\/([^/]+)\/\2\.docs\.tsx$/);
+  if (!match) {
+    throw new Error(
+      `Unexpected template docs filename format: ${filename}. Expected ./group/Name/Name.docs.tsx`,
+    );
+  }
+  return { group: match[1], name: match[2] };
+};
+
+export const allTemplateDocs = templateDocsContext.keys().map((filename) => {
+  const { group, name } = getTemplateGroupAndNameFromFilename(filename);
+  const docs = templateDocsContext(filename).default as TemplateDocs;
+  return { group, name, ...docs };
+});
+
+export const getTemplateDoc = (group: string, name: string): TemplateDocs =>
+  templateDocsContext(`./${group}/${name}/${name}.docs.tsx`)
+    .default as TemplateDocs;
+
+// Distinct groups in insertion order (e.g. ['layouts', 'sections'])
+export const templateGroupNames = allTemplateDocs.reduce<string[]>(
+  (acc, { group }) => (acc.includes(group) ? acc : [...acc, group]),
+  [],
+);

@@ -22,10 +22,10 @@ import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactN
 import { Placeholder } from 'braid-src/lib/playroom/components';
 import type { ComponentProps } from 'react';
 
-import type { Page } from '../../../../types';
-import Code from '../../../Code/Code';
-import { PageTitle } from '../../../Seo/PageTitle';
-import { TextStack } from '../../../TextStack/TextStack';
+import type { Page } from '../../../types';
+import Code from '../../Code/Code';
+import { PageTitle } from '../../Seo/PageTitle';
+import { TextStack } from '../../TextStack/TextStack';
 
 interface StepProps {
   heading?: string;
@@ -41,18 +41,27 @@ const Step = ({ heading, detail, children }: StepProps) => (
 );
 
 const page: Page = {
-  title: 'Job Summary',
+  title: 'Build a component',
+  badge: 'New',
   element: (
     <TextStack>
-      <Stack space="medium">
-        <Heading level="3" weight="weak">
-          <PageTitle title="Job Summary Example" />
-          Examples /
-        </Heading>
-        <Heading component="h1" level="2">
-          Job Summary
-        </Heading>
-      </Stack>
+      <Heading component="h1" level="1">
+        <PageTitle title="Build a component" />
+        Build a component
+      </Heading>
+
+      <Text>
+        Designs are rarely built top-to-bottom in a single pass. Instead, they
+        typically start very simple, with further details and refinements added
+        in layers. To give you a sense of what this looks like, the following
+        tutorial will guide you through building your first component and what
+        the design process might look like.
+      </Text>
+
+      <Text tone="secondary">
+        At any stage you can click the &ldquo;Open in Playroom&rdquo; button
+        under the examples to view the design across themes and viewports.
+      </Text>
 
       <Code collapsedByDefault>
         <Card>
@@ -94,24 +103,6 @@ const page: Page = {
           </Stack>
         </Card>
       </Code>
-
-      <Heading level="4">How do I build this example for myself?</Heading>
-
-      <Text>
-        Designs like this are rarely built top-to-bottom in a single pass.
-        Instead, they typically start very simple, with further details and
-        refinements added in layers.
-      </Text>
-      <Text>
-        To give you a sense of what this looks like, the following tutorial will
-        guide you through the design process that you might go through when
-        using <TextLink href="/playroom">Playroom</TextLink>.
-      </Text>
-
-      <Text tone="secondary">
-        At any stage you can click the &ldquo;Open in Playroom&rdquo; button
-        under the examples to view the design across themes and viewports.
-      </Text>
 
       <Divider />
 
@@ -511,14 +502,14 @@ const page: Page = {
       <TextStack>
         <LinkableHeading level="4">Next steps</LinkableHeading>
 
-        <Stack space="xlarge">
+        <Stack space="large">
           <Text>
             Now that you are familiar with the code we have just written, this
             is a good chance to head over to Playroom and continue refining this
             design.
           </Text>
           <Text>You may want to consider:</Text>
-          <List>
+          <List space="medium">
             <Text>
               Using <TextLink href="/components/Hidden">Hidden</TextLink> to
               reduce the amount of data shown on mobile,
