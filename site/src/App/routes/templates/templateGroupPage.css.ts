@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css';
-
 import { vars } from 'braid-src/lib/themes/vars.css';
+
 import { canvas, adaptiveCanvas } from '../../ThemeSetting/ThemedExample.css';
 
 // Logical render dimensions of the scaled stage
