@@ -139,14 +139,14 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
       open={isOpen}
       onClose={onClose}
       width="medium"
-      title="Jump to"
+      title="Jump to a page"
       closeLabel="Close search"
     >
       <TextField
         icon={<IconSearch />}
         ref={inputRef}
         label=""
-        placeholder="Search Foundations, Components, CSS, Logic..."
+        placeholder="Jump to Foundations, Components, CSS, Logic..."
         value={searchQuery}
         onChange={(e) => {
           setSearchQuery(e.target.value);
@@ -156,7 +156,7 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
       <Bleed horizontal="large">
         <ScrollContainer direction="vertical">
           <Box ref={resultsRef} paddingY="small" style={{ height: '40vh' }}>
-            <Box paddingX="large">
+            <Box paddingX="large" height="full">
               <SearchResults
                 searchQuery={searchQuery}
                 groupedResults={groupedResults}

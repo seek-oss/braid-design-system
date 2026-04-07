@@ -24,17 +24,35 @@ export const SearchResults = ({
 }: SearchResultsProps) => {
   if (flatResults.length === 0 && searchQuery.trim()) {
     return (
-      <Text align="center" tone="secondary">
-        No results found
-      </Text>
+      <Box
+        background="neutralSoft"
+        padding="xxxlarge"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="full"
+      >
+        <Text tone="secondary" size="xsmall" align="center">
+          No results found.
+        </Text>
+      </Box>
     );
   }
 
   if (!searchQuery.trim()) {
     return (
-      <Text align="center" tone="secondary">
-        Start typing to search&hellip;
-      </Text>
+      <Box
+        background="neutralSoft"
+        padding="xxxlarge"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="full"
+      >
+        <Text tone="secondary" size="xsmall" align="center">
+          Matching pages will appear here.
+        </Text>
+      </Box>
     );
   }
 
