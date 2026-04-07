@@ -7,7 +7,7 @@ import {
 } from 'braid-src/lib/components';
 import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
 import docsTheme from 'braid-src/themes/docs';
-import { StrictMode, useEffect, useState } from 'react';
+import { StrictMode, useEffect } from 'react';
 import { Route, Routes, Navigate, Link as ReactRouterLink } from 'react-router';
 
 import { DocDetails } from './DocNavigation/DocDetails';
@@ -15,7 +15,6 @@ import { DocNavigation } from './DocNavigation/DocNavigation';
 import { DocProps } from './DocNavigation/DocProps';
 import { DocReleases } from './DocNavigation/DocReleases';
 import { DocSnippets } from './DocNavigation/DocSnippets';
-import { JumpToModal } from './JumpToModal/JumpToModal';
 import { Navigation } from './Navigation/Navigation';
 import { AppMeta } from './Seo/AppMeta';
 import { ThemeSettingProvider } from './ThemeSetting';
@@ -25,7 +24,6 @@ import { GalleryPage } from './routes/gallery';
 import guides from './routes/guides';
 import { HomePage } from './routes/home';
 import { ReleasesPage } from './routes/releases';
-import { useSearchHotkey } from './useSearchHotkey/useSearchHotkey';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>
@@ -57,12 +55,6 @@ const CustomLink = makeLinkComponent(
 );
 
 export const App = () => {
-  const [isJumpToModalOpen, setIsJumpToModalOpen] = useState(false);
-
-  useSearchHotkey({
-    onOpen: () => setIsJumpToModalOpen(true),
-  });
-
   // TODO: COLORMODE RELEASE
   // Remove color mode toggle
   useEffect(() => {
@@ -99,10 +91,6 @@ export const App = () => {
         <BraidProvider theme={docsTheme} linkComponent={CustomLink}>
           <ToastProvider>
             <AppMeta />
-            <JumpToModal
-              isOpen={isJumpToModalOpen}
-              onClose={() => setIsJumpToModalOpen(false)}
-            />
             <Routes>
               <Route path="/gallery" element={<GalleryPage />} />
               <Route element={<Navigation />}>

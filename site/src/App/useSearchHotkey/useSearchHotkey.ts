@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import { isMac } from './platformTest';
+
 interface UseSearchHotkeyOptions {
   onOpen: () => void;
 }
@@ -7,8 +9,7 @@ interface UseSearchHotkeyOptions {
 export const useSearchHotkey = ({ onOpen }: UseSearchHotkeyOptions) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform);
-      const isModifierPressed = isMac ? event.metaKey : event.ctrlKey;
+      const isModifierPressed = isMac() ? event.metaKey : event.ctrlKey;
 
       if (isModifierPressed && event.key === 'k') {
         event.preventDefault();

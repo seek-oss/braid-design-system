@@ -63,8 +63,10 @@ export const getSearchItems = (): SearchItem[] => {
   return items;
 };
 
-export const groupSearchResults = (items: SearchItem[]) => {
-  const groups: Record<SearchItem['category'], SearchItem[]> = {
+export type GroupedResults = Record<SearchItem['category'], SearchItem[]>;
+
+export const groupSearchResults = (items: SearchItem[]): GroupedResults => {
+  const groups: GroupedResults = {
     Foundations: [],
     Components: [],
     CSS: [],

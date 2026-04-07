@@ -1,44 +1,27 @@
 import {
   Box,
   Dialog,
-  Stack,
   TextField,
-  Text,
   IconSearch,
   Bleed,
-  ButtonLink,
 } from 'braid-src/lib/components';
 import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContainer/ScrollContainer';
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 
+import { SearchResults } from './SearchResults';
 import {
   getSearchItems,
   groupSearchResults,
   type SearchItem,
 } from './getSearchItems';
-
-import { uppercase } from './JumpToModal.css';
+import { dialogAdjust } from './jumpTo.css';
 
 interface JumpToModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const KeyboardIcon = ({ children }: { children: React.ReactNode }) => (
-  <Box
-    display="flex"
-    padding="xsmall"
-    background="neutralSoft"
-    borderRadius="standard"
-    alignItems="center"
-    justifyContent="center"
-  >
-    <Text tone="secondary" size="xsmall">
-      {children}
-    </Text>
-  </Box>
-);
 export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -171,108 +154,25 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
           setSelectedIndex(0);
         }}
       />
-
-      <Box ref={resultsRef} paddingY="small" style={{ height: '40vh' }}>
-        {(() => {
-          if (flatResults.length === 0 && searchQuery.trim()) {
-            return (
-              <Text align="center" tone="secondary">
-                No results found
-              </Text>
-            );
-          }
-
-          if (!searchQuery.trim()) {
-            return (
-              <Text align="center" tone="secondary">
-                Start typing to search...
-              </Text>
-            );
-          }
-
-          return (
-            <ScrollContainer direction="vertical">
-              <Bleed horizontal="large">
-                <Box paddingX="large" paddingTop="xxsmall">
-                  <Stack space="large">
-                    {(
-                      ['Foundations', 'Components', 'CSS', 'Logic'] as const
-                    ).map((category) => {
-                      const items = groupedResults[category];
-                      if (items.length === 0) {
-                        return null;
-                      }
-
-                      return (
-                        <Stack key={category} space="small" component="ul">
-                          <Box className={uppercase} component="li">
-                            <Text size="xsmall" weight="medium" component="h2">
-                              {category}
-                            </Text>
-                          </Box>
-
-                          {items.map((item) => {
-                            const globalIndex = flatResults.findIndex(
-                              (r) => r.path === item.path,
-                            );
-                            const isSelected = globalIndex === selectedIndex;
-
-                            return (
-                              <Box
-                                key={item.path}
-                                component="li"
-                                display="flex"
-                                alignItems="center"
-                                justifyContent="spaceBetween"
-                                gap="small"
-                              >
-                                <Box display="flex">
-                                  <ButtonLink
-                                    variant={
-                                      isSelected ? 'soft' : 'transparent'
-                                    }
-                                    tone="formAccent"
-                                    size="small"
-                                    href={item.path}
-                                    onClick={() => {
-                                      navigate(item.path);
-                                      onClose();
-                                    }}
-                                    onMouseEnter={() =>
-                                      setSelectedIndex(globalIndex)
-                                    }
-                                    data-index={globalIndex}
-                                  >
-                                    {item.name}
-                                  </ButtonLink>
-                                </Box>
-
-                                {item.hasProps && isSelected && (
-                                  <Box
-                                    display="flex"
-                                    alignItems="center"
-                                    gap="xxsmall"
-                                  >
-                                    <KeyboardIcon>⇧</KeyboardIcon>
-                                    <KeyboardIcon>↵</KeyboardIcon>
-                                    <Text tone="secondary" size="xsmall">
-                                      Props
-                                    </Text>
-                                  </Box>
-                                )}
-                              </Box>
-                            );
-                          })}
-                        </Stack>
-                      );
-                    })}
-                  </Stack>
-                </Box>
-              </Bleed>
-            </ScrollContainer>
-          );
-        })()}
-      </Box>
+      {/* <Bleed horizontal="large">
+          <ScrollContainer direction="vertical">
+            <Box ref={resultsRef} paddingY="small" style={{ height: '40vh' }}>
+              <Box paddingX="large">
+                <SearchResults
+                  searchQuery={searchQuery}
+                  groupedResults={groupedResults}
+                  flatResults={flatResults}
+                  selectedIndex={selectedIndex}
+                  onSelectIndex={setSelectedIndex}
+                  onNavigate={(path) => {
+                    navigate(path);
+                    onClose();
+                  }}
+                />
+              </Box>
+            </Box>
+          </ScrollContainer>
+        </Bleed> */}
     </Dialog>
   );
 };

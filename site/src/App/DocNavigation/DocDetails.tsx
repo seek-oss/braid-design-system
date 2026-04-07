@@ -162,7 +162,7 @@ export const DocDetails = () => {
                 </PlayroomStateProvider>
               ) : null}
 
-              {'accessibility' in docs ? (
+              {'accessibility' in docs && docs.accessibility ? (
                 <Stack space={headingSpacing}>
                   <LinkableHeading level="3">Accessibility</LinkableHeading>
                   {docs.accessibility}
@@ -201,7 +201,7 @@ export const DocDetails = () => {
                 />
               ))}
 
-              {'alternatives' in docs ? (
+              {'alternatives' in docs && docs.alternatives.length > 0 ? (
                 <Stack space={headingSpacing}>
                   <LinkableHeading level="3">Alternatives</LinkableHeading>
                   <List space="medium">
