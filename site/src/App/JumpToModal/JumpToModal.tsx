@@ -15,7 +15,6 @@ import {
   groupSearchResults,
   type SearchItem,
 } from './getSearchItems';
-import { dialogAdjust } from './jumpTo.css';
 
 interface JumpToModalProps {
   isOpen: boolean;
