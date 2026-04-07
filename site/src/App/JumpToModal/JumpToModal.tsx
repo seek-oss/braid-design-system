@@ -154,25 +154,25 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
           setSelectedIndex(0);
         }}
       />
-      {/* <Bleed horizontal="large">
-          <ScrollContainer direction="vertical">
-            <Box ref={resultsRef} paddingY="small" style={{ height: '40vh' }}>
-              <Box paddingX="large">
-                <SearchResults
-                  searchQuery={searchQuery}
-                  groupedResults={groupedResults}
-                  flatResults={flatResults}
-                  selectedIndex={selectedIndex}
-                  onSelectIndex={setSelectedIndex}
-                  onNavigate={(path) => {
-                    navigate(path);
-                    onClose();
-                  }}
-                />
-              </Box>
+      <Bleed horizontal="large">
+        <ScrollContainer direction="vertical">
+          <Box ref={resultsRef} paddingY="small" style={{ height: '40vh' }}>
+            <Box paddingX="large">
+              <SearchResults
+                searchQuery={searchQuery}
+                groupedResults={groupedResults}
+                flatResults={flatResults}
+                selectedIndex={selectedIndex}
+                onSelectIndex={setSelectedIndex}
+                onNavigate={(path) => {
+                  navigate(path);
+                  onClose();
+                }}
+              />
             </Box>
-          </ScrollContainer>
-        </Bleed> */}
+          </Box>
+        </ScrollContainer>
+      </Bleed>
     </Dialog>
   );
 };
