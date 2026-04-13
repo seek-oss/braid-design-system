@@ -45,8 +45,8 @@ import { getState, setDefaultState, setState, toggleState } from './stateStubs';
 
 export const snippets: Snippets = [
   {
-    group: 'Blocks',
-    name: 'Standard',
+    group: 'Sections',
+    name: 'Standard Section',
     code: source(
       <PageBlock width="medium">
         <Stack space="medium">
@@ -80,7 +80,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    group: 'Blocks',
+    group: 'Sections',
     name: 'Card list',
     code: source(
       <PageBlock width="medium">
@@ -131,7 +131,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    group: 'Blocks',
+    group: 'Sections',
     name: 'Divided list',
     code: source(
       <PageBlock width="medium">
@@ -182,7 +182,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    group: 'Blocks',
+    group: 'Sections',
     name: 'Branded container',
     description: 'Full bleed',
     code: source(
@@ -212,7 +212,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    group: 'Blocks',
+    group: 'Sections',
     name: 'Branded container',
     description: 'Rounded from desktop (full bleed below)',
     code: source(
@@ -251,7 +251,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    group: 'Blocks',
+    group: 'Sections',
     name: 'Form (basic)',
     code: source(
       <PageBlock width="medium">
@@ -300,7 +300,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    group: 'Blocks',
+    group: 'Sections',
     name: 'Form (validation)',
     code: source(
       <PageBlock width="medium">
@@ -366,7 +366,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    group: 'Blocks',
+    group: 'Sections',
     name: 'Table',
     code: source(
       <PageBlock width="medium">
@@ -442,7 +442,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    group: 'Blocks',
+    group: 'Sections',
     name: 'Stepper',
     code: source(
       <PageBlock width="medium">
@@ -521,7 +521,7 @@ export const snippets: Snippets = [
     ),
   },
   {
-    group: 'Blocks',
+    group: 'Sections',
     name: 'Tabs',
     code: source(
       <PageBlock width="medium">
