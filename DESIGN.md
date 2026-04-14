@@ -1,16 +1,17 @@
 # Design System: Braid web — SEEK Jobs
 
----
-
-## About this document
-
-**Format:** Follows the extended `DESIGN.md` pattern popularised by [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md).
+**About this file:** Follows the extended `DESIGN.md` pattern popularised by [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md).
 **Audience:** Designers, engineers and other partners using AI-powered design and coding tools to create SEEK UI.
 **Themes:** `seekJobs` (SEEK Jobs).
 **Platforms:** Currently web only (no Native or Email).
-**Usage:** Values and tables below are usable on their own; GitHub links are optional for checking against source code.  
-**Implementation:** Tokens and components live in [packages/braid-design-system](https://github.com/seek-oss/braid-design-system/tree/master/packages/braid-design-system).  
-**Documentation:** [Braid Design System](https://seek-oss.github.io/braid-design-system/).
+
+---
+
+## How to use this file
+
+- **Attach or paste** this file into your AI-powered design or coding tool. The values and tables are self-contained.
+- **Install the package** via `npm install braid-design-system` ([npm](https://www.npmjs.com/package/braid-design-system) · [source](https://github.com/seek-oss/braid-design-system/tree/master/packages/braid-design-system)). If your tool supports package installation, install this package and import components directly. Always prefer Braid components and theme tokens over custom CSS — the system handles colour, typography, spacing, and accessibility out of the box.
+- **Browse the docs** at [Braid Design System](https://seek-oss.github.io/braid-design-system/) for interactive component examples and API reference.
 
 ---
 
@@ -136,7 +137,7 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 
 ### Inputs and forms
 
-- **Border:** `#838FA5`\*\* default field stroke, `2px` standard width.
+- **Border:** `#838FA5` default field stroke, `2px` standard width.
 - **Radius:** Typically `8px` (standard radius) for fields.
 - **Accent:** Focus and key accents align with **form blue** (`#1E47A9` and lighter blues).
 - **Errors:** **Critical** foreground and **critical soft** backgrounds for messages and highlights.
@@ -247,12 +248,12 @@ Copy-ready snippets for **AI-powered design and coding tools** (for example Figm
 
 ### Example prompts (for AI tools)
 
-1. “Build a **SEEK Jobs** marketing hero: **white** background, **H1** at mobile **28px** / tablet **36px**, **neutral `#2E3849`** title, **secondary `#5A6881`** subtitle, **primary button** filled `**#E60278`** with **white** label, **24px** vertical gap between blocks, **8px** rounded promo card with **small shadow.”
-2. “Create a **job search filter** form: **white** fields, `**#838FA5` **2px** border, **8px** radius, **16px** vertical gap between fields, **form blue `#1E47A9`** for focus ring flavor, error message in `**#B91E1E**` on `**#FEF3F3**`.”
-3. “Layout a **results list** on **mobile**: single column, **16px** gaps; from **740px** use **two columns** for cards; cards **white**, `**8px`** radius, **small** shadow, title **Heading 4 scale.”
-4. “Add a **success banner**: **positive `#12784F`** text on `**#E2F7F1**` background, **text small**, **8px** vertical padding using **small** space token multiples.”
-5. “Implement **visited links** in a paragraph: default `**#2E3849`**, visited `**#5B2084\*\`\*, underline on.”
-6. “Build a **dashboard stat tile**: **white** card, `**8px`** radius, **small** shadow, metric as **Heading 3** on tablet, caption as **text small** in `**#5A6881`**, **24px padding.”
+1. “Build a **SEEK Jobs** marketing hero: **white** background, **H1** at mobile **28px** / tablet **36px**, **neutral** `#2E3849` title, **secondary** `#5A6881` subtitle, **primary button** filled `#E60278` with **white** label, **24px** vertical gap between blocks, **8px** rounded promo card with small shadow.”
+2. “Create a **job search filter** form: **white** fields, `#838FA5` **2px** border, **8px** radius, **16px** vertical gap between fields, **form blue `#1E47A9`** for focus ring flavor, error message in `#B91E1E**` on `#FEF3F3`.”
+3. “Layout a **results list** on **mobile**: single column, **16px** gaps; from **740px** use **two columns** for cards; cards **white**, `8px` radius, **small** shadow, title \*\*Heading 4 scale.”
+4. “Add a **success banner**: **positive `#12784F`** text on `#E2F7F1` background, **text small**, **8px** vertical padding using **small** space token multiples.”
+5. “Implement **visited links** in a paragraph: default `#2E3849`**, visited `**#5B2084, underline on.”
+6. “Build a **dashboard stat tile**: **white** card, `**8px`** radius, **small** shadow, metric as **Heading 3** on tablet, caption as **text small** in `#5A6881`**, \*\*24px padding.”
 
 ---
 
