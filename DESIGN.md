@@ -7,7 +7,7 @@
 **Format:** Follows the extended `DESIGN.md` pattern popularised by [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md).
 **Audience:** Designers, engineers and other partners using AI-powered design and coding tools to create SEEK UI.
 **Themes:** `seekJobs` (SEEK Jobs).
-**Platforms:** Currently web only.
+**Platforms:** Currently web only (no Native or Email).
 **Usage:** Values and tables below are usable on their own; GitHub links are optional for checking against source code.  
 **Implementation:** Tokens and components live in [packages/braid-design-system](https://github.com/seek-oss/braid-design-system/tree/master/packages/braid-design-system).  
 **Documentation:** [Braid Design System](https://seek-oss.github.io/braid-design-system/).
@@ -39,18 +39,21 @@ Primitive scales live in [palette.ts](https://github.com/seek-oss/braid-design-s
 
 ### Brand accents
 
+
 | Token               | Hex         | Role                                              |
 | ------------------- | ----------- | ------------------------------------------------- |
 | `brandAccent`       | `#E60278`   | Primary CTAs, brand fills, strong emphasis        |
-| `brandAccentHover`  | _(derived)_ | Slightly lighter on hover                         |
-| `brandAccentActive` | _(derived)_ | Slightly darker on press                          |
+| `brandAccentHover`  | *(derived)* | Slightly lighter on hover                         |
+| `brandAccentActive` | *(derived)* | Slightly darker on press                          |
 | `brandAccentLight`  | `#F8B1DC`   | Soft brand borders, light brand emphasis on white |
 | `brandAccentSoft`   | `#FEEFFA`   | Tinted surfaces, soft brand backgrounds           |
 | `brand`             | `#051A49`   | Top brand bar, dark brand surfaces (background)   |
 | `formAccent`        | `#1E47A9`   | Form and interactive accent                       |
 | `formAccentLight`   | `#99BFF7`   | Lighter form-related UI, focus flavor             |
 
+
 ### Neutrals and surfaces
+
 
 | Token          | Hex       | Role                                     |
 | -------------- | --------- | ---------------------------------------- |
@@ -64,7 +67,9 @@ Primitive scales live in [palette.ts](https://github.com/seek-oss/braid-design-s
 | `neutralSoft`  | `#F3F5F7` | Soft grey fills (background)             |
 | `field`        | `#838FA5` | Default field outlines (border)          |
 
+
 ### Semantic tones
+
 
 | Token                  | Hex       | Role                                                     |
 | ---------------------- | --------- | -------------------------------------------------------- |
@@ -80,13 +85,16 @@ Primitive scales live in [palette.ts](https://github.com/seek-oss/braid-design-s
 | `infoLight`            | `#E3F2FB` | Informational backgrounds                                |
 | `promote`              | `#7F35A9` | Promotional / marketing accent                           |
 
+
 ### Links and focus
+
 
 | Token         | Hex                        | Role                             |
 | ------------- | -------------------------- | -------------------------------- |
 | `link`        | `#2E3849`                  | Standard text links (foreground) |
 | `linkVisited` | `#5B2084`                  | Visited links (foreground)       |
 | `focus`       | `rgba(153, 191, 247, 0.7)` | Keyboard focus outline (border)  |
+
 
 ---
 
@@ -102,6 +110,7 @@ Primitive scales live in [palette.ts](https://github.com/seek-oss/braid-design-s
 
 Sizes are **px**; **line gap** is the Capsize line-gap token (implementation computes final line height and cap trims).
 
+
 | Role              | Mobile       | Tablet       |
 | ----------------- | ------------ | ------------ |
 | **Heading 1**     | 28px, gap 11 | 36px, gap 14 |
@@ -112,6 +121,7 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 | **Text standard** | 16px, gap 12 | 16px, gap 12 |
 | **Text small**    | 14px, gap 10 | 14px, gap 10 |
 | **Text xsmall**   | 12px, gap 9  | 12px, gap 9  |
+
 
 **Links:** System default is **underlined** text links using link/visited foreground tokens.
 
@@ -126,18 +136,18 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 - **Primary / brand:** **Seek Magenta** fill with **white** foreground on light backgrounds; **hover** and **active** use token-driven lighten/darken passes.
 - **Secondary / neutral:** Grey neutral fills for non-primary actions.
 - **Ghost / soft:** Light fills or transparent bodies with border or foreground emphasis as per variant.
-- **States:** **Disabled** reduces visual weight and blocks interaction; **focus-visible** shows the **focus ring** (see §6). **Hover** may show a translucent overlay; **active** applies `**scale(0.95)`\*\* with a short easing (`transitions.touchable`).
+- **States:** **Disabled** reduces visual weight and blocks interaction; **focus-visible** shows the **focus ring** (see §6). **Hover** may show a translucent overlay; **active** applies `**scale(0.95)` with a short easing (`transitions.touchable`).
 
 ### Cards and containers
 
-- **Radius:** `**4px` (small)**, `**8px`(standard)**,`**16px` (large)**, `**24px` (xlarge)\*\* — pick by prominence; marketing tiles often use larger radii.
-- **Background:** Default `**#FFFFFF`** surface on `**#FFFFFF**` body; use **neutral soft\*\* tints for grouped content when tokens allow.
+- **Radius:** `**4px` (small)**, `**8px`(standard)**,`**16px` (large)**, `**24px` (xlarge) — pick by prominence; marketing tiles often use larger radii.
+- **Background:** Default `**#FFFFFF`** surface on `**#FFFFFF`** body; use **neutral soft tints for grouped content when tokens allow.
 - **Borders:** Standard border width `**2px`**; large emphasis borders `**4px\*\*` where used.
 
 ### Inputs and forms
 
 - **Border:** `**#838FA5`** default field stroke, `**2px\*\*` standard width.
-- **Radius:** Typically `**8px`\*\* (standard radius) for fields.
+- **Radius:** Typically `**8px` (standard radius) for fields.
 - **Accent:** Focus and key accents align with **form blue** (`#1E47A9` and lighter blues).
 - **Errors:** **Critical** foreground and **critical soft** backgrounds for messages and highlights.
 
@@ -161,6 +171,7 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 
 **Spacing scale** (token × 4px → px):
 
+
 | Token      | Px  | Typical use                      |
 | ---------- | --- | -------------------------------- |
 | `xxsmall`  | 8   | Tight icon gaps, dense rows      |
@@ -172,6 +183,7 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 | `xlarge`   | 48  | Large gaps, hero spacing         |
 | `xxlarge`  | 64  | Major vertical breaks            |
 | `xxxlarge` | 96  | Page-level rhythm                |
+
 
 **Whitespace:** Prefer **repeated use of one or two scale steps** in a screen rather than arbitrary pixel values. Align columns to the **gutter** and keep **related items closer** than **unrelated sections**.
 
@@ -189,7 +201,7 @@ Shadows use **cool grey** at **8% opacity** (`#1C2330` scaled to alpha) for a **
 
 **Surface hierarchy:** Default UI is **flat** (white on white). Use **small** shadow for **cards and popovers**, **medium/large** for **dialogs and prominent overlays**.
 
-**Focus:** `**6px`\*\* focus ring size token (`focusRingSize`) — do not remove or shrink focus styles for keyboard users.
+**Focus:** `**6px` focus ring size token (`focusRingSize`) — do not remove or shrink focus styles for keyboard users.
 
 ---
 
@@ -215,12 +227,14 @@ Shadows use **cool grey** at **8% opacity** (`#1C2330` scaled to alpha) for a **
 
 **Breakpoints** (`min-width`, from [breakpoints.ts](https://github.com/seek-oss/braid-design-system/blob/master/packages/braid-design-system/src/lib/css/breakpoints.ts)):
 
+
 | Name        | Min width | Notes                                                 |
 | ----------- | --------- | ----------------------------------------------------- |
 | **mobile**  | 0         | Default; single-column layouts, smaller heading sizes |
 | **tablet**  | 740px     | Larger heading sizes, multi-column layouts            |
 | **desktop** | 992px     | Full two- and three-column shells                     |
 | **wide**    | 1200px    | Maximum horizontal use                                |
+
 
 **Typography:** Heading and text **sizes and gaps** are defined separately for **mobile** and **tablet**; from **tablet upward** the tablet values apply unless a component uses custom responsive props.
 
@@ -236,8 +250,8 @@ Copy-ready snippets for **AI-powered design and coding tools** (for example Figm
 
 ### Quick hex reference (SEEK Jobs)
 
-- Primary CTA: `**#E60278`\*\*
-- Primary text: `**#2E3849**`
+- Primary CTA: `**#E60278`
+- Primary text: `**#2E3849`**
 - Secondary text: `**#5A6881**`
 - Page / card surface: `**#FFFFFF**`
 - Form accent: `**#1E47A9**`
@@ -247,12 +261,12 @@ Copy-ready snippets for **AI-powered design and coding tools** (for example Figm
 
 ### Example prompts (for AI tools)
 
-1. “Build a **SEEK Jobs** marketing hero: **white** background, **H1** at mobile **28px** / tablet **36px**, **neutral `#2E3849`** title, **secondary `#5A6881`** subtitle, **primary button** filled `**#E60278`** with **white** label, **24px** vertical gap between blocks, **8px** rounded promo card with **small\*\* shadow.”
-2. “Create a **job search filter** form: **white** fields, `**#838FA5`\*\* **2px** border, **8px** radius, **16px** vertical gap between fields, **form blue `#1E47A9`** for focus ring flavor, error message in `**#B91E1E**` on `**#FEF3F3**`.”
-3. “Layout a **results list** on **mobile**: single column, **16px** gaps; from **740px** use **two columns** for cards; cards **white**, `**8px`** radius, **small** shadow, title **Heading 4\*\* scale.”
+1. “Build a **SEEK Jobs** marketing hero: **white** background, **H1** at mobile **28px** / tablet **36px**, **neutral `#2E3849`** title, **secondary `#5A6881`** subtitle, **primary button** filled `**#E60278`** with **white** label, **24px** vertical gap between blocks, **8px** rounded promo card with **small shadow.”
+2. “Create a **job search filter** form: **white** fields, `**#838FA5` **2px** border, **8px** radius, **16px** vertical gap between fields, **form blue `#1E47A9`** for focus ring flavor, error message in `**#B91E1E**` on `**#FEF3F3**`.”
+3. “Layout a **results list** on **mobile**: single column, **16px** gaps; from **740px** use **two columns** for cards; cards **white**, `**8px`** radius, **small** shadow, title **Heading 4 scale.”
 4. “Add a **success banner**: **positive `#12784F`** text on `**#E2F7F1**` background, **text small**, **8px** vertical padding using **small** space token multiples.”
-5. “Implement **visited links** in a paragraph: default `**#2E3849`**, visited `**#5B2084\*\*`, underline on.”
-6. “Build a **dashboard stat tile**: **white** card, `**8px`** radius, **small** shadow, metric as **Heading 3** on tablet, caption as **text small** in `**#5A6881`**, **24px\*\* padding.”
+5. “Implement **visited links** in a paragraph: default `**#2E3849`**, visited `**#5B2084\*\`*, underline on.”
+6. “Build a **dashboard stat tile**: **white** card, `**8px`** radius, **small** shadow, metric as **Heading 3** on tablet, caption as **text small** in `**#5A6881`**, **24px padding.”
 
 ---
 
