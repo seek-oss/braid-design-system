@@ -14,7 +14,7 @@
 
 ---
 
-## 1. Visual Theme & Atmosphere
+## 1. Visual theme & atmosphere
 
 SEEK's interface is a clean and modern marketplace built on a single, cohesive visual language. It features a **confident magenta brand accent** on a **white** canvas.
 
@@ -33,44 +33,64 @@ Colour is used purposefully, with a spectrum of semantic **Tones** and **brand a
 
 ---
 
-## 2. Color Palette & Roles
+## 2. Color palette & roles
 
-Primitive scales live in `[palette.ts](https://github.com/seek-oss/braid-design-system/blob/master/packages/braid-design-system/src/lib/color/palette.ts)`; **semantic** foreground and background roles are built in `[nvl.ts](https://github.com/seek-oss/braid-design-system/blob/master/packages/braid-design-system/src/lib/themes/baseTokens/nvl.ts)` for each theme. Below reflects **SEEK Jobs** (`brandAccent` = Seek Pink 500).
+Primitive scales live in [palette.ts](https://github.com/seek-oss/braid-design-system/blob/master/packages/braid-design-system/src/lib/color/palette.ts); **semantic** foreground and background roles are built in [nvl.ts](https://github.com/seek-oss/braid-design-system/blob/master/packages/braid-design-system/src/lib/themes/baseTokens/nvl.ts) for each theme. Below reflects **SEEK Jobs** theme (`brandAccent` = Seek Pink 500).
 
-| Semantic name                     | Hex                        | Functional role                                                                                                                   |
-| --------------------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| **Seek Magenta (brand accent)**   | `#E60278`                  | Primary CTAs, brand fills, strong emphasis                                                                                        |
-| **Brand accent hover / active**   | _(derived)_                | Hover: slightly lighter magenta; active: slightly darker — use Braid `brandAccentHover` / `brandAccentActive` tokens, not new hex |
-| **Seek Magenta Light**            | `#F8B1DC`                  | Soft brand borders, light brand emphasis on white                                                                                 |
-| **Seek Magenta Soft**             | `#FEEFFA`                  | Tinted surfaces, soft brand backgrounds                                                                                           |
-| **Seek Navy (brand)**             | `#051A49`                  | Top brand bar, dark brand surfaces (`background.brand`)                                                                           |
-| **Form blue**                     | `#1E47A9`                  | Form and interactive accent (`formAccent`)                                                                                        |
-| **Form blue light**               | `#99BFF7`                  | Lighter form-related UI, focus flavor                                                                                             |
-| **Neutral (primary text)**        | `#2E3849`                  | Body copy, default headings (`foreground.neutral`)                                                                                |
-| **Secondary text**                | `#5A6881`                  | Supporting text (`foreground.secondary`)                                                                                          |
-| **Field border**                  | `#838FA5`                  | Default field outlines (`border.color.field`)                                                                                     |
-| **Surface**                       | `#FFFFFF`                  | Cards, panels (`background.surface`)                                                                                              |
-| **Body**                          | `#FFFFFF`                  | Default page background (light)                                                                                                   |
-| **Body / surface dark**           | `#1C2330`                  | Dark canvas and dark surfaces where used                                                                                          |
-| **Neutral soft / light surfaces** | `#F3F5F7`                  | Soft grey panels (`neutralLight` / soft neutrals)                                                                                 |
-| **Critical**                      | `#B91E1E`                  | Errors, destructive emphasis                                                                                                      |
-| **Critical soft**                 | `#FEF3F3`                  | Error backgrounds                                                                                                                 |
-| **Critical light**                | `#FFE3E2`                  | Light error tint                                                                                                                  |
-| **Caution foreground**            | `#723D02`                  | Text on yellow surfaces                                                                                                           |
-| **Caution**                       | `#FDC221`                  | Warning fills                                                                                                                     |
-| **Caution light**                 | `#FEF8DE`                  | Soft warning backgrounds                                                                                                          |
-| **Positive**                      | `#12784F`                  | Success                                                                                                                           |
-| **Positive light**                | `#E2F7F1`                  | Success backgrounds                                                                                                               |
-| **Info**                          | `#1D559D`                  | Informational                                                                                                                     |
-| **Info light**                    | `#E3F2FB`                  | Informational backgrounds                                                                                                         |
-| **Promote (purple)**              | `#7F35A9`                  | Promotional / marketing accent                                                                                                    |
-| **Link default**                  | `#2E3849`                  | Standard text links                                                                                                               |
-| **Link visited**                  | `#5B2084`                  | Visited links                                                                                                                     |
-| **Focus ring**                    | `rgba(153, 191, 247, 0.7)` | Keyboard focus outline (`border.color.focus`)                                                                                     |
+### Brand accents
+
+| Token               | Hex         | Role                                              |
+| ------------------- | ----------- | ------------------------------------------------- |
+| `brandAccent`       | `#E60278`   | Primary CTAs, brand fills, strong emphasis        |
+| `brandAccentHover`  | _(derived)_ | Slightly lighter on hover                         |
+| `brandAccentActive` | _(derived)_ | Slightly darker on press                          |
+| `brandAccentLight`  | `#F8B1DC`   | Soft brand borders, light brand emphasis on white |
+| `brandAccentSoft`   | `#FEEFFA`   | Tinted surfaces, soft brand backgrounds           |
+| `brand`             | `#051A49`   | Top brand bar, dark brand surfaces (background)   |
+| `formAccent`        | `#1E47A9`   | Form and interactive accent                       |
+| `formAccentLight`   | `#99BFF7`   | Lighter form-related UI, focus flavor             |
+
+### Neutrals and surfaces
+
+| Token          | Hex       | Role                                     |
+| -------------- | --------- | ---------------------------------------- |
+| `neutral`      | `#2E3849` | Body copy, default headings (foreground) |
+| `secondary`    | `#5A6881` | Supporting text (foreground)             |
+| `surface`      | `#FFFFFF` | Cards, panels (background)               |
+| `body`         | `#FFFFFF` | Default page background                  |
+| `bodyDark`     | `#1C2330` | Dark canvas background                   |
+| `surfaceDark`  | `#1C2330` | Dark elevated surfaces                   |
+| `neutralLight` | `#F3F5F7` | Soft grey panels (background)            |
+| `neutralSoft`  | `#F3F5F7` | Soft grey fills (background)             |
+| `field`        | `#838FA5` | Default field outlines (border)          |
+
+### Semantic tones
+
+| Token                  | Hex       | Role                                                     |
+| ---------------------- | --------- | -------------------------------------------------------- |
+| `critical`             | `#B91E1E` | Errors, destructive emphasis (foreground and background) |
+| `criticalLight`        | `#FFE3E2` | Light error tint (background)                            |
+| `criticalSoft`         | `#FEF3F3` | Soft error backgrounds                                   |
+| `caution` (background) | `#FDC221` | Warning fills (background)                               |
+| `caution` (foreground) | `#723D02` | Text on yellow/caution surfaces                          |
+| `cautionLight`         | `#FEF8DE` | Soft warning backgrounds                                 |
+| `positive`             | `#12784F` | Success (foreground and background)                      |
+| `positiveLight`        | `#E2F7F1` | Success backgrounds                                      |
+| `info`                 | `#1D559D` | Informational (foreground and background)                |
+| `infoLight`            | `#E3F2FB` | Informational backgrounds                                |
+| `promote`              | `#7F35A9` | Promotional / marketing accent                           |
+
+### Links and focus
+
+| Token         | Hex                        | Role                             |
+| ------------- | -------------------------- | -------------------------------- |
+| `link`        | `#2E3849`                  | Standard text links (foreground) |
+| `linkVisited` | `#5B2084`                  | Visited links (foreground)       |
+| `focus`       | `rgba(153, 191, 247, 0.7)` | Keyboard focus outline (border)  |
 
 ---
 
-## 3. Typography Rules
+## 3. Typography rules
 
 **Font family:** `SeekSans, "SeekSans Fallback", Arial, Tahoma, sans-serif`  
 **Web font URL (reference):** `https://www.seek.com.au/static/shared-web/seeksans.css`  
@@ -97,7 +117,7 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 
 ---
 
-## 4. Component Stylings
+## 4. Component stylings
 
 ### Buttons
 
@@ -135,7 +155,7 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 
 ---
 
-## 5. Layout Principles
+## 5. Layout principles
 
 **Base grid:** **4px**. All spacing tokens are multiples of the grid (`grid: 4`).
 
@@ -159,7 +179,7 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 
 ---
 
-## 6. Depth & Elevation
+## 6. Depth & elevation
 
 Shadows use **cool grey** at **8% opacity** (`#1C2330` scaled to alpha) for a **soft, neutral float**:
 
@@ -191,9 +211,9 @@ Shadows use **cool grey** at **8% opacity** (`#1C2330` scaled to alpha) for a **
 
 ---
 
-## 8. Responsive Behavior
+## 8. Responsive behavior
 
-**Breakpoints** (`min-width`, from `[breakpoints.ts](https://github.com/seek-oss/braid-design-system/blob/master/packages/braid-design-system/src/lib/css/breakpoints.ts)`):
+**Breakpoints** (`min-width`, from [breakpoints.ts](https://github.com/seek-oss/braid-design-system/blob/master/packages/braid-design-system/src/lib/css/breakpoints.ts)):
 
 | Name        | Min width | Notes                                                 |
 | ----------- | --------- | ----------------------------------------------------- |
@@ -238,4 +258,4 @@ Copy-ready snippets for **AI-powered design and coding tools** (for example Figm
 
 ## Maintenance
 
-When `seekJobs` or **NVL base tokens** change, update **§2–§6** and the **AI prompt guide** (**§9**) so this file stays aligned with the `[packages/braid-design-system](https://github.com/seek-oss/braid-design-system/tree/master/packages/braid-design-system)` package in [seek-oss/braid-design-system](https://github.com/seek-oss/braid-design-system). Add brand or content guidelines in new sections when your team is ready.
+When `seekJobs` or **NVL base tokens** change, update **§2–§6** and the **AI prompt guide** (**§9**) so this file stays aligned with the [packages/braid-design-system](https://github.com/seek-oss/braid-design-system/tree/master/packages/braid-design-system) package in [seek-oss/braid-design-system](https://github.com/seek-oss/braid-design-system). Add brand or content guidelines in new sections when your team is ready.
