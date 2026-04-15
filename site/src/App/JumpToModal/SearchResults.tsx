@@ -22,35 +22,21 @@ export const SearchResults = ({
   onSelectIndex,
   onNavigate,
 }: SearchResultsProps) => {
-  if (flatResults.length === 0 && searchQuery.trim()) {
+  if (flatResults.length === 0) {
     return (
       <Box
-        background="neutralSoft"
+        background="neutralLight"
         padding="xxxlarge"
         display="flex"
         justifyContent="center"
         alignItems="center"
         height="full"
+        borderRadius="standard"
       >
         <Text tone="secondary" size="xsmall" align="center">
-          No results found.
-        </Text>
-      </Box>
-    );
-  }
-
-  if (!searchQuery.trim()) {
-    return (
-      <Box
-        background="neutralSoft"
-        padding="xxxlarge"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="full"
-      >
-        <Text tone="secondary" size="xsmall" align="center">
-          Matching pages will appear here.
+          {searchQuery.trim()
+            ? 'No results found.'
+            : 'Matching pages will appear here.'}
         </Text>
       </Box>
     );
@@ -67,8 +53,8 @@ export const SearchResults = ({
 
           return (
             <Stack key={category} space="xxsmall" component="ul">
-              <Box marginBottom="xsmall">
-                <CategoryHeading>{category}</CategoryHeading>
+              <Box marginBottom="xsmall" component="li">
+                <CategoryHeading component="h2">{category}</CategoryHeading>
               </Box>
               {items.map((item) => {
                 const globalIndex = flatResults.findIndex(
@@ -77,36 +63,37 @@ export const SearchResults = ({
                 const isSelected = globalIndex === selectedIndex;
 
                 return (
-                  <Bleed horizontal="small" key={item.path}>
-                    <Box
-                      component="li"
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="spaceBetween"
-                      gap="small"
-                    >
-                      <Box display="flex">
-                        <ButtonLink
-                          variant={isSelected ? 'soft' : 'transparent'}
-                          tone="formAccent"
-                          size="small"
-                          href={item.path}
-                          onClick={() => onNavigate(item.path)}
-                          onMouseEnter={() => onSelectIndex(globalIndex)}
-                          data-index={globalIndex}
-                        >
-                          {item.name}
-                        </ButtonLink>
-                      </Box>
+                  <Box key={item.path} component="li">
+                    <Bleed horizontal="small">
+                      <Box
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="spaceBetween"
+                        gap="small"
+                      >
+                        <Box>
+                          <ButtonLink
+                            variant={isSelected ? 'soft' : 'transparent'}
+                            tone="formAccent"
+                            size="small"
+                            href={item.path}
+                            onClick={() => onNavigate(item.path)}
+                            onMouseEnter={() => onSelectIndex(globalIndex)}
+                            data-index={globalIndex}
+                          >
+                            {item.name}
+                          </ButtonLink>
+                        </Box>
 
-                      {item.hasProps && isSelected && (
-                        <KeyboardShortcut
-                          keys={['⇧', '⏎']}
-                          shortcutLabel="Props"
-                        />
-                      )}
-                    </Box>
-                  </Bleed>
+                        {item.hasProps && isSelected && (
+                          <KeyboardShortcut
+                            keys={['⇧', '⏎']}
+                            shortcutLabel="Props"
+                          />
+                        )}
+                      </Box>
+                    </Bleed>
+                  </Box>
                 );
               })}
             </Stack>

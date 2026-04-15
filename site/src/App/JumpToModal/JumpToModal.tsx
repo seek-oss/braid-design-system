@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router';
 
 import { SearchResults } from './SearchResults';
 import {
-  getSearchItems,
+  searchItems,
   groupSearchResults,
   type SearchItem,
 } from './getSearchItems';
@@ -28,8 +28,6 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
   const resultsRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
 
-  const searchItems = useMemo(() => getSearchItems(), []);
-
   const filteredItems = useMemo(() => {
     if (!searchQuery.trim()) {
       return [];
@@ -39,7 +37,7 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
     return searchItems.filter((item) =>
       item.name.toLowerCase().includes(query),
     );
-  }, [searchQuery, searchItems]);
+  }, [searchQuery]);
 
   const groupedResults = useMemo(
     () => groupSearchResults(filteredItems),
@@ -145,7 +143,7 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
       <TextField
         icon={<IconSearch />}
         ref={inputRef}
-        label=""
+        aria-label="Jump to a component"
         placeholder="Jump to Foundations, Components, CSS, Logic..."
         value={searchQuery}
         onChange={(e) => {

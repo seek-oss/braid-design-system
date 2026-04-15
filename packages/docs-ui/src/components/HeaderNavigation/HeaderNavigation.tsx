@@ -56,7 +56,7 @@ export const HeaderNavigation = ({
       </Text>
     </Box>
     <Stack space="none">
-      <Box>{themeToggle}</Box>
+      <>{themeToggle}</>
       <Bleed horizontal="xxsmall" bottom="xxsmall">
         <Box
           component="button"

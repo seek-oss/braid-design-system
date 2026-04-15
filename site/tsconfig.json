@@ -1,11 +1,6 @@
 {
   "extends": "../tsconfig.json",
-  "include": [
-    "./playroom.config.mts",
-    "./src",
-    "./scripts",
-    "../packages/docs-ui/src/components/KeyboardShortcut"
-  ],
+  "include": ["./playroom.config.mts", "./src", "./scripts"],
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "types": ["webpack-env"]

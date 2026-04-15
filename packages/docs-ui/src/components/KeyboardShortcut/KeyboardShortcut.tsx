@@ -14,6 +14,7 @@ export const KeyboardIcon = ({ children }: { children: React.ReactNode }) => (
     borderRadius="standard"
     alignItems="center"
     justifyContent="center"
+    component="span"
   >
     <Text tone="secondary" size="xsmall">
       {children}
@@ -25,7 +26,7 @@ export const KeyboardShortcut = ({
   keys,
   shortcutLabel,
 }: KeyboardShortcutProps) => (
-  <Box display="flex" alignItems="center" gap="xxsmall">
+  <Box display="flex" alignItems="center" gap="xxsmall" component="span">
     {keys.map((key) => (
       <KeyboardIcon key={key}>{key}</KeyboardIcon>
     ))}

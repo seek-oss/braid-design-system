@@ -12,56 +12,41 @@ export interface SearchItem {
   hasProps: boolean;
 }
 
-export const getSearchItems = (): SearchItem[] => {
-  const items: SearchItem[] = [];
-
+export const searchItems: SearchItem[] = [
   // Foundations
-  Object.entries(foundations).forEach(([path, foundation]) => {
-    items.push({
-      name: foundation.title,
-      path,
-      category: 'Foundations',
-      hasProps: false,
-    });
-  });
+  ...Object.entries(foundations).map(([path, foundation]) => ({
+    name: foundation.title,
+    path,
+    category: 'Foundations' as const,
+    hasProps: false,
+  })),
 
   // Components (excluding Logic)
-  const componentsList = documentedComponents.filter(
-    ({ category }) => category !== 'Logic',
-  );
-  componentsList.forEach((doc) => {
-    items.push({
+  ...documentedComponents
+    .filter(({ category }) => category !== 'Logic')
+    .map((doc) => ({
       name: doc.name,
       path: `/components/${doc.name}`,
-      category: 'Components',
+      category: 'Components' as const,
       hasProps: true,
-    });
-  });
+    })),
 
   // CSS
-  documentedCss.forEach((doc) => {
-    items.push({
-      name: doc.name,
-      path: `/css/${doc.name}`,
-      category: 'CSS',
-      hasProps: false,
-    });
-  });
+  ...documentedCss.map((doc) => ({
+    name: doc.name,
+    path: `/css/${doc.name}`,
+    category: 'CSS' as const,
+    hasProps: false,
+  })),
 
   // Logic
-  if (categorisedComponents.Logic) {
-    categorisedComponents.Logic.forEach((doc) => {
-      items.push({
-        name: doc.name,
-        path: `/components/${doc.name}`,
-        category: 'Logic',
-        hasProps: false,
-      });
-    });
-  }
-
-  return items;
-};
+  ...(categorisedComponents.Logic ?? []).map((doc) => ({
+    name: doc.name,
+    path: `/components/${doc.name}`,
+    category: 'Logic' as const,
+    hasProps: false,
+  })),
+];
 
 export type GroupedResults = Record<SearchItem['category'], SearchItem[]>;
 
