@@ -214,6 +214,7 @@ Shadows use **cool grey** at **8% opacity** (`#1C2330` scaled to alpha) for a **
 - Bypass **focus-visible** styling for custom interactive elements.
 - Hard-code **spacing** outside the **4px grid** without a strong reason.
 - Hard-code **colours** outside of the provided tokens without a strong reason.
+- Hard-code **styles** using `style={{ ... }}` unless absolutely necessary. Instead use real component properties.
 
 ---
 
@@ -254,7 +255,7 @@ Copy-ready snippets for **AI-powered design and coding tools** (for example Figm
 
 ### Example prompts (for AI tools)
 
-1. “Build a **SEEK Jobs** marketing hero: **white** background, **H1** at mobile **28px** / tablet **36px**, **neutral** `#2E3849` title, **secondary** `#5A6881` subtitle, **primary button** filled `#E60278` with **white** label, **24px** vertical gap between blocks, **8px** rounded promo card with small shadow.”
+1. Create a **job summary card** using the `Card` component. Include the role title as a level 4 `Heading`, the componany name as standard `Text`, along with location, industry and salary as a `List` with icons. Include a single sentence job description as standard `Text` along with the date posted in small, secondary `Text`.
 2. “Create a **job search filter** form: **white** fields, `#838FA5` **2px** border, **8px** radius, **16px** vertical gap between fields, **form blue `#1E47A9`** for focus ring flavor, error message in `#B91E1E**` on `#FEF3F3`.”
 3. “Layout a **results list** on **mobile**: single column, **16px** gaps; from **740px** use **two columns** for cards; cards **white**, `8px` radius, **small** shadow, title Heading 4 scale.”
 4. “Add a **success banner**: **positive `#12784F`** text on `#E2F7F1` background, **text small**, **8px** vertical padding using **small** space token multiples.”
