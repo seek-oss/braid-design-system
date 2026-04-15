@@ -28,14 +28,14 @@ Colour is used purposefully, with a spectrum of semantic **Tones** and **brand a
 
 **Design philosophy**
 
-- **Tokens, not ad-hoc CSS:** Spacing, color roles, type, radii, and shadows should map to Braid theme variables or component APIs.
+- **Tokens, not ad-hoc CSS:** Spacing, colour roles, type, radii, and shadows should map to Braid theme variables or component APIs.
 - **Composable structure:** Prefer layout primitives (stack, inline, box, columns) and Braid components over bespoke flex/grid soup unless there is a clear gap.
 - **Accessible by default:** Sufficient contrast for semantic pairings, visible keyboard focus, and interaction targets that meet the system’s touchable minimums.
 - **Mood keywords:** Clear, direct, professional, human, optimistic, never gimmicky or ornamental for its own sake.
 
 ---
 
-## 2. Color palette & roles
+## 2. Colour palette & roles
 
 Primitive scales live in [palette.ts](https://github.com/seek-oss/braid-design-system/blob/master/packages/braid-design-system/src/lib/color/palette.ts); **semantic** foreground and background roles are built in [nvl.ts](https://github.com/seek-oss/braid-design-system/blob/master/packages/braid-design-system/src/lib/themes/baseTokens/nvl.ts) for each theme. Below reflects **SEEK Jobs** theme (`brandAccent` = Seek Pink 500).
 
@@ -94,8 +94,8 @@ Primitive scales live in [palette.ts](https://github.com/seek-oss/braid-design-s
 
 ## 3. Typography rules
 
-**Font family:** `SeekSans, "SeekSans Fallback", Arial, Tahoma, sans-serif`  
-**Web font URL (reference):** `https://www.seek.com.au/static/shared-web/seeksans.css`  
+**Font family:** `SeekSans`, `"SeekSans Fallback"`, `Arial`, `Tahoma`, `sans-serif`  
+**Web font URL (reference):** [https://www.seek.com.au/static/shared-web/seeksans.css](https://www.seek.com.au/static/shared-web/seeksans.css)  
 **Weights:** regular `400`, medium `600`, strong `700`
 
 **Heading weight model:** “Weak” headings use **regular** weight; default headings use **medium** (see `typography.heading.weight` in tokens).
@@ -125,16 +125,17 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 
 - **Sizes:** **Standard** buttons target a **minimum height of 48px** (`touchableSize` 12 × grid 4px). **Small** uses ~80% of that touchable height with adjusted padding.
 - **Shape:** Corners follow **border radius** tokens (typically **standard `8px`** on filled variants — exact variant styling is defined per Braid `Button` implementation).
-- **Primary / brand:** **Seek Magenta** fill with **white** foreground on light backgrounds; **hover** and **active** use token-driven lighten/darken passes.
+- **Primary / brand:** **brandAccent** fill with **white** foreground on light backgrounds; **hover** and **active** use token-driven lighten/darken passes.
 - **Secondary / neutral:** Grey neutral fills for non-primary actions.
 - **Ghost / soft:** Light fills or transparent bodies with border or foreground emphasis as per variant.
-- **States:** **Disabled** reduces visual weight and blocks interaction; **focus-visible** shows the **focus ring** (see §6). **Hover** may show a translucent overlay; **active** applies `scale(0.95)` with a short easing (`transitions.touchable`).
+- **States:** **Focus-visible** shows the **focus ring** (see §6). **Hover** may show a translucent overlay; **active** applies `scale(0.95)` with a short easing (`transitions.touchable`). **Disabled** buttons are not supported as they are not accessible.
 
-### Cards and containers
+### Cards
 
-- **Radius:** `small` (4px), `standard`(8px),`large` (16px), `xlarge` (24px) — pick by prominence; marketing tiles often use larger radii.
-- **Background:** Default `surface` (#FFFFFF) body; use neutral soft tints for grouped content when tokens allow.
-- **Borders:** `standard` border width (2px); `large` emphasis borders (4px).
+- **Radius:** `large` (16px)
+- **Background:** `surface` (#FFFFFF)
+- **Padding:** `gutter` (24px)
+- **Border:** Light neutral keyline (`borderNeutralLight`); optional `tone` prop adds a `promote` or `formAccent` accent keyline.
 
 ### Inputs and forms
 
@@ -145,7 +146,7 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 
 ### Navigation
 
-- **Text nav:** Use **Text** + **Link** (or **ButtonLink**) with **link** / **visited** colors; keep **one clear active state** (weight, tone, or background per existing Braid patterns).
+- **Text nav:** Use **Text** + **Link** (or **ButtonLink**) with **link** / **visited** colours; keep **one clear active state** (weight, tone, or background per existing Braid patterns).
 - **Tabs / steps:** Respect **neutral** and **brandAccent** semantics for selected vs default; do not invent new accent hues.
 - **Side navigation:** Prefer **vertical stack** spacing from the space scale; align section titles with **text small** or **standard** and use **generous gutter** alignment to content (`space.gutter` → 24px).
 
@@ -189,9 +190,9 @@ Shadows use **cool grey** at **8% opacity** (`#1C2330` scaled to alpha) for a **
 - **Medium:** medium spread (`0 0 8px`, `0 8px 16px -4px`).
 - **Large:** strongest default elevation (`0 0 12px`, `0 12px 24px -6px`).
 
-**Surface hierarchy:** Default UI is **flat** (white on white). Use **small** shadow for **cards and popovers**, **medium/large** for **dialogs and prominent overlays**.
+**Surface hierarchy:** Default UI is **flat** (white on white). Use **small** shadow for **popovers**, **medium/large** for **dialogs and prominent overlays**.
 
-**Focus:** `**6px` focus ring size token (`focusRingSize`) — do not remove or shrink focus styles for keyboard users.
+**Focus:** `6px` focus ring size token (`focusRingSize`) — do not remove or shrink focus styles for keyboard users.
 
 ---
 
@@ -199,17 +200,20 @@ Shadows use **cool grey** at **8% opacity** (`#1C2330` scaled to alpha) for a **
 
 **Do**
 
-- Import and use **Braid components** and `BraidTheme` / `seekJobs` (or the app’s existing theme provider) so colors and type match production.
-- Use **semantic color roles** (`critical`, `positive`, `caution`, `info`, `promote`, …) when describing or implementing state.
+- Import and use **Braid components** and `BraidTheme` / `seekJobs` so colours, styles and type match production.
+- Prefer Braid components and theme tokens over custom CSS.
+- Use colour **Tones** in line with their **semantic meaning:** `critical`, `positive`, `caution`, `info`, `promote` ([documentation](https://seek-oss.github.io/braid-design-system/foundations/tones)).
 - Step **typography at tablet** when building responsive layouts (see §8).
-- Keep **primary actions** visually dominant with **Seek Magenta**; secondary actions calmer in **neutral** tones.
+- Keep **primary actions** visually dominant with **formAccent**; secondary actions calmer in **neutral** tone.
+- Use **brandAccent** sparingly for hero actions and limit to a **maximum** of one per screen.
 
 **Don't**
 
 - Substitute **other SEEK themes** (e.g. Business) or arbitrary hex when this file says **SEEK Jobs**.
-- Use **color alone** for critical meaning — pair with **text, icon, or pattern**.
+- Use **colour alone** for critical meaning — pair with relevant **text or icon**.
 - Bypass **focus-visible** styling for custom interactive elements.
 - Hard-code **spacing** outside the **4px grid** without a strong reason.
+- Hard-code **colours** outside of the provided tokens without a strong reason.
 
 ---
 
@@ -238,7 +242,8 @@ Copy-ready snippets for **AI-powered design and coding tools** (for example Figm
 
 ### Quick hex reference (SEEK Jobs)
 
-- Primary CTA: `#E60278`
+- Hero CTA (max 1 per screen): `#E60278`
+- Primary CTAs: `#1E47A9`
 - Primary text: `#2E3849`
 - Secondary text: `#5A6881`
 - Page / card surface: `#FFFFFF`
@@ -251,10 +256,10 @@ Copy-ready snippets for **AI-powered design and coding tools** (for example Figm
 
 1. “Build a **SEEK Jobs** marketing hero: **white** background, **H1** at mobile **28px** / tablet **36px**, **neutral** `#2E3849` title, **secondary** `#5A6881` subtitle, **primary button** filled `#E60278` with **white** label, **24px** vertical gap between blocks, **8px** rounded promo card with small shadow.”
 2. “Create a **job search filter** form: **white** fields, `#838FA5` **2px** border, **8px** radius, **16px** vertical gap between fields, **form blue `#1E47A9`** for focus ring flavor, error message in `#B91E1E**` on `#FEF3F3`.”
-3. “Layout a **results list** on **mobile**: single column, **16px** gaps; from **740px** use **two columns** for cards; cards **white**, `8px` radius, **small** shadow, title \*\*Heading 4 scale.”
+3. “Layout a **results list** on **mobile**: single column, **16px** gaps; from **740px** use **two columns** for cards; cards **white**, `8px` radius, **small** shadow, title Heading 4 scale.”
 4. “Add a **success banner**: **positive `#12784F`** text on `#E2F7F1` background, **text small**, **8px** vertical padding using **small** space token multiples.”
 5. “Implement **visited links** in a paragraph: default `#2E3849`**, visited `**#5B2084, underline on.”
-6. “Build a **dashboard stat tile**: **white** card, `**8px`** radius, **small** shadow, metric as **Heading 3** on tablet, caption as **text small** in `#5A6881`**, \*\*24px padding.”
+6. “Build a **dashboard stat tile**: **white** card, `**8px`** radius, **small** shadow, metric as **Heading 3** on tablet, caption as **text small** in `#5A6881`**, 24px padding.”
 
 ---
 
