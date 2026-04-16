@@ -1,63 +1,59 @@
 import { LinkableHeading } from '@braid-design-system/docs-ui';
 import { Heading, Stack, Text } from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
-import type { ReactNode } from 'react';
-import { useParams } from 'react-router';
+import { Navigate, useParams } from 'react-router';
 
 import { DocExample } from '../../DocNavigation/DocExample';
 import { PageTitle } from '../../Seo/PageTitle';
-import { getTemplateDoc } from '../../navigationHelpers';
+import { templateLookup } from '../../navigationHelpers';
 
 export const TemplateDetail = () => {
-  const { templateGroup = '', templateName = '' } = useParams<{
-    templateGroup: string;
+  const { templateName = '' } = useParams<{
     templateName: string;
   }>();
 
-  const docs = getTemplateDoc(templateGroup, templateName);
-  const displayName = docs.title ?? templateName;
-  const Container =
-    docs.Container ??
-    (({ children }: { children: ReactNode }) => <>{children}</>);
+  const templateInfo = templateLookup[templateName];
+
+  if (!templateInfo) {
+    return <Navigate to="/templates" replace />;
+  }
 
   return (
-    <>
-      <PageTitle title={displayName} />
+    <Stack space="xxlarge">
+      <PageTitle title={templateInfo.title} />
+      <Stack space="medium">
+        <Text tone="secondary" size="small">
+          Templates /{' '}
+          {templateInfo.group.charAt(0).toUpperCase() +
+            templateInfo.group.slice(1)}
+        </Text>
+        <Heading component="h1" level="2">
+          {templateInfo.title}
+        </Heading>
+      </Stack>
 
       <Stack space="xxlarge">
-        <Stack space="medium">
-          <Text tone="secondary" size="small">
-            Templates /{' '}
-            {templateGroup.charAt(0).toUpperCase() + templateGroup.slice(1)}
-          </Text>
-          <Heading component="h1" level="2">
-            {displayName}
-          </Heading>
-        </Stack>
+        {templateInfo.description ? (
+          <Stack space="large">{templateInfo.description}</Stack>
+        ) : null}
 
-        <Stack space="xxlarge">
-          {docs.description ? (
-            <Stack space="large">{docs.description}</Stack>
-          ) : null}
+        {templateInfo.Example ? (
+          <PlayroomStateProvider>
+            <DocExample
+              Example={templateInfo.Example}
+              Container={templateInfo.Container}
+              showCodeByDefault={false}
+            />
+          </PlayroomStateProvider>
+        ) : null}
 
-          {docs.Example ? (
-            <PlayroomStateProvider>
-              <DocExample
-                Example={docs.Example}
-                Container={Container}
-                showCodeByDefault={false}
-              />
-            </PlayroomStateProvider>
-          ) : null}
-
-          {docs.usage ? (
-            <Stack space="large">
-              <LinkableHeading level="3">Usage</LinkableHeading>
-              <Stack space="medium">{docs.usage}</Stack>
-            </Stack>
-          ) : null}
-        </Stack>
+        {templateInfo.usage ? (
+          <Stack space="large">
+            <LinkableHeading level="3">Usage</LinkableHeading>
+            <Stack space="medium">{templateInfo.usage}</Stack>
+          </Stack>
+        ) : null}
       </Stack>
-    </>
+    </Stack>
   );
 };

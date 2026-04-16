@@ -7,6 +7,7 @@ interface BraidSnippet extends Omit<
   Optional<PlayroomSnippets[number], 'name'>,
   'code'
 > {
+  name: NonNullable<PlayroomSnippets[number]['name']>;
   code: Source<ReactElement>;
   Container?: (props: { children: ReactNode }) => ReactElement;
 }

@@ -67,5 +67,8 @@
   },
   "skuSkipPostInstall": true,
   "skuSkipConfigure": true,
-  "skuSkipValidatePeerDeps": true
+  "skuSkipValidatePeerDeps": true,
+  "devDependencies": {
+    "@types/babel__core": "^7.20.5"
+  }
 }

@@ -3,6 +3,7 @@ import * as components from 'braid-src/lib/components';
 import type { Snippets } from 'braid-src/lib/components/private/Snippets';
 import * as testComponents from 'braid-src/test';
 
+import { slugify } from '../slugify';
 import type {
   ComponentDocs,
   ComponentExample,
@@ -145,15 +146,31 @@ const getTemplateGroupAndNameFromFilename = (filename: string) => {
 export const allTemplateDocs = templateDocsContext.keys().map((filename) => {
   const { group, name } = getTemplateGroupAndNameFromFilename(filename);
   const docs = templateDocsContext(filename).default as TemplateDocs;
-  return { group, name, ...docs };
+  return { group, name, slug: slugify(docs.title), ...docs };
 });
 
 export const getTemplateDoc = (group: string, name: string): TemplateDocs =>
   templateDocsContext(`./${group}/${name}/${name}.docs.tsx`)
     .default as TemplateDocs;
 
-// Distinct groups in insertion order (e.g. ['layouts', 'sections'])
-export const templateGroupNames = allTemplateDocs.reduce<string[]>(
-  (acc, { group }) => (acc.includes(group) ? acc : [...acc, group]),
-  [],
+/**
+ * Static lookup mapping slugged template names to template metadata.
+ * Enables URL-based resolution like `/templates/standard-page` without knowing the group.
+ *
+ * @example
+ * const info = templateLookup['standard-page'];
+ * // { group: 'layouts', name: 'StandardPage', slug: 'standard-page', title: 'Standard Page', ... }
+ */
+export const templateLookup = allTemplateDocs.reduce(
+  (acc, doc) => {
+    const slug = slugify(doc.title);
+    acc[slug] = doc;
+    return acc;
+  },
+  {} as Record<
+    string,
+    {
+      slug: string;
+    } & (typeof allTemplateDocs)[number]
+  >,
 );

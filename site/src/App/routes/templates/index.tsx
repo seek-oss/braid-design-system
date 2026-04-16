@@ -8,9 +8,7 @@ import {
 } from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router';
 
-import type { TemplateDocs } from '../../../types';
 import { PageTitle } from '../../Seo/PageTitle';
 import { useThemeSettings } from '../../ThemeSetting';
 import { allTemplateDocs } from '../../navigationHelpers';
@@ -22,17 +20,30 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <>{children}</>
 );
 
-const groupDescriptions: Record<string, string> = {
-  layouts:
-    'Full-page structural patterns defining content width, spacing, and page chrome.',
-  sections: 'Composable content blocks intended to slot into page layouts.',
+const groups: Record<
+  'layouts' | 'sections',
+  { description: string; templates: typeof allTemplateDocs }
+> = {
+  layouts: {
+    description:
+      'Full-page structural patterns defining content width, spacing, and page chrome.',
+    templates: [],
+  },
+  sections: {
+    description:
+      'Composable content blocks intended to slot into page layouts.',
+    templates: [],
+  },
 };
 
-interface ScaledPreviewProps {
-  docs: TemplateDocs;
-}
+allTemplateDocs.forEach((template) => {
+  const { group } = template;
+  if (group in groups) {
+    groups[group as keyof typeof groups].templates.push(template);
+  }
+});
 
-const ScaledPreview = ({ docs }: ScaledPreviewProps) => {
+const ScaledPreview = (docs: (typeof allTemplateDocs)[number]) => {
   const outerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0);
   const Container = docs.Container ?? DefaultContainer;
@@ -74,55 +85,36 @@ const ScaledPreview = ({ docs }: ScaledPreviewProps) => {
   );
 };
 
-interface TemplateTileProps {
-  group: string;
-  name: string;
-  label: string;
-  docs: TemplateDocs;
-}
-
-const TemplateTile = ({ group, name, label, docs }: TemplateTileProps) => (
+const TemplateTile = (docs: (typeof allTemplateDocs)[number]) => (
   <PlayroomStateProvider>
-    <Link href={`/templates/${group}/${name}`} className={styles.tileLink}>
+    <Link href={`/templates/${docs.slug}`} className={styles.tileLink}>
       <Stack space="small">
-        <Text weight="strong">{label}</Text>
-        <ScaledPreview docs={docs} />
+        <Text weight="strong">{docs.title}</Text>
+        <ScaledPreview {...docs} />
       </Stack>
     </Link>
   </PlayroomStateProvider>
 );
 
-export const TemplateGroupPage = () => {
-  const { templateGroup = '' } = useParams<{ templateGroup: string }>();
-  const templates = allTemplateDocs.filter((t) => t.group === templateGroup);
-  const groupTitle =
-    templateGroup.charAt(0).toUpperCase() + templateGroup.slice(1);
-  const description = groupDescriptions[templateGroup];
+export const TemplatesPage = () => (
+  <Stack space="xxlarge">
+    <PageTitle title="Templates" />
+    <Heading level="1">Templates</Heading>
 
-  return (
-    <Stack space="xxlarge">
-      <Stack space="medium">
-        <Heading level="3" weight="weak">
-          <PageTitle title={`Templates / ${groupTitle}`} />
-          Templates /
-        </Heading>
-        <Heading component="h1" level="2">
-          {groupTitle}
-        </Heading>
-        {description ? <Text>{description}</Text> : null}
+    {Object.entries(groups).map(([group, { description, templates }]) => (
+      <Stack space="xlarge" key={group}>
+        <Stack space="medium">
+          <Heading component="h1" level="2">
+            {group.charAt(0).toUpperCase() + group.slice(1)}
+          </Heading>
+          {description ? <Text size="large">{description}</Text> : null}
+        </Stack>
+        <Tiles key={group} space="xlarge" columns={[1, 2, 3]}>
+          {templates.map((docs) => (
+            <TemplateTile key={docs.name} {...docs} />
+          ))}
+        </Tiles>
       </Stack>
-
-      <Tiles space="xlarge" columns={[1, 2, 3]}>
-        {templates.map(({ group, name, ...docs }) => (
-          <TemplateTile
-            key={name}
-            group={group}
-            name={name}
-            label={docs.title ?? name}
-            docs={docs}
-          />
-        ))}
-      </Tiles>
-    </Stack>
-  );
-};
+    ))}
+  </Stack>
+);

@@ -1,28 +1,42 @@
 /* eslint-disable no-sync */
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import { createRequire } from 'node:module';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const extractExports = require('./extractExports');
-const undocumentedExports = require('./src/undocumentedExports.json');
+import extractExports from './extractExports';
+import { slugify } from './src/slugify';
+import undocumentedExports from './src/undocumentedExports.json';
+
+const require = createRequire(import.meta.url);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const braidSrc = '../packages/braid-design-system';
 
-const getExports = (relativePath, exportType = 'components') => {
+type Route = {
+  route: string;
+  name?: string;
+};
+
+const getExports = (
+  relativePath: string,
+  exportType: keyof typeof undocumentedExports = 'components',
+): string[] => {
   const sourcePath = require.resolve(
     path.join(__dirname, braidSrc, relativePath),
   );
   const source = extractExports(sourcePath);
 
   return source
-    .filter((x) => !undocumentedExports[exportType].includes(x))
+    .filter((x: string) => !undocumentedExports[exportType].includes(x))
     .sort();
 };
 
-const getPages = (relativePath) => {
+const getPages = (relativePath: string): string[] => {
   const sourcePath = require.resolve(path.join(__dirname, relativePath));
   const source = fs.readFileSync(sourcePath, 'utf-8');
 
-  return source.match(/('.*')(?=:)/g).map((x) => x.split("'")[1]);
+  return (source.match(/('.*')(?=:)/g) ?? []).map((x) => x.split("'")[1]);
 };
 
 // TODO: COLORMODE RELEASE
@@ -43,28 +57,16 @@ const templatesDir = path.join(
 
 /**
  * Scans the templates directory for `.docs.tsx` files and generates the
- * corresponding static routes for both group landing pages and template
- * detail pages.
- *
- * Expected directory shape: `templates/<group>/<Name>/<Name>.docs.tsx`
- *
- * @returns {{ route: string }[]} Flat array of route objects — group routes
- * first, followed by detail routes.
+ * corresponding static routes for template detail pages.
  */
-const getTemplateRoutes = () => {
-  /** @type {Set<string>} */
-  const groups = new Set();
-  /** @type {{ route: string }[]} */
-  const detailRoutes = [];
+const getTemplateRoutes = (): Route[] => {
+  const detailRoutes: Route[] = [];
 
   /**
    * Recursively walks `dir` up to `depth` levels deep, collecting any file
    * that matches the three-part `group/Name/Name.docs.tsx` pattern.
-   *
-   * @param {string} dir - Absolute path of the directory to scan.
-   * @param {number} [depth=0] - Current recursion depth (max 2).
    */
-  const scanDir = (dir, depth = 0) => {
+  const scanDir = (dir: string, depth = 0) => {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
       if (entry.isDirectory() && depth < 2) {
         scanDir(path.join(dir, entry.name), depth + 1);
@@ -74,9 +76,8 @@ const getTemplateRoutes = () => {
           .split(path.sep);
         // expected shape: group/Name/Name.docs.tsx
         if (parts.length === 3) {
-          const [group, name] = parts;
-          groups.add(group);
-          detailRoutes.push({ route: `/templates/${group}/${name}` });
+          const [, name] = parts;
+          detailRoutes.push({ route: `/templates/${slugify(name)}` });
         }
       }
     }
@@ -84,37 +85,35 @@ const getTemplateRoutes = () => {
 
   scanDir(templatesDir);
 
-  return [
-    ...Array.from(groups).map((group) => ({ route: `/templates/${group}` })),
-    ...detailRoutes,
-  ];
+  return [{ route: '/templates' }, ...detailRoutes];
 };
 
-module.exports = [
+const routes: Route[] = [
   { route: '/', name: 'home' },
   { route: '/releases', name: 'releases' },
   { route: '/gallery', name: 'gallery' },
-  guideRoutes.map((route) => ({ route })),
-  foundationRoutes.map((route) => ({ route })),
+  ...guideRoutes.map((route) => ({ route })),
+  ...foundationRoutes.map((route) => ({ route })),
   { route: '/foundations/iconography/browse', name: 'browseIcons' },
-  { route: '/components', name: 'components' }, // Pre-rendering this route for url backwards compatibility.
-  [...componentNames, ...testNames].flatMap((name) =>
+  { route: '/components', name: 'components' },
+  ...[...componentNames, ...testNames].flatMap((name) =>
     [
       { route: `/components/${name}` },
       { route: `/components/${name}/releases` },
       { route: `/components/${name}/snippets` },
       !name.startsWith('use') ? { route: `/components/${name}/props` } : null,
-    ].filter(Boolean),
+    ].filter((route): route is Route => route !== null),
   ),
-  cssNames.flatMap((name) => [
+  ...cssNames.flatMap((name) => [
     { route: `/css/${name}` },
     { route: `/css/${name}/releases` },
   ]),
-
-  iconNames.flatMap((name) => [
+  ...iconNames.flatMap((name) => [
     { route: `/components/${name}`, name },
     { route: `/components/${name}/props` },
     { route: `/components/${name}/releases` },
   ]),
   ...getTemplateRoutes(),
-].flat();
+];
+
+export default routes;

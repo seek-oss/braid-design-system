@@ -76,13 +76,21 @@ export interface CssDoc {
 }
 
 export interface TemplateDocs {
-  title?: string;
+  title: string;
   description?: ReactNodeNoStrings;
   usage?: ReactNodeNoStrings;
   Example?: (
     props: ExampleProps & PlayroomExampleProps,
   ) => Source<ReactElement>;
   Container?: (props: { children: ReactNode }) => ReactElement;
+  additional?: Array<{
+    label?: string;
+    description?: ReactNodeNoStrings;
+    Example: (
+      props: ExampleProps & PlayroomExampleProps,
+    ) => Source<ReactElement>;
+    Container?: (props: { children: ReactNode }) => ReactElement;
+  }>;
 }
 
 interface ExampleProps {

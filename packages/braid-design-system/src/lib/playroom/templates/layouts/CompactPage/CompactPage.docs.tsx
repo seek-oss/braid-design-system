@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import type { TemplateDocs } from 'site/types';
 
 import { ContainerForPageDocs } from '../../../../components/Page/Page.docs';
-import { Strong, Text } from '../../../../playroom/components';
+import { Strong, Text, TextLink } from '../../../../playroom/components';
 
 import { snippets } from './CompactPage.snippets';
 
@@ -14,8 +14,10 @@ const docs: TemplateDocs = {
     <Text>
       An information-dense layout with tighter spacing, suitable when users are
       familiar with the content and hierarchy is well-established. Uses a{' '}
-      <Strong>medium PageBlock</Strong> and <Strong>xlarge</Strong> spacing
-      between sections.
+      <Strong>
+        medium <TextLink href="/components/PageBlock">PageBlock</TextLink>
+      </Strong>{' '}
+      and <Strong>xlarge</Strong> spacing between sections.
     </Text>
   ),
   usage: (
@@ -27,7 +29,8 @@ const docs: TemplateDocs = {
       </Text>
       <Text>
         If a more relaxed reading experience is needed, consider{' '}
-        <Strong>Standard Page</Strong> instead.
+        <TextLink href="/templates/standard-page">Standard Page</TextLink>{' '}
+        instead.
       </Text>
     </>
   ),
