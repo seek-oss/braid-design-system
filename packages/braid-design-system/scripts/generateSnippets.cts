@@ -11,7 +11,7 @@ import { debugLog, relativeTo } from './utils';
 
 const baseDir = path.join(__dirname, '..');
 const componentsDir = path.join(baseDir, 'src/lib/components');
-const recipesDir = path.join(baseDir, 'src/lib/playroom/recipes');
+const templatesDir = path.join(baseDir, 'src/lib/playroom/templates');
 const snippetsDir = path.join(baseDir, 'src/lib/playroom/snippets');
 const snippetsIndexFile = path.join(baseDir, 'src/lib/playroom/snippets.ts');
 
@@ -89,27 +89,27 @@ const generateSnippetsForPaths = async (snippetPaths: string[]) => {
     absolute: true,
     onlyFiles: true,
   });
-  const recipeSnippetPaths = await glob('**/*.snippets.tsx', {
-    cwd: recipesDir,
+  const templatesSnippetPaths = await glob('**/*.snippets.tsx', {
+    cwd: templatesDir,
     absolute: true,
     onlyFiles: true,
   });
 
   await fs.emptyDir(snippetsDir);
 
-  const { importStatements: recipeImportStatements, exportEntries: recipeExportEntries } =
-    await generateSnippetsForPaths(recipeSnippetPaths);
+  const { importStatements: templatesImportStatements, exportEntries: templatesExportEntries } =
+    await generateSnippetsForPaths(templatesSnippetPaths);
   const { importStatements: componentImportStatements, exportEntries: componentExportEntries } =
     await generateSnippetsForPaths(componentSnippetPaths);
 
   const prettierOptions = (await prettier.resolveConfig(snippetsIndexFile)) ?? {};
   const snippetsIndexCode = await prettier.format(
-    ` ${[...recipeImportStatements, ...componentImportStatements].sort().join('\n')}
+    ` ${[...templatesImportStatements, ...componentImportStatements].sort().join('\n')}
 
-      const groupOrder = ['Layouts', 'Blocks', 'Components'];
+      const groupOrder = ['Layouts', 'Sections', 'Components'];
       const allSnippets = [];
       const snippetsMap = {
-        ${[...recipeExportEntries, ...componentExportEntries].join(',\n')}
+        ${[...templatesExportEntries, ...componentExportEntries].join(',\n')}
       };
 
       for (const [name, snippets] of Object.entries(snippetsMap)) {

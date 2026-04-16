@@ -47,14 +47,14 @@ import { snippets as Textarea } from './snippets/Textarea';
 import { snippets as Tiles } from './snippets/Tiles';
 import { snippets as Toggle } from './snippets/Toggle';
 import { snippets as TooltipRenderer } from './snippets/TooltipRenderer';
-import { snippets as blocks } from './snippets/blocks';
 import { snippets as layouts } from './snippets/layouts';
+import { snippets as sections } from './snippets/sections';
 
-const groupOrder = ['Layouts', 'Blocks', 'Components'];
+const groupOrder = ['Layouts', 'Sections', 'Components'];
 const allSnippets = [];
 const snippetsMap = {
-  blocks,
   layouts,
+  sections,
   Accordion,
   Actions,
   Alert,
