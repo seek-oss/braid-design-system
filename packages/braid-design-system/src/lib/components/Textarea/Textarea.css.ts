@@ -16,3 +16,11 @@ export const highlights = style({
     content: '"\\A"',
   },
 });
+
+/**
+ * Apply a border offset on the right to ensure scroll bar appears
+ * inside the visual border given we use boxShadow for borders.
+ */
+export const scrollbarBorderOffset = style({
+  borderRight: `${vars.borderWidth.standard} solid transparent`,
+});

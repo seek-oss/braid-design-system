@@ -152,6 +152,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           <Box
             position="relative"
             width="full"
+            overflow="hidden"
             zIndex={0}
             background={background}
             borderRadius={borderRadius}
@@ -160,13 +161,17 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               <Box
                 ref={highlightsRef}
                 position="absolute"
-                overflow="hidden"
+                overflow="auto"
                 pointerEvents="none"
                 height="full"
                 aria-hidden="true"
                 top={0}
                 left={0}
-                className={[styles.highlights, className]}
+                className={[
+                  styles.highlights,
+                  styles.scrollbarBorderOffset,
+                  className,
+                ]}
                 {...fieldProps}
               >
                 {formatRanges(String(value), highlightRanges, highlightTone)}
@@ -175,7 +180,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             <Box
               component="textarea"
               position="relative"
-              zIndex={1}
               rows={rows}
               value={value}
               onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -200,7 +204,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               }
               placeholder={!restProps.disabled ? placeholder : undefined}
               spellCheck={spellCheck}
-              className={[styles.field, className]}
+              className={[
+                styles.field,
+                styles.scrollbarBorderOffset,
+                className,
+              ]}
               borderRadius={borderRadius}
               {...fieldProps}
               ref={ref}
