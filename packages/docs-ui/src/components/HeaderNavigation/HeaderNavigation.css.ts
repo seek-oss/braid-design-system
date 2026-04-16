@@ -1,25 +1,23 @@
-import { style } from '@vanilla-extract/css';
-import { vars } from 'braid-design-system/css';
+import { createVar, style } from '@vanilla-extract/css';
+import { vars, colorModeStyle } from 'braid-design-system/css';
 
-export const searchButton = style({
-  ':hover': {
-    background: vars.backgroundColor.neutralSoft,
+const searchBg = createVar();
+export const searchButton = style([
+  {
+    ':hover': {
+      background: searchBg,
+    },
   },
-});
-
-
-// import { style } from '@vanilla-extract/css';
-// import { vars, colorModeStyle } from 'braid-design-system/css';
-
-// export const searchButton = style({
-//   ':hover': (
-//     colorModeStyle({
-//       lightMode: {
-//         background: vars.backgroundColor.neutralSoft,
-//       },
-//       darkMode: {
-//         background: vars.backgroundColor.neutralSoft,
-//       },
-//     })
-//   )
-// })
+  colorModeStyle({
+    lightMode: {
+      vars: {
+        [searchBg]: vars.backgroundColor.neutralSoft,
+      }
+    },
+    darkMode: {
+      vars: {
+        [searchBg]: vars.backgroundColor.neutral,
+      }
+    },
+  })
+]);

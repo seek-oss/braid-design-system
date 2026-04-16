@@ -1,12 +1,12 @@
 import { Box, Text } from 'braid-design-system';
-import type { ElementType } from 'react';
+import type { ComponentProps } from 'react';
 
 export const CategoryHeading = ({
   children,
   component,
 }: {
   children: React.ReactNode;
-  component?: ElementType;
+  component?: ComponentProps<typeof Text>['component'];
 }) => (
   <Box style={{ textTransform: 'uppercase' }}>
     <Text size="xsmall" weight="medium" component={component}>

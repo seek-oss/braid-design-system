@@ -1,5 +1,12 @@
 import { KeyboardShortcut } from '@braid-design-system/docs-ui';
-import { Box, Stack, Text, Bleed, ButtonLink } from 'braid-src/lib/components';
+import {
+  Box,
+  Stack,
+  Text,
+  Bleed,
+  ButtonLink,
+  Spread,
+} from 'braid-src/lib/components';
 
 import { CategoryHeading } from '../CategoryHeading/CategoryHeading';
 
@@ -43,7 +50,7 @@ export const SearchResults = ({
   }
 
   return (
-    <Stack space="large">
+    <Stack space="large" test-id="search-results">
       {(['Foundations', 'Components', 'CSS', 'Logic'] as const).map(
         (category) => {
           const items = groupedResults[category];
@@ -52,26 +59,19 @@ export const SearchResults = ({
           }
 
           return (
-            <Stack key={category} space="xxsmall" component="ul">
-              <Box marginBottom="xsmall" component="li">
-                <CategoryHeading component="h2">{category}</CategoryHeading>
-              </Box>
-              {items.map((item) => {
-                const globalIndex = flatResults.findIndex(
-                  (r) => r.path === item.path,
-                );
-                const isSelected = globalIndex === selectedIndex;
+            <Stack space="xsmall" key={category}>
+              <CategoryHeading component="h2">{category}</CategoryHeading>
+              <Stack space="xxsmall" component="ul">
+                {items.map((item) => {
+                  const globalIndex = flatResults.findIndex(
+                    (r) => r.path === item.path,
+                  );
+                  const isSelected = globalIndex === selectedIndex;
 
-                return (
-                  <Box key={item.path} component="li">
-                    <Bleed horizontal="small">
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="spaceBetween"
-                        gap="small"
-                      >
-                        <Box>
+                  return (
+                    <Box key={item.path} component="li">
+                      <Bleed left="small">
+                        <Spread space="small" alignY="center">
                           <ButtonLink
                             variant={isSelected ? 'soft' : 'transparent'}
                             tone="formAccent"
@@ -83,19 +83,19 @@ export const SearchResults = ({
                           >
                             {item.name}
                           </ButtonLink>
-                        </Box>
 
-                        {item.hasProps && isSelected && (
-                          <KeyboardShortcut
-                            keys={['⇧', '⏎']}
-                            shortcutLabel="Props"
-                          />
-                        )}
-                      </Box>
-                    </Bleed>
-                  </Box>
-                );
-              })}
+                          {item.hasProps && isSelected && (
+                            <KeyboardShortcut
+                              keys={['⇧', '⏎']}
+                              shortcutLabel="Props"
+                            />
+                          )}
+                        </Spread>
+                      </Bleed>
+                    </Box>
+                  );
+                })}
+              </Stack>
             </Stack>
           );
         },

@@ -5,7 +5,6 @@ import {
   HiddenVisually,
   IconSearch,
   Link,
-  Stack,
   Text,
 } from 'braid-design-system';
 import type { ReactNode } from 'react';
@@ -55,7 +54,7 @@ export const HeaderNavigation = ({
         </Link>
       </Text>
     </Box>
-    <Stack space="none">
+    <div>
       <>{themeToggle}</>
       <Bleed horizontal="xxsmall" bottom="xxsmall">
         <Box
@@ -80,6 +79,6 @@ export const HeaderNavigation = ({
           />
         </Box>
       </Bleed>
-    </Stack>
+    </div>
   </Box>
 );
