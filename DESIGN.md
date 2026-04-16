@@ -129,6 +129,7 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 - **Primary / brand:** **brandAccent** fill with **white** foreground on light backgrounds; **hover** and **active** use token-driven lighten/darken passes.
 - **Secondary / neutral:** Grey neutral fills for non-primary actions.
 - **Ghost / soft:** Light fills or transparent bodies with border or foreground emphasis as per variant.
+- **Layout:** `Button` components should be wrapped within an `Action` component by default, otherwise `Inline` can also be used.
 - **States:** **Focus-visible** shows the **focus ring** (see §6). **Hover** may show a translucent overlay; **active** applies `scale(0.95)` with a short easing (`transitions.touchable`). **Disabled** buttons are not supported as they are not accessible.
 
 ### Cards
@@ -144,6 +145,7 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 - **Radius:** Typically `8px` (standard radius) for fields.
 - **Accent:** Focus and key accents align with **form blue** (`#1E47A9` and lighter blues).
 - **Errors:** **Critical** foreground and **critical soft** backgrounds for messages and highlights.
+- **Checkboxes and radio buttons:** `Checkbox`, `RadioGroup` and `RadioItem` should always include a label.
 
 ### Navigation
 
@@ -256,15 +258,12 @@ Copy-ready snippets for **AI-powered design and coding tools** (for example Figm
 
 ### Example prompts (for AI tools)
 
-1. Create a **job summary card** using the `Card` component. Include the role title as a level 4 `Heading`, the componany name as standard `Text`, along with location, industry and salary as a `List` with icons. Include a single sentence job description as standard `Text` along with the date posted in small, secondary `Text`.
-2. “Create a **job search filter** form: **white** fields, `#838FA5` **2px** border, **8px** radius, **16px** vertical gap between fields, **form blue `#1E47A9`** for focus ring flavor, error message in `#B91E1E**` on `#FEF3F3`.”
-3. “Layout a **results list** on **mobile**: single column, **16px** gaps; from **740px** use **two columns** for cards; cards **white**, `8px` radius, **small** shadow, title Heading 4 scale.”
-4. “Add a **success banner**: **positive `#12784F`** text on `#E2F7F1` background, **text small**, **8px** vertical padding using **small** space token multiples.”
-5. “Implement **visited links** in a paragraph: default `#2E3849`**, visited `**#5B2084, underline on.”
-6. “Build a **dashboard stat tile**: **white** card, `**8px`** radius, **small** shadow, metric as **Heading 3** on tablet, caption as **text small** in `#5A6881`**, 24px padding.”
+1. "Create a **job summary card** using the `Card` component. Include the role title as a level 4 `Heading`, the componany name as standard `Text`, along with location, industry and salary as a `List` with icons. Include a single sentence job description as standard `Text` along with the date posted in small, secondary `Text`."
+2. “Create a **basic form** that captures name, email and phone number using `TextField`. Include a `Checkbox` to subscribe to marketing communications, and a primary submit `Button` and secondary `Reset` button. The form should head a level 3 `Heading` and appropriate `Stack` spacing.”
+3. “Create a **table** using the `Table` component. Follow the component structure using `<Table>`, `<TableHeader>`,`<TableRow>`,`<TableHeaderCell>` and `<Text>`. Include the column headings: date, name, email and phone number. Include a level 3 `Heading` and Fill the table with mock data.”
 
 ---
 
 ## Maintenance
 
-When `seekJobs` or **NVL base tokens** change, update **§2–§6** and the **AI prompt guide** (**§9**) so this file stays aligned with the [packages/braid-design-system](https://github.com/seek-oss/braid-design-system/tree/master/packages/braid-design-system) package in [seek-oss/braid-design-system](https://github.com/seek-oss/braid-design-system). Add brand or content guidelines in new sections when your team is ready.
+When `seekJobs` or **base tokens** change, update **§2–§6** and the **AI prompt guide** (**§9**) so this file stays aligned with the [packages/braid-design-system](https://github.com/seek-oss/braid-design-system/tree/master/packages/braid-design-system) package in [seek-oss/braid-design-system](https://github.com/seek-oss/braid-design-system). Add brand or content guidelines in new sections when your team is ready.
