@@ -12,12 +12,12 @@ export const searchButton = style([
     lightMode: {
       vars: {
         [searchBg]: vars.backgroundColor.neutralSoft,
-      }
+      },
     },
     darkMode: {
       vars: {
         [searchBg]: vars.backgroundColor.neutral,
-      }
+      },
     },
-  })
+  }),
 ]);
