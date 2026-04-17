@@ -170,6 +170,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 className={[
                   styles.highlights,
                   styles.scrollbarBorderOffset,
+                  styles.clipScrollBar,
                   className,
                 ]}
                 {...fieldProps}
