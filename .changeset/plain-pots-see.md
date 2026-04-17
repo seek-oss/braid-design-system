@@ -9,4 +9,4 @@ updated:
 
 **Textarea:** Fix highlight ranges when content overflows
 
-Resolves an issue long running scrolling content in a `Textarea` with `highlightRanges` could result in the highlights being misaligned due to the scrollbar.
+Resolves an issue where long running scrolling content in a `Textarea` with `highlightRanges` could result in the highlights being misaligned due to the scrollbar.
