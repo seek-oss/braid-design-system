@@ -241,7 +241,7 @@ export const TextareaExceedingCharacterLimit: Story = {
 
 const HighlightRangeComponent = () => {
   const [value, setValue] = useState(
-    'The long piece of text highlighting a range',
+    'Ex enim eu fugiat velit tempor eu. Excepteur labore elit cupidatat nostrud enim officia eiusmod consectetur. Dolore officia ad do enim. Lorem cillum irure ipsum Lorem cillum do anim velit et quis officia dolore mollit elit eu. Laboris consequat est est amet aliqua sunt nulla magna ullamco occaecat ut. Minim incididunt et proident minim ad magna ut et cupidatat irure deserunt.',
   );
   return (
     <Textarea
@@ -250,8 +250,12 @@ const HighlightRangeComponent = () => {
         setValue(e.currentTarget.value)
       }
       label="Label"
-      description="Characters 9-22 are invalid"
-      highlightRanges={[{ start: 9, end: 22 }]}
+      description="Chars 11-23 and 136-141 are invalid"
+      lines={6}
+      highlightRanges={[
+        { start: 11, end: 23 },
+        { start: 136, end: 141 },
+      ]}
     />
   );
 };
