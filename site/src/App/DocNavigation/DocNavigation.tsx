@@ -9,6 +9,9 @@ import {
   Link,
   Stack,
   Text,
+  Inline,
+  ButtonIcon,
+  IconChevron,
 } from 'braid-src/lib/components';
 import type { BadgeProps } from 'braid-src/lib/components/Badge/Badge';
 import { useBackgroundLightness } from 'braid-src/lib/components/Box/BackgroundContext';
@@ -23,7 +26,14 @@ import {
   useContext,
 } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
-import { useParams, useMatch, Outlet, useResolvedPath } from 'react-router';
+import {
+  useParams,
+  useMatch,
+  Outlet,
+  useResolvedPath,
+  useLocation,
+  useNavigate,
+} from 'react-router';
 
 import { getHistory } from '../Updates';
 import {
@@ -186,6 +196,9 @@ export const DocNavigationBar = ({
 
 export const DocNavigation = () => {
   const { docsName = '', docsType = '' } = useParams();
+  const { state } = useLocation();
+  const navigate = useNavigate();
+  const iconBrowseSearch: string | undefined = state?.iconBrowseSearch;
   let snippets: DocsProviderContextValue['snippets'] = [];
   let history: DocsProviderContextValue['history'] = [];
   let docs: DocsProviderContextValue['docs'];
@@ -213,7 +226,23 @@ export const DocNavigation = () => {
   return (
     <Stack space={['xlarge', 'xxlarge']}>
       <Stack space={['large', 'xlarge']}>
-        <Heading level="1">{docsName}</Heading>
+        <Inline space="small" alignY="center">
+          {iconBrowseSearch !== undefined ? (
+            <ButtonIcon
+              variant="transparent"
+              size="large"
+              label="Back to browse"
+              icon={<IconChevron direction="left" />}
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/foundations/iconography/browse', {
+                  state: { iconBrowseSearch },
+                });
+              }}
+            />
+          ) : null}
+          <Heading level="1">{docsName}</Heading>
+        </Inline>
         <DocNavigationBar title="Subnavigation">
           <DocNavigationItem href={`/${docsType}/${docsName}`}>
             Details

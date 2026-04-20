@@ -28,12 +28,12 @@ const getSectionHeading = (sectionKey: string): string => {
   switch (sectionKey) {
     case 'appearance':
       return 'Appearance';
-    case 'interaction':
-      return 'Interaction';
     case 'layout':
       return 'Layout';
-    case 'usage':
-      return 'Usage';
+    case 'interaction':
+      return 'Interaction';
+    case 'bestPractices':
+      return 'Best practices';
     default:
       return sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
   }
@@ -48,15 +48,20 @@ const hasContent = (example: {
 export const DocDetails = () => {
   const { docs, docsName } = useContext(DocsContext);
 
+  const hasBestPractices = Boolean(
+    docs?.docSections?.bestPractices?.some(hasContent),
+  );
+
   /*
     Build the ToC sections
       - Accessibility
-      - Each docSection and their children
+      - Each docSection and their children. When bestPractices is present,
+        alternatives is nested as a child within it.
       - Each additional section. Additional is kept
         as for now as it's where most content sits currently,
         but will likely be deprecated in the future as we
         align content to the docSection structure.
-      - Alternatives
+      - Alternatives (top-level when no bestPractices section, otherwise nested within it)
 
   */
   const tocSections = useMemo(() => {
@@ -83,6 +88,7 @@ export const DocDetails = () => {
           }
 
           const heading = getSectionHeading(sectionKey);
+          const sectionId = slugify(sectionKey);
 
           const children = docSectionChildren
             .filter((child: { label?: string }): child is { label: string } =>
@@ -97,12 +103,34 @@ export const DocDetails = () => {
               };
             });
 
-          sections.push({
-            id: sectionKey,
-            label: heading,
-            href: `#${sectionKey}`,
-            children: children.length > 0 ? children : undefined,
-          });
+          if (sectionKey === 'bestPractices') {
+            const bestPracticesChildren: TocSection[] = [...children];
+
+            if ('alternatives' in docs && docs.alternatives.length > 0) {
+              bestPracticesChildren.push({
+                id: 'alternatives',
+                label: 'Alternatives',
+                href: '#alternatives',
+              });
+            }
+
+            sections.push({
+              id: sectionId,
+              label: heading,
+              href: `#${sectionId}`,
+              children:
+                bestPracticesChildren.length > 0
+                  ? bestPracticesChildren
+                  : undefined,
+            });
+          } else {
+            sections.push({
+              id: sectionId,
+              label: heading,
+              href: `#${sectionId}`,
+              children: children.length > 0 ? children : undefined,
+            });
+          }
         },
       );
     }
@@ -118,7 +146,11 @@ export const DocDetails = () => {
       }
     });
 
-    if ('alternatives' in docs && docs.alternatives.length > 0) {
+    if (
+      !hasBestPractices &&
+      'alternatives' in docs &&
+      docs.alternatives.length > 0
+    ) {
       sections.push({
         id: 'alternatives',
         label: 'Alternatives',
@@ -127,7 +159,7 @@ export const DocDetails = () => {
     }
 
     return sections;
-  }, [docs]);
+  }, [docs, hasBestPractices]);
 
   const handleTocClick = (_event: React.MouseEvent, id: string) => {
     try {
@@ -156,7 +188,7 @@ export const DocDetails = () => {
                 </PlayroomStateProvider>
               ) : null}
 
-              {'accessibility' in docs ? (
+              {'accessibility' in docs && docs.accessibility ? (
                 <Stack space={headingSpacing}>
                   <LinkableHeading level="3">Accessibility</LinkableHeading>
                   {docs.accessibility}
@@ -169,7 +201,7 @@ export const DocDetails = () => {
                     docSectionChildren.some(hasContent),
                   )
                   .map(([sectionKey, docSectionChildren]) => (
-                    <Stack key={sectionKey} space={headingSpacing}>
+                    <Stack key={sectionKey} space="medium">
                       <LinkableHeading level="2" label={sectionKey}>
                         {getSectionHeading(sectionKey)}
                       </LinkableHeading>
@@ -183,6 +215,28 @@ export const DocDetails = () => {
                             />
                           ),
                         )}
+                        {sectionKey === 'bestPractices' &&
+                        'alternatives' in docs &&
+                        docs.alternatives.length > 0 ? (
+                          <Stack space={headingSpacing}>
+                            <LinkableHeading level="3">
+                              Alternatives
+                            </LinkableHeading>
+                            <List space="medium">
+                              {docs.alternatives.map((alt) => (
+                                <Text key={`${alt.name}`}>
+                                  <TextLink
+                                    hitArea="large"
+                                    href={`/${alt.section || 'components'}/${alt.name}`}
+                                  >
+                                    {alt.name}
+                                  </TextLink>{' '}
+                                  <Secondary>— {alt.description}</Secondary>
+                                </Text>
+                              ))}
+                            </List>
+                          </Stack>
+                        ) : null}
                       </Stack>
                     </Stack>
                   ))}
@@ -195,7 +249,9 @@ export const DocDetails = () => {
                 />
               ))}
 
-              {'alternatives' in docs ? (
+              {'alternatives' in docs &&
+              !hasBestPractices &&
+              docs.alternatives.length > 0 ? (
                 <Stack space={headingSpacing}>
                   <LinkableHeading level="3">Alternatives</LinkableHeading>
                   <List space="medium">

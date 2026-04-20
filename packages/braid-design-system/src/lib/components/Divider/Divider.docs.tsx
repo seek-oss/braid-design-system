@@ -19,6 +19,7 @@ const docs: ComponentDocs = {
       </Stack>,
     ),
   alternatives: [],
+  accessibility: [],
 };
 
 export default docs;

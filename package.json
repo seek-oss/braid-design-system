@@ -58,7 +58,7 @@
     "@types/sanitize-html": "^2.13.0",
     "@types/webpack-env": "^1.18.8",
     "@vanilla-extract/vite-plugin": "^5.0.7",
-    "@vitejs/plugin-react": "^4.6.0",
+    "@vitejs/plugin-react": "^5.2.0",
     "concurrently": "^7.6.0",
     "depcheck": "^1.4.7",
     "enquirer": "^2.4.1",
@@ -74,11 +74,11 @@
     "skott": "^0.32.1",
     "tsdown": "^0.20.0",
     "tsx": "^4.19.2",
-    "typescript": "~5.5.4",
-    "vitest": "^3.2.4"
+    "typescript": "~5.9.3",
+    "vitest": "^4.1.0"
   },
   "volta": {
-    "node": "24.14.1"
+    "node": "24.15.0"
   },
   "packageManager": "pnpm@10.33.0",
   "pnpm": {

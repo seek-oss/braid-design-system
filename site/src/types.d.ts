@@ -44,7 +44,7 @@ interface DocSections {
   appearance?: NonEmptyArray<ComponentExample>;
   layout?: NonEmptyArray<ComponentExample>;
   interaction?: NonEmptyArray<ComponentExample>;
-  usage?: NonEmptyArray<ComponentExample>;
+  bestPractices?: NonEmptyArray<ComponentExample>;
 }
 
 export interface ComponentDocs {
