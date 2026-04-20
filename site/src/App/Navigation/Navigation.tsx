@@ -22,28 +22,33 @@ import { useWindowScroll, useInterval } from 'react-use';
 import { SideNavigation } from 'site/App/SideNavigation/SideNavigation';
 
 import { useConfig } from '../ConfigContext';
+import { JumpToModal } from '../JumpToModal/JumpToModal';
 import { Logo } from '../Logo/Logo';
 import { ThemeToggle } from '../ThemeSetting';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
+import { useSearchHotkey } from '../useSearchHotkey/useSearchHotkey';
 
-import { gutterSize, menuButtonSize, headerSpaceY } from './navigationSizes';
+import { gutterSize, headerSpaceY } from './navigationSizes';
 
 import * as styles from './Navigation.css';
 
 const Header = ({
   menuOpen,
   menuClick,
+  onSearchClick,
 }: {
   menuOpen: boolean;
   menuClick: () => void;
+  onSearchClick: () => void;
 }) => (
   <Box paddingY={headerSpaceY} paddingX={gutterSize}>
     <HeaderNavigation
       menuOpen={menuOpen}
       menuClick={menuClick}
-      logo={<Logo iconOnly height={menuButtonSize} />}
+      onSearchClick={onSearchClick}
+      logo={<Logo iconOnly height="40px" width="40px" />}
       logoLabel="Braid Logo"
-      themeToggle={<ThemeToggle />}
+      themeToggle={<ThemeToggle size="xsmall" />}
     />
   </Box>
 );
@@ -134,8 +139,11 @@ export const Navigation = () => {
   const lastScrollTop = useRef(0);
   const { y: scrollTop } = useWindowScroll();
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isSearchOpen, setSearchOpen] = useState(false);
   const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [direction, setDirection] = useState<'up' | 'down' | null>(null);
+
+  useSearchHotkey({ onOpen: () => setSearchOpen(true) });
 
   const location = useLocation();
   useEffect(() => setDirection(null), [location]);
@@ -164,10 +172,12 @@ export const Navigation = () => {
 
   return (
     <Box width="full" className={styles.contentBlockXL}>
+      <JumpToModal isOpen={isSearchOpen} onClose={() => setSearchOpen(false)} />
       <Box position="fixed" top={0}>
         <Header
           menuOpen={isMenuOpen}
           menuClick={() => setMenuOpen(!isMenuOpen)}
+          onSearchClick={() => setSearchOpen(true)}
         />
       </Box>
       <RemoveScroll enabled={isMenuOpen} forwardProps>
@@ -225,6 +235,7 @@ export const Navigation = () => {
         <Header
           menuOpen={isMenuOpen}
           menuClick={() => setMenuOpen(!isMenuOpen)}
+          onSearchClick={() => setSearchOpen(true)}
         />
       </FixedContentBlock>
     </Box>

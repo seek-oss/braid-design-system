@@ -22,6 +22,8 @@ import buildDataAttributes, {
 import { mergeIds } from '../mergeIds';
 import { validateTabIndex } from '../validateTabIndex';
 
+import { fieldPaddingX } from './fieldPaddingX';
+
 import * as styles from './Field.css';
 import { touchableText } from '../../../css/typography.css';
 
@@ -183,8 +185,6 @@ export const Field = ({
     </Fragment>
   );
 
-  const fieldPadding = 'small';
-
   return (
     <Stack space="small">
       {hasVisualLabelOrDescription ? (
@@ -217,8 +217,8 @@ export const Field = ({
               name,
               background: fieldBackground,
               width: 'full',
-              paddingLeft: fieldPadding,
-              paddingRight: showSecondaryIcon ? undefined : fieldPadding,
+              paddingLeft: fieldPaddingX,
+              paddingRight: showSecondaryIcon ? undefined : fieldPaddingX,
               borderRadius: 'standard',
               'aria-describedby': mergeIds(
                 ariaDescribedBy,
@@ -288,7 +288,7 @@ export const Field = ({
                 htmlFor={resolvedId}
                 display="flex"
                 alignItems="center"
-                paddingLeft={icon ? undefined : fieldPadding}
+                paddingLeft={icon ? undefined : fieldPaddingX}
                 height="touchable"
                 flexShrink={0}
                 className={icon ? styles.iconSpace : null}
@@ -296,7 +296,7 @@ export const Field = ({
                 <Text tone="secondary" baseline={false}>
                   {prefix}
                 </Text>
-                <Box padding={fieldPadding} paddingRight="none" height="full">
+                <Box padding={fieldPaddingX} paddingRight="none" height="full">
                   <Box height="full" className={styles.verticalDivider} />
                 </Box>
               </Box>

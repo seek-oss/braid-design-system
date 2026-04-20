@@ -9544,7 +9544,7 @@ exports[`filterSuggestions 1`] = `
     at: (index: number) => FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value> | undefined
     concat: { (...items: ConcatArray<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; (...items: (FilterableSuggestion<...> | ... 1 more ... | ConcatArray<...>)[]): (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]; }
     copyWithin: (target: number, start: number, end?: number | undefined) => FilterableSuggestions<Value>
-    entries: () => IterableIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>
+    entries: () => ArrayIterator<[number, FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>]>
     every: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): this is S[]; (predicate: (value: ...
     fill: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, start?: number | undefined, end?: number | undefined) => FilterableSuggestions<...>
     filter: { <S extends FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>(predicate: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<...>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => value is S, thisArg?: any): S[]; (predicate: (value: Filterab...
@@ -9556,7 +9556,7 @@ exports[`filterSuggestions 1`] = `
     includes: (searchElement: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => boolean
     indexOf: (searchElement: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => number
     join: (separator?: string | undefined) => string
-    keys: () => IterableIterator<number>
+    keys: () => ArrayIterator<number>
     lastIndexOf: (searchElement: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, fromIndex?: number | undefined) => number
     length: number
     map: <U>(callbackfn: (value: FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>, index: number, array: (FilterableSuggestion<...> | FilterableGroupedSuggestions<...>)[]) => U, thisArg?: any) => U[]
@@ -9573,7 +9573,7 @@ exports[`filterSuggestions 1`] = `
     toLocaleString: { (): string; (locales: string | string[], options?: (NumberFormatOptions & DateTimeFormatOptions) | undefined): string; }
     toString: () => string
     unshift: (...items: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]) => number
-    values: () => IterableIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
+    values: () => ArrayIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
 },
 }
 `;

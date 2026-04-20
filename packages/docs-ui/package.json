@@ -38,6 +38,7 @@
     "@vanilla-extract/css": "^1.9.2"
   },
   "devDependencies": {
+    "@types/node": "^22.16.0",
     "@types/react": "^19.1.8",
     "@vanilla-extract/rollup-plugin": "^1.5.1",
     "braid-design-system": "workspace:*",
