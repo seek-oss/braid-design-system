@@ -74,7 +74,7 @@
     "skott": "^0.32.1",
     "tsdown": "^0.20.0",
     "tsx": "^4.19.2",
-    "typescript": "~5.5.4",
+    "typescript": "~5.9.3",
     "vitest": "^4.1.0"
   },
   "volta": {
