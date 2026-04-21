@@ -7,9 +7,8 @@
 
 ---
 
-## How to use this file
+## Instructions for AI tools
 
-- **Attach or paste** this file into your AI-powered design or coding tool. The values and tables are self-contained.
 - **Install the package** via `npm install braid-design-system` ([npm](https://www.npmjs.com/package/braid-design-system) · [source](https://github.com/seek-oss/braid-design-system/tree/master/packages/braid-design-system)). If your tool supports package installation, install this package and import components directly. Be sure to import `'braid-design-system/reset';` at the very top of the file. Always prefer Braid components and theme tokens over custom CSS — the system handles colour, typography, spacing, and accessibility out of the box.
 - **Import font** via `@import url('https://www.seek.com.au/static/shared-web/seeksans.css');`
 - **Layout patterns:** If your tool can read source files, see these ready-made Braid composition examples: [page layouts](https://raw.githubusercontent.com/seek-oss/braid-design-system/refs/heads/master/packages/braid-design-system/src/lib/playroom/templates/layouts.snippets.tsx) · [sections, cards, forms, tables](https://raw.githubusercontent.com/seek-oss/braid-design-system/refs/heads/master/packages/braid-design-system/src/lib/playroom/templates/sections.snippets.tsx)
@@ -101,20 +100,25 @@ Primitive scales live in [palette.ts](https://github.com/seek-oss/braid-design-s
 
 **Heading weight model:** “Weak” headings use **regular** weight; default headings use **medium** (see `typography.heading.weight` in tokens).
 
-### Hierarchy (font size + line gap from tokens)
-
 Sizes are **px**; **line gap** is the Capsize line-gap token (implementation computes final line height and cap trims).
 
-| Role              | Mobile       | Tablet       |
-| ----------------- | ------------ | ------------ |
-| **Heading 1**     | 28px, gap 11 | 36px, gap 14 |
-| **Heading 2**     | 24px, gap 11 | 30px, gap 13 |
-| **Heading 3**     | 22px, gap 10 | 24px, gap 11 |
-| **Heading 4**     | 20px, gap 9  | 20px, gap 9  |
-| **Text large**    | 18px, gap 13 | 18px, gap 13 |
-| **Text standard** | 16px, gap 12 | 16px, gap 12 |
-| **Text small**    | 14px, gap 10 | 14px, gap 10 |
-| **Text xsmall**   | 12px, gap 9  | 12px, gap 9  |
+### Heading
+
+| `level` | Mobile       | Tablet       | Role                        |
+| ------- | ------------ | ------------ | --------------------------- |
+| `"1"`   | 28px, gap 11 | 36px, gap 14 | Page titles, hero headings  |
+| `"2"`   | 24px, gap 11 | 30px, gap 13 | Major section headings      |
+| `"3"`   | 22px, gap 10 | 24px, gap 11 | Subsection headings         |
+| `"4"`   | 20px, gap 9  | 20px, gap 9  | Minor headings, card titles |
+
+### Text
+
+| `size`       | Mobile       | Tablet       | Role                                 |
+| ------------ | ------------ | ------------ | ------------------------------------ |
+| `"large"`    | 18px, gap 13 | 18px, gap 13 | Hero copy                            |
+| `"standard"` | 16px, gap 12 | 16px, gap 12 | Default body copy                    |
+| `"small"`    | 14px, gap 10 | 14px, gap 10 | Metadata, captions, secondary labels |
+| `"xsmall"`   | 12px, gap 9  | 12px, gap 9  | Fine print, legal (use sparingly)    |
 
 **Links:** System default is **underlined** text links using link/visited foreground tokens.
 
