@@ -1,6 +1,6 @@
 # Design System: Braid web — SEEK Jobs
 
-**About this file:** Follows the extended `DESIGN.md` pattern popularised by [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md).
+**About this file:** Follows the extended `DESIGN.md` format of [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md).
 **Audience:** Designers, engineers and other partners using AI-powered design and coding tools to create SEEK UI.
 **Themes:** `seekJobs` (SEEK Jobs).
 **Platforms:** Currently web only (no Native or Email).
@@ -44,7 +44,7 @@ Primitive scales live in [palette.ts](https://github.com/seek-oss/braid-design-s
 
 | Token               | Hex         | Role                                              |
 | ------------------- | ----------- | ------------------------------------------------- |
-| `brandAccent`       | `#E60278`   | Primary CTAs, brand fills, strong emphasis        |
+| `brandAccent`       | `#E60278`   | Hero CTAs, brand fills, strong emphasis           |
 | `brandAccentHover`  | _(derived)_ | Slightly lighter on hover                         |
 | `brandAccentActive` | _(derived)_ | Slightly darker on press                          |
 | `brandAccentLight`  | `#F8B1DC`   | Soft brand borders, light brand emphasis on white |
@@ -158,6 +158,21 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 - **Rows:** Use **consistent vertical padding** from the space scale (**small** or **medium**); separate rows with **neutral light** dividers or whitespace, not random greys.
 - **Metadata:** **Text small** (`14px` token) for timestamps, locations, and secondary labels; **standard** for titles.
 - **Actions:** Align **secondary buttons** and **tertiary links** to the **end** of the row or in a **kebab** pattern only if the product already uses that idiom — keep **48px** touch targets for row-level actions where possible.
+
+### Component props reference
+
+| Name           | Available properties                                                                                                          |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `Button`       | `id` · `size` · `tone` · `variant` · `bleed` · `loading` · `type` · `icon` · `iconPosition` · `onClick` · `data` · `children` |
+| `Card`         | `tone` · `height` · `component` · `data`                                                                                      |
+| `Heading`      | `level`(required) · `weight` · `align` · `icon` · `maxLines` · `component` · `data`                                           |
+| `Text`         | `size` · `tone` · `weight` · `align` · `icon` · `maxLines` · `baseline` · `component` · `data`                                |
+| `TextLink`     | `href`(required) · `weight` · `showVisited` · `hitArea` · `icon` · `iconPosition` · `data`                                    |
+| `PageBlock`    | `width` · `component` · `data`                                                                                                |
+| `ContentBlock` | `width` · `align` · `data`                                                                                                    |
+| `Badge`        | `tone` · `weight` · `bleedY` · `title` · `data`                                                                               |
+| `List`         | `size` · `space` · `tone` · `type` · `icon` · `start` · `data`                                                                |
+| `Divider`      | `weight`                                                                                                                      |
 
 ---
 
