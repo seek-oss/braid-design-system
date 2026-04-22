@@ -6,7 +6,12 @@ import {
   TooltipRenderer,
   Text,
 } from 'braid-design-system';
-import { type MouseEventHandler, type ReactNode, useState } from 'react';
+import {
+  type MouseEventHandler,
+  type ReactNode,
+  type RefCallback,
+  useState,
+} from 'react';
 
 import * as styles from './TitleLink.css';
 
@@ -17,18 +22,50 @@ const slugify = (string: string) =>
     .replace(/-$/, '')
     .toLowerCase();
 
-type TitleLink = { onClick?: MouseEventHandler<HTMLAnchorElement> } & (
+type TriggerProps = {
+  ref: RefCallback<HTMLElement>;
+  tabIndex: 0;
+  'aria-describedby': string;
+};
+
+const TitleLinkAnchor = ({
+  slug,
+  onClick,
+  children,
+  triggerProps,
+}: {
+  slug: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
+  children: ReactNode;
+  triggerProps?: TriggerProps;
+}) => (
+  <Box component="span" id={slug} tabIndex={-1}>
+    <Link
+      href={`#${slug}`}
+      className={styles.titleLink}
+      onClick={onClick}
+      aria-label={triggerProps ? 'Copy link to clipboard' : undefined}
+      {...triggerProps}
+    >
+      {children}
+      <Box
+        component="span"
+        transition="fast"
+        opacity={0}
+        className={styles.hashLink}
+      >
+        <IconLink />
+      </Box>
+    </Link>
+  </Box>
+);
+
+type TitleLink = { copyable?: boolean } & (
   | { children: string }
   | { children: ReactNode; label: string }
-) & {
-    copyable?: boolean;
-  };
+);
 
-export const TitleLink = ({
-  onClick,
-  copyable = false,
-  ...restProps
-}: TitleLink) => {
+export const TitleLink = ({ copyable = false, ...restProps }: TitleLink) => {
   const label = 'label' in restProps ? restProps.label : restProps.children;
   const slug = slugify(label);
   const [copied, setCopied] = useState(false);
@@ -46,38 +83,15 @@ export const TitleLink = ({
     });
   };
 
-  // Don't love this - but might not need it
-  // if we remove the copyable prop
-
-  if (!copyable) {
-    return (
-      <Link
-        id={slug}
-        href={`#${slug}`}
-        className={styles.titleLink}
-        onClick={onClick}
-      >
-        {restProps.children}
-        <Box
-          component="span"
-          transition="fast"
-          opacity={0}
-          className={styles.hashLink}
-        >
-          <IconLink />
-        </Box>
-      </Link>
-    );
-  }
-
   return (
     <TooltipRenderer
       placement="right"
       tooltip={
         copied ? (
           <Box display="flex" alignItems="center" gap="xsmall">
-            <Text>Copied to clipboard</Text>
-            <IconTick size="small" />
+            <Text>
+              Copied to clipboard <IconTick />
+            </Text>
           </Box>
         ) : (
           <Text>Copy to clipboard</Text>
@@ -85,24 +99,13 @@ export const TitleLink = ({
       }
     >
       {({ triggerProps }) => (
-        <Link
-          id={slug}
-          href={`#${slug}`}
-          className={styles.titleLink}
-          onClick={handleClick}
-          aria-label="Copy this link to clipboard"
-          {...triggerProps}
+        <TitleLinkAnchor
+          slug={slug}
+          onClick={copyable ? handleClick : undefined}
+          triggerProps={copyable ? triggerProps : undefined}
         >
           {restProps.children}
-          <Box
-            component="span"
-            transition="fast"
-            opacity={0}
-            className={styles.hashLink}
-          >
-            <IconLink />
-          </Box>
-        </Link>
+        </TitleLinkAnchor>
       )}
     </TooltipRenderer>
   );

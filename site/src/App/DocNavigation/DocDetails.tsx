@@ -10,6 +10,7 @@ import {
   TextLink,
   Secondary,
   Text,
+  Heading,
 } from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { useContext, useMemo } from 'react';
@@ -211,12 +212,15 @@ export const DocDetails = () => {
                     docSectionChildren.some(hasContent),
                   )
                   .map(([sectionKey, docSectionChildren]) => (
-                    <Stack key={sectionKey} space="xsmall">
-                      <TitleLink label={getSectionHeading(sectionKey)} copyable>
-                        <CategoryHeading component="h2">
+                    <Stack key={sectionKey} space="medium">
+                      <CategoryHeading component="h2">
+                        <TitleLink
+                          copyable
+                          label={getSectionHeading(sectionKey)}
+                        >
                           {getSectionHeading(sectionKey)}
-                        </CategoryHeading>
-                      </TitleLink>
+                        </TitleLink>
+                      </CategoryHeading>
 
                       <Stack space={innerSectionSpacing}>
                         {docSectionChildren.map(
@@ -232,9 +236,12 @@ export const DocDetails = () => {
                         'alternatives' in docs &&
                         docs.alternatives.length > 0 ? (
                           <Stack space={headingSpacing}>
-                            <LinkableHeading level="3">
-                              Alternatives
-                            </LinkableHeading>
+                            <Heading level="3">
+                              <TitleLink label="Alternatives">
+                                Alternatives
+                              </TitleLink>
+                            </Heading>
+
                             <List space="medium">
                               {docs.alternatives.map((alt) => (
                                 <Text key={`${alt.name}`}>
