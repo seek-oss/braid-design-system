@@ -1,10 +1,10 @@
 import {
   Box,
   IconLink,
-  IconTick,
   Link,
   TooltipRenderer,
   Text,
+  IconPositive,
 } from 'braid-design-system';
 import type { MouseEventHandler, ReactNode, RefCallback } from 'react';
 
@@ -53,7 +53,7 @@ const TitleLinkAnchor = ({
         opacity={0}
         className={styles.hashLink}
       >
-        {copying ? <IconTick tone="positive" /> : <IconLink />}
+        {copying ? <IconPositive tone="positive" /> : <IconLink />}
       </Box>
     </Link>
   </Box>

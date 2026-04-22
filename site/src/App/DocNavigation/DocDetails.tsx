@@ -1,8 +1,4 @@
-import {
-  CategoryHeading,
-  LinkableHeading,
-  TitleLink,
-} from '@braid-design-system/docs-ui';
+import { CategoryHeading, TitleLink } from '@braid-design-system/docs-ui';
 import {
   Box,
   Stack,
@@ -201,7 +197,9 @@ export const DocDetails = () => {
 
               {'accessibility' in docs && docs.accessibility ? (
                 <Stack space={headingSpacing}>
-                  <LinkableHeading level="3">Accessibility</LinkableHeading>
+                  <Heading level="3">
+                    <TitleLink>Accessibility</TitleLink>
+                  </Heading>
                   {docs.accessibility}
                 </Stack>
               ) : null}
@@ -273,7 +271,9 @@ export const DocDetails = () => {
               !hasBestPractices &&
               docs.alternatives.length > 0 ? (
                 <Stack space={headingSpacing}>
-                  <LinkableHeading level="3">Alternatives</LinkableHeading>
+                  <Heading level="3">
+                    <TitleLink label="Alternatives">Alternatives</TitleLink>
+                  </Heading>
                   <List space="medium">
                     {docs.alternatives.map((alt) => (
                       <Text key={`${alt.name}`}>
