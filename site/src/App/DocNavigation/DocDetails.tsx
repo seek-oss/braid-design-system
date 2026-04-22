@@ -1,4 +1,8 @@
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import {
+  CategoryHeading,
+  LinkableHeading,
+  TitleLink,
+} from '@braid-design-system/docs-ui';
 import {
   Box,
   Stack,
@@ -207,10 +211,13 @@ export const DocDetails = () => {
                     docSectionChildren.some(hasContent),
                   )
                   .map(([sectionKey, docSectionChildren]) => (
-                    <Stack key={sectionKey} space="medium">
-                      <LinkableHeading level="2" label={sectionKey}>
-                        {getSectionHeading(sectionKey)}
-                      </LinkableHeading>
+                    <Stack key={sectionKey} space="xsmall">
+                      <TitleLink label={getSectionHeading(sectionKey)}>
+                        <CategoryHeading component="h2">
+                          {getSectionHeading(sectionKey)}
+                        </CategoryHeading>
+                      </TitleLink>
+
                       <Stack space={innerSectionSpacing}>
                         {docSectionChildren.map(
                           (example: { label?: string }, index: number) => (

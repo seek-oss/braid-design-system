@@ -1,4 +1,7 @@
-import { KeyboardShortcut } from '@braid-design-system/docs-ui';
+import {
+  KeyboardShortcut,
+  CategoryHeading,
+} from '@braid-design-system/docs-ui';
 import {
   Box,
   Stack,
@@ -7,8 +10,6 @@ import {
   ButtonLink,
   Spread,
 } from 'braid-src/lib/components';
-
-import { CategoryHeading } from '../CategoryHeading/CategoryHeading';
 
 import type { GroupedResults, SearchItem } from './getSearchItems';
 
