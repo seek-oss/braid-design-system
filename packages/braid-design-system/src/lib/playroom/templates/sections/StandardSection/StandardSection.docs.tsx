@@ -1,6 +1,6 @@
 import type { TemplateDocs } from 'site/types';
 
-import { Strong, Text } from '../../../../playroom/components';
+import { Strong, Text, TextLink } from '../../../../playroom/components';
 
 import { snippets } from './StandardSection.snippets';
 
@@ -11,8 +11,14 @@ const docs: TemplateDocs = {
   description: (
     <Text>
       The default section layout. A heading-led block using a{' '}
-      <Strong>medium Stack</Strong> to group content within a{' '}
-      <Strong>medium PageBlock</Strong>.
+      <Strong>
+        medium <TextLink href="/components/Stack">Stack</TextLink>
+      </Strong>{' '}
+      to group content within a{' '}
+      <Strong>
+        medium <TextLink href="/components/PageBlock">PageBlock</TextLink>
+      </Strong>
+      .
     </Text>
   ),
   usage: (

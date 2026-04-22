@@ -104,10 +104,10 @@ export const TemplatesPage = () => (
     {Object.entries(groups).map(([group, { description, templates }]) => (
       <Stack space="xlarge" key={group}>
         <Stack space="medium">
-          <Heading component="h1" level="2">
+          <Heading component="h1" level="3">
             {group.charAt(0).toUpperCase() + group.slice(1)}
           </Heading>
-          {description ? <Text size="large">{description}</Text> : null}
+          {description ? <Text>{description}</Text> : null}
         </Stack>
         <Tiles key={group} space="xlarge" columns={[1, 2, 3]}>
           {templates.map((docs) => (

@@ -77,7 +77,8 @@ const getTemplateRoutes = (): Route[] => {
         // expected shape: group/Name/Name.docs.tsx
         if (parts.length === 3) {
           const [, name] = parts;
-          detailRoutes.push({ route: `/templates/${slugify(name)}` });
+          const routeName = name.replace(/([a-z0-9])([A-Z])/g, '$1-$2');
+          detailRoutes.push({ route: `/templates/${slugify(routeName)}` });
         }
       }
     }

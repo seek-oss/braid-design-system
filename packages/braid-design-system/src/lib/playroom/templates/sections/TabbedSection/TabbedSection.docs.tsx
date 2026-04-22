@@ -1,6 +1,6 @@
 import type { TemplateDocs } from 'site/types';
 
-import { Text } from '../../../components';
+import { Text, TextLink } from '../../../components';
 
 import { snippets } from './TabbedSection.snippets';
 
@@ -19,7 +19,9 @@ const docs: TemplateDocs = {
       Use when content can be naturally grouped into distinct categories that
       users need to switch between — such as different views of related data or
       alternative task paths. Avoid tabs when all content should be visible
-      simultaneously; consider a standard section stack instead.
+      simultaneously; consider a{' '}
+      <TextLink href="/templates/standard-section">Standard Section</TextLink>{' '}
+      stack instead.
     </Text>
   ),
   Example: () => primarySnippet.code,

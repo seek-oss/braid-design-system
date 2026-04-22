@@ -1,5 +1,11 @@
 import { LinkableHeading } from '@braid-design-system/docs-ui';
-import { Heading, Stack, Text } from 'braid-src/lib/components';
+import {
+  Heading,
+  IconArrow,
+  Stack,
+  Text,
+  TextLink,
+} from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { Navigate, useParams } from 'react-router';
 
@@ -11,7 +17,6 @@ export const TemplateDetail = () => {
   const { templateName = '' } = useParams<{
     templateName: string;
   }>();
-
   const templateInfo = templateLookup[templateName];
 
   if (!templateInfo) {
@@ -23,9 +28,15 @@ export const TemplateDetail = () => {
       <PageTitle title={templateInfo.title} />
       <Stack space="medium">
         <Text tone="secondary" size="small">
-          Templates /{' '}
-          {templateInfo.group.charAt(0).toUpperCase() +
-            templateInfo.group.slice(1)}
+          <TextLink
+            href="/templates"
+            weight="weak"
+            icon={<IconArrow direction="left" />}
+          >
+            Templates /{' '}
+            {templateInfo.group.charAt(0).toUpperCase() +
+              templateInfo.group.slice(1)}
+          </TextLink>
         </Text>
         <Heading component="h1" level="2">
           {templateInfo.title}

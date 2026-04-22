@@ -1,6 +1,6 @@
 import type { TemplateDocs } from 'site/types';
 
-import { Text } from '../../../components';
+import { Text, TextLink } from '../../../components';
 
 import { snippets } from './TableSection.snippets';
 
@@ -10,7 +10,8 @@ const docs: TemplateDocs = {
   title: primarySnippet.name,
   description: (
     <Text>
-      A section containing tabular data within a medium PageBlock, with support
+      A section containing tabular data within a medium{' '}
+      <TextLink href="/components/PageBlock">PageBlock</TextLink>, with support
       for status badges and per-row overflow actions.
     </Text>
   ),

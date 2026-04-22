@@ -1,6 +1,6 @@
 import type { TemplateDocs } from 'site/types';
 
-import { Text } from '../../../components';
+import { Text, TextLink } from '../../../components';
 
 import { snippets } from './SteppedSection.snippets';
 
@@ -10,8 +10,9 @@ const docs: TemplateDocs = {
   title: primarySnippet.name,
   description: (
     <Text>
-      A multi-step navigation pattern within a section, using a Stepper to track
-      progress and display step-specific content.
+      A multi-step navigation pattern within a section, using a{' '}
+      <TextLink href="/components/Stepper">Stepper</TextLink> to track progress
+      and display step-specific content.
     </Text>
   ),
   usage: (
