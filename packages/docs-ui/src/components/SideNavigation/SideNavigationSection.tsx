@@ -1,4 +1,6 @@
-import { Box, HiddenVisually, Stack, Text } from 'braid-design-system';
+import { Box, HiddenVisually, Stack } from 'braid-design-system';
+
+import { CategoryHeading } from '../CategoryHeading/CategoryHeading';
 
 import { SideNavigationItem } from './SideNavigationItem';
 
@@ -11,9 +13,7 @@ interface SideNavigationSection {
 }
 
 const Title = ({ children }: { children: string }) => (
-  <Text size="xsmall" weight="medium" component="h2">
-    {children}
-  </Text>
+  <CategoryHeading component="h2">{children}</CategoryHeading>
 );
 
 const ItemList = ({ items }: { items: SideNavigationItem[] }) => (
