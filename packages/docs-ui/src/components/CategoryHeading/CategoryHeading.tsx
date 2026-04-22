@@ -14,12 +14,17 @@ export const CategoryHeading = ({
   component,
   badge,
 }: CategoryHeadingProps) => (
-  <Box display="flex" gap="xsmall" component="span" alignItems="center">
-    <Box style={{ textTransform: 'uppercase' }} component={component}>
-      <Text size="xsmall" weight="medium">
-        {children}
-      </Text>
-    </Box>
+  <Box
+    style={{ textTransform: 'uppercase' }}
+    component={component}
+    display="flex"
+    gap="xsmall"
+    alignItems="center"
+  >
+    <Text size="xsmall" weight="medium">
+      {children}
+    </Text>
+
     {badge}
   </Box>
 );

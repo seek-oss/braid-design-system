@@ -212,7 +212,7 @@ export const DocDetails = () => {
                   )
                   .map(([sectionKey, docSectionChildren]) => (
                     <Stack key={sectionKey} space="xsmall">
-                      <TitleLink label={getSectionHeading(sectionKey)}>
+                      <TitleLink label={getSectionHeading(sectionKey)} copyable>
                         <CategoryHeading component="h2">
                           {getSectionHeading(sectionKey)}
                         </CategoryHeading>
