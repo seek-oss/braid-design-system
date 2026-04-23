@@ -79,14 +79,18 @@ export const TitleLink = ({ copyable = false, ...restProps }: TitleLink) => {
     onCopyClick(url);
   };
 
+  if (!copyable) {
+    return <TitleLinkAnchor slug={slug}>{restProps.children}</TitleLinkAnchor>;
+  }
+
   return (
     <TooltipRenderer placement="right" tooltip={<Text>Copy to clipboard</Text>}>
       {({ triggerProps }) => (
         <TitleLinkAnchor
           slug={slug}
-          onClick={copyable ? handleClick : undefined}
-          triggerProps={copyable ? triggerProps : undefined}
-          copying={copyable ? copying : undefined}
+          onClick={handleClick}
+          triggerProps={triggerProps}
+          copying={copying}
         >
           {restProps.children}
         </TitleLinkAnchor>

@@ -5,17 +5,17 @@ export const useCopy = () => {
 
   useEffect(() => {
     if (copying) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setCopying(false);
       }, 2000);
+      return () => clearTimeout(timer);
     }
   }, [copying]);
 
   const onCopyClick = async (content: string) => {
     if (!copying) {
       setCopying(true);
-      const clipboardItem = new ClipboardItem({ 'text/plain': content });
-      await navigator.clipboard.write([clipboardItem]);
+      await navigator.clipboard.writeText(content);
     }
   };
 

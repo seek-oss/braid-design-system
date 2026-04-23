@@ -209,14 +209,13 @@ export const DocDetails = () => {
                   .filter(([, docSectionChildren]) =>
                     docSectionChildren.some(hasContent),
                   )
-                  .map(([sectionKey, docSectionChildren]) => (
+                  .map(([sectionKey, docSectionChildren]) => {
+                    const heading = getSectionHeading(sectionKey);
+                    return (
                     <Stack key={sectionKey} space="medium">
                       <CategoryHeading component="h2">
-                        <TitleLink
-                          copyable
-                          label={getSectionHeading(sectionKey)}
-                        >
-                          {getSectionHeading(sectionKey)}
+                        <TitleLink copyable label={heading}>
+                          {heading}
                         </TitleLink>
                       </CategoryHeading>
 
@@ -257,7 +256,8 @@ export const DocDetails = () => {
                         ) : null}
                       </Stack>
                     </Stack>
-                  ))}
+                    );
+                  })}
 
               {(docs.additional || []).map((example, index) => (
                 <DocSection

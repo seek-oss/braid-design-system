@@ -1,8 +1,8 @@
 import { Box, Text } from 'braid-design-system';
-import type { ComponentProps } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 
 type CategoryHeadingProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   component?: ComponentProps<typeof Text>['component'];
 };
 
