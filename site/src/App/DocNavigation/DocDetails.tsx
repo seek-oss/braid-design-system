@@ -212,50 +212,50 @@ export const DocDetails = () => {
                   .map(([sectionKey, docSectionChildren]) => {
                     const heading = getSectionHeading(sectionKey);
                     return (
-                    <Stack key={sectionKey} space="medium">
-                      <CategoryHeading component="h2">
-                        <TitleLink copyable label={heading}>
-                          {heading}
-                        </TitleLink>
-                      </CategoryHeading>
+                      <Stack key={sectionKey} space="medium">
+                        <CategoryHeading component="h2">
+                          <TitleLink copyable label={heading}>
+                            {heading}
+                          </TitleLink>
+                        </CategoryHeading>
 
-                      <Stack space={innerSectionSpacing}>
-                        {docSectionChildren.map(
-                          (example: { label?: string }, index: number) => (
-                            <DocSection
-                              key={index}
-                              section={example}
-                              headingSpacing={headingSpacing}
-                            />
-                          ),
-                        )}
-                        {sectionKey === 'bestPractices' &&
-                        'alternatives' in docs &&
-                        docs.alternatives.length > 0 ? (
-                          <Stack space={headingSpacing}>
-                            <Heading level="3">
-                              <TitleLink label="Alternatives">
-                                Alternatives
-                              </TitleLink>
-                            </Heading>
+                        <Stack space={innerSectionSpacing}>
+                          {docSectionChildren.map(
+                            (example: { label?: string }, index: number) => (
+                              <DocSection
+                                key={index}
+                                section={example}
+                                headingSpacing={headingSpacing}
+                              />
+                            ),
+                          )}
+                          {sectionKey === 'bestPractices' &&
+                          'alternatives' in docs &&
+                          docs.alternatives.length > 0 ? (
+                            <Stack space={headingSpacing}>
+                              <Heading level="3">
+                                <TitleLink label="Alternatives">
+                                  Alternatives
+                                </TitleLink>
+                              </Heading>
 
-                            <List space="medium">
-                              {docs.alternatives.map((alt) => (
-                                <Text key={`${alt.name}`}>
-                                  <TextLink
-                                    hitArea="large"
-                                    href={`/${alt.section || 'components'}/${alt.name}`}
-                                  >
-                                    {alt.name}
-                                  </TextLink>{' '}
-                                  <Secondary>— {alt.description}</Secondary>
-                                </Text>
-                              ))}
-                            </List>
-                          </Stack>
-                        ) : null}
+                              <List space="medium">
+                                {docs.alternatives.map((alt) => (
+                                  <Text key={`${alt.name}`}>
+                                    <TextLink
+                                      hitArea="large"
+                                      href={`/${alt.section || 'components'}/${alt.name}`}
+                                    >
+                                      {alt.name}
+                                    </TextLink>{' '}
+                                    <Secondary>— {alt.description}</Secondary>
+                                  </Text>
+                                ))}
+                              </List>
+                            </Stack>
+                          ) : null}
+                        </Stack>
                       </Stack>
-                    </Stack>
                     );
                   })}
 
