@@ -5410,5 +5410,51 @@
   {
     "version": "34.0.4",
     "updates": []
+  },
+  {
+    "version": "34.1.0",
+    "updates": [
+      {
+        "updated": [
+          "IconCompany",
+          "IconPeople",
+          "IconProfile"
+        ],
+        "summary": "**IconCompany**, **IconPeople**, **IconProfile**: Add active property\n\n**EXAMPLE USAGE:**\n```jsx\n  <IconCompany active />\n  <IconPeople active />\n  <IconProfile active />\n```"
+      },
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "**Textarea:** Fix highlight ranges when content overflows\n\nResolves an issue where long running scrolling content in a `Textarea` with `highlightRanges` could result in the highlights being misaligned due to the scrollbar."
+      },
+      {
+        "new": [
+          "IconImageBroken",
+          "IconPhotoAdd"
+        ],
+        "summary": "**IconImageBroken**, **IconPhotoAdd**: Added components\n\n**EXAMPLE USAGE:**\n```jsx\n  <IconImageBroken />\n  <IconPhotoAdd />\n```"
+      },
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "**Textarea:** Ensure scroll bar insets field border\n\nEnsure the scroll bar sits inside of the field border when content overflows."
+      },
+      {
+        "updated": [
+          "TextDropdown"
+        ],
+        "summary": "**TextDropdown:** Updated font-size of options to maintain consistency and accessibility"
+      },
+      {
+        "updated": [
+          "IconProfile",
+          "IconPeople",
+          "IconPersonAdd"
+        ],
+        "summary": "**IconProfile**, **IconPeople**, **IconPersonAdd**: Update artwork, consistent with latest design language"
+      }
+    ]
   }
 ]

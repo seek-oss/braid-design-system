@@ -1,11 +1,23 @@
-import { Box, Hidden, HiddenVisually, Link, Text } from 'braid-design-system';
+import {
+  Bleed,
+  Box,
+  Hidden,
+  HiddenVisually,
+  IconSearch,
+  Link,
+  Text,
+} from 'braid-design-system';
 import type { ReactNode } from 'react';
 
+import { KeyboardShortcut } from '../KeyboardShortcut/KeyboardShortcut';
 import { MenuButton } from '../MenuButton/MenuButton';
+
+import { searchButton } from './HeaderNavigation.css';
 
 interface HeaderNavigationProps {
   menuOpen?: boolean;
   menuClick?: () => void;
+  onSearchClick?: () => void;
   logo: ReactNode;
   logoLabel: string;
   logoHref?: string;
@@ -15,6 +27,7 @@ interface HeaderNavigationProps {
 export const HeaderNavigation = ({
   menuOpen = false,
   menuClick = () => {},
+  onSearchClick = () => {},
   logo,
   logoLabel,
   logoHref = '/',
@@ -41,6 +54,31 @@ export const HeaderNavigation = ({
         </Link>
       </Text>
     </Box>
-    {themeToggle}
+    <div>
+      <>{themeToggle}</>
+      <Bleed horizontal="xxsmall" bottom="xxsmall">
+        <Box
+          component="button"
+          padding="xxsmall"
+          paddingRight="xsmall"
+          borderRadius="standard"
+          className={searchButton}
+          onClick={onSearchClick}
+        >
+          <KeyboardShortcut
+            keys={[
+              navigator.platform.startsWith('Mac') ||
+              navigator.platform === 'iPhone' ||
+              navigator.platform === 'iPad' ||
+              navigator.platform === 'iPod'
+                ? '⌘'
+                : 'Ctrl',
+              'K',
+            ]}
+            shortcutLabel={<IconSearch />}
+          />
+        </Box>
+      </Bleed>
+    </div>
   </Box>
 );

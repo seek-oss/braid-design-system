@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "34.0.4",
+  "version": "34.1.0",
   "description": "Themeable design system for the SEEK Group",
   "homepage": "https://seek-oss.github.io/braid-design-system/",
   "bugs": {
@@ -184,9 +184,9 @@
     "cheerio": "1.0.0-rc.11",
     "fast-glob": "^3.3.2",
     "fs-extra": "^10.1.0",
-    "html-validate": "^9.7.1",
+    "html-validate": "^10.13.1",
     "picocolors": "^1.1.1",
-    "playroom": "1.2.1",
+    "playroom": "1.2.2",
     "prettier": "^3.4.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

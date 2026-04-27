@@ -1,5 +1,19 @@
 # @braid-design-system/docs-ui
 
+## 4.1.0
+
+### Minor Changes
+
+- **HeaderNavigation:** Added `onSearchClick` prop to support triggering the search interaction. ([#2029](https://github.com/seek-oss/braid-design-system/pull/2029))
+
+  **KeyboardShortcut:** Added new component for displaying keyboard shortcut hints.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <KeyboardShortcut keys={['CTRL', 'S']} shortcutLabel="Save" />
+  ```
+
 ## 4.0.1
 
 ### Patch Changes

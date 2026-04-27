@@ -11,7 +11,8 @@ import {
 import * as icons from 'braid-src/lib/components/icons';
 import { Overlay } from 'braid-src/lib/components/private/Overlay/Overlay';
 import didYouMean, { ReturnTypeEnums } from 'didyoumean2';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router';
 
 import { iconsKeywords } from './iconsKeywords';
 
@@ -25,17 +26,55 @@ const iconNames = Object.keys(icons).map((icon) => ({
   keywords: iconsKeywords[icon as IconName],
 }));
 
+const getFilteredIcons = (searchText: string) => {
+  if (!searchText) {
+    return { list: iconNames, isDisambiguated: false };
+  }
+
+  const filteredList = iconNames.filter(
+    ({ name, keywords }) =>
+      name.toLowerCase().indexOf(searchText.toLowerCase()) > -1 ||
+      keywords.some((keyword) => keyword.startsWith(searchText)),
+  );
+
+  if (filteredList.length === 0) {
+    const suggestions =
+      didYouMean(searchText, iconNames, {
+        returnType: ReturnTypeEnums.ALL_CLOSEST_MATCHES,
+        matchPath: ['displayName'],
+      }) ?? [];
+    const suggestionList = Array.isArray(suggestions)
+      ? suggestions
+      : [suggestions];
+    return {
+      list: suggestionList,
+      isDisambiguated: suggestionList.length > 0,
+    };
+  }
+
+  return { list: filteredList, isDisambiguated: false };
+};
+
 const IconTile = ({
   icon,
   suggestion = false,
+  onNavigate,
 }: {
   icon: (typeof iconNames)[number];
   suggestion?: boolean;
+  onNavigate: (href: string) => void;
 }) => {
   const IconComponent = icons[icon.name];
+  const href = `/components/${icon.name}`;
 
   return (
-    <Link href={`/components/${icon.name}`}>
+    <Link
+      href={href}
+      onClick={(e) => {
+        e.preventDefault();
+        onNavigate(href);
+      }}
+    >
       <Box
         position="relative"
         display="flex"
@@ -75,9 +114,19 @@ const IconTile = ({
 };
 
 export const IconsBrowse = () => {
-  const [iconList, setIconList] = useState(iconNames);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [isDisambiguated, setDisambiguated] = useState(false);
+  const initialSearch: string = useLocation().state?.iconBrowseSearch ?? '';
+  const navigate = useNavigate();
+  const [{ searchTerm, list: iconList, isDisambiguated }, setSearch] = useState(
+    () => ({ searchTerm: initialSearch, ...getFilteredIcons(initialSearch) }),
+  );
+
+  useEffect(() => {
+    const current = window.history.state ?? {};
+    window.history.replaceState(
+      { ...current, usr: { iconBrowseSearch: searchTerm } },
+      '',
+    );
+  }, [searchTerm]);
 
   return (
     <Stack space="medium">
@@ -91,31 +140,10 @@ export const IconsBrowse = () => {
           value={searchTerm}
           onChange={({ currentTarget }) => {
             const searchText = currentTarget.value;
-
-            setSearchTerm(searchText);
-            const filteredList = iconNames.filter(
-              ({ name, keywords }) =>
-                searchText.length === 0 ||
-                name.toLowerCase().indexOf(searchText.toLowerCase()) > -1 ||
-                keywords.some((keyword) => keyword.startsWith(searchText)),
-            );
-
-            if (filteredList.length === 0) {
-              const suggestions =
-                didYouMean(searchText, iconNames, {
-                  returnType: ReturnTypeEnums.ALL_CLOSEST_MATCHES,
-                  matchPath: ['displayName'],
-                }) ?? [];
-              const suggestionList = Array.isArray(suggestions)
-                ? suggestions
-                : [suggestions];
-
-              setDisambiguated(suggestionList && suggestionList.length > 0);
-              setIconList(suggestionList);
-            } else {
-              setDisambiguated(false);
-              setIconList(filteredList);
-            }
+            setSearch({
+              searchTerm: searchText,
+              ...getFilteredIcons(searchText),
+            });
           }}
         />
 
@@ -144,7 +172,14 @@ export const IconsBrowse = () => {
         columns={{ mobile: 3, tablet: 6, desktop: 7, wide: 6 }}
       >
         {iconList.map((icon) => (
-          <IconTile key={icon.name} icon={icon} suggestion={isDisambiguated} />
+          <IconTile
+            key={icon.name}
+            icon={icon}
+            suggestion={isDisambiguated}
+            onNavigate={(href) =>
+              navigate(href, { state: { iconBrowseSearch: searchTerm } })
+            }
+          />
         ))}
       </Tiles>
     </Stack>

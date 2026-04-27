@@ -4,3 +4,7 @@ export { SideNavigationSection } from './components/SideNavigation/SideNavigatio
 export { HeaderNavigation } from './components/HeaderNavigation/HeaderNavigation';
 export { SideNavigationCategory } from './components/SideNavigation/SideNavigationCategory';
 export { SideNavigationCategoryItem } from './components/SideNavigation/SideNavigationCategoryItem';
+export {
+  KeyboardShortcut,
+  KeyboardIcon,
+} from './components/KeyboardShortcut/KeyboardShortcut';
