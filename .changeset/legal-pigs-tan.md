@@ -4,7 +4,6 @@
 
 **TitleLink:** Added new component for rendering linkable headings with an optional copy-to-clipboard interaction. Should be wrapped in your required typographic component.
 
-
 **EXAMPLE:**
 ```jsx
 <Heading level="2">
@@ -17,13 +16,4 @@ With copy-to-clipboard:
 <CategoryHeading component="h3">
   <TitleLink copyable>Appearance</TitleLink>
 </CategoryHeading>
-```
-
----
-
-**CategoryHeading:** Added new component for rendering category-style navigation headings.
-
-**EXAMPLE USAGE:**
-```jsx
-<CategoryHeading component="h2">Layout</CategoryHeading>
 ```

@@ -15,7 +15,7 @@ export const titleLink = style([
   },
 ]);
 
-export const hashLink = style({
+export const showOnHover = style({
   selectors: {
     [`${titleLink}:hover &, ${titleLink}:focus-visible &`]: {
       opacity: 1,

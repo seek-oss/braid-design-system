@@ -50,10 +50,10 @@ const TitleLinkAnchor = ({
       <Box
         component="span"
         transition="fast"
-        opacity={0}
-        className={styles.hashLink}
+        opacity={!copying ? 0 : undefined}
+        className={!copying && styles.showOnHover}
       >
-        {copying ? <IconPositive tone="positive" /> : <IconLink />}
+        {!copying ? <IconPositive tone="positive" /> : <IconLink />}
       </Box>
     </Link>
   </Box>
@@ -75,8 +75,7 @@ export const TitleLink = ({ copyable = false, ...restProps }: TitleLink) => {
     }
     event.preventDefault();
     const anchor = event.currentTarget as HTMLAnchorElement;
-    const url = `${window.location.origin}${window.location.pathname}${anchor.hash}`;
-    onCopyClick(url);
+    onCopyClick(anchor.href);
   };
 
   if (!copyable) {

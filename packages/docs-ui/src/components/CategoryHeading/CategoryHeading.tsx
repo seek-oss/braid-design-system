@@ -10,9 +10,7 @@ export const CategoryHeading = ({
   children,
   component,
 }: CategoryHeadingProps) => (
-  <Box component={component} display="flex" gap="xsmall" alignItems="center">
-    <Text size="xsmall" weight="medium">
-      <Box style={{ textTransform: 'uppercase' }}>{children}</Box>
-    </Text>
-  </Box>
+  <Text size="xsmall" weight="medium" component={component}>
+    <Box style={{ textTransform: 'uppercase' }}>{children}</Box>
+  </Text>
 );

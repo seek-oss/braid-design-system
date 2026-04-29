@@ -20,7 +20,7 @@ export const DocSection = ({
         <Badge
           tone="caution"
           id={section.label ? `deprecated-${section.label}` : undefined}
-          aria-hidden="true"
+          aria-hidden
         >
           Deprecated
         </Badge>
@@ -35,7 +35,13 @@ export const DocSection = ({
           }
         >
           <TitleLink label={section.label} copyable>
-            {section.label}
+            <span
+              aria-describedby={
+                section.deprecated ? `deprecated-${section.label}` : undefined
+              }
+            >
+              {section.label}
+            </span>
           </TitleLink>
         </Heading>
       ) : null}
