@@ -148,7 +148,40 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 
 ---
 
-## 5. Component stylings
+## 5. Iconography
+
+All icons are named exports from `braid-design-system`. Only the names below exist — do not invent names. For a full visual reference see [Iconography](https://seek-oss.github.io/braid-design-system/foundations/iconography) in the docs.
+
+### Available icons
+
+`IconAI` · `IconAdd` · `IconArrow` · `IconAttachment` · `IconBluetooth` · `IconBold` · `IconBookmark` · `IconBulletList` · `IconCareer` · `IconCategory` · `IconCaution` · `IconChecklist` · `IconChevron` · `IconClear` · `IconCompany` · `IconCompose` · `IconCopy` · `IconCoverLetter` · `IconCreditCard` · `IconCritical` · `IconDate` · `IconDelete` · `IconDesktop` · `IconDisallow` · `IconDocument` · `IconDocumentBroken` · `IconDownload` · `IconEdit` · `IconEducation` · `IconEnlarge` · `IconExperience` · `IconFilter` · `IconFlag` · `IconGift` · `IconGlobe` · `IconGrid` · `IconHash` · `IconHeart` · `IconHelp` · `IconHistory` · `IconHome` · `IconImage` · `IconImageBroken` · `IconInfo` · `IconInvoice` · `IconItalic` · `IconLanguage` · `IconLicence` · `IconLink` · `IconLinkBroken` · `IconLocation` · `IconMail` · `IconMessage` · `IconMicrophone` · `IconMinus` · `IconMobile` · `IconMoney` · `IconNewWindow` · `IconNote` · `IconNotification` · `IconNumberedList` · `IconOverflow` · `IconPeople` · `IconPersonAdd` · `IconPersonVerified` · `IconPhone` · `IconPhotoAdd` · `IconPlatformAndroid` · `IconPlatformApple` · `IconPositive` · `IconPrint` · `IconProfile` · `IconPromote` · `IconQR` · `IconRecommended` · `IconRedo` · `IconRefresh` · `IconResume` · `IconRocket` · `IconSearch` · `IconSecurity` · `IconSend` · `IconSent` · `IconSentiment` · `IconSettings` · `IconShare` · `IconSkills` · `IconSocialFacebook` · `IconSocialGitHub` · `IconSocialInstagram` · `IconSocialLinkedIn` · `IconSocialMedium` · `IconSocialTiktok` · `IconSocialX` · `IconSocialYouTube` · `IconSort` · `IconStar` · `IconStatistics` · `IconSubCategory` · `IconTag` · `IconThumb` · `IconTick` · `IconTime` · `IconTip` · `IconTitle` · `IconUndo` · `IconUpload` · `IconVideo` · `IconVisibility` · `IconWorkExperience` · `IconZoomIn` · `IconZoomOut`
+
+### Icon props
+
+All icons share these props:
+
+| Prop                | Type                                                                                                                                  | Notes                                                                                             |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `size`              | `'large' \| 'standard' \| 'small' \| 'xsmall' \| 'fill'`                                                                              | Standalone only — do not set when icon is inside `Text` or `Heading` (inherits size from context) |
+| `tone`              | `'neutral' \| 'secondary' \| 'critical' \| 'caution' \| 'positive' \| 'info' \| 'promote' \| 'brandAccent' \| 'formAccent' \| 'link'` | Overrides inherited text tone                                                                     |
+| `alignY`            | `'uppercase' \| 'lowercase'`                                                                                                          | Inline only — adjusts vertical alignment when inside `Text` or `Heading`                          |
+| `title` + `titleId` | `string`                                                                                                                              | Accessible label — must provide both or neither                                                   |
+| `data`              | `DataAttributeMap`                                                                                                                    | e.g. `{ testid: 'my-icon' }`                                                                      |
+
+### Variant props (select icons only)
+
+| Icon                                                                                                             | Extra prop  | Type                                    | Default     |
+| ---------------------------------------------------------------------------------------------------------------- | ----------- | --------------------------------------- | ----------- |
+| `IconArrow`                                                                                                      | `direction` | `'up' \| 'down' \| 'left' \| 'right'`   | `'up'`      |
+| `IconChevron`                                                                                                    | `direction` | `'up' \| 'down' \| 'left' \| 'right'`   | `'down'`    |
+| `IconThumb`                                                                                                      | `direction` | `'up' \| 'down'`                        | `'up'`      |
+| `IconSentiment`                                                                                                  | `feeling`   | `'positive' \| 'negative' \| 'neutral'` | `'neutral'` |
+| `IconVisibility`                                                                                                 | `hidden`    | `boolean`                               | `false`     |
+| `IconBookmark`, `IconCareer`, `IconCompany`, `IconEnlarge`, `IconHeart`, `IconPeople`, `IconProfile`, `IconStar` | `active`    | `boolean`                               | `false`     |
+
+---
+
+## 6. Component stylings
 
 ### Buttons
 
@@ -158,7 +191,7 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 - **Secondary / neutral:** Grey neutral fills for non-primary actions.
 - **Ghost / soft:** Light fills or transparent bodies with border or foreground emphasis as per variant.
 - **Layout:** `Button` components should be wrapped within an `Action` component by default, otherwise `Inline` can also be used.
-- **States:** **Focus-visible** shows the **focus ring** (see §6). **Hover** may show a translucent overlay; **active** applies `scale(0.95)` with a short easing (`transitions.touchable`). **Disabled** buttons are not supported as they are not accessible.
+- **States:** **Focus-visible** shows the **focus ring** (see §7). **Hover** may show a translucent overlay; **active** applies `scale(0.95)` with a short easing (`transitions.touchable`). **Disabled** buttons are not supported as they are not accessible.
 
 ### Cards
 
@@ -204,7 +237,7 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 
 ---
 
-## 6. Depth & elevation
+## 7. Depth & elevation
 
 Shadows use **cool grey** at **8% opacity** (`#1C2330` scaled to alpha) for a **soft, neutral float**:
 
@@ -218,14 +251,14 @@ Shadows use **cool grey** at **8% opacity** (`#1C2330` scaled to alpha) for a **
 
 ---
 
-## 7. Do's and Don'ts
+## 8. Do's and Don'ts
 
 **Do**
 
 - Import and use **Braid components** and `BraidTheme` / `seekJobs` so colours, styles and type match production.
 - Prefer Braid components and theme tokens over custom CSS.
 - Use colour **Tones** in line with their **semantic meaning:** `critical`, `positive`, `caution`, `info`, `promote` ([documentation](https://seek-oss.github.io/braid-design-system/foundations/tones)).
-- Step **typography at tablet** when building responsive layouts (see §8).
+- Step **typography at tablet** when building responsive layouts (see §9).
 - Keep **primary actions** visually dominant with **formAccent**; secondary actions calmer in **neutral** tone.
 - Use **brandAccent** sparingly for hero actions and limit to a **maximum** of one per screen.
 
@@ -240,7 +273,7 @@ Shadows use **cool grey** at **8% opacity** (`#1C2330` scaled to alpha) for a **
 
 ---
 
-## 8. Responsive behavior
+## 9. Responsive behavior
 
 **Breakpoints** (`min-width`, from [breakpoints.ts](https://github.com/seek-oss/braid-design-system/blob/master/packages/braid-design-system/src/lib/css/breakpoints.ts)):
 
@@ -259,7 +292,7 @@ Shadows use **cool grey** at **8% opacity** (`#1C2330` scaled to alpha) for a **
 
 ---
 
-## 9. AI prompt guide
+## 10. AI prompt guide
 
 Copy-ready snippets for **AI-powered design and coding tools** (for example Figma Make, Cursor, or similar). They assume **SEEK Jobs** and the tokens in this document.
 
@@ -285,4 +318,4 @@ Copy-ready snippets for **AI-powered design and coding tools** (for example Figm
 
 ## Maintenance
 
-When `seekJobs` or **base tokens** change, update **§2–§6** and the **AI prompt guide** (**§9**) so this file stays aligned with the [packages/braid-design-system](https://github.com/seek-oss/braid-design-system/tree/master/packages/braid-design-system) package in [seek-oss/braid-design-system](https://github.com/seek-oss/braid-design-system). Add brand or content guidelines in new sections when your team is ready.
+When `seekJobs` or **base tokens** change, update **§2–§7** and the **AI prompt guide** (**§10**) so this file stays aligned with the [packages/braid-design-system](https://github.com/seek-oss/braid-design-system/tree/master/packages/braid-design-system) package in [seek-oss/braid-design-system](https://github.com/seek-oss/braid-design-system). Add brand or content guidelines in new sections when your team is ready.
