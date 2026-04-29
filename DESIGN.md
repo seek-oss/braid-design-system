@@ -20,7 +20,7 @@
 
 SEEK's interface is a clean and modern marketplace built on a single, cohesive visual language. It features a **confident magenta brand accent** on a **white** canvas.
 
-The layout feels **open** and is highly systematic: components never own their surrounding white space, instead all spacing is applied purposfully with layout components like Stack, Inline, Columns and Tiles, each consuming a shared scale of space tokens (see **5 Layout Principles** for details).
+The layout feels **open** and is highly systematic: components never own their surrounding white space, instead all spacing is applied purposfully with layout components like Stack, Inline, Columns and Tiles, each consuming a shared scale of space tokens (see **4 Layout and space scale** for details).
 
 The typography uses **SEEK Sans**, a custom font that feels warm and approachable while echoing the rounded geometry of components.
 
@@ -124,7 +124,31 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 
 ---
 
-## 4. Component stylings
+## 4. Layout and space scale
+
+**Base grid:** **4px**. All spacing tokens are multiples of the grid (`grid: 4`).
+
+**Spacing scale** (token × 4px → px):
+
+| Token      | Px  | Typical use                      |
+| ---------- | --- | -------------------------------- |
+| `xxsmall`  | 8   | Tight icon gaps, dense rows      |
+| `xsmall`   | 12  | Compact inline spacing           |
+| `small`    | 16  | Default tight stacks             |
+| `gutter`   | 24  | Horizontal page gutter           |
+| `medium`   | 24  | Standard block gap, card padding |
+| `large`    | 32  | Section separation               |
+| `xlarge`   | 48  | Large gaps, hero spacing         |
+| `xxlarge`  | 64  | Major vertical breaks            |
+| `xxxlarge` | 96  | Page-level rhythm                |
+
+**Whitespace:** Prefer **repeated use of one or two scale steps** in a screen rather than arbitrary pixel values. Align columns to the **gutter** and keep **related items closer** than **unrelated sections**.
+
+**Content max widths (px):** `xsmall` 400 · `small` 660 · `medium` 940 · `large` 1280 — use for readable copy columns and centered layouts.
+
+---
+
+## 5. Component stylings
 
 ### Buttons
 
@@ -177,30 +201,6 @@ Sizes are **px**; **line gap** is the Capsize line-gap token (implementation com
 | `Badge`        | `tone` · `weight` · `bleedY` · `title` · `data`                                                                               |
 | `List`         | `size` · `space` · `tone` · `type` · `icon` · `start` · `data`                                                                |
 | `Divider`      | `weight`                                                                                                                      |
-
----
-
-## 5. Layout principles
-
-**Base grid:** **4px**. All spacing tokens are multiples of the grid (`grid: 4`).
-
-**Spacing scale** (token × 4px → px):
-
-| Token      | Px  | Typical use                      |
-| ---------- | --- | -------------------------------- |
-| `xxsmall`  | 8   | Tight icon gaps, dense rows      |
-| `xsmall`   | 12  | Compact inline spacing           |
-| `small`    | 16  | Default tight stacks             |
-| `gutter`   | 24  | Horizontal page gutter           |
-| `medium`   | 24  | Standard block gap, card padding |
-| `large`    | 32  | Section separation               |
-| `xlarge`   | 48  | Large gaps, hero spacing         |
-| `xxlarge`  | 64  | Major vertical breaks            |
-| `xxxlarge` | 96  | Page-level rhythm                |
-
-**Whitespace:** Prefer **repeated use of one or two scale steps** in a screen rather than arbitrary pixel values. Align columns to the **gutter** and keep **related items closer** than **unrelated sections**.
-
-**Content max widths (px):** `xsmall` 400 · `small` 660 · `medium` 940 · `large` 1280 — use for readable copy columns and centered layouts.
 
 ---
 
