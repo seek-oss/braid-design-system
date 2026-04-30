@@ -53,7 +53,7 @@ const TitleLinkAnchor = ({
         opacity={!copying ? 0 : undefined}
         className={!copying && styles.showOnHover}
       >
-        {!copying ? <IconPositive tone="positive" /> : <IconLink />}
+        {copying ? <IconPositive tone="positive" /> : <IconLink />}
       </Box>
     </Link>
   </Box>
