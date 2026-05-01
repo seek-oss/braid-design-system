@@ -160,6 +160,8 @@ exports[`Badge 1`] = `
   exportType: component,
   props: {
     aria-describedby?: string
+    aria-hidden?: boolean
+    aria-label?: string
     bleedY?: boolean
     children: 
         | (string | number)[]

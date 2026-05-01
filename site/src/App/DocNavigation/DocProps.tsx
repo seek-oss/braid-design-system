@@ -1,4 +1,4 @@
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import { TitleLink } from '@braid-design-system/docs-ui';
 import type {
   NormalisedPropType,
   ExportDoc,
@@ -13,6 +13,7 @@ import {
   TooltipRenderer,
   TextLink,
   IconInfo,
+  Heading,
 } from 'braid-src/lib/components';
 import partition from 'lodash.partition';
 import { Fragment, useContext, useMemo } from 'react';
@@ -199,7 +200,10 @@ export const DocProps = () => {
         {Array.isArray(propsToDocument) ? (
           propsToDocument.map((c) => (
             <Stack space="large" key={c}>
-              <LinkableHeading level="3">{c}</LinkableHeading>
+              <Heading level="3">
+                <TitleLink>{c}</TitleLink>
+              </Heading>
+
               <ComponentProps componentName={c} />
             </Stack>
           ))
@@ -208,9 +212,9 @@ export const DocProps = () => {
         )}
 
         <Stack space="large">
-          <LinkableHeading level="3" component="h4">
-            Further References
-          </LinkableHeading>
+          <Heading level="3" component="h4">
+            <TitleLink>Further References</TitleLink>
+          </Heading>
           <Text>
             <TextLink href={sourceUrl}>View Source</TextLink>
           </Text>
