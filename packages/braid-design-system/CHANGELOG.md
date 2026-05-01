@@ -1,5 +1,44 @@
 # braid-design-system
 
+## 34.1.0
+
+### Minor Changes
+
+- **IconCompany**, **IconPeople**, **IconProfile**: Add active property ([#2024](https://github.com/seek-oss/braid-design-system/pull/2024))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+    <IconCompany active />
+    <IconPeople active />
+    <IconProfile active />
+  ```
+
+- **IconImageBroken**, **IconPhotoAdd**: Added components ([#2024](https://github.com/seek-oss/braid-design-system/pull/2024))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+    <IconImageBroken />
+    <IconPhotoAdd />
+  ```
+
+### Patch Changes
+
+- playroom: Rename snippets group from `Blocks` to `Sections` ([#2028](https://github.com/seek-oss/braid-design-system/pull/2028))
+
+- **Textarea:** Fix highlight ranges when content overflows ([#2030](https://github.com/seek-oss/braid-design-system/pull/2030))
+
+  Resolves an issue where long running scrolling content in a `Textarea` with `highlightRanges` could result in the highlights being misaligned due to the scrollbar.
+
+- **Textarea:** Ensure scroll bar insets field border ([#2030](https://github.com/seek-oss/braid-design-system/pull/2030))
+
+  Ensure the scroll bar sits inside of the field border when content overflows.
+
+- **TextDropdown:** Updated font-size of options to maintain consistency and accessibility ([#2021](https://github.com/seek-oss/braid-design-system/pull/2021))
+
+- **IconProfile**, **IconPeople**, **IconPersonAdd**: Update artwork, consistent with latest design language ([#2024](https://github.com/seek-oss/braid-design-system/pull/2024))
+
 ## 34.0.4
 
 ### Patch Changes
