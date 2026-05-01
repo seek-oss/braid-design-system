@@ -1,6 +1,12 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["./playroom.config.mts", "./src", "./scripts"],
+  "include": [
+    "./playroom.config.mts",
+    "./sku.config.ts",
+    "./sku.routes.ts",
+    "./src",
+    "./scripts"
+  ],
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "types": ["webpack-env"]

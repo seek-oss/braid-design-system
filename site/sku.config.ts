@@ -1,14 +1,18 @@
-const path = require('path');
+import { createRequire } from 'node:module';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
+import type { SkuConfig } from 'sku';
+
+import routes from './sku.routes';
+
+const require = createRequire(import.meta.url);
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-
-const routes = require('./sku.routes.js');
-
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const braidRoot = path.join(__dirname, '../packages/braid-design-system');
-const resolveFromBraid = (p) => path.join(braidRoot, p);
+const resolveFromBraid = (p: string) => path.join(braidRoot, p);
 
-/** @type {import("sku").SkuConfig} */
-module.exports = {
+const skuConfig: SkuConfig = {
   srcPaths: ['./src', resolveFromBraid('src')],
   clientEntry: './src/client.tsx',
   renderEntry: './src/render.tsx',
@@ -51,3 +55,5 @@ module.exports = {
   },
   skipPackageCompatibilityCompilation: ['lodash', 'prettier'],
 };
+
+export default skuConfig;
