@@ -15,10 +15,15 @@ export const titleLink = style([
   },
 ]);
 
-export const showOnHover = style({
+export const isCopying = style({});
+
+export const showIcon = style({
   selectors: {
-    [`${titleLink}:hover &, ${titleLink}:focus-visible &`]: {
+    [`${titleLink}:hover &, ${titleLink}:focus-visible &, ${isCopying}&`]: {
       opacity: 1,
+    },
+    [`${titleLink}:hover &`]: {
+      transition: vars.transition.fast,
     },
   },
 });

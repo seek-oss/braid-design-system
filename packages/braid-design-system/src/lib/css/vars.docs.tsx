@@ -32,7 +32,7 @@ const Row = ({
   hideCanvas?: boolean;
   darkCanvas?: boolean;
 }) => (
-  <Columns space="large" alignY="center">
+  <Columns space="large" alignY="center" collapseBelow="tablet">
     <Column>
       <Text>
         <Hidden below="tablet">vars{group ? `.${group}` : null}.</Hidden>
@@ -49,16 +49,22 @@ const Row = ({
   </Columns>
 );
 
-const ContentWidthValue = ({ var: varName }: { var: string }) => {
-  const [size, setSize] = useState(0);
+const CssVarValue = ({
+  var: varName,
+  property,
+}: {
+  var: string;
+  property: 'width' | 'transition';
+}) => {
+  const [value, setValue] = useState('');
   const { themeKey } = useThemeSettings();
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (ref.current && themeKey) {
-      setSize(ref.current.offsetWidth);
+      setValue(getComputedStyle(ref.current)[property]);
     }
-  }, [themeKey]);
+  }, [themeKey, property]);
 
   return (
     <>
@@ -68,9 +74,9 @@ const ContentWidthValue = ({ var: varName }: { var: string }) => {
         pointerEvents="none"
         opacity={0}
         ref={ref}
-        style={{ width: varName }}
+        style={{ [property]: varName } as any}
       />
-      {size > 0 ? `${size}px` : '&nbsp;'}
+      {value || '\u00a0'}
     </>
   );
 };
@@ -106,7 +112,7 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
           {index > 0 ? <Divider /> : null}
           <Row key={widthName} group="contentWidth" name={widthName} hideCanvas>
             <Text>
-              <ContentWidthValue var={widthVar} />
+              <CssVarValue var={widthVar} property="width" />
             </Text>
           </Row>
         </Fragment>
@@ -281,6 +287,27 @@ const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
           </Row>
         </Fragment>
       ))}
+    </Stack>
+  ),
+  transition: (
+    <Stack space="large">
+      {Object.entries(vars.transition).map(
+        ([transitionName, transitionVar], index) => (
+          <Fragment key={transitionName}>
+            {index > 0 ? <Divider /> : null}
+            <Row
+              key={transitionName}
+              group="transition"
+              name={transitionName}
+              hideCanvas
+            >
+              <Text>
+                <CssVarValue var={transitionVar} property="transition" />
+              </Text>
+            </Row>
+          </Fragment>
+        ),
+      )}
     </Stack>
   ),
 } as const;

@@ -43,15 +43,13 @@ const TitleLinkAnchor = ({
       href={`#${slug}`}
       className={styles.titleLink}
       onClick={onClick}
-      aria-label={triggerProps ? 'Copy link to clipboard' : undefined}
       {...triggerProps}
     >
       {children}
       <Box
         component="span"
-        transition="fast"
-        opacity={!copying ? 0 : undefined}
-        className={!copying && styles.showOnHover}
+        opacity={0}
+        className={[styles.showIcon, copying && styles.isCopying]}
       >
         {copying ? <IconPositive tone="positive" /> : <IconLink />}
       </Box>

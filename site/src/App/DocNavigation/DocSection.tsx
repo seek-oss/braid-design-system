@@ -1,5 +1,11 @@
 import { TitleLink } from '@braid-design-system/docs-ui';
-import { Stack, Badge, Heading, Bleed } from 'braid-src/lib/components';
+import {
+  Stack,
+  Badge,
+  Heading,
+  Bleed,
+  HiddenVisually,
+} from 'braid-src/lib/components';
 import type { ResponsiveSpace } from 'braid-src/lib/css/atoms/atoms';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 
@@ -13,53 +19,42 @@ export const DocSection = ({
 }: {
   section: ComponentExample;
   headingSpacing?: ResponsiveSpace;
-}) => (
-  <Stack space="small">
-    {section.deprecated ? (
-      <Bleed left="xsmall">
-        <Badge
-          tone="caution"
-          id={section.label ? `deprecated-${section.label}` : undefined}
-          aria-hidden
-        >
-          Deprecated
-        </Badge>
-      </Bleed>
-    ) : undefined}
-    <Stack space={headingSpacing}>
-      {section.label ? (
-        <Heading
-          level="3"
-          aria-describedby={
-            section.deprecated ? `deprecated-${section.label}` : undefined
-          }
-        >
-          <TitleLink label={section.label} copyable>
-            <span
-              aria-describedby={
-                section.deprecated ? `deprecated-${section.label}` : undefined
-              }
-            >
+}) => {
+  const { deprecated } = section;
+  return (
+    <Stack space="small">
+      {deprecated ? (
+        <Bleed left="xsmall">
+          <Badge tone="caution">Deprecated</Badge>
+        </Bleed>
+      ) : undefined}
+      <Stack space={headingSpacing}>
+        {section.label ? (
+          <Heading level="3">
+            <TitleLink label={section.label} copyable>
               {section.label}
-            </span>
-          </TitleLink>
-        </Heading>
-      ) : null}
-      {section.description ?? null}
-      {section.code || section.Example ? (
-        <PlayroomStateProvider>
-          <DocExample
-            code={section.code}
-            Example={section.Example}
-            Container={section.Container}
-            background={section.background}
-            showCodeByDefault={
-              section.showCodeByDefault || section.Example === undefined
-            }
-            playroom={section.playroom}
-          />
-        </PlayroomStateProvider>
-      ) : null}
+              {deprecated ? (
+                <HiddenVisually>, deprecated</HiddenVisually>
+              ) : null}
+            </TitleLink>
+          </Heading>
+        ) : null}
+        {section.description ?? null}
+        {section.code || section.Example ? (
+          <PlayroomStateProvider>
+            <DocExample
+              code={section.code}
+              Example={section.Example}
+              Container={section.Container}
+              background={section.background}
+              showCodeByDefault={
+                section.showCodeByDefault || section.Example === undefined
+              }
+              playroom={section.playroom}
+            />
+          </PlayroomStateProvider>
+        ) : null}
+      </Stack>
     </Stack>
-  </Stack>
-);
+  );
+};
