@@ -1,27 +1,41 @@
-const fs = require('fs');
-const path = require('path');
+/* eslint-disable no-sync */
+import fs from 'node:fs';
+import { createRequire } from 'node:module';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const extractExports = require('./extractExports');
-const undocumentedExports = require('./src/undocumentedExports.json');
+import extractExports from './scripts/extractExports';
+import undocumentedExports from './src/undocumentedExports.json';
+
+const require = createRequire(import.meta.url);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const braidSrc = '../packages/braid-design-system';
 
-const getExports = (relativePath, exportType = 'components') => {
+type Route = {
+  route: string;
+  name?: string;
+};
+
+const getExports = (
+  relativePath: string,
+  exportType: keyof typeof undocumentedExports = 'components',
+): string[] => {
   const sourcePath = require.resolve(
     path.join(__dirname, braidSrc, relativePath),
   );
   const source = extractExports(sourcePath);
 
   return source
-    .filter((x) => !undocumentedExports[exportType].includes(x))
+    .filter((x: string) => !undocumentedExports[exportType].includes(x))
     .sort();
 };
 
-const getPages = (relativePath) => {
+const getPages = (relativePath: string): string[] => {
   const sourcePath = require.resolve(path.join(__dirname, relativePath));
-  const source = fs.readFileSync(sourcePath, 'utf-8'); // eslint-disable-line no-sync
+  const source = fs.readFileSync(sourcePath, 'utf-8');
 
-  return source.match(/('.*')(?=:)/g).map((x) => x.split("'")[1]);
+  return (source.match(/('.*')(?=:)/g) ?? []).map((x) => x.split("'")[1]);
 };
 
 // TODO: COLORMODE RELEASE
@@ -35,7 +49,7 @@ const guideRoutes = getPages('src/App/routes/guides/index.ts');
 const foundationRoutes = getPages('src/App/routes/foundations/index.ts');
 const exampleRoutes = getPages('src/App/routes/examples/index.ts');
 
-module.exports = [
+const routes: Route[] = [
   { route: '/', name: 'home' },
   { route: '/releases', name: 'releases' },
   { route: '/gallery', name: 'gallery' },
@@ -50,16 +64,17 @@ module.exports = [
       { route: `/components/${name}/releases` },
       { route: `/components/${name}/snippets` },
       !name.startsWith('use') ? { route: `/components/${name}/props` } : null,
-    ].filter(Boolean),
+    ].filter((route): route is Route => route !== null),
   ),
   cssNames.flatMap((name) => [
     { route: `/css/${name}` },
     { route: `/css/${name}/releases` },
   ]),
-
   iconNames.flatMap((name) => [
     { route: `/components/${name}`, name },
     { route: `/components/${name}/props` },
     { route: `/components/${name}/releases` },
   ]),
 ].flat();
+
+export default routes;
