@@ -21,6 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
     "@braid-design-system/docs-ui": "workspace:*",
     "@braid-design-system/generate-component-docs": "workspace:*",
     "@braid-design-system/source.macro": "workspace:*",

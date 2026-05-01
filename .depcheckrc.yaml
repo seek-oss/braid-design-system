@@ -6,6 +6,7 @@ ignores:
   - braid-storybook
   - braid-src
   - site
+  - \@babel/preset-typescript
   # Used for generate-component-docs bin
   - tsx
   # Used for testing
