@@ -11,6 +11,9 @@ updated:
 
 **EXAMPLE USAGE:**
 ```ts
+import { vars } from 'braid-design-system/css':
+
 export const myStyle = style({
   transition: vars.transition.fast,
 });
+```
