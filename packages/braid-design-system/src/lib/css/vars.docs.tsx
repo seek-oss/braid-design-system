@@ -74,7 +74,7 @@ const CssVarValue = ({
         pointerEvents="none"
         opacity={0}
         ref={ref}
-        style={{ [property]: varName } as any}
+        style={{ [property]: varName }}
       />
       {value || '\u00a0'}
     </>
