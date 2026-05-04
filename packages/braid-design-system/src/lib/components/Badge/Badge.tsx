@@ -39,6 +39,8 @@ export interface BadgeProps {
   data?: DataAttributeMap;
   tabIndex?: BoxProps['tabIndex'];
   'aria-describedby'?: string;
+  'aria-hidden'?: boolean;
+  'aria-label'?: string;
 }
 
 const lightModeBackgroundForTone = {
@@ -74,6 +76,8 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
       data,
       tabIndex,
       'aria-describedby': ariaDescribedBy,
+      'aria-hidden': ariaHidden,
+      'aria-label': ariaLabel,
       ...restProps
     },
     ref,
@@ -112,6 +116,8 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
             ref={ref}
             tabIndex={tabIndex}
             aria-describedby={ariaDescribedBy}
+            aria-hidden={ariaHidden}
+            aria-label={ariaLabel}
             title={
               title ??
               (!ariaDescribedBy ? stringifyChildren(children) : undefined)

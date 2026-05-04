@@ -6,3 +6,5 @@ export {
   KeyboardShortcut,
   KeyboardIcon,
 } from './components/KeyboardShortcut/KeyboardShortcut';
+export { TitleLink } from './components/TitleLink/TitleLink';
+export { CategoryHeading } from './components/CategoryHeading/CategoryHeading';

@@ -1,4 +1,4 @@
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import { TitleLink } from '@braid-design-system/docs-ui';
 import {
   Box,
   Stack,
@@ -64,7 +64,10 @@ export const DocReleases = () => {
                 ) : null}
                 <Stack space="large">
                   <Spread space="small" alignY="center">
-                    <LinkableHeading level="3">{`v${version}`}</LinkableHeading>
+                    <Heading level="3">
+                      <TitleLink copyable>{`v${version}`}</TitleLink>
+                    </Heading>
+
                     {historyItem.time ? (
                       <Badge
                         bleedY
