@@ -1,0 +1,29 @@
+import { style } from '@vanilla-extract/css';
+import { atoms, vars } from 'braid-design-system/css';
+
+export const titleLink = style([
+  atoms({
+    display: 'flex',
+    borderRadius: 'small',
+    gap: 'xsmall',
+    alignItems: 'center',
+  }),
+  {
+    maxWidth: 'fit-content',
+    scrollMarginBlockStart: vars.space.small,
+    outlineOffset: vars.space.xsmall,
+  },
+]);
+
+export const isCopying = style({});
+
+export const showIcon = style({
+  selectors: {
+    [`${titleLink}:hover &, ${titleLink}:focus-visible &, ${isCopying}&`]: {
+      opacity: 1,
+    },
+    [`${titleLink}:hover &`]: {
+      transition: vars.transition.fast,
+    },
+  },
+});

@@ -1,4 +1,4 @@
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import { CategoryHeading, TitleLink } from '@braid-design-system/docs-ui';
 import {
   Box,
   Stack,
@@ -6,6 +6,7 @@ import {
   TextLink,
   Secondary,
   Text,
+  Heading,
 } from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { useContext, useMemo } from 'react';
@@ -196,7 +197,9 @@ export const DocDetails = () => {
 
               {'accessibility' in docs && docs.accessibility ? (
                 <Stack space={headingSpacing}>
-                  <LinkableHeading level="3">Accessibility</LinkableHeading>
+                  <Heading level="3">
+                    <TitleLink>Accessibility</TitleLink>
+                  </Heading>
                   {docs.accessibility}
                 </Stack>
               ) : null}
@@ -206,46 +209,55 @@ export const DocDetails = () => {
                   .filter(([, docSectionChildren]) =>
                     docSectionChildren.some(hasContent),
                   )
-                  .map(([sectionKey, docSectionChildren]) => (
-                    <Stack key={sectionKey} space="medium">
-                      <LinkableHeading level="2" label={sectionKey}>
-                        {getSectionHeading(sectionKey)}
-                      </LinkableHeading>
-                      <Stack space={innerSectionSpacing}>
-                        {docSectionChildren.map(
-                          (example: { label?: string }, index: number) => (
-                            <DocSection
-                              key={index}
-                              section={example}
-                              headingSpacing={headingSpacing}
-                            />
-                          ),
-                        )}
-                        {sectionKey === 'bestPractices' &&
-                        'alternatives' in docs &&
-                        docs.alternatives.length > 0 ? (
-                          <Stack space={headingSpacing}>
-                            <LinkableHeading level="3">
-                              Alternatives
-                            </LinkableHeading>
-                            <List space="medium">
-                              {docs.alternatives.map((alt) => (
-                                <Text key={`${alt.name}`}>
-                                  <TextLink
-                                    hitArea="large"
-                                    href={`/${alt.section || 'components'}/${alt.name}`}
-                                  >
-                                    {alt.name}
-                                  </TextLink>{' '}
-                                  <Secondary>— {alt.description}</Secondary>
-                                </Text>
-                              ))}
-                            </List>
-                          </Stack>
-                        ) : null}
+                  .map(([sectionKey, docSectionChildren]) => {
+                    const heading = getSectionHeading(sectionKey);
+                    return (
+                      <Stack key={sectionKey} space="medium">
+                        <CategoryHeading component="h2">
+                          <TitleLink copyable label={heading}>
+                            {heading}
+                          </TitleLink>
+                        </CategoryHeading>
+
+                        <Stack space={innerSectionSpacing}>
+                          {docSectionChildren.map(
+                            (example: { label?: string }, index: number) => (
+                              <DocSection
+                                key={index}
+                                section={example}
+                                headingSpacing={headingSpacing}
+                              />
+                            ),
+                          )}
+                          {sectionKey === 'bestPractices' &&
+                          'alternatives' in docs &&
+                          docs.alternatives.length > 0 ? (
+                            <Stack space={headingSpacing}>
+                              <Heading level="3">
+                                <TitleLink label="Alternatives">
+                                  Alternatives
+                                </TitleLink>
+                              </Heading>
+
+                              <List space="medium">
+                                {docs.alternatives.map((alt) => (
+                                  <Text key={`${alt.name}`}>
+                                    <TextLink
+                                      hitArea="large"
+                                      href={`/${alt.section || 'components'}/${alt.name}`}
+                                    >
+                                      {alt.name}
+                                    </TextLink>{' '}
+                                    <Secondary>— {alt.description}</Secondary>
+                                  </Text>
+                                ))}
+                              </List>
+                            </Stack>
+                          ) : null}
+                        </Stack>
                       </Stack>
-                    </Stack>
-                  ))}
+                    );
+                  })}
 
               {(docs.additional || []).map((example, index) => (
                 <DocSection
@@ -259,7 +271,9 @@ export const DocDetails = () => {
               !hasBestPractices &&
               docs.alternatives.length > 0 ? (
                 <Stack space={headingSpacing}>
-                  <LinkableHeading level="3">Alternatives</LinkableHeading>
+                  <Heading level="3">
+                    <TitleLink label="Alternatives">Alternatives</TitleLink>
+                  </Heading>
                   <List space="medium">
                     {docs.alternatives.map((alt) => (
                       <Text key={`${alt.name}`}>
