@@ -54,7 +54,7 @@ const CssVarValue = ({
   property,
 }: {
   var: string;
-  property: 'width' | 'transition';
+  property: keyof CSSStyleDeclaration;
 }) => {
   const [value, setValue] = useState('');
   const { themeKey } = useThemeSettings();
@@ -62,7 +62,7 @@ const CssVarValue = ({
 
   useEffect(() => {
     if (ref.current && themeKey) {
-      setValue(getComputedStyle(ref.current)[property]);
+      setValue(String(getComputedStyle(ref.current)[property]));
     }
   }, [themeKey, property]);
 

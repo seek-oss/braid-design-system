@@ -34,7 +34,7 @@ export const DocSection = ({
             <TitleLink label={section.label} copyable>
               {section.label}
               {deprecated ? (
-                <HiddenVisually component="span">, deprecated</HiddenVisually>
+                <HiddenVisually>, deprecated</HiddenVisually>
               ) : null}
             </TitleLink>
           </Heading>
