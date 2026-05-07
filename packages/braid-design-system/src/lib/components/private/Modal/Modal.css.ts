@@ -153,3 +153,49 @@ export const closeIconOffset = style({
   top: '-5px',
   right: '-5px',
 });
+
+export const twoColumnOverflow = style(
+  responsiveStyle({
+    mobile: { overflow: 'auto' },
+    tablet: { overflow: 'hidden' },
+  }),
+);
+
+export const illustrationLayout = style(
+  responsiveStyle({
+    tablet: {
+      display: 'flex',
+      overflow: 'hidden',
+      maxHeight: '60vh',
+    },
+  }),
+);
+
+export const illustrationLayoutContent = style(
+  responsiveStyle({
+    tablet: {
+      flex: 1,
+      maxHeight: '60vh',
+      overflow: 'auto',
+    },
+  }),
+);
+
+export const illustrationLayoutImage = style([
+  responsiveStyle({
+    mobile: {
+      order: -1,
+      aspectRatio: '16 / 9',
+    },
+    tablet: {
+      aspectRatio: 'auto',
+      maxHeight: '60vh',
+    }
+  }),
+  {
+    display: 'block',
+    flex: 1,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+]);

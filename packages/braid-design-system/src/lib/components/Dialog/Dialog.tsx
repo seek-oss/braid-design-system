@@ -19,23 +19,32 @@ export interface DialogProps extends Omit<
   keyof typeof modalStyle | 'width'
 > {
   width?: ModalProps['width'];
+  variant?: 'twoColumn';
 }
 
 export const Dialog: FC<DialogProps> = ({
   width = defaultWidth,
+  variant,
   ...restProps
-}) => <Modal width={width} {...restProps} {...modalStyle} />;
+}) => <Modal width={width} variant={variant} {...restProps} {...modalStyle} />;
 
 interface DialogContentProps extends Omit<
   ModalContentProps,
   keyof typeof modalStyle | 'width'
 > {
   width?: ModalContentProps['width'];
+  variant?: 'twoColumn';
 }
 
 export const DialogContent = ({
   width = defaultWidth,
+  variant,
   ...restProps
 }: DialogContentProps) => (
-  <ModalContent width={width} {...restProps} {...modalStyle} />
+  <ModalContent
+    width={width}
+    {...restProps}
+    {...modalStyle}
+    variant={variant}
+  />
 );

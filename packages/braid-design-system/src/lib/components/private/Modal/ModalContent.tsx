@@ -13,6 +13,8 @@ import { useFallbackId } from '../../../hooks/useFallbackId';
 import { Bleed } from '../../Bleed/Bleed';
 import { type BoxProps, Box } from '../../Box/Box';
 import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
+import { Column } from '../../Column/Column';
+import { Columns } from '../../Columns/Columns';
 import { Heading } from '../../Heading/Heading';
 import { pageBlockGutters } from '../../PageBlock/pageBlockGutters';
 import { Stack } from '../../Stack/Stack';
@@ -34,12 +36,14 @@ export interface ModalContentProps {
   width: BoxProps['maxWidth'] | 'content';
   description?: ReactNodeNoStrings;
   illustration?: ReactNodeNoStrings;
+  tempIllustration?: string;
   position: 'center' | 'right' | 'left';
   headingLevel: '2' | '3';
   scrollLock?: boolean;
   headingRef?: Ref<HTMLElement>;
   modalRef?: Ref<HTMLElement>;
   data?: DataAttributeMap;
+  variant?: 'twoColumn';
 }
 
 const modalPadding = { mobile: 'gutter', tablet: 'large' } as const;
@@ -85,6 +89,7 @@ export const ModalContent = ({
   width,
   closeLabel = 'Close',
   illustration,
+  tempIllustration,
   title,
   headingRef: headingRefProp,
   modalRef: modalRefProp,
@@ -92,6 +97,7 @@ export const ModalContent = ({
   position,
   headingLevel,
   data,
+  variant,
   ...restProps
 }: ModalContentProps) => {
   const resolvedId = useFallbackId(id);
@@ -130,6 +136,7 @@ export const ModalContent = ({
       alignItems="center"
       textAlign="left"
       justifyContent={justifyContent}
+      // style={variant === 'twoColumn' ? { maxHeight: '60vh' } : undefined}
     >
       <Box
         ref={modalRef}
@@ -157,7 +164,7 @@ export const ModalContent = ({
             flexDirection="column"
             background="surface"
             borderRadius={modalRadius}
-            overflow="auto"
+            overflow={variant !== 'twoColumn' ? 'auto' : undefined}
             position="relative"
             width={width !== 'content' ? 'full' : undefined}
             height={
@@ -168,37 +175,71 @@ export const ModalContent = ({
             className={[
               styles.pointerEventsAll,
               position === 'center' && styles.maxSize[position],
+              variant === 'twoColumn' && styles.twoColumnOverflow,
             ]}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
-            {illustration ? (
-              <Stack space="medium" align="center">
-                <Box paddingX="gutter">{illustration}</Box>
-                <ModalContentHeader
-                  title={title}
-                  headingLevel={headingLevel}
-                  description={description}
-                  descriptionId={descriptionId}
-                  center={Boolean(illustration)}
-                  ref={headingRef}
-                />
-              </Stack>
-            ) : (
-              <Box display="flex">
-                <Box width="full" minWidth={0}>
-                  <ModalContentHeader
-                    title={title}
-                    headingLevel={headingLevel}
-                    description={description}
-                    descriptionId={descriptionId}
-                    center={Boolean(illustration)}
-                    ref={headingRef}
-                  />
+            {variant === 'twoColumn' ? (
+              <Bleed
+                horizontal={{ mobile: 'medium', tablet: 'large' }}
+                top="large"
+                bottom="xlarge"
+              >
+                <Box className={styles.illustrationLayout} height="full">
+                  <Columns space="none" reverse collapseBelow="tablet">
+                    <Column>
+                      <Box
+                        className={styles.illustrationLayoutImage}
+                        width="full"
+                        height="full"
+                        style={{
+                          backgroundImage: `url(${tempIllustration})`,
+                        }}
+                      />
+                    </Column>
+                    <Column>
+                      <Box
+                        className={styles.illustrationLayoutContent}
+                        padding={{ mobile: 'medium', tablet: 'large' }}
+                      >
+                        {children}
+                      </Box>
+                    </Column>
+                  </Columns>
                 </Box>
-                <Box width="touchable" flexShrink={0} flexGrow={0} />
-              </Box>
+              </Bleed>
+            ) : (
+              <>
+                {illustration ? (
+                  <Stack space="medium" align="center">
+                    <Box paddingX="gutter">{illustration}</Box>
+                    <ModalContentHeader
+                      title={title}
+                      headingLevel={headingLevel}
+                      description={description}
+                      descriptionId={descriptionId}
+                      center={Boolean(illustration)}
+                      ref={headingRef}
+                    />
+                  </Stack>
+                ) : (
+                  <Box display="flex">
+                    <Box width="full" minWidth={0}>
+                      <ModalContentHeader
+                        title={title}
+                        headingLevel={headingLevel}
+                        description={description}
+                        descriptionId={descriptionId}
+                        center={Boolean(illustration)}
+                        ref={headingRef}
+                      />
+                    </Box>
+                    <Box width="touchable" flexShrink={0} flexGrow={0} />
+                  </Box>
+                )}
+                <Fragment>{children}</Fragment>
+              </>
             )}
-            <Fragment>{children}</Fragment>
           </Box>
         </RemoveScroll>
         <Box
