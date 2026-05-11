@@ -12,3 +12,9 @@ interface BraidSnippet extends Omit<
 }
 
 export type Snippets = BraidSnippet[];
+
+export type TemplateSnippets = Array<
+  BraidSnippet & {
+    name: string;
+  }
+>;
