@@ -20,6 +20,7 @@ import { pageBlockGutters } from '../../PageBlock/pageBlockGutters';
 import { Stack } from '../../Stack/Stack';
 import { IconClear } from '../../icons';
 import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
+import { ScrollContainer } from '../ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
@@ -27,7 +28,7 @@ import { normalizeKey } from '../normalizeKey';
 
 import * as styles from './Modal.css';
 
-export interface ModalContentProps {
+type ModalContentCommonProps = {
   id?: string;
   title: string;
   children: ReactNode;
@@ -35,16 +36,20 @@ export interface ModalContentProps {
   closeLabel?: string;
   width: BoxProps['maxWidth'] | 'content';
   description?: ReactNodeNoStrings;
-  illustration?: ReactNodeNoStrings;
-  tempIllustration?: string;
   position: 'center' | 'right' | 'left';
   headingLevel: '2' | '3';
   scrollLock?: boolean;
   headingRef?: Ref<HTMLElement>;
   modalRef?: Ref<HTMLElement>;
   data?: DataAttributeMap;
-  variant?: 'twoColumn';
-}
+};
+
+export type ModalContentProps =
+  | (ModalContentCommonProps & {
+      illustration?: ReactNodeNoStrings;
+      coverImage?: never;
+    })
+  | (ModalContentCommonProps & { coverImage?: string; illustration?: never });
 
 const modalPadding = { mobile: 'gutter', tablet: 'large' } as const;
 
@@ -89,7 +94,7 @@ export const ModalContent = ({
   width,
   closeLabel = 'Close',
   illustration,
-  tempIllustration,
+  coverImage,
   title,
   headingRef: headingRefProp,
   modalRef: modalRefProp,
@@ -97,7 +102,6 @@ export const ModalContent = ({
   position,
   headingLevel,
   data,
-  variant,
   ...restProps
 }: ModalContentProps) => {
   const resolvedId = useFallbackId(id);
@@ -116,10 +120,12 @@ export const ModalContent = ({
     }
   };
 
+  const isDrawer = position === 'left' || position === 'right';
+
   const justifyContent = (
     { left: 'flexStart', center: 'center', right: 'flexEnd' } as const
   )[position];
-  const modalRadius = position === 'center' ? 'xlarge' : undefined;
+  const modalRadius = !isDrawer ? 'xlarge' : undefined;
 
   return (
     <Box
@@ -131,12 +137,11 @@ export const ModalContent = ({
       onKeyDown={handleEscape}
       position="relative"
       width="full"
-      height="full"
+      className={isDrawer ? styles.drawerContainer : styles.dialogContainer}
       display="flex"
       alignItems="center"
       textAlign="left"
       justifyContent={justifyContent}
-      // style={variant === 'twoColumn' ? { maxHeight: '60vh' } : undefined}
     >
       <Box
         ref={modalRef}
@@ -144,10 +149,8 @@ export const ModalContent = ({
         display="flex"
         alignItems="center"
         justifyContent={justifyContent}
-        height={
-          position === 'right' || position === 'left' ? 'full' : undefined
-        }
-        overflow={position !== 'center' ? 'hidden' : undefined}
+        height={isDrawer ? 'full' : undefined}
+        overflow={isDrawer ? 'hidden' : undefined}
         boxShadow="large"
         borderRadius={modalRadius}
         width={width !== 'content' ? 'full' : undefined}
@@ -164,46 +167,78 @@ export const ModalContent = ({
             flexDirection="column"
             background="surface"
             borderRadius={modalRadius}
-            overflow={variant !== 'twoColumn' ? 'auto' : undefined}
+            overflow="auto"
             position="relative"
             width={width !== 'content' ? 'full' : undefined}
-            height={
-              position === 'right' || position === 'left' ? 'full' : undefined
-            }
+            height={isDrawer ? 'full' : undefined}
             paddingY={modalPadding}
-            paddingX={position !== 'center' ? pageBlockGutters : modalPadding}
+            paddingX={isDrawer ? pageBlockGutters : modalPadding}
             className={[
               styles.pointerEventsAll,
-              position === 'center' && styles.maxSize[position],
-              variant === 'twoColumn' && styles.twoColumnOverflow,
+              !isDrawer && styles.maxSize[position],
+              !isDrawer && coverImage && styles.twoColumnOverflow,
             ]}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
-            {variant === 'twoColumn' ? (
+            {coverImage && isDrawer && (
+              <Bleed horizontal={pageBlockGutters} top="large">
+                <Box
+                  className={styles.illustrationLayoutImage}
+                  width="full"
+                  style={{
+                    backgroundImage: `url(${coverImage})`,
+                  }}
+                />
+              </Bleed>
+            )}
+            {coverImage && !isDrawer ? (
               <Bleed
                 horizontal={{ mobile: 'medium', tablet: 'large' }}
-                top="large"
-                bottom="xlarge"
+                vertical="large"
               >
                 <Box className={styles.illustrationLayout} height="full">
                   <Columns space="none" reverse collapseBelow="tablet">
                     <Column>
                       <Box
-                        className={styles.illustrationLayoutImage}
+                        className={[
+                          styles.illustrationLayoutImage,
+                          styles.illustrationLayoutImageDialog,
+                        ]}
                         width="full"
                         height="full"
                         style={{
-                          backgroundImage: `url(${tempIllustration})`,
+                          backgroundImage: `url(${coverImage})`,
                         }}
                       />
                     </Column>
                     <Column>
-                      <Box
-                        className={styles.illustrationLayoutContent}
-                        padding={{ mobile: 'medium', tablet: 'large' }}
-                      >
-                        {children}
-                      </Box>
+                      <ScrollContainer direction="vertical">
+                        <Box
+                          className={styles.illustrationLayoutContent}
+                          padding={modalPadding}
+                        >
+                          <Stack space="large">
+                            <Box display="flex">
+                              <Box width="full" minWidth={0}>
+                                <ModalContentHeader
+                                  title={title}
+                                  headingLevel={headingLevel}
+                                  description={description}
+                                  descriptionId={descriptionId}
+                                  ref={headingRef}
+                                />
+                              </Box>
+                              <Box
+                                width="touchable"
+                                flexShrink={0}
+                                flexGrow={0}
+                              />
+                            </Box>
+
+                            <Fragment>{children}</Fragment>
+                          </Stack>
+                        </Box>
+                      </ScrollContainer>
                     </Column>
                   </Columns>
                 </Box>
@@ -251,8 +286,8 @@ export const ModalContent = ({
           display="flex"
           justifyContent="flexEnd"
           paddingTop={modalPadding}
-          paddingRight={position !== 'center' ? pageBlockGutters : modalPadding}
-          className={position === 'center' && styles.maxSize[position]}
+          paddingRight={isDrawer ? pageBlockGutters : modalPadding}
+          className={!isDrawer && styles.maxSize[position]}
         >
           <Bleed space="xsmall">
             <Box

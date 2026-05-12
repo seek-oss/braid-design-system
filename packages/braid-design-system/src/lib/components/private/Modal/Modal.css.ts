@@ -141,6 +141,8 @@ export const modalContainer = style({
       },
     },
   },
+  display: 'flex',
+  alignItems: 'center',
   maxHeight: fullHeightVar,
   maxWidth: fullWidthVar,
 });
@@ -154,9 +156,17 @@ export const closeIconOffset = style({
   right: '-5px',
 });
 
+export const drawerContainer = style({
+  height: '100%',
+});
+
+export const dialogContainer = style({
+  height: 'auto',
+});
+
 export const twoColumnOverflow = style(
   responsiveStyle({
-    mobile: { overflow: 'auto' },
+    // Sets the outer 2Col container to hidden to allow only the content side to scroll.
     tablet: { overflow: 'hidden' },
   }),
 );
@@ -176,7 +186,7 @@ export const illustrationLayoutContent = style(
     tablet: {
       flex: 1,
       maxHeight: '60vh',
-      overflow: 'auto',
+
     },
   }),
 );
@@ -184,18 +194,23 @@ export const illustrationLayoutContent = style(
 export const illustrationLayoutImage = style([
   responsiveStyle({
     mobile: {
-      order: -1,
       aspectRatio: '16 / 9',
     },
-    tablet: {
-      aspectRatio: 'auto',
-      maxHeight: '60vh',
-    }
   }),
   {
     display: 'block',
     flex: 1,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
   },
 ]);
+
+export const illustrationLayoutImageDialog = style(
+  responsiveStyle({
+    tablet: {
+      aspectRatio: 'auto',
+      maxHeight: '60vh',
+    },
+  }),
+);
