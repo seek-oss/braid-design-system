@@ -4,19 +4,24 @@ import { snippets as Alert } from './snippets/Alert';
 import { snippets as Autosuggest } from './snippets/Autosuggest';
 import { snippets as Badge } from './snippets/Badge';
 import { snippets as Bleed } from './snippets/Bleed';
+import { snippets as BrandedContainer } from './snippets/BrandedContainer';
 import { snippets as Button } from './snippets/Button';
 import { snippets as ButtonIcon } from './snippets/ButtonIcon';
 import { snippets as Card } from './snippets/Card';
+import { snippets as CardList } from './snippets/CardList';
 import { snippets as Checkbox } from './snippets/Checkbox';
 import { snippets as Columns } from './snippets/Columns';
+import { snippets as CompactPage } from './snippets/CompactPage';
 import { snippets as ContentBlock } from './snippets/ContentBlock';
 import { snippets as Dialog } from './snippets/Dialog';
 import { snippets as Disclosure } from './snippets/Disclosure';
+import { snippets as DividedList } from './snippets/DividedList';
 import { snippets as Divider } from './snippets/Divider';
 import { snippets as Drawer } from './snippets/Drawer';
 import { snippets as Dropdown } from './snippets/Dropdown';
 import { snippets as FieldLabel } from './snippets/FieldLabel';
 import { snippets as FieldMessage } from './snippets/FieldMessage';
+import { snippets as Form } from './snippets/Form';
 import { snippets as Heading } from './snippets/Heading';
 import { snippets as Inline } from './snippets/Inline';
 import { snippets as List } from './snippets/List';
@@ -32,11 +37,17 @@ import { snippets as PasswordField } from './snippets/PasswordField';
 import { snippets as RadioGroup } from './snippets/RadioGroup';
 import { snippets as Rating } from './snippets/Rating';
 import { snippets as Secondary } from './snippets/Secondary';
+import { snippets as SpaciousPage } from './snippets/SpaciousPage';
 import { snippets as Spread } from './snippets/Spread';
 import { snippets as Stack } from './snippets/Stack';
+import { snippets as StandardPage } from './snippets/StandardPage';
+import { snippets as StandardSection } from './snippets/StandardSection';
+import { snippets as SteppedSection } from './snippets/SteppedSection';
 import { snippets as Stepper } from './snippets/Stepper';
 import { snippets as Strong } from './snippets/Strong';
+import { snippets as TabbedSection } from './snippets/TabbedSection';
 import { snippets as Table } from './snippets/Table';
+import { snippets as TableSection } from './snippets/TableSection';
 import { snippets as Tabs } from './snippets/Tabs';
 import { snippets as Tag } from './snippets/Tag';
 import { snippets as Text } from './snippets/Text';
@@ -47,14 +58,21 @@ import { snippets as Textarea } from './snippets/Textarea';
 import { snippets as Tiles } from './snippets/Tiles';
 import { snippets as Toggle } from './snippets/Toggle';
 import { snippets as TooltipRenderer } from './snippets/TooltipRenderer';
-import { snippets as layouts } from './snippets/layouts';
-import { snippets as sections } from './snippets/sections';
 
 const groupOrder = ['Layouts', 'Sections', 'Components'];
 const allSnippets = [];
 const snippetsMap = {
-  layouts,
-  sections,
+  BrandedContainer,
+  CardList,
+  CompactPage,
+  DividedList,
+  Form,
+  SpaciousPage,
+  StandardPage,
+  StandardSection,
+  SteppedSection,
+  TabbedSection,
+  TableSection,
   Accordion,
   Actions,
   Alert,
