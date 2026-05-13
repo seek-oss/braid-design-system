@@ -34,7 +34,7 @@ export const makeTokens = ({
     displayName,
     typography: {
       fontFamily: 'SeekSans, "SeekSans Fallback", Arial, Tahoma, sans-serif',
-      webFont: 'https://www.seek.com.au/static/shared-web/seeksans.css',
+      webFont: 'https://www.seek.com/static/shared-web/seeksans.css',
       fontMetrics: {
         capHeight: 783,
         ascent: 1057,
