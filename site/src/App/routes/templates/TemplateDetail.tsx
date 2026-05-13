@@ -7,21 +7,18 @@ import {
   TextLink,
 } from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
-import { Navigate, useParams } from 'react-router';
+import { useParams } from 'react-router';
 
 import { DocExample } from '../../DocNavigation/DocExample';
 import { PageTitle } from '../../Seo/PageTitle';
 import { templateLookup } from '../../navigationHelpers';
 
 export const TemplateDetail = () => {
-  const { templateName = '' } = useParams<{
+  const { groupName = '', templateName = '' } = useParams<{
+    groupName: string;
     templateName: string;
   }>();
   const templateInfo = templateLookup[templateName];
-
-  if (!templateInfo) {
-    return <Navigate to="/templates" replace />;
-  }
 
   return (
     <Stack space="xxlarge">
@@ -29,11 +26,10 @@ export const TemplateDetail = () => {
       <Stack space="medium">
         <Text tone="secondary" size="small">
           <TextLink
-            href="/templates"
+            href={`/templates/${groupName}`}
             weight="weak"
             icon={<IconArrow direction="left" />}
           >
-            Templates /{' '}
             {templateInfo.group.charAt(0).toUpperCase() +
               templateInfo.group.slice(1)}
           </TextLink>

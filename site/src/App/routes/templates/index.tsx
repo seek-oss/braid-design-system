@@ -10,6 +10,7 @@ import {
 } from 'braid-src/lib/components';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
+import { Navigate, useParams } from 'react-router';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { PageTitle } from '../../Seo/PageTitle';
@@ -23,28 +24,11 @@ const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <>{children}</>
 );
 
-const groups: Record<
-  'layouts' | 'sections',
-  { description: string; templates: typeof allTemplateDocs }
-> = {
-  layouts: {
-    description:
-      'Full-page structural patterns defining content width, spacing, and page chrome.',
-    templates: [],
-  },
-  sections: {
-    description:
-      'Composable content blocks intended to slot into page layouts.',
-    templates: [],
-  },
+const groupDescriptions: Record<string, string> = {
+  layouts:
+    'Full-page structural patterns defining content width, spacing, and page chrome.',
+  sections: 'Composable content blocks intended to slot into page layouts.',
 };
-
-allTemplateDocs.forEach((template) => {
-  const { group } = template;
-  if (group in groups) {
-    groups[group as keyof typeof groups].templates.push(template);
-  }
-});
 
 const ScaledPreview = (docs: (typeof allTemplateDocs)[number]) => {
   const outerRef = useRef<HTMLDivElement>(null);
@@ -87,11 +71,14 @@ const ScaledPreview = (docs: (typeof allTemplateDocs)[number]) => {
   );
 };
 
-const TemplateTile = (docs: (typeof allTemplateDocs)[number]) => (
+const TemplateTile = ({
+  groupName,
+  ...docs
+}: (typeof allTemplateDocs)[number] & { groupName: string }) => (
   <PlayroomStateProvider>
     <Box position="relative">
       <Link
-        href={`/templates/${docs.slug}`}
+        href={`/templates/${groupName}/${docs.slug}`}
         className={styles.tileLinkOverlay}
       />
       <Stack space="small">
@@ -102,25 +89,32 @@ const TemplateTile = (docs: (typeof allTemplateDocs)[number]) => (
   </PlayroomStateProvider>
 );
 
-export const TemplatesPage = () => (
-  <Stack space="xxlarge">
-    <PageTitle title="Templates" />
-    <Heading level="1">Templates</Heading>
+export const TemplateGroup = () => {
+  const { groupName = '' } = useParams<{ groupName: string }>();
 
-    {Object.entries(groups).map(([group, { description, templates }]) => (
-      <Stack space="xlarge" key={group}>
-        <Stack space="medium">
-          <Heading component="h1" level="3">
-            {group.charAt(0).toUpperCase() + group.slice(1)}
-          </Heading>
-          {description ? <Text>{description}</Text> : null}
-        </Stack>
-        <Tiles key={group} space="xlarge" columns={[1, 2, 3]}>
-          {templates.map((docs) => (
-            <TemplateTile key={docs.name} {...docs} />
-          ))}
-        </Tiles>
+  const description = groupDescriptions[groupName];
+  const templates = allTemplateDocs.filter((doc) => doc.group === groupName);
+
+  if (!description) {
+    return <Navigate to="/templates/layouts" replace />;
+  }
+
+  const title = groupName.charAt(0).toUpperCase() + groupName.slice(1);
+
+  return (
+    <Stack space="xxlarge">
+      <PageTitle title={`${title} Templates`} />
+      <Stack space="medium">
+        <Heading component="h1" level="2">
+          {title}
+        </Heading>
+        <Text>{description}</Text>
       </Stack>
-    ))}
-  </Stack>
-);
+      <Tiles space="xlarge" columns={[1, 2, 3]}>
+        {templates.map((docs) => (
+          <TemplateTile key={docs.name} groupName={groupName} {...docs} />
+        ))}
+      </Tiles>
+    </Stack>
+  );
+};

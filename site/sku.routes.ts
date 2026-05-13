@@ -52,7 +52,9 @@ const templatesDir = path.join(
 );
 
 const getTemplateRoutes = (): NonNullable<SkuConfig['routes']> => {
-  const templateRoutes = [{ route: '/templates' }];
+  const templateRoutes: Array<{ route: string }> = [];
+  const groups = new Set<string>();
+
   const scanDir = (dir: string, depth = 0) => {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
       if (entry.isDirectory()) {
@@ -63,9 +65,12 @@ const getTemplateRoutes = (): NonNullable<SkuConfig['routes']> => {
           .split(path.sep);
         // expected shape: group/Name/Name.docs.tsx
         if (parts.length === 3) {
-          const [, name] = parts;
+          const [group, name] = parts;
+          groups.add(group);
           const routeName = name.replace(/([a-z0-9])([A-Z])/g, '$1-$2');
-          templateRoutes.push({ route: `/templates/${slugify(routeName)}` });
+          templateRoutes.push({
+            route: `/templates/${group}/${slugify(routeName)}`,
+          });
         }
       }
     }
@@ -73,7 +78,11 @@ const getTemplateRoutes = (): NonNullable<SkuConfig['routes']> => {
 
   scanDir(templatesDir);
 
-  return templateRoutes;
+  const groupRoutes = [...groups].map((group) => ({
+    route: `/templates/${group}`,
+  }));
+
+  return [...groupRoutes, ...templateRoutes];
 };
 
 const routes: SkuConfig['routes'] = [

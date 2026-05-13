@@ -6,6 +6,7 @@ import { matchPath, useLocation } from 'react-router';
 import { useConfig } from '../ConfigContext';
 import { isNew } from '../Updates';
 import {
+  allTemplateDocs,
   categorisedComponents,
   documentedComponents,
   documentedCss,
@@ -19,6 +20,8 @@ type BadgeLabel = 'New' | 'Deprecated';
 const componentsList = documentedComponents.filter(
   ({ category }) => category !== 'Logic',
 );
+
+const templateGroups = [...new Set(allTemplateDocs.map((doc) => doc.group))];
 
 interface SideNavigationProps {
   onSelect?: () => void;
@@ -40,7 +43,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
   const { pathname: currentPath } = useLocation();
   const isActive = useMemo(
     () => (path: string) =>
-      Boolean(matchPath({ path, end: true }, currentPath)),
+      Boolean(matchPath({ path, end: false }, currentPath)),
     [currentPath],
   );
 
@@ -94,16 +97,14 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
       />
 
       <SideNavigationSection
-        title="Patterns"
-        items={[
-          {
-            name: 'Templates',
-            path: `/templates`,
-            badge: 'New',
-            active: isActive('/templates'),
-            onClick: onSelect,
-          },
-        ]}
+        title="Templates"
+        items={templateGroups.map((group) => ({
+          name: group.at(0)?.toUpperCase() + group.slice(1),
+          path: `/templates/${group.toLowerCase()}`,
+          badge: 'New',
+          active: isActive(`/templates/${group.toLowerCase()}`),
+          onClick: onSelect,
+        }))}
       />
 
       <SideNavigationSection
