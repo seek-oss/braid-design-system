@@ -94,6 +94,19 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
       />
 
       <SideNavigationSection
+        title="Patterns"
+        items={[
+          {
+            name: 'Templates',
+            path: `/templates`,
+            badge: 'New',
+            active: isActive('/templates'),
+            onClick: onSelect,
+          },
+        ]}
+      />
+
+      <SideNavigationSection
         title="Examples"
         items={Object.entries(examples).map(([path, example]) => ({
           name: example.title,

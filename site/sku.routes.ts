@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import type { SkuConfig } from 'sku';
 
 import extractExports from './scripts/extractExports';
+import { slugify } from './src/slugify';
 import undocumentedExports from './src/undocumentedExports.json';
 
 const require = createRequire(import.meta.url);
@@ -44,12 +45,44 @@ const componentNames = getExports('src/lib/components/index.ts');
 const testNames = getExports('src/test.ts');
 const iconNames = getExports('src/lib/components/icons/index.ts');
 
+const templatesDir = path.join(
+  __dirname,
+  braidSrc,
+  'src/lib/playroom/templates',
+);
+
+const getTemplateRoutes = (): NonNullable<SkuConfig['routes']> => {
+  const templateRoutes = [{ route: '/templates' }];
+  const scanDir = (dir: string, depth = 0) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.isDirectory()) {
+        scanDir(path.join(dir, entry.name), depth + 1);
+      } else if (entry.isFile() && entry.name.endsWith('.docs.tsx')) {
+        const parts = path
+          .relative(templatesDir, path.join(dir, entry.name))
+          .split(path.sep);
+        // expected shape: group/Name/Name.docs.tsx
+        if (parts.length === 3) {
+          const [, name] = parts;
+          const routeName = name.replace(/([a-z0-9])([A-Z])/g, '$1-$2');
+          templateRoutes.push({ route: `/templates/${slugify(routeName)}` });
+        }
+      }
+    }
+  };
+
+  scanDir(templatesDir);
+
+  return templateRoutes;
+};
+
 const routes: SkuConfig['routes'] = [
   { route: '/', name: 'home' },
   { route: '/releases', name: 'releases' },
   { route: '/gallery', name: 'gallery' },
   getPages('src/App/routes/guides/index.ts'),
   getPages('src/App/routes/foundations/index.ts'),
+  getTemplateRoutes(),
   { route: '/foundations/iconography/browse', name: 'browseIcons' },
   getPages('src/App/routes/examples/index.ts'),
   { route: '/components', name: 'components' }, // Pre-rendering this route for url backwards compatibility.

@@ -3,11 +3,13 @@ import * as components from 'braid-src/lib/components';
 import type { Snippets } from 'braid-src/lib/components/private/Snippets';
 import * as testComponents from 'braid-src/test';
 
+import { slugify } from '../slugify';
 import type {
   ComponentDocs,
   ComponentExample,
   CssDoc,
   GalleryComponent,
+  TemplateDocs,
 } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
@@ -25,6 +27,12 @@ const galleryContext = require.context(
   'braid-src/lib/components/',
   true,
   /.gallery\.tsx$/,
+);
+
+const templateDocsContext = require.context(
+  'braid-src/lib/playroom/templates/',
+  true,
+  /\.docs\.tsx$/,
 );
 
 export const getComponentDocs = (componentName: string) => {
@@ -123,3 +131,46 @@ export const galleryComponents = galleryContext.keys().map((filename) => ({
   examples: galleryContext(filename).galleryItems
     .examples as ComponentExample[],
 }));
+
+// Template docs — path format: ./layouts/StandardPage/StandardPage.docs.tsx
+const getTemplateGroupAndNameFromFilename = (filename: string) => {
+  const match = filename.match(/^\.\/([^/]+)\/([^/]+)\/\2\.docs\.tsx$/);
+  if (!match) {
+    throw new Error(
+      `Unexpected template docs filename format: ${filename}. Expected ./group/Name/Name.docs.tsx`,
+    );
+  }
+  return { group: match[1], name: match[2] };
+};
+
+export const allTemplateDocs = templateDocsContext.keys().map((filename) => {
+  const { group, name } = getTemplateGroupAndNameFromFilename(filename);
+  const docs = templateDocsContext(filename).default as TemplateDocs;
+  return { group, name, slug: slugify(docs.title), ...docs };
+});
+
+export const getTemplateDoc = (group: string, name: string): TemplateDocs =>
+  templateDocsContext(`./${group}/${name}/${name}.docs.tsx`)
+    .default as TemplateDocs;
+
+/**
+ * Static lookup mapping slugged template names to template metadata.
+ * Enables URL-based resolution like `/templates/standard-page` without knowing the group.
+ *
+ * @example
+ * const info = templateLookup['standard-page'];
+ * // { group: 'layouts', name: 'StandardPage', slug: 'standard-page', title: 'Standard Page', ... }
+ */
+export const templateLookup = allTemplateDocs.reduce(
+  (acc, doc) => {
+    const slug = slugify(doc.title);
+    acc[slug] = doc;
+    return acc;
+  },
+  {} as Record<
+    string,
+    {
+      slug: string;
+    } & (typeof allTemplateDocs)[number]
+  >,
+);

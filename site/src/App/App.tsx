@@ -24,6 +24,8 @@ import { GalleryPage } from './routes/gallery';
 import guides from './routes/guides';
 import { HomePage } from './routes/home';
 import { ReleasesPage } from './routes/releases';
+import { TemplatesPage } from './routes/templates';
+import { TemplateDetail } from './routes/templates/TemplateDetail';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>
@@ -103,6 +105,11 @@ export const App = () => {
                 }).map(([path, routeProps]) => (
                   <Route key={path} {...routeProps} path={path} />
                 ))}
+                <Route path="/templates" element={<TemplatesPage />} />
+                <Route
+                  path="/templates/:templateName"
+                  element={<TemplateDetail />}
+                />
                 <Route path=":docsType">
                   <Route path=":docsName" element={<DocNavigation />}>
                     <Route path="" element={<DocDetails />} />

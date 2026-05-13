@@ -504,6 +504,9 @@ importers:
       '@vanilla-extract/css-utils':
         specifier: ^0.1.3
         version: 0.1.6
+      '@vanilla-extract/dynamic':
+        specifier: ^2.1.2
+        version: 2.1.5
       assert:
         specifier: ^2.1.0
         version: 2.1.0
