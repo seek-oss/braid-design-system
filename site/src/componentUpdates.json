@@ -5456,5 +5456,22 @@
         "summary": "**IconProfile**, **IconPeople**, **IconPersonAdd**: Update artwork, consistent with latest design language"
       }
     ]
+  },
+  {
+    "version": "34.2.0",
+    "updates": [
+      {
+        "updated": [
+          "vars"
+        ],
+        "summary": "**vars:** Exposed `vars.transition`. Transition CSS variables are available in stylesheets and runtime styles.\n\n**EXAMPLE USAGE:**\n```ts\nimport { vars } from 'braid-design-system/css':\n\nexport const myStyle = style({\n  transition: vars.transition.fast,\n});\n```"
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Added aria-hidden and aria-label props.\n\n`aria-hidden` allows a badge to be hidden from assistive technology\n\n`aria-label` allows visible badge text to be overridden with a more descriptive label for screen readers\n\n\n**EXAMPLE USAGE:**\n```jsx\n  <Badge aria-hidden>\n    Deprecated\n  </Badge>\n```\n\n```jsx\n  <Badge aria-label=\"You have 2 notifications\">\n    2\n  </Badge>\n```"
+      }
+    ]
   }
 ]
