@@ -1,5 +1,35 @@
 # @braid-design-system/docs-ui
 
+## 4.2.0
+
+### Minor Changes
+
+- **TitleLink:** Added new component for rendering linkable headings with an optional copy-to-clipboard interaction. Should be wrapped in your required typographic component. ([#2034](https://github.com/seek-oss/braid-design-system/pull/2034))
+
+  **EXAMPLE:**
+
+  ```jsx
+  <Heading level="2">
+    <TitleLink>Getting started</TitleLink>
+  </Heading>
+  ```
+
+  With copy-to-clipboard:
+
+  ```jsx
+  <CategoryHeading component="h3">
+    <TitleLink copyable>Appearance</TitleLink>
+  </CategoryHeading>
+  ```
+
+- **CategoryHeading:** Added new component for rendering category-style navigation headings. ([#2034](https://github.com/seek-oss/braid-design-system/pull/2034))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <CategoryHeading component="h2">Layout</CategoryHeading>
+  ```
+
 ## 4.1.0
 
 ### Minor Changes

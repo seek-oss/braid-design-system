@@ -1,5 +1,37 @@
 # braid-design-system
 
+## 34.2.0
+
+### Minor Changes
+
+- **vars:** Exposed `vars.transition`. Transition CSS variables are available in stylesheets and runtime styles. ([#2034](https://github.com/seek-oss/braid-design-system/pull/2034))
+
+  **EXAMPLE USAGE:**
+
+  ```ts
+  import { vars } from 'braid-design-system/css':
+
+  export const myStyle = style({
+    transition: vars.transition.fast,
+  });
+  ```
+
+- **Badge:** Added aria-hidden and aria-label props. ([#2034](https://github.com/seek-oss/braid-design-system/pull/2034))
+
+  `aria-hidden` allows a badge to be hidden from assistive technology
+
+  `aria-label` allows visible badge text to be overridden with a more descriptive label for screen readers
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Badge aria-hidden>Deprecated</Badge>
+  ```
+
+  ```jsx
+  <Badge aria-label="You have 2 notifications">2</Badge>
+  ```
+
 ## 34.1.0
 
 ### Minor Changes
