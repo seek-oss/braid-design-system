@@ -14,13 +14,13 @@ jobs:
       SITE_PREVIEW_PATH: preview/${{ github.sha }}
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           cache: pnpm
           node-version-file: package.json
@@ -30,7 +30,7 @@ jobs:
 
       - name: Cache babel-loader
         id: babel-loader-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: 'site/node_modules/.cache/babel-loader'
           key: babel-loader-${{ runner.os }}-${{ hashFiles('./pnpm-lock.yaml') }}
@@ -43,7 +43,7 @@ jobs:
           HEAD_BRANCH_NAME: ${{ github.head_ref }}
 
       - name: Deploy preview site
-        uses: JamesIves/github-pages-deploy-action@881db5376404c5c8d621010bcbec0310b58d5e29 # 4.6.0
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           folder: ./site/dist
