@@ -152,9 +152,17 @@ export const headingRoot = style({
 });
 
 export const closeIconOffset = style({
-  top: '-5px',
-  right: '-5px',
+  top: '-2px',
+  right: '-2px',
 });
+
+export const closeButtonSmallScreenInset = style(
+  responsiveStyle({
+    // mobile: {
+    //   paddingRight: vars.space.large,
+    // },
+  }),
+);
 
 export const drawerContainer = style({
   height: '100%',

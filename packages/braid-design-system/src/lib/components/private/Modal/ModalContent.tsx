@@ -179,6 +179,7 @@ export const ModalContent = ({
               !isDrawer && coverImage && styles.twoColumnOverflow,
             ]}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
+            background="formAccent"
           >
             {coverImage && isDrawer && (
               <Bleed horizontal={pageBlockGutters} top="large">
@@ -192,10 +193,7 @@ export const ModalContent = ({
               </Bleed>
             )}
             {coverImage && !isDrawer ? (
-              <Bleed
-                horizontal={{ mobile: 'medium', tablet: 'large' }}
-                vertical="large"
-              >
+              <Bleed space={modalPadding}>
                 <Box className={styles.illustrationLayout} height="full">
                   <Columns space="none" reverse collapseBelow="tablet">
                     <Column>
@@ -285,23 +283,23 @@ export const ModalContent = ({
           width="full"
           display="flex"
           justifyContent="flexEnd"
+          className={[!isDrawer && styles.maxSize[position]]}
           paddingTop={modalPadding}
           paddingRight={isDrawer ? pageBlockGutters : modalPadding}
-          className={!isDrawer && styles.maxSize[position]}
         >
-          <Bleed space="xsmall">
+          <Bleed space="xxsmall">
             <Box
               position="relative"
               background="surface"
               borderRadius="full"
-              padding="xsmall"
+              padding="xxsmall"
               className={[styles.closeIconOffset, styles.pointerEventsAll]}
             >
               <ButtonIcon
                 label={closeLabel}
                 icon={<IconClear tone="secondary" />}
                 variant="transparent"
-                size="large"
+                size="standard"
                 onClick={onClose}
               />
             </Box>
