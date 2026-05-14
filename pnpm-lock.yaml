@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  panzoom:
-    hash: 5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30
-    path: patches/panzoom.patch
-
 importers:
 
   .:
@@ -545,7 +540,7 @@ importers:
         version: 8.6.0
       panzoom:
         specifier: ^9.4.2
-        version: 9.4.4(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30)
+        version: 9.4.4
       playroom:
         specifier: 1.2.2
         version: 1.2.2(@swc/core@1.15.33)(babel-plugin-macros@3.1.0)(date-fns@2.30.0)(esbuild@0.27.7)(postcss@8.5.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(tslib@2.8.1)
@@ -18578,7 +18573,7 @@ snapshots:
     dependencies:
       quansync: 0.2.11
 
-  panzoom@9.4.4(patch_hash=5d63eff6227623c157056cd2a28645d62364fa35f4e25573c01de6fed6026a30):
+  panzoom@9.4.4:
     dependencies:
       amator: 1.1.0
       ngraph.events: 1.4.0
