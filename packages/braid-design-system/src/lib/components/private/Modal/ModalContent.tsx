@@ -1,10 +1,10 @@
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import {
   type ReactNode,
   type KeyboardEvent,
   type Ref,
   useRef,
   forwardRef,
-  Fragment,
   useId,
 } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
@@ -44,47 +44,150 @@ type ModalContentCommonProps = {
   data?: DataAttributeMap;
 };
 
-export type ModalContentProps =
-  | (ModalContentCommonProps & {
-      illustration?: ReactNodeNoStrings;
-      coverImage?: never;
-    })
-  | (ModalContentCommonProps & { coverImage?: string; illustration?: never });
+export type ModalContentProps = ModalContentCommonProps &
+  (
+    | {
+        coverImage?: never;
+        illustration?: ReactNodeNoStrings;
+      }
+    | { coverImage?: string; illustration?: never }
+  );
+
+type ModalContentInternalProps = ModalContentCommonProps & {
+  coverImage?: string;
+  illustration?: ReactNodeNoStrings;
+};
 
 const modalPadding = { mobile: 'gutter', tablet: 'large' } as const;
 
 interface ModalContentHeaderProps extends Pick<
   ModalContentProps,
-  'headingLevel' | 'description'
+  'headingLevel' | 'description' | 'illustration' | 'title'
 > {
-  title: string;
   descriptionId: string;
-  center?: boolean;
+  reserveCloseArea?: boolean;
 }
 const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
-  ({ title, headingLevel, description, descriptionId, center }, ref) => (
-    <Stack
-      space={
-        headingLevel === '2' ? { mobile: 'small', tablet: 'medium' } : 'small'
+  (
+    {
+      title,
+      headingLevel,
+      description,
+      descriptionId,
+      illustration,
+      reserveCloseArea,
+    },
+    ref,
+  ) => {
+    const header = (
+      <Stack
+        space={
+          headingLevel === '2' ? { mobile: 'small', tablet: 'medium' } : 'small'
+        }
+      >
+        <Heading
+          level={headingLevel}
+          align={illustration ? 'center' : undefined}
+        >
+          <Box
+            ref={ref}
+            tabIndex={-1}
+            component="span"
+            position="relative"
+            outline="focus"
+            borderRadius="small" // Ensures focus ring is rounded
+            className={styles.headingRoot}
+          >
+            {title}
+          </Box>
+        </Heading>
+        {description ? <Box id={descriptionId}>{description}</Box> : null}
+      </Stack>
+    );
+
+    const resolvedLayout = illustration ? (
+      <Stack space="medium" align="center">
+        <Box paddingX="gutter">{illustration}</Box>
+        {header}
+      </Stack>
+    ) : (
+      header
+    );
+
+    return reserveCloseArea && !illustration ? (
+      <Box display="flex">
+        <Box width="full" minWidth={0}>
+          {resolvedLayout}
+        </Box>
+        <Box width="touchable" flexShrink={0} flexGrow={0} />
+      </Box>
+    ) : (
+      resolvedLayout
+    );
+  },
+);
+
+const ModalContentScrollLayout = ({
+  children,
+  scrollColumnNotDialog,
+}: {
+  children: ReactNode;
+  scrollColumnNotDialog?: boolean;
+}) => (
+  <ScrollContainer direction="vertical">
+    {/**
+     * Separationg of maxHeight and padding to avoid ScrollContainer clipping
+     * padding at the end of the content.
+     */}
+    <Box
+      className={
+        scrollColumnNotDialog ? styles.coverImageHeightLimit : undefined
       }
     >
-      <Heading level={headingLevel} align={center ? 'center' : undefined}>
-        <Box
-          ref={ref}
-          tabIndex={-1}
-          component="span"
-          position="relative"
-          outline="focus"
-          borderRadius="small" // Ensures focus ring is rounded
-          className={styles.headingRoot}
-        >
-          {title}
-        </Box>
-      </Heading>
-      {description ? <Box id={descriptionId}>{description}</Box> : null}
-    </Stack>
-  ),
+      <Box
+        display="flex"
+        gap="large"
+        flexDirection="column"
+        padding={modalPadding}
+      >
+        {children}
+      </Box>
+    </Box>
+  </ScrollContainer>
 );
+
+const ModalCoverImageLayout = ({
+  width,
+  image,
+  children,
+}: {
+  width: ModalContentProps['width'];
+  image: string;
+  children: ReactNode;
+}) => {
+  const coverImage = (
+    <Box
+      className={styles.coverImage}
+      width="full"
+      height="full"
+      style={assignInlineVars({
+        [styles.coverImageVar]: `url(${image})`,
+      })}
+    />
+  );
+
+  return width === 'xsmall' ? (
+    <Stack space="none">
+      {coverImage}
+      <>{children}</>
+    </Stack>
+  ) : (
+    <Columns space="none" collapseBelow="tablet" reverse>
+      <Column>{coverImage}</Column>
+      <Column>{children}</Column>
+    </Columns>
+  );
+};
 
 export const ModalContent = ({
   id,
@@ -103,7 +206,7 @@ export const ModalContent = ({
   headingLevel,
   data,
   ...restProps
-}: ModalContentProps) => {
+}: ModalContentInternalProps) => {
   const resolvedId = useFallbackId(id);
   const descriptionId = useId();
 
@@ -121,11 +224,30 @@ export const ModalContent = ({
   };
 
   const isDrawer = position === 'left' || position === 'right';
+  const coverImageEnabled = coverImage && !isDrawer;
+  const allowColumnLayout = Boolean(coverImageEnabled) && width !== 'xsmall';
 
   const justifyContent = (
     { left: 'flexStart', center: 'center', right: 'flexEnd' } as const
   )[position];
   const modalRadius = !isDrawer ? 'xlarge' : undefined;
+
+  const modalLayout = (
+    <ModalContentScrollLayout scrollColumnNotDialog={allowColumnLayout}>
+      <ModalContentHeader
+        title={title}
+        headingLevel={headingLevel}
+        description={description}
+        descriptionId={descriptionId}
+        illustration={
+          illustration && !coverImageEnabled ? illustration : undefined
+        }
+        ref={headingRef}
+        reserveCloseArea
+      />
+      {children}
+    </ModalContentScrollLayout>
+  );
 
   return (
     <Box
@@ -137,7 +259,7 @@ export const ModalContent = ({
       onKeyDown={handleEscape}
       position="relative"
       width="full"
-      className={isDrawer ? styles.drawerContainer : styles.dialogContainer}
+      height={isDrawer ? 'full' : undefined}
       display="flex"
       alignItems="center"
       textAlign="left"
@@ -150,7 +272,7 @@ export const ModalContent = ({
         alignItems="center"
         justifyContent={justifyContent}
         height={isDrawer ? 'full' : undefined}
-        overflow={isDrawer ? 'hidden' : undefined}
+        overflow="hidden"
         boxShadow="large"
         borderRadius={modalRadius}
         width={width !== 'content' ? 'full' : undefined}
@@ -171,108 +293,23 @@ export const ModalContent = ({
             position="relative"
             width={width !== 'content' ? 'full' : undefined}
             height={isDrawer ? 'full' : undefined}
-            paddingY={modalPadding}
-            paddingX={isDrawer ? pageBlockGutters : modalPadding}
-            className={[
-              styles.pointerEventsAll,
-              !isDrawer && styles.maxSize[position],
-              !isDrawer && coverImage && styles.twoColumnOverflow,
-            ]}
+            className={{
+              [styles.pointerEventsAll]: true,
+              [styles.maxSize[position]]: !isDrawer,
+              [styles.hideOverflowAboveMobile]: allowColumnLayout,
+              [styles.forceHeightLimit]: true,
+            }}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
-            background="formAccent"
           >
-            {coverImage && isDrawer && (
-              <Bleed horizontal={pageBlockGutters} top="large">
-                <Box
-                  className={styles.illustrationLayoutImage}
-                  width="full"
-                  style={{
-                    backgroundImage: `url(${coverImage})`,
-                  }}
-                />
-              </Bleed>
-            )}
-            {coverImage && !isDrawer ? (
-              <Bleed space={modalPadding}>
-                <Box className={styles.illustrationLayout} height="full">
-                  <Columns space="none" reverse collapseBelow="tablet">
-                    <Column>
-                      <Box
-                        className={[
-                          styles.illustrationLayoutImage,
-                          styles.illustrationLayoutImageDialog,
-                        ]}
-                        width="full"
-                        height="full"
-                        style={{
-                          backgroundImage: `url(${coverImage})`,
-                        }}
-                      />
-                    </Column>
-                    <Column>
-                      <ScrollContainer direction="vertical">
-                        <Box
-                          className={styles.illustrationLayoutContent}
-                          padding={modalPadding}
-                        >
-                          <Stack space="large">
-                            <Box display="flex">
-                              <Box width="full" minWidth={0}>
-                                <ModalContentHeader
-                                  title={title}
-                                  headingLevel={headingLevel}
-                                  description={description}
-                                  descriptionId={descriptionId}
-                                  ref={headingRef}
-                                />
-                              </Box>
-                              <Box
-                                width="touchable"
-                                flexShrink={0}
-                                flexGrow={0}
-                              />
-                            </Box>
-
-                            <Fragment>{children}</Fragment>
-                          </Stack>
-                        </Box>
-                      </ScrollContainer>
-                    </Column>
-                  </Columns>
-                </Box>
-              </Bleed>
-            ) : (
-              <>
-                {illustration ? (
-                  <Stack space="medium" align="center">
-                    <Box paddingX="gutter">{illustration}</Box>
-                    <ModalContentHeader
-                      title={title}
-                      headingLevel={headingLevel}
-                      description={description}
-                      descriptionId={descriptionId}
-                      center={Boolean(illustration)}
-                      ref={headingRef}
-                    />
-                  </Stack>
-                ) : (
-                  <Box display="flex">
-                    <Box width="full" minWidth={0}>
-                      <ModalContentHeader
-                        title={title}
-                        headingLevel={headingLevel}
-                        description={description}
-                        descriptionId={descriptionId}
-                        center={Boolean(illustration)}
-                        ref={headingRef}
-                      />
-                    </Box>
-                    <Box width="touchable" flexShrink={0} flexGrow={0} />
-                  </Box>
-                )}
-                <Fragment>{children}</Fragment>
-              </>
-            )}
+            <ScrollContainer direction="vertical">
+              {coverImageEnabled ? (
+                <ModalCoverImageLayout width={width} image={coverImage}>
+                  {modalLayout}
+                </ModalCoverImageLayout>
+              ) : (
+                modalLayout
+              )}
+            </ScrollContainer>
           </Box>
         </RemoveScroll>
         <Box
@@ -283,23 +320,22 @@ export const ModalContent = ({
           width="full"
           display="flex"
           justifyContent="flexEnd"
-          className={[!isDrawer && styles.maxSize[position]]}
           paddingTop={modalPadding}
           paddingRight={isDrawer ? pageBlockGutters : modalPadding}
+          className={!isDrawer && styles.maxSize[position]}
         >
-          <Bleed space="xxsmall">
+          <Bleed space="xsmall" horizontal="xxsmall">
             <Box
               position="relative"
               background="surface"
               borderRadius="full"
-              padding="xxsmall"
+              padding="xsmall"
               className={[styles.closeIconOffset, styles.pointerEventsAll]}
             >
               <ButtonIcon
                 label={closeLabel}
                 icon={<IconClear tone="secondary" />}
                 variant="transparent"
-                size="standard"
                 onClick={onClose}
               />
             </Box>

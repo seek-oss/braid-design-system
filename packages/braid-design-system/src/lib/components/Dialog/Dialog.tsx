@@ -16,7 +16,7 @@ const modalStyle = {
 
 export type DialogProps = Omit<
   ModalProps,
-  keyof typeof modalStyle | 'width' | 'coverImage'
+  keyof typeof modalStyle | 'width'
 > & {
   width?: ModalProps['width'];
 };
@@ -28,7 +28,7 @@ export const Dialog: FC<DialogProps> = ({
 
 type DialogContentProps = Omit<
   ModalContentProps,
-  keyof typeof modalStyle | 'width' | 'coverImage'
+  keyof typeof modalStyle | 'width'
 > & {
   width?: ModalContentProps['width'];
 };

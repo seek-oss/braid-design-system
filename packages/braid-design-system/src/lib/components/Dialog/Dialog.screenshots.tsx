@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { setChromatic } from 'braid-storybook/chromatic';
 
 import { Inline, Stack, Box, Text } from '../';
@@ -7,6 +8,7 @@ import { externalGutter } from '../private/Modal/ModalExternalGutter';
 
 import { DialogContent } from './Dialog';
 
+import { coverImagePlaceholderUrl } from './coverImagePlaceholder.css';
 import * as styles from '../private/Modal/Modal.css';
 
 const meta = {
@@ -27,7 +29,14 @@ const meta = {
       </Box>
       <Box position="relative">
         <Box position="absolute" inset={0} className={styles.backdrop} />
-        <Box position="relative" zIndex="modal" padding={externalGutter}>
+        <Box
+          position="relative"
+          zIndex="modal"
+          padding={externalGutter}
+          style={assignInlineVars({
+            [styles.overrideMaxHeightForScreenshot]: '500px',
+          })}
+        >
           <Story />
         </Box>
       </Box>
@@ -42,6 +51,114 @@ export const DefaultLayout: Story = {
   name: 'Default layout',
   args: {
     title: 'Default test',
+  },
+};
+
+export const CoverImageLayout: Story = {
+  name: 'Cover Image layout (no width)',
+  args: {
+    title: 'Cover image test',
+    coverImage: coverImagePlaceholderUrl,
+    children: (
+      <Stack space="xlarge">
+        <Placeholder width="100%" height={100} />
+        <Inline space="small">
+          <Placeholder height={44} width={80} label="OK" />
+          <Placeholder height={44} width={80} label="Cancel" />
+        </Inline>
+      </Stack>
+    ),
+  },
+};
+
+export const CoverImageXsmallWidthLayout: Story = {
+  name: 'Cover Image layout (xsmall width)',
+  args: {
+    title: 'Cover image test',
+    coverImage: coverImagePlaceholderUrl,
+    width: 'xsmall',
+    children: (
+      <Stack space="xlarge">
+        <Placeholder width="100%" height={1000} />
+      </Stack>
+    ),
+  },
+};
+
+export const CoverImageSmallWidthLayout: Story = {
+  name: 'Cover Image layout (small width)',
+  args: {
+    title: 'Cover image test',
+    coverImage: coverImagePlaceholderUrl,
+    width: 'small',
+    children: (
+      <Stack space="xlarge">
+        <Placeholder width="100%" height={1000} />
+      </Stack>
+    ),
+  },
+};
+
+export const CoverImageMediumWidthLayout: Story = {
+  name: 'Cover Image layout (medium width)',
+  args: {
+    title: 'Cover image test',
+    coverImage: coverImagePlaceholderUrl,
+    width: 'medium',
+    children: (
+      <Stack space="xlarge">
+        <Placeholder width="100%" height={1000} />
+      </Stack>
+    ),
+  },
+};
+
+export const CoverImageLargeWidthLayout: Story = {
+  name: 'Cover Image layout (large width)',
+  args: {
+    title: 'Cover image test',
+    coverImage: coverImagePlaceholderUrl,
+    width: 'large',
+    children: (
+      <Stack space="xlarge">
+        <Placeholder width="100%" height={1000} />
+      </Stack>
+    ),
+  },
+};
+
+export const CoverImageWithOverflowLayout: Story = {
+  name: 'Cover Image layout (Overflow)',
+  args: {
+    title: 'Cover image test',
+    coverImage: coverImagePlaceholderUrl,
+    children: (
+      <Stack space="xlarge">
+        <Placeholder width="100%" height={1000} />
+        <Inline space="small">
+          <Placeholder height={44} width={80} label="OK" />
+          <Placeholder height={44} width={80} label="Cancel" />
+        </Inline>
+      </Stack>
+    ),
+  },
+};
+
+export const CoverImageXsmallWidthWithOverflowLayout: Story = {
+  name: 'Cover Image layout (Xsmall width, with overflow)',
+  args: {
+    title: 'Cover image test',
+    coverImage: coverImagePlaceholderUrl,
+    width: 'xsmall',
+    children: (
+      <Stack space="xlarge">
+        <Placeholder width="100%" height={1000} />
+        <Inline space="small">
+          <Placeholder height={44} width={80} label="OK" />
+          <Placeholder height={44} width={80} label="Cancel" />
+        </Inline>
+      </Stack>
+    ),
   },
 };
 

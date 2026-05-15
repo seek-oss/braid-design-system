@@ -1,4 +1,4 @@
-import { createVar, style } from '@vanilla-extract/css';
+import { createVar, fallbackVar, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
 import { atoms } from '../../../css/atoms/atoms';
@@ -156,69 +156,43 @@ export const closeIconOffset = style({
   right: '-2px',
 });
 
-export const closeButtonSmallScreenInset = style(
-  responsiveStyle({
-    // mobile: {
-    //   paddingRight: vars.space.large,
-    // },
-  }),
-);
-
-export const drawerContainer = style({
-  height: '100%',
-});
-
-export const dialogContainer = style({
-  height: 'auto',
-});
-
-export const twoColumnOverflow = style(
-  responsiveStyle({
-    // Sets the outer 2Col container to hidden to allow only the content side to scroll.
-    tablet: { overflow: 'hidden' },
-  }),
-);
-
-export const illustrationLayout = style(
+export const hideOverflowAboveMobile = style(
   responsiveStyle({
     tablet: {
-      display: 'flex',
       overflow: 'hidden',
-      maxHeight: '60vh',
     },
   }),
 );
 
-export const illustrationLayoutContent = style(
+export const maximumHeightForCoverImage = '60vh';
+export const overrideMaxHeightForScreenshot = createVar();
+
+export const forceHeightLimit = style({
+  maxHeight: overrideMaxHeightForScreenshot,
+});
+
+export const coverImageHeightLimit = style(
   responsiveStyle({
     tablet: {
-      flex: 1,
-      maxHeight: '60vh',
-
+      maxHeight: fallbackVar(
+        overrideMaxHeightForScreenshot,
+        maximumHeightForCoverImage,
+      ),
     },
   }),
 );
 
-export const illustrationLayoutImage = style([
+export const coverImageVar = createVar();
+export const coverImage = style([
   responsiveStyle({
     mobile: {
       aspectRatio: '16 / 9',
     },
   }),
   {
-    display: 'block',
-    flex: 1,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
+    backgroundImage: coverImageVar,
   },
 ]);
-
-export const illustrationLayoutImageDialog = style(
-  responsiveStyle({
-    tablet: {
-      aspectRatio: 'auto',
-      maxHeight: '60vh',
-    },
-  }),
-);

@@ -8,6 +8,7 @@ import buildDataAttributes, {
 } from '../buildDataAttributes';
 
 import * as styles from './ScrollContainer.css';
+import { scrollbars } from '../scrollbars.css';
 
 const scrollOffset = 2; // 2 instead of 1 to account for rounding errors in some browsers
 
@@ -82,7 +83,7 @@ export const ScrollContainer = ({
       className={[
         styles.container,
         styles.mask,
-        hideScrollbar ? styles.hideScrollbar : null,
+        hideScrollbar ? styles.hideScrollbar : scrollbars,
         styles.fadeSize[fadeSize],
         styles.direction[direction],
       ]}
