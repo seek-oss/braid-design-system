@@ -14,3 +14,5 @@ ignores:
   - vitest
   - \@vitejs/plugin-react
   - \@vanilla-extract/vite-plugin
+  # Depcheck doesn't understand a file within a package importing its own entrypoint
+  - braid-design-system

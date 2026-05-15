@@ -1,7 +1,3 @@
-import dedent from 'dedent';
-import Code from 'site/App/Code/Code';
-import type { CssDoc } from 'site/types';
-
 import {
   Alert,
   Notice,
@@ -9,7 +5,10 @@ import {
   Strong,
   Text,
   TextLink,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
+import dedent from 'dedent';
+import Code from 'site/App/Code/Code';
+import type { CssDoc } from 'site/types';
 
 const docs: CssDoc = {
   usage: (
@@ -93,7 +92,7 @@ const docs: CssDoc = {
               // CustomFormComponent.tsx
               import { Box } from 'braid-design-system';
               import * as styles from './CustomFormComponent.css.ts';
-              
+
               export const CustomFormComponent = () => (
                 <Box>
                   <Box component="input" type="range" className={styles.hiddenField} />
@@ -144,7 +143,7 @@ const docs: CssDoc = {
                 transition: outlineTransition,
                 ...restOutlineStyles
                } = outlineStyle(/* selector string */);
-                
+
               export const visualFocus = style([
                 {
                   transition: [vars.transition.fast, outlineTransition].join(', '),
