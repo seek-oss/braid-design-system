@@ -14,24 +14,24 @@ const modalStyle = {
   headingLevel: '3',
 } as const;
 
-export type DialogProps = Omit<
+export interface DialogProps extends Omit<
   ModalProps,
   keyof typeof modalStyle | 'width'
-> & {
+> {
   width?: ModalProps['width'];
-};
+}
 
 export const Dialog: FC<DialogProps> = ({
   width = defaultWidth,
   ...restProps
 }) => <Modal width={width} {...restProps} {...modalStyle} />;
 
-type DialogContentProps = Omit<
+interface DialogContentProps extends Omit<
   ModalContentProps,
   keyof typeof modalStyle | 'width'
-> & {
+> {
   width?: ModalContentProps['width'];
-};
+}
 
 export const DialogContent = ({
   width = defaultWidth,

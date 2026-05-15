@@ -2998,6 +2998,7 @@ exports[`Dialog 1`] = `
   props: {
     children: ReactNode
     closeLabel?: string
+    coverImage?: string
     data?: DataAttributeMap
     description?: ReactNodeNoStrings
     id?: string

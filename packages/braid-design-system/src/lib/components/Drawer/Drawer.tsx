@@ -21,7 +21,7 @@ const modalStyle = {
 
 export interface DrawerProps extends Omit<
   ModalProps,
-  keyof typeof modalStyle | 'width' | 'position'
+  keyof typeof modalStyle | 'width' | 'position' | 'coverImage'
 > {
   width?: (typeof validWidths)[number];
   position?: (typeof validPositions)[number];
@@ -45,7 +45,7 @@ export const Drawer: FC<DrawerProps> = ({
 
 interface DrawerContentProps extends Omit<
   ModalContentProps,
-  keyof typeof modalStyle | 'width' | 'position'
+  keyof typeof modalStyle | 'width' | 'position' | 'coverImage'
 > {
   width?: (typeof validWidths)[number];
   position?: (typeof validPositions)[number];
