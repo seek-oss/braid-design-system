@@ -100,10 +100,14 @@ const viewportHeight = style({
   maxHeight: fullHeightVar,
 });
 
+export const overrideMaxHeightForScreenshot = createVar();
 export const maxSize = {
   center: style([
     {
-      maxHeight: calc.subtract(fullHeightVar, calc.multiply(gutterSizeVar, 2)),
+      maxHeight: fallbackVar(
+        overrideMaxHeightForScreenshot,
+        calc.subtract(fullHeightVar, calc.multiply(gutterSizeVar, 2)),
+      ),
       maxWidth: calc.subtract(fullWidthVar, calc.multiply(gutterSizeVar, 2)),
     },
     responsiveStyle({
@@ -165,19 +169,11 @@ export const hideOverflowAboveMobile = style(
 );
 
 export const maximumHeightForCoverImage = '60vh';
-export const overrideMaxHeightForScreenshot = createVar();
-
-export const forceHeightLimit = style({
-  maxHeight: overrideMaxHeightForScreenshot,
-});
 
 export const coverImageHeightLimit = style(
   responsiveStyle({
     tablet: {
-      maxHeight: fallbackVar(
-        overrideMaxHeightForScreenshot,
-        maximumHeightForCoverImage,
-      ),
+      maxHeight: maximumHeightForCoverImage,
     },
   }),
 );

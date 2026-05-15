@@ -297,7 +297,6 @@ export const ModalContent = ({
               [styles.pointerEventsAll]: true,
               [styles.maxSize[position]]: !isDrawer,
               [styles.hideOverflowAboveMobile]: allowColumnLayout,
-              [styles.forceHeightLimit]: true,
             }}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
