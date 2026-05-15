@@ -1,8 +1,3 @@
-import dedent from 'dedent';
-import Code from 'site/App/Code/Code';
-import { ThemedExample } from 'site/App/ThemeSetting';
-import type { CssDoc } from 'site/types';
-
 import {
   Stack,
   Columns,
@@ -13,10 +8,15 @@ import {
   TextLink,
   Strong,
   Alert,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
+import dedent from 'dedent';
+import Code from 'site/App/Code/Code';
+import { ThemedExample } from 'site/App/ThemeSetting';
+import type { CssDoc } from 'site/types';
+
 // TODO: COLORMODE RELEASE
 // Use public import
-import { Box } from 'braid-src/lib/components/Box/Box';
+import { Box } from '../components/Box/Box';
 import {
   type ResponsiveProperties,
   type PseudoProperties,
@@ -25,7 +25,7 @@ import {
   responsiveProperties,
   pseudoProperties,
   unresponsiveProperties,
-} from 'braid-src/lib/css/atoms/atomicProperties';
+} from '../css/atoms/atomicProperties';
 
 type BoxShadowDocs = Required<Record<BoxShadow, string>>;
 const validateBoxShadows = (boxShadows: BoxShadowDocs) => boxShadows;
