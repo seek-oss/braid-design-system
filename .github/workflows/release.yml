@@ -18,7 +18,7 @@ jobs:
       CI: true
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits.
           # Filter by `blob:none` to avoid downloading unnecessary file contents.
@@ -27,10 +27,10 @@ jobs:
           token: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           cache: pnpm
           node-version-file: package.json
@@ -59,7 +59,7 @@ jobs:
 
       - name: Deploy site
         if: steps.changesets.outputs.published == 'true' || steps.changesets.outputs.hasChangesets == 'false'
-        uses: JamesIves/github-pages-deploy-action@881db5376404c5c8d621010bcbec0310b58d5e29 # 4.6.0
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           folder: ./site/dist
@@ -77,17 +77,17 @@ jobs:
       CI: true
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
           token: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
 
       - name: Set up pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           cache: pnpm
           node-version-file: package.json
