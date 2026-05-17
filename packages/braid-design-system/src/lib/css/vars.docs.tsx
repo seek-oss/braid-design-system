@@ -14,12 +14,11 @@ import { vars } from 'braid-design-system/css';
 import { Fragment, type ReactNode, useEffect, useRef, useState } from 'react';
 import Code from 'site/App/Code/Code';
 import { ThemedExample, useThemeSettings } from 'site/App/ThemeSetting';
-import type { CssDoc } from 'site/types';
+import type { ComponentExample, CssDoc } from 'site/types';
 
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from '../components/Box/Box';
-import type { ReactNodeNoStrings } from '../components/private/ReactNodeNoStrings';
 
 const Row = ({
   group,
@@ -83,7 +82,7 @@ const CssVarValue = ({
   );
 };
 
-const varDocs: Record<keyof typeof vars, ReactNodeNoStrings> = {
+const varDocs: Record<keyof typeof vars, ComponentExample['description']> = {
   grid: (
     <Row name="grid" hideCanvas>
       <Box
