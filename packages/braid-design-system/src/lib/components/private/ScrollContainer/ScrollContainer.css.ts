@@ -1,9 +1,4 @@
-import {
-  createVar,
-  fallbackVar,
-  style,
-  styleVariants,
-} from '@vanilla-extract/css';
+import { createVar, style, styleVariants } from '@vanilla-extract/css';
 
 export const container = style({
   WebkitOverflowScrolling: 'touch',
@@ -60,11 +55,17 @@ const right = createVar();
 const top = createVar();
 const bottom = createVar();
 export const mask = style({
+  vars: {
+    [left]: '0',
+    [right]: '0',
+    [top]: '0',
+    [bottom]: '0',
+  },
   maskImage: [
-    `linear-gradient(to bottom, transparent 0, black ${fallbackVar(top, '0')})`,
-    `linear-gradient(to right, transparent 0, black ${fallbackVar(left, '0')})`,
-    `linear-gradient(to left, transparent 0, black ${fallbackVar(right, '0')})`,
-    `linear-gradient(to top, transparent 0, black ${fallbackVar(bottom, '0')})`,
+    `linear-gradient(to bottom, transparent 0, black ${top})`,
+    `linear-gradient(to right, transparent 0, black ${left})`,
+    `linear-gradient(to left, transparent 0, black ${right})`,
+    `linear-gradient(to top, transparent 0, black ${bottom})`,
   ].join(','),
 });
 
