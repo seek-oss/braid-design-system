@@ -166,18 +166,25 @@ const ModalCoverImageLayout = ({
   image: string;
   children: ReactNode;
 }) => {
+  const forceStack = width === 'xsmall';
+
+  /* Wrapper element ensures cover image clips rather than scrolls when below 16:9 aspect ratio  */
   const coverImage = (
-    <Box
-      className={styles.coverImage}
-      width="full"
-      height="full"
-      style={assignInlineVars({
-        [styles.coverImageVar]: `url(${image})`,
-      })}
-    />
+    <Box position="relative" height="full">
+      <Box
+        position={{ tablet: forceStack ? undefined : 'absolute' }}
+        inset={0}
+        className={styles.coverImage}
+        width="full"
+        height="full"
+        style={assignInlineVars({
+          [styles.coverImageVar]: `url(${image})`,
+        })}
+      />
+    </Box>
   );
 
-  return width === 'xsmall' ? (
+  return forceStack ? (
     <Stack space="none">
       {coverImage}
       <>{children}</>
