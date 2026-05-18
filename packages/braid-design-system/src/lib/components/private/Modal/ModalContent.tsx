@@ -4,6 +4,7 @@ import {
   type KeyboardEvent,
   type Ref,
   useRef,
+  useCallback,
   forwardRef,
   useId,
 } from 'react';
@@ -212,8 +213,18 @@ export const ModalContent = ({
 
   const defaultModalRef = useRef<HTMLElement>(null);
   const modalRef = modalRefProp || defaultModalRef;
-  const defaultHeadingRef = useRef<HTMLElement>(null);
-  const headingRef = headingRefProp || defaultHeadingRef;
+  const resolvedHeadingRef = useRef<HTMLElement>(null);
+  const headingRef = useCallback(
+    (instance: HTMLElement | null) => {
+      resolvedHeadingRef.current = instance;
+      if (typeof headingRefProp === 'function') {
+        headingRefProp(instance);
+      } else if (headingRefProp) {
+        headingRefProp.current = instance;
+      }
+    },
+    [headingRefProp],
+  );
 
   const handleEscape = (event: KeyboardEvent) => {
     const targetKey = normalizeKey(event);
@@ -300,7 +311,7 @@ export const ModalContent = ({
             }}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
-            <ScrollContainer direction="vertical">
+            <ScrollContainer direction="vertical" startRef={resolvedHeadingRef}>
               {coverImageEnabled ? (
                 <ModalCoverImageLayout width={width} image={coverImage}>
                   {modalLayout}

@@ -1,4 +1,4 @@
-import { type ReactNode, useRef, useCallback } from 'react';
+import { type ReactNode, useRef, useCallback, type RefObject } from 'react';
 import { throttle } from 'throttle-debounce';
 
 import { useIsomorphicLayoutEffect } from '../../../hooks/useIsomorphicLayoutEffect';
@@ -12,10 +12,13 @@ import { scrollbars } from '../scrollbars.css';
 
 const scrollOffset = 2; // 2 instead of 1 to account for rounding errors in some browsers
 
-const maskOverflow = (
-  element: HTMLElement,
-  direction: keyof typeof styles.direction,
-) =>
+interface MaskOverflowOptions {
+  element: HTMLElement;
+  direction: keyof typeof styles.direction;
+  gateStart?: boolean;
+}
+
+const maskOverflow = ({ element, direction, gateStart }: MaskOverflowOptions) =>
   setTimeout(() => {
     const atTop = element.scrollTop <= 0;
     const atBottom =
@@ -27,11 +30,13 @@ const maskOverflow = (
       scrollOffset;
 
     if (direction === 'vertical' || direction === 'all') {
-      element.classList[atTop ? 'remove' : 'add'](styles.maskTop);
+      element.classList[atTop || gateStart ? 'remove' : 'add'](styles.maskTop);
       element.classList[atBottom ? 'remove' : 'add'](styles.maskBottom);
     }
     if (direction === 'horizontal' || direction === 'all') {
-      element.classList[atLeft ? 'remove' : 'add'](styles.maskLeft);
+      element.classList[atLeft || gateStart ? 'remove' : 'add'](
+        styles.maskLeft,
+      );
       element.classList[atRight ? 'remove' : 'add'](styles.maskRight);
     }
   });
@@ -41,6 +46,7 @@ interface ScrollContainerProps {
   direction?: keyof typeof styles.direction;
   fadeSize?: keyof typeof styles.fadeSize;
   hideScrollbar?: boolean;
+  startRef?: RefObject<HTMLElement | null>;
   data?: DataAttributeMap;
 }
 
@@ -49,10 +55,12 @@ export const ScrollContainer = ({
   direction = 'horizontal',
   fadeSize = 'medium',
   hideScrollbar = false,
+  startRef,
   data,
   ...restProps
 }: ScrollContainerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const gateStartRef = useRef(Boolean(startRef?.current));
 
   // This must be called within a `useLayoutEffect` because `.scrollLeft`, `.scrollWidth` and `.offsetWidth` force a reflow
   // https://gist.github.com/paulirish/5d52fb081b3570c81e3a
@@ -60,7 +68,11 @@ export const ScrollContainer = ({
     100,
     useCallback(() => {
       if (containerRef.current) {
-        maskOverflow(containerRef.current, direction);
+        maskOverflow({
+          element: containerRef.current,
+          direction,
+          gateStart: gateStartRef.current,
+        });
       }
     }, [containerRef, direction]),
   );
@@ -73,6 +85,32 @@ export const ScrollContainer = ({
     window.addEventListener('resize', updateMask);
     return () => window.removeEventListener('resize', updateMask);
   }, [updateMask]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (!startRef?.current || !containerRef.current) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.rootBounds) {
+          return;
+        }
+
+        const clippedByStartEdge =
+          direction === 'horizontal' || direction === 'all'
+            ? entry.boundingClientRect.left < entry.rootBounds.left
+            : entry.boundingClientRect.top < entry.rootBounds.top;
+
+        gateStartRef.current = !clippedByStartEdge;
+        updateMask();
+      },
+      { root: containerRef.current, threshold: [0, 1] },
+    );
+
+    observer.observe(startRef.current);
+    return () => observer.disconnect();
+  }, [startRef, updateMask]);
 
   return (
     <Box
