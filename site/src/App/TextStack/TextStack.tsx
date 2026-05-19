@@ -1,9 +1,10 @@
 import { Stack } from 'braid-design-system';
-import type { StackProps } from 'braid-src/lib/components/Stack/Stack';
-import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
+import type { ComponentProps } from 'react';
+
+type StackProps = ComponentProps<typeof Stack>;
 
 interface TextStackProps {
-  children: ReactNodeNoStrings;
+  children: StackProps['children'];
   space?: StackProps['space'];
 }
 
