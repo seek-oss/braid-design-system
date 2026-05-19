@@ -7,7 +7,7 @@ import {
   Strong,
   Box,
   TextLink,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 import { TextContext } from 'braid-src/lib/components/Text/TextContext';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import { DefaultTextPropsProvider } from 'braid-src/lib/components/private/defaultTextProps';

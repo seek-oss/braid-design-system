@@ -1,4 +1,4 @@
-import { Stack, Text } from 'braid-src/lib/components';
+import { Stack, Text } from 'braid-design-system';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { Fragment, useContext } from 'react';
 

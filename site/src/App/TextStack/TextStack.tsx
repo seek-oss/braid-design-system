@@ -1,4 +1,4 @@
-import { Stack } from 'braid-src/lib/components';
+import { Stack } from 'braid-design-system';
 import type { StackProps } from 'braid-src/lib/components/Stack/Stack';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 

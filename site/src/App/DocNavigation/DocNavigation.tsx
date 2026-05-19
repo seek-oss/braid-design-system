@@ -12,7 +12,7 @@ import {
   Inline,
   ButtonIcon,
   IconChevron,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 import type { BadgeProps } from 'braid-src/lib/components/Badge/Badge';
 import { useBackgroundLightness } from 'braid-src/lib/components/Box/BackgroundContext';
 import { negativeMargin } from 'braid-src/lib/css/negativeMargin/negativeMargin';

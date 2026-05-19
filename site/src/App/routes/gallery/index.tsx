@@ -1,4 +1,4 @@
-import { Box } from 'braid-src/lib/components';
+import { Box } from 'braid-design-system';
 import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
 import { parseToHsl, setLightness } from 'polished';
 import { useState, useEffect } from 'react';

@@ -1,4 +1,4 @@
-import { Box } from 'braid-src/lib/components';
+import { Box } from 'braid-design-system';
 
 import * as styles from './InlineCode.css';
 

@@ -1,4 +1,4 @@
-import { BraidProvider } from 'braid-src/lib/components';
+import { BraidProvider } from 'braid-design-system';
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import type { ReactNode } from 'react';
 

@@ -1,7 +1,7 @@
 import type { Source } from '@braid-design-system/source.macro';
+import type useScope from 'braid-design-system/playroom/scope';
 import type { BoxProps } from 'braid-src/lib/components/Box/Box';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
-import type useScope from 'braid-src/lib/playroom/useScope';
 import type { ReactNode, ReactElement } from 'react';
 import type { HelmetData } from 'react-helmet-async';
 import type { RouteProps } from 'react-router';

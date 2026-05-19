@@ -8,7 +8,7 @@ import {
   IconPositive,
   IconCopy,
   IconVideo,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';

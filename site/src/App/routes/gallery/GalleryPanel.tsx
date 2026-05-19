@@ -1,4 +1,4 @@
-import { Box } from 'braid-src/lib/components';
+import { Box } from 'braid-design-system';
 import { Overlay } from 'braid-src/lib/components/private/Overlay/Overlay';
 import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 

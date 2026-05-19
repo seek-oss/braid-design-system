@@ -1,10 +1,4 @@
-import {
-  Text,
-  TextLink,
-  Stack,
-  Heading,
-  Divider,
-} from 'braid-src/lib/components';
+import { Text, TextLink, Stack, Heading, Divider } from 'braid-design-system';
 
 import { useConfig } from '../../ConfigContext';
 

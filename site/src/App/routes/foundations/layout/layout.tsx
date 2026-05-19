@@ -25,9 +25,9 @@ import {
   PageBlock,
   Page,
   Spread,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
+import { Placeholder } from 'braid-design-system/playroom/components';
 import { ContainerForPageDocs } from 'braid-src/lib/components/Page/Page.docs';
-import { Placeholder } from 'braid-src/lib/playroom/components';
 import tokens from 'braid-src/lib/themes/wireframe/tokens';
 
 import type { Page as DocsPage } from '../../../../types';

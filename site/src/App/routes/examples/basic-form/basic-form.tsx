@@ -11,14 +11,14 @@ import {
   Button,
   Actions,
   filterSuggestions,
-} from 'braid-src/lib/components';
-import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
+} from 'braid-design-system';
 import {
   Autosuggest,
   TextField,
   MonthPicker,
   Textarea,
-} from 'braid-src/lib/playroom/components';
+} from 'braid-design-system/playroom/components';
+import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import type { ComponentProps } from 'react';
 
 import type { Page } from '../../../../types';

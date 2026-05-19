@@ -1,5 +1,5 @@
+import * as components from 'braid-design-system';
 import * as css from 'braid-src/css';
-import * as components from 'braid-src/lib/components';
 import type { Snippets } from 'braid-src/lib/components/private/Snippets';
 import * as testComponents from 'braid-src/test';
 
