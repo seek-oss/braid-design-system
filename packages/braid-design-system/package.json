@@ -132,7 +132,7 @@
   },
   "dependencies": {
     "@capsizecss/core": "^4.1.2",
-    "@capsizecss/metrics": "^3.0.0",
+    "@capsizecss/metrics": "^4.0.0",
     "@capsizecss/vanilla-extract": "^2.0.4",
     "@floating-ui/react-dom": "^2.1.6",
     "@vanilla-extract/css": "^1.9.2",
