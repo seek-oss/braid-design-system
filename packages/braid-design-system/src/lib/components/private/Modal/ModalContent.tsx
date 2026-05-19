@@ -129,12 +129,12 @@ const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
 
 const ModalContentScrollLayout = ({
   children,
-  scrollColumnNotDialog,
+  applyCoverImageHeightLimit,
   contentStartRef,
   coverImageEnabled,
 }: {
   children: ReactNode;
-  scrollColumnNotDialog?: boolean;
+  applyCoverImageHeightLimit?: boolean;
   contentStartRef?: Ref<HTMLDivElement>;
   coverImageEnabled?: boolean;
 }) => (
@@ -149,7 +149,7 @@ const ModalContentScrollLayout = ({
      */}
     <Box
       className={
-        scrollColumnNotDialog ? styles.coverImageHeightLimit : undefined
+        applyCoverImageHeightLimit ? styles.coverImageHeightLimit : undefined
       }
     >
       <Box
@@ -250,7 +250,7 @@ export const ModalContent = ({
 
   const modalLayout = (
     <ModalContentScrollLayout
-      scrollColumnNotDialog={allowColumnLayout}
+      applyCoverImageHeightLimit={allowColumnLayout}
       contentStartRef={contentStartRef}
       coverImageEnabled={coverImageEnabled}
     >
