@@ -4,7 +4,6 @@ import {
   type KeyboardEvent,
   type Ref,
   useRef,
-  useCallback,
   forwardRef,
   useId,
 } from 'react';
@@ -131,13 +130,21 @@ const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
 const ModalContentScrollLayout = ({
   children,
   scrollColumnNotDialog,
+  contentStartRef,
+  coverImageEnabled,
 }: {
   children: ReactNode;
   scrollColumnNotDialog?: boolean;
+  contentStartRef?: Ref<HTMLDivElement>;
+  coverImageEnabled?: boolean;
 }) => (
   <ScrollContainer direction="vertical">
+    {
+      /* Sentinel element for delaying scroll mask until after the coverImage */
+      coverImageEnabled && <span ref={contentStartRef} />
+    }
     {/**
-     * Separationg of maxHeight and padding to avoid ScrollContainer clipping
+     * Separation of maxHeight and padding to avoid ScrollContainer clipping
      * padding at the end of the content.
      */}
     <Box
@@ -220,18 +227,9 @@ export const ModalContent = ({
 
   const defaultModalRef = useRef<HTMLElement>(null);
   const modalRef = modalRefProp || defaultModalRef;
-  const resolvedHeadingRef = useRef<HTMLElement>(null);
-  const headingRef = useCallback(
-    (instance: HTMLElement | null) => {
-      resolvedHeadingRef.current = instance;
-      if (typeof headingRefProp === 'function') {
-        headingRefProp(instance);
-      } else if (headingRefProp) {
-        headingRefProp.current = instance;
-      }
-    },
-    [headingRefProp],
-  );
+  const defaultHeadingRef = useRef<HTMLElement>(null);
+  const headingRef = headingRefProp || defaultHeadingRef;
+  const contentStartRef = useRef<HTMLDivElement>(null);
 
   const handleEscape = (event: KeyboardEvent) => {
     const targetKey = normalizeKey(event);
@@ -242,8 +240,8 @@ export const ModalContent = ({
   };
 
   const isDrawer = position === 'left' || position === 'right';
-  const coverImageEnabled = coverImage && !isDrawer;
-  const allowColumnLayout = Boolean(coverImageEnabled) && width !== 'xsmall';
+  const coverImageEnabled = Boolean(coverImage) && !isDrawer;
+  const allowColumnLayout = coverImageEnabled && width !== 'xsmall';
 
   const justifyContent = (
     { left: 'flexStart', center: 'center', right: 'flexEnd' } as const
@@ -251,7 +249,11 @@ export const ModalContent = ({
   const modalRadius = !isDrawer ? 'xlarge' : undefined;
 
   const modalLayout = (
-    <ModalContentScrollLayout scrollColumnNotDialog={allowColumnLayout}>
+    <ModalContentScrollLayout
+      scrollColumnNotDialog={allowColumnLayout}
+      contentStartRef={contentStartRef}
+      coverImageEnabled={coverImageEnabled}
+    >
       <ModalContentHeader
         title={title}
         headingLevel={headingLevel}
@@ -318,8 +320,8 @@ export const ModalContent = ({
             }}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
-            <ScrollContainer direction="vertical" startRef={resolvedHeadingRef}>
-              {coverImageEnabled ? (
+            <ScrollContainer direction="vertical" startRef={contentStartRef}>
+              {coverImageEnabled && coverImage ? (
                 <ModalCoverImageLayout width={width} image={coverImage}>
                   {modalLayout}
                 </ModalCoverImageLayout>
