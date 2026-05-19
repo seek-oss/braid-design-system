@@ -14,7 +14,7 @@ import {
   TextLink,
   IconInfo,
   Heading,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 import partition from 'lodash.partition';
 import { Fragment, useContext, useMemo } from 'react';
 

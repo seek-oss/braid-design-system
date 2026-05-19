@@ -17,7 +17,7 @@ import {
   Box,
   Columns,
   Column,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 import {
   Checkbox,
   Drawer,
@@ -26,7 +26,7 @@ import {
   PlaceholderFooter,
   PlaceholderHeader,
   TextField,
-} from 'braid-src/lib/playroom/components';
+} from 'braid-design-system/playroom/components';
 
 import type { Page } from '../../../types';
 import Code from '../../Code/Code';

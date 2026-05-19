@@ -1,4 +1,4 @@
-import { Text, TextDropdown } from 'braid-src/lib/components';
+import { Text, TextDropdown } from 'braid-design-system';
 import type { TextProps } from 'braid-src/lib/components/Text/Text';
 import * as themes from 'braid-src/lib/themes';
 import { Fragment } from 'react';

@@ -1,6 +1,6 @@
-import { Box } from 'braid-src/lib/components';
+import { Box, type Stack } from 'braid-design-system';
 import { Overlay } from 'braid-src/lib/components/private/Overlay/Overlay';
-import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
+import type { ComponentProps } from 'react';
 
 import * as styles from './gallery.css';
 
@@ -11,7 +11,7 @@ export const GalleryPanel = ({
   right,
   top,
 }: {
-  children: ReactNodeNoStrings;
+  children: ComponentProps<typeof Stack>['children'];
   bottom?: boolean;
   left?: boolean;
   right?: boolean;

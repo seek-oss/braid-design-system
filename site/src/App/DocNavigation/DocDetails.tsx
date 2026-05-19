@@ -7,7 +7,7 @@ import {
   Secondary,
   Text,
   Heading,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { useContext, useMemo } from 'react';
 

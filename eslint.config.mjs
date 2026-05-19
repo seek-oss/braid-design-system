@@ -84,8 +84,26 @@ export default [
         },
       ],
     },
-  }, // Prevent importing via project paths, with exception for site-related files
+  },
   {
+    files: ['packages/braid-design-system/**/*'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['braid-src/*'],
+              message:
+                'The `braid-src` alias should not be used within the `braid-design-system` package. Import from a public entrypoint or a relative path instead.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    // Prevent importing via project paths, with exception for site-related files
     files: ['**/*.{js,ts,tsx}'],
     ignores: [
       'packages/braid-design-system/**/*.{docs,gallery,screenshots,stories}.tsx',
