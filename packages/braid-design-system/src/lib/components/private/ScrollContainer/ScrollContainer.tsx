@@ -9,6 +9,23 @@ import buildDataAttributes, {
 
 import * as styles from './ScrollContainer.css';
 
+// Register CSS custom properties as typed lengths so the browser can
+// interpolate them and honour the `transition` declared on the mask style.
+if (typeof CSS !== 'undefined' && typeof CSS.registerProperty === 'function') {
+  [styles.left, styles.right, styles.top, styles.bottom].forEach((v) => {
+    try {
+      CSS.registerProperty({
+        name: v.slice(4, -1),
+        syntax: '<length>',
+        inherits: false,
+        initialValue: '0px',
+      });
+    } catch {
+      // Already registered — safe to ignore
+    }
+  });
+}
+
 const scrollOffset = 2; // 2 instead of 1 to account for rounding errors in some browsers
 
 const maskOverflow = (

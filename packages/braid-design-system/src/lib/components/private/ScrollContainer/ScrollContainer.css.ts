@@ -55,11 +55,14 @@ export const direction = styleVariants({
   },
 });
 
-const left = createVar();
-const right = createVar();
-const top = createVar();
-const bottom = createVar();
+export const left = createVar();
+export const right = createVar();
+export const top = createVar();
+export const bottom = createVar();
 export const mask = style({
+  transition: [left, right, top, bottom]
+    .map((v) => `${v.slice(4, -1)} .2s ease`)
+    .join(', '),
   maskImage: [
     `linear-gradient(to bottom, transparent 0, black ${fallbackVar(top, '0')})`,
     `linear-gradient(to right, transparent 0, black ${fallbackVar(left, '0')})`,

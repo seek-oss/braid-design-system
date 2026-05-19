@@ -52,6 +52,7 @@ export { TextDropdown } from '../components/TextDropdown/TextDropdown.playroom';
 export { TextField } from '../components/TextField/TextField.playroom';
 export { Tiles } from '../components/Tiles/Tiles.playroom';
 export { Toggle } from '../components/Toggle/Toggle.playroom';
+export { ScrollContainer } from '../components/private/ScrollContainer/ScrollContainer.playroom';
 
 export { PlaceholderHeader } from './components/PlaceholderHeader/PlaceholderHeader';
 export { PlaceholderFooter } from './components/PlaceholderFooter/PlaceholderFooter';
