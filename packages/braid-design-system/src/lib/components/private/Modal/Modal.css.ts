@@ -1,4 +1,4 @@
-import { createVar, style } from '@vanilla-extract/css';
+import { createVar, fallbackVar, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
 import { atoms } from '../../../css/atoms/atoms';
@@ -100,10 +100,14 @@ const viewportHeight = style({
   maxHeight: fullHeightVar,
 });
 
+export const overrideMaxHeightForScreenshot = createVar();
 export const maxSize = {
   center: style([
     {
-      maxHeight: calc.subtract(fullHeightVar, calc.multiply(gutterSizeVar, 2)),
+      maxHeight: fallbackVar(
+        overrideMaxHeightForScreenshot,
+        calc.subtract(fullHeightVar, calc.multiply(gutterSizeVar, 2)),
+      ),
       maxWidth: calc.subtract(fullWidthVar, calc.multiply(gutterSizeVar, 2)),
     },
     responsiveStyle({
@@ -141,6 +145,8 @@ export const modalContainer = style({
       },
     },
   },
+  display: 'flex',
+  alignItems: 'center',
   maxHeight: fullHeightVar,
   maxWidth: fullWidthVar,
 });
@@ -150,6 +156,39 @@ export const headingRoot = style({
 });
 
 export const closeIconOffset = style({
-  top: '-5px',
-  right: '-5px',
+  top: '-2px',
+  right: '-2px',
 });
+
+export const hideOverflowAboveMobile = style(
+  responsiveStyle({
+    tablet: {
+      overflow: 'hidden',
+    },
+  }),
+);
+
+export const maximumHeightForCoverImage = '60vh';
+
+export const coverImageHeightLimit = style(
+  responsiveStyle({
+    tablet: {
+      maxHeight: maximumHeightForCoverImage,
+    },
+  }),
+);
+
+export const coverImageVar = createVar();
+export const coverImage = style([
+  responsiveStyle({
+    mobile: {
+      aspectRatio: '16 / 9',
+    },
+  }),
+  {
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundImage: coverImageVar,
+  },
+]);

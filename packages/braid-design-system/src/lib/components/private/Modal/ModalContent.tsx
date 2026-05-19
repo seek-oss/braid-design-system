@@ -1,10 +1,10 @@
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import {
   type ReactNode,
   type KeyboardEvent,
   type Ref,
   useRef,
   forwardRef,
-  Fragment,
   useId,
 } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
@@ -13,11 +13,14 @@ import { useFallbackId } from '../../../hooks/useFallbackId';
 import { Bleed } from '../../Bleed/Bleed';
 import { type BoxProps, Box } from '../../Box/Box';
 import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
+import { Column } from '../../Column/Column';
+import { Columns } from '../../Columns/Columns';
 import { Heading } from '../../Heading/Heading';
 import { pageBlockGutters } from '../../PageBlock/pageBlockGutters';
 import { Stack } from '../../Stack/Stack';
 import { IconClear } from '../../icons';
 import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
+import { ScrollContainer } from '../ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
@@ -25,7 +28,7 @@ import { normalizeKey } from '../normalizeKey';
 
 import * as styles from './Modal.css';
 
-export interface ModalContentProps {
+type ModalContentCommonProps = {
   id?: string;
   title: string;
   children: ReactNode;
@@ -33,49 +36,173 @@ export interface ModalContentProps {
   closeLabel?: string;
   width: BoxProps['maxWidth'] | 'content';
   description?: ReactNodeNoStrings;
-  illustration?: ReactNodeNoStrings;
   position: 'center' | 'right' | 'left';
   headingLevel: '2' | '3';
   scrollLock?: boolean;
   headingRef?: Ref<HTMLElement>;
   modalRef?: Ref<HTMLElement>;
   data?: DataAttributeMap;
-}
+};
+
+export type ModalContentProps = ModalContentCommonProps &
+  (
+    | {
+        coverImage?: never;
+        illustration?: ReactNodeNoStrings;
+      }
+    | { coverImage?: string; illustration?: never }
+  );
+
+type ModalContentInternalProps = ModalContentCommonProps & {
+  coverImage?: string;
+  illustration?: ReactNodeNoStrings;
+};
 
 const modalPadding = { mobile: 'gutter', tablet: 'large' } as const;
 
 interface ModalContentHeaderProps extends Pick<
   ModalContentProps,
-  'headingLevel' | 'description'
+  'headingLevel' | 'description' | 'illustration' | 'title'
 > {
-  title: string;
   descriptionId: string;
-  center?: boolean;
+  reserveCloseArea?: boolean;
 }
 const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
-  ({ title, headingLevel, description, descriptionId, center }, ref) => (
-    <Stack
-      space={
-        headingLevel === '2' ? { mobile: 'small', tablet: 'medium' } : 'small'
+  (
+    {
+      title,
+      headingLevel,
+      description,
+      descriptionId,
+      illustration,
+      reserveCloseArea,
+    },
+    ref,
+  ) => {
+    const header = (
+      <Stack
+        space={
+          headingLevel === '2' ? { mobile: 'small', tablet: 'medium' } : 'small'
+        }
+      >
+        <Heading
+          level={headingLevel}
+          align={illustration ? 'center' : undefined}
+        >
+          <Box
+            ref={ref}
+            tabIndex={-1}
+            component="span"
+            position="relative"
+            outline="focus"
+            borderRadius="small" // Ensures focus ring is rounded
+            className={styles.headingRoot}
+          >
+            {title}
+          </Box>
+        </Heading>
+        {description ? <Box id={descriptionId}>{description}</Box> : null}
+      </Stack>
+    );
+
+    const resolvedLayout = illustration ? (
+      <Stack space="medium" align="center">
+        <Box paddingX="gutter">{illustration}</Box>
+        {header}
+      </Stack>
+    ) : (
+      header
+    );
+
+    return reserveCloseArea && !illustration ? (
+      <Box display="flex">
+        <Box width="full" minWidth={0}>
+          {resolvedLayout}
+        </Box>
+        <Box width="touchable" flexShrink={0} flexGrow={0} />
+      </Box>
+    ) : (
+      resolvedLayout
+    );
+  },
+);
+
+const ModalContentScrollLayout = ({
+  children,
+  applyCoverImageHeightLimit,
+  contentStartRef,
+  coverImageEnabled,
+}: {
+  children: ReactNode;
+  applyCoverImageHeightLimit?: boolean;
+  contentStartRef?: Ref<HTMLDivElement>;
+  coverImageEnabled?: boolean;
+}) => (
+  <ScrollContainer direction="vertical">
+    {
+      /* Sentinel element for delaying scroll mask until after the coverImage */
+      coverImageEnabled && <span ref={contentStartRef} />
+    }
+    {/**
+     * Separation of maxHeight and padding to avoid ScrollContainer clipping
+     * padding at the end of the content.
+     */}
+    <Box
+      className={
+        applyCoverImageHeightLimit ? styles.coverImageHeightLimit : undefined
       }
     >
-      <Heading level={headingLevel} align={center ? 'center' : undefined}>
-        <Box
-          ref={ref}
-          tabIndex={-1}
-          component="span"
-          position="relative"
-          outline="focus"
-          borderRadius="small" // Ensures focus ring is rounded
-          className={styles.headingRoot}
-        >
-          {title}
-        </Box>
-      </Heading>
-      {description ? <Box id={descriptionId}>{description}</Box> : null}
-    </Stack>
-  ),
+      <Box
+        display="flex"
+        gap="large"
+        flexDirection="column"
+        padding={modalPadding}
+      >
+        {children}
+      </Box>
+    </Box>
+  </ScrollContainer>
 );
+
+const ModalCoverImageLayout = ({
+  width,
+  image,
+  children,
+}: {
+  width: ModalContentProps['width'];
+  image: string;
+  children: ReactNode;
+}) => {
+  const forceStack = width === 'xsmall';
+
+  /* Wrapper element ensures cover image clips rather than scrolls when below 16:9 aspect ratio  */
+  const coverImage = (
+    <Box position="relative" height="full">
+      <Box
+        position={{ tablet: forceStack ? undefined : 'absolute' }}
+        inset={0}
+        className={styles.coverImage}
+        width="full"
+        height="full"
+        style={assignInlineVars({
+          [styles.coverImageVar]: `url(${image})`,
+        })}
+      />
+    </Box>
+  );
+
+  return forceStack ? (
+    <Stack space="none">
+      {coverImage}
+      <>{children}</>
+    </Stack>
+  ) : (
+    <Columns space="none" collapseBelow="tablet" reverse>
+      <Column>{coverImage}</Column>
+      <Column>{children}</Column>
+    </Columns>
+  );
+};
 
 export const ModalContent = ({
   id,
@@ -85,6 +212,7 @@ export const ModalContent = ({
   width,
   closeLabel = 'Close',
   illustration,
+  coverImage,
   title,
   headingRef: headingRefProp,
   modalRef: modalRefProp,
@@ -93,7 +221,7 @@ export const ModalContent = ({
   headingLevel,
   data,
   ...restProps
-}: ModalContentProps) => {
+}: ModalContentInternalProps) => {
   const resolvedId = useFallbackId(id);
   const descriptionId = useId();
 
@@ -101,6 +229,7 @@ export const ModalContent = ({
   const modalRef = modalRefProp || defaultModalRef;
   const defaultHeadingRef = useRef<HTMLElement>(null);
   const headingRef = headingRefProp || defaultHeadingRef;
+  const contentStartRef = useRef<HTMLDivElement>(null);
 
   const handleEscape = (event: KeyboardEvent) => {
     const targetKey = normalizeKey(event);
@@ -110,10 +239,35 @@ export const ModalContent = ({
     }
   };
 
+  const isDrawer = position === 'left' || position === 'right';
+  const coverImageEnabled = Boolean(coverImage) && !isDrawer;
+  const allowColumnLayout = coverImageEnabled && width !== 'xsmall';
+
   const justifyContent = (
     { left: 'flexStart', center: 'center', right: 'flexEnd' } as const
   )[position];
-  const modalRadius = position === 'center' ? 'xlarge' : undefined;
+  const modalRadius = !isDrawer ? 'xlarge' : undefined;
+
+  const modalLayout = (
+    <ModalContentScrollLayout
+      applyCoverImageHeightLimit={allowColumnLayout}
+      contentStartRef={contentStartRef}
+      coverImageEnabled={coverImageEnabled}
+    >
+      <ModalContentHeader
+        title={title}
+        headingLevel={headingLevel}
+        description={description}
+        descriptionId={descriptionId}
+        illustration={
+          illustration && !coverImageEnabled ? illustration : undefined
+        }
+        ref={headingRef}
+        reserveCloseArea
+      />
+      {children}
+    </ModalContentScrollLayout>
+  );
 
   return (
     <Box
@@ -125,7 +279,7 @@ export const ModalContent = ({
       onKeyDown={handleEscape}
       position="relative"
       width="full"
-      height="full"
+      height={isDrawer ? 'full' : undefined}
       display="flex"
       alignItems="center"
       textAlign="left"
@@ -137,10 +291,8 @@ export const ModalContent = ({
         display="flex"
         alignItems="center"
         justifyContent={justifyContent}
-        height={
-          position === 'right' || position === 'left' ? 'full' : undefined
-        }
-        overflow={position !== 'center' ? 'hidden' : undefined}
+        height={isDrawer ? 'full' : undefined}
+        overflow="hidden"
         boxShadow="large"
         borderRadius={modalRadius}
         width={width !== 'content' ? 'full' : undefined}
@@ -160,45 +312,23 @@ export const ModalContent = ({
             overflow="auto"
             position="relative"
             width={width !== 'content' ? 'full' : undefined}
-            height={
-              position === 'right' || position === 'left' ? 'full' : undefined
-            }
-            paddingY={modalPadding}
-            paddingX={position !== 'center' ? pageBlockGutters : modalPadding}
-            className={[
-              styles.pointerEventsAll,
-              position === 'center' && styles.maxSize[position],
-            ]}
+            height={isDrawer ? 'full' : undefined}
+            className={{
+              [styles.pointerEventsAll]: true,
+              [styles.maxSize[position]]: !isDrawer,
+              [styles.hideOverflowAboveMobile]: allowColumnLayout,
+            }}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
-            {illustration ? (
-              <Stack space="medium" align="center">
-                <Box paddingX="gutter">{illustration}</Box>
-                <ModalContentHeader
-                  title={title}
-                  headingLevel={headingLevel}
-                  description={description}
-                  descriptionId={descriptionId}
-                  center={Boolean(illustration)}
-                  ref={headingRef}
-                />
-              </Stack>
-            ) : (
-              <Box display="flex">
-                <Box width="full" minWidth={0}>
-                  <ModalContentHeader
-                    title={title}
-                    headingLevel={headingLevel}
-                    description={description}
-                    descriptionId={descriptionId}
-                    center={Boolean(illustration)}
-                    ref={headingRef}
-                  />
-                </Box>
-                <Box width="touchable" flexShrink={0} flexGrow={0} />
-              </Box>
-            )}
-            <Fragment>{children}</Fragment>
+            <ScrollContainer direction="vertical" startRef={contentStartRef}>
+              {coverImageEnabled && coverImage ? (
+                <ModalCoverImageLayout width={width} image={coverImage}>
+                  {modalLayout}
+                </ModalCoverImageLayout>
+              ) : (
+                modalLayout
+              )}
+            </ScrollContainer>
           </Box>
         </RemoveScroll>
         <Box
@@ -210,10 +340,10 @@ export const ModalContent = ({
           display="flex"
           justifyContent="flexEnd"
           paddingTop={modalPadding}
-          paddingRight={position !== 'center' ? pageBlockGutters : modalPadding}
-          className={position === 'center' && styles.maxSize[position]}
+          paddingRight={isDrawer ? pageBlockGutters : modalPadding}
+          className={!isDrawer && styles.maxSize[position]}
         >
-          <Bleed space="xsmall">
+          <Bleed space="xsmall" horizontal="xxsmall">
             <Box
               position="relative"
               background="surface"
@@ -225,7 +355,6 @@ export const ModalContent = ({
                 label={closeLabel}
                 icon={<IconClear tone="secondary" />}
                 variant="transparent"
-                size="large"
                 onClick={onClose}
               />
             </Box>
