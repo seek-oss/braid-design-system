@@ -7,7 +7,7 @@ import {
   TextField,
   IconSearch,
   Strong,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 import * as icons from 'braid-src/lib/components/icons';
 import { Overlay } from 'braid-src/lib/components/private/Overlay/Overlay';
 import didYouMean, { ReturnTypeEnums } from 'didyoumean2';

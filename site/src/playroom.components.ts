@@ -1,3 +1,3 @@
-import 'braid-src/reset';
+import 'braid-design-system/reset';
 
 export * from 'braid-design-system/playroom/components';

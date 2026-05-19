@@ -22,7 +22,7 @@ import {
   IconCopy,
   ButtonIcon,
   Spread,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from 'braid-src/lib/components/Box/Box';

@@ -5,7 +5,7 @@ import {
   Heading,
   Bleed,
   HiddenVisually,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 import type { ResponsiveSpace } from 'braid-src/lib/css/atoms/atoms';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 
