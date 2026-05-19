@@ -6,7 +6,7 @@ import type { ReactNode, ReactElement, ComponentProps } from 'react';
 import type { HelmetData } from 'react-helmet-async';
 import type { RouteProps } from 'react-router';
 
-type ReactNodeNoStrings = ComponentProps<typeof Stack>;
+type ReactNodeNoStrings = ComponentProps<typeof Stack>['children'];
 
 export interface AppConfig {
   playroomUrl: string;
