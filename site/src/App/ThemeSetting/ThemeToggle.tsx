@@ -1,9 +1,20 @@
 import { Text, TextDropdown } from 'braid-design-system';
-import type { TextProps } from 'braid-src/lib/components/Text/Text';
-import * as themes from 'braid-src/lib/themes';
-import { Fragment } from 'react';
+import docs from 'braid-design-system/themes/docs';
+import seekBusiness from 'braid-design-system/themes/seekBusiness';
+import seekJobs from 'braid-design-system/themes/seekJobs';
+import wireframe from 'braid-design-system/themes/wireframe';
+import { type ComponentProps, Fragment } from 'react';
 
 import { documentedThemes, useThemeSettings } from './ThemeSettingContext';
+
+const themes = {
+  docs,
+  seekBusiness,
+  seekJobs,
+  wireframe,
+};
+
+type TextProps = ComponentProps<typeof Text>;
 
 export function ThemeToggle({
   size,

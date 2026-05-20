@@ -1,6 +1,9 @@
 import packageJson from 'braid-design-system/package.json';
+import docs from 'braid-design-system/themes/docs';
+import seekBusiness from 'braid-design-system/themes/seekBusiness';
+import seekJobs from 'braid-design-system/themes/seekJobs';
+import wireframe from 'braid-design-system/themes/wireframe';
 import { colorModeQueryParamCheck } from 'braid-src/color-mode/query-param';
-import * as themes from 'braid-src/lib/themes';
 import dedent from 'dedent';
 import { renderToString } from 'react-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
@@ -12,6 +15,13 @@ import { ConfigProvider } from './App/ConfigContext';
 import { initUpdates } from './App/Updates';
 import { braidVersionToDate } from './getVersionDetails';
 import type { RenderContext } from './types';
+
+const themes = {
+  docs,
+  seekBusiness,
+  seekJobs,
+  wireframe,
+};
 
 const { version } = packageJson;
 

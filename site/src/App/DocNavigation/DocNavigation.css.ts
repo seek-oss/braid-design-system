@@ -1,6 +1,6 @@
 import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { atoms, colorModeStyle, vars } from 'braid-src/css';
+import { atoms, colorModeStyle, vars } from 'braid-design-system/css';
 
 export const navItemPaddingY = 'medium' as const;
 export const navItemPaddingX = ['small', 'medium'] as const;

@@ -1,11 +1,20 @@
-import 'braid-src/reset';
+import 'braid-design-system/reset';
 
 import type { Preview } from '@storybook/react-webpack5';
-import * as themes from 'braid-src/lib/themes';
+import docs from 'braid-design-system/themes/docs';
+import seekBusiness from 'braid-design-system/themes/seekBusiness';
+import seekJobs from 'braid-design-system/themes/seekJobs';
+import wireframe from 'braid-design-system/themes/wireframe';
 
 import { setChromatic } from './chromatic';
 import { withTheme } from './decorators';
 import { colourModes, defaultColourMode } from './globalTypes';
+const themes = {
+  docs,
+  seekBusiness,
+  seekJobs,
+  wireframe,
+};
 
 const webFontLinkTags = Array.from(
   new Set(

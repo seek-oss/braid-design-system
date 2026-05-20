@@ -12,6 +12,7 @@
     "@storybook/addon-webpack5-compiler-babel": "^4.0.0",
     "@storybook/react-webpack5": "^10.2.7",
     "@types/react": "^19.1.8",
+    "braid-design-system": "workspace:*",
     "chromatic": "^13.1.2",
     "clsx": "^2.1.1",
     "react": "^19.1.0",

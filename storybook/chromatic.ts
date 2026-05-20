@@ -1,5 +1,15 @@
-import type { breakpointNames } from 'braid-src/lib/css/breakpoints';
-import * as allThemes from 'braid-src/lib/themes';
+import type { breakpoints } from 'braid-design-system/css';
+import docs from 'braid-design-system/themes/docs';
+import seekBusiness from 'braid-design-system/themes/seekBusiness';
+import seekJobs from 'braid-design-system/themes/seekJobs';
+import wireframe from 'braid-design-system/themes/wireframe';
+
+const themes = {
+  docs,
+  seekBusiness,
+  seekJobs,
+  wireframe,
+};
 
 import type { ColourMode } from './globalTypes';
 
@@ -11,7 +21,7 @@ type ChromaticModesParameter = {
   modes: Modes;
 };
 
-type ViewportName = (typeof breakpointNames)[number];
+type ViewportName = keyof typeof breakpoints;
 const screenshotViewports: Record<ViewportName, number> = {
   mobile: 320,
   tablet: 768,
@@ -24,10 +34,10 @@ const allViewports = Object.keys(screenshotViewports) as ViewportName[];
 const screenshotThemes = ['seekJobs', 'wireframe'];
 const darkModeThemes = ['seekJobs'];
 
-const allThemeNames = Object.keys(allThemes);
+const themeNames = Object.keys(themes);
 
 const screenshotThemesAreValid = screenshotThemes.every((theme) =>
-  allThemeNames.includes(theme),
+  themeNames.includes(theme),
 );
 
 if (!screenshotThemesAreValid) {

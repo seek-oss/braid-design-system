@@ -11,10 +11,10 @@ import {
 } from 'braid-design-system';
 // TODO: COLORMODE RELEASE
 // Use public import
+import usePlayroomScope from 'braid-design-system/playroom/scope';
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { FieldOverlay } from 'braid-src/lib/components/private/FieldOverlay/FieldOverlay';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
-import usePlayroomScope from 'braid-src/lib/playroom/useScope';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash.memoize';

@@ -1,12 +1,22 @@
 import type { Decorator } from '@storybook/react-webpack5';
-import { BraidProvider } from 'braid-src/lib/components';
+import { BraidProvider } from 'braid-design-system';
+import docs from 'braid-design-system/themes/docs';
+import seekBusiness from 'braid-design-system/themes/seekBusiness';
+import seekJobs from 'braid-design-system/themes/seekJobs';
+import wireframe from 'braid-design-system/themes/wireframe';
 import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
-import * as themes from 'braid-src/lib/themes';
 import { BrowserRouter } from 'react-router';
 
 import { Artboard } from './Artboard';
 import type { StorybookGlobals } from './globalTypes';
+
+const themes = {
+  docs,
+  seekBusiness,
+  seekJobs,
+  wireframe,
+};
 
 export const withTheme: Decorator = (Story, context) => {
   const storybookGlobals = context.globals as StorybookGlobals;
