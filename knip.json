@@ -1,0 +1,44 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "tags": ["-lintignore"],
+  "ignoreDependencies": ["braid-src", "tsx"],
+  "workspaces": {
+    ".": {
+      "entry": ["scripts/**/*"],
+      "ignoreDependencies": ["renovate-config-seek"]
+    },
+    "packages/braid-design-system": {
+      "entry": ["src/**/*.{docs,gallery,screenshots,snippets}.tsx"],
+      "ignoreUnresolved": ["./Icon.*Svg"],
+      "ignoreDependencies": ["assert", "skott"]
+    },
+    "site": {
+      "entry": [
+        "playroom.config.mts",
+        "scripts/**/*",
+        "sku.config.ts",
+        "sku.routes.ts",
+        "src/client.tsx",
+        "src/playroom.components.ts",
+        "src/playroom.frame.ts",
+        "src/playroom.scope.ts",
+        "src/render.tsx"
+      ],
+      "ignoreDependencies": ["assert", "@babel/preset-typescript"]
+    },
+    "packages/docs-ui": {
+      "ignoreDependencies": ["skott"]
+    },
+    "storybook": {
+      "entry": [
+        "chromatic.ts",
+        "decorators.tsx",
+        "globalTypes.ts",
+        "main.ts",
+        "modes.ts",
+        "preview.tsx"
+      ],
+      "ignoreDependencies": ["@storybook/addon-webpack5-compiler-babel"]
+    }
+  }
+}

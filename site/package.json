@@ -2,7 +2,6 @@
   "name": "site",
   "private": true,
   "version": "1.0.0",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "build:site": "NODE_ENV=production SKU_TELEMETRY=false sku build",

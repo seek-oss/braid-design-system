@@ -1,0 +1,51 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema-jsonc.json",
+  "tags": ["-lintignore"],
+  // tsx is not detected in scripts for some reason
+  "ignoreDependencies": ["braid-src", "tsx"],
+  "workspaces": {
+    ".": {
+      "entry": ["scripts/**/*"],
+      // Used in the renovate config
+      "ignoreDependencies": ["renovate-config-seek"],
+    },
+    "packages/braid-design-system": {
+      "entry": ["src/**/*.{docs,gallery,screenshots,snippets}.tsx"],
+      "ignoreUnresolved": ["./Icon.*Svg"],
+      // skott is not detected in scripts for some reason
+      "ignoreDependencies": ["assert", "skott"],
+    },
+    "site": {
+      "entry": [
+        "playroom.config.mts",
+        "scripts/**/*",
+        "sku.config.ts",
+        "sku.routes.ts",
+        "src/client.tsx",
+        "src/playroom.components.ts",
+        "src/playroom.frame.ts",
+        "src/playroom.scope.ts",
+        "src/render.tsx",
+      ],
+      // `assert` might be getting confused with `node:assert`? Not sure why it's not detected.
+      // Babel presets are referenced by strings instead of imports so are not detected.
+      "ignoreDependencies": ["assert", "@babel/preset-typescript"],
+    },
+    "packages/docs-ui": {
+      // skott is not detected in scripts for some reason
+      "ignoreDependencies": ["skott"],
+    },
+    "storybook": {
+      "entry": [
+        "chromatic.ts",
+        "decorators.tsx",
+        "globalTypes.ts",
+        "main.ts",
+        "modes.ts",
+        "preview.tsx",
+      ],
+      // Referenced as a string in main.ts so not detected
+      "ignoreDependencies": ["@storybook/addon-webpack5-compiler-babel"],
+    },
+  },
+}
