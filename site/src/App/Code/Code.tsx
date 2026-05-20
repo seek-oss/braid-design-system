@@ -9,9 +9,9 @@ import {
   IconCopy,
   IconVideo,
 } from 'braid-design-system';
+import usePlayroomScope from 'braid-design-system/playroom/scope';
 // TODO: COLORMODE RELEASE
 // Use public import
-import usePlayroomScope from 'braid-design-system/playroom/scope';
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { FieldOverlay } from 'braid-src/lib/components/private/FieldOverlay/FieldOverlay';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
