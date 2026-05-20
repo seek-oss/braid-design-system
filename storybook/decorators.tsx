@@ -5,7 +5,7 @@ import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { BrowserRouter } from 'react-router';
 
 import { Artboard } from './Artboard';
-import { allThemes, ThemeName } from './allThemes';
+import { allThemes, type ThemeName } from './allThemes';
 import type { StorybookGlobals } from './globalTypes';
 
 export const withTheme: Decorator = (Story, context) => {

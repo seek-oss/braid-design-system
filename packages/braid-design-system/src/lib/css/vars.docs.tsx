@@ -58,14 +58,14 @@ const CssVarValue = ({
   property: keyof CSSStyleDeclaration;
 }) => {
   const [value, setValue] = useState('');
-  const { themeKey } = useThemeSettings();
+  const { themeName } = useThemeSettings();
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (ref.current && themeKey) {
+    if (ref.current && themeName) {
       setValue(String(getComputedStyle(ref.current)[property]));
     }
-  }, [themeKey, property]);
+  }, [themeName, property]);
 
   return (
     <>
