@@ -42,7 +42,8 @@
     "@types/react": "^19.1.8",
     "@vanilla-extract/rollup-plugin": "^1.5.1",
     "braid-design-system": "workspace:*",
-    "react": "^19.1.0"
+    "react": "^19.1.0",
+    "skott": "^0.32.1"
   },
   "peerDependencies": {
     "braid-design-system": "^34.0.0",
