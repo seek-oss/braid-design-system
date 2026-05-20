@@ -1,8 +1,4 @@
 import packageJson from 'braid-design-system/package.json';
-import docs from 'braid-design-system/themes/docs';
-import seekBusiness from 'braid-design-system/themes/seekBusiness';
-import seekJobs from 'braid-design-system/themes/seekJobs';
-import wireframe from 'braid-design-system/themes/wireframe';
 import { colorModeQueryParamCheck } from 'braid-src/color-mode/query-param';
 import dedent from 'dedent';
 import { renderToString } from 'react-dom/server';
@@ -12,16 +8,10 @@ import type { Render } from 'sku';
 
 import { App } from './App/App';
 import { ConfigProvider } from './App/ConfigContext';
+import { allThemes } from './App/ThemeSetting/allThemes';
 import { initUpdates } from './App/Updates';
 import { braidVersionToDate } from './getVersionDetails';
 import type { RenderContext } from './types';
-
-const themes = {
-  docs,
-  seekBusiness,
-  seekJobs,
-  wireframe,
-};
 
 const { version } = packageJson;
 
@@ -95,7 +85,7 @@ const skuRender: Render<RenderContext> = {
   renderDocument: ({ headTags, bodyTags, app: { html, helmetContext } }) => {
     const webFontLinkTags = Array.from(
       new Set(
-        Object.values(themes)
+        Object.values(allThemes)
           .flatMap((theme) => theme.webFonts)
           .map((font) => font.linkTag),
       ),

@@ -1,24 +1,15 @@
 import 'braid-design-system/reset';
 
 import type { Preview } from '@storybook/react-webpack5';
-import docs from 'braid-design-system/themes/docs';
-import seekBusiness from 'braid-design-system/themes/seekBusiness';
-import seekJobs from 'braid-design-system/themes/seekJobs';
-import wireframe from 'braid-design-system/themes/wireframe';
 
+import { allThemes } from './allThemes';
 import { setChromatic } from './chromatic';
 import { withTheme } from './decorators';
 import { colourModes, defaultColourMode } from './globalTypes';
-const themes = {
-  docs,
-  seekBusiness,
-  seekJobs,
-  wireframe,
-};
 
 const webFontLinkTags = Array.from(
   new Set(
-    Object.values(themes)
+    Object.values(allThemes)
       .flatMap((theme) => theme.webFonts)
       .map((font) => font.linkTag),
   ),
@@ -40,7 +31,7 @@ const preview: Preview = {
       description: 'Global theme for components',
       toolbar: {
         icon: 'paintbrush',
-        items: Object.keys(themes),
+        items: Object.keys(allThemes),
         dynamicTitle: true,
       },
     },
