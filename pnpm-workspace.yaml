@@ -1,6 +1,16 @@
-onlyBuiltDependencies:
-  - sku
-  - '@vscode/ripgrep'
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  core-js: false
+  core-js-pure: false
+  esbuild: true
+  nx: false
+  sku: false
+  unrs-resolver: true
+
+minimumReleaseAgeExclude:
+  - sku@15.15.2
+
 packages:
   - packages/*
   - integration
