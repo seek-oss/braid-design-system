@@ -133,12 +133,14 @@ const ModalContentScrollLayout = ({
   contentStartRef,
   coverImageEnabled,
   applyPageBlockGutters,
+  applyFullHeight,
 }: {
   children: ReactNode;
   applyPageBlockGutters: boolean;
   applyCoverImageHeightLimit?: boolean;
   contentStartRef?: Ref<HTMLDivElement>;
   coverImageEnabled?: boolean;
+  applyFullHeight?: boolean;
 }) => (
   <ScrollContainer direction="vertical">
     {
@@ -153,11 +155,13 @@ const ModalContentScrollLayout = ({
       className={
         applyCoverImageHeightLimit ? styles.coverImageHeightLimit : undefined
       }
+      height={applyFullHeight ? 'full' : undefined}
     >
       <Box
         display="flex"
         gap="large"
         flexDirection="column"
+        height={applyFullHeight ? 'full' : undefined}
         paddingY={modalPadding}
         paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
       >
@@ -255,6 +259,7 @@ export const ModalContent = ({
     <ModalContentScrollLayout
       applyCoverImageHeightLimit={allowColumnLayout}
       applyPageBlockGutters={isDrawer}
+      applyFullHeight={isDrawer}
       contentStartRef={contentStartRef}
       coverImageEnabled={coverImageEnabled}
     >
