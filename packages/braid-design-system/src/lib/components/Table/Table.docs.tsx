@@ -523,92 +523,94 @@ const docs: ComponentDocs = {
         </>
       ),
       Example: ({ setDefaultState, getState }) =>
-        source(
-          <>
-            {setDefaultState('rows', [
-              {
-                column1: 'Adipiscing elit',
-                column2: 'Praesent semper',
-                column3: 'Interdum viverra',
-                column4: 'Sed convallis ',
-                column5: 'Phasellus condimentum',
-                column6: 'Cras finibus',
-                column7: 'Rutrum lacinia',
-              },
-              {
-                column1: 'Donec ibero',
-                column2: 'Erat facilisis',
-                column3: 'Quis dictum',
-                column4: 'Quisque lobortis',
-                column5: 'Aenean bibendum',
-                column6: 'Maximus neque',
-                column7: 'Gravida imperdiet',
-              },
-              {
-                column1: 'Nullam rhoncus',
-                column2: 'Tellus vestibulum',
-                column3: 'Purus vitae',
-                column4: 'Porttitor sapien',
-                column5: 'Morbi cursus',
-                column6: 'Odio aliquet',
-                column7: 'Commodo quisque',
-              },
-            ])}
-            <Table label="Horizontal scrolling example">
-              <TableHeader>
-                <TableRow>
-                  <TableHeaderCell>
-                    <Text>Lorem</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Ipsum</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Dolor</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Sit</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Amet</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Consectetur</Text>
-                  </TableHeaderCell>
-                  <TableHeaderCell>
-                    <Text>Pharetra</Text>
-                  </TableHeaderCell>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {getState('rows').map((row: any) => (
-                  <TableRow key={row.column1}>
-                    <TableCell>
-                      <Text>{row.column1}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column2}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column3}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column4}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column5}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column6}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{row.column7}</Text>
-                    </TableCell>
+        stripTypeAnyFromCode(
+          source(
+            <>
+              {setDefaultState('rows', [
+                {
+                  column1: 'Adipiscing elit',
+                  column2: 'Praesent semper',
+                  column3: 'Interdum viverra',
+                  column4: 'Sed convallis ',
+                  column5: 'Phasellus condimentum',
+                  column6: 'Cras finibus',
+                  column7: 'Rutrum lacinia',
+                },
+                {
+                  column1: 'Donec ibero',
+                  column2: 'Erat facilisis',
+                  column3: 'Quis dictum',
+                  column4: 'Quisque lobortis',
+                  column5: 'Aenean bibendum',
+                  column6: 'Maximus neque',
+                  column7: 'Gravida imperdiet',
+                },
+                {
+                  column1: 'Nullam rhoncus',
+                  column2: 'Tellus vestibulum',
+                  column3: 'Purus vitae',
+                  column4: 'Porttitor sapien',
+                  column5: 'Morbi cursus',
+                  column6: 'Odio aliquet',
+                  column7: 'Commodo quisque',
+                },
+              ])}
+              <Table label="Horizontal scrolling example">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell>
+                      <Text>Lorem</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Ipsum</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Dolor</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Sit</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Amet</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Consectetur</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell>
+                      <Text>Pharetra</Text>
+                    </TableHeaderCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </>,
+                </TableHeader>
+                <TableBody>
+                  {getState('rows').map((row: any) => (
+                    <TableRow key={row.column1}>
+                      <TableCell>
+                        <Text>{row.column1}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column2}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column3}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column4}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column5}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column6}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{row.column7}</Text>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>,
+          ),
         ),
     },
     {
