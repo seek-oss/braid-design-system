@@ -571,8 +571,8 @@ importers:
         specifier: ^17.4.0
         version: 17.6.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       sku:
-        specifier: 15.15.1
-        version: 15.15.1(83e28b1388d0549ee86c45b00ab0858d)
+        specifier: 15.15.2
+        version: 15.15.2(83e28b1388d0549ee86c45b00ab0858d)
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.1.0
@@ -604,8 +604,8 @@ importers:
         specifier: ^7.6.3
         version: 7.15.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       sku:
-        specifier: 15.15.1
-        version: 15.15.1(5a2b91c15c68fb5f5611153b65ee0692)
+        specifier: 15.15.2
+        version: 15.15.2(5a2b91c15c68fb5f5611153b65ee0692)
       storybook:
         specifier: ^10.2.7
         version: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -9406,8 +9406,8 @@ packages:
     resolution: {integrity: sha512-r1X49+6Xnf5ahzf0KwoezYvyU97mo/K0tcUaIIUPaNNCG5epYxllnMZmo+XdmWmuxfk4jKcY+C5jz6Uwq69iAA==}
     hasBin: true
 
-  sku@15.15.1:
-    resolution: {integrity: sha512-OMNHq3g7JzoOqKviBGP2m3jSNRMuU02kujrF0hqsweDihg4MVwuOLOCLVs83gIqdY/4Q+3yZoRYd2wANaV6YoA==}
+  sku@15.15.2:
+    resolution: {integrity: sha512-qctvBpFaXycPEalODEhQI1ar8CLWRNhZQn94ZBGQ5qxbC45HA3xSredgF1Dct7nfes2WGuOUNuzsFm3KVzRHYA==}
     engines: {node: '>=22.19.0'}
     hasBin: true
     peerDependencies:
@@ -20950,7 +20950,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  sku@15.15.1(5a2b91c15c68fb5f5611153b65ee0692):
+  sku@15.15.2(5a2b91c15c68fb5f5611153b65ee0692):
     dependencies:
       '@babel/core': 7.29.0
       '@babel/generator': 7.29.1
@@ -20999,7 +20999,6 @@ snapshots:
       babel-plugin-unassert: 3.2.0
       browserslist: 4.28.2
       browserslist-config-seek: 3.4.1
-      chalk: 5.6.2
       commander: 14.0.3
       cross-spawn: 7.0.6
       css-loader: 7.1.4(webpack@5.106.2(@swc/core@1.15.33)(esbuild@0.28.0))
@@ -21107,7 +21106,7 @@ snapshots:
       - webpack-plugin-serve
       - yaml
 
-  sku@15.15.1(83e28b1388d0549ee86c45b00ab0858d):
+  sku@15.15.2(83e28b1388d0549ee86c45b00ab0858d):
     dependencies:
       '@babel/core': 7.29.0
       '@babel/generator': 7.29.1
@@ -21156,7 +21155,6 @@ snapshots:
       babel-plugin-unassert: 3.2.0
       browserslist: 4.28.2
       browserslist-config-seek: 3.4.1
-      chalk: 5.6.2
       commander: 14.0.3
       cross-spawn: 7.0.6
       css-loader: 7.1.4(webpack@5.106.2(@swc/core@1.15.33)(esbuild@0.28.0)(postcss@8.5.14))
@@ -22744,7 +22742,7 @@ snapshots:
 
   wide-align@1.1.5:
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     optional: true
 
   widest-line@6.0.0:
