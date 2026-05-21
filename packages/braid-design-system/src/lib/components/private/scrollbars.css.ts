@@ -19,11 +19,9 @@ export const scrollbars = style([
     },
   }),
   {
+    scrollbarColor: `${thumbColor} ${trackColor}`,
     '@supports': {
-      '(scrollbar-color: auto)': {
-        scrollbarColor: `${thumbColor} ${trackColor}`,
-      },
-      'selector(::-webkit-scrollbar)': {
+      'not (scrollbar-color: auto)': {
         selectors: {
           '&::-webkit-scrollbar': {
             background: trackColor,

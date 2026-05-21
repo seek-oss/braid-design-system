@@ -178,7 +178,7 @@ export const DocDetails = () => {
     <>
       <PageTitle title={docsName} />
       <Box display="flex" gap="xlarge">
-        <Box flexGrow={1}>
+        <Box flexGrow={1} minWidth={0}>
           <Stack space="xxlarge">
             <Stack space={outerSectionSpacing}>
               {docs.description ? (
