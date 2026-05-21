@@ -8,6 +8,9 @@ allowBuilds:
   sku: false
   unrs-resolver: true
 
+minimumReleaseAgeExclude:
+  - sku@15.15.2
+
 packages:
   - packages/*
   - integration
