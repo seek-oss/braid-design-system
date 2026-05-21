@@ -13,7 +13,7 @@
     "build:docs-ui": "nx run docs-ui:build",
     "build:site": "nx run site:build",
     "build:codemod": "nx run codemod:build",
-    "postbuild": "concurrently --group 'pnpm:test:integration' 'pnpm:validate'",
+    "postbuild": "concurrently --group 'pnpm:test:integration' 'pnpm:validate' 'pnpm:storybook:build'",
     "storybook": "nx run braid-design-system:generate && nx run storybook:dev",
     "storybook:build": "nx run braid-design-system:generate && nx run storybook:build",
     "storybook:chromatic": "nx run storybook:chromatic",
