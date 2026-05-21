@@ -173,7 +173,10 @@ export const maximumHeightForCoverImage = '60vh';
 export const coverImageHeightLimit = style(
   responsiveStyle({
     tablet: {
-      maxHeight: maximumHeightForCoverImage,
+      maxHeight: fallbackVar(
+        overrideMaxHeightForScreenshot,
+        maximumHeightForCoverImage,
+      ),
     },
   }),
 );
