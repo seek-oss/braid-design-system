@@ -327,9 +327,6 @@ importers:
       babel-plugin-tester:
         specifier: ^11.0.4
         version: 11.0.4(@babel/core@7.29.0)
-      braid-design-system:
-        specifier: workspace:*
-        version: link:../braid-design-system
       chalk:
         specifier: ^5.0.1
         version: 5.6.2

@@ -34,7 +34,6 @@
     "@types/react": "^19.1.8",
     "@types/workerpool": "^6.1.0",
     "babel-plugin-tester": "^11.0.4",
-    "braid-design-system": "workspace:*",
     "chalk": "^5.0.1",
     "cli-highlight": "^2.1.11",
     "cli-progress": "^3.11.1",
