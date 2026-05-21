@@ -1,4 +1,4 @@
-export const coverImagePlaceholderUrl = `${`data:image/svg+xml;base64,${Buffer.from(
+export const coverImagePlaceholderUrl = `data:image/svg+xml;base64,${Buffer.from(
   `<svg
 xmlns="http://www.w3.org/2000/svg"
 height="450"
@@ -9,4 +9,4 @@ style="background: #051A49;"
 <circle cx="400" cy="225" r="80" fill="#E60278" />
 </svg>
 `,
-).toString('base64')}`}`;
+).toString('base64')}`;
