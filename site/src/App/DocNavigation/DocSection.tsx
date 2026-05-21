@@ -6,12 +6,14 @@ import {
   Bleed,
   HiddenVisually,
 } from 'braid-design-system';
-import type { ResponsiveSpace } from 'braid-src/lib/css/atoms/atoms';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
+import type { ComponentProps } from 'react';
 
 import type { ComponentExample } from '../../types';
 
 import { DocExample } from './DocExample';
+
+type ResponsiveSpace = ComponentProps<typeof Stack>['space'];
 
 export const DocSection = ({
   section,

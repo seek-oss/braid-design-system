@@ -1,6 +1,5 @@
 import packageJson from 'braid-design-system/package.json';
 import { colorModeQueryParamCheck } from 'braid-src/color-mode/query-param';
-import * as themes from 'braid-src/lib/themes';
 import dedent from 'dedent';
 import { renderToString } from 'react-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
@@ -9,6 +8,7 @@ import type { Render } from 'sku';
 
 import { App } from './App/App';
 import { ConfigProvider } from './App/ConfigContext';
+import { allThemes } from './App/ThemeSetting/allThemes';
 import { initUpdates } from './App/Updates';
 import { braidVersionToDate } from './getVersionDetails';
 import type { RenderContext } from './types';
@@ -85,7 +85,7 @@ const skuRender: Render<RenderContext> = {
   renderDocument: ({ headTags, bodyTags, app: { html, helmetContext } }) => {
     const webFontLinkTags = Array.from(
       new Set(
-        Object.values(themes)
+        Object.values(allThemes)
           .flatMap((theme) => theme.webFonts)
           .map((font) => font.linkTag),
       ),

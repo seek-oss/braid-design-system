@@ -586,6 +586,9 @@ importers:
       '@types/react':
         specifier: ^19.1.8
         version: 19.2.15
+      braid-design-system:
+        specifier: workspace:*
+        version: link:../packages/braid-design-system
       chromatic:
         specifier: ^13.1.2
         version: 13.3.5

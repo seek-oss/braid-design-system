@@ -16,5 +16,10 @@ export default defineProject({
       'braid-storybook': __dirname,
     },
   },
+  ssr: {
+    resolve: {
+      conditions: ['braid-dev'],
+    },
+  },
   plugins: [vanillaExtractPlugin()],
 });
