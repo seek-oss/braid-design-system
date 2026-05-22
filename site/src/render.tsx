@@ -1,5 +1,5 @@
+import { colorModeQueryParamCheck } from 'braid-design-system/color-mode/query-param';
 import packageJson from 'braid-design-system/package.json';
-import { colorModeQueryParamCheck } from 'braid-src/color-mode/query-param';
 import dedent from 'dedent';
 import { renderToString } from 'react-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
