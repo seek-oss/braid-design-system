@@ -1,5 +1,63 @@
 # braid-design-system
 
+## 34.2.0
+
+### Minor Changes
+
+- **Dialog:** Add `coverImage` support ([#2052](https://github.com/seek-oss/braid-design-system/pull/2052))
+
+  Add support for providing a URL for a cover image to display at the top of the Dialog via the `coverImage` prop.
+  The provided image must be compatible with the [CSS background-image “url” function].
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Dialog
+    title="Cover Image"
+    coverImage="https://placehold.co/1600x900/051A49/FFFFFF/png?text=​++++++16:9++++++​"
+    open={true}
+    onClose={() => {}}
+  >
+    <Placeholder height={100} width="100%" label="Dialog Content" />
+  </Dialog>
+  ```
+
+  [CSS background-image “url” function]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/background-image
+
+- **vars:** Exposed `vars.transition`. Transition CSS variables are available in stylesheets and runtime styles. ([#2034](https://github.com/seek-oss/braid-design-system/pull/2034))
+
+  **EXAMPLE USAGE:**
+
+  ```ts
+  import { vars } from 'braid-design-system/css':
+
+  export const myStyle = style({
+    transition: vars.transition.fast,
+  });
+  ```
+
+- **Badge:** Added aria-hidden and aria-label props. ([#2034](https://github.com/seek-oss/braid-design-system/pull/2034))
+
+  `aria-hidden` allows a badge to be hidden from assistive technology
+
+  `aria-label` allows visible badge text to be overridden with a more descriptive label for screen readers
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Badge aria-hidden>Deprecated</Badge>
+  ```
+
+  ```jsx
+  <Badge aria-label="You have 2 notifications">2</Badge>
+  ```
+
+### Patch Changes
+
+- **seekJobs, seekBusiness:** Update webfont url ([#2044](https://github.com/seek-oss/braid-design-system/pull/2044))
+
+  Point to the `www.seek.com` domain instead of `www.seek.com.au`.
+
 ## 34.1.0
 
 ### Minor Changes
