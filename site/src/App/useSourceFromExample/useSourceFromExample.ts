@@ -1,4 +1,4 @@
-import useScope from 'braid-src/lib/playroom/useScope';
+import useScope from 'braid-design-system/playroom/scope';
 
 import type { ComponentExample } from '../../types';
 

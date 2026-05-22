@@ -12,15 +12,16 @@
     "@storybook/addon-webpack5-compiler-babel": "^4.0.0",
     "@storybook/react-webpack5": "^10.2.7",
     "@types/react": "^19.1.8",
+    "braid-design-system": "workspace:*",
     "chromatic": "^13.1.2",
     "clsx": "^2.1.1",
     "react": "^19.1.0",
     "react-router": "^7.6.3",
-    "sku": "15.14.1",
+    "sku": "15.15.2",
     "storybook": "^10.2.7"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.33.4"
+  "packageManager": "pnpm@11.1.3"
 }

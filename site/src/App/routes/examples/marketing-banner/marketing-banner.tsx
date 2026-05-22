@@ -13,9 +13,8 @@ import {
   Box,
   ContentBlock,
   Button,
-} from 'braid-src/lib/components';
-import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
-import { Placeholder } from 'braid-src/lib/playroom/components';
+} from 'braid-design-system';
+import { Placeholder } from 'braid-design-system/playroom/components';
 import type { ComponentProps } from 'react';
 
 import type { Page } from '../../../../types';
@@ -25,7 +24,7 @@ import { TextStack } from '../../../TextStack/TextStack';
 
 interface StepProps {
   heading?: string;
-  detail: ReactNodeNoStrings;
+  detail: ComponentProps<typeof Stack>['children'];
   children: ComponentProps<typeof Code>['children'];
 }
 const Step = ({ heading, detail, children }: StepProps) => (

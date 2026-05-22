@@ -8,13 +8,13 @@ import {
   IconPositive,
   IconCopy,
   IconVideo,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
+import usePlayroomScope from 'braid-design-system/playroom/scope';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { FieldOverlay } from 'braid-src/lib/components/private/FieldOverlay/FieldOverlay';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
-import usePlayroomScope from 'braid-src/lib/playroom/useScope';
 import copy from 'copy-to-clipboard';
 import dedent from 'dedent';
 import memoize from 'lodash.memoize';

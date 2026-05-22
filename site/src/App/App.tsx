@@ -1,12 +1,12 @@
-import 'braid-src/reset';
+import 'braid-design-system/reset';
 
 import {
   BraidProvider,
   ToastProvider,
   makeLinkComponent,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
+import docsTheme from 'braid-design-system/themes/docs';
 import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
-import docsTheme from 'braid-src/themes/docs';
 import { StrictMode, useEffect } from 'react';
 import { Route, Routes, Navigate, Link as ReactRouterLink } from 'react-router';
 

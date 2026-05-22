@@ -11,14 +11,13 @@ import {
   Button,
   Actions,
   filterSuggestions,
-} from 'braid-src/lib/components';
-import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
+} from 'braid-design-system';
 import {
   Autosuggest,
   TextField,
   MonthPicker,
   Textarea,
-} from 'braid-src/lib/playroom/components';
+} from 'braid-design-system/playroom/components';
 import type { ComponentProps } from 'react';
 
 import type { Page } from '../../../../types';
@@ -28,7 +27,7 @@ import { TextStack } from '../../../TextStack/TextStack';
 
 interface StepProps {
   heading?: string;
-  detail: ReactNodeNoStrings;
+  detail: ComponentProps<typeof Stack>['children'];
   children: ComponentProps<typeof Code>['children'];
 }
 const Step = ({ heading, detail, children }: StepProps) => (

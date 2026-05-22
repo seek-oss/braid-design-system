@@ -9,7 +9,7 @@ import {
   Bleed,
   ButtonLink,
   Spread,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 
 import type { GroupedResults, SearchItem } from './getSearchItems';
 

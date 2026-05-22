@@ -5,13 +5,15 @@ import {
   Heading,
   Bleed,
   HiddenVisually,
-} from 'braid-src/lib/components';
-import type { ResponsiveSpace } from 'braid-src/lib/css/atoms/atoms';
+} from 'braid-design-system';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
+import type { ComponentProps } from 'react';
 
 import type { ComponentExample } from '../../types';
 
 import { DocExample } from './DocExample';
+
+type ResponsiveSpace = ComponentProps<typeof Stack>['space'];
 
 export const DocSection = ({
   section,

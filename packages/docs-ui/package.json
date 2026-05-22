@@ -1,6 +1,6 @@
 {
   "name": "@braid-design-system/docs-ui",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/seek-oss/braid-design-system.git",
@@ -42,7 +42,8 @@
     "@types/react": "^19.1.8",
     "@vanilla-extract/rollup-plugin": "^1.5.1",
     "braid-design-system": "workspace:*",
-    "react": "^19.1.0"
+    "react": "^19.1.0",
+    "skott": "^0.32.1"
   },
   "peerDependencies": {
     "braid-design-system": "^34.0.0",

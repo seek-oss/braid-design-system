@@ -1,10 +1,4 @@
-import {
-  Text,
-  TextLink,
-  Stack,
-  Heading,
-  Divider,
-} from 'braid-src/lib/components';
+import { Text, TextLink, Stack, Heading, Divider } from 'braid-design-system';
 
 import { useConfig } from '../../ConfigContext';
 
@@ -15,7 +9,7 @@ export const HomePage = () => {
       <Heading level="1">Braid Design System</Heading>
       <Text>
         👋 Welcome to Braid, the themeable design system for the{' '}
-        <TextLink href="https://www.seek.com.au/about/">SEEK Group.</TextLink>
+        <TextLink href="https://au.seek.com/about/">SEEK Group.</TextLink>
       </Text>
       <Text>
         Braid aims to make cross-brand UI development as fast as possible while

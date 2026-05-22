@@ -2,7 +2,6 @@
   "name": "site",
   "private": true,
   "version": "1.0.0",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "build:site": "NODE_ENV=production SKU_TELEMETRY=false sku build",
@@ -63,7 +62,7 @@
     "react-router": "^7.6.3",
     "react-syntax-highlighter": "^15.5.0",
     "react-use": "^17.4.0",
-    "sku": "15.14.1",
+    "sku": "15.15.2",
     "unist-util-visit": "^5.0.0",
     "webpack": "^5.76.0"
   },

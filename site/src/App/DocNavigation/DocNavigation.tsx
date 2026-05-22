@@ -12,8 +12,7 @@ import {
   Inline,
   ButtonIcon,
   IconChevron,
-} from 'braid-src/lib/components';
-import type { BadgeProps } from 'braid-src/lib/components/Badge/Badge';
+} from 'braid-design-system';
 import { useBackgroundLightness } from 'braid-src/lib/components/Box/BackgroundContext';
 import { negativeMargin } from 'braid-src/lib/css/negativeMargin/negativeMargin';
 import {
@@ -24,6 +23,7 @@ import {
   Children,
   createContext,
   useContext,
+  type ComponentProps,
 } from 'react';
 import flattenChildren from 'react-keyed-flatten-children';
 import {
@@ -59,7 +59,7 @@ export const DocsContext = createContext<DocsProviderContextValue>({
 
 interface DocNavigationItemProps {
   href: string;
-  badge?: ReactElement<BadgeProps>;
+  badge?: ReactElement<ComponentProps<typeof Badge>>;
   badgeTitle?: string;
   children: ReactNode;
 }

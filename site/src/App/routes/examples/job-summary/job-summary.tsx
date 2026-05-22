@@ -17,15 +17,16 @@ import {
   List,
   ButtonIcon,
   Spread,
-} from 'braid-src/lib/components';
-import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
-import { Placeholder } from 'braid-src/lib/playroom/components';
+} from 'braid-design-system';
+import { Placeholder } from 'braid-design-system/playroom/components';
 import type { ComponentProps } from 'react';
 
 import type { Page } from '../../../../types';
 import Code from '../../../Code/Code';
 import { PageTitle } from '../../../Seo/PageTitle';
 import { TextStack } from '../../../TextStack/TextStack';
+
+type ReactNodeNoStrings = ComponentProps<typeof Stack>['children'];
 
 interface StepProps {
   heading?: string;

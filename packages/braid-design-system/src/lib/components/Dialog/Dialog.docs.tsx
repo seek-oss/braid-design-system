@@ -17,6 +17,7 @@ import {
   Alert,
   TextDropdown,
   List,
+  Notice,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { externalGutter } from '../private/Modal/ModalExternalGutter';
@@ -228,6 +229,114 @@ const docs: ComponentDocs = {
             </Dialog>
           </>,
         ),
+    },
+    {
+      label: 'Cover images',
+      description: (
+        <>
+          <Text>
+            You can provide a URL for a cover image to display at the top of the
+            Dialog via the <Strong>coverImage</Strong> prop. The provided image
+            must be compatible with the{' '}
+            <TextLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/background-image">
+              CSS background-image &ldquo;url&rdquo; function
+            </TextLink>
+            .
+          </Text>
+          <Text>
+            For best results, the image should be 16:9 aspect ratio with a 1:1
+            safe area in the centre. To prevent over-cropping the image in this
+            layout, the Dialog is restricted to a maximum height of{' '}
+            <Strong>{styles.maximumHeightForCoverImage}</Strong>.
+          </Text>
+          <Text>
+            Additionally, in this layout the content on the left is scrollable,
+            while the cover image remains fixed.
+          </Text>
+        </>
+      ),
+      background: false,
+      Example: () => {
+        const { code, value } = source<DialogElement>(
+          <Dialog
+            title="Cover Image"
+            coverImage="https://placehold.co/1600x900/051A49/FFFFFF/png?text=​++++++16:9++++++​"
+            open={true}
+            onClose={() => {}}
+          >
+            <Placeholder height={100} width="100%" label="Dialog Content" />
+          </Dialog>,
+        );
+
+        return {
+          code,
+          value: (
+            <Box borderRadius="xlarge" overflow="hidden">
+              <DialogPreview>
+                <DialogContent {...dialogPreviewPropsFromSourceValue(value)}>
+                  <Placeholder
+                    height={100}
+                    width="100%"
+                    label="Dialog Content"
+                  />
+                </DialogContent>
+                <Screen />
+              </DialogPreview>
+            </Box>
+          ),
+        };
+      },
+    },
+    {
+      description: (
+        <>
+          <Text>
+            <Strong>On mobile</Strong>, the <Strong>coverImage</Strong> will be
+            stacked vertically above the content. In this layout the cover image
+            will be scrolled with the content.
+          </Text>
+          <Notice>
+            <Text>
+              A stacked layout is used across all viewports when using a{' '}
+              <Strong>width</Strong> of <Strong>xsmall</Strong>.
+            </Text>
+          </Notice>
+        </>
+      ),
+      background: false,
+      Example: () => {
+        const { code, value } = source<DialogElement>(
+          <Dialog
+            title="Cover Image"
+            coverImage="https://placehold.co/1600x900/051A49/FFFFFF/png?text=​++++++16:9++++++​"
+            open={true}
+            onClose={() => {}}
+          >
+            <Placeholder height={100} width="100%" label="Dialog Content" />
+          </Dialog>,
+        );
+
+        return {
+          code,
+          value: (
+            <Box borderRadius="xlarge" overflow="hidden">
+              <DialogPreview>
+                <DialogContent
+                  {...dialogPreviewPropsFromSourceValue(value)}
+                  width="xsmall"
+                >
+                  <Placeholder
+                    height={100}
+                    width="100%"
+                    label="Dialog Content"
+                  />
+                </DialogContent>
+                <Screen />
+              </DialogPreview>
+            </Box>
+          ),
+        };
+      },
     },
     {
       label: 'Illustrations',
