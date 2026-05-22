@@ -64,9 +64,9 @@ export const getComponentSnippets = (componentName: string) => {
   }));
 };
 
-const documentedCssNames = Object.keys(css).filter(
-  (name) => !undocumentedExports.css.includes(name),
-);
+const documentedCssNames = Object.keys(css)
+  .filter((name) => !undocumentedExports.css.includes(name))
+  .sort();
 
 const documentedComponentNames = Object.keys({
   ...components,
