@@ -2,7 +2,6 @@
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
 import type { SkuConfig } from 'sku';
 
@@ -10,7 +9,7 @@ import extractExports from './scripts/extractExports';
 import undocumentedExports from './src/undocumentedExports.json';
 
 const require = createRequire(import.meta.url);
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __dirname = import.meta.dirname;
 
 const braidSrc = '../packages/braid-design-system';
 

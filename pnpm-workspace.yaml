@@ -9,10 +9,16 @@ allowBuilds:
   unrs-resolver: true
 
 minimumReleaseAgeExclude:
-  - sku@15.15.2
+  - sku
 
 packages:
   - packages/*
   - integration
   - storybook
   - site
+
+linkWorkspacePackages: 'deep'
+preferWorkspacePackages: true
+
+overrides:
+  sku: 15.15.3-wip-esm-jiti-20260521063823

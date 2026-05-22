@@ -63,6 +63,7 @@
     "react-use": "^17.4.0",
     "sku": "15.15.2",
     "unist-util-visit": "^5.0.0",
+    "vite": "^8.0.13",
     "webpack": "^5.76.0"
   },
   "skuSkipPostInstall": true,

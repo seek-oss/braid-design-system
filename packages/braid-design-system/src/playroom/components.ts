@@ -1,9 +1,7 @@
 import dedent from 'dedent';
 
-const global = globalThis as typeof globalThis & {
-  __IS_PLAYROOM_ENVIRONMENT__?: string;
-};
-if (global.__IS_PLAYROOM_ENVIRONMENT__ !== 'clearly') {
+// @ts-expect-error Vite's define plugin doesn't work across re-assigns
+if (globalThis.__IS_PLAYROOM_ENVIRONMENT__ !== 'clearly') {
   throw new Error(dedent`
     Playroom prototyping components are being imported instead of Braid components.
     ‎

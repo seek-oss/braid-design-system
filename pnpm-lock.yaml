@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  sku: 15.15.3-wip-esm-jiti-20260521063823
+
 importers:
 
   .:
@@ -566,11 +569,14 @@ importers:
         specifier: ^17.4.0
         version: 17.6.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       sku:
-        specifier: 15.15.2
-        version: 15.15.2(c5f90efed3ede9bd4eeb4be5aa3e266f)
+        specifier: 15.15.3-wip-esm-jiti-20260521063823
+        version: 15.15.3-wip-esm-jiti-20260521063823(c5f90efed3ede9bd4eeb4be5aa3e266f)
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.1.0
+      vite:
+        specifier: ^8.0.13
+        version: 8.0.13(@types/node@22.19.19)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.47.1)(tsx@4.22.3)(yaml@2.9.0)
       webpack:
         specifier: ^5.76.0
         version: 5.106.2(@swc/core@1.15.33)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.0)(postcss@8.5.15)
@@ -602,8 +608,8 @@ importers:
         specifier: ^7.6.3
         version: 7.15.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       sku:
-        specifier: 15.15.2
-        version: 15.15.2(7aee14064f1b1ed0f9c1d1d62dcc551b)
+        specifier: 15.15.3-wip-esm-jiti-20260521063823
+        version: 15.15.3-wip-esm-jiti-20260521063823(7aee14064f1b1ed0f9c1d1d62dcc551b)
       storybook:
         specifier: ^10.2.7
         version: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.1)(@types/react@19.2.15)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -9410,8 +9416,8 @@ packages:
     resolution: {integrity: sha512-r1X49+6Xnf5ahzf0KwoezYvyU97mo/K0tcUaIIUPaNNCG5epYxllnMZmo+XdmWmuxfk4jKcY+C5jz6Uwq69iAA==}
     hasBin: true
 
-  sku@15.15.2:
-    resolution: {integrity: sha512-qctvBpFaXycPEalODEhQI1ar8CLWRNhZQn94ZBGQ5qxbC45HA3xSredgF1Dct7nfes2WGuOUNuzsFm3KVzRHYA==}
+  sku@15.15.3-wip-esm-jiti-20260521063823:
+    resolution: {integrity: sha512-NYJxp4XnfInSREhPTrnidU2d3SnLFetXePrY+oJyuzuyp2PEBVOEVek3NmO6QN+Z9XAzZBqtIlX8cu92+GhArA==}
     engines: {node: '>=22.19.0'}
     hasBin: true
     peerDependencies:
@@ -20896,7 +20902,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  sku@15.15.2(7aee14064f1b1ed0f9c1d1d62dcc551b):
+  sku@15.15.3-wip-esm-jiti-20260521063823(7aee14064f1b1ed0f9c1d1d62dcc551b):
     dependencies:
       '@babel/core': 7.29.0
       '@babel/generator': 7.29.1
@@ -21052,7 +21058,7 @@ snapshots:
       - webpack-plugin-serve
       - yaml
 
-  sku@15.15.2(c5f90efed3ede9bd4eeb4be5aa3e266f):
+  sku@15.15.3-wip-esm-jiti-20260521063823(c5f90efed3ede9bd4eeb4be5aa3e266f):
     dependencies:
       '@babel/core': 7.29.0
       '@babel/generator': 7.29.1
