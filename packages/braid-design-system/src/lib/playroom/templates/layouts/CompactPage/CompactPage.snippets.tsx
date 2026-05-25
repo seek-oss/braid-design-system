@@ -23,7 +23,7 @@ export const snippets: TemplateSnippets = [
   {
     group: 'Layouts',
     name: 'Compact Page',
-    code: source(
+    code: () => source(
       <Page footer={<PlaceholderFooter />} footerPosition="belowFold">
         <Stack space="xlarge">
           <PlaceholderHeader />

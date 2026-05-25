@@ -16,6 +16,31 @@ const snippetsDir = path.join(baseDir, 'src/lib/playroom/snippets');
 const snippetsIndexFile = path.join(baseDir, 'src/lib/playroom/snippets.ts');
 
 /**
+ * Resolves `code` properties that are arrow functions returning a string literal
+ * to just the string literal. Template snippets define `code` as a function to
+ * support passing state helpers for interactive docs examples, but Playroom only
+ * needs the static code string.
+ */
+const resolveCodeFunctionPlugin = ({ types: t }: { types: typeof types }): PluginObj => ({
+  name: 'resolveCodeFunctionPlugin',
+  visitor: {
+    ObjectProperty(nodePath: NodePath<types.ObjectProperty>) {
+      if (!t.isIdentifier(nodePath.node.key, { name: 'code' })) {
+        return;
+      }
+      const value = nodePath.node.value;
+      if (!t.isArrowFunctionExpression(value)) {
+        return;
+      }
+      const { body } = value;
+      if (t.isStringLiteral(body) || t.isTemplateLiteral(body)) {
+        nodePath.node.value = body;
+      }
+    },
+  },
+});
+
+/**
  * Removes the `Container` property from snippets before  exporting to Playroom.
  * This optional property is only used to provide wrapping components for the
  * purposes of the Braid docs site.
@@ -44,6 +69,7 @@ const transformWithBabel = async (fileName: string) => {
       [require.resolve('babel-plugin-macros'), { source: { codeOnly: true } }],
       [require.resolve('@babel/plugin-transform-typescript'), { isTSX: true }],
       [stripContainerPropertyPlugin],
+      [resolveCodeFunctionPlugin],
       [require.resolve('babel-plugin-remove-unused-vars')], // Clean up any unused vars as result of previous plugins
     ],
     babelrc: false,

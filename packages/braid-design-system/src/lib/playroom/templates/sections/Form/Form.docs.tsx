@@ -4,7 +4,7 @@ import { Strong, Text } from '../../../../playroom/components';
 
 import { snippets } from './Form.snippets';
 
-const primarySnippet = snippets[0];
+const [primarySnippet, ...restSnippets] = snippets;
 
 const docs: TemplateDocs = {
   title: 'Form',
@@ -19,18 +19,23 @@ const docs: TemplateDocs = {
   usage: (
     <>
       <Text>
-        Use the <Strong>basic</Strong> variant for simple forms where validation
-        errors are unlikely or where layout shift on error is acceptable.
+        Use the <Strong>basic</Strong> variant (above) for simple forms where
+        validation errors are unlikely or where layout shift on error is
+        acceptable.
       </Text>
       <Text>
-        Use the <Strong>validation</Strong> variant for forms that are more
-        likely to show inline validation errors. The{' '}
+        Use the <Strong>validation</Strong> variant (below) for forms that are
+        more likely to show inline validation errors. The{' '}
         <Strong>reserveMessageSpace</Strong> prop on each field prevents content
         shifting when messages appear.
       </Text>
     </>
   ),
-  Example: () => primarySnippet.code,
+  Example: primarySnippet.code,
+  additional: restSnippets.map(({ name, code }) => ({
+    label: name,
+    Example: code,
+  })),
 };
 
 export default docs;

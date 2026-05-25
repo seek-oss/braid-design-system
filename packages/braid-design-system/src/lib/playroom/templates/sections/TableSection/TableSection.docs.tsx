@@ -22,7 +22,7 @@ const docs: TemplateDocs = {
       comprehension.
     </Text>
   ),
-  Example: () => primarySnippet.code,
+  Example: primarySnippet.code,
 };
 
 export default docs;

@@ -41,7 +41,7 @@ const docs: TemplateDocs = {
       {children}
     </ContainerForPageDocs>
   ),
-  Example: () => primarySnippet.code,
+  Example: primarySnippet.code,
 };
 
 export default docs;

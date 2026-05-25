@@ -20,7 +20,7 @@ export const snippets: TemplateSnippets = [
   {
     group: 'Sections',
     name: 'Divided list',
-    code: source(
+    code: () => source(
       <PageBlock width="medium">
         <Stack space="medium">
           <Heading level="3">Heading (optional)</Heading>

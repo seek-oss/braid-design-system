@@ -22,7 +22,7 @@ const docs: TemplateDocs = {
       to the user.
     </Text>
   ),
-  Example: () => primarySnippet.code,
+  Example: primarySnippet.code,
 };
 
 export default docs;

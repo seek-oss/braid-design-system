@@ -1,4 +1,4 @@
-import { LinkableHeading } from '@braid-design-system/docs-ui';
+import { TitleLink } from '@braid-design-system/docs-ui';
 import {
   Heading,
   IconArrow,
@@ -56,10 +56,36 @@ export const TemplateDetail = () => {
 
         {templateInfo.usage ? (
           <Stack space="large">
-            <LinkableHeading level="3">Usage</LinkableHeading>
+            <Heading level="3">
+              <TitleLink copyable>Usage</TitleLink>
+            </Heading>
             <Stack space="medium">{templateInfo.usage}</Stack>
           </Stack>
         ) : null}
+
+        {templateInfo.additional
+          ? templateInfo.additional.map((info, index) => (
+              <Stack space="large" key={`${info.label}_${index}`}>
+                {info.label ? (
+                  <Heading level="3">
+                    <TitleLink copyable>{info.label}</TitleLink>
+                  </Heading>
+                ) : null}
+                {info.description ? (
+                  <Stack space="medium">{info.description}</Stack>
+                ) : null}
+                {info.Example ? (
+                  <PlayroomStateProvider>
+                    <DocExample
+                      Example={info.Example}
+                      Container={info.Container}
+                      showCodeByDefault={false}
+                    />
+                  </PlayroomStateProvider>
+                ) : null}
+              </Stack>
+            ))
+          : null}
       </Stack>
     </Stack>
   );

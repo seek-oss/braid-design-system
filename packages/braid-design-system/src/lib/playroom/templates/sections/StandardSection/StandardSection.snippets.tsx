@@ -15,7 +15,7 @@ export const snippets: TemplateSnippets = [
   {
     group: 'Sections',
     name: 'Standard Section',
-    code: source(
+    code: () => source(
       <PageBlock width="medium">
         <Stack space="medium">
           <Stack space="small">

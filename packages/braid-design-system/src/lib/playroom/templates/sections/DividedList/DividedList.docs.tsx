@@ -21,7 +21,7 @@ const docs: TemplateDocs = {
       <strong>Card list</strong> section instead.
     </Text>
   ),
-  Example: () => primarySnippet.code,
+  Example: primarySnippet.code,
 };
 
 export default docs;

@@ -3,6 +3,8 @@ import type { Snippets as PlayroomSnippets } from 'playroom';
 import type { ReactElement, ReactNode } from 'react';
 import type { Optional } from 'utility-types';
 
+import type useScope from 'braid-design-system/playroom/scope';
+
 interface BraidSnippet extends Omit<
   Optional<PlayroomSnippets[number], 'name'>,
   'code'
@@ -13,8 +15,11 @@ interface BraidSnippet extends Omit<
 
 export type Snippets = BraidSnippet[];
 
+type PlayroomExampleProps = ReturnType<typeof useScope>;
+
 export type TemplateSnippets = Array<
-  BraidSnippet & {
+  Omit<BraidSnippet, 'code'> & {
     name: string;
+    code: (props: PlayroomExampleProps) => Source<ReactElement>;
   }
 >;

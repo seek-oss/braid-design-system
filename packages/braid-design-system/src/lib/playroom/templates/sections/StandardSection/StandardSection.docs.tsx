@@ -28,7 +28,7 @@ const docs: TemplateDocs = {
       supporting context without clashing with body content.
     </Text>
   ),
-  Example: () => primarySnippet.code,
+  Example: primarySnippet.code,
 };
 
 export default docs;

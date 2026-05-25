@@ -16,7 +16,7 @@ export const snippets: TemplateSnippets = [
     group: 'Sections',
     name: 'Branded container',
     description: 'Full bleed',
-    code: source(
+    code: () => source(
       <Box background="brand" paddingY="xlarge">
         <PageBlock width="medium">
           <Stack space="large">
@@ -46,7 +46,7 @@ export const snippets: TemplateSnippets = [
     group: 'Sections',
     name: 'Branded container',
     description: 'Rounded from desktop (full bleed below)',
-    code: source(
+    code: () => source(
       <Box paddingX={{ desktop: 'gutter' }}>
         <ContentBlock width="large">
           <Box

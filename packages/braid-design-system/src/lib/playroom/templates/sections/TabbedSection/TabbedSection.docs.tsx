@@ -24,7 +24,7 @@ const docs: TemplateDocs = {
       stack instead.
     </Text>
   ),
-  Example: () => primarySnippet.code,
+  Example: primarySnippet.code,
 };
 
 export default docs;
