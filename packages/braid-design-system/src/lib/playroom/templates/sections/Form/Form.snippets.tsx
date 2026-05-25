@@ -58,7 +58,10 @@ export const snippets: TemplateSnippets = [
 
             <Actions>
               <Button>Primary action</Button>
-              <Button variant="transparent" onClick={() => toggleState('error')}>
+              <Button
+                variant="transparent"
+                onClick={() => toggleState('error')}
+              >
                 Toggle error
               </Button>
             </Actions>
