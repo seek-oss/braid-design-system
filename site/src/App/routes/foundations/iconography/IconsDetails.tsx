@@ -22,7 +22,7 @@ import {
   IconMinus,
   List,
   IconRenderer,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 import { iconScaleIncrease } from 'braid-src/lib/hooks/useIcon/icon.css';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 

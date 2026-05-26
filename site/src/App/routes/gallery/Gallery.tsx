@@ -22,7 +22,7 @@ import {
   IconCopy,
   ButtonIcon,
   Spread,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from 'braid-src/lib/components/Box/Box';
@@ -577,12 +577,6 @@ const GalleryInternal = ({ children }: { children: ReactNode }) => {
         minZoom: dimensions.scale,
         zoomDoubleClickSpeed: 1,
         filterKey: () => true, // disables panzoom default handling of keys
-        beforeDoubleClick: () => true,
-        beforeTouch: (e) =>
-          // @ts-expect-error
-          /^(a|button|select)$/i.test(e.target.tagName) ||
-          // @ts-expect-error
-          e.target.getAttribute('role') === 'button',
         beforeMouseDown: (e) =>
           // @ts-expect-error
           /^(a|button|select)$/i.test(e.target.tagName) ||

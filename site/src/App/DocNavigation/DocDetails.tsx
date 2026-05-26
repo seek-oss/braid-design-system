@@ -7,10 +7,11 @@ import {
   Secondary,
   Text,
   Heading,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { useContext, useMemo } from 'react';
 
+import { slugify } from '../../slugify';
 import { PageTitle } from '../Seo/PageTitle';
 
 import { DocExample } from './DocExample';
@@ -38,13 +39,6 @@ const getSectionHeading = (sectionKey: string): string => {
       return sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
   }
 };
-
-const slugify = (string: string) =>
-  string
-    .replace(/[\s?]/g, '-')
-    .replace('--', '-')
-    .replace(/-$/, '')
-    .toLowerCase();
 
 const hasContent = (example: {
   description?: unknown;
@@ -178,7 +172,7 @@ export const DocDetails = () => {
     <>
       <PageTitle title={docsName} />
       <Box display="flex" gap="xlarge">
-        <Box flexGrow={1}>
+        <Box flexGrow={1} minWidth={0}>
           <Stack space="xxlarge">
             <Stack space={outerSectionSpacing}>
               {docs.description ? (

@@ -1,15 +1,15 @@
-import 'braid-src/reset';
+import 'braid-design-system/reset';
 
 import type { Preview } from '@storybook/react-webpack5';
-import * as themes from 'braid-src/lib/themes';
 
+import { allThemes } from './allThemes';
 import { setChromatic } from './chromatic';
 import { withTheme } from './decorators';
 import { colourModes, defaultColourMode } from './globalTypes';
 
 const webFontLinkTags = Array.from(
   new Set(
-    Object.values(themes)
+    Object.values(allThemes)
       .flatMap((theme) => theme.webFonts)
       .map((font) => font.linkTag),
   ),
@@ -31,7 +31,7 @@ const preview: Preview = {
       description: 'Global theme for components',
       toolbar: {
         icon: 'paintbrush',
-        items: Object.keys(themes),
+        items: Object.keys(allThemes),
         dynamicTitle: true,
       },
     },

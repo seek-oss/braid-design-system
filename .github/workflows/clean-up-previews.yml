@@ -15,7 +15,7 @@ jobs:
       DAYS_OLD: 7
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: gh-pages
           # This makes Actions fetch all Git history so that the cleanup script can access metadata

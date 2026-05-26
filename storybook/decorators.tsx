@@ -1,18 +1,18 @@
 import type { Decorator } from '@storybook/react-webpack5';
-import { BraidProvider } from 'braid-src/lib/components';
+import { BraidProvider } from 'braid-design-system';
 import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
-import * as themes from 'braid-src/lib/themes';
 import { BrowserRouter } from 'react-router';
 
 import { Artboard } from './Artboard';
+import { allThemes, type ThemeName } from './allThemes';
 import type { StorybookGlobals } from './globalTypes';
 
 export const withTheme: Decorator = (Story, context) => {
   const storybookGlobals = context.globals as StorybookGlobals;
   const isDark = storybookGlobals.colourMode === 'dark';
-  const themeName = storybookGlobals.theme as keyof typeof themes;
-  const theme = themes[themeName as keyof typeof themes];
+  const themeName = storybookGlobals.theme as ThemeName;
+  const theme = allThemes[themeName as ThemeName];
 
   if (!theme) {
     throw new Error(`Theme not found: "${themeName}".`);

@@ -47,6 +47,10 @@ const config: StorybookConfig = {
       'braid-storybook': import.meta.dirname,
       'braid-src': braidSrc,
     };
+    skuConfig.resolve.conditionNames = [
+      ...(skuConfig.resolve?.conditionNames ?? []),
+      'braid-dev',
+    ];
 
     return skuConfig;
   },

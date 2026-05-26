@@ -5456,5 +5456,35 @@
         "summary": "**IconProfile**, **IconPeople**, **IconPersonAdd**: Update artwork, consistent with latest design language"
       }
     ]
+  },
+  {
+    "version": "34.2.0",
+    "updates": [
+      {
+        "updated": [
+          "Dialog"
+        ],
+        "summary": "**Dialog:** Add `coverImage` support\n\nAdd support for providing a URL for a cover image to display at the top of the Dialog via the `coverImage` prop.\nThe provided image must be compatible with the [CSS background-image “url” function].\n\n**EXAMPLE USAGE:**\n```jsx\n<Dialog\n  title=\"Cover Image\"\n  coverImage=\"https://placehold.co/1600x900/051A49/FFFFFF/png?text=​++++++16:9++++++​\"\n  open={true}\n  onClose={() => {}}\n>\n  <Placeholder height={100} width=\"100%\" label=\"Dialog Content\" />\n</Dialog>\n```\n\n[CSS background-image “url” function]: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/background-image"
+      },
+      {
+        "updated": [
+          "vars"
+        ],
+        "summary": "**vars:** Exposed `vars.transition`. Transition CSS variables are available in stylesheets and runtime styles.\n\n**EXAMPLE USAGE:**\n```ts\nimport { vars } from 'braid-design-system/css':\n\nexport const myStyle = style({\n  transition: vars.transition.fast,\n});\n```"
+      },
+      {
+        "updated": [
+          "seekJobs",
+          "seekBusiness"
+        ],
+        "summary": "**seekJobs, seekBusiness:** Update webfont url\n\nPoint to the `www.seek.com` domain instead of `www.seek.com.au`."
+      },
+      {
+        "updated": [
+          "Badge"
+        ],
+        "summary": "**Badge:** Added aria-hidden and aria-label props.\n\n`aria-hidden` allows a badge to be hidden from assistive technology\n\n`aria-label` allows visible badge text to be overridden with a more descriptive label for screen readers\n\n\n**EXAMPLE USAGE:**\n```jsx\n  <Badge aria-hidden>\n    Deprecated\n  </Badge>\n```\n\n```jsx\n  <Badge aria-label=\"You have 2 notifications\">\n    2\n  </Badge>\n```"
+      }
+    ]
   }
 ]

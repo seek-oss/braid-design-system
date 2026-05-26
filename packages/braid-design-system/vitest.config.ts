@@ -9,5 +9,8 @@ export default defineProject({
     setupFiles: './vitest-setup.ts',
     css: true,
   },
+  resolve: {
+    conditions: ['braid-dev'],
+  },
   plugins: [react(), vanillaExtractPlugin()],
 });

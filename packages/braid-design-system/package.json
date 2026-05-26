@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "34.1.0",
+  "version": "34.2.0",
   "description": "Themeable design system for the SEEK Group",
   "homepage": "https://seek-oss.github.io/braid-design-system/",
   "bugs": {
@@ -132,7 +132,7 @@
   },
   "dependencies": {
     "@capsizecss/core": "^4.1.2",
-    "@capsizecss/metrics": "^3.0.0",
+    "@capsizecss/metrics": "^4.0.0",
     "@capsizecss/vanilla-extract": "^2.0.4",
     "@floating-ui/react-dom": "^2.1.6",
     "@vanilla-extract/css": "^1.9.2",
@@ -168,13 +168,11 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/autosuggest-highlight": "^3.1.1",
     "@types/babel__core": "^7.20.1",
-    "@types/gradient-parser": "^0.1.5",
     "@types/lodash.curry": "^4.1.9",
     "@types/node": "^22.16.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@types/sanitize-html": "^2.13.0",
-    "@types/testing-library__jest-dom": "^5.9.1",
     "@types/throttle-debounce": "^5.0.2",
     "@vanilla-extract/rollup-plugin": "^1.5.1",
     "babel-plugin-macros": "^3.1.0",
@@ -191,6 +189,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "sanitize-html": "^2.12.1",
+    "skott": "^0.32.1",
     "storybook": "^10.2.7",
     "svgo": "^2.8.0",
     "title-case": "^3.0.3"

@@ -7,17 +7,18 @@ import {
   Strong,
   Box,
   TextLink,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 import { TextContext } from 'braid-src/lib/components/Text/TextContext';
-import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
 import { DefaultTextPropsProvider } from 'braid-src/lib/components/private/defaultTextProps';
-import { Children } from 'react';
+import { Children, type ComponentProps } from 'react';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import { SKIP, visit } from 'unist-util-visit';
 
 import { CodeBlock } from '../Code/Code';
 import type { SupportedLanguage } from '../Code/supportedLanguages';
 import { InlineCode } from '../InlineCode/InlineCode';
+
+type ReactNodeNoStrings = ComponentProps<typeof Stack>['children'];
 
 const Code = ({ lang, value }: { lang: string | null; value: string }) => (
   <TextContext.Provider value={null}>

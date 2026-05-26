@@ -1,5 +1,3 @@
-import * as themes from 'braid-src/lib/themes';
-import type { BraidTheme } from 'braid-src/lib/themes/makeBraidTheme';
 import {
   type ReactNode,
   createContext,
@@ -9,15 +7,17 @@ import {
 } from 'react';
 import { useLocalStorage } from 'react-use';
 
-type ThemeKey = keyof typeof themes;
+import { allThemes, type ThemeName } from './allThemes';
 
-const defaultTheme = 'seekJobs' as const;
+const defaultTheme = 'seekJobs' satisfies ThemeName;
+
+type BraidTheme = (typeof allThemes)[ThemeName];
 
 interface ThemeSettingsContext {
   ready: boolean;
   theme: BraidTheme;
-  themeKey: ThemeKey;
-  setThemeKey: (theme: ThemeKey) => void;
+  themeName: ThemeName;
+  setThemeName: (theme: ThemeName) => void;
 }
 const themeSettingContext = createContext<ThemeSettingsContext | undefined>(
   undefined,
@@ -33,9 +33,9 @@ export function useThemeSettings() {
   return themeSettings;
 }
 
-export const documentedThemes = Object.keys(themes) as ThemeKey[];
+export const documentedThemes = Object.keys(allThemes) as ThemeName[];
 const useThemePreference = () => {
-  const [theme, setTheme] = useLocalStorage<ThemeKey>(
+  const [theme, setTheme] = useLocalStorage<ThemeName>(
     'theme-preference',
     defaultTheme,
   );
@@ -53,8 +53,9 @@ interface ThemeSettingProviderProps {
 }
 export function ThemeSettingProvider({ children }: ThemeSettingProviderProps) {
   const [ready, setReady] = useState(false);
-  const [themeKey, setThemeKey] = useThemePreference();
-  const theme = themes[ready ? themeKey : defaultTheme] ?? themes[defaultTheme];
+  const [themeName, setThemeName] = useThemePreference();
+  const theme =
+    allThemes[ready ? themeName : defaultTheme] ?? allThemes[defaultTheme];
 
   useEffect(() => {
     setReady(true);
@@ -65,8 +66,8 @@ export function ThemeSettingProvider({ children }: ThemeSettingProviderProps) {
       value={{
         ready,
         theme,
-        themeKey,
-        setThemeKey,
+        themeName,
+        setThemeName,
       }}
     >
       {children}

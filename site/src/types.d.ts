@@ -1,10 +1,12 @@
 import type { Source } from '@braid-design-system/source.macro';
+import type { Stack } from 'braid-design-system';
+import type useScope from 'braid-design-system/playroom/scope';
 import type { BoxProps } from 'braid-src/lib/components/Box/Box';
-import type { ReactNodeNoStrings } from 'braid-src/lib/components/private/ReactNodeNoStrings';
-import type useScope from 'braid-src/lib/playroom/useScope';
-import type { ReactNode, ReactElement } from 'react';
+import type { ReactNode, ReactElement, ComponentProps } from 'react';
 import type { HelmetData } from 'react-helmet-async';
 import type { RouteProps } from 'react-router';
+
+type ReactNodeNoStrings = ComponentProps<typeof Stack>['children'];
 
 export interface AppConfig {
   playroomUrl: string;
@@ -73,6 +75,24 @@ export interface CssDoc {
   usage: ReactNodeNoStrings;
   docSections?: DocSections;
   additional?: ComponentExample[];
+}
+
+export interface TemplateDocs {
+  title: string;
+  description?: ReactNodeNoStrings;
+  usage?: ReactNodeNoStrings;
+  Example?: (
+    props: ExampleProps & PlayroomExampleProps,
+  ) => Source<ReactElement>;
+  Container?: (props: { children: ReactNode }) => ReactElement;
+  additional?: Array<{
+    label?: string;
+    description?: ReactNodeNoStrings;
+    Example: (
+      props: ExampleProps & PlayroomExampleProps,
+    ) => Source<ReactElement>;
+    Container?: (props: { children: ReactNode }) => ReactElement;
+  }>;
 }
 
 interface ExampleProps {

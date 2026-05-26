@@ -9,7 +9,7 @@ import {
   Spread,
   List,
   Divider,
-} from 'braid-src/lib/components';
+} from 'braid-design-system';
 import { Fragment, useContext } from 'react';
 
 import { Markdown } from '../Markdown/Markdown';

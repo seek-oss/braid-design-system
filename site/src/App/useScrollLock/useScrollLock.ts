@@ -1,4 +1,4 @@
-import { atoms } from 'braid-src/css';
+import { atoms } from 'braid-design-system/css';
 import { useEffect } from 'react';
 
 export function useScrollLock(lock: boolean) {

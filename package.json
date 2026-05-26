@@ -13,13 +13,13 @@
     "build:docs-ui": "nx run docs-ui:build",
     "build:site": "nx run site:build",
     "build:codemod": "nx run codemod:build",
-    "postbuild": "concurrently --group 'pnpm:test:integration' 'pnpm:validate'",
+    "postbuild": "concurrently --group 'pnpm:test:integration' 'pnpm:validate' 'pnpm:storybook:build'",
     "storybook": "nx run braid-design-system:generate && nx run storybook:dev",
     "storybook:build": "nx run braid-design-system:generate && nx run storybook:build",
     "storybook:chromatic": "nx run storybook:chromatic",
     "lint": "concurrently --group 'pnpm:lint:*'",
     "lint:eslint": "eslint --cache .",
-    "lint:depcheck": "pnpm --recursive exec depcheck --quiet",
+    "lint:knip": "knip --dependencies --treat-config-hints-as-errors",
     "lint:manypkg": "manypkg check",
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "nx run-many --target=lint:tsc",
@@ -46,7 +46,6 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.11.1",
-    "@babel/preset-typescript": "^7.26.0",
     "@changesets/cli": "^2.27.11",
     "@changesets/get-github-info": "^0.5.2",
     "@eslint/compat": "^1.2.5",
@@ -54,13 +53,9 @@
     "@octokit/rest": "^18.12.0",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^22.16.0",
-    "@types/react": "^19.1.8",
-    "@types/sanitize-html": "^2.13.0",
-    "@types/webpack-env": "^1.18.8",
     "@vanilla-extract/vite-plugin": "^5.0.7",
     "@vitejs/plugin-react": "^5.2.0",
     "concurrently": "^7.6.0",
-    "depcheck": "^1.4.7",
     "enquirer": "^2.4.1",
     "eslint": "^9.18.0",
     "eslint-config-seek": "^15.0.0",
@@ -68,24 +63,19 @@
     "fast-glob": "^3.3.2",
     "fs-extra": "^10.1.0",
     "js-yaml": "^4.1.0",
+    "knip": "^6.14.1",
     "nx": "^15.9.7",
     "prettier": "^3.4.1",
     "renovate-config-seek": "0.4.0",
-    "skott": "^0.32.1",
     "tsdown": "^0.20.0",
     "tsx": "^4.19.2",
     "typescript": "~5.9.3",
     "vitest": "^4.1.0"
   },
   "volta": {
-    "node": "24.15.0"
+    "node": "24.16.0"
   },
-  "packageManager": "pnpm@10.33.2",
-  "pnpm": {
-    "patchedDependencies": {
-      "panzoom": "patches/panzoom.patch"
-    }
-  },
+  "packageManager": "pnpm@11.3.0",
   "manypkg": {
     "workspaceProtocol": "require"
   },

@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import type { SkuConfig } from 'sku';
+import { DefinePlugin } from 'webpack';
 
 import routes from './sku.routes';
 
@@ -50,6 +51,12 @@ const skuConfig: SkuConfig = {
       test: resolveFromBraid('CHANGELOG.md'),
       type: 'asset/source',
     });
+
+    config.plugins.push(
+      new DefinePlugin({
+        'globalThis.__IS_PLAYROOM_ENVIRONMENT__': JSON.stringify('clearly'),
+      }),
+    );
 
     return config;
   },
