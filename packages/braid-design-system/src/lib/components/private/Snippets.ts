@@ -1,4 +1,5 @@
 import type { Source } from '@braid-design-system/source.macro';
+import type useScope from 'braid-design-system/playroom/scope';
 import type { Snippets as PlayroomSnippets } from 'playroom';
 import type { ReactElement, ReactNode } from 'react';
 import type { Optional } from 'utility-types';
@@ -13,8 +14,11 @@ interface BraidSnippet extends Omit<
 
 export type Snippets = BraidSnippet[];
 
+type PlayroomExampleProps = ReturnType<typeof useScope>;
+
 export type TemplateSnippets = Array<
-  BraidSnippet & {
+  Omit<BraidSnippet, 'code'> & {
     name: string;
+    code: (props: PlayroomExampleProps) => Source<ReactElement>;
   }
 >;
