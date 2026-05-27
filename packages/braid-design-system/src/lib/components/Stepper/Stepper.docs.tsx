@@ -2,11 +2,10 @@ import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
 import {
-  Box,
+  Actions,
   Button,
   Column,
   Columns,
-  Hidden,
   IconArrow,
   IconChevron,
   IconLanguage,
@@ -626,7 +625,7 @@ const docs: ComponentDocs = {
           </Notice>
         </>
       ),
-      Example: ({ setDefaultState, setState, getState }) =>
+      Example: ({ setDefaultState, setState, getState, showToast }) =>
         source(
           <>
             {setDefaultState('progress', 2)}
@@ -638,91 +637,67 @@ const docs: ComponentDocs = {
                 <Step>4. Fourth step</Step>
               </Stepper>
               <Placeholder height="200" label="Content" />
-              <Hidden below="tablet">
-                <Columns space="small">
-                  <Column>
-                    {getState('progress') > 1 ? (
-                      <Inline space="small">
-                        <Button
-                          variant="soft"
-                          onClick={() =>
-                            setState('progress', getState('progress') - 1)
-                          }
-                        >
-                          <IconArrow direction="left" /> Back
-                        </Button>
-                      </Inline>
-                    ) : null}
-                  </Column>
-                  <Column width="content">
-                    <Inline space="small">
-                      <Button variant="transparent">Save draft</Button>
-                      <Button
-                        variant="solid"
-                        tone={
-                          getState('progress') < 4
-                            ? 'formAccent'
-                            : 'brandAccent'
-                        }
-                        onClick={() =>
-                          setState('progress', getState('progress') + 1)
-                        }
-                      >
-                        {getState('progress') < 4 ? (
-                          <>
-                            Continue <IconArrow direction="right" />
-                          </>
-                        ) : (
-                          <>
-                            Submit <IconSend />
-                          </>
-                        )}
-                      </Button>
-                    </Inline>
-                  </Column>
-                </Columns>
-              </Hidden>
-              <Hidden above="mobile">
-                <Columns space="xsmall">
-                  {getState('progress') > 1 ? (
-                    <Column>
-                      <Button
-                        icon={<IconArrow direction="left" />}
-                        variant="soft"
-                        onClick={() =>
-                          setState('progress', getState('progress') - 1)
-                        }
-                      >
-                        Back
-                      </Button>
-                    </Column>
-                  ) : null}
-                  <Column>
+
+              <Columns space="small" collapseBelow="tablet" reverse>
+                <Column width="content">
+                  {getState('progress') < 4 ? (
                     <Button
                       variant="solid"
-                      tone={
-                        getState('progress') < 4 ? 'formAccent' : 'brandAccent'
-                      }
+                      tone="formAccent"
                       onClick={() =>
                         setState('progress', getState('progress') + 1)
                       }
+                      icon={<IconArrow direction="right" />}
+                      iconPosition="trailing"
                     >
-                      {getState('progress') < 4 ? (
-                        <>
-                          Continue <IconArrow direction="right" />
-                        </>
-                      ) : (
-                        <>
-                          Submit <IconSend />
-                        </>
-                      )}
+                      Continue
                     </Button>
-                  </Column>
-                </Columns>
-                <Box paddingTop="small">
-                  <Button variant="transparent">Save draft</Button>
-                </Box>
-              </Hidden>
+                  ) : (
+                    <Button
+                      variant="solid"
+                      tone="brandAccent"
+                      icon={<IconSend />}
+                      iconPosition="trailing"
+                    >
+                      Submit
+                    </Button>
+                  )}
+                </Column>
+                <Column>
+                  <Columns space="xsmall">
+                    <Column>
+                      {getState('progress') > 1 ? (
+                        <Actions>
+                          <Button
+                            variant="soft"
+                            icon={<IconArrow direction="left" />}
+                            onClick={() =>
+                              setState('progress', getState('progress') - 1)
+                            }
+                          >
+                            Back
+                          </Button>
+                        </Actions>
+                      ) : null}
+                    </Column>
+                    <Column>
+                      <Inline space="none" align="right" collapseBelow="tablet">
+                        <Button
+                          variant="transparent"
+                          onClick={() =>
+                            showToast({
+                              tone: 'positive',
+                              message: 'Draft saved',
+                            })
+                          }
+                        >
+                          Save draft
+                        </Button>
+                      </Inline>
+                    </Column>
+                  </Columns>
+                </Column>
+              </Columns>
             </Stack>
           </>,
         ),
