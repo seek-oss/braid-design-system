@@ -4,11 +4,11 @@ import type { TemplateSnippets } from '../../../../components/private/Snippets';
 import {
   Actions,
   Button,
-  Column,
-  Columns,
   IconArrow,
+  IconSend,
   PageBlock,
   Placeholder,
+  Spread,
   Stack,
   Step,
   Stepper,
@@ -37,7 +37,6 @@ export const snippets: TemplateSnippets = [
               <Step>Step 2</Step>
               <Step>Step 3</Step>
               <Step>Step 4</Step>
-              <Step>Step 5</Step>
             </Stepper>
 
             {getState('activeStep') === 1 && (
@@ -52,47 +51,50 @@ export const snippets: TemplateSnippets = [
             {getState('activeStep') === 4 && (
               <Placeholder label="Step content 4" height={400} />
             )}
-            {getState('activeStep') === 5 && (
-              <Placeholder label="Step content 5" height={400} />
-            )}
 
-            <Columns space="small">
-              <Column>
+            <Spread space="small">
+              <Actions>
                 {getState('activeStep') > 1 && (
-                  <Actions>
-                    <Button
-                      icon={<IconArrow direction="left" />}
-                      onClick={() =>
-                        setState('activeStep', getState('activeStep') - 1)
+                  <Button
+                    variant="soft"
+                    icon={<IconArrow direction="left" />}
+                    onClick={() =>
+                      setState('activeStep', getState('activeStep') - 1)
+                    }
+                  >
+                    Back
+                  </Button>
+                )}
+              </Actions>
+              <Actions>
+                {getState('activeStep') < 4 ? (
+                  <Button
+                    variant="solid"
+                    tone="formAccent"
+                    icon={<IconArrow direction="right" />}
+                    iconPosition="trailing"
+                    onClick={() => {
+                      const newStep = getState('activeStep') + 1;
+                      setState('activeStep', newStep);
+                      if (newStep > getState('progress')) {
+                        setState('progress', newStep);
                       }
-                    >
-                      Back
-                    </Button>
-                  </Actions>
+                    }}
+                  >
+                    Continue
+                  </Button>
+                ) : (
+                  <Button
+                    variant="solid"
+                    tone="brandAccent"
+                    icon={<IconSend />}
+                    iconPosition="trailing"
+                  >
+                    Submit
+                  </Button>
                 )}
-              </Column>
-              <Column width="content">
-                {getState('activeStep') < 5 && (
-                  <Actions>
-                    <Button
-                      variant="solid"
-                      tone="formAccent"
-                      icon={<IconArrow direction="right" />}
-                      iconPosition="trailing"
-                      onClick={() => {
-                        const newStep = getState('activeStep') + 1;
-                        setState('activeStep', newStep);
-                        if (newStep > getState('progress')) {
-                          setState('progress', newStep);
-                        }
-                      }}
-                    >
-                      Continue
-                    </Button>
-                  </Actions>
-                )}
-              </Column>
-            </Columns>
+              </Actions>
+            </Spread>
           </Stack>
         </PageBlock>,
       ),
