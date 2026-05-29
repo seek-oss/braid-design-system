@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
+import { outlineStyle } from '../../css/outlineStyle';
 import { fieldPaddingX } from '../private/Field/fieldPaddingX';
 
 import { vars } from '../../themes/vars.css';
@@ -8,7 +9,10 @@ export const field = style({
   resize: 'vertical',
   background: 'transparent',
   minHeight: vars.touchableSize,
+  outline: 'none',
 });
+
+export const focusRing = style(outlineStyle('&:focus-within'));
 
 export const highlights = style({
   color: 'transparent !important',
