@@ -2,6 +2,7 @@ import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
 import {
+  Box,
   Divider,
   Inline,
   Notice,
@@ -231,7 +232,7 @@ const docs: ComponentDocs = {
       ),
       Example: () => {
         const { value: visual } = source(
-          <ScrollContainer direction="horizontal">
+          <Box overflow="auto">
             <Inline space="small" noWrap>
               <Placeholder width={20} height={48} />
               <Placeholder width={80} height={48} />
@@ -246,24 +247,26 @@ const docs: ComponentDocs = {
               <Placeholder width={120} height={48} />
               <Placeholder width={40} height={48} />
             </Inline>
-          </ScrollContainer>,
+          </Box>,
         );
 
         const { code: codeDemo } = source(
-          <Inline space="small" noWrap>
-            <Placeholder width={20} height={48} />
-            <Placeholder width={80} height={48} />
-            <Placeholder width={40} height={48} />
-            <Placeholder width={150} height={48} />
-            <Placeholder width={120} height={48} />
-            <Placeholder width={60} height={48} />
-            <Placeholder width={40} height={48} />
-            <Placeholder width={180} height={48} />
-            <Placeholder width={100} height={48} />
-            <Placeholder width={60} height={48} />
-            <Placeholder width={120} height={48} />
-            <Placeholder width={40} height={48} />
-          </Inline>,
+          <Box overflow="auto">
+            <Inline space="small" noWrap>
+              <Placeholder width={20} height={48} />
+              <Placeholder width={80} height={48} />
+              <Placeholder width={40} height={48} />
+              <Placeholder width={150} height={48} />
+              <Placeholder width={120} height={48} />
+              <Placeholder width={60} height={48} />
+              <Placeholder width={40} height={48} />
+              <Placeholder width={180} height={48} />
+              <Placeholder width={100} height={48} />
+              <Placeholder width={60} height={48} />
+              <Placeholder width={120} height={48} />
+              <Placeholder width={40} height={48} />
+            </Inline>
+          </Box>,
         );
 
         return {
