@@ -12,7 +12,17 @@ import type { ReactNode } from 'react';
 import { KeyboardShortcut } from '../KeyboardShortcut/KeyboardShortcut';
 import { MenuButton } from '../MenuButton/MenuButton';
 
-import { searchButton } from './HeaderNavigation.css';
+import {
+  activeNavLink,
+  navLinksContainer,
+  searchButton,
+} from './HeaderNavigation.css';
+
+export interface NavLink {
+  label: string;
+  href: string;
+  active?: boolean;
+}
 
 interface HeaderNavigationProps {
   menuOpen?: boolean;
@@ -22,6 +32,7 @@ interface HeaderNavigationProps {
   logoLabel: string;
   logoHref?: string;
   themeToggle?: ReactNode;
+  navLinks?: NavLink[];
 }
 
 export const HeaderNavigation = ({
@@ -32,6 +43,7 @@ export const HeaderNavigation = ({
   logoLabel,
   logoHref = '/',
   themeToggle = null,
+  navLinks,
 }: HeaderNavigationProps) => (
   <Box display="flex" alignItems="center">
     <Hidden print>
@@ -80,5 +92,20 @@ export const HeaderNavigation = ({
         </Box>
       </Bleed>
     </div>
+    <Box
+      display={{ mobile: 'none', wide: 'flex' }}
+      alignItems="center"
+      gap="large"
+      className={navLinksContainer}
+      justifyContent="flexEnd"
+    >
+      {navLinks?.map(({ label, href, active }) => (
+        <Text key={label} component="div" baseline={false}>
+          <Link href={href} className={active ? activeNavLink : undefined}>
+            {label}
+          </Link>
+        </Text>
+      ))}
+    </Box>
   </Box>
 );

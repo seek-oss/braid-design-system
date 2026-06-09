@@ -174,3 +174,31 @@ export const templateLookup = allTemplateDocs.reduce(
     } & (typeof allTemplateDocs)[number]
   >,
 );
+
+export const topNavSectionDefs = [
+  {
+    label: 'Foundations',
+    pathPrefixes: ['/foundations', '/guides'],
+    href: '/foundations',
+  },
+  {
+    label: 'Components',
+    pathPrefixes: ['/components'],
+    href: '/components',
+  },
+  {
+    label: 'Patterns',
+    pathPrefixes: ['/examples'],
+    href: '/examples',
+  },
+  {
+    label: 'Templates',
+    pathPrefixes: ['/templates'],
+    href: '/templates',
+  },
+  {
+    label: 'Styles',
+    pathPrefixes: ['/css'],
+    href: '/css',
+  },
+] as const;

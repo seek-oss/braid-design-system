@@ -1,4 +1,4 @@
-import { HeaderNavigation } from '@braid-design-system/docs-ui';
+import { HeaderNavigation, type NavLink } from '@braid-design-system/docs-ui';
 import {
   Hidden,
   IconChevron,
@@ -24,6 +24,7 @@ import { SideNavigation } from 'site/App/SideNavigation/SideNavigation';
 import { useConfig } from '../ConfigContext';
 import { JumpToModal } from '../JumpToModal/JumpToModal';
 import { Logo } from '../Logo/Logo';
+import { topNavSectionDefs } from '../navigationHelpers';
 import { ThemeToggle } from '../ThemeSetting';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { useSearchHotkey } from '../useSearchHotkey/useSearchHotkey';
@@ -36,10 +37,12 @@ const Header = ({
   menuOpen,
   menuClick,
   onSearchClick,
+  navLinks,
 }: {
   menuOpen: boolean;
   menuClick: () => void;
   onSearchClick: () => void;
+  navLinks: NavLink[];
 }) => (
   <Box paddingY={headerSpaceY} paddingX={gutterSize}>
     <HeaderNavigation
@@ -49,6 +52,7 @@ const Header = ({
       logo={<Logo iconOnly height="40px" width="40px" />}
       logoLabel="Braid Logo"
       themeToggle={<ThemeToggle size="xsmall" />}
+      navLinks={navLinks}
     />
   </Box>
 );
@@ -170,6 +174,16 @@ export const Navigation = () => {
 
   const navigationActive = isExpandedSize || isMenuOpen;
 
+  const navLinks: NavLink[] = topNavSectionDefs.map(
+    ({ label, href, pathPrefixes }) => ({
+      label,
+      href,
+      active: pathPrefixes.some((prefix) =>
+        location.pathname.startsWith(prefix),
+      ),
+    }),
+  );
+
   return (
     <Box width="full" className={styles.contentBlockXL}>
       <JumpToModal isOpen={isSearchOpen} onClose={() => setSearchOpen(false)} />
@@ -178,6 +192,7 @@ export const Navigation = () => {
           menuOpen={isMenuOpen}
           menuClick={() => setMenuOpen(!isMenuOpen)}
           onSearchClick={() => setSearchOpen(true)}
+          navLinks={navLinks}
         />
       </Box>
       <RemoveScroll enabled={isMenuOpen} forwardProps>
@@ -236,6 +251,7 @@ export const Navigation = () => {
           menuOpen={isMenuOpen}
           menuClick={() => setMenuOpen(!isMenuOpen)}
           onSearchClick={() => setSearchOpen(true)}
+          navLinks={navLinks}
         />
       </FixedContentBlock>
     </Box>

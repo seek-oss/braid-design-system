@@ -18,14 +18,19 @@ import { DocSnippets } from './DocNavigation/DocSnippets';
 import { Navigation } from './Navigation/Navigation';
 import { AppMeta } from './Seo/AppMeta';
 import { ThemeSettingProvider } from './ThemeSetting';
+import { ComponentsPage } from './routes/components/ComponentsPage';
 import examples from './routes/examples';
+import { PatternsPage } from './routes/examples/PatternsPage';
 import foundations from './routes/foundations';
+import { FoundationsPage } from './routes/foundations/FoundationsPage';
 import { GalleryPage } from './routes/gallery';
 import guides from './routes/guides';
 import { HomePage } from './routes/home';
 import { ReleasesPage } from './routes/releases';
+import { StylesPage } from './routes/styles/StylesPage';
 import { TemplateGroup } from './routes/templates';
 import { TemplateDetail } from './routes/templates/TemplateDetail';
+import { TemplatesPage } from './routes/templates/TemplatesPage';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>
@@ -105,6 +110,11 @@ export const App = () => {
                 }).map(([path, routeProps]) => (
                   <Route key={path} {...routeProps} path={path} />
                 ))}
+                <Route path="/foundations" element={<FoundationsPage />} />
+                <Route path="/components" element={<ComponentsPage />} />
+                <Route path="/examples" element={<PatternsPage />} />
+                <Route path="/templates" element={<TemplatesPage />} />
+                <Route path="/css" element={<StylesPage />} />
                 <Route
                   path="/templates/:groupName"
                   element={<TemplateGroup />}
