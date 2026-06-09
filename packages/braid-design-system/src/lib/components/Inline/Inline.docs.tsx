@@ -13,7 +13,6 @@ import {
   Tiles,
 } from '../';
 import { Placeholder } from '../../playroom/components';
-import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 const docs: ComponentDocs = {
