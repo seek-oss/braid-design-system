@@ -6,7 +6,7 @@ export const fitContentMobile = style({});
 export const fitContentTablet = style({});
 export const fitContentDesktop = style({});
 export const fitContentWide = style({});
-export const noWrap = style({});
+export const preventShrink = style({});
 
 export const fitContentStyleRule = {
   flexBasis: 'auto',
@@ -27,6 +27,6 @@ globalStyle(
   `${fitContentWide} > *`,
   responsiveStyle({ wide: fitContentStyleRule }),
 );
-globalStyle(`${noWrap} > *`, {
+globalStyle(`${preventShrink} > *`, {
   flexShrink: 0,
 });

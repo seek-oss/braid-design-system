@@ -78,7 +78,7 @@ export const Inline: FC<InlineProps> = ({
               [styles.fitContentWide]: true,
             }
           : styles.fitContentMobile,
-        noWrap && styles.noWrap,
+        noWrap && styles.preventShrink,
       ]}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
