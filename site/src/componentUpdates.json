@@ -5486,5 +5486,22 @@
         "summary": "**Badge:** Added aria-hidden and aria-label props.\n\n`aria-hidden` allows a badge to be hidden from assistive technology\n\n`aria-label` allows visible badge text to be overridden with a more descriptive label for screen readers\n\n\n**EXAMPLE USAGE:**\n```jsx\n  <Badge aria-hidden>\n    Deprecated\n  </Badge>\n```\n\n```jsx\n  <Badge aria-label=\"You have 2 notifications\">\n    2\n  </Badge>\n```"
       }
     ]
+  },
+  {
+    "version": "34.3.0",
+    "updates": [
+      {
+        "updated": [
+          "Inline"
+        ],
+        "summary": "**Inline:** Add *noWrap* prop to support single-row compositions\n\n\n**EXAMPLE USAGE:**\n```jsx\n  <Inline space=\"small\" noWrap>\n    <Placeholder width={20} height={48} />\n    <Placeholder width={80} height={48} />\n    <Placeholder width={40} height={48} />\n  </Inline>\n```"
+      },
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "**Textarea:** Ensure focus ring displays correctly"
+      }
+    ]
   }
 ]
