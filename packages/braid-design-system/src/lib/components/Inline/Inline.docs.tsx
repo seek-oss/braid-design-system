@@ -2,6 +2,7 @@ import source from '@braid-design-system/source.macro';
 import type { ComponentDocs } from 'site/types';
 
 import {
+  Box,
   Divider,
   Inline,
   Notice,
@@ -211,6 +212,42 @@ const docs: ComponentDocs = {
           value: visual,
         };
       },
+    },
+    {
+      label: 'Preventing wrapping of child elements',
+      description: (
+        <>
+          <Text>
+            By default child elements will wrap when there is insufficient
+            horizontal space. To prevent this, set the <Strong>noWrap</Strong>{' '}
+            prop to <Strong>true</Strong>.
+          </Text>
+          <Text>
+            Because there is a likelihood of content overflowing, it is
+            recommended to handle overflow manually by use of{' '}
+            <Strong>overflow</Strong> properties on the parent container.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Box overflow="auto">
+            <Inline space="small" noWrap>
+              <Placeholder width={20} height={48} />
+              <Placeholder width={80} height={48} />
+              <Placeholder width={40} height={48} />
+              <Placeholder width={150} height={48} />
+              <Placeholder width={120} height={48} />
+              <Placeholder width={60} height={48} />
+              <Placeholder width={40} height={48} />
+              <Placeholder width={180} height={48} />
+              <Placeholder width={100} height={48} />
+              <Placeholder width={60} height={48} />
+              <Placeholder width={120} height={48} />
+              <Placeholder width={40} height={48} />
+            </Inline>
+          </Box>,
+        ),
     },
     {
       label: 'Reversing the order',
