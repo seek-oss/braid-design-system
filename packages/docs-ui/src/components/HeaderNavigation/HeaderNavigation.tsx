@@ -1,22 +1,18 @@
 import {
-  Bleed,
   Box,
   Hidden,
-  HiddenVisually,
   IconSearch,
+  Inline,
   Link,
   Text,
+  ButtonLink,
 } from 'braid-design-system';
 import type { ReactNode } from 'react';
 
 import { KeyboardShortcut } from '../KeyboardShortcut/KeyboardShortcut';
 import { MenuButton } from '../MenuButton/MenuButton';
 
-import {
-  activeNavLink,
-  navLinksContainer,
-  searchButton,
-} from './HeaderNavigation.css';
+import { navLinksContainer, searchButton } from './HeaderNavigation.css';
 
 export interface NavLink {
   label: string;
@@ -29,69 +25,51 @@ interface HeaderNavigationProps {
   menuClick?: () => void;
   onSearchClick?: () => void;
   logo: ReactNode;
-  logoLabel: string;
   logoHref?: string;
   themeToggle?: ReactNode;
   navLinks?: NavLink[];
 }
+
+const NavLink = ({ label, href, active }: NavLink) => (
+  <ButtonLink variant="transparent" key={label} href={href}>
+    {active && `- `}
+    {label}
+  </ButtonLink>
+);
 
 export const HeaderNavigation = ({
   menuOpen = false,
   menuClick = () => {},
   onSearchClick = () => {},
   logo,
-  logoLabel,
   logoHref = '/',
-  themeToggle = null,
+  // themeToggle = null,
   navLinks,
 }: HeaderNavigationProps) => (
   <Box display="flex" alignItems="center">
-    <Hidden print>
-      <Box
-        paddingRight="medium"
-        display={{
-          mobile: 'flex',
-          wide: 'none',
-        }}
-        alignItems="center"
-      >
-        <MenuButton open={menuOpen} onClick={menuClick} />
-      </Box>
-    </Hidden>
-    <Box paddingRight="medium">
-      <Text component="div" baseline={false}>
-        <Link href={logoHref} tabIndex={menuOpen ? -1 : undefined}>
-          {logo}
-          <HiddenVisually>{logoLabel}</HiddenVisually>
-        </Link>
-      </Text>
-    </Box>
-    <div>
-      <>{themeToggle}</>
-      <Bleed horizontal="xxsmall" bottom="xxsmall">
+    <Box>
+      <Hidden print>
         <Box
-          component="button"
-          padding="xxsmall"
-          paddingRight="xsmall"
-          borderRadius="standard"
-          className={searchButton}
-          onClick={onSearchClick}
+          paddingRight="medium"
+          display={{
+            mobile: 'flex',
+            wide: 'none',
+          }}
+          alignItems="center"
         >
-          <KeyboardShortcut
-            keys={[
-              navigator.platform.startsWith('Mac') ||
-              navigator.platform === 'iPhone' ||
-              navigator.platform === 'iPad' ||
-              navigator.platform === 'iPod'
-                ? '⌘'
-                : 'Ctrl',
-              'K',
-            ]}
-            shortcutLabel={<IconSearch />}
-          />
+          <MenuButton open={menuOpen} onClick={menuClick} />
         </Box>
-      </Bleed>
-    </div>
+      </Hidden>
+      <Box paddingRight="medium">
+        <Link href={logoHref} tabIndex={menuOpen ? -1 : undefined}>
+          <Inline space="small" alignY="center">
+            <>{logo}</>
+            <Text weight="medium">Braid Design System</Text>
+          </Inline>
+        </Link>
+      </Box>
+    </Box>
+
     <Box
       display={{ mobile: 'none', wide: 'flex' }}
       alignItems="center"
@@ -99,13 +77,34 @@ export const HeaderNavigation = ({
       className={navLinksContainer}
       justifyContent="flexEnd"
     >
-      {navLinks?.map(({ label, href, active }) => (
-        <Text key={label} component="div" baseline={false}>
-          <Link href={href} className={active ? activeNavLink : undefined}>
-            {label}
-          </Link>
-        </Text>
-      ))}
+      <Box
+        component="button"
+        padding="xxsmall"
+        paddingRight="xsmall"
+        borderRadius="standard"
+        className={searchButton}
+        onClick={onSearchClick}
+      >
+        <KeyboardShortcut
+          keys={[
+            navigator.platform.startsWith('Mac') ||
+            navigator.platform === 'iPhone' ||
+            navigator.platform === 'iPad' ||
+            navigator.platform === 'iPod'
+              ? '⌘'
+              : 'Ctrl',
+            'K',
+          ]}
+          shortcutLabel={<IconSearch />}
+        />
+      </Box>
+      {navLinks && (
+        <Inline space="medium">
+          {navLinks.map(({ label, href, active }) => (
+            <NavLink key={label} label={label} href={href} active={active} />
+          ))}
+        </Inline>
+      )}
     </Box>
   </Box>
 );

@@ -83,3 +83,8 @@ export const contentBlockXL = style({
   marginInline: 'auto',
   maxWidth: contentBlockXLWidth,
 });
+
+
+export const fixedNavigationContainer = style({
+  borderBottom: `1px solid ${vars.borderColor.neutralLight}`,
+});

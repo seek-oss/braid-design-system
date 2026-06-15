@@ -53,137 +53,139 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
   );
 
   return (
-    <Stack space="large">
-      <Box display={{ mobile: 'block', wide: 'none' }}>
-        <SideNavigationSection
-          title="Navigation"
-          hideTitle={true}
-          items={topNavSectionDefs.map(({ label, href, pathPrefixes }) => ({
-            name: label,
-            path: href,
-            active: pathPrefixes.some((prefix) =>
-              currentPath.startsWith(prefix),
-            ),
-            onClick: onSelect,
-          }))}
-        />
-      </Box>
-
-      {!activeSection && (
-        <SideNavigationSection
-          title="Resources"
-          hideTitle={true}
-          items={[
-            {
-              name: 'Releases',
-              path: '/releases',
-              active: isActive('/releases'),
-              onClick: onSelect,
-            },
-            {
-              name: 'Gallery',
-              path: '/gallery',
-            },
-            {
-              name: 'Playroom',
-              path: playroomUrl,
-            },
-            {
-              name: 'GitHub',
-              path: 'https://github.com/seek-oss/braid-design-system',
-            },
-          ]}
-        />
-      )}
-
-      {activeSection?.label === 'Foundations' && (
-        <>
+    <Box paddingTop="large">
+      <Stack space="large">
+        <Box display={{ mobile: 'block', wide: 'none' }}>
           <SideNavigationSection
-            title="Foundations"
-            items={Object.entries(foundations).map(([path, foundation]) => ({
-              name: foundation.title,
-              badge: foundation.badge,
+            title="Navigation"
+            hideTitle={true}
+            items={topNavSectionDefs.map(({ label, href, pathPrefixes }) => ({
+              name: label,
+              path: href,
+              active: pathPrefixes.some((prefix) =>
+                currentPath.startsWith(prefix),
+              ),
+              onClick: onSelect,
+            }))}
+          />
+        </Box>
+
+        {!activeSection && (
+          <SideNavigationSection
+            title="Resources"
+            hideTitle={true}
+            items={[
+              {
+                name: 'Releases',
+                path: '/releases',
+                active: isActive('/releases'),
+                onClick: onSelect,
+              },
+              {
+                name: 'Gallery',
+                path: '/gallery',
+              },
+              {
+                name: 'Playroom',
+                path: playroomUrl,
+              },
+              {
+                name: 'GitHub',
+                path: 'https://github.com/seek-oss/braid-design-system',
+              },
+            ]}
+          />
+        )}
+
+        {activeSection?.label === 'Foundations' && (
+          <>
+            <SideNavigationSection
+              title="Foundations"
+              items={Object.entries(foundations).map(([path, foundation]) => ({
+                name: foundation.title,
+                badge: foundation.badge,
+                path,
+                active: isActive(path),
+                onClick: onSelect,
+              }))}
+            />
+            <SideNavigationSection
+              title="Guides"
+              items={Object.entries(guides).map(([path, guide]) => ({
+                name: guide.title,
+                badge: guide.badge,
+                path,
+                active: isActive(path),
+                onClick: onSelect,
+              }))}
+            />
+          </>
+        )}
+
+        {activeSection?.label === 'Components' && (
+          <>
+            <SideNavigationSection
+              title="Components"
+              items={componentsList.map((docs) => ({
+                name: docs.name,
+                badge: getBadge(docs),
+                path: `/components/${docs.name}`,
+                active: isActive(`/components/${docs.name}`),
+                onClick: onSelect,
+              }))}
+            />
+            <SideNavigationSection
+              title="Logic"
+              items={categorisedComponents.Logic.map((docs) => ({
+                name: docs.name,
+                badge: getBadge(docs),
+                path: `/components/${docs.name}`,
+                active: isActive(`/components/${docs.name}`),
+                onClick: onSelect,
+              }))}
+            />
+          </>
+        )}
+
+        {activeSection?.label === 'Patterns' && (
+          <SideNavigationSection
+            title="Examples"
+            items={Object.entries(examples).map(([path, example]) => ({
+              name: example.title,
+              badge: example.badge,
               path,
               active: isActive(path),
               onClick: onSelect,
             }))}
           />
+        )}
+
+        {activeSection?.label === 'Templates' && (
           <SideNavigationSection
-            title="Guides"
-            items={Object.entries(guides).map(([path, guide]) => ({
-              name: guide.title,
-              badge: guide.badge,
-              path,
-              active: isActive(path),
+            title="Templates"
+            items={templateGroups.map((group) => ({
+              name: group.at(0)?.toUpperCase() + group.slice(1),
+              path: `/templates/${group.toLowerCase()}`,
+              badge: 'New',
+              active: isActive(`/templates/${group.toLowerCase()}`),
               onClick: onSelect,
             }))}
           />
-        </>
-      )}
+        )}
 
-      {activeSection?.label === 'Components' && (
-        <>
+        {activeSection?.label === 'Styles' && (
           <SideNavigationSection
-            title="Components"
-            items={componentsList.map((docs) => ({
-              name: docs.name,
-              badge: getBadge(docs),
-              path: `/components/${docs.name}`,
-              active: isActive(`/components/${docs.name}`),
+            title="CSS"
+            items={documentedCss.map((doc) => ({
+              name: doc.name,
+              badge: getBadge(doc),
+              path: `/css/${doc.name}`,
+              active: isActive(`/css/${doc.name}`),
               onClick: onSelect,
             }))}
           />
-          <SideNavigationSection
-            title="Logic"
-            items={categorisedComponents.Logic.map((docs) => ({
-              name: docs.name,
-              badge: getBadge(docs),
-              path: `/components/${docs.name}`,
-              active: isActive(`/components/${docs.name}`),
-              onClick: onSelect,
-            }))}
-          />
-        </>
-      )}
-
-      {activeSection?.label === 'Patterns' && (
-        <SideNavigationSection
-          title="Examples"
-          items={Object.entries(examples).map(([path, example]) => ({
-            name: example.title,
-            badge: example.badge,
-            path,
-            active: isActive(path),
-            onClick: onSelect,
-          }))}
-        />
-      )}
-
-      {activeSection?.label === 'Templates' && (
-        <SideNavigationSection
-          title="Templates"
-          items={templateGroups.map((group) => ({
-            name: group.at(0)?.toUpperCase() + group.slice(1),
-            path: `/templates/${group.toLowerCase()}`,
-            badge: 'New',
-            active: isActive(`/templates/${group.toLowerCase()}`),
-            onClick: onSelect,
-          }))}
-        />
-      )}
-
-      {activeSection?.label === 'Styles' && (
-        <SideNavigationSection
-          title="CSS"
-          items={documentedCss.map((doc) => ({
-            name: doc.name,
-            badge: getBadge(doc),
-            path: `/css/${doc.name}`,
-            active: isActive(`/css/${doc.name}`),
-            onClick: onSelect,
-          }))}
-        />
-      )}
-    </Stack>
+        )}
+      </Stack>
+    </Box>
   );
 };

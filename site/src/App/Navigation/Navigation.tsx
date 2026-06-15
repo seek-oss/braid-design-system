@@ -24,8 +24,8 @@ import { SideNavigation } from 'site/App/SideNavigation/SideNavigation';
 import { useConfig } from '../ConfigContext';
 import { JumpToModal } from '../JumpToModal/JumpToModal';
 import { Logo } from '../Logo/Logo';
-import { topNavSectionDefs } from '../navigationHelpers';
 import { ThemeToggle } from '../ThemeSetting';
+import { topNavSectionDefs } from '../navigationHelpers';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { useSearchHotkey } from '../useSearchHotkey/useSearchHotkey';
 
@@ -49,8 +49,7 @@ const Header = ({
       menuOpen={menuOpen}
       menuClick={menuClick}
       onSearchClick={onSearchClick}
-      logo={<Logo iconOnly height="40px" width="40px" />}
-      logoLabel="Braid Logo"
+      logo={<Logo iconOnly height="32px" width="32px" />}
       themeToggle={<ThemeToggle size="xsmall" />}
       navLinks={navLinks}
     />
@@ -187,7 +186,15 @@ export const Navigation = () => {
   return (
     <Box width="full" className={styles.contentBlockXL}>
       <JumpToModal isOpen={isSearchOpen} onClose={() => setSearchOpen(false)} />
-      <Box position="fixed" top={0}>
+      <Box
+        position="fixed"
+        top={0}
+        left={0}
+        right={0}
+        zIndex="sticky"
+        background="body"
+        className={styles.fixedNavigationContainer}
+      >
         <Header
           menuOpen={isMenuOpen}
           menuClick={() => setMenuOpen(!isMenuOpen)}
@@ -201,8 +208,10 @@ export const Navigation = () => {
           bottom={0}
           transition="fast"
           width="full"
+          left={0}
           zIndex="sticky"
           inert={navigationActive ? undefined : true}
+          background="neutralSoft"
           className={[
             styles.sideNavigationContainer,
             isMenuOpen ? styles.isOpen : undefined,
@@ -229,7 +238,11 @@ export const Navigation = () => {
         pointerEvents={isMenuOpen ? 'none' : undefined}
         className={[styles.pageContent, isMenuOpen ? styles.isOpen : undefined]}
       >
-        <Box paddingBottom="xxlarge" marginBottom="xxlarge">
+        <Box
+          paddingTop="xxlarge"
+          paddingBottom="xxlarge"
+          marginBottom="xxlarge"
+        >
           <Outlet />
           <PreviewBranchPanel />
         </Box>
