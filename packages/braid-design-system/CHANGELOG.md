@@ -1,5 +1,29 @@
 # braid-design-system
 
+## 34.3.0
+
+### Minor Changes
+
+- **Inline:** Add _noWrap_ prop to support single-row compositions ([#2069](https://github.com/seek-oss/braid-design-system/pull/2069))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Inline space="small" noWrap>
+    <Placeholder width={20} height={48} />
+    <Placeholder width={80} height={48} />
+    <Placeholder width={40} height={48} />
+  </Inline>
+  ```
+
+### Patch Changes
+
+- **Textarea:** Ensure focus ring displays correctly ([#2066](https://github.com/seek-oss/braid-design-system/pull/2066))
+
+- **Heading:** Increase line height to improve legibility ([#2073](https://github.com/seek-oss/braid-design-system/pull/2073))
+
+  Increases the line height of all `Heading` levels to improve legibility of wrapping lines of text — focusing on reducing the collision of diacritical marks in Thai Script.
+
 ## 34.2.0
 
 ### Minor Changes
