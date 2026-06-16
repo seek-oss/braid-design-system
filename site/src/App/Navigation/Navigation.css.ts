@@ -84,7 +84,6 @@ export const contentBlockXL = style({
   maxWidth: contentBlockXLWidth,
 });
 
-
 export const fixedNavigationContainer = style({
-  borderBottom: `1px solid ${vars.borderColor.neutralLight}`,
+  // borderBottom: `1px solid ${vars.borderColor.neutralLight}`,
 });
