@@ -22,7 +22,7 @@ export const toc = style({
 });
 
 export const tocItem = style({
-  borderLeft: `4px solid ${vars.borderColor.neutralLight}`,
+  borderLeft: `2px solid #eaecf1`,
   color: vars.foregroundColor.secondary,
   transition: 'border-color 250ms ease',
   display: 'block',
