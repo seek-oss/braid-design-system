@@ -11,6 +11,7 @@
     },
     "packages/braid-design-system": {
       "entry": ["src/**/*.{docs,gallery,screenshots,snippets}.tsx"],
+      "ignoreUnresolved": ["./Icon.*Svg"],
       // skott is not detected in scripts for some reason
       "ignoreDependencies": ["assert", "skott"],
     },
