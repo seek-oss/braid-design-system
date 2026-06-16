@@ -56,10 +56,15 @@ const subNavOffsetAboveMobile = style(
   }),
 );
 
+const sideNavigationBorder = style({
+  borderRight: `1px solid #EBEFFB`,
+});
+
 export const sideNavigationContainer = style([
   headerOffset,
   fixedWidthAboveVisibleBreakpoint,
   hideSideNavOnSmallerScreensWhenClosed,
+  sideNavigationBorder,
 ]);
 
 export const pageContent = style([
@@ -85,5 +90,5 @@ export const contentBlockXL = style({
 });
 
 export const fixedNavigationContainer = style({
-  // borderBottom: `1px solid ${vars.borderColor.neutralLight}`,
+  borderBottom: `1px solid #EBEFFB`,
 });

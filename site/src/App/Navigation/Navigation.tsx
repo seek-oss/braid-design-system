@@ -211,7 +211,7 @@ export const Navigation = () => {
           left={0}
           zIndex="sticky"
           inert={navigationActive ? undefined : true}
-          background="neutralSoft"
+          // background="neutralSoft"
           className={[
             styles.sideNavigationContainer,
             isMenuOpen ? styles.isOpen : undefined,
