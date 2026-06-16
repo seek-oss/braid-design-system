@@ -101,6 +101,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           <>
             <SideNavigationSection
               title="Foundations"
+              hideTitle={true}
               items={Object.entries(foundations).map(([path, foundation]) => ({
                 name: foundation.title,
                 badge: foundation.badge,
@@ -126,6 +127,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           <>
             <SideNavigationSection
               title="Components"
+              hideTitle={true}
               items={componentsList.map((docs) => ({
                 name: docs.name,
                 badge: getBadge(docs),
@@ -163,6 +165,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
         {activeSection?.label === 'Templates' && (
           <SideNavigationSection
             title="Templates"
+            hideTitle={true}
             items={templateGroups.map((group) => ({
               name: group.at(0)?.toUpperCase() + group.slice(1),
               path: `/templates/${group.toLowerCase()}`,
@@ -176,6 +179,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
         {activeSection?.label === 'Styles' && (
           <SideNavigationSection
             title="CSS"
+            hideTitle={true}
             items={documentedCss.map((doc) => ({
               name: doc.name,
               badge: getBadge(doc),
