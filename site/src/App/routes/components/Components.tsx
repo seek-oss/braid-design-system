@@ -1,23 +1,40 @@
-import { Heading, Stack } from 'braid-design-system';
-import { accordionExample } from 'braid-src/lib/components/Accordion/Accordion.docs';
+import { Box, Link, Stack, Text, Tiles, Heading } from 'braid-design-system';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 
-import { ThemedExample } from 'site/App/ThemeSetting';
-import { useSourceFromExample } from 'site/App/useSourceFromExample/useSourceFromExample';
+import { documentedComponents } from '../../navigationHelpers';
+import { ScaledPreview } from '../templates';
 
-const AccordionPreview = () => {
-  const { value } = useSourceFromExample({ Example: accordionExample });
-  return value ? <ThemedExample>{value}</ThemedExample> : null;
-};
+import * as styles from '../templates/templateGroupPage.css';
+
+const ComponentTile = ({
+  name,
+  Example,
+}: (typeof documentedComponents)[number]) => (
+  <PlayroomStateProvider>
+    <Box position="relative">
+      <Link href={`/components/${name}`} className={styles.tileLinkOverlay} />
+      <Stack space="small">
+        <Text weight="strong">{name}</Text>
+        <ScaledPreview Example={Example} />
+      </Stack>
+    </Box>
+  </PlayroomStateProvider>
+);
 
 export const Components = () => (
-  <Stack space="xlarge">
-    <Heading level="1">Components</Heading>
+  <Stack space="xxlarge">
     <Stack space="medium">
-      <Heading level="3">Accordion</Heading>
-      <PlayroomStateProvider>
-        <AccordionPreview />
-      </PlayroomStateProvider>
+      <Heading component="h1" level="2">
+        Components
+      </Heading>
+      <Text>lorem</Text>
     </Stack>
+    <Tiles space="xlarge" columns={[1, 2, 3]}>
+      {documentedComponents
+        .filter((component) => component.category !== 'Logic')
+        .map((component) => (
+          <ComponentTile key={component.name} {...component} />
+        ))}
+    </Tiles>
   </Stack>
 );

@@ -20,7 +20,7 @@ import { useSourceFromExample } from '../../useSourceFromExample/useSourceFromEx
 
 import * as styles from './templateGroupPage.css';
 
-const DefaultContainer = ({ children }: { children: ReactNode }) => (
+export const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <>{children}</>
 );
 
@@ -30,7 +30,9 @@ const groupDescriptions: Record<string, string> = {
   sections: 'Composable content blocks intended to slot into page layouts.',
 };
 
-const ScaledPreview = (docs: (typeof allTemplateDocs)[number]) => {
+export const ScaledPreview = (
+  docs: Pick<(typeof allTemplateDocs)[number], 'Example' | 'Container'>,
+) => {
   const outerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0);
   const Container = docs.Container ?? DefaultContainer;

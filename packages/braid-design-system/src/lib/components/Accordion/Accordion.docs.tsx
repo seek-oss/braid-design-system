@@ -18,21 +18,6 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { validSpaceValues } from './Accordion';
 
-export const accordionExample: ComponentDocs['Example'] = () =>
-  source(
-    <Accordion>
-      <AccordionItem label="Accordion item 1">
-        <Placeholder height={80} />
-      </AccordionItem>
-      <AccordionItem label="Accordion item 2">
-        <Placeholder height={80} />
-      </AccordionItem>
-      <AccordionItem label="Accordion item 3">
-        <Placeholder height={80} />
-      </AccordionItem>
-    </Accordion>,
-  );
-
 const docs: ComponentDocs = {
   category: 'Content',
   description: (
@@ -42,7 +27,20 @@ const docs: ComponentDocs = {
     </Text>
   ),
   subComponents: ['AccordionItem'],
-  Example: accordionExample,
+  Example: () =>
+    source(
+      <Accordion>
+        <AccordionItem label="Accordion item 1">
+          <Placeholder height={80} />
+        </AccordionItem>
+        <AccordionItem label="Accordion item 2">
+          <Placeholder height={80} />
+        </AccordionItem>
+        <AccordionItem label="Accordion item 3">
+          <Placeholder height={80} />
+        </AccordionItem>
+      </Accordion>,
+    ),
   accessibility: (
     <Text>
       Follows the{' '}
