@@ -1,9 +1,11 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { breakpoints, responsiveStyle, vars } from 'braid-design-system/css';
+import { colorModeStyle } from 'braid-src/lib/css/colorModeStyle';
 import tokens from 'braid-src/lib/themes/docs/tokens';
 
 import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
+
 
 export const isOpen = style({});
 
@@ -85,6 +87,13 @@ export const contentBlockXL = style({
 });
 
 
-export const fixedNavigationContainer = style({
-  borderBottom: `1px solid ${vars.borderColor.neutralLight}`,
-});
+export const fixedNavigationContainer = style(
+  colorModeStyle({
+    lightMode: {
+      borderBottom: `1px solid ${vars.borderColor.neutralLight}`
+    },
+    darkMode: {
+      borderBottom: `1px solid ${vars.borderColor.neutral}`,
+    }
+  })
+)

@@ -1,5 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
+import { colorModeSelectors } from 'braid-src/lib/css/atoms/sprinkles.css';
+import { colorModeStyle } from 'braid-src/lib/css/colorModeStyle';
 import { vars } from 'braid-src/lib/themes/vars.css';
 
 import { headerHeight } from '../Navigation/navigationSizes';
@@ -21,35 +23,54 @@ export const toc = style({
   },
 });
 
-export const tocItem = style({
-  borderLeft: `4px solid ${vars.borderColor.neutralLight}`,
-  color: vars.foregroundColor.secondary,
-  transition: 'border-color 250ms ease',
-  display: 'block',
-  paddingLeft: vars.space.medium,
-  paddingTop: vars.space.small,
-  paddingBottom: vars.space.small,
-  selectors: {
-    '&:hover': {
-      borderColor: vars.borderColor.neutral,
+export const tocItem = style([
+  colorModeStyle({
+    lightMode: {
+      borderLeft: `4px solid ${vars.borderColor.neutralLight}`
+    },
+    darkMode: {
+      borderLeft: `4px solid ${vars.borderColor.neutral}`
+    }
+  }), {
+    color: vars.foregroundColor.secondary,
+    transition: 'border-color 250ms ease',
+    display: 'block',
+    paddingLeft: vars.space.medium,
+    paddingTop: vars.space.small,
+    paddingBottom: vars.space.small,
+    selectors: {
+      '&:hover': {
+        borderColor: vars.borderColor.neutral,
+      },
     },
   },
-});
+]);
+
+
+export const tocItemActive = style(
+  colorModeStyle({
+    lightMode: {
+      borderColor: vars.borderColor.neutral,
+    },
+    darkMode: {
+      borderColor: vars.borderColor.neutralLight,
+    }
+  }),
+
+);
 
 export const tocItemChild = style({
   paddingLeft: vars.space.large,
 });
 
-export const tocItemActive = style({
-  color: vars.foregroundColor.neutral,
-  borderColor: vars.borderColor.neutral,
-});
-
 export const textHover = style({
   transition: 'color 250ms ease',
   selectors: {
-    '&:hover': {
+    [`${colorModeSelectors.light}:hover`]: {
       color: vars.foregroundColor.neutral,
+    },
+    [`${colorModeSelectors.dark}:hover`]: {
+      color: vars.foregroundColor.neutralInverted,
     },
   },
 });
