@@ -15,7 +15,7 @@ const ComponentTile = ({
       <Link href={`/components/${name}`} className={styles.tileLinkOverlay} />
       <Stack space="small">
         <Text weight="strong">{name}</Text>
-        <ScaledPreview Example={Example} />
+        <ScaledPreview Example={Example} aspectRatio=" 2 / 1 " />
       </Stack>
     </Box>
   </PlayroomStateProvider>

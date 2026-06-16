@@ -31,8 +31,12 @@ interface HeaderNavigationProps {
 }
 
 const NavLink = ({ label, href, active }: NavLink) => (
-  <ButtonLink variant="transparent" key={label} href={href}>
-    {active && `- `}
+  <ButtonLink
+    variant={active ? 'soft' : 'transparent'}
+    key={label}
+    href={href}
+    size="small"
+  >
     {label}
   </ButtonLink>
 );

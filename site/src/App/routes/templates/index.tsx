@@ -30,9 +30,12 @@ const groupDescriptions: Record<string, string> = {
   sections: 'Composable content blocks intended to slot into page layouts.',
 };
 
-export const ScaledPreview = (
-  docs: Pick<(typeof allTemplateDocs)[number], 'Example' | 'Container'>,
-) => {
+export const ScaledPreview = ({
+  aspectRatio = '8 / 5',
+  ...docs
+}: Pick<(typeof allTemplateDocs)[number], 'Example' | 'Container'> & {
+  aspectRatio?: string;
+}) => {
   const outerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0);
   const Container = docs.Container ?? DefaultContainer;
@@ -57,7 +60,7 @@ export const ScaledPreview = (
   }, []);
 
   return (
-    <div ref={outerRef} className={styles.tilePreview}>
+    <div ref={outerRef} className={styles.tilePreview} style={{ aspectRatio }}>
       <Box
         className={styles.tileStage}
         opacity={scale === 0 ? 0 : undefined}
@@ -85,7 +88,7 @@ const TemplateTile = ({
       />
       <Stack space="small">
         <Text weight="strong">{docs.title}</Text>
-        <ScaledPreview {...docs} />
+        <ScaledPreview {...docs} aspectRatio="8 / 5" />
       </Stack>
     </Box>
   </PlayroomStateProvider>

@@ -1,8 +1,8 @@
 import tokens from 'braid-src/lib/themes/docs/tokens';
 
 
-// What is this magive number?
-const menuButton = 49;
+// What is this magic number?
+const menuButton = 39;
 
 export const headerSpaceY = 'small';
 const headerPaddingY = tokens.grid * tokens.space[headerSpaceY];

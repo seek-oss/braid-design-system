@@ -90,7 +90,7 @@ export const contentBlockXL = style({
 export const fixedNavigationContainer = style(
   colorModeStyle({
     lightMode: {
-      borderBottom: `1px solid ${vars.borderColor.neutralLight}`
+      borderBottom: `1px solid ${vars.borderColor.neutralInverted}`
     },
     darkMode: {
       borderBottom: `1px solid ${vars.borderColor.neutral}`,
