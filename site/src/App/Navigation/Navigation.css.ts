@@ -57,7 +57,7 @@ const subNavOffsetAboveMobile = style(
 );
 
 const sideNavigationBorder = style({
-  borderRight: `1px solid #EBEFFB`,
+  borderRight: `1px solid #eaecf1`,
 });
 
 export const sideNavigationContainer = style([
@@ -90,5 +90,5 @@ export const contentBlockXL = style({
 });
 
 export const fixedNavigationContainer = style({
-  borderBottom: `1px solid #EBEFFB`,
+  borderBottom: `1px solid #eaecf1`,
 });
