@@ -68,7 +68,9 @@ export const HeaderNavigation = ({
         <Link href={logoHref} tabIndex={menuOpen ? -1 : undefined}>
           <Inline space="small" alignY="center">
             <>{logo}</>
-            <Text weight="medium">Braid Design System</Text>
+            <Text weight="medium" size="small">
+              Braid Design System
+            </Text>
           </Inline>
         </Link>
       </Box>
