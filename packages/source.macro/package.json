@@ -12,6 +12,10 @@
     "url": "https://github.com/seek-oss/braid-design-system.git",
     "directory": "packages/source.macro"
   },
+  "homepage": "https://github.com/seek-oss/braid-design-system/tree/master/packages/source.macro#readme",
+  "bugs": {
+    "url": "https://github.com/seek-oss/braid-design-system/issues"
+  },
   "scripts": {
     "lint:eslint": "eslint --cache .",
     "lint:prettier": "prettier --cache --list-different .",
