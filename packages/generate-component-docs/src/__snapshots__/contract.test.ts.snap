@@ -46,6 +46,7 @@ exports[`AccordionItem 1`] = `
         | "small"
         | "standard"
         | "xsmall"
+    subText?: string
     tone?: 
         | "neutral"
         | "secondary"

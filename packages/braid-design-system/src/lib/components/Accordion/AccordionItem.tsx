@@ -49,6 +49,7 @@ export interface AccordionItemBaseProps {
   icon?: TextProps['icon'];
   data?: DataAttributeMap;
   badge?: ReactElement<BadgeProps> | null;
+  subText?: string;
 }
 
 export type AccordionItemProps = AccordionItemBaseProps & UseDisclosureProps;
@@ -64,6 +65,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   weight: weightProp,
   icon,
   data,
+  subText,
   ...restProps
 }) => {
   const accordionContext = useContext(AccordionContext);
@@ -134,6 +136,26 @@ export const AccordionItem: FC<AccordionItemProps> = ({
     buildDataAttributes({ data, validateRestProps: restProps });
   }
 
+  const subTextSizeMap = {
+    xsmall: 'xsmall',
+    small: 'xsmall',
+    standard: 'xsmall',
+    large: 'small',
+  } as const;
+
+  const labelText = (
+    <Text size={size} weight={weight} tone={tone} icon={icon}>
+      {badge ? (
+        <Box component="span" paddingRight={badgeSlotSpace}>
+          {label}
+        </Box>
+      ) : (
+        label
+      )}
+      {badge ? cloneElement(badge, {}) : null}
+    </Text>
+  );
+
   return (
     <Stack space={itemSpace} data={data}>
       <Box position="relative" display="flex">
@@ -153,16 +175,20 @@ export const AccordionItem: FC<AccordionItemProps> = ({
           */}
           <Box component="span" position="relative">
             <Spread component="span" space={itemSpace}>
-              <Text size={size} weight={weight} tone={tone} icon={icon}>
-                {badge ? (
-                  <Box component="span" paddingRight={badgeSlotSpace}>
-                    {label}
-                  </Box>
-                ) : (
-                  label
-                )}
-                {badge ? cloneElement(badge, {}) : null}
-              </Text>
+              {subText ? (
+                <Stack component="span" space={itemSpace}>
+                  {labelText}
+                  <Text
+                    size={subTextSizeMap[size]}
+                    weight="regular"
+                    tone="secondary"
+                  >
+                    {subText}
+                  </Text>
+                </Stack>
+              ) : (
+                labelText
+              )}
               <Text
                 size={size}
                 weight={weight}

@@ -25,11 +25,55 @@ describe('AccordionItem', () => {
           >
             Content 3
           </AccordionItem>
+          <AccordionItem id="item4" label="Label 4" subText="Supporting detail">
+            Content 4
+          </AccordionItem>
         </BraidTestProvider>,
       ),
     ).toHTMLValidate({
       extends: ['html-validate:recommended'],
     });
+  });
+
+  it('should render subText inside the button', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <AccordionItem label="Label" subText="Supporting detail">
+          Content
+        </AccordionItem>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+    expect(htmlToText(button.innerHTML)).toContain('Supporting detail');
+  });
+
+  it('should not render subText when not provided', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <AccordionItem label="Label">Content</AccordionItem>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+    expect(htmlToText(button.innerHTML)).toEqual('Label');
+  });
+
+  it('should render subText alongside a badge', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <AccordionItem
+          label="Label"
+          badge={<Badge>New</Badge>}
+          subText="Supporting detail"
+        >
+          Content
+        </AccordionItem>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+    expect(htmlToText(button.innerHTML)).toContain('Supporting detail');
   });
 
   it('should provide internal state by default', async () => {
