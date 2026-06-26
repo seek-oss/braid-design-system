@@ -18,6 +18,7 @@ import {
   TextDropdown,
   List,
   Notice,
+  Actions,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { externalGutter } from '../private/Modal/ModalExternalGutter';
@@ -325,6 +326,54 @@ const docs: ComponentDocs = {
                   {...dialogPreviewPropsFromSourceValue(value)}
                   width="xsmall"
                 >
+                  <Placeholder
+                    height={100}
+                    width="100%"
+                    label="Dialog Content"
+                  />
+                </DialogContent>
+                <Screen />
+              </DialogPreview>
+            </Box>
+          ),
+        };
+      },
+    },
+    {
+      label: 'Footer Content',
+      description: (
+        <Text>
+          You can use the <Strong>footer</Strong> prop to render fixed footer content.
+        </Text>
+      ),
+      background: false,
+      Example: () => {
+        const { code, value } = source<DialogElement>(
+          <Dialog
+            title="Footer Content Example"
+            open={true}
+            onClose={() => { }}
+            footer={
+              <Actions>
+                <Button variant="solid" tone="formAccent">
+                  Save
+                </Button>
+                <Button variant="transparent" tone="formAccent">
+                  Cancel
+                </Button>
+              </Actions>
+            }
+          >
+            <Placeholder height={100} width="100%" label="Dialog Content" />
+          </Dialog>,
+        );
+
+        return {
+          code,
+          value: (
+            <Box borderRadius="xlarge" overflow="hidden">
+              <DialogPreview>
+                <DialogContent {...dialogPreviewPropsFromSourceValue(value)}>
                   <Placeholder
                     height={100}
                     width="100%"

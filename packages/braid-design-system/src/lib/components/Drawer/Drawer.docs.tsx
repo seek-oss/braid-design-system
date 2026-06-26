@@ -13,6 +13,7 @@ import {
   Checkbox,
   Alert,
   Box,
+  Actions,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
@@ -147,6 +148,54 @@ const docs: ComponentDocs = {
           </Drawer>,
         );
 
+        return {
+          code,
+          value: (
+            <Box borderRadius="xlarge" overflow="hidden">
+              <DrawerPreview>
+                <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
+                  <Placeholder
+                    height={200}
+                    width="100%"
+                    label="Drawer Content"
+                  />
+                </DrawerContent>
+                <Screen />
+              </DrawerPreview>
+            </Box>
+          ),
+        };
+      },
+    },
+    {
+      label: 'Footer Content',
+      description: (
+        <Text>
+          You can use the <Strong>footer</Strong> prop to render fixed footer content.
+        </Text>
+      ),
+      background: false,
+      Example: () => {
+        const { code, value } = source<DrawerElement>(
+          <Drawer
+            title="Example Title"
+            width="small"
+            open={true}
+            onClose={() => { }}
+            footer={
+              <Actions>
+                <Button variant="solid" tone="formAccent">
+                  Save
+                </Button>
+                <Button variant="transparent" tone="formAccent">
+                  Cancel
+                </Button>
+              </Actions>
+            }
+          >
+            <Placeholder height={200} width="100%" label="Drawer Content" />
+          </Drawer>,
+        );
         return {
           code,
           value: (

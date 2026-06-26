@@ -107,6 +107,16 @@ export const CloseButtonLayout: Story = {
   },
 };
 
+export const FooterLayout: Story = {
+  name: 'Test: Footer Layout',
+  args: {
+    title: 'footer test',
+    width: 'medium',
+    footer: <Box style={{ height: 100 }} />,
+    children: <Placeholder height={100} width="100%" label="Small Drawer" />,
+  },
+};
+
 export const LeftAlignedInCenteredStack: Story = {
   name: 'Test: Should be left aligned in a centered Stack',
   args: {
