@@ -42,14 +42,15 @@ type ModalContentCommonProps = {
   headingRef?: Ref<HTMLElement>;
   modalRef?: Ref<HTMLElement>;
   data?: DataAttributeMap;
+  footer?: ReactNode;
 };
 
 export type ModalContentProps = ModalContentCommonProps &
   (
     | {
-        coverImage?: never;
-        illustration?: ReactNodeNoStrings;
-      }
+      coverImage?: never;
+      illustration?: ReactNodeNoStrings;
+    }
     | { coverImage?: string; illustration?: never }
   );
 
@@ -125,6 +126,20 @@ const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
       resolvedLayout
     );
   },
+);
+
+type ModalFooterProps = {
+  children: ReactNode;
+};
+
+const ModalFooter = ({ children }: ModalFooterProps) => (
+  <Box
+    background="neutralSoft"
+    width="full"
+    padding="small"
+  >
+    {children}
+  </Box>
 );
 
 const ModalContentScrollLayout = ({
@@ -227,6 +242,7 @@ export const ModalContent = ({
   position,
   headingLevel,
   data,
+  footer,
   ...restProps
 }: ModalContentInternalProps) => {
   const resolvedId = useFallbackId(id);
@@ -338,6 +354,7 @@ export const ModalContent = ({
                 modalLayout
               )}
             </ScrollContainer>
+            {footer && <ModalFooter>{footer}</ModalFooter>}
           </Box>
         </RemoveScroll>
         <Box

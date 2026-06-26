@@ -25,11 +25,13 @@ export interface DrawerProps extends Omit<
 > {
   width?: (typeof validWidths)[number];
   position?: (typeof validPositions)[number];
+  footer?: ModalContentProps['footer'];
 }
 
 export const Drawer: FC<DrawerProps> = ({
   width = defaultWidth,
   position = defaultPosition,
+  footer,
   ...restProps
 }) => {
   assert(validWidths.indexOf(width) >= 0, `Invalid width: ${width}`);
@@ -39,7 +41,13 @@ export const Drawer: FC<DrawerProps> = ({
   );
 
   return (
-    <Modal width={width} position={position} {...restProps} {...modalStyle} />
+    <Modal
+      width={width}
+      position={position}
+      footer={footer}
+      {...restProps}
+      {...modalStyle}
+    />
   );
 };
 
@@ -49,11 +57,13 @@ interface DrawerContentProps extends Omit<
 > {
   width?: (typeof validWidths)[number];
   position?: (typeof validPositions)[number];
+  footer?: ModalContentProps['footer'];
 }
 
 export const DrawerContent = ({
   width = defaultWidth,
   position = defaultPosition,
+  footer,
   ...restProps
 }: DrawerContentProps) => {
   assert(validWidths.indexOf(width) >= 0, `Invalid width: ${width}`);
@@ -66,6 +76,7 @@ export const DrawerContent = ({
     <ModalContent
       width={width}
       position={position}
+      footer={footer}
       {...restProps}
       {...modalStyle}
     />
