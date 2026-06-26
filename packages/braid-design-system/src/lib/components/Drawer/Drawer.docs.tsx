@@ -171,7 +171,8 @@ const docs: ComponentDocs = {
       label: 'Footer Content',
       description: (
         <Text>
-          You can use the <Strong>footer</Strong> prop to render fixed footer content.
+          You can use the <Strong>footer</Strong> prop to render fixed footer
+          content.
         </Text>
       ),
       background: false,
@@ -181,7 +182,7 @@ const docs: ComponentDocs = {
             title="Example Title"
             width="small"
             open={true}
-            onClose={() => { }}
+            onClose={() => {}}
             footer={
               <Actions>
                 <Button variant="solid" tone="formAccent">

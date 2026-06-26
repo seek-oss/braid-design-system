@@ -48,9 +48,9 @@ type ModalContentCommonProps = {
 export type ModalContentProps = ModalContentCommonProps &
   (
     | {
-      coverImage?: never;
-      illustration?: ReactNodeNoStrings;
-    }
+        coverImage?: never;
+        illustration?: ReactNodeNoStrings;
+      }
     | { coverImage?: string; illustration?: never }
   );
 
@@ -133,11 +133,7 @@ type ModalFooterProps = {
 };
 
 const ModalFooter = ({ children }: ModalFooterProps) => (
-  <Box
-    background="neutralSoft"
-    width="full"
-    padding="small"
-  >
+  <Box background="neutralSoft" width="full" padding="small">
     {children}
   </Box>
 );
