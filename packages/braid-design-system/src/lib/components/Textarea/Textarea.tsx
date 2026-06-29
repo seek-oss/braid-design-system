@@ -156,6 +156,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             zIndex={0}
             background={background}
             borderRadius={borderRadius}
+            className={styles.focusRing}
           >
             {hasHighlights ? (
               <Box

@@ -7128,6 +7128,7 @@ exports[`Inline 1`] = `
         | "span"
         | "ul"
     data?: DataAttributeMap
+    noWrap?: boolean
     reverse?: boolean
     space: 
         | "gutter"
