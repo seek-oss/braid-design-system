@@ -344,7 +344,8 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           You can use the <Strong>footer</Strong> prop to render fixed footer
-          content. This is useful for actions such as &ldquo;Save&rdquo; or &ldquo;Cancel&rdquo;.
+          content. This is useful for actions such as &ldquo;Save&rdquo; or
+          &ldquo;Cancel&rdquo;.
         </Text>
       ),
       background: false,
