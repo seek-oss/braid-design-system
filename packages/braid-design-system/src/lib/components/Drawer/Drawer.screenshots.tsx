@@ -112,7 +112,7 @@ export const FooterLayout: Story = {
   args: {
     title: 'footer test',
     width: 'medium',
-    footer: <Box style={{ height: 100 }} />,
+    footer: <Placeholder height={50} width="100%" label="Footer" />,
     children: <Placeholder height={100} width="100%" label="Small Drawer" />,
   },
 };

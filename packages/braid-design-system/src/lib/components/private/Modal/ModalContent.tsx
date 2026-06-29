@@ -48,9 +48,9 @@ type ModalContentCommonProps = {
 export type ModalContentProps = ModalContentCommonProps &
   (
     | {
-        coverImage?: never;
-        illustration?: ReactNodeNoStrings;
-      }
+      coverImage?: never;
+      illustration?: ReactNodeNoStrings;
+    }
     | { coverImage?: string; illustration?: never }
   );
 
@@ -129,11 +129,12 @@ const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
 );
 
 type ModalFooterProps = {
+  applyPageBlockGutters: boolean;
   children: ReactNode;
 };
 
-const ModalFooter = ({ children }: ModalFooterProps) => (
-  <Box background="neutralSoft" width="full" padding="small">
+const ModalFooter = ({ applyPageBlockGutters, children }: ModalFooterProps) => (
+  <Box background="neutralSoft" width="full" paddingY="gutter" paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}>
     {children}
   </Box>
 );
@@ -326,7 +327,6 @@ export const ModalContent = ({
         >
           <Box
             display="flex"
-            gap="large"
             flexDirection="column"
             background="surface"
             borderRadius={modalRadius}
@@ -350,7 +350,7 @@ export const ModalContent = ({
                 modalLayout
               )}
             </ScrollContainer>
-            {footer && <ModalFooter>{footer}</ModalFooter>}
+            {footer && <ModalFooter applyPageBlockGutters={isDrawer}>{footer}</ModalFooter>}
           </Box>
         </RemoveScroll>
         <Box
