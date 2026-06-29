@@ -134,7 +134,7 @@ type ModalFooterProps = {
 };
 
 const ModalFooter = ({ applyPageBlockGutters, children }: ModalFooterProps) => (
-  <Box background="neutralSoft" width="full" paddingY="gutter" paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}>
+  <Box background="surface" width="full" paddingY="gutter" paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}>
     {children}
   </Box>
 );
