@@ -2210,6 +2210,7 @@ exports[`ButtonIcon 1`] = `
         | "submit"
     variant?: 
         | "soft"
+        | "solid"
         | "transparent"
 },
 }

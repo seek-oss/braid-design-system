@@ -68,7 +68,8 @@ const docs: ComponentDocs = {
         <Text>
           The button appearance can be customised via the{' '}
           <Strong>variant</Strong> prop, which accepts either{' '}
-          <Strong>soft</Strong> or <Strong>transparent</Strong>.
+          <Strong>soft</Strong>, <Strong>solid</Strong> or{' '}
+          <Strong>transparent</Strong>.
         </Text>
       ),
       Example: () =>
@@ -82,6 +83,16 @@ const docs: ComponentDocs = {
               />
               <Text tone="secondary" size="xsmall">
                 SOFT
+              </Text>
+            </Inline>
+            <Inline space="gutter" alignY="center">
+              <ButtonIcon
+                variant="solid"
+                icon={<IconSend />}
+                label="Solid variant"
+              />
+              <Text tone="secondary" size="xsmall">
+                SOLID
               </Text>
             </Inline>
             <Inline space="gutter" alignY="center">

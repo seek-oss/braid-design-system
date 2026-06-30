@@ -7,8 +7,6 @@ import {
   Inline,
   IconHelp,
   IconBookmark,
-  IconOverflow,
-  IconShare,
   IconAdd,
   IconClear,
   Stack,
@@ -18,37 +16,16 @@ import {
 export const galleryItems: GalleryComponent = {
   examples: [
     {
-      label: 'Soft',
+      label: 'Variant',
       Example: () =>
         source(
-          <Inline space="small">
-            <ButtonIcon icon={<IconBookmark />} label="Bookmark" />
-            <ButtonIcon icon={<IconAdd />} label="Add" />
-            <ButtonIcon icon={<IconShare />} label="Share" />
-            <ButtonIcon icon={<IconOverflow />} label="More" />
-          </Inline>,
-        ),
-    },
-    {
-      label: 'Transparent',
-      Example: () =>
-        source(
-          <Inline space="medium">
+          <Inline space="medium" noWrap alignY="center">
+            <ButtonIcon icon={<IconBookmark />} label="Solid" variant="solid" />
+            <ButtonIcon icon={<IconBookmark />} label="Soft" variant="soft" />
             <ButtonIcon
-              variant="transparent"
               icon={<IconBookmark />}
-              label="Bookmark"
-            />
-            <ButtonIcon variant="transparent" icon={<IconAdd />} label="Add" />
-            <ButtonIcon
+              label="Transparent"
               variant="transparent"
-              icon={<IconShare />}
-              label="Share"
-            />
-            <ButtonIcon
-              variant="transparent"
-              icon={<IconOverflow />}
-              label="More"
             />
           </Inline>,
         ),
