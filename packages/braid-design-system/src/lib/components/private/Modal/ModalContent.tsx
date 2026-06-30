@@ -137,7 +137,7 @@ const ModalFooter = ({ applyPageBlockGutters, children }: ModalFooterProps) => (
   <Box
     background="surface"
     width="full"
-    paddingY="gutter"
+    paddingY="large"
     paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
   >
     {children}
@@ -151,6 +151,7 @@ const ModalContentScrollLayout = ({
   coverImageEnabled,
   applyPageBlockGutters,
   applyFullHeight,
+  hasFooter,
 }: {
   children: ReactNode;
   applyPageBlockGutters: boolean;
@@ -158,6 +159,7 @@ const ModalContentScrollLayout = ({
   contentStartRef?: Ref<HTMLDivElement>;
   coverImageEnabled?: boolean;
   applyFullHeight?: boolean;
+  hasFooter: boolean;
 }) => (
   <ScrollContainer direction="vertical">
     {
@@ -180,6 +182,7 @@ const ModalContentScrollLayout = ({
         flexDirection="column"
         height={applyFullHeight ? 'full' : undefined}
         paddingY={modalPadding}
+        paddingBottom={hasFooter ? 'none' : undefined}
         paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
       >
         {children}
@@ -280,6 +283,7 @@ export const ModalContent = ({
       applyFullHeight={isDrawer}
       contentStartRef={contentStartRef}
       coverImageEnabled={coverImageEnabled}
+      hasFooter={Boolean(footer)}
     >
       <ModalContentHeader
         title={title}
