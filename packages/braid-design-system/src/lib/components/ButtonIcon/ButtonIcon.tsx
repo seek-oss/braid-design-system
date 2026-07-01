@@ -98,6 +98,7 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
       size: size === 'small' ? 'small' : 'standard',
       radius: 'full',
     });
+    const fallbackIconTone = variant === 'solid' ? 'neutral' : tone;
 
     assert(
       icon && icon.props.size === undefined,
@@ -143,7 +144,7 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
             }
           >
             {cloneElement(icon, {
-              tone: icon.props.tone || variant === 'solid' ? 'neutral' : tone,
+              tone: icon.props.tone || fallbackIconTone,
               size: 'fill',
             })}
           </Box>
