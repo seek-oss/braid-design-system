@@ -300,6 +300,10 @@ export const ModalContent = ({
     </ModalContentScrollLayout>
   );
 
+  const modalFooter = footer ? (
+    <ModalFooter applyPageBlockGutters={isDrawer}>{footer}</ModalFooter>
+  ) : null;
+
   return (
     <Box
       role="dialog"
@@ -350,20 +354,19 @@ export const ModalContent = ({
             }}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
-            <ScrollContainer direction="vertical" startRef={contentStartRef}>
-              {coverImageEnabled && coverImage ? (
+            {coverImageEnabled && coverImage ? (
+              <ScrollContainer direction="vertical" startRef={contentStartRef}>
                 <ModalCoverImageLayout width={width} image={coverImage}>
-                  {modalLayout}
+                  <Stack space="none">
+                    {modalLayout}
+                    {modalFooter}
+                  </Stack>
                 </ModalCoverImageLayout>
-              ) : (
-                modalLayout
-              )}
-            </ScrollContainer>
-            {footer && (
-              <ModalFooter applyPageBlockGutters={isDrawer}>
-                {footer}
-              </ModalFooter>
+              </ScrollContainer>
+            ) : (
+              modalLayout
             )}
+            {!coverImageEnabled && modalFooter}
           </Box>
         </RemoveScroll>
         <Box
