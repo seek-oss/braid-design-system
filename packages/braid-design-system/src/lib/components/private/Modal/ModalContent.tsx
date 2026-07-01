@@ -180,7 +180,6 @@ const ModalContentScrollLayout = ({
         display="flex"
         gap="large"
         flexDirection="column"
-        height={applyFullHeight ? 'full' : undefined}
         paddingY={modalPadding}
         paddingBottom={hasFooter ? 'none' : undefined}
         paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
