@@ -30,8 +30,8 @@ import buildDataAttributes, {
 import * as styles from './ButtonIcon.css';
 
 export const buttonIconVariants: Array<
-  Extract<ButtonStyleProps['variant'], 'soft' | 'transparent'>
-> = ['soft', 'transparent'];
+  Extract<ButtonStyleProps['variant'], 'soft' | 'transparent' | 'solid'>
+> = ['soft', 'transparent', 'solid'];
 
 export const buttonIconTones: Array<
   Extract<ButtonStyleProps['tone'], 'neutral' | 'formAccent'>
@@ -98,6 +98,7 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
       size: size === 'small' ? 'small' : 'standard',
       radius: 'full',
     });
+    const fallbackIconTone = variant === 'solid' ? 'neutral' : tone;
 
     assert(
       icon && icon.props.size === undefined,
@@ -143,7 +144,7 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
             }
           >
             {cloneElement(icon, {
-              tone: icon.props.tone || tone,
+              tone: icon.props.tone || fallbackIconTone,
               size: 'fill',
             })}
           </Box>
