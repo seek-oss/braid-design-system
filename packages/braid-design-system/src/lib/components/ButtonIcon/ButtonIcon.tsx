@@ -21,6 +21,7 @@ import {
   ButtonOverlays,
   useButtonStyles,
 } from '../Button/Button';
+import { ButtonLoader } from '../Button/ButtonLoader';
 import { Text } from '../Text/Text';
 import { TooltipRenderer } from '../TooltipRenderer/TooltipRenderer';
 import buildDataAttributes, {
@@ -56,6 +57,7 @@ export interface ButtonIconProps {
   'aria-expanded'?: NativeButtonProps['aria-expanded'];
   'aria-describedby'?: NativeButtonProps['aria-describedby'];
   tabIndex?: number;
+  loading?: boolean;
   data?: DataAttributeMap;
   bleed?: boolean;
   tooltipPlacement?: 'bottom' | 'top';
@@ -79,6 +81,7 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
       type = 'button',
       bleed,
       tooltipPlacement,
+      loading,
       onClick,
       onMouseDown,
       onKeyUp,
@@ -95,6 +98,7 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
     const { root, content } = useButtonStyles({
       variant,
       tone,
+      loading,
       size: size === 'small' ? 'small' : 'standard',
       radius: 'full',
     });
@@ -122,6 +126,7 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
         maxWidth="content"
         tabIndex={tabIndex}
         {...root}
+        disabled={loading}
         className={[root.className, styles.button]}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
@@ -142,10 +147,14 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
                 : iconSize({ size, crop: true })
             }
           >
-            {cloneElement(icon, {
+            {loading ? (
+              <ButtonLoader tone={icon.props.tone || tone} size="fill" />
+            ) : (
+              cloneElement(icon, {
               tone: icon.props.tone || tone,
               size: 'fill',
-            })}
+              })
+            )}
           </Box>
         </Box>
       </Box>
