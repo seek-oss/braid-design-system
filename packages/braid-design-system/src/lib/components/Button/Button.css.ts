@@ -1,9 +1,4 @@
-import {
-  createVar,
-  keyframes,
-  style,
-  styleVariants,
-} from '@vanilla-extract/css';
+import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { rgba } from 'polished';
 
@@ -25,7 +20,7 @@ export const forceActive = style({});
 
 export const activeAnimation = style({
   selectors: {
-    [`${root}:active &, ${forceActive}&`]: {
+    [`${root}:not(:disabled):active &, ${forceActive}&`]: {
       transform: vars.transform.touchable,
     },
   },
@@ -33,7 +28,7 @@ export const activeAnimation = style({
 
 export const activeOverlay = style({
   selectors: {
-    [`${root}:active &, ${forceActive}&`]: {
+    [`${root}:not(:disabled):active &, ${forceActive}&`]: {
       opacity: 1,
     },
   },
@@ -97,50 +92,6 @@ export const bleedVerticallyToCapHeight = style({
 export const padToMinHeight = style({
   paddingTop: capHeightToMinHeight,
   paddingBottom: capHeightToMinHeight,
-});
-
-const dot1 = keyframes({
-  '14%': {
-    opacity: 0,
-  },
-  '15%,100%': {
-    opacity: 1,
-  },
-});
-
-const dot2 = keyframes({
-  '29%': {
-    opacity: 0,
-  },
-  '30%,100%': {
-    opacity: 1,
-  },
-});
-
-const dot3 = keyframes({
-  '44%': {
-    opacity: 0,
-  },
-  '45%,100%': {
-    opacity: 1,
-  },
-});
-
-export const loadingDot = style({
-  animationDuration: '1s',
-  animationIterationCount: 'infinite',
-  opacity: 0,
-  selectors: {
-    [`&:nth-child(1)`]: {
-      animationName: dot1,
-    },
-    [`&:nth-child(2)`]: {
-      animationName: dot2,
-    },
-    [`&:nth-child(3)`]: {
-      animationName: dot3,
-    },
-  },
 });
 
 export const invertedBackgroundsLightMode = styleVariants({
