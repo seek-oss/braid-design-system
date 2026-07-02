@@ -56,6 +56,7 @@ export interface ButtonIconProps {
   'aria-haspopup'?: NativeButtonProps['aria-haspopup'];
   'aria-expanded'?: NativeButtonProps['aria-expanded'];
   'aria-describedby'?: NativeButtonProps['aria-describedby'];
+  'aria-pressed'?: NativeButtonProps['aria-pressed'];
   tabIndex?: number;
   loading?: boolean;
   data?: DataAttributeMap;
@@ -89,6 +90,7 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
       'aria-haspopup': ariaHasPopUp,
       'aria-expanded': ariaExpanded,
       'aria-describedby': ariaDescribedBy,
+      'aria-pressed': ariaPressed,
       tabIndex,
       data,
       ...restProps
@@ -121,6 +123,7 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
         aria-haspopup={ariaHasPopUp}
         aria-expanded={ariaExpanded}
         aria-describedby={ariaDescribedBy}
+        aria-pressed={ariaPressed}
         onClick={onClick}
         onKeyUp={onKeyUp}
         onKeyDown={onKeyDown}

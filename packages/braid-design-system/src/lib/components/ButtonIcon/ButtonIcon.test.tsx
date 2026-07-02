@@ -75,4 +75,19 @@ describe('ButtonIcon', () => {
 
     expect(button).toHaveAccessibleDescription('Actual description');
   });
+
+  it('should honour aria-pressed if provided', () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <ButtonIcon
+          icon={<IconBookmark />}
+          label="Bookmark"
+          aria-pressed="true"
+        />
+      </BraidTestProvider>,
+    );
+
+    const button = getByLabelText('Bookmark');
+    expect(button).toHaveAttribute('aria-pressed', 'true');
+  });
 });

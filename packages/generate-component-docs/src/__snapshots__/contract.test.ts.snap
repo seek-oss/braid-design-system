@@ -2124,6 +2124,12 @@ exports[`Button 1`] = `
         | false
         | true
     aria-label?: string
+    aria-pressed?: 
+        | "false"
+        | "mixed"
+        | "true"
+        | false
+        | true
     bleed?: boolean
     children?: ReactNode
     data?: DataAttributeMap
@@ -2178,6 +2184,12 @@ exports[`ButtonIcon 1`] = `
         | "listbox"
         | "menu"
         | "tree"
+        | "true"
+        | false
+        | true
+    aria-pressed?: 
+        | "false"
+        | "mixed"
         | "true"
         | false
         | true
