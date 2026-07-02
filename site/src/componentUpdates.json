@@ -5509,5 +5509,62 @@
         "summary": "**Heading:** Increase line height to improve legibility\n\nIncreases the line height of all `Heading` levels to improve legibility of wrapping lines of text — focusing on reducing the collision of diacritical marks in Thai Script."
       }
     ]
+  },
+  {
+    "version": "34.4.0",
+    "updates": [
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button:** Update `loading` indicator\n\nUpdate design asset for loading state, moving from progressive ellipsis animation, to a spinning indicator."
+      },
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon:** Add `loading` support\n\nProvide the same `loading` behaviour as available on `Button` \n\n**EXAMPLE USAGE:**\n```jsx\n<ButtonIcon\n  icon={<IconSend />}\n  label=\"Send\"\n  loading\n/>\n```"
+      },
+      {
+        "updated": [
+          "Button"
+        ],
+        "summary": "**Button:** Ensure active state is not applied when disabled"
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Checkbox",
+          "Dialog",
+          "Drawer",
+          "Dropdown",
+          "ButtonIcon",
+          "MonthPicker",
+          "PasswordField",
+          "RadioGroup",
+          "RadioItem",
+          "TabsProvider",
+          "TextDropdown",
+          "TextField",
+          "Textarea",
+          "TooltipRenderer"
+        ],
+        "summary": "Ensure fallback ids pass HTML validation\n\nAdopt recommended practice of ensuring all generated `id` attributes start with a letter as per HTML validation rules."
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonIcon"
+        ],
+        "summary": "**Button, ButtonIcon:** Add `aria-pressed` support"
+      },
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon:** Add support for `solid` variant\n\n**EXAMPLE USAGE:**\n```jsx\n<ButtonIcon\n  variant=\"solid\"\n  label=\"Solid variant\"\n  icon={<IconSend />}\n/>\n```"
+      }
+    ]
   }
 ]
