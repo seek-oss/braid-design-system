@@ -18,6 +18,9 @@ describe('Button', () => {
       ),
     ).toHTMLValidate({
       extends: ['html-validate:recommended'],
+      rules: {
+        'attribute-boolean-style': 'warn', // React generates `disabled=""` which cannot be changed
+      },
     });
   });
 
