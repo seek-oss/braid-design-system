@@ -2198,6 +2198,7 @@ exports[`ButtonIcon 1`] = `
     icon: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
     label: string
+    loading?: boolean
     onClick?: MouseEventHandler<HTMLButtonElement>
     onKeyDown?: KeyboardEventHandler<HTMLButtonElement>
     onKeyUp?: KeyboardEventHandler<HTMLButtonElement>

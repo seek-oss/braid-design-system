@@ -307,6 +307,22 @@ const docs: ComponentDocs = {
           ),
       },
     ],
+    interaction: [
+      {
+        label: 'Loading state',
+        description: (
+          <>
+            <Text>
+              You can indicate a loading state inline with the{' '}
+              <Strong>loading</Strong> prop, which also ensures that the button
+              is disabled.
+            </Text>
+          </>
+        ),
+        Example: () =>
+          source(<ButtonIcon icon={<IconSend />} label="Loading" loading />),
+      },
+    ],
     bestPractices: [
       dataAttributeDocs({
         code: `

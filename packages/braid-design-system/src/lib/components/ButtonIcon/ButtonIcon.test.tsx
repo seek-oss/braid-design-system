@@ -1,21 +1,24 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 import { ButtonIcon, IconBookmark, Text } from '..';
 import { BraidTestProvider } from '../../../test';
 
 describe('ButtonIcon', () => {
   it('should render valid html structure', () => {
-    const { getByLabelText } = render(
-      <BraidTestProvider>
-        <ButtonIcon id="bookmark" icon={<IconBookmark />} label="Bookmark" />
-      </BraidTestProvider>,
-    );
-
-    const button = getByLabelText('Bookmark');
-
-    expect(button).toHTMLValidate({
+    expect(
+      renderToStaticMarkup(
+        <BraidTestProvider>
+          <ButtonIcon icon={<IconBookmark />} label="Bookmark" />
+          <ButtonIcon icon={<IconBookmark />} label="Loading" loading />
+        </BraidTestProvider>,
+      ),
+    ).toHTMLValidate({
       extends: ['html-validate:recommended'],
+      rules: {
+        'attribute-boolean-style': 'warn', // React generates `disabled=""` which cannot be changed
+      },
     });
   });
 
@@ -27,7 +30,6 @@ describe('ButtonIcon', () => {
     );
 
     const button = getByLabelText('Label');
-
     expect(button).toHaveTextContent('');
   });
 
@@ -44,6 +46,17 @@ describe('ButtonIcon', () => {
     const tooltip = getByRole('tooltip');
 
     expect(tooltip).toHaveTextContent('Label');
+  });
+
+  it('should be disabled when loading', () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <ButtonIcon icon={<IconBookmark />} label="Bookmark" loading />
+      </BraidTestProvider>,
+    );
+
+    const button = getByLabelText('Bookmark');
+    expect(button).toBeDisabled();
   });
 
   it('should honour aria-describedby if provided', () => {

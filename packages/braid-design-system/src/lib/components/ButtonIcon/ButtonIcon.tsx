@@ -21,6 +21,7 @@ import {
   ButtonOverlays,
   useButtonStyles,
 } from '../Button/Button';
+import { ButtonLoader } from '../Button/ButtonLoader';
 import { Text } from '../Text/Text';
 import { TooltipRenderer } from '../TooltipRenderer/TooltipRenderer';
 import buildDataAttributes, {
@@ -57,6 +58,7 @@ export interface ButtonIconProps {
   'aria-describedby'?: NativeButtonProps['aria-describedby'];
   'aria-pressed'?: NativeButtonProps['aria-pressed'];
   tabIndex?: number;
+  loading?: boolean;
   data?: DataAttributeMap;
   bleed?: boolean;
   tooltipPlacement?: 'bottom' | 'top';
@@ -80,6 +82,7 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
       type = 'button',
       bleed,
       tooltipPlacement,
+      loading,
       onClick,
       onMouseDown,
       onKeyUp,
@@ -97,10 +100,12 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
     const { root, content } = useButtonStyles({
       variant,
       tone,
+      loading,
       size: size === 'small' ? 'small' : 'standard',
       radius: 'full',
     });
     const fallbackIconTone = variant === 'solid' ? 'neutral' : tone;
+    const resolvedIconTone = icon.props.tone || fallbackIconTone;
 
     assert(
       icon && icon.props.size === undefined,
@@ -126,6 +131,7 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
         maxWidth="content"
         tabIndex={tabIndex}
         {...root}
+        disabled={loading}
         className={[root.className, styles.button]}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
@@ -146,10 +152,14 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
                 : iconSize({ size, crop: true })
             }
           >
-            {cloneElement(icon, {
-              tone: icon.props.tone || fallbackIconTone,
-              size: 'fill',
-            })}
+            {loading ? (
+              <ButtonLoader tone={resolvedIconTone} size="fill" />
+            ) : (
+              cloneElement(icon, {
+                tone: resolvedIconTone,
+                size: 'fill',
+              })
+            )}
           </Box>
         </Box>
       </Box>

@@ -926,7 +926,7 @@ const docs: ComponentDocs = {
     ],
     interaction: [
       {
-        label: 'Loading Button',
+        label: 'Loading state',
         description: (
           <>
             <Text>
