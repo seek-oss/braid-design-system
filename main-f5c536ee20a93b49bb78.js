@@ -2233,7 +2233,7 @@
   <ButtonIcon icon={<IconAdd />} label="Add" />
   <ButtonIcon icon={<IconShare />} label="Share" />
   <ButtonIcon icon={<IconOverflow />} label="More" />
-</Inline>`,value:n||(n=(0,E.jsxs)(f.c,{space:"small",children:[(0,E.jsx)(m.a2,{icon:(0,E.jsx)(p.E,{}),label:"Bookmark"}),(0,E.jsx)(m.a2,{icon:(0,E.jsx)(d.x,{}),label:"Add"}),(0,E.jsx)(m.a2,{icon:(0,E.jsx)(C.V,{}),label:"Share"}),(0,E.jsx)(m.a2,{icon:(0,E.jsx)(j.c,{}),label:"More"})]}))}),accessibility:(0,E.jsxs)(E.Fragment,{children:[(0,E.jsxs)(T.E,{children:["Follows the"," ",(0,E.jsx)(k.Yq,{href:"https://www.w3.org/WAI/ARIA/apg/patterns/button/",children:"WAI-ARIA Button Pattern"}),"."]}),(0,E.jsxs)(T.E,{children:["Given the button contains only an icon (i.e. no text content), it is required that a label be provided. This will be both announced to a screen reader and presented visually using a"," ",(0,E.jsx)(k.Yq,{href:"/components/TooltipRenderer",children:"TooltipRenderer"}),"."]})]}),alternatives:[{name:"Button",description:"For a semantic button."},{name:"ButtonLink",description:"For a semantic link that looks like a button."}],additional:[{label:"Variants",description:(0,E.jsxs)(T.E,{children:["The button appearance can be customised via the"," ",(0,E.jsx)(w.O,{children:"variant"})," prop, which accepts either"," ",(0,E.jsx)(w.O,{children:"soft"})," or ",(0,E.jsx)(w.O,{children:"transparent"}),"."]}),Example:()=>({code:`<Stack space="gutter">
+</Inline>`,value:n||(n=(0,E.jsxs)(f.c,{space:"small",children:[(0,E.jsx)(m.a2,{icon:(0,E.jsx)(p.E,{}),label:"Bookmark"}),(0,E.jsx)(m.a2,{icon:(0,E.jsx)(d.x,{}),label:"Add"}),(0,E.jsx)(m.a2,{icon:(0,E.jsx)(C.V,{}),label:"Share"}),(0,E.jsx)(m.a2,{icon:(0,E.jsx)(j.c,{}),label:"More"})]}))}),accessibility:(0,E.jsxs)(E.Fragment,{children:[(0,E.jsxs)(T.E,{children:["Follows the"," ",(0,E.jsx)(k.Yq,{href:"https://www.w3.org/WAI/ARIA/apg/patterns/button/",children:"WAI-ARIA Button Pattern"}),"."]}),(0,E.jsxs)(T.E,{children:["Given the button contains only an icon (i.e. no text content), it is required that a label be provided. This will be both announced to a screen reader and presented visually using a"," ",(0,E.jsx)(k.Yq,{href:"/components/TooltipRenderer",children:"TooltipRenderer"}),"."]})]}),alternatives:[{name:"Button",description:"For a semantic button."},{name:"ButtonLink",description:"For a semantic link that looks like a button."}],docSections:{appearance:[{label:"Variants",description:(0,E.jsxs)(T.E,{children:["The button appearance can be customised via the"," ",(0,E.jsx)(w.O,{children:"variant"})," prop, which accepts either"," ",(0,E.jsx)(w.O,{children:"soft"})," or ",(0,E.jsx)(w.O,{children:"transparent"}),"."]}),Example:()=>({code:`<Stack space="gutter">
   <Inline space="gutter" alignY="center">
     <ButtonIcon variant="soft" icon={<IconSend />} label="Soft variant" />
 
@@ -2253,27 +2253,7 @@
       TRANSPARENT
     </Text>
   </Inline>
-</Stack>`,value:i||(i=(0,E.jsxs)(v.B,{space:"gutter",children:[(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{variant:"soft",icon:(0,E.jsx)(S.m,{}),label:"Soft variant"}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"SOFT"})]}),(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{variant:"transparent",icon:(0,E.jsx)(S.m,{}),label:"Transparent variant",bleed:!1}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"TRANSPARENT"})]})]}))})},{label:"Sizes",description:(0,E.jsxs)(E.Fragment,{children:[(0,E.jsxs)(T.E,{children:["The button size can be customised via the ",(0,E.jsx)(w.O,{children:"size"})," ","prop, which accepts either ",(0,E.jsx)(w.O,{children:"small"}),","," ",(0,E.jsx)(w.O,{children:"standard"})," (default) or ",(0,E.jsx)(w.O,{children:"large"}),"."]}),(0,E.jsx)(y.$,{children:(0,E.jsxs)(T.E,{children:["The ",(0,E.jsx)(w.O,{children:"standard"})," and ",(0,E.jsx)(w.O,{children:"large"})," sizes both follow the standard text definition from the theme, where"," ",(0,E.jsx)(w.O,{children:"standard"})," follows the text size and"," ",(0,E.jsx)(w.O,{children:"large"})," follows the line height."]})})]}),Example:()=>({code:`<Stack space="gutter">
-  <Inline space="gutter" alignY="center">
-    <ButtonIcon size="small" icon={<IconEdit />} label="Small size" />
-    <Text tone="secondary" size="xsmall">
-      SMALL
-    </Text>
-  </Inline>
-  <Inline space="gutter" alignY="center">
-    <ButtonIcon size="standard" icon={<IconEdit />} label="Standard size" />
-
-    <Text tone="secondary" size="xsmall">
-      STANDARD
-    </Text>
-  </Inline>
-  <Inline space="gutter" alignY="center">
-    <ButtonIcon size="large" icon={<IconEdit />} label="Large size" />
-    <Text tone="secondary" size="xsmall">
-      LARGE
-    </Text>
-  </Inline>
-</Stack>`,value:s||(s=(0,E.jsxs)(v.B,{space:"gutter",children:[(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{size:"small",icon:(0,E.jsx)(g.G,{}),label:"Small size"}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"SMALL"})]}),(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{size:"standard",icon:(0,E.jsx)(g.G,{}),label:"Standard size"}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"STANDARD"})]}),(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{size:"large",icon:(0,E.jsx)(g.G,{}),label:"Large size"}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"LARGE"})]})]}))})},{label:"Tone",description:(0,E.jsxs)(T.E,{children:["By default, the button adopts the ",(0,E.jsx)(w.O,{children:"neutral"})," tone, however, actions can be emphasised by setting the"," ",(0,E.jsx)(w.O,{children:"tone"})," prop to ",(0,E.jsx)(w.O,{children:"formAccent"}),"."]}),Example:()=>({code:`<Stack space="gutter">
+</Stack>`,value:i||(i=(0,E.jsxs)(v.B,{space:"gutter",children:[(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{variant:"soft",icon:(0,E.jsx)(S.m,{}),label:"Soft variant"}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"SOFT"})]}),(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{variant:"transparent",icon:(0,E.jsx)(S.m,{}),label:"Transparent variant",bleed:!1}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"TRANSPARENT"})]})]}))})},{label:"Tones",description:(0,E.jsxs)(T.E,{children:["By default, the button adopts the ",(0,E.jsx)(w.O,{children:"neutral"})," tone, however, actions can be emphasised by setting the"," ",(0,E.jsx)(w.O,{children:"tone"})," prop to ",(0,E.jsx)(w.O,{children:"formAccent"}),"."]}),Example:()=>({code:`<Stack space="gutter">
   <Inline space="gutter" alignY="center">
     <ButtonIcon
       tone="neutral"
@@ -2298,7 +2278,29 @@
       FORMACCENT
     </Text>
   </Inline>
-</Stack>`,value:r||(r=(0,E.jsxs)(v.B,{space:"gutter",children:[(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{tone:"neutral",variant:"soft",icon:(0,E.jsx)(u.n,{}),label:"Neutral tone"}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"NEUTRAL"})]}),(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{tone:"formAccent",variant:"soft",icon:(0,E.jsx)(u.n,{}),label:"Form Accent tone"}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"FORMACCENT"})]})]}))})},{label:"Tooltip Placement",description:(0,E.jsx)(E.Fragment,{children:(0,E.jsxs)(T.E,{children:["By default, the ",(0,E.jsx)(w.O,{children:"label"})," is presented as a tooltip on top of the button. However, this can be configured via the"," ",(0,E.jsx)(w.O,{children:"tooltipPlacement"})," prop, which accepts either"," ",(0,E.jsx)(w.O,{children:"top"})," or ",(0,E.jsx)(w.O,{children:"bottom"}),". See"," ",(0,E.jsx)(k.Yq,{href:"/components/TooltipRenderer",children:"TooltipRenderer"})," ","for more information."]})}),Example:()=>({code:`<Stack space="gutter">
+</Stack>`,value:s||(s=(0,E.jsxs)(v.B,{space:"gutter",children:[(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{tone:"neutral",variant:"soft",icon:(0,E.jsx)(u.n,{}),label:"Neutral tone"}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"NEUTRAL"})]}),(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{tone:"formAccent",variant:"soft",icon:(0,E.jsx)(u.n,{}),label:"Form Accent tone"}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"FORMACCENT"})]})]}))})},{label:"Size",description:(0,E.jsxs)(E.Fragment,{children:[(0,E.jsxs)(T.E,{children:["The button size can be customised via the ",(0,E.jsx)(w.O,{children:"size"})," ","prop, which accepts either ",(0,E.jsx)(w.O,{children:"small"}),","," ",(0,E.jsx)(w.O,{children:"standard"})," (default) or ",(0,E.jsx)(w.O,{children:"large"}),"."]}),(0,E.jsx)(y.$,{children:(0,E.jsxs)(T.E,{children:["The ",(0,E.jsx)(w.O,{children:"standard"})," and ",(0,E.jsx)(w.O,{children:"large"})," sizes both follow the standard text definition from the theme, where"," ",(0,E.jsx)(w.O,{children:"standard"})," follows the text size and"," ",(0,E.jsx)(w.O,{children:"large"})," follows the line height."]})})]}),Example:()=>({code:`<Stack space="gutter">
+  <Inline space="gutter" alignY="center">
+    <ButtonIcon size="small" icon={<IconEdit />} label="Small size" />
+
+    <Text tone="secondary" size="xsmall">
+      SMALL
+    </Text>
+  </Inline>
+  <Inline space="gutter" alignY="center">
+    <ButtonIcon size="standard" icon={<IconEdit />} label="Standard size" />
+
+    <Text tone="secondary" size="xsmall">
+      STANDARD
+    </Text>
+  </Inline>
+  <Inline space="gutter" alignY="center">
+    <ButtonIcon size="large" icon={<IconEdit />} label="Large size" />
+
+    <Text tone="secondary" size="xsmall">
+      LARGE
+    </Text>
+  </Inline>
+</Stack>`,value:r||(r=(0,E.jsxs)(v.B,{space:"gutter",children:[(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{size:"small",icon:(0,E.jsx)(g.G,{}),label:"Small size"}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"SMALL"})]}),(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{size:"standard",icon:(0,E.jsx)(g.G,{}),label:"Standard size"}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"STANDARD"})]}),(0,E.jsxs)(f.c,{space:"gutter",alignY:"center",children:[(0,E.jsx)(m.a2,{size:"large",icon:(0,E.jsx)(g.G,{}),label:"Large size"}),(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"LARGE"})]})]}))})}],layout:[{label:"Tooltip Placement",description:(0,E.jsx)(E.Fragment,{children:(0,E.jsxs)(T.E,{children:["By default, the ",(0,E.jsx)(w.O,{children:"label"})," is presented as a tooltip on top of the button. However, this can be configured via the"," ",(0,E.jsx)(w.O,{children:"tooltipPlacement"})," prop, which accepts either"," ",(0,E.jsx)(w.O,{children:"top"})," or ",(0,E.jsx)(w.O,{children:"bottom"}),". See"," ",(0,E.jsx)(k.Yq,{href:"/components/TooltipRenderer",children:"TooltipRenderer"})," ","for more information."]})}),Example:()=>({code:`<Stack space="gutter">
   <Inline space="gutter" alignY="center">
     <ButtonIcon
       size="standard"
@@ -2356,12 +2358,12 @@
       </Inline>
     </Box>
   </Stack>
-</Stack>`,value:l||(l=(0,E.jsxs)(v.B,{space:"large",children:[(0,E.jsxs)(v.B,{space:"small",children:[(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"BLEED"}),(0,E.jsx)(h.l,{boxShadow:"borderCriticalLight",children:(0,E.jsxs)(f.c,{space:"small",alignY:"center",children:[(0,E.jsx)(x.D,{level:"2",children:"Heading"}),(0,E.jsx)(m.a2,{bleed:!0,size:"large",icon:(0,E.jsx)(b.L,{}),label:"Bleed"})]})})]}),(0,E.jsxs)(v.B,{space:"small",children:[(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"NO BLEED"}),(0,E.jsx)(h.l,{boxShadow:"borderCriticalLight",children:(0,E.jsxs)(f.c,{space:"small",alignY:"center",children:[(0,E.jsx)(x.D,{level:"2",children:"Heading"}),(0,E.jsx)(m.a2,{bleed:!1,size:"large",icon:(0,E.jsx)(b.L,{}),label:"No Bleed"})]})})]})]}))})},(0,A.dataAttributeDocs)({code:`
-        <ButtonIcon
-          data={{ testid: 'button-icon-1' }}
-          // => data-testid="button-icon-1"
-        />
-      `,supportsNativeSyntax:!1})]}},15562(e,t,a){"use strict";a.r(t),a.d(t,{galleryItems:()=>v});var n,i,s,r,o,l=a(69929),d=a(95925),c=a(7689),p=a(73491),u=a(90062),h=a(61392),m=a(25724),g=a(11366),x=a(95288),f=a(45558),b=a(77533),y=a(99984);let v={examples:[{label:"Soft",Example:()=>({code:`<Inline space="small">
+</Stack>`,value:l||(l=(0,E.jsxs)(v.B,{space:"large",children:[(0,E.jsxs)(v.B,{space:"small",children:[(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"BLEED"}),(0,E.jsx)(h.l,{boxShadow:"borderCriticalLight",children:(0,E.jsxs)(f.c,{space:"small",alignY:"center",children:[(0,E.jsx)(x.D,{level:"2",children:"Heading"}),(0,E.jsx)(m.a2,{bleed:!0,size:"large",icon:(0,E.jsx)(b.L,{}),label:"Bleed"})]})})]}),(0,E.jsxs)(v.B,{space:"small",children:[(0,E.jsx)(T.E,{tone:"secondary",size:"xsmall",children:"NO BLEED"}),(0,E.jsx)(h.l,{boxShadow:"borderCriticalLight",children:(0,E.jsxs)(f.c,{space:"small",alignY:"center",children:[(0,E.jsx)(x.D,{level:"2",children:"Heading"}),(0,E.jsx)(m.a2,{bleed:!1,size:"large",icon:(0,E.jsx)(b.L,{}),label:"No Bleed"})]})})]})]}))})}],bestPractices:[(0,A.dataAttributeDocs)({code:`
+          <ButtonIcon
+            data={{ testid: 'button-icon-1' }}
+            // => data-testid="button-icon-1"
+          />
+        `,supportsNativeSyntax:!1})]}}},15562(e,t,a){"use strict";a.r(t),a.d(t,{galleryItems:()=>v});var n,i,s,r,o,l=a(69929),d=a(95925),c=a(7689),p=a(73491),u=a(90062),h=a(61392),m=a(25724),g=a(11366),x=a(95288),f=a(45558),b=a(77533),y=a(99984);let v={examples:[{label:"Soft",Example:()=>({code:`<Inline space="small">
   <ButtonIcon icon={<IconBookmark />} label="Bookmark" />
   <ButtonIcon icon={<IconAdd />} label="Add" />
   <ButtonIcon icon={<IconShare />} label="Share" />
