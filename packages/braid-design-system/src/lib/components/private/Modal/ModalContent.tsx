@@ -19,6 +19,7 @@ import { Heading } from '../../Heading/Heading';
 import { pageBlockGutters } from '../../PageBlock/pageBlockGutters';
 import { Stack } from '../../Stack/Stack';
 import { IconClear } from '../../icons';
+import { useResponsiveValue } from '../../useResponsiveValue/useResponsiveValue';
 import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
 import { ScrollContainer } from '../ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
@@ -137,7 +138,7 @@ const ModalFooter = ({ applyPageBlockGutters, children }: ModalFooterProps) => (
   <Box
     background="surface"
     width="full"
-    paddingY="large"
+    paddingY="medium"
     paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
   >
     {children}
@@ -180,8 +181,11 @@ const ModalContentScrollLayout = ({
         display="flex"
         gap="large"
         flexDirection="column"
+        height={!coverImageEnabled && hasFooter ? 'full' : undefined}
         paddingY={modalPadding}
-        paddingBottom={hasFooter ? 'none' : undefined}
+        paddingBottom={
+          hasFooter ? { mobile: 'small', tablet: 'none' } : undefined
+        }
         paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
       >
         {children}
@@ -265,6 +269,11 @@ export const ModalContent = ({
       onClose();
     }
   };
+
+  const isMobile = useResponsiveValue()({
+    mobile: true,
+    tablet: false,
+  });
 
   const isDrawer = position === 'left' || position === 'right';
   const coverImageEnabled = Boolean(coverImage) && !isDrawer;
@@ -356,16 +365,16 @@ export const ModalContent = ({
             {coverImageEnabled && coverImage ? (
               <ScrollContainer direction="vertical" startRef={contentStartRef}>
                 <ModalCoverImageLayout width={width} image={coverImage}>
-                  <Stack space="none">
+                  <Box>
                     {modalLayout}
-                    {modalFooter}
-                  </Stack>
+                    {!isMobile && modalFooter}
+                  </Box>
                 </ModalCoverImageLayout>
               </ScrollContainer>
             ) : (
               modalLayout
             )}
-            {!coverImageEnabled && modalFooter}
+            {(!coverImageEnabled || isMobile) && modalFooter}
           </Box>
         </RemoveScroll>
         <Box
