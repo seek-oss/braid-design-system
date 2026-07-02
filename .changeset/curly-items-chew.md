@@ -5,6 +5,7 @@
 ---
 updated:
   - Button
+  - ButtonLink
 ---
 
 **Button:** Update `loading` indicator

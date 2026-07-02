@@ -32,4 +32,15 @@ describe('Button', () => {
     const button = queryByLabelText('Visible Label');
     expect(button).toBeNull();
   });
+
+  it('should honour aria-pressed if provided', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Button aria-pressed="true">Toggle</Button>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+    expect(button).toHaveAttribute('aria-pressed', 'true');
+  });
 });
