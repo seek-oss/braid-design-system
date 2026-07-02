@@ -25,7 +25,9 @@ import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { iconSlotSpace } from '../private/iconSlotSpace';
 
+import { ButtonLoader } from './ButtonLoader';
 import type { buttonTones } from './buttonTones';
 
 import * as styles from './Button.css';
@@ -209,20 +211,6 @@ const variants: Record<ButtonVariant, Record<ButtonTone, ButtonStyles>> = {
   },
 } as const;
 
-const ButtonLoader = () => (
-  <Box aria-hidden component="span" display="inlineBlock">
-    <Box component="span" className={styles.loadingDot}>
-      .
-    </Box>
-    <Box component="span" className={styles.loadingDot}>
-      .
-    </Box>
-    <Box component="span" className={styles.loadingDot}>
-      .
-    </Box>
-  </Box>
-);
-
 const transparentPaddingX = 'small';
 const buttonRadius = 'standard';
 
@@ -378,7 +366,11 @@ export const ButtonText = ({
           </AvoidWidowIcon>
         ) : null}
         {children}
-        {loading ? <ButtonLoader /> : null}
+        {loading ? (
+          <Box component="span" paddingLeft={iconSlotSpace}>
+            <ButtonLoader />
+          </Box>
+        ) : null}
         {!loading && icon && iconPosition === 'trailing' ? (
           <AvoidWidowIcon
             iconPosition={iconPosition}
