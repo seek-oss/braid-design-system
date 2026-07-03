@@ -1,5 +1,41 @@
 # braid-design-system
 
+## 34.4.0
+
+### Minor Changes
+
+- **ButtonIcon:** Add `loading` support ([#2083](https://github.com/seek-oss/braid-design-system/pull/2083))
+
+  Provide the same `loading` behaviour as available on `Button`
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon icon={<IconSend />} label="Send" loading />
+  ```
+
+- **Button, ButtonIcon:** Add `aria-pressed` support ([#2084](https://github.com/seek-oss/braid-design-system/pull/2084))
+
+- **ButtonIcon:** Add support for `solid` variant ([#2079](https://github.com/seek-oss/braid-design-system/pull/2079))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon variant="solid" label="Solid variant" icon={<IconSend />} />
+  ```
+
+### Patch Changes
+
+- **Button:** Update `loading` indicator ([#2080](https://github.com/seek-oss/braid-design-system/pull/2080))
+
+  Update design asset for loading state, moving from progressive ellipsis animation, to a spinning indicator.
+
+- **Button:** Ensure active state is not applied when disabled ([#2080](https://github.com/seek-oss/braid-design-system/pull/2080))
+
+- Ensure fallback ids pass HTML validation ([#2083](https://github.com/seek-oss/braid-design-system/pull/2083))
+
+  Adopt recommended practice of ensuring all generated `id` attributes start with a letter as per HTML validation rules.
+
 ## 34.3.0
 
 ### Minor Changes
