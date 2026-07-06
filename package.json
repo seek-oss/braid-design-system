@@ -67,7 +67,7 @@
     "nx": "^15.9.7",
     "prettier": "^3.4.1",
     "renovate-config-seek": "0.4.0",
-    "tsdown": "^0.20.0",
+    "tsdown": "^0.22.3",
     "tsx": "^4.19.2",
     "typescript": "~5.9.3",
     "vitest": "^4.1.0"

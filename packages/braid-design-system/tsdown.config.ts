@@ -29,4 +29,7 @@ export default defineConfig({
       unstable_injectFilescopes: true,
     }),
   ],
+  deps: {
+    onlyBundle: ['@capsizecss/metrics'],
+  },
 });
