@@ -67,7 +67,7 @@ export const InheritedTone: Story = {
   ),
 };
 
-export const ExplictToneInText: Story = {
+export const ExplicitToneInText: Story = {
   render: () => (
     <Text size="large" icon={<CustomIcon tone="brandAccent" />} tone="positive">
       Text large with custom icon
@@ -75,7 +75,7 @@ export const ExplictToneInText: Story = {
   ),
 };
 
-export const ExplictToneInHeading: Story = {
+export const ExplicitToneInHeading: Story = {
   render: () => (
     <Heading level="2" icon={<CustomIcon tone="brandAccent" />}>
       Heading 2 with custom icon
