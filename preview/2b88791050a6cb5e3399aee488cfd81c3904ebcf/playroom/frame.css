@@ -1,0 +1,10 @@
+.wpcoaf1 {
+  z-index: 99999;
+  cursor: crosshair;
+}
+.wpcoaf3 {
+  z-index: 99999;
+  background: var(--_99ot7pr);
+  transition: all 50ms ease;
+  transition-delay: 50ms;
+}
