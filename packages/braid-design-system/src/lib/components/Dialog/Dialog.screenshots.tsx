@@ -259,6 +259,16 @@ export const LongUnbrokenTitle: Story = {
   },
 };
 
+export const FooterLayout: Story = {
+  name: 'Test: Footer Layout',
+  args: {
+    title: 'Footer test',
+    width: 'medium',
+    footer: <Placeholder height={50} width="100%" label="Footer" />,
+    children: <Placeholder height={100} width="100%" label="Small Drawer" />,
+  },
+};
+
 export const CloseButtonLayout: Story = {
   name: 'Test: Close button layout',
   args: {

@@ -3015,6 +3015,7 @@ exports[`Dialog 1`] = `
     coverImage?: string
     data?: DataAttributeMap
     description?: ReactNodeNoStrings
+    footer?: ReactNode
     id?: string
     illustration?: ReactNodeNoStrings
     onClose: (openState: false) => false | void
@@ -3085,6 +3086,7 @@ exports[`Drawer 1`] = `
     closeLabel?: string
     data?: DataAttributeMap
     description?: ReactNodeNoStrings
+    footer?: ReactNode
     id?: string
     onClose: (openState: false) => false | void
     open: boolean
