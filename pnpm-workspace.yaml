@@ -9,10 +9,17 @@ allowBuilds:
   unrs-resolver: true
 
 minimumReleaseAgeExclude:
-  - sku@15.15.2
+  - sku
+  - '@sku-lib/*'
 
 packages:
   - packages/*
   - integration
   - storybook
   - site
+
+linkWorkspacePackages: 'deep'
+preferWorkspacePackages: true
+
+overrides:
+  sku: 16.0.0-master-20260710012442

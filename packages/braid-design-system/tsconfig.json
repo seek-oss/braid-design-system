@@ -3,5 +3,11 @@
   "compilerOptions": {
     "types": ["vitest/globals", "@testing-library/jest-dom/vitest"]
   },
-  "include": ["./src", "./scripts", "./*.ts", "./.storybook/**/*"]
+  "include": [
+    "./src",
+    "./scripts",
+    "./*.ts",
+    "./.storybook/**/*",
+    "./src/global.d.ts"
+  ]
 }

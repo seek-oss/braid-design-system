@@ -199,7 +199,8 @@ const parseInput = (
       }
     : {
         code: formatSnippet(
-          reactElementToJsxString(input, {
+          // @ts-expect-error CJS interop only seems to fix this for the static render
+          reactElementToJsxString.default(input, {
             useBooleanShorthandSyntax: false,
             showDefaultProps: false,
             showFunctions: false,
