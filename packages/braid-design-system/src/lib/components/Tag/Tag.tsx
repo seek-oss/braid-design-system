@@ -78,13 +78,21 @@ export const Tag: FC<TagProps> = ({
   }
   const hasButton = clearable || addable;
 
+  let background: 'formAccentSoft' | 'formAccent' | 'neutralLight' =
+    'neutralLight';
+  if (addable) {
+    background = 'formAccentSoft';
+  } else if (clearable) {
+    background = 'formAccent';
+  }
+
   return (
     <Box
       id={id}
       display="flex"
       gap="xxsmall"
       alignItems="center"
-      background={addable ? 'formAccentSoft' : 'formAccent'}
+      background={background}
       paddingY="xxsmall"
       paddingX={paddingXForSize[size]}
       paddingRight={hasButton ? 'xsmall' : paddingXForSize[size]}
