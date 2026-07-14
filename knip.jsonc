@@ -1,8 +1,7 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema-jsonc.json",
   "tags": ["-lintignore"],
-  // tsx is not detected in scripts for some reason
-  "ignoreDependencies": ["braid-src", "tsx"],
+  "ignoreDependencies": ["braid-src"],
   "workspaces": {
     ".": {
       "entry": ["scripts/**/*"],
