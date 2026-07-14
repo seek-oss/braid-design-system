@@ -134,52 +134,51 @@ const docs: ComponentDocs = {
       Example: ({ setDefaultState, getState, setState }) => {
         const { code, value } = source(
           <>
-            {setDefaultState('selected', ['One', 'Two', 'Three'])}
+            {setDefaultState('selected', ['Three', 'Four', 'Eight'])}
 
-            <Stack space="large">
-              <Stack space="small">
-                <Text size="xsmall" tone="secondary">
-                  ADDABLE
-                </Text>
-                <Inline space="small" alignY="center">
-                  {['One', 'Two', 'Three', 'Four', 'Five']
-                    .filter((tag) => !getState('selected').includes(tag))
-                    .map((tag) => (
-                      <Tag
-                        key={tag}
-                        onAdd={() =>
-                          setState('selected', [...getState('selected'), tag])
-                        }
-                        addLabel={`Add "${tag}"`}
-                      >
-                        {tag}
-                      </Tag>
-                    ))}
-                </Inline>
-              </Stack>
-              <Stack space="small">
-                <Text size="xsmall" tone="secondary">
-                  CLEARABLE
-                </Text>
-                <Inline space="small" alignY="center">
-                  {getState('selected').map((selectedTag: string) => (
+            <Stack space="small">
+              <Text size="xsmall" tone="secondary">
+                MULTIPLE SELECTION
+              </Text>
+              <Inline space="small" alignY="center">
+                {[
+                  'One',
+                  'Two',
+                  'Three',
+                  'Four',
+                  'Five',
+                  'Six',
+                  'Seven',
+                  'Eight',
+                ].map((tag) =>
+                  getState('selected').includes(tag) ? (
                     <Tag
-                      key={selectedTag}
-                      onClear={() => {
+                      key={tag}
+                      onClear={() =>
                         setState(
                           'selected',
                           getState('selected').filter(
-                            (tag: string) => tag !== selectedTag,
+                            (selectedTag: string) => selectedTag !== tag,
                           ),
-                        );
-                      }}
-                      clearLabel={`Clear "${selectedTag}"`}
+                        )
+                      }
+                      clearLabel={`Clear "${tag}"`}
                     >
-                      {selectedTag}
+                      {tag}
                     </Tag>
-                  ))}
-                </Inline>
-              </Stack>
+                  ) : (
+                    <Tag
+                      key={tag}
+                      onAdd={() =>
+                        setState('selected', [...getState('selected'), tag])
+                      }
+                      addLabel={`Add "${tag}"`}
+                    >
+                      {tag}
+                    </Tag>
+                  ),
+                )}
+              </Inline>
             </Stack>
           </>,
         );
