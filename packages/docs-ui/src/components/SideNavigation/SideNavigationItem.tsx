@@ -29,7 +29,6 @@ export const SideNavigationItem = ({
     <Bleed horizontal="small">
       <ButtonLink
         variant={active ? 'soft' : 'transparent'}
-        tone="formAccent"
         size="small"
         href={path}
         onClick={onClick}

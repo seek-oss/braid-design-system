@@ -49,7 +49,7 @@ const Header = ({
       menuOpen={menuOpen}
       menuClick={menuClick}
       onSearchClick={onSearchClick}
-      logo={<Logo iconOnly height="32px" width="32px" />}
+      logo={<Logo iconOnly height="28px" width="28px" />}
       themeToggle={<ThemeToggle size="xsmall" />}
       navLinks={navLinks}
     />
@@ -211,7 +211,7 @@ export const Navigation = () => {
           left={0}
           zIndex="sticky"
           inert={navigationActive ? undefined : true}
-          background={{ lightMode: 'neutralSoft', darkMode: 'surfaceDark' }}
+          // background={{ lightMode: 'neutralSoft', darkMode: 'surfaceDark' }}
           className={[
             styles.sideNavigationContainer,
             isMenuOpen ? styles.isOpen : undefined,

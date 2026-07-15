@@ -26,10 +26,10 @@ export const toc = style({
 export const tocItem = style([
   colorModeStyle({
     lightMode: {
-      borderLeft: `4px solid ${vars.borderColor.neutralLight}`
+      borderLeft: `2px solid ${vars.borderColor.neutralLight}`
     },
     darkMode: {
-      borderLeft: `4px solid ${vars.borderColor.neutral}`
+      borderLeft: `2px solid ${vars.borderColor.neutral}`
     }
   }), {
     color: vars.foregroundColor.secondary,

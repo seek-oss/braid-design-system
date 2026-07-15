@@ -73,7 +73,6 @@ export const Accordion: FC<AccordionProps> = ({
       .map((x) => `"${x}"`)
       .join(', ')}`,
   );
-
   assert(
     tone === undefined || validTones.includes(tone),
     `The 'tone' prop should be one of the following: ${validTones
