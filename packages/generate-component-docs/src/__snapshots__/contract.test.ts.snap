@@ -6969,6 +6969,38 @@ exports[`IconUpload 1`] = `
 }
 `;
 
+exports[`IconVerified 1`] = `
+{
+  exportType: component,
+  props: {
+    active?: boolean
+    alignY?: 
+        | "lowercase"
+        | "uppercase"
+    data?: DataAttributeMap
+    size?: 
+        | "fill"
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    title?: string
+    titleId?: string
+    tone?: 
+        | "brandAccent"
+        | "caution"
+        | "critical"
+        | "formAccent"
+        | "info"
+        | "link"
+        | "neutral"
+        | "positive"
+        | "promote"
+        | "secondary"
+},
+}
+`;
+
 exports[`IconVideo 1`] = `
 {
   exportType: component,

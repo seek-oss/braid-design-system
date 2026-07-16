@@ -207,6 +207,7 @@ export const iconsKeywords: Record<IconName, NonEmptyArray<string>> = {
   IconTitle: ['heading', 'headline', 'rich text', 'editor', 'formatting'],
   IconUndo: ['history', 'rich text', 'editor', 'arrow'],
   IconUpload: ['arrow', 'up', 'forward', 'send'],
+  IconVerified: ['verified', 'check', 'tick', 'badge', 'seal', 'certified'],
   IconVideo: ['camera', 'movie', 'film', 'play'],
   IconVisibility: ['eye', 'show', 'hide'],
   IconWorkExperience: ['work', 'experience', 'briefcase', 'case', 'bag'],

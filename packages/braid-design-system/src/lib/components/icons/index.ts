@@ -105,6 +105,7 @@ export { IconTip } from './IconTip/IconTip';
 export { IconTitle } from './IconTitle/IconTitle';
 export { IconUndo } from './IconUndo/IconUndo';
 export { IconUpload } from './IconUpload/IconUpload';
+export { IconVerified } from './IconVerified/IconVerified';
 export { IconVideo } from './IconVideo/IconVideo';
 export { IconVisibility } from './IconVisibility/IconVisibility';
 export { IconWorkExperience } from './IconWorkExperience/IconWorkExperience';
