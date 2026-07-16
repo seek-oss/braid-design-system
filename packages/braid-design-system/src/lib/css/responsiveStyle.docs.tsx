@@ -1,8 +1,9 @@
-import { Notice, Strong, Text, TextLink } from 'braid-design-system';
-import { breakpoints } from 'braid-design-system/css';
 import { Fragment } from 'react';
 import Code from 'site/App/Code/Code';
 import type { CssDoc } from 'site/types';
+
+import { Notice, Strong, Text, TextLink } from 'braid-design-system';
+import { breakpoints } from 'braid-design-system/css';
 
 const bps = Object.keys(breakpoints);
 

@@ -31,12 +31,7 @@ export type Page = RouteProps & {
 };
 
 type NavigationSection =
-  | 'guides'
-  | 'foundations'
-  | 'examples'
-  | 'components'
-  | 'css'
-  | 'logic';
+  'guides' | 'foundations' | 'examples' | 'components' | 'css' | 'logic';
 
 type PlayroomExampleProps = ReturnType<typeof useScope>;
 

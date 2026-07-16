@@ -36,8 +36,7 @@ export const makeLinkComponent = (
 ) => ({ __forwardRef__: forwardRef(render) }) as const;
 
 export type LinkComponent =
-  | ReturnType<typeof makeLinkComponent>
-  | ComponentType<LinkComponentProps>;
+  ReturnType<typeof makeLinkComponent> | ComponentType<LinkComponentProps>;
 
 const DefaultLinkComponent = makeLinkComponent((props, ref) => (
   <a ref={ref} {...props} />

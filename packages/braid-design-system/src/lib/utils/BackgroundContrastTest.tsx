@@ -10,8 +10,7 @@ export const BackgroundContrastTest = ({
   children,
 }: {
   children:
-    | ReactNode
-    | ((background: (typeof backgrounds)[number]) => ReactNode);
+    ReactNode | ((background: (typeof backgrounds)[number]) => ReactNode);
 }) => (
   <>
     {backgrounds.map((background) => (
