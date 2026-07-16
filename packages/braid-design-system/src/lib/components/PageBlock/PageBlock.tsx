@@ -23,8 +23,7 @@ export const validPageBlockComponents = [
 interface Props {
   children: ReactNode;
   width?:
-    | Extract<ContentBlockProps['width'], 'small' | 'medium' | 'large'>
-    | 'full';
+    Extract<ContentBlockProps['width'], 'small' | 'medium' | 'large'> | 'full';
   component?: (typeof validPageBlockComponents)[number];
   data?: DataAttributeMap;
 }

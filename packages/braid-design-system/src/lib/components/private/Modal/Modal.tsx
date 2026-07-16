@@ -70,9 +70,7 @@ const CLOSED = 4;
 const CLOSING = 5;
 
 type Action =
-  | typeof OPEN_MODAL
-  | typeof CLOSE_MODAL
-  | typeof ANIMATION_COMPLETE;
+  typeof OPEN_MODAL | typeof CLOSE_MODAL | typeof ANIMATION_COMPLETE;
 type State =
   | typeof INITIAL
   | typeof OPEN

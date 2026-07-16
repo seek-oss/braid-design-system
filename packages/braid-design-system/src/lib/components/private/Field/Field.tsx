@@ -67,12 +67,7 @@ export interface FieldBaseProps {
 }
 
 type PassthroughProps =
-  | 'id'
-  | 'name'
-  | 'disabled'
-  | 'autoComplete'
-  | 'autoFocus'
-  | 'tabIndex';
+  'id' | 'name' | 'disabled' | 'autoComplete' | 'autoFocus' | 'tabIndex';
 interface FieldRenderProps extends Pick<FieldBaseProps, PassthroughProps> {
   background: BoxProps['background'];
   borderRadius: BoxProps['borderRadius'];

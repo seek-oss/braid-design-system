@@ -9,7 +9,12 @@ allowBuilds:
   unrs-resolver: true
 
 minimumReleaseAgeExclude:
-  - sku@15.15.2
+  - '@capsizecss/*'
+  - '@sku-lib/*'
+  - '@vanilla-extract/*'
+  - browserslist-config-seek
+  - eslint-config-seek
+  - sku
 
 packages:
   - packages/*

@@ -1,7 +1,8 @@
 import source from '@braid-design-system/source.macro';
-import { vars } from 'braid-design-system/css';
 import { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
+
+import { vars } from 'braid-design-system/css';
 
 import {
   Box,
