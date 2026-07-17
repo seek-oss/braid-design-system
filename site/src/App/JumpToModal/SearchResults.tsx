@@ -2,6 +2,7 @@ import {
   KeyboardShortcut,
   CategoryHeading,
 } from '@braid-design-system/docs-ui';
+
 import {
   Box,
   Stack,

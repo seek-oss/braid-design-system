@@ -1,4 +1,6 @@
 import { LinkableHeading } from '@braid-design-system/docs-ui';
+import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
+
 import {
   Text,
   Columns,
@@ -10,7 +12,6 @@ import {
 } from 'braid-design-system';
 // TODO: COLORMODE RELEASE
 // Use public import
-import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 
 import type { Page } from '../../../../types';
 import { PageTitle } from '../../../Seo/PageTitle';

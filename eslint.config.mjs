@@ -57,6 +57,11 @@ export default [
     files: ['**/*.screenshots.@(ts|tsx|js|jsx|mjs|cjs)'],
   })),
   {
+    // Always treat as internal so import order does not depend on whether
+    // `dist/` exists (resolved self-imports) or not (unresolved → external).
+    settings: {
+      'import-x/internal-regex': '^braid-design-system(/|$)',
+    },
     rules: {
       'import-x/no-cycle': 'warn',
       'import-x/no-relative-packages': 'error',

@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import {
   Bleed,
   Box,
@@ -7,7 +9,6 @@ import {
   Link,
   Text,
 } from 'braid-design-system';
-import type { ReactNode } from 'react';
 
 import { KeyboardShortcut } from '../KeyboardShortcut/KeyboardShortcut';
 import { MenuButton } from '../MenuButton/MenuButton';

@@ -1,7 +1,8 @@
-import { Box } from 'braid-design-system';
 import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
 import { parseToHsl, setLightness } from 'polished';
 import { useState, useEffect } from 'react';
+
+import { Box } from 'braid-design-system';
 
 import { Logo } from '../../Logo/Logo';
 import { PageTitle } from '../../Seo/PageTitle';

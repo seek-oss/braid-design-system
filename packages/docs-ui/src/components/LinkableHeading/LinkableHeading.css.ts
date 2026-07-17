@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+
 import { atoms, vars } from 'braid-design-system/css';
 
 export const linkableHeading = style([

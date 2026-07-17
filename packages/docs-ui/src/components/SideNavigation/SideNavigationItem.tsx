@@ -1,5 +1,6 @@
-import { Badge, Bleed, ButtonLink, Inline } from 'braid-design-system';
 import type { ComponentProps } from 'react';
+
+import { Badge, Bleed, ButtonLink, Inline } from 'braid-design-system';
 
 type BadgeLabel = 'New' | 'Deprecated';
 type BadgeProps = ComponentProps<typeof Badge>;

@@ -1,6 +1,7 @@
-import { Box, type Stack } from 'braid-design-system';
 import { Overlay } from 'braid-src/lib/components/private/Overlay/Overlay';
 import type { ComponentProps } from 'react';
+
+import { Box, type Stack } from 'braid-design-system';
 
 import * as styles from './gallery.css';
 

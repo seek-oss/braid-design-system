@@ -1,10 +1,11 @@
-import { colorModeQueryParamCheck } from 'braid-design-system/color-mode/query-param';
-import packageJson from 'braid-design-system/package.json';
 import dedent from 'dedent';
 import { renderToString } from 'react-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
 import { StaticRouter } from 'react-router';
 import type { Render } from 'sku';
+
+import { colorModeQueryParamCheck } from 'braid-design-system/color-mode/query-param';
+import packageJson from 'braid-design-system/package.json';
 
 import { App } from './App/App';
 import { ConfigProvider } from './App/ConfigContext';

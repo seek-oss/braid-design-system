@@ -1,4 +1,13 @@
 import { HeaderNavigation } from '@braid-design-system/docs-ui';
+// TODO: COLORMODE RELEASE
+// Use public import
+import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
+import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContainer/ScrollContainer';
+import { useState, useRef, useEffect, forwardRef } from 'react';
+import { RemoveScroll } from 'react-remove-scroll';
+import { useLocation, Outlet } from 'react-router';
+import { useWindowScroll, useInterval } from 'react-use';
+
 import {
   Hidden,
   IconChevron,
@@ -10,15 +19,6 @@ import {
   Text,
   useResponsiveValue,
 } from 'braid-design-system';
-// TODO: COLORMODE RELEASE
-// Use public import
-import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
-import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContainer/ScrollContainer';
-import { useState, useRef, useEffect, forwardRef } from 'react';
-import { RemoveScroll } from 'react-remove-scroll';
-import { useLocation, Outlet } from 'react-router';
-import { useWindowScroll, useInterval } from 'react-use';
-
 import { SideNavigation } from 'site/App/SideNavigation/SideNavigation';
 
 import { useConfig } from '../ConfigContext';

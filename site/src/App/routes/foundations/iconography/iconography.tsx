@@ -1,5 +1,6 @@
-import { Stack, Heading } from 'braid-design-system';
 import { Outlet, Route } from 'react-router';
+
+import { Stack, Heading } from 'braid-design-system';
 
 import type { Page } from '../../../../types';
 import {

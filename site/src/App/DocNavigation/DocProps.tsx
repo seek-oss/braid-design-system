@@ -4,6 +4,9 @@ import type {
   ExportDoc,
   NormalisedInterface,
 } from '@braid-design-system/generate-component-docs/src/generate';
+import partition from 'lodash.partition';
+import { Fragment, useContext, useMemo } from 'react';
+
 import {
   Box,
   Text,
@@ -15,8 +18,6 @@ import {
   IconInfo,
   Heading,
 } from 'braid-design-system';
-import partition from 'lodash.partition';
-import { Fragment, useContext, useMemo } from 'react';
 
 import componentDocs from '../../../componentDocs.json';
 import { useConfig } from '../ConfigContext';

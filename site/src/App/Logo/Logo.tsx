@@ -1,5 +1,6 @@
-import { Box } from 'braid-design-system';
 import * as typographyStyles from 'braid-src/lib/css/typography.css';
+
+import { Box } from 'braid-design-system';
 
 interface LogoProps {
   width?: string | number;

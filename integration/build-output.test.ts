@@ -4,9 +4,10 @@ import { promisify } from 'util';
 
 import { cssFileFilter as isVanillaFile } from '@vanilla-extract/integration';
 import { rgPath } from '@vscode/ripgrep';
-import braidPkg from 'braid-design-system/package.json';
 import glob from 'fast-glob';
 import webpack from 'webpack';
+
+import braidPkg from 'braid-design-system/package.json';
 
 const { SideEffectsFlagPlugin } = webpack.optimize;
 const exec = promisify(_exec);

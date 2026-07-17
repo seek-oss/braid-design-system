@@ -1,4 +1,5 @@
 import { LinkableHeading } from '@braid-design-system/docs-ui';
+
 import { Heading, Text, TextLink, Strong, Divider } from 'braid-design-system';
 
 import type { Page } from '../../../types';

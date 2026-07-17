@@ -1,6 +1,7 @@
 import { createVar, globalStyle, style } from '@vanilla-extract/css';
-import { colorModeStyle } from 'braid-design-system/css';
 import { vars } from 'braid-src/lib/themes/vars.css';
+
+import { colorModeStyle } from 'braid-design-system/css';
 
 export const loader = style({
   opacity: 0.3,

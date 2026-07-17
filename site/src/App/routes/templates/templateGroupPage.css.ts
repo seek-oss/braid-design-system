@@ -1,7 +1,8 @@
 import { createVar, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { atoms } from 'braid-design-system/css';
 import { vars } from 'braid-src/lib/themes/vars.css';
+
+import { atoms } from 'braid-design-system/css';
 
 import { canvas, adaptiveCanvas } from '../../ThemeSetting/ThemedExample.css';
 

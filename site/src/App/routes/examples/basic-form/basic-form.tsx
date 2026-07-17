@@ -1,5 +1,7 @@
 import { LinkableHeading } from '@braid-design-system/docs-ui';
 import source from '@braid-design-system/source.macro';
+import type { ComponentProps } from 'react';
+
 import {
   Heading,
   Text,
@@ -18,7 +20,6 @@ import {
   MonthPicker,
   Textarea,
 } from 'braid-design-system/playroom/components';
-import type { ComponentProps } from 'react';
 
 import type { Page } from '../../../../types';
 import Code from '../../../Code/Code';

@@ -1,6 +1,7 @@
-import { BraidProvider } from 'braid-design-system';
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import type { ReactNode } from 'react';
+
+import { BraidProvider } from 'braid-design-system';
 
 import { useThemeSettings } from './ThemeSettingContext';
 

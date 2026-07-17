@@ -1,7 +1,8 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { breakpoints, responsiveStyle, vars } from 'braid-design-system/css';
 import tokens from 'braid-src/lib/themes/docs/tokens';
+
+import { breakpoints, responsiveStyle, vars } from 'braid-design-system/css';
 
 import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
 

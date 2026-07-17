@@ -1,10 +1,11 @@
 import type { Source } from '@braid-design-system/source.macro';
-import type { Stack } from 'braid-design-system';
-import type useScope from 'braid-design-system/playroom/scope';
 import type { BoxProps } from 'braid-src/lib/components/Box/Box';
 import type { ReactNode, ReactElement, ComponentProps } from 'react';
 import type { HelmetData } from 'react-helmet-async';
 import type { RouteProps } from 'react-router';
+
+import type { Stack } from 'braid-design-system';
+import type useScope from 'braid-design-system/playroom/scope';
 
 type ReactNodeNoStrings = ComponentProps<typeof Stack>['children'];
 

@@ -1,28 +1,4 @@
 import source from '@braid-design-system/source.macro';
-import {
-  Stack,
-  Text,
-  Heading,
-  Badge,
-  Inline,
-  Link,
-  TextLink,
-  Columns,
-  Column,
-  Divider,
-  TextLinkButton,
-  IconNewWindow,
-  IconAdd,
-  IconMinus,
-  TextDropdown,
-  Strong,
-  TooltipRenderer,
-  Button,
-  Secondary,
-  IconCopy,
-  ButtonIcon,
-  Spread,
-} from 'braid-design-system';
 // TODO: COLORMODE RELEASE
 // Use public import
 import { Box } from 'braid-src/lib/components/Box/Box';
@@ -48,6 +24,31 @@ import {
   createContext,
   useContext,
 } from 'react';
+
+import {
+  Stack,
+  Text,
+  Heading,
+  Badge,
+  Inline,
+  Link,
+  TextLink,
+  Columns,
+  Column,
+  Divider,
+  TextLinkButton,
+  IconNewWindow,
+  IconAdd,
+  IconMinus,
+  TextDropdown,
+  Strong,
+  TooltipRenderer,
+  Button,
+  Secondary,
+  IconCopy,
+  ButtonIcon,
+  Spread,
+} from 'braid-design-system';
 
 import type { ComponentExample } from '../../../types';
 import { CodeButton, formatSnippet } from '../../Code/Code';

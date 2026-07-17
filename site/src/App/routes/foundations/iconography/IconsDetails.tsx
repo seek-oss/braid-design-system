@@ -1,5 +1,8 @@
 import { LinkableHeading } from '@braid-design-system/docs-ui';
 import source from '@braid-design-system/source.macro';
+import { iconScaleIncrease } from 'braid-src/lib/hooks/useIcon/icon.css';
+import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
+
 import {
   Inline,
   Box,
@@ -23,8 +26,6 @@ import {
   List,
   IconRenderer,
 } from 'braid-design-system';
-import { iconScaleIncrease } from 'braid-src/lib/hooks/useIcon/icon.css';
-import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 
 import { DocExample } from '../../../DocNavigation/DocExample';
 
