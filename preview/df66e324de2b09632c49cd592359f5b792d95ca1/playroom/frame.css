@@ -1,0 +1,10 @@
+.kbyu0w1 {
+  z-index: 99999;
+  cursor: crosshair;
+}
+.kbyu0w3 {
+  z-index: 99999;
+  background: var(--_1shwghkr);
+  transition: all 50ms ease;
+  transition-delay: 50ms;
+}
