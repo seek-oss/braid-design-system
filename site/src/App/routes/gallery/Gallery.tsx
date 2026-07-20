@@ -1,6 +1,4 @@
 import source from '@braid-design-system/source.macro';
-// TODO: COLORMODE RELEASE
-// Use public import
 import {
   Stack,
   Text,
@@ -25,6 +23,8 @@ import {
   ButtonIcon,
   Spread,
 } from 'braid-design-system';
+// TODO: COLORMODE RELEASE
+// Use public import
 import { Box } from 'braid-src/lib/components/Box/Box';
 import * as icons from 'braid-src/lib/components/icons';
 import {

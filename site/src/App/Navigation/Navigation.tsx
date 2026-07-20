@@ -1,6 +1,4 @@
 import { HeaderNavigation } from '@braid-design-system/docs-ui';
-// TODO: COLORMODE RELEASE
-// Use public import
 import {
   Hidden,
   IconChevron,
@@ -12,6 +10,8 @@ import {
   Text,
   useResponsiveValue,
 } from 'braid-design-system';
+// TODO: COLORMODE RELEASE
+// Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContainer/ScrollContainer';
 import { useState, useRef, useEffect, forwardRef } from 'react';

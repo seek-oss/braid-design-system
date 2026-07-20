@@ -8,10 +8,9 @@ import {
   Divider,
   Hidden,
 } from 'braid-design-system';
-import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
-
 // TODO: COLORMODE RELEASE
 // Use public import
+import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 
 import type { Page } from '../../../../types';
 import { PageTitle } from '../../../Seo/PageTitle';
