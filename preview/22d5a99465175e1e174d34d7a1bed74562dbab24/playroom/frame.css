@@ -1,0 +1,10 @@
+._130glfr1 {
+  z-index: 99999;
+  cursor: crosshair;
+}
+._130glfr3 {
+  z-index: 99999;
+  background: var(--_1sbm2vrr);
+  transition: all 50ms ease;
+  transition-delay: 50ms;
+}
