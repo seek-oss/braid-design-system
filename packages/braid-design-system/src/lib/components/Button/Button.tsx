@@ -75,17 +75,11 @@ export interface ButtonProps extends ButtonStyleProps {
 interface ButtonStyles {
   textTone: TextProps['tone'];
   background:
-    | ColorContrastValue<BoxBackgroundVariant>
-    | BoxBackgroundVariant
-    | undefined;
+    ColorContrastValue<BoxBackgroundVariant> | BoxBackgroundVariant | undefined;
   backgroundHover:
-    | ColorContrastValue<BoxBackgroundVariant>
-    | BoxBackgroundVariant
-    | undefined;
+    ColorContrastValue<BoxBackgroundVariant> | BoxBackgroundVariant | undefined;
   backgroundActive:
-    | ColorContrastValue<BoxBackgroundVariant>
-    | BoxBackgroundVariant
-    | undefined;
+    ColorContrastValue<BoxBackgroundVariant> | BoxBackgroundVariant | undefined;
   boxShadow: BoxShadow | undefined;
 }
 

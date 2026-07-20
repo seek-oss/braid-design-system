@@ -58,12 +58,10 @@ const subVisitor: Visitor<SubVisitorContext> = {
     }
   },
   JSXAttribute(p) {
-    if (
-      !(
-        typeof p.node.name.name === 'string' &&
-        Boolean(this.renames[this.componentName]?.[p.node.name.name])
-      )
-    ) {
+    if (!(
+      typeof p.node.name.name === 'string' &&
+      Boolean(this.renames[this.componentName]?.[p.node.name.name])
+    )) {
       p.skip();
     }
   },
