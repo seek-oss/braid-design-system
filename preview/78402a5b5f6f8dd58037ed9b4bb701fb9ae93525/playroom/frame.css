@@ -1,0 +1,10 @@
+.gx0xxc1 {
+  z-index: 99999;
+  cursor: crosshair;
+}
+.gx0xxc3 {
+  z-index: 99999;
+  background: var(--_1jfi40jr);
+  transition: all 50ms ease;
+  transition-delay: 50ms;
+}
