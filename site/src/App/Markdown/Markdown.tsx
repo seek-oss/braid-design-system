@@ -1,10 +1,4 @@
 import { LinkableHeading } from '@braid-design-system/docs-ui';
-import { TextContext } from 'braid-src/lib/components/Text/TextContext';
-import { DefaultTextPropsProvider } from 'braid-src/lib/components/private/defaultTextProps';
-import { Children, type ComponentProps } from 'react';
-import ReactMarkdown, { type Components } from 'react-markdown';
-import { SKIP, visit } from 'unist-util-visit';
-
 import {
   Text,
   Heading,
@@ -14,6 +8,11 @@ import {
   Box,
   TextLink,
 } from 'braid-design-system';
+import { TextContext } from 'braid-src/lib/components/Text/TextContext';
+import { DefaultTextPropsProvider } from 'braid-src/lib/components/private/defaultTextProps';
+import { Children, type ComponentProps } from 'react';
+import ReactMarkdown, { type Components } from 'react-markdown';
+import { SKIP, visit } from 'unist-util-visit';
 
 import { CodeBlock } from '../Code/Code';
 import type { SupportedLanguage } from '../Code/supportedLanguages';

@@ -1,30 +1,6 @@
 import source from '@braid-design-system/source.macro';
 // TODO: COLORMODE RELEASE
 // Use public import
-import { Box } from 'braid-src/lib/components/Box/Box';
-import * as icons from 'braid-src/lib/components/icons';
-import {
-  IconContainer,
-  type IconContainerProps,
-} from 'braid-src/lib/components/icons/IconContainer';
-import type { SVGProps } from 'braid-src/lib/components/icons/SVGTypes';
-import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
-import copy from 'copy-to-clipboard';
-import chunk from 'lodash.chunk';
-import memoize from 'lodash.memoize';
-import panzoom from 'panzoom';
-import {
-  type ReactNode,
-  Fragment,
-  memo,
-  useEffect,
-  useState,
-  useRef,
-  useCallback,
-  createContext,
-  useContext,
-} from 'react';
-
 import {
   Stack,
   Text,
@@ -49,6 +25,29 @@ import {
   ButtonIcon,
   Spread,
 } from 'braid-design-system';
+import { Box } from 'braid-src/lib/components/Box/Box';
+import * as icons from 'braid-src/lib/components/icons';
+import {
+  IconContainer,
+  type IconContainerProps,
+} from 'braid-src/lib/components/icons/IconContainer';
+import type { SVGProps } from 'braid-src/lib/components/icons/SVGTypes';
+import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
+import copy from 'copy-to-clipboard';
+import chunk from 'lodash.chunk';
+import memoize from 'lodash.memoize';
+import panzoom from 'panzoom';
+import {
+  type ReactNode,
+  Fragment,
+  memo,
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+  createContext,
+  useContext,
+} from 'react';
 
 import type { ComponentExample } from '../../../types';
 import { CodeButton, formatSnippet } from '../../Code/Code';

@@ -1,5 +1,18 @@
 import assert from 'assert';
 
+import {
+  Alert,
+  Badge,
+  Box,
+  Divider,
+  Heading,
+  Link,
+  Stack,
+  Text,
+  Inline,
+  ButtonIcon,
+  IconChevron,
+} from 'braid-design-system';
 import { useBackgroundLightness } from 'braid-src/lib/components/Box/BackgroundContext';
 import { negativeMargin } from 'braid-src/lib/css/negativeMargin/negativeMargin';
 import {
@@ -21,20 +34,6 @@ import {
   useLocation,
   useNavigate,
 } from 'react-router';
-
-import {
-  Alert,
-  Badge,
-  Box,
-  Divider,
-  Heading,
-  Link,
-  Stack,
-  Text,
-  Inline,
-  ButtonIcon,
-  IconChevron,
-} from 'braid-design-system';
 
 import { getHistory } from '../Updates';
 import {

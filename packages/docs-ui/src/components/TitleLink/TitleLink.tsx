@@ -1,5 +1,3 @@
-import type { MouseEventHandler, ReactNode, RefCallback } from 'react';
-
 import {
   Box,
   IconLink,
@@ -8,6 +6,7 @@ import {
   Text,
   IconPositive,
 } from 'braid-design-system';
+import type { MouseEventHandler, ReactNode, RefCallback } from 'react';
 
 import { useCopy } from '../../utils/useCopy';
 

@@ -57,11 +57,6 @@ export default [
     files: ['**/*.screenshots.@(ts|tsx|js|jsx|mjs|cjs)'],
   })),
   {
-    // Always treat as internal so import order does not depend on whether
-    // `dist/` exists (resolved self-imports) or not (unresolved → external).
-    settings: {
-      'import-x/internal-regex': '^braid-design-system(/|$)',
-    },
     rules: {
       'import-x/no-cycle': 'warn',
       'import-x/no-relative-packages': 'error',
@@ -78,7 +73,18 @@ export default [
             'sibling',
             'index',
           ],
+          // Keep pathGroup matches in the same group so `braid-design-system`
+          // alphabetizes with other externals rather than forming its own section.
+          distinctGroup: false,
           pathGroups: [
+            // Self-imports resolve into this package's `dist/`/`src/` when
+            // present, so import-x classifies them as `internal`. Force
+            // `external` so order matches unresolved CI checkouts and consumer
+            // import style.
+            {
+              pattern: 'braid-design-system{,/**}',
+              group: 'external',
+            },
             {
               pattern: '*.css',
               group: 'index',

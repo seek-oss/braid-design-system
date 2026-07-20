@@ -1,6 +1,17 @@
 import type { Source } from '@braid-design-system/source.macro';
 // TODO: COLORMODE RELEASE
 // Use public import
+import {
+  Stack,
+  Text,
+  Inline,
+  IconChevron,
+  Hidden,
+  IconPositive,
+  IconCopy,
+  IconVideo,
+} from 'braid-design-system';
+import usePlayroomScope from 'braid-design-system/playroom/scope';
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { FieldOverlay } from 'braid-src/lib/components/private/FieldOverlay/FieldOverlay';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
@@ -15,18 +26,6 @@ import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
 import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
-
-import {
-  Stack,
-  Text,
-  Inline,
-  IconChevron,
-  Hidden,
-  IconPositive,
-  IconCopy,
-  IconVideo,
-} from 'braid-design-system';
-import usePlayroomScope from 'braid-design-system/playroom/scope';
 
 import { useConfig } from '../ConfigContext';
 import { ThemedExample } from '../ThemeSetting';

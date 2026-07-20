@@ -1,7 +1,4 @@
 import { TitleLink } from '@braid-design-system/docs-ui';
-import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
-import type { ComponentProps } from 'react';
-
 import {
   Stack,
   Badge,
@@ -9,6 +6,8 @@ import {
   Bleed,
   HiddenVisually,
 } from 'braid-design-system';
+import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
+import type { ComponentProps } from 'react';
 
 import type { ComponentExample } from '../../types';
 

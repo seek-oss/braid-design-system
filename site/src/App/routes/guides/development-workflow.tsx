@@ -1,6 +1,5 @@
 import { LinkableHeading } from '@braid-design-system/docs-ui';
 import source from '@braid-design-system/source.macro';
-
 import {
   Heading,
   Text,

@@ -1,8 +1,7 @@
 import { SideNavigationSection } from '@braid-design-system/docs-ui';
+import { Stack } from 'braid-design-system';
 import { useMemo } from 'react';
 import { matchPath, useLocation } from 'react-router';
-
-import { Stack } from 'braid-design-system';
 
 import { useConfig } from '../ConfigContext';
 import { isNew } from '../Updates';

@@ -1,6 +1,4 @@
 import { LinkableHeading } from '@braid-design-system/docs-ui';
-import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
-
 import {
   Text,
   Columns,
@@ -10,6 +8,8 @@ import {
   Divider,
   Hidden,
 } from 'braid-design-system';
+import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
+
 // TODO: COLORMODE RELEASE
 // Use public import
 

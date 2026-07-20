@@ -1,8 +1,7 @@
+import { Box, Dialog, TextField, IconSearch, Bleed } from 'braid-design-system';
 import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContainer/ScrollContainer';
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router';
-
-import { Box, Dialog, TextField, IconSearch, Bleed } from 'braid-design-system';
 
 import { SearchResults } from './SearchResults';
 import {

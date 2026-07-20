@@ -1,10 +1,9 @@
 import source from '@braid-design-system/source.macro';
+import { Strong, Text, TextLink } from 'braid-design-system';
+import { colorModeStyle, vars } from 'braid-design-system/css';
 import dedent from 'dedent';
 import Code from 'site/App/Code/Code';
 import type { CssDoc } from 'site/types';
-
-import { Strong, Text, TextLink } from 'braid-design-system';
-import { colorModeStyle, vars } from 'braid-design-system/css';
 
 const docs: CssDoc = {
   usage: (

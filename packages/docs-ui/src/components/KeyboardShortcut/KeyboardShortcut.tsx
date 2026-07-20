@@ -1,6 +1,5 @@
-import type { ReactElement } from 'react';
-
 import { Box, Text } from 'braid-design-system';
+import type { ReactElement } from 'react';
 
 interface KeyboardShortcutProps {
   keys: string[];

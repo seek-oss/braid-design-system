@@ -1,8 +1,3 @@
-import { Fragment, type ReactNode, useEffect, useRef, useState } from 'react';
-import Code from 'site/App/Code/Code';
-import { ThemedExample, useThemeSettings } from 'site/App/ThemeSetting';
-import type { ComponentExample, CssDoc } from 'site/types';
-
 import {
   Text,
   TextLink,
@@ -16,6 +11,10 @@ import {
   Divider,
 } from 'braid-design-system';
 import { vars } from 'braid-design-system/css';
+import { Fragment, type ReactNode, useEffect, useRef, useState } from 'react';
+import Code from 'site/App/Code/Code';
+import { ThemedExample, useThemeSettings } from 'site/App/ThemeSetting';
+import type { ComponentExample, CssDoc } from 'site/types';
 
 // TODO: COLORMODE RELEASE
 // Use public import

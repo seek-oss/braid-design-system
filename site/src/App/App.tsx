@@ -1,15 +1,14 @@
 import 'braid-design-system/reset';
 
-import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
-import { StrictMode, useEffect } from 'react';
-import { Route, Routes, Navigate, Link as ReactRouterLink } from 'react-router';
-
 import {
   BraidProvider,
   ToastProvider,
   makeLinkComponent,
 } from 'braid-design-system';
 import docsTheme from 'braid-design-system/themes/docs';
+import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
+import { StrictMode, useEffect } from 'react';
+import { Route, Routes, Navigate, Link as ReactRouterLink } from 'react-router';
 
 import { DocDetails } from './DocNavigation/DocDetails';
 import { DocNavigation } from './DocNavigation/DocNavigation';

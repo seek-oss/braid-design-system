@@ -1,6 +1,4 @@
 import { TitleLink } from '@braid-design-system/docs-ui';
-import { Fragment, useContext } from 'react';
-
 import {
   Box,
   Stack,
@@ -12,6 +10,7 @@ import {
   List,
   Divider,
 } from 'braid-design-system';
+import { Fragment, useContext } from 'react';
 
 import { Markdown } from '../Markdown/Markdown';
 import { PageTitle } from '../Seo/PageTitle';

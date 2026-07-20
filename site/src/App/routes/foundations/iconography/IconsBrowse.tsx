@@ -1,9 +1,3 @@
-import * as icons from 'braid-src/lib/components/icons';
-import { Overlay } from 'braid-src/lib/components/private/Overlay/Overlay';
-import didYouMean, { ReturnTypeEnums } from 'didyoumean2';
-import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router';
-
 import {
   Tiles,
   Box,
@@ -14,6 +8,11 @@ import {
   IconSearch,
   Strong,
 } from 'braid-design-system';
+import * as icons from 'braid-src/lib/components/icons';
+import { Overlay } from 'braid-src/lib/components/private/Overlay/Overlay';
+import didYouMean, { ReturnTypeEnums } from 'didyoumean2';
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router';
 
 import { iconsKeywords } from './iconsKeywords';
 

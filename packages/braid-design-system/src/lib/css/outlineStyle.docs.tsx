@@ -1,7 +1,3 @@
-import dedent from 'dedent';
-import Code from 'site/App/Code/Code';
-import type { CssDoc } from 'site/types';
-
 import {
   Alert,
   Notice,
@@ -10,6 +6,9 @@ import {
   Text,
   TextLink,
 } from 'braid-design-system';
+import dedent from 'dedent';
+import Code from 'site/App/Code/Code';
+import type { CssDoc } from 'site/types';
 
 const docs: CssDoc = {
   usage: (

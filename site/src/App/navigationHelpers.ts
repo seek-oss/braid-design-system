@@ -1,8 +1,8 @@
-import type { Snippets } from 'braid-src/lib/components/private/Snippets';
 
 import * as components from 'braid-design-system';
 import * as css from 'braid-design-system/css';
 import * as testComponents from 'braid-design-system/test';
+import type { Snippets } from 'braid-src/lib/components/private/Snippets';
 
 import { slugify } from '../slugify';
 import type {

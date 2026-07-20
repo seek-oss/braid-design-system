@@ -1,6 +1,5 @@
-import { type ComponentProps, Fragment } from 'react';
-
 import { Text, TextDropdown } from 'braid-design-system';
+import { type ComponentProps, Fragment } from 'react';
 
 import { documentedThemes, useThemeSettings } from './ThemeSettingContext';
 import { allThemes, type ThemeName } from './allThemes';

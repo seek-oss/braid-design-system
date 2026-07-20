@@ -1,6 +1,5 @@
-import type { ComponentProps } from 'react';
-
 import { Stack } from 'braid-design-system';
+import type { ComponentProps } from 'react';
 
 type StackProps = ComponentProps<typeof Stack>;
 

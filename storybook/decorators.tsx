@@ -1,9 +1,8 @@
 import type { Decorator } from '@storybook/react-webpack5';
+import { BraidProvider } from 'braid-design-system';
 import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { BrowserRouter } from 'react-router';
-
-import { BraidProvider } from 'braid-design-system';
 
 import { Artboard } from './Artboard';
 import { allThemes, type ThemeName } from './allThemes';

@@ -1,5 +1,4 @@
 import { createVar, style } from '@vanilla-extract/css';
-
 import { vars, colorModeStyle } from 'braid-design-system/css';
 
 const searchBg = createVar();

@@ -1,7 +1,4 @@
 import { CategoryHeading, TitleLink } from '@braid-design-system/docs-ui';
-import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
-import { useContext, useMemo } from 'react';
-
 import {
   Box,
   Stack,
@@ -11,6 +8,8 @@ import {
   Text,
   Heading,
 } from 'braid-design-system';
+import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
+import { useContext, useMemo } from 'react';
 
 import { slugify } from '../../slugify';
 import { PageTitle } from '../Seo/PageTitle';
