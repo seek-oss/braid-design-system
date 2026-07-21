@@ -1,5 +1,76 @@
 # braid-design-system
 
+## 34.5.0
+
+### Minor Changes
+
+- **Drawer**: Allow users to add fixed footer content to Drawer. ([#2091](https://github.com/seek-oss/braid-design-system/pull/2091))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+    <Drawer
+      title="Drawer"
+      open={true}
+      footer={
+        <Actions>
+          <Button variant="solid" tone="formAccent">
+            Save
+          </Button>
+          <Button variant="transparent" tone="formAccent">
+            Cancel
+          </Button>
+        </Actions>
+      }
+    >
+  ```
+
+- **IconRenderer:** Add `tone` support ([#2085](https://github.com/seek-oss/braid-design-system/pull/2085))
+
+  Enable custom icons to use Braid tones in the same way as first-class Braid icons.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconRenderer tone={tone}>
+    {({ className }) => (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className={className}
+      >
+        ...
+      </svg>
+    )}
+  </IconRenderer>
+  ```
+
+- **Dialog**: Allow users to add fixed footer content to Dialog. ([#2091](https://github.com/seek-oss/braid-design-system/pull/2091))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+    <Dialog
+      title="Dialog"
+      open={true}
+      footer={
+        <Actions>
+          <Button variant="solid" tone="formAccent">
+            Save
+          </Button>
+          <Button variant="transparent" tone="formAccent">
+            Cancel
+          </Button>
+        </Actions>
+      }
+    >
+  ```
+
+### Patch Changes
+
+- Reduce consumer bundle size by including only the required fonts from `@capsizecss/metrics` ([#2086](https://github.com/seek-oss/braid-design-system/pull/2086))
+
 ## 34.4.0
 
 ### Minor Changes

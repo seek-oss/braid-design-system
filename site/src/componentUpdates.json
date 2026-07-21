@@ -5566,5 +5566,28 @@
         "summary": "**ButtonIcon:** Add support for `solid` variant\n\n**EXAMPLE USAGE:**\n```jsx\n<ButtonIcon\n  variant=\"solid\"\n  label=\"Solid variant\"\n  icon={<IconSend />}\n/>\n```"
       }
     ]
+  },
+  {
+    "version": "34.5.0",
+    "updates": [
+      {
+        "updated": [
+          "Drawer"
+        ],
+        "summary": "**Drawer**: Allow users to add fixed footer content to Drawer.\n\n**EXAMPLE USAGE:**\n```jsx\n  <Drawer\n    title=\"Drawer\"\n    open={true}\n    footer={\n      <Actions>\n        <Button variant=\"solid\" tone=\"formAccent\">\n          Save\n        </Button>\n        <Button variant=\"transparent\" tone=\"formAccent\">\n          Cancel\n        </Button>\n      </Actions>\n    }\n  >\n```"
+      },
+      {
+        "updated": [
+          "IconRenderer"
+        ],
+        "summary": "**IconRenderer:** Add `tone` support\n\nEnable custom icons to use Braid tones in the same way as first-class Braid icons.\n\n**EXAMPLE USAGE:**\n```jsx\n<IconRenderer tone={tone}>\n  {({ className }) => (\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      viewBox=\"0 0 24 24\"\n      fill=\"currentColor\"\n      className={className}\n    >\n      ...\n    </svg>\n  )}\n</IconRenderer>\n```"
+      },
+      {
+        "updated": [
+          "Dialog"
+        ],
+        "summary": "**Dialog**: Allow users to add fixed footer content to Dialog.\n\n**EXAMPLE USAGE:**\n```jsx\n  <Dialog\n    title=\"Dialog\"\n    open={true}\n    footer={\n      <Actions>\n        <Button variant=\"solid\" tone=\"formAccent\">\n          Save\n        </Button>\n        <Button variant=\"transparent\" tone=\"formAccent\">\n          Cancel\n        </Button>\n      </Actions>\n    }\n  >\n```"
+      }
+    ]
   }
 ]
