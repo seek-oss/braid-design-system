@@ -1,15 +1,12 @@
+import fs from 'node:fs/promises';
 import path from 'path';
 
-import fs from 'fs-extra';
+import generate from './generate.ts';
 
-import generate from './generate';
+const typeDocs = generate();
 
-(async () => {
-  const typeDocs = generate();
-
-  await fs.writeFile(
-    path.join(process.cwd(), './componentDocs.json'),
-    JSON.stringify(typeDocs, null, 2),
-    'utf8',
-  );
-})();
+await fs.writeFile(
+  path.join(process.cwd(), './componentDocs.json'),
+  JSON.stringify(typeDocs, null, 2),
+  'utf8',
+);

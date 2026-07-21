@@ -589,9 +589,9 @@ exports[`Box 1`] = `
     cite?: string
     classID?: string
     className?: ClassValue
-    colSpan?: number
     color?: string
     cols?: number
+    colSpan?: number
     component?: 
         | "a"
         | "abbr"
@@ -1034,8 +1034,8 @@ exports[`Box 1`] = `
     multiple?: boolean
     muted?: boolean
     name?: string
-    noValidate?: boolean
     nonce?: string
+    noValidate?: boolean
     onAbort?: ReactEventHandler<HTMLElement>
     onAbortCapture?: ReactEventHandler<HTMLElement>
     onAnimationEnd?: AnimationEventHandler<HTMLElement>
@@ -1115,12 +1115,12 @@ exports[`Box 1`] = `
     onKeyUpCapture?: KeyboardEventHandler<HTMLElement>
     onLoad?: ReactEventHandler<HTMLElement>
     onLoadCapture?: ReactEventHandler<HTMLElement>
-    onLoadStart?: ReactEventHandler<HTMLElement>
-    onLoadStartCapture?: ReactEventHandler<HTMLElement>
     onLoadedData?: ReactEventHandler<HTMLElement>
     onLoadedDataCapture?: ReactEventHandler<HTMLElement>
     onLoadedMetadata?: ReactEventHandler<HTMLElement>
     onLoadedMetadataCapture?: ReactEventHandler<HTMLElement>
+    onLoadStart?: ReactEventHandler<HTMLElement>
+    onLoadStartCapture?: ReactEventHandler<HTMLElement>
     onLostPointerCapture?: PointerEventHandler<HTMLElement>
     onLostPointerCaptureCapture?: PointerEventHandler<HTMLElement>
     onMouseDown?: MouseEventHandler<HTMLElement>
@@ -1413,8 +1413,8 @@ exports[`Box 1`] = `
         | "treegrid"
         | "treeitem"
         | string & {}
-    rowSpan?: number
     rows?: number
+    rowSpan?: number
     sandbox?: string
     scope?: string
     scoped?: boolean
@@ -2554,12 +2554,12 @@ exports[`ButtonLink 1`] = `
     onKeyUpCapture?: KeyboardEventHandler<HTMLAnchorElement>
     onLoad?: ReactEventHandler<HTMLAnchorElement>
     onLoadCapture?: ReactEventHandler<HTMLAnchorElement>
-    onLoadStart?: ReactEventHandler<HTMLAnchorElement>
-    onLoadStartCapture?: ReactEventHandler<HTMLAnchorElement>
     onLoadedData?: ReactEventHandler<HTMLAnchorElement>
     onLoadedDataCapture?: ReactEventHandler<HTMLAnchorElement>
     onLoadedMetadata?: ReactEventHandler<HTMLAnchorElement>
     onLoadedMetadataCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLoadStart?: ReactEventHandler<HTMLAnchorElement>
+    onLoadStartCapture?: ReactEventHandler<HTMLAnchorElement>
     onLostPointerCapture?: PointerEventHandler<HTMLAnchorElement>
     onLostPointerCaptureCapture?: PointerEventHandler<HTMLAnchorElement>
     onMouseDown?: MouseEventHandler<HTMLAnchorElement>
@@ -3038,8 +3038,8 @@ exports[`Disclosure 1`] = `
     children: ReactNode
     collapseLabel?: string
     data?: DataAttributeMap
-    expandLabel: string
     expanded?: boolean
+    expandLabel: string
     id?: string
     onToggle?: (expanded: boolean) => void
     size?: 
@@ -7494,12 +7494,12 @@ exports[`Link 1`] = `
     onKeyUpCapture?: KeyboardEventHandler<HTMLAnchorElement>
     onLoad?: ReactEventHandler<HTMLAnchorElement>
     onLoadCapture?: ReactEventHandler<HTMLAnchorElement>
-    onLoadStart?: ReactEventHandler<HTMLAnchorElement>
-    onLoadStartCapture?: ReactEventHandler<HTMLAnchorElement>
     onLoadedData?: ReactEventHandler<HTMLAnchorElement>
     onLoadedDataCapture?: ReactEventHandler<HTMLAnchorElement>
     onLoadedMetadata?: ReactEventHandler<HTMLAnchorElement>
     onLoadedMetadataCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLoadStart?: ReactEventHandler<HTMLAnchorElement>
+    onLoadStartCapture?: ReactEventHandler<HTMLAnchorElement>
     onLostPointerCapture?: PointerEventHandler<HTMLAnchorElement>
     onLostPointerCaptureCapture?: PointerEventHandler<HTMLAnchorElement>
     onMouseDown?: MouseEventHandler<HTMLAnchorElement>
@@ -9170,12 +9170,12 @@ exports[`TextLink 1`] = `
     onKeyUpCapture?: KeyboardEventHandler<HTMLAnchorElement>
     onLoad?: ReactEventHandler<HTMLAnchorElement>
     onLoadCapture?: ReactEventHandler<HTMLAnchorElement>
-    onLoadStart?: ReactEventHandler<HTMLAnchorElement>
-    onLoadStartCapture?: ReactEventHandler<HTMLAnchorElement>
     onLoadedData?: ReactEventHandler<HTMLAnchorElement>
     onLoadedDataCapture?: ReactEventHandler<HTMLAnchorElement>
     onLoadedMetadata?: ReactEventHandler<HTMLAnchorElement>
     onLoadedMetadataCapture?: ReactEventHandler<HTMLAnchorElement>
+    onLoadStart?: ReactEventHandler<HTMLAnchorElement>
+    onLoadStartCapture?: ReactEventHandler<HTMLAnchorElement>
     onLostPointerCapture?: PointerEventHandler<HTMLAnchorElement>
     onLostPointerCaptureCapture?: PointerEventHandler<HTMLAnchorElement>
     onMouseDown?: MouseEventHandler<HTMLAnchorElement>

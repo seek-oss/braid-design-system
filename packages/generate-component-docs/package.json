@@ -2,7 +2,7 @@
   "name": "@braid-design-system/generate-component-docs",
   "private": true,
   "version": "0.0.0",
-  "description": "",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/seek-oss/braid-design-system.git",
@@ -16,20 +16,11 @@
     "format:prettier": "prettier --cache --write ."
   },
   "bin": {
-    "generate-component-docs": "./bin.js"
+    "generate-component-docs": "./bin.ts"
   },
   "author": "SEEK",
   "license": "MIT",
   "dependencies": {
-    "fs-extra": "^10.1.0",
-    "lodash.isequal": "^4.5.0",
-    "lodash.sortby": "^4.7.0",
-    "tsx": "^4.19.2",
     "typescript": "~5.9.3"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "^9.0.13",
-    "@types/lodash.isequal": "^4.5.8",
-    "@types/lodash.sortby": "^4.7.9"
   }
 }
