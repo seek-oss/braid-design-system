@@ -260,6 +260,6 @@
     }
   },
   "inlinedDependencies": {
-    "@capsizecss/metrics": "4.0.0"
+    "@capsizecss/metrics": "4.2.0"
   }
 }
