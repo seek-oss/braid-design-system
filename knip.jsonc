@@ -6,13 +6,14 @@
     ".": {
       "entry": ["scripts/**/*"],
       // Used in the renovate config
-      "ignoreDependencies": ["renovate-config-seek"],
+      // @babel/types is referenced in pnpm-workspace.yaml packageExtensions
+      "ignoreDependencies": ["renovate-config-seek", "@babel/types"],
     },
     "packages/braid-design-system": {
       "entry": ["src/**/*.{docs,gallery,screenshots,snippets}.tsx"],
       "ignoreUnresolved": ["./Icon.*Svg"],
-      // skott is not detected in scripts for some reason
-      "ignoreDependencies": ["assert", "skott"],
+      // `site` is imported by .docs.tsx files which are only consumed by the site workspace
+      "ignoreDependencies": ["assert", "site"],
     },
     "site": {
       "entry": [
@@ -29,10 +30,6 @@
       // `assert` might be getting confused with `node:assert`? Not sure why it's not detected.
       // Babel presets are referenced by strings instead of imports so are not detected.
       "ignoreDependencies": ["assert", "@babel/preset-typescript"],
-    },
-    "packages/docs-ui": {
-      // skott is not detected in scripts for some reason
-      "ignoreDependencies": ["skott"],
     },
     "storybook": {
       "entry": [

@@ -16,6 +16,11 @@ minimumReleaseAgeExclude:
   - eslint-config-seek
   - sku
 
+packageExtensions:
+  babel-plugin-remove-unused-vars:
+    peerDependencies:
+      '@babel/types': '*'
+
 packages:
   - packages/*
   - integration
