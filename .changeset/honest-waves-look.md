@@ -2,4 +2,4 @@
 'braid-design-system': patch
 ---
 
-Remove `@capsizecss/metrics` dependency and bundle font metrics instead
+Reduce consumer bundle size by including only the required fonts from `@capsizecss/metrics` 
