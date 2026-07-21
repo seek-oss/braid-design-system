@@ -4,6 +4,8 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+packageExtensionsChecksum: sha256-xneUw4Xfts1XphTrQlUJ/eO3O4S6BHHfX/Gv+IoIhxI=
+
 importers:
 
   .:
@@ -240,7 +242,7 @@ importers:
         version: 3.1.0
       babel-plugin-remove-unused-vars:
         specifier: ^2.2.0
-        version: 2.2.0
+        version: 2.2.0(@babel/types@7.29.7)
       babel-plugin-transform-remove-imports:
         specifier: ^1.7.0
         version: 1.8.1(@babel/core@7.29.7(supports-color@8.1.1))
@@ -4906,6 +4908,8 @@ packages:
 
   babel-plugin-remove-unused-vars@2.2.0:
     resolution: {integrity: sha512-s5OoMCGk616NnfuM4whPwvEi9iupOTLhkAlfCKnAoFJze5ZeJESdGgWI7Ovx0qIS4J9uFjDUU3ZvkvwZLUgWpw==}
+    peerDependencies:
+      '@babel/types': '*'
 
   babel-plugin-tester@11.0.4:
     resolution: {integrity: sha512-cqswtpSPo0e++rZB0l/54EG17LL25l9gLgh59yXfnmNxX+2lZTIOpx2zt4YI9QIClVXc8xf63J6yWwKkzy0jNg==}
@@ -15214,7 +15218,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  babel-plugin-remove-unused-vars@2.2.0: {}
+  babel-plugin-remove-unused-vars@2.2.0(@babel/types@7.29.7):
+    dependencies:
+      '@babel/types': 7.29.7
 
   babel-plugin-tester@11.0.4(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1):
     dependencies:
