@@ -6,7 +6,8 @@
     ".": {
       "entry": ["scripts/**/*"],
       // Used in the renovate config
-      "ignoreDependencies": ["renovate-config-seek"],
+      // @babel/types is referenced in pnpm-workspace.yaml packageExtensions
+      "ignoreDependencies": ["renovate-config-seek", "@babel/types"],
     },
     "packages/braid-design-system": {
       "entry": ["src/**/*.{docs,gallery,screenshots,snippets}.tsx"],
