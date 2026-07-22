@@ -112,7 +112,7 @@ export const iconsKeywords: Record<IconName, NonEmptyArray<string>> = {
   IconOverflow: ['more', 'dots', 'menu'],
   IconPeople: ['users', 'group', 'team'],
   IconPersonAdd: ['person', 'user', 'add', 'add person', 'plus'],
-  IconPersonVerified: ['person', 'user', 'verified', 'check', 'tick', 'shield'],
+  IconPersonVerified: ['person', 'user', 'verified', 'check', 'tick'],
   IconPhotoAdd: ['photo', 'camera', 'add'],
   IconPhone: ['call', 'telephone', 'mobile', 'home', 'landline'],
   IconPlatformAndroid: ['platform', 'android', 'google', 'mobile', 'phone'],
