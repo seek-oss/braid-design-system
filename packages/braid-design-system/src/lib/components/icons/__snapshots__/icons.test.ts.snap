@@ -435,6 +435,33 @@ export const IconCompanySvg: FC<SVGProps> = ({ title, titleId, ...props }) => (
 "
 `;
 
+exports[`IconCompanyVerifiedSvg > should match snapshot 1`] = `
+"import type { FC } from 'react';
+import type { SVGProps } from '../SVGTypes';
+
+export const IconCompanyVerifiedSvg: FC<SVGProps> = ({
+  title,
+  titleId,
+  ...props
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    focusable="false"
+    fill="currentColor"
+    width={16}
+    height={16}
+    aria-labelledby={titleId}
+    {...props}
+  >
+    {title ? <title id={titleId}>{title}</title> : null}
+    <path d="M14.92 1c.628 0 1.047.419 1.047 1.048v.21c1.152.418 2.095 1.57 2.095 2.932v8.266h-2.095V5.19c0-.628-.42-1.047-1.048-1.047H6.54c-.63 0-1.048.419-1.048 1.047v15.715h4.242V23h-5.29c-.629 0-1.048-.419-1.048-1.048V5.19c0-1.361.943-2.514 2.096-2.933v-.21C5.49 1.42 5.91 1 6.538 1z" />
+    <path d="M9.681 16.714H7.586V14.62H9.68zm0-4.19H7.586v-2.095H9.68zm4.19 0h-2.095v-2.095h2.096zm-4.19-4.19H7.586V6.237H9.68zm4.19 0h-2.095V6.237h2.096zm0 8.38h-2.095V14.62h2.096zm1.242 3.648 3.615-3.616.034-.033a1.106 1.106 0 0 1 1.544.033 1.107 1.107 0 0 1-.032 1.545l-4.389 4.39a1.09 1.09 0 0 1-1.544 0l-2.185-2.188-.034-.032a1.106 1.106 0 0 1 .034-1.546 1.106 1.106 0 0 1 1.544.034z" />
+  </svg>
+);
+"
+`;
+
 exports[`IconComposeSvg > should match snapshot 1`] = `
 "import type { FC } from 'react';
 import type { SVGProps } from '../SVGTypes';
