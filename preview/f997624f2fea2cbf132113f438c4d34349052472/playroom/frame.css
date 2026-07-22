@@ -1,0 +1,10 @@
+.p3si2k1 {
+  z-index: 99999;
+  cursor: crosshair;
+}
+.p3si2k3 {
+  z-index: 99999;
+  background: var(--_1ghc7i0r);
+  transition: all 50ms ease;
+  transition-delay: 50ms;
+}
