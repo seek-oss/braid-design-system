@@ -1,5 +1,25 @@
 # braid-design-system
 
+## 34.6.0
+
+### Minor Changes
+
+- **IconCompanyVerified**: Add component ([#2101](https://github.com/seek-oss/braid-design-system/pull/2101))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconCompanyVerified />
+  ```
+
+- **IconPersonVerified**: Update design ([#2101](https://github.com/seek-oss/braid-design-system/pull/2101))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconPersonVerified />
+  ```
+
 ## 34.5.0
 
 ### Minor Changes
