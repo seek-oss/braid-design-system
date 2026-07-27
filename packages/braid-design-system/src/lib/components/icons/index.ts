@@ -13,6 +13,7 @@ export { IconChecklist } from './IconChecklist/IconChecklist';
 export { IconChevron } from './IconChevron/IconChevron';
 export { IconClear } from './IconClear/IconClear';
 export { IconCompany } from './IconCompany/IconCompany';
+export { IconCompanyVerified } from './IconCompanyVerified/IconCompanyVerified';
 export { IconCompose } from './IconCompose/IconCompose';
 export { IconCopy } from './IconCopy/IconCopy';
 export { IconCoverLetter } from './IconCoverLetter/IconCoverLetter';

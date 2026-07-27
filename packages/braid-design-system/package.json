@@ -1,6 +1,6 @@
 {
   "name": "braid-design-system",
-  "version": "34.5.0",
+  "version": "34.6.0",
   "description": "Themeable design system for the SEEK Group",
   "homepage": "https://seek-oss.github.io/braid-design-system/",
   "bugs": {
@@ -163,7 +163,7 @@
     "@svgr/plugin-jsx": "^5.5.0",
     "@svgr/plugin-prettier": "^5.5.0",
     "@testing-library/dom": "^10.0.0",
-    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/autosuggest-highlight": "^3.1.1",

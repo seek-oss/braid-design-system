@@ -5589,5 +5589,22 @@
         "summary": "**Dialog**: Allow users to add fixed footer content to Dialog.\n\n**EXAMPLE USAGE:**\n```jsx\n  <Dialog\n    title=\"Dialog\"\n    open={true}\n    footer={\n      <Actions>\n        <Button variant=\"solid\" tone=\"formAccent\">\n          Save\n        </Button>\n        <Button variant=\"transparent\" tone=\"formAccent\">\n          Cancel\n        </Button>\n      </Actions>\n    }\n  >\n```"
       }
     ]
+  },
+  {
+    "version": "34.6.0",
+    "updates": [
+      {
+        "new": [
+          "IconCompanyVerified"
+        ],
+        "summary": "**IconCompanyVerified**: Add component\n\n**EXAMPLE USAGE:**\n```jsx\n<IconCompanyVerified />\n```"
+      },
+      {
+        "updated": [
+          "IconPersonVerified"
+        ],
+        "summary": "**IconPersonVerified**: Update design\n\n**EXAMPLE USAGE:**\n```jsx\n<IconPersonVerified />\n```"
+      }
+    ]
   }
 ]
