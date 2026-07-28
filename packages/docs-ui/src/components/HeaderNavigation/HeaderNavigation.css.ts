@@ -31,4 +31,3 @@ export const searchButton = style([
 export const navLink = style({
   // height: headerHeight,
 });
-

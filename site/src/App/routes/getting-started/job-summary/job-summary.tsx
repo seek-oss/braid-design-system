@@ -47,8 +47,8 @@ const page: Page = {
     <TextStack>
       <Stack space="medium">
         <Heading level="3" weight="weak">
-          <PageTitle title="Job Summary Example" />
-          Examples /
+          <PageTitle title="Job Summary Tutorial" />
+          Getting Started /
         </Heading>
         <Heading component="h1" level="2">
           Job Summary

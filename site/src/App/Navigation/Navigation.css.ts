@@ -2,10 +2,13 @@ import { style, globalStyle } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { breakpoints, responsiveStyle, vars } from 'braid-design-system/css';
 import { colorModeStyle } from 'braid-src/lib/css/colorModeStyle';
-import tokens from 'braid-src/lib/themes/docs/tokens';
 
-import { menuWidth, headerHeight, gutterSize } from './navigationSizes';
-
+import {
+  menuWidth,
+  headerHeight,
+  gutterSize,
+  contentBlockXLWidth,
+} from './navigationSizes';
 
 export const isOpen = style({});
 
@@ -58,6 +61,25 @@ const subNavOffsetAboveMobile = style(
   }),
 );
 
+/**
+ * Applied to the page content when a side navigation column is present, to
+ * offset the content clear of the fixed sidebar. Omitted on the landing page,
+ * which is full width.
+ */
+export const subNavOffset = subNavOffsetAboveMobile;
+
+/**
+ * Hides the fixed side navigation column on wide screens (used on the landing
+ * page). The mobile navigation menu overlay is unaffected.
+ */
+export const hideSideNavOnWide = style(
+  responsiveStyle({
+    wide: {
+      display: 'none',
+    },
+  }),
+);
+
 export const sideNavigationBorder = style(
   colorModeStyle({
     lightMode: {
@@ -78,34 +100,33 @@ export const sideNavigationContainer = style([
 
 export const pageContent = style([
   headerOffset,
-  subNavOffsetAboveMobile,
   hidePageContentOnSmallerScreensWhenOpen,
 ]);
 
 globalStyle('html, body', {
   margin: 0,
   minHeight: '100%',
+  // Allows full-bleed elements (see routes/home) to span the viewport width
+  // without introducing a horizontal scrollbar.
+  overflowX: 'clip',
 });
 
 export const maxWidthFull = style({
   maxWidth: '100%',
 });
 
-export const contentBlockXLWidth = tokens.contentWidth.large + 200;
-
 export const contentBlockXL = style({
   marginInline: 'auto',
   maxWidth: contentBlockXLWidth,
 });
 
-
 export const fixedNavigationContainer = style(
   colorModeStyle({
     lightMode: {
-      borderBottom: `1px solid ${vars.borderColor.neutralLight}`
+      borderBottom: `1px solid ${vars.borderColor.neutralLight}`,
     },
     darkMode: {
       borderBottom: `1px solid ${vars.borderColor.neutral}`,
-    }
-  })
-)
+    },
+  }),
+);

@@ -89,11 +89,15 @@ const routes: SkuConfig['routes'] = [
   { route: '/', name: 'home' },
   { route: '/releases', name: 'releases' },
   { route: '/gallery', name: 'gallery' },
+  getPages('src/App/routes/getting-started/index.ts'),
   getPages('src/App/routes/guides/index.ts'),
+  { route: '/foundations', name: 'foundations' },
   getPages('src/App/routes/foundations/index.ts'),
+  { route: '/templates', name: 'templates' },
   getTemplateRoutes(),
   { route: '/foundations/iconography/browse', name: 'browseIcons' },
-  getPages('src/App/routes/examples/index.ts'),
+  { route: '/patterns', name: 'patterns' },
+  getPages('src/App/routes/patterns/index.ts'),
   { route: '/components', name: 'components' }, // Pre-rendering this route for url backwards compatibility.
   [...componentNames, ...testNames].flatMap((name) =>
     [
@@ -103,6 +107,7 @@ const routes: SkuConfig['routes'] = [
       !name.startsWith('use') ? { route: `/components/${name}/props` } : null,
     ].filter((route) => route !== null),
   ),
+  { route: '/css', name: 'styles' },
   cssNames.flatMap((name) => [
     { route: `/css/${name}` },
     { route: `/css/${name}/releases` },

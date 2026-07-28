@@ -10,11 +10,11 @@ import {
   categorisedComponents,
   documentedComponents,
   documentedCss,
-  topNavSectionDefs,
 } from '../navigationHelpers';
-import examples from '../routes/examples';
+import { navSections } from '../navigationSections';
 import foundations from '../routes/foundations';
 import guides from '../routes/guides';
+import patterns from '../routes/patterns';
 
 type BadgeLabel = 'New' | 'Deprecated';
 
@@ -48,9 +48,15 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
     [currentPath],
   );
 
-  const activeSection = topNavSectionDefs.find(({ pathPrefixes }) =>
+  const activeSection = navSections.find(({ pathPrefixes }) =>
     pathPrefixes.some((prefix) => currentPath.startsWith(prefix)),
   );
+
+  // The landing page has no sidebar; its resource links are rendered on the
+  // page itself (see routes/home).
+  const isHome = currentPath === '/';
+
+  const patternEntries = Object.entries(patterns);
 
   return (
     <Box paddingTop="large">
@@ -59,7 +65,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           <SideNavigationSection
             title="Navigation"
             hideTitle={true}
-            items={topNavSectionDefs.map(({ label, href, pathPrefixes }) => ({
+            items={navSections.map(({ label, href, pathPrefixes }) => ({
               name: label,
               path: href,
               active: pathPrefixes.some((prefix) =>
@@ -70,7 +76,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           />
         </Box>
 
-        {!activeSection && (
+        {!activeSection && !isHome && (
           <SideNavigationSection
             title="Resources"
             hideTitle={true}
@@ -97,7 +103,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           />
         )}
 
-        {activeSection?.label === 'Foundations' && (
+        {activeSection?.id === 'foundations' && (
           <>
             <SideNavigationSection
               title="Foundations"
@@ -122,7 +128,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           </>
         )}
 
-        {activeSection?.label === 'Components' && (
+        {activeSection?.id === 'components' && (
           <>
             <SideNavigationSection
               title="Components"
@@ -147,12 +153,12 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           </>
         )}
 
-        {activeSection?.label === 'Patterns' && (
+        {activeSection?.id === 'patterns' && patternEntries.length > 0 && (
           <SideNavigationSection
-            title="Examples"
-            items={Object.entries(examples).map(([path, example]) => ({
-              name: example.title,
-              badge: example.badge,
+            title="Patterns"
+            items={patternEntries.map(([path, pattern]) => ({
+              name: pattern.title,
+              badge: pattern.badge,
               path,
               active: isActive(path),
               onClick: onSelect,
@@ -160,7 +166,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           />
         )}
 
-        {activeSection?.label === 'Templates' && (
+        {activeSection?.id === 'templates' && (
           <SideNavigationSection
             title="Templates"
             items={templateGroups.map((group) => ({
@@ -173,7 +179,7 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           />
         )}
 
-        {activeSection?.label === 'Styles' && (
+        {activeSection?.id === 'styles' && (
           <SideNavigationSection
             title="CSS"
             items={documentedCss.map((doc) => ({

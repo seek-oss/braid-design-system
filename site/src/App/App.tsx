@@ -19,13 +19,14 @@ import { Navigation } from './Navigation/Navigation';
 import { AppMeta } from './Seo/AppMeta';
 import { ThemeSettingProvider } from './ThemeSetting';
 import { Components } from './routes/components/Components';
-import examples from './routes/examples';
-import { PatternsPage } from './routes/examples/PatternsPage';
 import foundations from './routes/foundations';
 import { Foundations } from './routes/foundations/Foundations';
 import { GalleryPage } from './routes/gallery';
+import gettingStarted from './routes/getting-started';
 import guides from './routes/guides';
 import { HomePage } from './routes/home';
+import patterns from './routes/patterns';
+import { Patterns } from './routes/patterns/Patterns';
 import { ReleasesPage } from './routes/releases';
 import { Styles } from './routes/styles/Styles';
 import { TemplateGroup } from './routes/templates';
@@ -106,13 +107,33 @@ export const App = () => {
                 {Object.entries({
                   ...guides,
                   ...foundations,
-                  ...examples,
+                  ...patterns,
+                  ...gettingStarted,
                 }).map(([path, routeProps]) => (
                   <Route key={path} {...routeProps} path={path} />
                 ))}
+                {/* Redirects for relocated/removed pages */}
+                <Route
+                  path="/examples/job-summary"
+                  element={
+                    <Navigate to="/getting-started/job-summary" replace />
+                  }
+                />
+                <Route
+                  path="/examples/basic-form"
+                  element={<Navigate to="/patterns" replace />}
+                />
+                <Route
+                  path="/examples/marketing-banner"
+                  element={<Navigate to="/patterns" replace />}
+                />
+                <Route
+                  path="/examples"
+                  element={<Navigate to="/patterns" replace />}
+                />
                 <Route path="/foundations" element={<Foundations />} />
                 <Route path="/components" element={<Components />} />
-                <Route path="/examples" element={<PatternsPage />} />
+                <Route path="/patterns" element={<Patterns />} />
                 <Route path="/templates" element={<Templates />} />
                 <Route path="/css" element={<Styles />} />
                 <Route

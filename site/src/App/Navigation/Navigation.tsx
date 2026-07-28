@@ -25,7 +25,7 @@ import { useConfig } from '../ConfigContext';
 import { JumpToModal } from '../JumpToModal/JumpToModal';
 import { Logo } from '../Logo/Logo';
 import { ThemeToggle } from '../ThemeSetting';
-import { topNavSectionDefs } from '../navigationHelpers';
+import { navSections } from '../navigationSections';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { useSearchHotkey } from '../useSearchHotkey/useSearchHotkey';
 
@@ -173,7 +173,9 @@ export const Navigation = () => {
 
   const navigationActive = isExpandedSize || isMenuOpen;
 
-  const navLinks: NavLink[] = topNavSectionDefs.map(
+  const isHome = location.pathname === '/';
+
+  const navLinks: NavLink[] = navSections.map(
     ({ label, href, pathPrefixes }) => ({
       label,
       href,
@@ -214,6 +216,7 @@ export const Navigation = () => {
           // background={{ lightMode: 'neutralSoft', darkMode: 'surfaceDark' }}
           className={[
             styles.sideNavigationContainer,
+            isHome ? styles.hideSideNavOnWide : undefined,
             isMenuOpen ? styles.isOpen : undefined,
           ]}
         >
@@ -236,7 +239,11 @@ export const Navigation = () => {
         marginBottom="xxlarge"
         transition="fast"
         pointerEvents={isMenuOpen ? 'none' : undefined}
-        className={[styles.pageContent, isMenuOpen ? styles.isOpen : undefined]}
+        className={[
+          styles.pageContent,
+          isHome ? undefined : styles.subNavOffset,
+          isMenuOpen ? styles.isOpen : undefined,
+        ]}
       >
         <Box
           paddingTop="xxlarge"

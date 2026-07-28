@@ -4,9 +4,10 @@ import { colorModeSelectors } from 'braid-src/lib/css/atoms/sprinkles.css';
 import { colorModeStyle } from 'braid-src/lib/css/colorModeStyle';
 import { vars } from 'braid-src/lib/themes/vars.css';
 
-import { headerHeight } from '../Navigation/navigationSizes';
-
-import { contentBlockXLWidth } from '../Navigation/Navigation.css';
+import {
+  contentBlockXLWidth,
+  headerHeight,
+} from '../Navigation/navigationSizes';
 
 const topOffset = vars.space.large;
 
@@ -26,12 +27,13 @@ export const toc = style({
 export const tocItem = style([
   colorModeStyle({
     lightMode: {
-      borderLeft: `2px solid ${vars.borderColor.neutralLight}`
+      borderLeft: `2px solid ${vars.borderColor.neutralLight}`,
     },
     darkMode: {
-      borderLeft: `2px solid ${vars.borderColor.neutral}`
-    }
-  }), {
+      borderLeft: `2px solid ${vars.borderColor.neutral}`,
+    },
+  }),
+  {
     color: vars.foregroundColor.secondary,
     transition: 'border-color 250ms ease',
     display: 'block',
@@ -46,7 +48,6 @@ export const tocItem = style([
   },
 ]);
 
-
 export const tocItemActive = style(
   colorModeStyle({
     lightMode: {
@@ -54,9 +55,8 @@ export const tocItemActive = style(
     },
     darkMode: {
       borderColor: vars.borderColor.neutralLight,
-    }
+    },
   }),
-
 );
 
 export const tocItemChild = style({
