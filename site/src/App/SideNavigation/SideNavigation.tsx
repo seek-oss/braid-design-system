@@ -13,6 +13,7 @@ import {
 } from '../navigationHelpers';
 import { navSections } from '../navigationSections';
 import foundations from '../routes/foundations';
+import gettingStarted from '../routes/getting-started';
 import guides from '../routes/guides';
 import patterns from '../routes/patterns';
 
@@ -53,8 +54,13 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
   );
 
   // The landing page has no sidebar; its resource links are rendered on the
-  // page itself (see routes/home).
+  // page itself (see routes/home). Guides and getting-started live under the
+  // homepage conceptually — their sidenav only appears when you're on one of
+  // those pages (same pattern as Resources on the tutorial).
   const isHome = currentPath === '/';
+  const isHomeAdjacent =
+    currentPath.startsWith('/guides') ||
+    currentPath.startsWith('/getting-started');
 
   const patternEntries = Object.entries(patterns);
 
@@ -77,55 +83,72 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
         </Box>
 
         {!activeSection && !isHome && (
-          <SideNavigationSection
-            title="Resources"
-            hideTitle={true}
-            items={[
-              {
-                name: 'Releases',
-                path: '/releases',
-                active: isActive('/releases'),
-                onClick: onSelect,
-              },
-              {
-                name: 'Gallery',
-                path: '/gallery',
-              },
-              {
-                name: 'Playroom',
-                path: playroomUrl,
-              },
-              {
-                name: 'GitHub',
-                path: 'https://github.com/seek-oss/braid-design-system',
-              },
-            ]}
-          />
+          <>
+            {isHomeAdjacent ? (
+              <>
+                <SideNavigationSection
+                  title="Getting started"
+                  items={Object.entries(gettingStarted).map(
+                    ([path, entry]) => ({
+                      name: entry.title,
+                      badge: entry.badge,
+                      path,
+                      active: isActive(path),
+                      onClick: onSelect,
+                    }),
+                  )}
+                />
+                <SideNavigationSection
+                  title="Guides"
+                  items={Object.entries(guides).map(([path, guide]) => ({
+                    name: guide.title,
+                    badge: guide.badge,
+                    path,
+                    active: isActive(path),
+                    onClick: onSelect,
+                  }))}
+                />
+              </>
+            ) : null}
+
+            <SideNavigationSection
+              title="Resources"
+              hideTitle={true}
+              items={[
+                {
+                  name: 'Releases',
+                  path: '/releases',
+                  active: isActive('/releases'),
+                  onClick: onSelect,
+                },
+                {
+                  name: 'Gallery',
+                  path: '/gallery',
+                },
+                {
+                  name: 'Playroom',
+                  path: playroomUrl,
+                },
+                {
+                  name: 'GitHub',
+                  path: 'https://github.com/seek-oss/braid-design-system',
+                },
+              ]}
+            />
+          </>
         )}
 
         {activeSection?.id === 'foundations' && (
-          <>
-            <SideNavigationSection
-              title="Foundations"
-              items={Object.entries(foundations).map(([path, foundation]) => ({
-                name: foundation.title,
-                badge: foundation.badge,
-                path,
-                active: isActive(path),
-                onClick: onSelect,
-              }))}
-            />
-            <SideNavigationSection
-              title="Guides"
-              items={Object.entries(guides).map(([path, guide]) => ({
-                name: guide.title,
-                badge: guide.badge,
-                path,
-                active: isActive(path),
-                onClick: onSelect,
-              }))}
-            />
-          </>
+          <SideNavigationSection
+            title="Foundations"
+            items={Object.entries(foundations).map(([path, foundation]) => ({
+              name: foundation.title,
+              badge: foundation.badge,
+              path,
+              active: isActive(path),
+              onClick: onSelect,
+            }))}
+          />
         )}
 
         {activeSection?.id === 'components' && (

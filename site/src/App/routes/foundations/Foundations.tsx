@@ -1,3 +1,32 @@
-import { Heading } from 'braid-design-system';
+import { Heading, Stack } from 'braid-design-system';
 
-export const Foundations = () => <Heading level="1">Foundations</Heading>;
+import { LandingSection } from '../../LandingCard/LandingSection';
+
+const foundationCards = [
+  {
+    href: '/foundations/layout',
+    label: 'Layout',
+    description: 'Spacing, structure, and composition primitives.',
+  },
+  {
+    href: '/foundations/tones',
+    label: 'Tones',
+    description: 'Semantic colour language used across components.',
+  },
+  {
+    href: '/foundations/iconography',
+    label: 'Iconography',
+    description: 'Guidance for using and browsing Braid icons.',
+  },
+] as const;
+
+export const Foundations = () => (
+  <Stack space="xxlarge">
+    <Heading level="1">Foundations</Heading>
+    <LandingSection
+      heading="Explore foundations"
+      introduction="Placeholder cards for the core foundation topics. Content to be refined."
+      cards={foundationCards}
+    />
+  </Stack>
+);
