@@ -8,7 +8,7 @@ import {
   useContext,
   useReducer,
 } from 'react';
-import FocusLock from 'react-focus-lock';
+import FocusLockImport from 'react-focus-lock';
 
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
@@ -18,6 +18,11 @@ import { externalGutter } from './ModalExternalGutter';
 import { ariaHideOthers } from './ariaHideOthers';
 
 import * as styles from './Modal.css';
+
+// Some CJS interop paths expose the module namespace as the default export.
+const FocusLock =
+  (FocusLockImport as unknown as { default: typeof FocusLockImport }).default ??
+  FocusLockImport;
 
 export interface ModalProps extends Omit<
   ModalContentProps,
