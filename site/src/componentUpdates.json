@@ -5606,5 +5606,9 @@
         "summary": "**IconPersonVerified**: Update design\n\n**EXAMPLE USAGE:**\n```jsx\n<IconPersonVerified />\n```"
       }
     ]
+  },
+  {
+    "version": "34.6.1",
+    "updates": []
   }
 ]
