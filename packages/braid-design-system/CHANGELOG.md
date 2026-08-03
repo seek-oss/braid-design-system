@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 34.6.1
+
+### Patch Changes
+
+- Fix Dialog/Drawer crashing under Jest (CJS) when resolving `react-focus-lock` ([#2108](https://github.com/seek-oss/braid-design-system/pull/2108))
+
 ## 34.6.0
 
 ### Minor Changes
