@@ -17,7 +17,7 @@ exports[`Accordion 1`] = `
         | "medium"
         | "xlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", "medium" | "large" | "xlarge">
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, "medium" | "large" | "xlarge" | null>
+        | RequiredResponsiveArrayByMaxLength<4, "medium" | "large" | "xlarge">
     tone?: 
         | "neutral"
         | "secondary"
@@ -204,7 +204,7 @@ exports[`Bleed 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
     children: ReactNode
     component?: 
         | "div"
@@ -222,7 +222,7 @@ exports[`Bleed 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
     left?: 
         | "gutter"
         | "large"
@@ -235,7 +235,7 @@ exports[`Bleed 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
     right?: 
         | "gutter"
         | "large"
@@ -248,7 +248,7 @@ exports[`Bleed 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
     space?: 
         | "gutter"
         | "large"
@@ -261,7 +261,7 @@ exports[`Bleed 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
     top?: 
         | "gutter"
         | "large"
@@ -274,7 +274,7 @@ exports[`Bleed 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
     vertical?: 
         | "gutter"
         | "large"
@@ -287,7 +287,7 @@ exports[`Bleed 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
 },
 }
 `;
@@ -307,7 +307,7 @@ exports[`Box 1`] = `
         | "center"
         | "flexEnd"
         | "flexStart"
-        | ResponsiveArray<1 | 2 | 3 | 4, "center" | "flexStart" | "flexEnd" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "center" | "flexStart" | "flexEnd">
         | { mobile?: "center" | "flexStart" | "flexEnd" | undefined; tablet?: "center" | "flexStart" | "flexEnd" | undefined; desktop?: "center" | "flexStart" | "flexEnd" | undefined; wide?: "center" | ... 2 more ... | undefined; }
     allowFullScreen?: boolean
     allowTransparency?: boolean
@@ -538,7 +538,7 @@ exports[`Box 1`] = `
         | "small"
         | "standard"
         | "xlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "small" | "large" | "xlarge" | "standard" | "none" | "full" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "small" | "large" | "xlarge" | "standard" | "none" | "full">
         | { mobile?: "small" | "large" | "xlarge" | "standard" | "none" | "full" | undefined; tablet?: "small" | "large" | "xlarge" | "standard" | "none" | "full" | undefined; desktop?: "small" | ... 5 more ... | undefined; wide?: "small" | ... 5 more ... | undefined; }
     bottom?: 0
     boxShadow?: 
@@ -810,7 +810,7 @@ exports[`Box 1`] = `
         | "inline"
         | "inlineBlock"
         | "none"
-        | ResponsiveArray<1 | 2 | 3 | 4, "none" | "flex" | "block" | "inline" | "inlineBlock" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "none" | "flex" | "block" | "inline" | "inlineBlock">
         | { mobile?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; tablet?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; desktop?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; wide?: "none" | ... 4 more ... | undefined; }
     download?: any
     draggable?: 
@@ -833,21 +833,21 @@ exports[`Box 1`] = `
         | "columnReverse"
         | "row"
         | "rowReverse"
-        | ResponsiveArray<1 | 2 | 3 | 4, "row" | "column" | "rowReverse" | "columnReverse" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "row" | "column" | "rowReverse" | "columnReverse">
         | { mobile?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; tablet?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; desktop?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; wide?: "row" | ... 3 more ... | undefined; }
     flexGrow?: 
         | 0
         | 1
-        | ResponsiveArray<1 | 2 | 3 | 4, 0 | 1 | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, 0 | 1>
         | { mobile?: 0 | 1 | undefined; tablet?: 0 | 1 | undefined; desktop?: 0 | 1 | undefined; wide?: 0 | 1 | undefined; }
     flexShrink?: 
         | 0
-        | ResponsiveArray<1 | 2 | 3 | 4, 0 | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, 0>
         | { mobile?: 0 | undefined; tablet?: 0 | undefined; desktop?: 0 | undefined; wide?: 0 | undefined; }
     flexWrap?: 
         | "nowrap"
         | "wrap"
-        | ResponsiveArray<1 | 2 | 3 | 4, "wrap" | "nowrap" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "wrap" | "nowrap">
         | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; wide?: "wrap" | "nowrap" | undefined; }
     form?: string
     formAction?: 
@@ -871,7 +871,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     headers?: string
     height?: 
@@ -908,7 +908,7 @@ exports[`Box 1`] = `
         | "flexEnd"
         | "flexStart"
         | "spaceBetween"
-        | ResponsiveArray<1 | 2 | 3 | 4, "center" | "flexStart" | "flexEnd" | "spaceBetween" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "center" | "flexStart" | "flexEnd" | "spaceBetween">
         | { mobile?: "center" | "flexStart" | "flexEnd" | "spaceBetween" | undefined; tablet?: "center" | "flexStart" | "flexEnd" | "spaceBetween" | undefined; desktop?: "center" | "flexStart" | "flexEnd" | "spaceBetween" | undefined; wide?: "center" | ... 3 more ... | undefined; }
     keyParams?: string
     keyType?: string
@@ -931,7 +931,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     marginBottom?: 
         | "gutter"
@@ -944,7 +944,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     marginHeight?: number
     marginLeft?: 
@@ -958,7 +958,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     marginRight?: 
         | "gutter"
@@ -971,7 +971,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     marginTop?: 
         | "gutter"
@@ -984,7 +984,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     marginWidth?: number
     marginX?: 
@@ -998,7 +998,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     marginY?: 
         | "gutter"
@@ -1011,7 +1011,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     max?: 
         | number
@@ -1224,7 +1224,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     paddingBottom?: 
         | "gutter"
@@ -1237,7 +1237,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     paddingLeft?: 
         | "gutter"
@@ -1250,7 +1250,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     paddingRight?: 
         | "gutter"
@@ -1263,7 +1263,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     paddingTop?: 
         | "gutter"
@@ -1276,7 +1276,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     paddingX?: 
         | "gutter"
@@ -1289,7 +1289,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     paddingY?: 
         | "gutter"
@@ -1302,7 +1302,7 @@ exports[`Box 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     part?: string
     pattern?: string
@@ -1324,7 +1324,7 @@ exports[`Box 1`] = `
         | "fixed"
         | "relative"
         | "sticky"
-        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "sticky" | "relative" | "absolute" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "fixed" | "sticky" | "relative" | "absolute">
         | { mobile?: "fixed" | "sticky" | "relative" | "absolute" | undefined; tablet?: "fixed" | "sticky" | "relative" | "absolute" | undefined; desktop?: "fixed" | "sticky" | "relative" | "absolute" | undefined; wide?: "fixed" | ... 3 more ... | undefined; }
     poster?: string
     prefix?: string
@@ -1450,7 +1450,7 @@ exports[`Box 1`] = `
         | "center"
         | "left"
         | "right"
-        | ResponsiveArray<1 | 2 | 3 | 4, "left" | "right" | "center" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "left" | "right" | "center">
         | { mobile?: "left" | "right" | "center" | undefined; tablet?: "left" | "right" | "center" | undefined; desktop?: "left" | "right" | "center" | undefined; wide?: "left" | "right" | "center" | undefined; }
     title?: string
     top?: 0
@@ -1500,7 +1500,7 @@ exports[`BoxRenderer 1`] = `
         | "center"
         | "flexEnd"
         | "flexStart"
-        | ResponsiveArray<1 | 2 | 3 | 4, "center" | "flexStart" | "flexEnd" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "center" | "flexStart" | "flexEnd">
         | { mobile?: "center" | "flexStart" | "flexEnd" | undefined; tablet?: "center" | "flexStart" | "flexEnd" | undefined; desktop?: "center" | "flexStart" | "flexEnd" | undefined; wide?: "center" | ... 2 more ... | undefined; }
     background?: 
         | "body"
@@ -1549,7 +1549,7 @@ exports[`BoxRenderer 1`] = `
         | "small"
         | "standard"
         | "xlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "small" | "large" | "xlarge" | "standard" | "none" | "full" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "small" | "large" | "xlarge" | "standard" | "none" | "full">
         | { mobile?: "small" | "large" | "xlarge" | "standard" | "none" | "full" | undefined; tablet?: "small" | "large" | "xlarge" | "standard" | "none" | "full" | undefined; desktop?: "small" | ... 5 more ... | undefined; wide?: "small" | ... 5 more ... | undefined; }
     bottom?: 0
     boxShadow?: 
@@ -1772,28 +1772,28 @@ exports[`BoxRenderer 1`] = `
         | "inline"
         | "inlineBlock"
         | "none"
-        | ResponsiveArray<1 | 2 | 3 | 4, "none" | "flex" | "block" | "inline" | "inlineBlock" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "none" | "flex" | "block" | "inline" | "inlineBlock">
         | { mobile?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; tablet?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; desktop?: "none" | "flex" | "block" | "inline" | "inlineBlock" | undefined; wide?: "none" | ... 4 more ... | undefined; }
     flexDirection?: 
         | "column"
         | "columnReverse"
         | "row"
         | "rowReverse"
-        | ResponsiveArray<1 | 2 | 3 | 4, "row" | "column" | "rowReverse" | "columnReverse" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "row" | "column" | "rowReverse" | "columnReverse">
         | { mobile?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; tablet?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; desktop?: "row" | "column" | "rowReverse" | "columnReverse" | undefined; wide?: "row" | ... 3 more ... | undefined; }
     flexGrow?: 
         | 0
         | 1
-        | ResponsiveArray<1 | 2 | 3 | 4, 0 | 1 | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, 0 | 1>
         | { mobile?: 0 | 1 | undefined; tablet?: 0 | 1 | undefined; desktop?: 0 | 1 | undefined; wide?: 0 | 1 | undefined; }
     flexShrink?: 
         | 0
-        | ResponsiveArray<1 | 2 | 3 | 4, 0 | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, 0>
         | { mobile?: 0 | undefined; tablet?: 0 | undefined; desktop?: 0 | undefined; wide?: 0 | undefined; }
     flexWrap?: 
         | "nowrap"
         | "wrap"
-        | ResponsiveArray<1 | 2 | 3 | 4, "wrap" | "nowrap" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "wrap" | "nowrap">
         | { mobile?: "wrap" | "nowrap" | undefined; tablet?: "wrap" | "nowrap" | undefined; desktop?: "wrap" | "nowrap" | undefined; wide?: "wrap" | "nowrap" | undefined; }
     gap?: 
         | "gutter"
@@ -1806,7 +1806,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     height?: 
         | "full"
@@ -1817,7 +1817,7 @@ exports[`BoxRenderer 1`] = `
         | "flexEnd"
         | "flexStart"
         | "spaceBetween"
-        | ResponsiveArray<1 | 2 | 3 | 4, "center" | "flexStart" | "flexEnd" | "spaceBetween" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "center" | "flexStart" | "flexEnd" | "spaceBetween">
         | { mobile?: "center" | "flexStart" | "flexEnd" | "spaceBetween" | undefined; tablet?: "center" | "flexStart" | "flexEnd" | "spaceBetween" | undefined; desktop?: "center" | "flexStart" | "flexEnd" | "spaceBetween" | undefined; wide?: "center" | ... 3 more ... | undefined; }
     left?: 0
     margin?: 
@@ -1831,7 +1831,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     marginBottom?: 
         | "gutter"
@@ -1844,7 +1844,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     marginLeft?: 
         | "gutter"
@@ -1857,7 +1857,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     marginRight?: 
         | "gutter"
@@ -1870,7 +1870,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     marginTop?: 
         | "gutter"
@@ -1883,7 +1883,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     marginX?: 
         | "gutter"
@@ -1896,7 +1896,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     marginY?: 
         | "gutter"
@@ -1909,7 +1909,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     maxWidth?: 
         | "content"
@@ -1936,7 +1936,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     paddingBottom?: 
         | "gutter"
@@ -1949,7 +1949,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     paddingLeft?: 
         | "gutter"
@@ -1962,7 +1962,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     paddingRight?: 
         | "gutter"
@@ -1975,7 +1975,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     paddingTop?: 
         | "gutter"
@@ -1988,7 +1988,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     paddingX?: 
         | "gutter"
@@ -2001,7 +2001,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     paddingY?: 
         | "gutter"
@@ -2014,7 +2014,7 @@ exports[`BoxRenderer 1`] = `
         | "xxlarge"
         | "xxsmall"
         | "xxxlarge"
-        | ResponsiveArray<1 | 2 | 3 | 4, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none">
         | { mobile?: "gutter" | "xxsmall" | "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "xxxlarge" | "none" | undefined; tablet?: "gutter" | "xxsmall" | "xsmall" | "small" | ... 6 more ... | undefined; desktop?: "gutter" | ... 9 more ... | undefined; wide?: "gutter" | ... 9 more ... | undefined; }
     pointerEvents?: "none"
     position?: 
@@ -2022,14 +2022,14 @@ exports[`BoxRenderer 1`] = `
         | "fixed"
         | "relative"
         | "sticky"
-        | ResponsiveArray<1 | 2 | 3 | 4, "fixed" | "sticky" | "relative" | "absolute" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "fixed" | "sticky" | "relative" | "absolute">
         | { mobile?: "fixed" | "sticky" | "relative" | "absolute" | undefined; tablet?: "fixed" | "sticky" | "relative" | "absolute" | undefined; desktop?: "fixed" | "sticky" | "relative" | "absolute" | undefined; wide?: "fixed" | ... 3 more ... | undefined; }
     right?: 0
     textAlign?: 
         | "center"
         | "left"
         | "right"
-        | ResponsiveArray<1 | 2 | 3 | 4, "left" | "right" | "center" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "left" | "right" | "center">
         | { mobile?: "left" | "right" | "center" | undefined; tablet?: "left" | "right" | "center" | undefined; desktop?: "left" | "right" | "center" | undefined; wide?: "left" | "right" | "center" | undefined; }
     top?: 0
     transform?: { active?: "touchable" | undefined; }
@@ -2942,13 +2942,13 @@ exports[`Columns 1`] = `
         | "left"
         | "right"
         | Partial<Record<"mobile" | "tablet" | "desktop" | "wide", Align>>
-        | ResponsiveArray<1 | 2 | 3 | 4, Align | null>
+        | ResponsiveArrayByMaxLength<4, Align>
     alignY?: 
         | "bottom"
         | "center"
         | "top"
         | Partial<Record<"mobile" | "tablet" | "desktop" | "wide", AlignY>>
-        | ResponsiveArray<1 | 2 | 3 | 4, AlignY | null>
+        | ResponsiveArrayByMaxLength<4, AlignY>
     children: 
         | (ReactElement<ColumnProps, string | JSXElementConstructor<any>> | null)[]
         | ReactElement<ColumnProps, string | JSXElementConstructor<any>>
@@ -2982,7 +2982,7 @@ exports[`Columns 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
 },
 }
 `;
@@ -3059,7 +3059,7 @@ exports[`Disclosure 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
     weight?: 
         | "regular"
         | "weak"
@@ -3195,7 +3195,7 @@ exports[`Heading 1`] = `
         | "center"
         | "left"
         | "right"
-        | ResponsiveArray<1 | 2 | 3 | 4, "left" | "right" | "center" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "left" | "right" | "center">
         | { mobile?: "left" | "right" | "center" | undefined; tablet?: "left" | "right" | "center" | undefined; desktop?: "left" | "right" | "center" | undefined; wide?: "left" | "right" | "center" | undefined; }
     children: ReactNode
     component?: 
@@ -7165,13 +7165,13 @@ exports[`Inline 1`] = `
         | "left"
         | "right"
         | Partial<Record<"mobile" | "tablet" | "desktop" | "wide", Align>>
-        | ResponsiveArray<1 | 2 | 3 | 4, Align | null>
+        | ResponsiveArrayByMaxLength<4, Align>
     alignY?: 
         | "bottom"
         | "center"
         | "top"
         | Partial<Record<"mobile" | "tablet" | "desktop" | "wide", AlignY>>
-        | ResponsiveArray<1 | 2 | 3 | 4, AlignY | null>
+        | ResponsiveArrayByMaxLength<4, AlignY>
     children: ReactNodeNoStrings
     collapseBelow?: 
         | "desktop"
@@ -7200,7 +7200,7 @@ exports[`Inline 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
 },
 }
 `;
@@ -7777,7 +7777,7 @@ exports[`List 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
     start?: number
     tone?: 
         | "brandAccent"
@@ -7897,7 +7897,7 @@ exports[`MenuRenderer 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
     onClose?: (closeReason: CloseReason) => void
     onOpen?: () => void
     placement?: 
@@ -8200,13 +8200,13 @@ exports[`Spread 1`] = `
         | "left"
         | "right"
         | Partial<Record<"mobile" | "tablet" | "desktop" | "wide", Align>>
-        | ResponsiveArray<1 | 2 | 3 | 4, Align | null>
+        | ResponsiveArrayByMaxLength<4, Align>
     alignY?: 
         | "bottom"
         | "center"
         | "top"
         | Partial<Record<"mobile" | "tablet" | "desktop" | "wide", AlignY>>
-        | ResponsiveArray<1 | 2 | 3 | 4, AlignY | null>
+        | ResponsiveArrayByMaxLength<4, AlignY>
     children: ReactNodeNoStrings
     component?: 
         | "article"
@@ -8234,7 +8234,7 @@ exports[`Spread 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
 },
 }
 `;
@@ -8248,7 +8248,7 @@ exports[`Stack 1`] = `
         | "left"
         | "right"
         | Partial<Record<"mobile" | "tablet" | "desktop" | "wide", Align>>
-        | ResponsiveArray<1 | 2 | 3 | 4, Align | null>
+        | ResponsiveArrayByMaxLength<4, Align>
     children: ReactNodeNoStrings
     component?: 
         | "article"
@@ -8280,7 +8280,7 @@ exports[`Stack 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
 },
 }
 `;
@@ -8527,7 +8527,7 @@ exports[`Tabs 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
     label: string
     reserveHitArea?: boolean
     size?: 
@@ -8576,7 +8576,7 @@ exports[`Text 1`] = `
         | "center"
         | "left"
         | "right"
-        | ResponsiveArray<1 | 2 | 3 | 4, "left" | "right" | "center" | null>
+        | ResponsiveArrayVariant<("mobile" | "tablet" | "desktop" | "wide")[] & { length: 4; }, "left" | "right" | "center">
         | { mobile?: "left" | "right" | "center" | undefined; tablet?: "left" | "right" | "center" | undefined; desktop?: "left" | "right" | "center" | undefined; wide?: "left" | "right" | "center" | undefined; }
     baseline?: boolean
     children?: ReactNode
@@ -9528,7 +9528,7 @@ exports[`Tiles 1`] = `
     children: ReactNodeNoStrings
     columns: 
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", number>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, number | null>
+        | RequiredResponsiveArrayByMaxLength<4, number>
         | number
     data?: DataAttributeMap
     space: 
@@ -9543,7 +9543,7 @@ exports[`Tiles 1`] = `
         | "xxsmall"
         | "xxxlarge"
         | RequiredConditionalObject<"mobile", "tablet" | "desktop" | "wide", Space>
-        | RequiredResponsiveArray<1 | 2 | 3 | 4, Space | null>
+        | RequiredResponsiveArrayByMaxLength<4, Space>
 },
 }
 `;
