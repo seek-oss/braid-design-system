@@ -2,4 +2,4 @@
 'braid-design-system': patch
 ---
 
-Fix Dialog/Drawer crashing under Jest (CJS) when resolving `react-focus-lock` as Modal's focus trap
+Fix Dialog/Drawer crashing under Jest (CJS) when resolving `react-focus-lock`
