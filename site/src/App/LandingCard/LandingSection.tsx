@@ -14,7 +14,7 @@ export const LandingSection = ({
   cards,
 }: LandingSectionProps) => (
   <Stack space="large">
-    <Stack space="small">
+    <Stack space="medium">
       <Heading level="2">{heading}</Heading>
       <Text tone="secondary">{introduction}</Text>
     </Stack>

@@ -21,7 +21,6 @@ export const card = style({
   transition: 'box-shadow 150ms ease',
 });
 
-/** Illustration slot — swap contents for real art later. */
 export const media = style([
   atoms({
     display: 'flex',
@@ -32,7 +31,7 @@ export const media = style([
     borderRadius: 'standard',
   }),
   {
-    aspectRatio: '8 / 5',
+    aspectRatio: '960 / 542',
   },
   colorModeStyle({
     lightMode: {

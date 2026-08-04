@@ -10,6 +10,9 @@ import {
 import { Box } from 'braid-src/lib/components/Box/Box';
 
 import { useConfig } from '../../ConfigContext';
+import { DesignWorkflowIllustration } from '../../LandingCard/Illustrations/DesignWorkflowIllustration';
+import { DevelopmentWorkflowIllustration } from '../../LandingCard/Illustrations/DevelopmentWorkflowIllustration';
+import { TutorialIllustration } from '../../LandingCard/Illustrations/TutorialIllustration';
 import { LandingSection } from '../../LandingCard/LandingSection';
 
 import * as styles from './home.css';
@@ -20,20 +23,23 @@ const gettingStartedCards = [
     label: 'Job Summary tutorial',
     description:
       'Build a real component from scratch and see how Braid pieces fit together.',
+    illustration: <TutorialIllustration />,
   },
   {
     href: '/guides/design-workflow',
     label: 'Design workflow',
     description:
       'How designers use Braid and Playroom to iterate in the same medium as engineers.',
+    illustration: <DesignWorkflowIllustration />,
   },
   {
     href: '/guides/development-workflow',
     label: 'Development workflow',
     description:
       'Set up Braid in your app and start composing accessible UI quickly.',
+    illustration: <DevelopmentWorkflowIllustration />,
   },
-] as const;
+];
 
 const exploreCards = [
   {
@@ -104,18 +110,19 @@ export const HomePage = () => {
           </Box>
         </Box>
       </Box>
+      <Stack space="xxlarge">
+        <LandingSection
+          heading="Getting started"
+          introduction="New to Braid? Start with a hands-on tutorial, then dig into the design and development workflows."
+          cards={gettingStartedCards}
+        />
 
-      <LandingSection
-        heading="Getting started"
-        introduction="New to Braid? Start with a hands-on tutorial, then dig into the design and development workflows."
-        cards={gettingStartedCards}
-      />
-
-      <LandingSection
-        heading="Explore Braid"
-        introduction="Jump into the areas of the system you need most."
-        cards={exploreCards}
-      />
+        <LandingSection
+          heading="Explore Braid"
+          introduction="Jump into the areas of the system you need most."
+          cards={exploreCards}
+        />
+      </Stack>
     </Stack>
   );
 };
