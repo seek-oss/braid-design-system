@@ -51,6 +51,7 @@ import {
   getItemId,
 } from './createAccessibilityProps';
 import { reverseMatches } from './reverseMatches';
+import { useScrollIntoView } from './useScrollIntoView';
 
 import * as styles from './Autosuggest.css';
 import { touchableText } from '../../css/typography.css';
@@ -571,24 +572,8 @@ export const Autosuggest = forwardRef(function <Value>(
     tablet: false,
   });
 
-  useEffect(() => {
-    if (highlightedItem) {
-      highlightedItem.scrollIntoView({ block: 'nearest' });
-    }
-  }, [highlightedItem]);
-
-  useEffect(() => {
-    if (menuRef.current && isOpen && !isMobile) {
-      const { bottom: menuBottom } = menuRef.current.getBoundingClientRect();
-      const viewportHeight = document.documentElement.clientHeight;
-
-      if (menuBottom > viewportHeight) {
-        menuRef.current.scrollIntoView(false);
-      }
-    }
-    // re-running this effect if the suggestionCount changes
-    // to ensure asynchronous updates aren't left out of view.
-  }, [isOpen, isMobile, suggestionCount]);
+  // Keep highlight scrolling inside the menu; native scrollIntoView also moves the page.
+  useScrollIntoView(highlightedItem, menuRef.current);
 
   const inputProps = {
     value: previewValue ? previewValue.text : value.text,
@@ -789,7 +774,6 @@ export const Autosuggest = forwardRef(function <Value>(
             triggerRef={fieldRef}
             open={isOpen}
             width="full"
-            lockPlacement
             offsetSpace="xxsmall"
             modal={false}
             role={false}
