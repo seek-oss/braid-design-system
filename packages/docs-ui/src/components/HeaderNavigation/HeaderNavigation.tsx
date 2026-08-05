@@ -24,8 +24,7 @@ interface HeaderNavigationProps {
   themeToggle?: ReactNode;
 }
 
-const isApplePlatform = () =>
-  /Mac|iPhone|iPod|iPad/i.test(navigator.userAgent);
+const isApplePlatform = () => /Mac|iPhone|iPod|iPad/i.test(navigator.userAgent);
 
 export const HeaderNavigation = ({
   menuOpen = false,
