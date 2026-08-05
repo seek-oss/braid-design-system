@@ -36,10 +36,12 @@ export const HeaderNavigation = ({
   logoHref = '/',
   themeToggle = null,
 }: HeaderNavigationProps) => {
-  const [modifierKey, setModifierKey] = useState<string | null>(null);
+  const [modifierKey, setModifierKey] = useState('⌘');
 
   useLayoutEffect(() => {
-    setModifierKey(isApplePlatform() ? '⌘' : 'Ctrl');
+    if (!isApplePlatform()) {
+      setModifierKey('Ctrl');
+    }
   }, []);
 
   return (
@@ -76,7 +78,7 @@ export const HeaderNavigation = ({
             onClick={onSearchClick}
           >
             <KeyboardShortcut
-              keys={modifierKey ? [modifierKey, 'K'] : []}
+              keys={[modifierKey, 'K']}
               shortcutLabel={<IconSearch />}
             />
           </Box>
