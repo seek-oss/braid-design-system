@@ -1,26 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`build > Vanilla Extract files imported as side-effects 1`] = `
-### dist/lib/css/atoms/sprinkles.css.mjs:
-2 │ import "../reset/reset.css.mjs";
-
-### dist/reset.mjs:
-2 │ import "./lib/css/reset/reset.css.mjs";
-3 │ import "./lib/css/atoms/sprinkles.css.mjs";
-`;
-
-exports[`build > side-effects from dist 1`] = `
-[
-  "dist/lib/components/BraidProvider/BraidProvider.cjs",
-  "dist/lib/components/BraidProvider/BraidProvider.mjs",
-  "dist/lib/css/reset/resetTracker.cjs",
-  "dist/lib/css/reset/resetTracker.mjs",
-  "dist/playroom/components.cjs",
-  "dist/playroom/components.mjs",
-  "dist/reset.cjs",
-  "dist/reset.mjs",
-]
-`;
+exports[`build > side-effects from dist 1`] = `[]`;
 
 exports[`build > side-effects from src 1`] = `
 [

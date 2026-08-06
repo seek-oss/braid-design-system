@@ -1,5 +1,4 @@
 import source from '@braid-design-system/source.macro';
-import { Fragment } from 'react';
 import type { ComponentDocs } from 'site/types';
 
 import {
@@ -15,8 +14,6 @@ import {
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
-
-import { validSpaceValues } from './Accordion';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -71,37 +68,45 @@ const docs: ComponentDocs = {
       {
         label: 'Visual prominence',
         description: (
-          <>
-            <Text>
-              You can specify the <Strong>size</Strong>, <Strong>tone</Strong>{' '}
-              and <Strong>weight</Strong> props, and optionally set the{' '}
-              <Strong>dividers</Strong> prop to <Strong>false.</Strong>
-            </Text>
-            <Text>
-              You may also provide a <Strong>space</Strong> value to adjust the
-              spacing between items. Note that in order to ensure adequate space
-              for touch targets, the <Strong>space</Strong> prop only accepts
-              values of{' '}
-              {validSpaceValues.map((value, i) => (
-                <Fragment key={value}>
-                  {i === validSpaceValues.length - 1 ? ' and ' : ''}
-                  {i !== validSpaceValues.length - 1 && i !== 0 ? ', ' : ''}
-                  <Strong>{value}</Strong>
-                </Fragment>
-              ))}
-              .
-            </Text>
-          </>
+          <Text>
+            You can specify the <Strong>size</Strong>, <Strong>tone</Strong> and{' '}
+            <Strong>weight</Strong> props, and optionally set the{' '}
+            <Strong>dividers</Strong> prop to <Strong>false.</Strong>
+          </Text>
         ),
         Example: () =>
           source(
             <Accordion
               size="standard"
               tone="secondary"
-              space="xlarge"
               weight="regular"
               dividers={false}
             >
+              <AccordionItem label="Accordion item 1">
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 2">
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 3">
+                <Placeholder height={80} />
+              </AccordionItem>
+            </Accordion>,
+          ),
+      },
+      {
+        label: 'Space',
+        deprecated: true,
+        description: (
+          <Text>
+            The <Strong>space</Strong> prop is deprecated. Spacing between items
+            is now automatically derived from the <Strong>size</Strong> prop and
+            will be removed in a future release.
+          </Text>
+        ),
+        Example: () =>
+          source(
+            <Accordion space="large">
               <AccordionItem label="Accordion item 1">
                 <Placeholder height={80} />
               </AccordionItem>
