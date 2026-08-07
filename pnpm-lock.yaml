@@ -549,8 +549,8 @@ importers:
         specifier: ^17.4.0
         version: 17.6.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       sku:
-        specifier: 16.0.0
-        version: 16.0.0(7c2d97772c2082819c796b53433da09d)
+        specifier: 16.1.0
+        version: 16.1.0(7c2d97772c2082819c796b53433da09d)
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.1.0
@@ -585,8 +585,8 @@ importers:
         specifier: ^7.6.3
         version: 7.18.2(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       sku:
-        specifier: 16.0.0
-        version: 16.0.0(c6b7997dfffc93812a739222ce580f4a)
+        specifier: 16.1.0
+        version: 16.1.0(c6b7997dfffc93812a739222ce580f4a)
       storybook:
         specifier: ^10.2.7
         version: 10.5.6(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8)
@@ -9075,17 +9075,20 @@ packages:
     resolution: {integrity: sha512-r1X49+6Xnf5ahzf0KwoezYvyU97mo/K0tcUaIIUPaNNCG5epYxllnMZmo+XdmWmuxfk4jKcY+C5jz6Uwq69iAA==}
     hasBin: true
 
-  sku@16.0.0:
-    resolution: {integrity: sha512-jXpFMR/+bvv7NRxok9yzAw36YxuMx5ZU7byQMGGzAPeM0ERtYMEVXysn3OGQKsk/UNOyKTzH1HIyPJQowBgy7g==}
+  sku@16.1.0:
+    resolution: {integrity: sha512-dUWIRHGwx7AFVg4+wE0Tkfc9IXtsw0nsfdQD7mPXpPnV+5tLcwQL1CjElaHbO2PeF8B1LADjM6x3vm6wQEdnwQ==}
     engines: {node: '>=24.16.0'}
     hasBin: true
     peerDependencies:
+      '@storybook/react-vite': ^10.0.0
       '@storybook/react-webpack5': ^10.0.0
       '@types/react': ^18.0.0 || ^19.0.0
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
       vitest: ^4.1.0
     peerDependenciesMeta:
+      '@storybook/react-vite':
+        optional: true
       '@storybook/react-webpack5':
         optional: true
       react-dom:
@@ -20227,7 +20230,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  sku@16.0.0(7c2d97772c2082819c796b53433da09d):
+  sku@16.1.0(7c2d97772c2082819c796b53433da09d):
     dependencies:
       '@babel/core': 7.29.7(supports-color@8.1.1)
       '@babel/generator': 7.29.8
@@ -20373,7 +20376,7 @@ snapshots:
       - webpack-plugin-serve
       - yaml
 
-  sku@16.0.0(c6b7997dfffc93812a739222ce580f4a):
+  sku@16.1.0(c6b7997dfffc93812a739222ce580f4a):
     dependencies:
       '@babel/core': 7.29.7(supports-color@8.1.1)
       '@babel/generator': 7.29.8
