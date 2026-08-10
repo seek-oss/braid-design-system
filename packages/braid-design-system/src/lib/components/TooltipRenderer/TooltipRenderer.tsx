@@ -22,7 +22,7 @@ import { useThemeName } from '../useThemeName/useThemeName';
 
 import * as styles from './TooltipRenderer.css';
 
-export const offsetSpace = 'small';
+const offsetSpace = 'small';
 
 const StaticTooltipContext = createContext(false);
 
@@ -39,7 +39,7 @@ export const StaticTooltipProvider = ({
   </StaticTooltipContext.Provider>
 );
 
-export const TooltipTextDefaultsProvider = ({
+const TooltipTextDefaultsProvider = ({
   children,
 }: {
   children: ReactNodeNoStrings;

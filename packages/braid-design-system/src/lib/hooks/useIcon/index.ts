@@ -30,9 +30,6 @@ export const iconSize = ({
     [styles.cropToTextSize]: crop,
   });
 
-export interface IconContainerSizeProps {
-  size?: Exclude<IconSize, 'fill'>;
-}
 export const iconContainerSize = (
   size: Exclude<IconSize, 'fill'> = 'standard',
 ) => clsx(styles.blockWidths[size], lineHeightContainer[size]);

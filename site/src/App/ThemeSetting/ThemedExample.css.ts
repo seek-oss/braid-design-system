@@ -3,10 +3,6 @@ import { colorModeStyle } from 'braid-design-system/css';
 import { palette } from 'braid-src/lib/color/palette';
 import tokens from 'braid-src/lib/themes/docs/tokens';
 
-export const unthemedBorderRadius = style({
-  borderRadius: tokens.border.radius.large,
-});
-
 const bgColor = createVar();
 const dotColor = createVar();
 const dotSize = createVar();

@@ -95,8 +95,6 @@ export const colorProperties = {
 
 export type Background = keyof typeof vars.backgroundColor;
 
-export type ColorProperties = keyof typeof colorProperties;
-
 export const responsiveProperties = {
   display: {
     none: 'none',
