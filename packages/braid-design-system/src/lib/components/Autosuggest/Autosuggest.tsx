@@ -828,7 +828,6 @@ export const Autosuggest = forwardRef(function <Value>(
                 ) : null}
                 {hasSuggestions
                   ? normalisedSuggestions.map((suggestion, index) => {
-                      const { text } = suggestion;
                       const groupHeading = groupHeadingIndexes.get(index);
                       const highlights = suggestionHighlight
                         ? highlightSuggestions(
@@ -839,7 +838,7 @@ export const Autosuggest = forwardRef(function <Value>(
                         : suggestion.highlights;
 
                       return (
-                        <Fragment key={index + text}>
+                        <Fragment key={index}>
                           {groupHeading ? (
                             <GroupHeading>{groupHeading}</GroupHeading>
                           ) : null}
