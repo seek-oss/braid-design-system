@@ -786,6 +786,10 @@ export const Autosuggest = forwardRef(function <Value>(
               <Box
                 textAlign="left"
                 component="ul"
+                // Prevent browser translation extensions (e.g. Google Translate)
+                // from wrapping menu text nodes in <font>, which breaks React
+                // DOM updates
+                translate="no"
                 background={
                   !hasSuggestions && noSuggestionsMessage
                     ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
@@ -816,7 +820,6 @@ export const Autosuggest = forwardRef(function <Value>(
                 ) : null}
                 {hasSuggestions
                   ? normalisedSuggestions.map((suggestion, index) => {
-                      const { text } = suggestion;
                       const groupHeading = groupHeadingIndexes.get(index);
                       const highlights = suggestionHighlight
                         ? highlightSuggestions(
@@ -827,7 +830,7 @@ export const Autosuggest = forwardRef(function <Value>(
                         : suggestion.highlights;
 
                       return (
-                        <Fragment key={index + text}>
+                        <Fragment key={index}>
                           {groupHeading ? (
                             <GroupHeading>{groupHeading}</GroupHeading>
                           ) : null}
