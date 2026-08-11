@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 34.6.2
+
+### Patch Changes
+
+- **Autosuggest:** Add `translate="no"` to the suggestion list and the ARIA live announcement region to prevent browser translations from wrapping text nodes in `<font>` elements, which breaks React DOM updates. Also key suggestion rows by index instead of `index + text`, so locale changes to suggestion labels no longer remount the list, and numeric text can no longer collide keys via string concatenation. ([#2117](https://github.com/seek-oss/braid-design-system/pull/2117))
+
+- **Autosuggest:** Allow the suggestions list to flip above the field when there is insufficient space below, and keep keyboard highlight scrolling inside the menu so it no longer jumps the page ([#2113](https://github.com/seek-oss/braid-design-system/pull/2113))
+
 ## 34.6.1
 
 ### Patch Changes
