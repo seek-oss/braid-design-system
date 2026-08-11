@@ -798,6 +798,10 @@ export const Autosuggest = forwardRef(function <Value>(
               <Box
                 textAlign="left"
                 component="ul"
+                // Prevent browser translation extensions (e.g. Google Translate)
+                // from wrapping menu text nodes in <font>, which breaks React
+                // DOM updates
+                translate="no"
                 background={
                   !hasSuggestions && noSuggestionsMessage
                     ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
