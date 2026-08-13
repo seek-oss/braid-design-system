@@ -10,7 +10,7 @@ import {
   tocHeightSet,
 } from './DocDetails.css';
 
-export interface TocItem {
+interface TocItem {
   id: string;
   label: string;
   isChild?: boolean;

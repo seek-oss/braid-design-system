@@ -17,7 +17,7 @@ export const invertPlacement = style({
   },
 });
 
-export const transitionThreshold = 'xxsmall';
+const transitionThreshold = 'xxsmall';
 
 const popupAnimation = keyframes({
   from: {

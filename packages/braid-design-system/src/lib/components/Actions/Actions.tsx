@@ -14,7 +14,7 @@ export interface ActionsProps {
   data?: InlineProps['data'];
 }
 
-export const actionsSpace = 'xsmall';
+const actionsSpace = 'xsmall';
 
 export const Actions: FC<ActionsProps> = ({ size, data, children }) => {
   const contextValue = useMemo(() => ({ size }), [size]);

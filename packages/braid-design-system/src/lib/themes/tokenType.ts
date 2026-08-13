@@ -20,7 +20,7 @@ export const extractFontMetricsForTheme = ({
   unitsPerEm,
 });
 
-export type TextBreakpoint = Exclude<Breakpoint, 'desktop' | 'wide'>;
+type TextBreakpoint = Exclude<Breakpoint, 'desktop' | 'wide'>;
 
 type FontSizeText =
   | {
