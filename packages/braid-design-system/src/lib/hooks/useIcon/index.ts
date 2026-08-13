@@ -6,7 +6,6 @@ import { useContext } from 'react';
 import type { PublicBoxProps } from '../../components/Box/Box';
 import HeadingContext from '../../components/Heading/HeadingContext';
 import { TextContext } from '../../components/Text/TextContext';
-import { iconInlineSize } from '../../components/icons/IconRenderer';
 import type { OptionalTitle } from '../../components/icons/SVGTypes';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -57,6 +56,38 @@ const defaultVerticalCorrection = {
   lowercase: 'none',
 } as const;
 
+type AlignY = keyof typeof styles.alignY;
+interface IconStyles {
+  alignY?: AlignY;
+  verticalCorrection?: keyof (typeof styles.alignY)[AlignY];
+}
+export const iconInlineSize = ({
+  alignY = 'uppercase',
+  verticalCorrection = 'none',
+}: IconStyles = {}) =>
+  clsx(
+    atoms({
+      display: 'inlineBlock',
+      position: 'relative',
+    }),
+    styles.size,
+    styles.inlineCrop,
+    styles.inline,
+    styles.alignY[alignY][verticalCorrection],
+  );
+
+export const useIconTone = ({ tone }: Pick<UseIconProps, 'tone'>) => {
+  const textContext = useContext(TextContext);
+  const headingContext = useContext(HeadingContext);
+
+  const resolvedTone =
+    typographyStyles.tone[tone || textContext?.tone || 'neutral'];
+
+  return tone || (!headingContext && !textContext?.tone)
+    ? resolvedTone
+    : undefined;
+};
+
 export default (
   { size, tone, alignY, data, title, titleId, ...restProps }: UseIconProps,
   { verticalCorrection = defaultVerticalCorrection }: PrivateIconProps = {},
@@ -65,10 +96,7 @@ export default (
 ): { isInline: boolean; svgProps: PublicBoxProps } => {
   const textContext = useContext(TextContext);
   const headingContext = useContext(HeadingContext);
-  const resolvedTone =
-    typographyStyles.tone[tone || textContext?.tone || 'neutral'];
-  const toneClass =
-    tone || (!headingContext && !textContext?.tone) ? resolvedTone : undefined;
+  const toneClass = useIconTone({ tone });
   const isInline = Boolean(textContext || headingContext);
   const a11yProps = title
     ? { title, titleId, role: 'img' }

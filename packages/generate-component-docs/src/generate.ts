@@ -1,22 +1,28 @@
 /* eslint-disable no-console */
 import fs from 'fs';
+import { createRequire } from 'node:module';
+import { isDeepStrictEqual } from 'node:util';
 import path from 'path';
 
-import isEqual from 'lodash.isequal';
 import ts, { type CompilerOptions } from 'typescript';
+
+const require = createRequire(import.meta.url);
 
 const MAX_DEPTH = 10;
 const aliasWhitelist = ['ClassValue'];
 const propBlacklist = ['key'];
 
 const tsconfigPath = require.resolve(
-  path.join(__dirname, '../../braid-design-system/tsconfig.json'),
+  path.join(import.meta.dirname, '../../braid-design-system/tsconfig.json'),
 );
 const componentsFile = require.resolve(
-  path.join(__dirname, '../../braid-design-system/src/lib/components/index.ts'),
+  path.join(
+    import.meta.dirname,
+    '../../braid-design-system/src/lib/components/index.ts',
+  ),
 );
 const testComponentsFile = require.resolve(
-  path.join(__dirname, '../../braid-design-system/src/test.ts'),
+  path.join(import.meta.dirname, '../../braid-design-system/src/test.ts'),
 );
 
 const stringAliases: Record<string, string> = {
@@ -245,7 +251,7 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
       );
 
       if (
-        isEqual(
+        isDeepStrictEqual(
           types.slice(0, unionAliases.ReactNode.length),
           unionAliases.ReactNode,
         )
@@ -253,7 +259,7 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
         return 'ReactNode';
       }
 
-      if (isEqual(types, unionAliases.ReactNodeNoStrings)) {
+      if (isDeepStrictEqual(types, unionAliases.ReactNodeNoStrings)) {
         return 'ReactNodeNoStrings';
       }
 

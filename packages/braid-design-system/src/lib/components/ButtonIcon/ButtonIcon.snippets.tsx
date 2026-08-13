@@ -16,6 +16,12 @@ export const snippets: Snippets = [
     ),
   },
   {
+    description: 'Solid',
+    code: source(
+      <ButtonIcon variant="solid" icon={<IconBookmark />} label="Bookmark" />,
+    ),
+  },
+  {
     description: 'Transparent',
     code: source(
       <ButtonIcon variant="transparent" icon={<IconHelp />} label="Help" />,

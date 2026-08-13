@@ -378,3 +378,29 @@ export const Truncation: Story = {
     </Inline>
   ),
 };
+
+export const NoWrap: Story = {
+  name: 'Test - noWrap should prevent wrapping and maintain a single horizontal row',
+  render: () => (
+    <Inline space="small" noWrap>
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+      <Placeholder width={48} height={48} />
+    </Inline>
+  ),
+};

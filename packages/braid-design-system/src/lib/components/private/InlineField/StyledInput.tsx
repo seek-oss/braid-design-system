@@ -22,8 +22,7 @@ const tones = ['neutral', 'critical'] as const;
 export type InlineFieldTone = (typeof tones)[number];
 
 export type CheckboxChecked =
-  | NonNullable<InputElementProps['checked']>
-  | 'mixed';
+  NonNullable<InputElementProps['checked']> | 'mixed';
 
 type InputElementProps = AllHTMLAttributes<HTMLInputElement>;
 export interface StyledInputProps {

@@ -168,7 +168,7 @@ export const hideOverflowAboveMobile = style(
   }),
 );
 
-export const maximumHeightForCoverImage = '60vh';
+export const maximumHeightForCoverImage = '70vh';
 
 export const coverImageHeightLimit = style(
   responsiveStyle({

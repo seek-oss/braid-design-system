@@ -56,41 +56,41 @@ export const makeTokens = ({
           '1': {
             mobile: {
               fontSize: 28,
-              lineGap: 11,
+              lineGap: 17,
             },
             tablet: {
               fontSize: 36,
-              lineGap: 14,
+              lineGap: 22,
             },
           },
           '2': {
             mobile: {
               fontSize: 24,
-              lineGap: 11,
+              lineGap: 15,
             },
             tablet: {
               fontSize: 30,
-              lineGap: 13,
+              lineGap: 18,
             },
           },
           '3': {
             mobile: {
               fontSize: 22,
-              lineGap: 10,
+              lineGap: 14,
             },
             tablet: {
               fontSize: 24,
-              lineGap: 11,
+              lineGap: 15,
             },
           },
           '4': {
             mobile: {
               fontSize: 20,
-              lineGap: 9,
+              lineGap: 12,
             },
             tablet: {
               fontSize: 20,
-              lineGap: 9,
+              lineGap: 12,
             },
           },
         },

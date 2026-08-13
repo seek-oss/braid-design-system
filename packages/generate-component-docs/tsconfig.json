@@ -1,4 +1,7 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["./src", "vitest.config.ts"]
+  "include": ["./src", "vitest.config.ts", "./bin.ts"],
+  "compilerOptions": {
+    "allowImportingTsExtensions": true
+  }
 }

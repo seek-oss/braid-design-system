@@ -1,6 +1,4 @@
-import sortBy from 'lodash.sortby';
-
-import type { NormalisedPropType } from './generate';
+import type { NormalisedPropType } from './generate.ts';
 
 export const typeSerializer = {
   print: (
@@ -18,7 +16,8 @@ export const typeSerializer = {
         .map((subType) => `\n${indent(`| ${serializer(subType)}`)}`)
         .join('');
     } else if (type.type === 'interface') {
-      return `{${sortBy(Object.values(type.props), ({ propName }) => propName)
+      return `{${Object.values(type.props)
+        .sort((a, b) => a.propName.localeCompare(b.propName))
         .map(
           ({ propName, required, type: propType }) =>
             `\n${indent(

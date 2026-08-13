@@ -25,7 +25,9 @@ import { FieldOverlay } from '../private/FieldOverlay/FieldOverlay';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { iconSlotSpace } from '../private/iconSlotSpace';
 
+import { ButtonLoader } from './ButtonLoader';
 import type { buttonTones } from './buttonTones';
 
 import * as styles from './Button.css';
@@ -65,6 +67,7 @@ export interface ButtonProps extends ButtonStyleProps {
   'aria-expanded'?: NativeButtonProps['aria-expanded'];
   'aria-describedby'?: NativeButtonProps['aria-describedby'];
   'aria-label'?: NativeButtonProps['aria-label'];
+  'aria-pressed'?: NativeButtonProps['aria-pressed'];
   tabIndex?: NativeButtonProps['tabIndex'];
   data?: DataAttributeMap;
 }
@@ -72,17 +75,11 @@ export interface ButtonProps extends ButtonStyleProps {
 interface ButtonStyles {
   textTone: TextProps['tone'];
   background:
-    | ColorContrastValue<BoxBackgroundVariant>
-    | BoxBackgroundVariant
-    | undefined;
+    ColorContrastValue<BoxBackgroundVariant> | BoxBackgroundVariant | undefined;
   backgroundHover:
-    | ColorContrastValue<BoxBackgroundVariant>
-    | BoxBackgroundVariant
-    | undefined;
+    ColorContrastValue<BoxBackgroundVariant> | BoxBackgroundVariant | undefined;
   backgroundActive:
-    | ColorContrastValue<BoxBackgroundVariant>
-    | BoxBackgroundVariant
-    | undefined;
+    ColorContrastValue<BoxBackgroundVariant> | BoxBackgroundVariant | undefined;
   boxShadow: BoxShadow | undefined;
 }
 
@@ -208,20 +205,6 @@ const variants: Record<ButtonVariant, Record<ButtonTone, ButtonStyles>> = {
     },
   },
 } as const;
-
-const ButtonLoader = () => (
-  <Box aria-hidden component="span" display="inlineBlock">
-    <Box component="span" className={styles.loadingDot}>
-      .
-    </Box>
-    <Box component="span" className={styles.loadingDot}>
-      .
-    </Box>
-    <Box component="span" className={styles.loadingDot}>
-      .
-    </Box>
-  </Box>
-);
 
 const transparentPaddingX = 'small';
 const buttonRadius = 'standard';
@@ -378,7 +361,11 @@ export const ButtonText = ({
           </AvoidWidowIcon>
         ) : null}
         {children}
-        {loading ? <ButtonLoader /> : null}
+        {loading ? (
+          <Box component="span" paddingLeft={iconSlotSpace}>
+            <ButtonLoader />
+          </Box>
+        ) : null}
         {!loading && icon && iconPosition === 'trailing' ? (
           <AvoidWidowIcon
             iconPosition={iconPosition}
@@ -489,6 +476,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       'aria-expanded': ariaExpanded,
       'aria-describedby': ariaDescribedBy,
       'aria-label': ariaLabel,
+      'aria-pressed': ariaPressed,
       data,
       ...restProps
     },
@@ -517,6 +505,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           aria-expanded={ariaExpanded}
           aria-describedby={ariaDescribedBy}
           aria-label={ariaLabel}
+          aria-pressed={ariaPressed}
           onClick={onClick}
           disabled={loading}
           {...root}

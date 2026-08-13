@@ -30,6 +30,7 @@ export type InlineProps = CollapsibleAlignmentProps & {
   component?: (typeof validInlineComponents)[number];
   data?: DataAttributeMap;
   children: ReactNodeNoStrings;
+  noWrap?: boolean;
 };
 
 export const Inline: FC<InlineProps> = ({
@@ -41,6 +42,7 @@ export const Inline: FC<InlineProps> = ({
   component = 'div',
   data,
   children,
+  noWrap = false,
   ...restProps
 }) => {
   assert(
@@ -66,8 +68,8 @@ export const Inline: FC<InlineProps> = ({
       component={component}
       {...collapsibleAlignmentProps}
       gap={space}
-      flexWrap="wrap"
-      className={
+      flexWrap={noWrap ? 'nowrap' : 'wrap'}
+      className={[
         collapseBelow
           ? {
               [styles.fitContentMobile]: !collapseMobile,
@@ -75,8 +77,9 @@ export const Inline: FC<InlineProps> = ({
               [styles.fitContentDesktop]: !collapseDesktop,
               [styles.fitContentWide]: true,
             }
-          : styles.fitContentMobile
-      }
+          : styles.fitContentMobile,
+        noWrap && styles.preventShrink,
+      ]}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
       {children}

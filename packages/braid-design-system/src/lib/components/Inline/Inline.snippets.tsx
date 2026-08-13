@@ -34,4 +34,14 @@ export const snippets: Snippets = [
       </Inline>,
     ),
   },
+  {
+    description: 'No wrap',
+    code: source(
+      <Inline space="small" noWrap>
+        <Placeholder width={48} height={48} />
+        <Placeholder width={48} height={48} />
+        <Placeholder width={48} height={48} />
+      </Inline>,
+    ),
+  },
 ];

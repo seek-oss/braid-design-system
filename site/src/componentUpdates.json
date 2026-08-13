@@ -5486,5 +5486,146 @@
         "summary": "**Badge:** Added aria-hidden and aria-label props.\n\n`aria-hidden` allows a badge to be hidden from assistive technology\n\n`aria-label` allows visible badge text to be overridden with a more descriptive label for screen readers\n\n\n**EXAMPLE USAGE:**\n```jsx\n  <Badge aria-hidden>\n    Deprecated\n  </Badge>\n```\n\n```jsx\n  <Badge aria-label=\"You have 2 notifications\">\n    2\n  </Badge>\n```"
       }
     ]
+  },
+  {
+    "version": "34.3.0",
+    "updates": [
+      {
+        "updated": [
+          "Inline"
+        ],
+        "summary": "**Inline:** Add *noWrap* prop to support single-row compositions\n\n\n**EXAMPLE USAGE:**\n```jsx\n  <Inline space=\"small\" noWrap>\n    <Placeholder width={20} height={48} />\n    <Placeholder width={80} height={48} />\n    <Placeholder width={40} height={48} />\n  </Inline>\n```"
+      },
+      {
+        "updated": [
+          "Textarea"
+        ],
+        "summary": "**Textarea:** Ensure focus ring displays correctly"
+      },
+      {
+        "updated": [
+          "Heading"
+        ],
+        "summary": "**Heading:** Increase line height to improve legibility\n\nIncreases the line height of all `Heading` levels to improve legibility of wrapping lines of text — focusing on reducing the collision of diacritical marks in Thai Script."
+      }
+    ]
+  },
+  {
+    "version": "34.4.0",
+    "updates": [
+      {
+        "updated": [
+          "Button",
+          "ButtonLink"
+        ],
+        "summary": "**Button:** Update `loading` indicator\n\nUpdate design asset for loading state, moving from progressive ellipsis animation, to a spinning indicator."
+      },
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon:** Add `loading` support\n\nProvide the same `loading` behaviour as available on `Button` \n\n**EXAMPLE USAGE:**\n```jsx\n<ButtonIcon\n  icon={<IconSend />}\n  label=\"Send\"\n  loading\n/>\n```"
+      },
+      {
+        "updated": [
+          "Button"
+        ],
+        "summary": "**Button:** Ensure active state is not applied when disabled"
+      },
+      {
+        "updated": [
+          "Autosuggest",
+          "Checkbox",
+          "Dialog",
+          "Drawer",
+          "Dropdown",
+          "ButtonIcon",
+          "MonthPicker",
+          "PasswordField",
+          "RadioGroup",
+          "RadioItem",
+          "TabsProvider",
+          "TextDropdown",
+          "TextField",
+          "Textarea",
+          "TooltipRenderer"
+        ],
+        "summary": "Ensure fallback ids pass HTML validation\n\nAdopt recommended practice of ensuring all generated `id` attributes start with a letter as per HTML validation rules."
+      },
+      {
+        "updated": [
+          "Button",
+          "ButtonIcon"
+        ],
+        "summary": "**Button, ButtonIcon:** Add `aria-pressed` support"
+      },
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon:** Add support for `solid` variant\n\n**EXAMPLE USAGE:**\n```jsx\n<ButtonIcon\n  variant=\"solid\"\n  label=\"Solid variant\"\n  icon={<IconSend />}\n/>\n```"
+      }
+    ]
+  },
+  {
+    "version": "34.5.0",
+    "updates": [
+      {
+        "updated": [
+          "Drawer"
+        ],
+        "summary": "**Drawer**: Allow users to add fixed footer content to Drawer.\n\n**EXAMPLE USAGE:**\n```jsx\n  <Drawer\n    title=\"Drawer\"\n    open={true}\n    footer={\n      <Actions>\n        <Button variant=\"solid\" tone=\"formAccent\">\n          Save\n        </Button>\n        <Button variant=\"transparent\" tone=\"formAccent\">\n          Cancel\n        </Button>\n      </Actions>\n    }\n  >\n```"
+      },
+      {
+        "updated": [
+          "IconRenderer"
+        ],
+        "summary": "**IconRenderer:** Add `tone` support\n\nEnable custom icons to use Braid tones in the same way as first-class Braid icons.\n\n**EXAMPLE USAGE:**\n```jsx\n<IconRenderer tone={tone}>\n  {({ className }) => (\n    <svg\n      xmlns=\"http://www.w3.org/2000/svg\"\n      viewBox=\"0 0 24 24\"\n      fill=\"currentColor\"\n      className={className}\n    >\n      ...\n    </svg>\n  )}\n</IconRenderer>\n```"
+      },
+      {
+        "updated": [
+          "Dialog"
+        ],
+        "summary": "**Dialog**: Allow users to add fixed footer content to Dialog.\n\n**EXAMPLE USAGE:**\n```jsx\n  <Dialog\n    title=\"Dialog\"\n    open={true}\n    footer={\n      <Actions>\n        <Button variant=\"solid\" tone=\"formAccent\">\n          Save\n        </Button>\n        <Button variant=\"transparent\" tone=\"formAccent\">\n          Cancel\n        </Button>\n      </Actions>\n    }\n  >\n```"
+      }
+    ]
+  },
+  {
+    "version": "34.6.0",
+    "updates": [
+      {
+        "new": [
+          "IconCompanyVerified"
+        ],
+        "summary": "**IconCompanyVerified**: Add component\n\n**EXAMPLE USAGE:**\n```jsx\n<IconCompanyVerified />\n```"
+      },
+      {
+        "updated": [
+          "IconPersonVerified"
+        ],
+        "summary": "**IconPersonVerified**: Update design\n\n**EXAMPLE USAGE:**\n```jsx\n<IconPersonVerified />\n```"
+      }
+    ]
+  },
+  {
+    "version": "34.6.1",
+    "updates": []
+  },
+  {
+    "version": "34.6.2",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Add `translate=\"no\"` to the suggestion list and the ARIA live announcement region to prevent browser translations from wrapping text nodes in `<font>` elements, which breaks React DOM updates. Also key suggestion rows by index instead of `index + text`, so locale changes to suggestion labels no longer remount the list, and numeric text can no longer collide keys via string concatenation."
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Allow the suggestions list to flip above the field when there is insufficient space below, and keep keyboard highlight scrolling inside the menu so it no longer jumps the page"
+      }
+    ]
   }
 ]

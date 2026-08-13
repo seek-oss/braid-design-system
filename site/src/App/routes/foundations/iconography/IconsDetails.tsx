@@ -424,19 +424,63 @@ export const IconsDetails = () => (
                       EXAMPLE: Setting “fill=currentColor” on custom icon inside
                       “brandAccent” Text
                     </Text>
-                    <Text size="large" tone="brandAccent">
-                      <IconRenderer>
-                        {({ className }) => (
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            className={className}
-                            fill="currentColor"
-                          >
-                            <circle cx="12" cy="12" r="10" />
-                          </svg>
-                        )}
-                      </IconRenderer>
+                    <Text
+                      size="large"
+                      tone="brandAccent"
+                      icon={
+                        <IconRenderer>
+                          {({ className }) => (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              className={className}
+                              fill="currentColor"
+                            >
+                              <circle cx="12" cy="12" r="10" />
+                            </svg>
+                          )}
+                        </IconRenderer>
+                      }
+                    >
+                      Text
+                    </Text>
+                  </Stack>,
+                )
+              }
+            />
+          </PlayroomStateProvider>
+          <Text>
+            A <TextLink href="tones">tone</TextLink> may also be provided
+            explicitly when the icon is required to deviate from the parent
+            text.
+          </Text>
+          <PlayroomStateProvider>
+            <DocExample
+              Example={() =>
+                source(
+                  <Stack space="medium">
+                    <Text size="xsmall" tone="secondary">
+                      EXAMPLE: Setting “fill=currentColor” on custom icon and
+                      explicitly applying “brandAccent” to it.
+                    </Text>
+                    <Text
+                      size="large"
+                      icon={
+                        <IconRenderer tone="brandAccent">
+                          {({ className }) => (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              className={className}
+                              fill="currentColor"
+                            >
+                              <circle cx="12" cy="12" r="10" />
+                            </svg>
+                          )}
+                        </IconRenderer>
+                      }
+                    >
+                      Text
                     </Text>
                   </Stack>,
                 )

@@ -58,8 +58,7 @@ const TitleLinkAnchor = ({
 );
 
 type TitleLink = { copyable?: boolean } & (
-  | { children: string }
-  | { children: ReactNode; label: string }
+  { children: string } | { children: ReactNode; label: string }
 );
 
 export const TitleLink = ({ copyable = false, ...restProps }: TitleLink) => {

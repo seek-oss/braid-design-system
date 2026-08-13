@@ -11,11 +11,28 @@ describe('Button', () => {
         <BraidTestProvider>
           <Button>Button</Button>
           <Button icon={<IconSend />}>Button</Button>
+          <Button icon={<IconSend />} loading>
+            Button
+          </Button>
         </BraidTestProvider>,
       ),
     ).toHTMLValidate({
       extends: ['html-validate:recommended'],
+      rules: {
+        'attribute-boolean-style': 'warn', // React generates `disabled=""` which cannot be changed
+      },
     });
+  });
+
+  it('should be disabled when loading', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Button loading>Button</Button>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+    expect(button).toBeDisabled();
   });
 
   it('should honour aria-label if provided', () => {
@@ -31,5 +48,16 @@ describe('Button', () => {
 
     const button = queryByLabelText('Visible Label');
     expect(button).toBeNull();
+  });
+
+  it('should honour aria-pressed if provided', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Button aria-pressed="true">Toggle</Button>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+    expect(button).toHaveAttribute('aria-pressed', 'true');
   });
 });

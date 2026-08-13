@@ -31,11 +31,13 @@ interface DialogContentProps extends Omit<
   keyof typeof modalStyle | 'width'
 > {
   width?: ModalContentProps['width'];
+  footer?: ModalContentProps['footer'];
 }
 
 export const DialogContent = ({
   width = defaultWidth,
+  footer,
   ...restProps
 }: DialogContentProps) => (
-  <ModalContent width={width} {...restProps} {...modalStyle} />
+  <ModalContent width={width} {...restProps} {...modalStyle} footer={footer} />
 );

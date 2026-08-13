@@ -43,6 +43,7 @@ if (
   class MockIntersectionObserver {
     root = null;
     rootMargin = '';
+    scrollMargin = '';
     thresholds = [];
 
     observe = noop;

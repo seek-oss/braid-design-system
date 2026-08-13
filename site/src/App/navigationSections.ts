@@ -10,11 +10,7 @@
  */
 
 export type NavSectionId =
-  | 'foundations'
-  | 'components'
-  | 'patterns'
-  | 'templates'
-  | 'styles';
+  'foundations' | 'components' | 'patterns' | 'templates' | 'styles';
 
 export interface NavSection {
   /** Stable identifier used to switch side-nav content. */

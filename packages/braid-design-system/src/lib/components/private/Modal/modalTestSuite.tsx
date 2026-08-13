@@ -15,13 +15,19 @@ import type { ModalProps } from './Modal';
 export const modalTestSuite = (
   name: string,
   ModalImplementation: ComponentType<
-    Pick<ModalProps, 'title' | 'closeLabel' | 'open' | 'onClose' | 'children'>
+    Pick<
+      ModalProps,
+      'title' | 'closeLabel' | 'open' | 'onClose' | 'children' | 'footer'
+    >
   >,
 ) => {
   const CLOSE_LABEL = 'Close button';
   const TITLE = 'Test Title';
 
-  const TestCase = ({ onClose }: Pick<ModalProps, 'onClose'>) => {
+  const TestCase = ({
+    onClose,
+    footer,
+  }: Pick<ModalProps, 'onClose' | 'footer'>) => {
     const [open, setOpen] = useState(false);
     return (
       <div>
@@ -41,6 +47,7 @@ export const modalTestSuite = (
 
             setOpen(newOpenState);
           }}
+          footer={footer}
         >
           <Button data={{ testid: 'buttonInside' }}>Inside</Button>
         </ModalImplementation>
@@ -56,11 +63,12 @@ export const modalTestSuite = (
 
   function renderTestCase({
     onClose = vi.fn(),
-  }: Optional<Pick<ModalProps, 'onClose'>> = {}) {
+    footer,
+  }: Optional<Pick<ModalProps, 'onClose' | 'footer'>> = {}) {
     return {
       ...render(
         <BraidTestProvider>
-          <TestCase onClose={onClose} />
+          <TestCase onClose={onClose} footer={footer} />
         </BraidTestProvider>,
       ),
       closeHandler: onClose,
@@ -70,6 +78,15 @@ export const modalTestSuite = (
   const EXIT_TIMEOUT = 1500;
 
   describe(`Modal: ${name}`, () => {
+    it('should render footer content when provided', async () => {
+      const footer = 'Footer content';
+      const { getByText, getByTestId } = renderTestCase({ footer });
+
+      await userEvent.click(getByTestId('buttonBefore'));
+
+      expect(getByText('Footer content')).toBeVisible();
+    });
+
     it('should not focus content when closed', async () => {
       const { getByTestId } = renderTestCase();
 

@@ -1,5 +1,170 @@
 # braid-design-system
 
+## 34.6.2
+
+### Patch Changes
+
+- **Autosuggest:** Add `translate="no"` to the suggestion list and the ARIA live announcement region to prevent browser translations from wrapping text nodes in `<font>` elements, which breaks React DOM updates. Also key suggestion rows by index instead of `index + text`, so locale changes to suggestion labels no longer remount the list, and numeric text can no longer collide keys via string concatenation. ([#2117](https://github.com/seek-oss/braid-design-system/pull/2117))
+
+- **Autosuggest:** Allow the suggestions list to flip above the field when there is insufficient space below, and keep keyboard highlight scrolling inside the menu so it no longer jumps the page ([#2113](https://github.com/seek-oss/braid-design-system/pull/2113))
+
+## 34.6.1
+
+### Patch Changes
+
+- Fix Dialog/Drawer crashing under Jest (CJS) when resolving `react-focus-lock` ([#2108](https://github.com/seek-oss/braid-design-system/pull/2108))
+
+## 34.6.0
+
+### Minor Changes
+
+- **IconCompanyVerified**: Add component ([#2101](https://github.com/seek-oss/braid-design-system/pull/2101))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconCompanyVerified />
+  ```
+
+- **IconPersonVerified**: Update design ([#2101](https://github.com/seek-oss/braid-design-system/pull/2101))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconPersonVerified />
+  ```
+
+## 34.5.0
+
+### Minor Changes
+
+- **Drawer**: Allow users to add fixed footer content to Drawer. ([#2091](https://github.com/seek-oss/braid-design-system/pull/2091))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+    <Drawer
+      title="Drawer"
+      open={true}
+      footer={
+        <Actions>
+          <Button variant="solid" tone="formAccent">
+            Save
+          </Button>
+          <Button variant="transparent" tone="formAccent">
+            Cancel
+          </Button>
+        </Actions>
+      }
+    >
+  ```
+
+- **IconRenderer:** Add `tone` support ([#2085](https://github.com/seek-oss/braid-design-system/pull/2085))
+
+  Enable custom icons to use Braid tones in the same way as first-class Braid icons.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <IconRenderer tone={tone}>
+    {({ className }) => (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className={className}
+      >
+        ...
+      </svg>
+    )}
+  </IconRenderer>
+  ```
+
+- **Dialog**: Allow users to add fixed footer content to Dialog. ([#2091](https://github.com/seek-oss/braid-design-system/pull/2091))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+    <Dialog
+      title="Dialog"
+      open={true}
+      footer={
+        <Actions>
+          <Button variant="solid" tone="formAccent">
+            Save
+          </Button>
+          <Button variant="transparent" tone="formAccent">
+            Cancel
+          </Button>
+        </Actions>
+      }
+    >
+  ```
+
+### Patch Changes
+
+- Reduce consumer bundle size by including only the required fonts from `@capsizecss/metrics` ([#2086](https://github.com/seek-oss/braid-design-system/pull/2086))
+
+## 34.4.0
+
+### Minor Changes
+
+- **ButtonIcon:** Add `loading` support ([#2083](https://github.com/seek-oss/braid-design-system/pull/2083))
+
+  Provide the same `loading` behaviour as available on `Button`
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon icon={<IconSend />} label="Send" loading />
+  ```
+
+- **Button, ButtonIcon:** Add `aria-pressed` support ([#2084](https://github.com/seek-oss/braid-design-system/pull/2084))
+
+- **ButtonIcon:** Add support for `solid` variant ([#2079](https://github.com/seek-oss/braid-design-system/pull/2079))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon variant="solid" label="Solid variant" icon={<IconSend />} />
+  ```
+
+### Patch Changes
+
+- **Button:** Update `loading` indicator ([#2080](https://github.com/seek-oss/braid-design-system/pull/2080))
+
+  Update design asset for loading state, moving from progressive ellipsis animation, to a spinning indicator.
+
+- **Button:** Ensure active state is not applied when disabled ([#2080](https://github.com/seek-oss/braid-design-system/pull/2080))
+
+- Ensure fallback ids pass HTML validation ([#2083](https://github.com/seek-oss/braid-design-system/pull/2083))
+
+  Adopt recommended practice of ensuring all generated `id` attributes start with a letter as per HTML validation rules.
+
+## 34.3.0
+
+### Minor Changes
+
+- **Inline:** Add _noWrap_ prop to support single-row compositions ([#2069](https://github.com/seek-oss/braid-design-system/pull/2069))
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Inline space="small" noWrap>
+    <Placeholder width={20} height={48} />
+    <Placeholder width={80} height={48} />
+    <Placeholder width={40} height={48} />
+  </Inline>
+  ```
+
+### Patch Changes
+
+- **Textarea:** Ensure focus ring displays correctly ([#2066](https://github.com/seek-oss/braid-design-system/pull/2066))
+
+- **Heading:** Increase line height to improve legibility ([#2073](https://github.com/seek-oss/braid-design-system/pull/2073))
+
+  Increases the line height of all `Heading` levels to improve legibility of wrapping lines of text — focusing on reducing the collision of diacritical marks in Thai Script.
+
 ## 34.2.0
 
 ### Minor Changes

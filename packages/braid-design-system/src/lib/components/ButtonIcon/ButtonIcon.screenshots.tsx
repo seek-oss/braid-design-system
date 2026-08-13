@@ -71,7 +71,12 @@ export const SoftBleedOn: Story = {
       <Box background="surface">
         <Inline space="small" alignY="center">
           <Heading level="2">Heading</Heading>
-          <ButtonIcon bleed icon={<IconBookmark />} label="Bookmark" />
+          <ButtonIcon
+            variant="soft"
+            bleed
+            icon={<IconBookmark />}
+            label="Bookmark"
+          />
         </Inline>
       </Box>
     </Box>
@@ -85,7 +90,75 @@ export const SoftBleedOff: Story = {
       <Box background="surface">
         <Inline space="small" alignY="center">
           <Heading level="2">Heading</Heading>
-          <ButtonIcon bleed={false} icon={<IconBookmark />} label="Bookmark" />
+          <ButtonIcon
+            variant="soft"
+            bleed={false}
+            icon={<IconBookmark />}
+            label="Bookmark"
+          />
+        </Inline>
+      </Box>
+    </Box>
+  ),
+};
+
+export const Solid: Story = {
+  render: () => (
+    <Inline space="large" alignY="center">
+      <ButtonIcon
+        variant="solid"
+        size="small"
+        icon={<IconBookmark />}
+        label="Small"
+      />
+      <ButtonIcon
+        variant="solid"
+        size="standard"
+        icon={<IconBookmark />}
+        label="Standard"
+      />
+      <ButtonIcon
+        variant="solid"
+        size="large"
+        icon={<IconBookmark />}
+        label="Large"
+      />
+    </Inline>
+  ),
+};
+
+export const SolidBleedOn: Story = {
+  name: 'Solid - bleed on',
+  render: () => (
+    <Box background="neutralLight" borderRadius="standard" padding="gutter">
+      <Box background="surface">
+        <Inline space="small" alignY="center">
+          <Heading level="2">Heading</Heading>
+          <ButtonIcon
+            variant="solid"
+            bleed
+            icon={<IconBookmark />}
+            label="Bookmark"
+          />
+        </Inline>
+      </Box>
+    </Box>
+  ),
+};
+
+export const SolidBleedOff: Story = {
+  name: 'Solid - bleed off',
+  render: () => (
+    <Box background="neutralLight" borderRadius="standard" padding="gutter">
+      <Box background="surface">
+        <Inline space="small" alignY="center">
+          <Heading level="2">Heading</Heading>
+          <ButtonIcon
+            variant="solid"
+            bleed={false}
+            icon={<IconBookmark />}
+            label="Bookmark"
+          />
         </Inline>
       </Box>
     </Box>
@@ -117,6 +190,43 @@ export const Transparent: Story = {
   ),
 };
 
+export const TransparentBleedOnDefault: Story = {
+  name: 'Transparent - bleed on (default)',
+  render: () => (
+    <Box background="neutralLight" borderRadius="standard" padding="gutter">
+      <Box background="surface">
+        <Inline space="small" alignY="center">
+          <Heading level="2">Heading</Heading>
+          <ButtonIcon
+            variant="transparent"
+            icon={<IconBookmark />}
+            label="Bookmark"
+          />
+        </Inline>
+      </Box>
+    </Box>
+  ),
+};
+
+export const TransparentBleedOff: Story = {
+  name: 'Transparent - bleed off',
+  render: () => (
+    <Box background="neutralLight" borderRadius="standard" padding="gutter">
+      <Box background="surface">
+        <Inline space="small" alignY="center">
+          <Heading level="2">Heading</Heading>
+          <ButtonIcon
+            bleed={false}
+            variant="transparent"
+            icon={<IconBookmark />}
+            label="Bookmark"
+          />
+        </Inline>
+      </Box>
+    </Box>
+  ),
+};
+
 export const ToneFormAccent: Story = {
   name: 'Tone - formAccent',
   render: () => (
@@ -129,6 +239,12 @@ export const ToneFormAccent: Story = {
       />
       <ButtonIcon
         variant="soft"
+        tone="formAccent"
+        icon={<IconBookmark />}
+        label="Bookmark"
+      />
+      <ButtonIcon
+        variant="solid"
         tone="formAccent"
         icon={<IconBookmark />}
         label="Bookmark"
@@ -190,43 +306,6 @@ export const VirtualTouchTarget: Story = {
   ),
 };
 
-export const TransparentBleedOnDefault: Story = {
-  name: 'Transparent - bleed on (default)',
-  render: () => (
-    <Box background="neutralLight" borderRadius="standard" padding="gutter">
-      <Box background="surface">
-        <Inline space="small" alignY="center">
-          <Heading level="2">Heading</Heading>
-          <ButtonIcon
-            variant="transparent"
-            icon={<IconBookmark />}
-            label="Bookmark"
-          />
-        </Inline>
-      </Box>
-    </Box>
-  ),
-};
-
-export const TransparentBleedOff: Story = {
-  name: 'Transparent - bleed off',
-  render: () => (
-    <Box background="neutralLight" borderRadius="standard" padding="gutter">
-      <Box background="surface">
-        <Inline space="small" alignY="center">
-          <Heading level="2">Heading</Heading>
-          <ButtonIcon
-            bleed={false}
-            variant="transparent"
-            icon={<IconBookmark />}
-            label="Bookmark"
-          />
-        </Inline>
-      </Box>
-    </Box>
-  ),
-};
-
 export const IconToneOverridesButtonTone: Story = {
   name: 'Icon tone overrides button tone',
   render: () => (
@@ -252,7 +331,8 @@ export const Contrast: Story = {
   render: () => (
     <BackgroundContrastTest>
       <Inline space="medium">
-        <ButtonIcon icon={<IconBookmark />} label="Bookmark" />
+        <ButtonIcon variant="solid" icon={<IconBookmark />} label="Bookmark" />
+        <ButtonIcon variant="soft" icon={<IconBookmark />} label="Bookmark" />
         <ButtonIcon
           variant="transparent"
           bleed={false}

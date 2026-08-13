@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import type { ComponentProps } from 'react';
 
 import { Text, Heading, IconRenderer, Stack } from '../';
 
@@ -10,8 +11,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconRenderer>;
 
-const customIcon = (
-  <IconRenderer>
+const CustomIcon = ({
+  tone,
+}: Pick<ComponentProps<typeof IconRenderer>, 'tone'>) => (
+  <IconRenderer tone={tone}>
     {({ className }) => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -28,30 +31,54 @@ const customIcon = (
 export const Default: Story = {
   render: () => (
     <Stack space="large">
-      <Text size="xsmall" icon={customIcon}>
+      <Text size="xsmall" icon={<CustomIcon />}>
         Text xsmall with custom icon
       </Text>
-      <Text size="small" icon={customIcon}>
+      <Text size="small" icon={<CustomIcon />}>
         Text small with custom icon
       </Text>
-      <Text size="standard" icon={customIcon}>
+      <Text size="standard" icon={<CustomIcon />}>
         Text standard with custom icon
       </Text>
-      <Text size="large" icon={customIcon}>
+      <Text size="large" icon={<CustomIcon />}>
         Text large with custom icon
       </Text>
-      <Heading level="4" icon={customIcon}>
+      <Heading level="4" icon={<CustomIcon />}>
         Heading 4 with custom icon
       </Heading>
-      <Heading level="3" icon={customIcon}>
+      <Heading level="3" icon={<CustomIcon />}>
         Heading 3 with custom icon
       </Heading>
-      <Heading level="2" icon={customIcon}>
+      <Heading level="2" icon={<CustomIcon />}>
         Heading 2 with custom icon
       </Heading>
-      <Heading level="1" icon={customIcon}>
+      <Heading level="1" icon={<CustomIcon />}>
         Heading 1 with custom icon
       </Heading>
     </Stack>
+  ),
+};
+
+export const InheritedTone: Story = {
+  render: () => (
+    <Text size="large" icon={<CustomIcon />} tone="positive">
+      Text large with custom icon
+    </Text>
+  ),
+};
+
+export const ExplicitToneInText: Story = {
+  render: () => (
+    <Text size="large" icon={<CustomIcon tone="brandAccent" />} tone="positive">
+      Text large with custom icon
+    </Text>
+  ),
+};
+
+export const ExplicitToneInHeading: Story = {
+  render: () => (
+    <Heading level="2" icon={<CustomIcon tone="brandAccent" />}>
+      Heading 2 with custom icon
+    </Heading>
   ),
 };

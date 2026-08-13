@@ -16,7 +16,6 @@ import {
 import type { UseIconProps } from '../../hooks/useIcon';
 
 import * as icons from './index';
-
 import {
   heading as headingSizes,
   textSizeUntrimmed as textSizes,

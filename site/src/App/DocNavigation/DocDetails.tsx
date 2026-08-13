@@ -192,7 +192,7 @@ export const DocDetails = () => {
               {'accessibility' in docs && docs.accessibility ? (
                 <Stack space={headingSpacing}>
                   <Heading level="3">
-                    <TitleLink>Accessibility</TitleLink>
+                    <TitleLink copyable>Accessibility</TitleLink>
                   </Heading>
                   {docs.accessibility}
                 </Stack>
@@ -228,7 +228,7 @@ export const DocDetails = () => {
                           docs.alternatives.length > 0 ? (
                             <Stack space={headingSpacing}>
                               <Heading level="3">
-                                <TitleLink label="Alternatives">
+                                <TitleLink copyable label="Alternatives">
                                   Alternatives
                                 </TitleLink>
                               </Heading>
@@ -266,7 +266,9 @@ export const DocDetails = () => {
               docs.alternatives.length > 0 ? (
                 <Stack space={headingSpacing}>
                   <Heading level="3">
-                    <TitleLink label="Alternatives">Alternatives</TitleLink>
+                    <TitleLink copyable label="Alternatives">
+                      Alternatives
+                    </TitleLink>
                   </Heading>
                   <List space="medium">
                     {docs.alternatives.map((alt) => (

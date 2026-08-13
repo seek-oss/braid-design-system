@@ -18,7 +18,6 @@ const skuConfig: SkuConfig = {
   clientEntry: './src/client.tsx',
   renderEntry: './src/render.tsx',
   routes,
-  rootResolution: false,
   public: './src/public',
   target: './dist',
   publicPath: `${process.env.BASE_NAME}/`,

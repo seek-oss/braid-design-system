@@ -7,7 +7,7 @@ import {
   Text,
   ButtonLink,
 } from 'braid-design-system';
-import type { ReactNode } from 'react';
+import { type ReactNode, useLayoutEffect, useState } from 'react';
 
 import { KeyboardShortcut } from '../KeyboardShortcut/KeyboardShortcut';
 import { MenuButton } from '../MenuButton/MenuButton';
@@ -30,6 +30,8 @@ interface HeaderNavigationProps {
   navLinks?: NavLink[];
 }
 
+const isApplePlatform = () => /Mac|iPhone|iPod|iPad/i.test(navigator.userAgent);
+
 const NavLink = ({ label, href, active }: NavLink) => (
   <ButtonLink
     variant={active ? 'soft' : 'transparent'}
@@ -49,68 +51,70 @@ export const HeaderNavigation = ({
   logoHref = '/',
   // themeToggle = null,
   navLinks,
-}: HeaderNavigationProps) => (
-  <Box display="flex" alignItems="center">
-    <Box>
-      <Hidden print>
-        <Box
-          paddingRight="medium"
-          display={{
-            mobile: 'flex',
-            wide: 'none',
-          }}
-          alignItems="center"
-        >
-          <MenuButton open={menuOpen} onClick={menuClick} />
-        </Box>
-      </Hidden>
-      <Box paddingRight="medium">
-        <Link href={logoHref} tabIndex={menuOpen ? -1 : undefined}>
-          <Inline space="small" alignY="center">
-            <>{logo}</>
-            <Text weight="medium" size="small">
-              Braid Design System
-            </Text>
-          </Inline>
-        </Link>
-      </Box>
-    </Box>
+}: HeaderNavigationProps) => {
+  const [modifierKey, setModifierKey] = useState('⌘');
 
-    <Box
-      display={{ mobile: 'none', wide: 'flex' }}
-      alignItems="center"
-      gap="large"
-      className={navLinksContainer}
-      justifyContent="flexEnd"
-    >
-      <Box
-        component="button"
-        padding="xxsmall"
-        paddingRight="xsmall"
-        borderRadius="standard"
-        className={searchButton}
-        onClick={onSearchClick}
-      >
-        <KeyboardShortcut
-          keys={[
-            navigator.platform.startsWith('Mac') ||
-            navigator.platform === 'iPhone' ||
-            navigator.platform === 'iPad' ||
-            navigator.platform === 'iPod'
-              ? '⌘'
-              : 'Ctrl',
-            'K',
-          ]}
-          shortcutLabel={<IconSearch />}
-        />
+  useLayoutEffect(() => {
+    if (!isApplePlatform()) {
+      setModifierKey('Ctrl');
+    }
+  }, []);
+
+  return (
+    <Box display="flex" alignItems="center">
+      <Box>
+        <Hidden print>
+          <Box
+            paddingRight="medium"
+            display={{
+              mobile: 'flex',
+              wide: 'none',
+            }}
+            alignItems="center"
+          >
+            <MenuButton open={menuOpen} onClick={menuClick} />
+          </Box>
+        </Hidden>
+        <Box paddingRight="medium">
+          <Link href={logoHref} tabIndex={menuOpen ? -1 : undefined}>
+            <Inline space="small" alignY="center">
+              <>{logo}</>
+              <Text weight="medium" size="small">
+                Braid Design System
+              </Text>
+            </Inline>
+          </Link>
+        </Box>
       </Box>
-      {navLinks && (
-        <Inline space="medium">
-          {navLinks.map(({ label, href, active }) => (
-            <NavLink key={label} label={label} href={href} active={active} />
-          ))}
-        </Inline>
-      )}
+
+      <Box
+        display={{ mobile: 'none', wide: 'flex' }}
+        alignItems="center"
+        gap="large"
+        className={navLinksContainer}
+        justifyContent="flexEnd"
+      >
+        <Box
+          component="button"
+          padding="xxsmall"
+          paddingRight="xsmall"
+          borderRadius="standard"
+          className={searchButton}
+          onClick={onSearchClick}
+        >
+          <KeyboardShortcut
+            keys={[modifierKey, 'K']}
+            shortcutLabel={<IconSearch />}
+          />
+        </Box>
+        {navLinks && (
+          <Inline space="medium">
+            {navLinks.map(({ label, href, active }) => (
+              <NavLink key={label} label={label} href={href} active={active} />
+            ))}
+          </Inline>
+        )}
+      </Box>
     </Box>
-  </Box>
-);
+  );
+};

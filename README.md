@@ -1,6 +1,8 @@
 <div align="center" >
-  <img src="logo.png#gh-light-mode-only" alt="BRAID" title="BRAID" width="186px" />
-  <img src="logo-inverted.png#gh-dark-mode-only" alt="BRAID" title="BRAID" width="186px" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/seek-oss/braid-design-system/HEAD/logo-inverted.png" />
+    <img src="https://raw.githubusercontent.com/seek-oss/braid-design-system/HEAD/logo.png" alt="BRAID" title="BRAID" width="186px" />
+  </picture>
   <br/>
   <br/>
   Themeable design system for the SEEK Group.

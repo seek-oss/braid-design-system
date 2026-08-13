@@ -50,9 +50,9 @@
     "mini-css-extract-plugin": "^2.6.0",
     "npm-registry-client": "^8.6.0",
     "panzoom": "^9.4.2",
-    "playroom": "1.2.2",
+    "playroom": "1.3.0",
     "polished": "^4.1.0",
-    "prettier": "^3.4.1",
+    "prettier": "^3.9.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-element-to-jsx-string": "^17.0.1",
@@ -63,9 +63,9 @@
     "react-router": "^7.6.3",
     "react-syntax-highlighter": "^15.5.0",
     "react-use": "^17.4.0",
-    "sku": "15.15.2",
+    "sku": "16.1.0",
     "unist-util-visit": "^5.0.0",
-    "webpack": "^5.76.0"
+    "webpack": "5.108.1"
   },
   "skuSkipPostInstall": true,
   "skuSkipConfigure": true,

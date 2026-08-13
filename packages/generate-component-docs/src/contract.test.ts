@@ -1,5 +1,5 @@
-import { typeSerializer } from './contractSerialiser';
-import generate from './generate';
+import { typeSerializer } from './contractSerialiser.ts';
+import generate from './generate.ts';
 
 expect.addSnapshotSerializer(typeSerializer);
 

@@ -21,9 +21,7 @@ import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
 export type ColumnsProps = CollapsibleAlignmentProps & {
   space: ResponsiveSpace;
   children:
-    | Array<ReactElement<ColumnProps> | null>
-    | ReactElement<ColumnProps>
-    | null;
+    Array<ReactElement<ColumnProps> | null> | ReactElement<ColumnProps> | null;
   component?: (typeof validColumnsComponents)[number];
   data?: DataAttributeMap;
 };

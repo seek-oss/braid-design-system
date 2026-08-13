@@ -41,7 +41,7 @@
     "esbuild": "^0.21.5",
     "fast-glob": "^3.3.2",
     "ink": "^6.0.1",
-    "prettier": "^3.4.1",
+    "prettier": "^3.9.5",
     "react": "^19.1.0",
     "recast": "^0.21.1",
     "workerpool": "^6.2.1"
