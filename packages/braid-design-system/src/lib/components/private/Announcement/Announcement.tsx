@@ -32,6 +32,7 @@ export const Announcement = ({ children }: AnnouncementProps) => {
     element.setAttribute('class', className);
     element.setAttribute('aria-live', 'polite');
     element.setAttribute('aria-atomic', 'true');
+    element.setAttribute('translate', 'no');
 
     document.body.appendChild(element);
 

@@ -8,8 +8,10 @@ import { containerPrefix } from '../private/Announcement/Announcement';
 
 import type { AutosuggestProps } from './Autosuggest';
 
-const getAnnouncements = () =>
-  document.body.querySelector(`[id*=${containerPrefix}]`)?.textContent || null;
+const getAnnouncementElement = () =>
+  document.body.querySelector(`[id*=${containerPrefix}]`);
+
+const getAnnouncements = () => getAnnouncementElement()?.textContent || null;
 
 function renderAutosuggest<Value>({
   value: initialValue,
@@ -68,6 +70,7 @@ function renderAutosuggest<Value>({
 
   return {
     input,
+    getByRole,
     getInputValue,
     changeHandler,
     queryByLabelText,
@@ -99,6 +102,18 @@ describe('Autosuggest', () => {
     fireEvent.blur(input);
     expect(queryByLabelText('Apples')).toBe(null);
     expect(getAnnouncements()).toBeNull();
+  });
+
+  it('should set translate="no" on the suggestion list and announcements', async () => {
+    const { input, getByRole } = renderAutosuggest({
+      value: { text: '' },
+      suggestions: [{ text: 'Apples', value: 'apples' }],
+    });
+
+    await userEvent.click(input);
+
+    expect(getByRole('listbox').getAttribute('translate')).toBe('no');
+    expect(getAnnouncementElement()?.getAttribute('translate')).toBe('no');
   });
 
   it('should show text highlights', async () => {
