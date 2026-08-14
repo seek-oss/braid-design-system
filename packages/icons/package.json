@@ -19,5 +19,8 @@
   "scripts": {
     "lint:prettier": "prettier --cache --list-different .",
     "format:prettier": "prettier --cache --write ."
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
