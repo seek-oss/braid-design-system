@@ -51,6 +51,35 @@ const svgrConfig = {
   titleProp: true,
 };
 
+const iconsPackageName = '@braid-design-system/icons';
+
+// Resolve via the installed package's `exports` map (SVGs on disk are ignored until exported).
+const resolveExportedIconSvgs = async (): Promise<string[]> => {
+  const packageJsonPath = require.resolve(`${iconsPackageName}/package.json`);
+  const { exports: packageExports } = (await fs.readJson(packageJsonPath)) as {
+    exports?: Record<string, unknown>;
+  };
+
+  return Object.keys(packageExports ?? {})
+    .filter((exportPath) => exportPath.endsWith('.svg'))
+    .map((exportPath) => require.resolve(`${iconsPackageName}/${exportPath.replace(/^\.\//, '')}`));
+};
+
+// Local `icons/` covers unmigrated SVGs; the icons package wins on basename clash.
+const mergeSvgSources = (packageSvgPaths: string[], localSvgPaths: string[]): string[] => {
+  const svgPathsByBasename = new Map<string, string>();
+
+  for (const svgFilePath of localSvgPaths) {
+    svgPathsByBasename.set(path.basename(svgFilePath), svgFilePath);
+  }
+
+  for (const svgFilePath of packageSvgPaths) {
+    svgPathsByBasename.set(path.basename(svgFilePath), svgFilePath);
+  }
+
+  return [...svgPathsByBasename.values()];
+};
+
 (async () => {
   // First clean up any existing SVG components
   const existingComponentPaths = await glob('*/*Svg.tsx', {
@@ -63,11 +92,12 @@ const svgrConfig = {
     }),
   );
 
-  // Load SVGs
-  const svgFilePaths = await glob('icons/*.svg', {
+  // Load SVGs from @braid-design-system/icons first, then leftover local files.
+  const localSvgFilePaths = await glob('icons/*.svg', {
     cwd: baseDir,
     absolute: true,
   });
+  const svgFilePaths = mergeSvgSources(await resolveExportedIconSvgs(), localSvgFilePaths);
 
   const filePromises = svgFilePaths.map(async (svgFilePath) => {
     // Split out the icon variants (e.g. bookmark-active.svg)

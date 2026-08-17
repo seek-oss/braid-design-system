@@ -156,6 +156,7 @@
     "@babel/core": "^7.26.0",
     "@babel/plugin-transform-typescript": "^7.20.13",
     "@babel/types": "^7.26.0",
+    "@braid-design-system/icons": "workspace:*",
     "@braid-design-system/source.macro": "workspace:*",
     "@capsizecss/metrics": "^4.0.0",
     "@storybook/react-webpack5": "^10.2.7",
