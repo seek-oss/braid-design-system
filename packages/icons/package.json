@@ -10,11 +10,11 @@
   "license": "MIT",
   "author": "SEEK",
   "exports": {
-    "./tag.svg": "./tag.svg",
+    "./*.svg": "./svg/*.svg",
     "./package.json": "./package.json"
   },
   "files": [
-    "tag.svg"
+    "svg"
   ],
   "scripts": {
     "lint:prettier": "prettier --cache --list-different .",

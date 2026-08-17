@@ -52,32 +52,54 @@ const svgrConfig = {
 };
 
 const iconsPackageName = '@braid-design-system/icons';
+const platformSuffixPattern = /^(web|ios|android)$/i;
 
-// Resolve via the installed package's `exports` map (SVGs on disk are ignored until exported).
-const resolveExportedIconSvgs = async (): Promise<string[]> => {
-  const packageJsonPath = require.resolve(`${iconsPackageName}/package.json`);
-  const { exports: packageExports } = (await fs.readJson(packageJsonPath)) as {
-    exports?: Record<string, unknown>;
-  };
-
-  return Object.keys(packageExports ?? {})
-    .filter((exportPath) => exportPath.endsWith('.svg'))
-    .map((exportPath) => require.resolve(`${iconsPackageName}/${exportPath.replace(/^\.\//, '')}`));
+const parseIconFileName = (svgFilePath: string) => {
+  const baseName = path.basename(svgFilePath, '.svg');
+  const [maybePlatform, ...stemParts] = baseName.split('.').reverse();
+  if (stemParts.length > 0 && platformSuffixPattern.test(maybePlatform)) {
+    return { stem: stemParts.reverse().join('.'), platform: maybePlatform.toLowerCase() };
+  }
+  return { stem: baseName, platform: undefined };
 };
 
-// Local `icons/` covers unmigrated SVGs; the icons package wins on basename clash.
+const isNativePlatformIcon = (svgFilePath: string) => {
+  const { platform } = parseIconFileName(svgFilePath);
+  return platform === 'ios' || platform === 'android';
+};
+
+// Resolve SVGs via the installed package exports (`@braid-design-system/icons/tag.svg` → `svg/tag.svg`).
+const resolveExportedIconSvgs = async (): Promise<string[]> => {
+  const packageDir = path.dirname(require.resolve(`${iconsPackageName}/package.json`));
+  const svgFilePaths = await glob('svg/*.svg', { cwd: packageDir, absolute: true });
+  // Skip `.ios` / `.android`; web generate uses unsuffixed files.
+  return svgFilePaths.flatMap((svgFilePath) => {
+    if (isNativePlatformIcon(svgFilePath)) {
+      return [];
+    }
+    const specifier = `${iconsPackageName}/${path.basename(svgFilePath)}`;
+    try {
+      return [require.resolve(specifier)];
+    } catch {
+      throw new Error(
+        `Could not resolve ${specifier}. Ensure the file exists under svg/ and is matched by the icons package exports map.`,
+      );
+    }
+  });
+};
+
+// Local `icons/` covers unmigrated SVGs; skip `.ios` / `.android`; the icons package wins on the same stem.
 const mergeSvgSources = (packageSvgPaths: string[], localSvgPaths: string[]): string[] => {
-  const svgPathsByBasename = new Map<string, string>();
+  const svgPathsByStem = new Map<string, string>();
 
-  for (const svgFilePath of localSvgPaths) {
-    svgPathsByBasename.set(path.basename(svgFilePath), svgFilePath);
+  for (const svgFilePath of [...localSvgPaths, ...packageSvgPaths]) {
+    if (isNativePlatformIcon(svgFilePath)) {
+      continue;
+    }
+    svgPathsByStem.set(parseIconFileName(svgFilePath).stem, svgFilePath);
   }
 
-  for (const svgFilePath of packageSvgPaths) {
-    svgPathsByBasename.set(path.basename(svgFilePath), svgFilePath);
-  }
-
-  return [...svgPathsByBasename.values()];
+  return [...svgPathsByStem.values()];
 };
 
 (async () => {
@@ -100,8 +122,8 @@ const mergeSvgSources = (packageSvgPaths: string[], localSvgPaths: string[]): st
   const svgFilePaths = mergeSvgSources(await resolveExportedIconSvgs(), localSvgFilePaths);
 
   const filePromises = svgFilePaths.map(async (svgFilePath) => {
-    // Split out the icon variants (e.g. bookmark-active.svg)
-    const [svgName, variantName] = path.basename(svgFilePath, '.svg').split('-');
+    // Split out the icon variants (e.g. bookmark-active.svg).
+    const [svgName, variantName] = parseIconFileName(svgFilePath).stem.split('-');
 
     const rawSvg = await fs.readFile(svgFilePath, 'utf-8');
     const svg = rawSvg.replace(/ data-name=".*?"/g, '');

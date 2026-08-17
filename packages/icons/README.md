@@ -1,17 +1,15 @@
 # `@braid-design-system/icons`
 
-SVG icon assets for Braid.
-
-This package currently publishes a single icon, `tag.svg`, so consumers can validate how they ingest Braid icons.
+Canonical SVG assets for Braid icons. This package is the source of truth for icon drawings used across web and native. Import the files directly; platform UI kits wrap them in their own components.
 
 ```sh
 npm install @braid-design-system/icons
 ```
 
-Import the SVG:
+Unsuffixed files are the default drawing (used on web and anywhere a platform does not override). Platform-specific drawings use a suffix:
 
 ```js
-import tagIcon from '@braid-design-system/icons/tag.svg';
+import icon from '@braid-design-system/icons/iconName.svg';
+import iconIos from '@braid-design-system/icons/iconName.ios.svg';
+import iconAndroid from '@braid-design-system/icons/iconName.android.svg';
 ```
-
-Or read it from `node_modules/@braid-design-system/icons/tag.svg`.
