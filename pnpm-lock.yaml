@@ -180,6 +180,9 @@ importers:
       '@babel/types':
         specifier: ^7.26.0
         version: 7.29.8
+      '@braid-design-system/icons':
+        specifier: workspace:*
+        version: link:../icons
       '@braid-design-system/source.macro':
         specifier: workspace:*
         version: link:../source.macro
