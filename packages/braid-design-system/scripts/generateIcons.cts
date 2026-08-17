@@ -70,7 +70,7 @@ const isNativePlatformIcon = (svgFilePath: string) => {
 
 // Resolve SVGs via the installed package exports (`@braid-design-system/icons/tag.svg` → `svg/tag.svg`).
 const resolveExportedIconSvgs = async (): Promise<string[]> => {
-  const packageDir = path.dirname(require.resolve(`${iconsPackageName}/package.json`));
+  const packageDir = path.dirname(require.resolve('@braid-design-system/icons/package.json'));
   const svgFilePaths = await glob('svg/*.svg', { cwd: packageDir, absolute: true });
   // Skip `.ios` / `.android`; web generate uses unsuffixed files.
   return svgFilePaths.flatMap((svgFilePath) => {
