@@ -41,4 +41,10 @@ export const snippets: Snippets = [
       <ButtonIcon tone="formAccent" icon={<IconAdd />} label="Add" />,
     ),
   },
+  {
+    description: 'Brand accent',
+    code: source(
+      <ButtonIcon tone="brandAccent" icon={<IconAdd />} label="Add" />,
+    ),
+  },
 ];

@@ -35,8 +35,8 @@ export const buttonIconVariants: Array<
 > = ['soft', 'transparent', 'solid'];
 
 export const buttonIconTones: Array<
-  Extract<ButtonStyleProps['tone'], 'neutral' | 'formAccent'>
-> = ['neutral', 'formAccent'];
+  Extract<ButtonStyleProps['tone'], 'neutral' | 'formAccent' | 'brandAccent'>
+> = ['neutral', 'formAccent', 'brandAccent'];
 export const buttonIconSizes = ['small', 'standard', 'large'] as const;
 
 type ButtonIconSize = (typeof buttonIconSizes)[number];

@@ -114,9 +114,10 @@ const docs: ComponentDocs = {
         label: 'Tones',
         description: (
           <Text>
-            By default, the button adopts the <Strong>neutral</Strong> tone,
-            however, actions can be emphasised by setting the{' '}
-            <Strong>tone</Strong> prop to <Strong>formAccent</Strong>.
+            By default, the button adopts the <Strong>neutral</Strong> tone.
+            Actions can be emphasised by setting the <Strong>tone</Strong> prop
+            to <Strong>formAccent</Strong>, or to <Strong>brandAccent</Strong>{' '}
+            for the most important actions.
           </Text>
         ),
         Example: () =>
@@ -142,6 +143,17 @@ const docs: ComponentDocs = {
                 />
                 <Text tone="secondary" size="xsmall">
                   FORMACCENT
+                </Text>
+              </Inline>
+              <Inline space="gutter" alignY="center">
+                <ButtonIcon
+                  tone="brandAccent"
+                  variant="soft"
+                  icon={<IconClear />}
+                  label="Brand Accent tone"
+                />
+                <Text tone="secondary" size="xsmall">
+                  BRANDACCENT
                 </Text>
               </Inline>
             </Stack>,

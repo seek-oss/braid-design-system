@@ -253,6 +253,32 @@ export const ToneFormAccent: Story = {
   ),
 };
 
+export const ToneBrandAccent: Story = {
+  name: 'Tone - brandAccent',
+  render: () => (
+    <Inline space="large" alignY="center">
+      <ButtonIcon
+        variant="transparent"
+        tone="brandAccent"
+        icon={<IconBookmark />}
+        label="Bookmark"
+      />
+      <ButtonIcon
+        variant="soft"
+        tone="brandAccent"
+        icon={<IconBookmark />}
+        label="Bookmark"
+      />
+      <ButtonIcon
+        variant="solid"
+        tone="brandAccent"
+        icon={<IconBookmark />}
+        label="Bookmark"
+      />
+    </Inline>
+  ),
+};
+
 export const VirtualTouchTarget: Story = {
   name: 'Virtual touch target',
   render: () => (

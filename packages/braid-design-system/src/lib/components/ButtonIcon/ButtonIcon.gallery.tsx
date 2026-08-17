@@ -101,6 +101,24 @@ export const galleryItems: GalleryComponent = {
                 FORMACCENT
               </Text>
             </Inline>
+            <Inline space="small" alignY="center">
+              <ButtonIcon
+                tone="brandAccent"
+                variant="soft"
+                icon={<IconAdd />}
+                label="Add"
+              />
+              <ButtonIcon
+                tone="brandAccent"
+                variant="transparent"
+                bleed={false}
+                icon={<IconAdd />}
+                label="Add"
+              />
+              <Text tone="secondary" size="xsmall">
+                BRANDACCENT
+              </Text>
+            </Inline>
           </Stack>,
         ),
     },
