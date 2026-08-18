@@ -18,7 +18,6 @@
     },
     "generate:icons": {
       "inputs": [
-        "{projectRoot}/icons/*.svg",
         "{workspaceRoot}/packages/icons/svg/*.svg",
         "{workspaceRoot}/packages/icons/package.json",
         "scripts"

@@ -51,8 +51,21 @@ const svgrConfig = {
   titleProp: true,
 };
 
-const iconsPackageName = '@braid-design-system/icons';
-const platformSuffixPattern = /^(web|ios|android)$/i;
+const platformSuffixPattern = /^(web|ios|android|native)$/i;
+const skippedOnWebPlatforms = new Set(['ios', 'android', 'native']);
+// Web uses IconThumb + CSS `direction` instead of separate up/down drawings.
+const skippedWebStems = new Set(['thumbUp', 'thumbDown']);
+
+// Package filenames describe the drawing (`bookmarkFill`). Web component variants stay
+// `active` / `hidden` / `feeling`.
+const drawingVariantSuffixes: Array<{ suffix: string; variantName: string | undefined }> = [
+  { suffix: 'Positive', variantName: 'positive' },
+  { suffix: 'Negative', variantName: 'negative' },
+  { suffix: 'Neutral', variantName: undefined },
+  { suffix: 'Hidden', variantName: 'hidden' },
+  { suffix: 'Fill', variantName: 'active' },
+  { suffix: 'Half', variantName: 'half' },
+];
 
 const parseIconFileName = (svgFilePath: string) => {
   const baseName = path.basename(svgFilePath, '.svg');
@@ -63,40 +76,41 @@ const parseIconFileName = (svgFilePath: string) => {
   return { stem: baseName, platform: undefined };
 };
 
-const isNativePlatformIcon = (svgFilePath: string) => {
-  const { platform } = parseIconFileName(svgFilePath);
-  return platform === 'ios' || platform === 'android';
+const parseDrawingStem = (stem: string): { svgName: string; variantName: string | undefined } => {
+  for (const { suffix, variantName } of drawingVariantSuffixes) {
+    if (stem.length > suffix.length && stem.endsWith(suffix)) {
+      return { svgName: stem.slice(0, -suffix.length), variantName };
+    }
+  }
+
+  return { svgName: stem, variantName: undefined };
 };
 
-// Resolve SVGs via the installed package exports (`@braid-design-system/icons/tag.svg` → `svg/tag.svg`).
-const resolveExportedIconSvgs = async (): Promise<string[]> => {
-  const packageDir = path.dirname(require.resolve('@braid-design-system/icons/package.json'));
-  const svgFilePaths = await glob('svg/*.svg', { cwd: packageDir, absolute: true });
-  // Skip `.ios` / `.android`; web generate uses unsuffixed files.
-  return svgFilePaths.flatMap((svgFilePath) => {
-    if (isNativePlatformIcon(svgFilePath)) {
-      return [];
-    }
-    const specifier = `${iconsPackageName}/${path.basename(svgFilePath)}`;
-    try {
-      return [require.resolve(specifier)];
-    } catch {
-      throw new Error(
-        `Could not resolve ${specifier}. Ensure the file exists under svg/ and is matched by the icons package exports map.`,
-      );
-    }
-  });
+const shouldSkipOnWeb = (svgFilePath: string) => {
+  const { stem, platform } = parseIconFileName(svgFilePath);
+  if (platform !== undefined && skippedOnWebPlatforms.has(platform)) {
+    return true;
+  }
+  return skippedWebStems.has(stem);
 };
 
-// Local `icons/` covers unmigrated SVGs; skip `.ios` / `.android`; the icons package wins on the same stem.
-const mergeSvgSources = (packageSvgPaths: string[], localSvgPaths: string[]): string[] => {
+const isWebOverride = (svgFilePath: string) => parseIconFileName(svgFilePath).platform === 'web';
+
+// Prefer `.web` over an unsuffixed file with the same stem (`chevron.web.svg` beats `chevron.svg`).
+const webSvgSources = (svgFilePaths: string[]): string[] => {
   const svgPathsByStem = new Map<string, string>();
 
-  for (const svgFilePath of [...localSvgPaths, ...packageSvgPaths]) {
-    if (isNativePlatformIcon(svgFilePath)) {
+  for (const svgFilePath of svgFilePaths) {
+    if (shouldSkipOnWeb(svgFilePath)) {
       continue;
     }
-    svgPathsByStem.set(parseIconFileName(svgFilePath).stem, svgFilePath);
+
+    const { stem } = parseIconFileName(svgFilePath);
+    const existing = svgPathsByStem.get(stem);
+
+    if (!existing || isWebOverride(svgFilePath) || !isWebOverride(existing)) {
+      svgPathsByStem.set(stem, svgFilePath);
+    }
   }
 
   return [...svgPathsByStem.values()];
@@ -114,16 +128,11 @@ const mergeSvgSources = (packageSvgPaths: string[], localSvgPaths: string[]): st
     }),
   );
 
-  // Load SVGs from @braid-design-system/icons first, then leftover local files.
-  const localSvgFilePaths = await glob('icons/*.svg', {
-    cwd: baseDir,
-    absolute: true,
-  });
-  const svgFilePaths = mergeSvgSources(await resolveExportedIconSvgs(), localSvgFilePaths);
+  const packageDir = path.dirname(require.resolve('@braid-design-system/icons/package.json'));
+  const svgFilePaths = webSvgSources(await glob('svg/*.svg', { cwd: packageDir, absolute: true }));
 
   const filePromises = svgFilePaths.map(async (svgFilePath) => {
-    // Split out the icon variants (e.g. bookmark-active.svg).
-    const [svgName, variantName] = parseIconFileName(svgFilePath).stem.split('-');
+    const { svgName, variantName } = parseDrawingStem(parseIconFileName(svgFilePath).stem);
 
     const rawSvg = await fs.readFile(svgFilePath, 'utf-8');
     const svg = rawSvg.replace(/ data-name=".*?"/g, '');
@@ -181,7 +190,7 @@ const mergeSvgSources = (packageSvgPaths: string[], localSvgPaths: string[]): st
       encoding: 'utf-8',
     });
 
-    // Bail out early if we're processing an icon variant (e.g. bookmark-active.svg)
+    // Bail out early if we're processing an icon variant (e.g. bookmarkFill.svg)
     // All subsequent steps should only happen once per icon component.
     if (variantName) {
       return;
