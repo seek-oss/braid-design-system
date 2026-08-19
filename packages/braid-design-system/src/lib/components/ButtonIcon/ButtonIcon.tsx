@@ -70,6 +70,19 @@ const padding: Record<ButtonIconSize, Space> = {
   large: 'xsmall',
 };
 
+const resolveToneAndVariant = ({
+  variant: variantProp,
+  tone: toneProp,
+}: Pick<ButtonIconProps, 'variant' | 'tone'>) => {
+  const fallbackVariant =
+    toneProp === 'formAccent' || toneProp === 'brandAccent' ? 'solid' : 'soft';
+
+  return {
+    variant: variantProp ?? fallbackVariant,
+    tone: toneProp ?? 'neutral',
+  };
+};
+
 const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
   (
     {
@@ -77,8 +90,8 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
       label,
       id,
       size = 'standard',
-      tone = 'neutral',
-      variant = 'soft',
+      tone: toneProp,
+      variant: variantProp,
       type = 'button',
       bleed,
       tooltipPlacement,
@@ -97,6 +110,11 @@ const ButtonIconContent = forwardRef<HTMLButtonElement, ButtonIconProps>(
     },
     forwardedRef,
   ) => {
+    const { tone, variant } = resolveToneAndVariant({
+      variant: variantProp,
+      tone: toneProp,
+    });
+
     const { root, content } = useButtonStyles({
       variant,
       tone,
