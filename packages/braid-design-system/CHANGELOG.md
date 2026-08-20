@@ -1,5 +1,33 @@
 # braid-design-system
 
+## 34.7.0
+
+### Minor Changes
+
+- **ButtonIcon:** Add `brandAccent` tone ([#2125](https://github.com/seek-oss/braid-design-system/pull/2125))
+
+  Introduces support for the `brandAccent` tone on `ButtonIcon`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon tone="brandAccent" icon={<IconAdd />} label="Add" />
+  ```
+
+- **ButtonIcon:** Default accent tones to `solid` when `variant` is omitted ([#2125](https://github.com/seek-oss/braid-design-system/pull/2125))
+
+  Accent tones (`formAccent`, `brandAccent`) now default to `solid` when `variant` is omitted — existing `formAccent` usage can pass `variant="soft"` to keep the previous look.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <ButtonIcon tone="formAccent" icon={<IconAdd />} label="Add" />
+  ```
+
+### Patch Changes
+
+- **Rating:** Expose the star graphic with `role="img"` so the `aria-label` is announced reliably by assistive technologies. ([#2122](https://github.com/seek-oss/braid-design-system/pull/2122))
+
 ## 34.6.2
 
 ### Patch Changes
