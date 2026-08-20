@@ -53,12 +53,12 @@ export type NormalisedPropType =
   | { type: 'alias'; alias: string; params: NormalisedPropType[] }
   | NormalisedInterface;
 
-export interface ComponentDoc {
+interface ComponentDoc {
   exportType: 'component';
   props: NormalisedInterface;
 }
 
-export interface HookDoc {
+interface HookDoc {
   exportType: 'hook';
   params: NormalisedPropType[];
   returnType: NormalisedPropType;

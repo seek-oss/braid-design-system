@@ -17,7 +17,6 @@ import {
   type RefObject,
   type AllHTMLAttributes,
   createContext,
-  useContext,
 } from 'react';
 
 import type { ResponsiveSpace } from '../../../css/atoms/atoms';
@@ -68,7 +67,7 @@ function getFloatingUiPosition(
 // Ensures it matches the highest available zIndex. Not semantically correct
 const zIndex = 'notification';
 
-export interface PopoverPlacementData {
+interface PopoverPlacementData {
   placement: Placement;
   arrow?: {
     x?: number;
@@ -95,7 +94,7 @@ export interface PopoverProps {
   children: ReactNode;
 }
 
-export interface PopoverMiddlewareData {
+interface PopoverMiddlewareData {
   arrow?: {
     x?: number;
     y?: number;
@@ -104,11 +103,6 @@ export interface PopoverMiddlewareData {
 }
 
 const PopoverContext = createContext<PopoverMiddlewareData | null>(null);
-
-export const usePopoverContext = () => {
-  const context = useContext(PopoverContext);
-  return context;
-};
 
 const PopoverContent = forwardRef<HTMLElement, PopoverProps>(
   (

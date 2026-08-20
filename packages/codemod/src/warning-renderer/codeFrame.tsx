@@ -3,8 +3,6 @@ import { Box, Text } from 'ink';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from 'react';
 
-import { renderToString } from '../ink/ink-to-string';
-
 import SyntaxHighlight from './SyntaxHighlight';
 
 interface CodeLineProps {
@@ -95,6 +93,3 @@ export const CodeFrame = ({ code, location }: CodeFrameProps) => {
     </Box>
   );
 };
-
-export const renderCodeFrame = (props: CodeFrameProps) =>
-  `\n${renderToString(<CodeFrame {...props} />)}`;

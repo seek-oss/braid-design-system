@@ -12,7 +12,7 @@ import {
   useRef,
   useReducer,
   useCallback,
-  useEffect,
+  useLayoutEffect,
   forwardRef,
 } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
@@ -50,6 +50,7 @@ import {
   getItemId,
 } from './createAccessibilityProps';
 import { reverseMatches } from './reverseMatches';
+import { useScrollIntoView } from './useScrollIntoView';
 
 import * as styles from './Autosuggest.css';
 import { touchableText } from '../../css/typography.css';
@@ -559,9 +560,7 @@ export const Autosuggest = forwardRef(function <Value>(
       ? document.getElementById(getItemId(resolvedId, highlightedIndex))
       : null;
 
-  highlightedItem?.scrollIntoView({ block: 'nearest' });
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch({
       type: HAS_SUGGESTIONS_CHANGED,
     });
@@ -572,18 +571,8 @@ export const Autosuggest = forwardRef(function <Value>(
     tablet: false,
   });
 
-  useEffect(() => {
-    if (menuRef.current && isOpen && !isMobile) {
-      const { bottom: menuBottom } = menuRef.current.getBoundingClientRect();
-      const viewportHeight = document.documentElement.clientHeight;
-
-      if (menuBottom > viewportHeight) {
-        menuRef.current.scrollIntoView(false);
-      }
-    }
-    // re-running this effect if the suggestionCount changes
-    // to ensure asynchronous updates aren't left out of view.
-  }, [isOpen, isMobile, suggestionCount]);
+  // Keep highlight scrolling inside the menu; native scrollIntoView also moves the page.
+  useScrollIntoView(highlightedItem, menuRef);
 
   const inputProps = {
     value: previewValue ? previewValue.text : value.text,
@@ -784,7 +773,6 @@ export const Autosuggest = forwardRef(function <Value>(
             triggerRef={fieldRef}
             open={isOpen}
             width="full"
-            lockPlacement
             offsetSpace="xxsmall"
             modal={false}
             role={false}
@@ -798,6 +786,10 @@ export const Autosuggest = forwardRef(function <Value>(
               <Box
                 textAlign="left"
                 component="ul"
+                // Prevent browser translation extensions (e.g. Google Translate)
+                // from wrapping menu text nodes in <font>, which breaks React
+                // DOM updates
+                translate="no"
                 background={
                   !hasSuggestions && noSuggestionsMessage
                     ? { lightMode: 'neutralSoft', darkMode: 'neutral' }
@@ -828,7 +820,6 @@ export const Autosuggest = forwardRef(function <Value>(
                 ) : null}
                 {hasSuggestions
                   ? normalisedSuggestions.map((suggestion, index) => {
-                      const { text } = suggestion;
                       const groupHeading = groupHeadingIndexes.get(index);
                       const highlights = suggestionHighlight
                         ? highlightSuggestions(
@@ -839,7 +830,7 @@ export const Autosuggest = forwardRef(function <Value>(
                         : suggestion.highlights;
 
                       return (
-                        <Fragment key={index + text}>
+                        <Fragment key={index}>
                           {groupHeading ? (
                             <GroupHeading>{groupHeading}</GroupHeading>
                           ) : null}

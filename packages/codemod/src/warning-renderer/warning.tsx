@@ -16,7 +16,7 @@ interface UntraceableImportWarningProps {
   componentName: string;
 }
 
-export const UntraceableImportWarning = ({
+const UntraceableImportWarning = ({
   code,
   importLocation,
   componentName,
@@ -77,7 +77,7 @@ const Stack = ({ children }: { children: React.ReactNode }) => (
   </Box>
 );
 
-export const UntraceablePropertyWarning = ({
+const UntraceablePropertyWarning = ({
   code,
   componentName,
   propLocation,
@@ -110,7 +110,7 @@ interface RecursiveDepthProps {
   filePath?: string;
 }
 
-export const RecursiveDepthWarning = ({ filePath }: RecursiveDepthProps) => (
+const RecursiveDepthWarning = ({ filePath }: RecursiveDepthProps) => (
   <Stack>
     <Text>File parsing depth limit met.</Text>
     {filePath ? (

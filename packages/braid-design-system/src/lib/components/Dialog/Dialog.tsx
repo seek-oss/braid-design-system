@@ -6,8 +6,6 @@ import {
   ModalContent,
 } from '../private/Modal/ModalContent';
 
-export { AllowCloseContext } from '../private/Modal/Modal';
-
 const defaultWidth = 'small';
 const modalStyle = {
   position: 'center',

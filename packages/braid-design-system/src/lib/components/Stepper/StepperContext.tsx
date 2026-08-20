@@ -23,16 +23,16 @@ export const StepContext = createContext<StepContextValues>({
 });
 
 // Action type IDs (allows action type names to be minified)
-export const NAV_RIGHT = 0;
-export const NAV_DOWN = 1;
-export const NAV_LEFT = 2;
-export const NAV_UP = 3;
-export const NAV_HOME = 4;
-export const NAV_END = 5;
-export const NAV_TAB = 6;
-export const NAV_CLICKED = 7;
-export const NAV_FOCUSED = 8;
-export const NAV_BLURRED = 9;
+const NAV_RIGHT = 0;
+const NAV_DOWN = 1;
+const NAV_LEFT = 2;
+const NAV_UP = 3;
+const NAV_HOME = 4;
+const NAV_END = 5;
+const NAV_TAB = 6;
+const NAV_CLICKED = 7;
+const NAV_FOCUSED = 8;
+const NAV_BLURRED = 9;
 
 export type Action =
   | { type: typeof NAV_RIGHT }

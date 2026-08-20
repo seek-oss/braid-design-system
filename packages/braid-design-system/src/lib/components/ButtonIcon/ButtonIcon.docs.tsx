@@ -114,9 +114,10 @@ const docs: ComponentDocs = {
         label: 'Tones',
         description: (
           <Text>
-            By default, the button adopts the <Strong>neutral</Strong> tone,
-            however, actions can be emphasised by setting the{' '}
-            <Strong>tone</Strong> prop to <Strong>formAccent</Strong>.
+            By default, the button adopts the <Strong>neutral</Strong> tone.
+            Actions can be emphasised by setting the <Strong>tone</Strong> prop
+            to <Strong>formAccent</Strong>, or to <Strong>brandAccent</Strong>{' '}
+            for the most important actions.
           </Text>
         ),
         Example: () =>
@@ -136,7 +137,6 @@ const docs: ComponentDocs = {
               <Inline space="gutter" alignY="center">
                 <ButtonIcon
                   tone="formAccent"
-                  variant="soft"
                   icon={<IconClear />}
                   label="Form Accent tone"
                 />
@@ -144,6 +144,76 @@ const docs: ComponentDocs = {
                   FORMACCENT
                 </Text>
               </Inline>
+              <Inline space="gutter" alignY="center">
+                <ButtonIcon
+                  tone="brandAccent"
+                  icon={<IconClear />}
+                  label="Brand Accent tone"
+                />
+                <Text tone="secondary" size="xsmall">
+                  BRANDACCENT
+                </Text>
+              </Inline>
+            </Stack>,
+          ),
+      },
+      {
+        label: 'Impact of variant on tone',
+        description: (
+          <>
+            <Text>
+              By default, a button has a <Strong>neutral</Strong> tone and uses
+              the <Strong>soft</Strong> variant, allowing the visual prominence
+              to be increased or decreased as required.
+            </Text>
+            <Text>
+              This enables colour to be applied as accents and with purpose,
+              rather than by default — improving the management of user
+              attention and supporting a more declarative hierarchy of actions.
+            </Text>
+          </>
+        ),
+        playroom: false,
+        code: false,
+        Example: () =>
+          source(
+            <Stack space="small">
+              <Text size="small" tone="secondary">
+                Default is a <Strong>neutral</Strong> tone and{' '}
+                <Strong>soft</Strong> variant
+              </Text>
+              <ButtonIcon
+                variant="soft"
+                tone="neutral"
+                icon={<IconSend />}
+                label="Button"
+              />
+            </Stack>,
+          ),
+      },
+      {
+        description: (
+          <Text>
+            To compliment this, when an accent <Strong>tone</Strong> is applied
+            to a button, the default variant becomes <Strong>solid</Strong> to
+            maximise its impact — allowing the visual prominence to be reduced
+            as needed.
+          </Text>
+        ),
+        playroom: false,
+        code: false,
+        Example: () =>
+          source(
+            <Stack space="small">
+              <Text size="small" tone="secondary">
+                Default variant becomes <Strong>solid</Strong> when an accent{' '}
+                <Strong>tone</Strong> is applied
+              </Text>
+              <ButtonIcon
+                tone="brandAccent"
+                icon={<IconSend />}
+                label="Button"
+              />
             </Stack>,
           ),
       },

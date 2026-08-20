@@ -5610,5 +5610,45 @@
   {
     "version": "34.6.1",
     "updates": []
+  },
+  {
+    "version": "34.6.2",
+    "updates": [
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Add `translate=\"no\"` to the suggestion list and the ARIA live announcement region to prevent browser translations from wrapping text nodes in `<font>` elements, which breaks React DOM updates. Also key suggestion rows by index instead of `index + text`, so locale changes to suggestion labels no longer remount the list, and numeric text can no longer collide keys via string concatenation."
+      },
+      {
+        "updated": [
+          "Autosuggest"
+        ],
+        "summary": "**Autosuggest:** Allow the suggestions list to flip above the field when there is insufficient space below, and keep keyboard highlight scrolling inside the menu so it no longer jumps the page"
+      }
+    ]
+  },
+  {
+    "version": "34.7.0",
+    "updates": [
+      {
+        "updated": [
+          "Rating"
+        ],
+        "summary": "**Rating:** Expose the star graphic with `role=\"img\"` so the `aria-label` is announced reliably by assistive technologies."
+      },
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon:** Add `brandAccent` tone\n\nIntroduces support for the `brandAccent` tone on `ButtonIcon`.\n\n**EXAMPLE USAGE:**\n```jsx\n<ButtonIcon tone=\"brandAccent\" icon={<IconAdd />} label=\"Add\" />\n```"
+      },
+      {
+        "updated": [
+          "ButtonIcon"
+        ],
+        "summary": "**ButtonIcon:** Default accent tones to `solid` when `variant` is omitted\n\nAccent tones (`formAccent`, `brandAccent`) now default to `solid` when `variant` is omitted — existing `formAccent` usage can pass `variant=\"soft\"` to keep the previous look.\n\n**EXAMPLE USAGE:**\n```jsx\n<ButtonIcon tone=\"formAccent\" icon={<IconAdd />} label=\"Add\" />\n```"
+      }
+    ]
   }
 ]

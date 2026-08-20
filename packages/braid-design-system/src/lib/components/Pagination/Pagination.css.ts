@@ -19,14 +19,6 @@ export const focusRing = style([
 
 export const hover = style({});
 
-export const lightModeCurrentKeyline = style(
-  colorModeStyle({
-    lightMode: {
-      opacity: 0.3,
-    },
-  }),
-);
-
 export const darkModeCurrentKeyline = style(
   colorModeStyle({
     darkMode: {

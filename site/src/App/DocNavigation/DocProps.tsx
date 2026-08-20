@@ -201,7 +201,7 @@ export const DocProps = () => {
           propsToDocument.map((c) => (
             <Stack space="large" key={c}>
               <Heading level="3">
-                <TitleLink>{c}</TitleLink>
+                <TitleLink copyable>{c}</TitleLink>
               </Heading>
 
               <ComponentProps componentName={c} />
@@ -213,7 +213,7 @@ export const DocProps = () => {
 
         <Stack space="large">
           <Heading level="3" component="h4">
-            <TitleLink>Further References</TitleLink>
+            <TitleLink copyable>Further References</TitleLink>
           </Heading>
           <Text>
             <TextLink href={sourceUrl}>View Source</TextLink>

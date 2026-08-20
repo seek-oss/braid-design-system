@@ -15,19 +15,11 @@ import buildDataAttributes, {
 
 import * as styles from './Inline.css';
 
-export const validInlineComponents = [
-  'div',
-  'span',
-  'p',
-  'nav',
-  'ul',
-  'ol',
-  'li',
-] as const;
+type ValidInlineComponent = 'div' | 'span' | 'p' | 'nav' | 'ul' | 'ol' | 'li';
 
 export type InlineProps = CollapsibleAlignmentProps & {
   space: ResponsiveSpace;
-  component?: (typeof validInlineComponents)[number];
+  component?: ValidInlineComponent;
   data?: DataAttributeMap;
   children: ReactNodeNoStrings;
   noWrap?: boolean;
