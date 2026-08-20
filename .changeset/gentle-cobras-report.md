@@ -1,5 +1,5 @@
 ---
-'@braid-design-system/icons': minor
+'@braid-design-system/icons': major
 ---
 
 Add `@braid-design-system/icons` as the canonical SVG package. iOS and Android should consume these files instead of shipping their own SVG catalogs. Assets live under `svg/` (unsuffixed default, plus `.ios`, `.android`, `.web` or `.native` when a drawing differs). Shared filled drawings are `*Fill.svg`; web maps those to the existing `active` variant rather than new components. `.native` is for drawings web generate does not use yet. Web `generate:icons` is unchanged.
