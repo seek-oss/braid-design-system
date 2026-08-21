@@ -12,6 +12,6 @@ npm install @braid-design-system/icons
 import icon from '@braid-design-system/icons/add.svg';
 ```
 
-Each icon has a default drawing (`add.svg`). When a platform needs a different drawing, the filename is suffixed (`.ios`, `.android`, `.web`, `.native`). Filled drawings use an `-active` suffix (`bookmark-active.svg`).
+Each icon has a default drawing (`add.svg`). When a platform needs a different drawing, the filename is suffixed (`.ios`, `.android`, `.web`, `.native`).
 
-Add SVGs to `svg/`. The package build optimizes those files in place, which is what `import` resolves to.
+The package build optimizes those files in place, which is what `import` resolves to.

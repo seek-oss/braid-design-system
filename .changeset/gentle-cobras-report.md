@@ -14,4 +14,4 @@ npm install @braid-design-system/icons
 import add from '@braid-design-system/icons/add.svg';
 ```
 
-Each icon has a default drawing (`add.svg`). Filled drawings use an `-active` suffix (`bookmark-active.svg`). See the [full icon suite](https://github.com/seek-oss/braid-design-system/tree/master/packages/icons/svg) for every file.
+See the [full icon suite](https://github.com/seek-oss/braid-design-system/tree/master/packages/icons/svg) for every file.
