@@ -14,4 +14,4 @@ import icon from '@braid-design-system/icons/add.svg';
 
 Each icon has a default drawing (`add.svg`). When a platform needs a different drawing, the filename is suffixed (`.ios`, `.android`, `.web`, `.native`). Filled drawings use an `-active` suffix (`bookmark-active.svg`).
 
-Add SVGs to `source/`. The package build writes optimized files to `dist/`, which is what `import` resolves to.
+Add SVGs to `svg/`. The package build optimizes those files in place, which is what `import` resolves to.

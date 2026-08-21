@@ -10,11 +10,11 @@
   "license": "MIT",
   "author": "SEEK",
   "exports": {
-    "./*.svg": "./dist/*.svg",
+    "./*.svg": "./svg/*.svg",
     "./package.json": "./package.json"
   },
   "files": [
-    "dist"
+    "svg"
   ],
   "scripts": {
     "build": "tsx ./scripts/build.cts",
