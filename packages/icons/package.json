@@ -21,6 +21,7 @@
     "prepublishOnly": "pnpm build",
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "tsc",
+    "lint:svgs": "tsx ./scripts/build.cts && git diff --quiet svg/* ",
     "format:prettier": "prettier --cache --write ."
   },
   "devDependencies": {
