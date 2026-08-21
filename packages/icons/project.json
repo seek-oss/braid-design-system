@@ -6,8 +6,7 @@
   },
   "targets": {
     "build": {
-      "inputs": ["{projectRoot}/source/*.svg", "scripts"],
-      "outputs": ["{projectRoot}/dist"],
+      "inputs": ["{projectRoot}/svg/*.svg", "scripts"],
       "executor": "nx:run-script",
       "options": {
         "script": "build"

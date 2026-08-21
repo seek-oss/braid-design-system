@@ -7,8 +7,7 @@ import fs from 'fs-extra';
 import { optimize } from 'svgo';
 
 const packageDir = path.join(__dirname, '..');
-const sourceDir = path.join(packageDir, 'source');
-const distDir = path.join(packageDir, 'dist');
+const svgDir = path.join(packageDir, 'svg');
 
 const validColors = ['currentColor', 'none', '#000'];
 
@@ -53,9 +52,7 @@ const optimiseSvg = (rawSvg: string, fileName: string) => {
 };
 
 (async () => {
-  const svgFilePaths = await glob('*.svg', { cwd: sourceDir, absolute: true });
-
-  await fs.emptyDir(distDir);
+  const svgFilePaths = await glob('*.svg', { cwd: svgDir, absolute: true });
 
   await Promise.all(
     svgFilePaths.map(async (svgFilePath) => {
@@ -63,11 +60,7 @@ const optimiseSvg = (rawSvg: string, fileName: string) => {
       const rawSvg = await fs.readFile(svgFilePath, 'utf-8');
       const optimisedSvg = optimiseSvg(rawSvg, fileName);
 
-      await fs.writeFile(
-        path.join(distDir, fileName),
-        `${optimisedSvg}\n`,
-        'utf-8',
-      );
+      await fs.writeFile(svgFilePath, `${optimisedSvg}\n`, 'utf-8');
     }),
   );
 })();

@@ -99,7 +99,7 @@ const webSvgSources = (svgFilePaths: string[]): string[] => {
 
 (async () => {
   const packageDir = path.dirname(require.resolve('@braid-design-system/icons/package.json'));
-  const svgFilePaths = webSvgSources(await glob('dist/*.svg', { cwd: packageDir, absolute: true }));
+  const svgFilePaths = webSvgSources(await glob('svg/*.svg', { cwd: packageDir, absolute: true }));
   const writtenSvgComponents = new Set<string>();
 
   const filePromises = svgFilePaths.map(async (svgFilePath) => {

@@ -18,7 +18,7 @@
     },
     "generate:icons": {
       "dependsOn": ["^build"],
-      "inputs": ["{workspaceRoot}/packages/icons/dist/*.svg", "scripts"],
+      "inputs": ["{workspaceRoot}/packages/icons/svg/*.svg", "scripts"],
       "executor": "nx:run-script",
       "options": {
         "script": "generate:icons"
