@@ -19,10 +19,6 @@
     "generate:icons": {
       "dependsOn": ["^build"],
       "inputs": ["{workspaceRoot}/packages/icons/dist/*.svg", "scripts"],
-      "outputs": [
-        "{projectRoot}/src/**/components/icons/*/*Svg.tsx",
-        "{projectRoot}/src/**/components/icons/index.ts"
-      ],
       "executor": "nx:run-script",
       "options": {
         "script": "generate:icons"
