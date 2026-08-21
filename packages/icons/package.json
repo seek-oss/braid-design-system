@@ -10,15 +10,24 @@
   "license": "MIT",
   "author": "SEEK",
   "exports": {
-    "./*.svg": "./svg/*.svg",
+    "./*.svg": "./dist/*.svg",
     "./package.json": "./package.json"
   },
   "files": [
-    "svg"
+    "dist"
   ],
   "scripts": {
+    "build": "tsx ./scripts/build.cts",
+    "prepublishOnly": "pnpm build",
     "lint:prettier": "prettier --cache --list-different .",
+    "lint:tsc": "tsc",
     "format:prettier": "prettier --cache --write ."
+  },
+  "devDependencies": {
+    "cheerio": "1.0.0-rc.11",
+    "fast-glob": "^3.3.2",
+    "fs-extra": "^10.1.0",
+    "svgo": "^2.8.0"
   },
   "publishConfig": {
     "access": "public"

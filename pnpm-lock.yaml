@@ -252,9 +252,6 @@ importers:
       change-case:
         specifier: ^4.1.2
         version: 4.1.2
-      cheerio:
-        specifier: 1.0.0-rc.11
-        version: 1.0.0-rc.11
       fast-glob:
         specifier: ^3.3.2
         version: 3.3.3
@@ -288,9 +285,6 @@ importers:
       storybook:
         specifier: ^10.2.7
         version: 10.5.8(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8)
-      svgo:
-        specifier: ^2.8.0
-        version: 2.8.3
       title-case:
         specifier: ^3.0.3
         version: 3.0.3
@@ -392,7 +386,20 @@ importers:
         specifier: ~5.9.3
         version: 5.9.3
 
-  packages/icons: {}
+  packages/icons:
+    devDependencies:
+      cheerio:
+        specifier: 1.0.0-rc.11
+        version: 1.0.0-rc.11
+      fast-glob:
+        specifier: ^3.3.2
+        version: 3.3.3
+      fs-extra:
+        specifier: ^10.1.0
+        version: 10.1.0
+      svgo:
+        specifier: ^2.8.0
+        version: 2.8.3
 
   packages/source.macro:
     dependencies:
@@ -5939,6 +5946,7 @@ packages:
   eslint@9.39.5:
     resolution: {integrity: sha512-DgZS62aPLXKlnxILS/AYCoRvHaZeXceIzlXPkkGGzJWSow1aEk0lbTlxUSlyjC8jcaKxAdOnTDz+o1JFSBsyjw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
