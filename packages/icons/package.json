@@ -1,0 +1,36 @@
+{
+  "name": "@braid-design-system/icons",
+  "version": "0.0.0",
+  "description": "Braid icon SVG assets",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seek-oss/braid-design-system.git",
+    "directory": "packages/icons"
+  },
+  "license": "MIT",
+  "author": "SEEK",
+  "exports": {
+    "./*.svg": "./svg/*.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "svg"
+  ],
+  "scripts": {
+    "build": "tsx ./scripts/build.cts",
+    "prepublishOnly": "pnpm build",
+    "lint:prettier": "prettier --cache --list-different .",
+    "lint:tsc": "tsc",
+    "lint:svgs": "tsx ./scripts/build.cts && git diff --quiet svg/* ",
+    "format:prettier": "prettier --cache --write ."
+  },
+  "devDependencies": {
+    "cheerio": "1.0.0-rc.11",
+    "fast-glob": "^3.3.2",
+    "fs-extra": "^10.1.0",
+    "svgo": "^2.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

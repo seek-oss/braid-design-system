@@ -3,12 +3,9 @@ import path from 'path';
 // @ts-expect-error svgr@6 has types
 import svgr from '@svgr/core';
 import { pascalCase } from 'change-case';
-import { load } from 'cheerio';
 import dedent from 'dedent';
 import glob from 'fast-glob';
 import fs from 'fs-extra';
-// @ts-expect-error svgo@3 has types
-import { optimize } from 'svgo';
 
 import { debugLog, relativeTo } from './utils';
 
@@ -51,72 +48,68 @@ const svgrConfig = {
   titleProp: true,
 };
 
-(async () => {
-  // First clean up any existing SVG components
-  const existingComponentPaths = await glob('*/*Svg.tsx', {
-    cwd: iconComponentsDir,
-    absolute: true,
-  });
-  await Promise.all(
-    existingComponentPaths.map(async (existingComponentPath) => {
-      await fs.remove(existingComponentPath);
-    }),
-  );
+const platformSuffixPattern = /^(web|ios|android|native)$/i;
+const skippedOnWebPlatforms = new Set(['ios', 'android', 'native']);
 
-  // Load SVGs
-  const svgFilePaths = await glob('icons/*.svg', {
-    cwd: baseDir,
-    absolute: true,
-  });
+const skippedWebStems = new Set(['rating']);
+
+const parseIconFileName = (svgFilePath: string) => {
+  const baseName = path.basename(svgFilePath, '.svg');
+  const [maybePlatform, ...stemParts] = baseName.split('.').reverse();
+  if (stemParts.length > 0 && platformSuffixPattern.test(maybePlatform)) {
+    return { stem: stemParts.reverse().join('.'), platform: maybePlatform.toLowerCase() };
+  }
+  return { stem: baseName, platform: undefined };
+};
+
+const parseDrawingStem = (stem: string) => {
+  const [svgName, variantName] = stem.split('-');
+  return { svgName, variantName };
+};
+
+const shouldSkipOnWeb = (svgFilePath: string) => {
+  const { stem, platform } = parseIconFileName(svgFilePath);
+  if (platform !== undefined && skippedOnWebPlatforms.has(platform)) {
+    return true;
+  }
+  return skippedWebStems.has(parseDrawingStem(stem).svgName);
+};
+
+const isWebOverride = (svgFilePath: string) => parseIconFileName(svgFilePath).platform === 'web';
+
+// Prefer `.web` over an unsuffixed file with the same stem (`chevron.web.svg` beats `chevron.svg`).
+const webSvgSources = (svgFilePaths: string[]): string[] => {
+  const svgPathsByStem = new Map<string, string>();
+
+  for (const svgFilePath of svgFilePaths) {
+    if (shouldSkipOnWeb(svgFilePath)) {
+      continue;
+    }
+
+    const { stem } = parseIconFileName(svgFilePath);
+    const existing = svgPathsByStem.get(stem);
+
+    if (!existing || isWebOverride(svgFilePath) || !isWebOverride(existing)) {
+      svgPathsByStem.set(stem, svgFilePath);
+    }
+  }
+
+  return [...svgPathsByStem.values()];
+};
+
+(async () => {
+  const packageDir = path.dirname(require.resolve('@braid-design-system/icons/package.json'));
+  const svgFilePaths = webSvgSources(await glob('svg/*.svg', { cwd: packageDir, absolute: true }));
+  const writtenSvgComponents = new Set<string>();
 
   const filePromises = svgFilePaths.map(async (svgFilePath) => {
-    // Split out the icon variants (e.g. bookmark-active.svg)
-    const [svgName, variantName] = path.basename(svgFilePath, '.svg').split('-');
+    const { svgName, variantName } = parseDrawingStem(parseIconFileName(svgFilePath).stem);
 
-    const rawSvg = await fs.readFile(svgFilePath, 'utf-8');
-    const svg = rawSvg.replace(/ data-name=".*?"/g, '');
-
-    // Run through SVGO
-    const optimisedSvg = optimize(svg, {
-      multipass: true,
-      plugins: [
-        {
-          name: 'preset-default',
-          params: {
-            overrides: {
-              removeViewBox: false,
-            },
-          },
-        },
-        {
-          name: 'inlineStyles',
-          params: {
-            onlyMatchedOnce: false,
-          },
-        },
-        { name: 'convertStyleToAttrs' },
-      ],
-    }).data;
-
-    // Validate SVG before import
-    const $ = load(optimisedSvg);
-    $('svg *').each((i, el) => {
-      const $el = $(el);
-
-      // Validate color attributes
-      ['stroke', 'fill'].forEach((attr) => {
-        const color = $el.attr(attr);
-        const validColors = ['currentColor', 'none', '#000'];
-        if (color && !validColors.includes(color)) {
-          throw new Error(`${svgName}: Invalid ${attr} color: ${$.html(el)}`);
-        }
-      });
-    });
-
+    const svg = await fs.readFile(svgFilePath, 'utf-8');
     const isAllCaps = svgName.toUpperCase() === svgName;
     const iconName = `Icon${isAllCaps ? svgName : pascalCase(svgName)}`;
     const svgComponentName = `${iconName}${variantName ? pascalCase(variantName) : ''}Svg`;
-    const svgComponent = await svgr(optimisedSvg, svgrConfig, {
+    const svgComponent = await svgr(svg, svgrConfig, {
       componentName: svgComponentName,
     });
 
@@ -124,10 +117,11 @@ const svgrConfig = {
     const iconDir = path.join(iconComponentsDir, iconName);
     await fs.mkdirp(iconDir);
 
-    // Write SVG React component
-    await fs.writeFile(path.join(iconDir, `${svgComponentName}.tsx`), svgComponent, {
+    const svgComponentPath = path.join(iconDir, `${svgComponentName}.tsx`);
+    await fs.writeFile(svgComponentPath, svgComponent, {
       encoding: 'utf-8',
     });
+    writtenSvgComponents.add(svgComponentPath);
 
     // Bail out early if we're processing an icon variant (e.g. bookmark-active.svg)
     // All subsequent steps should only happen once per icon component.
@@ -201,6 +195,18 @@ const svgrConfig = {
   });
 
   await Promise.all(filePromises);
+
+  const existingSvgComponentPaths = await glob('*/*Svg.tsx', {
+    cwd: iconComponentsDir,
+    absolute: true,
+  });
+  await Promise.all(
+    existingSvgComponentPaths
+      .filter((existingSvgComponentPath) => !writtenSvgComponents.has(existingSvgComponentPath))
+      .map(async (existingSvgComponentPath) => {
+        await fs.remove(existingSvgComponentPath);
+      }),
+  );
 
   // Create icons/index.ts
   const iconComponentNames = await glob(['Icon*', '!*.*'], {

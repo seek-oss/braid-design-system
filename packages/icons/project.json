@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.6.3/packages/nx/schemas/project-schema.json",
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*"],
+    "scripts": ["{projectRoot}/scripts/*"]
+  },
+  "targets": {
+    "build": {
+      "inputs": ["{projectRoot}/svg/*.svg", "scripts"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "build"
+      }
+    },
+    "lint": {},
+    "format": {}
+  }
+}

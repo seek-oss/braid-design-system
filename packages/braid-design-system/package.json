@@ -156,6 +156,7 @@
     "@babel/core": "^7.26.0",
     "@babel/plugin-transform-typescript": "^7.20.13",
     "@babel/types": "^7.26.0",
+    "@braid-design-system/icons": "workspace:*",
     "@braid-design-system/source.macro": "workspace:*",
     "@capsizecss/metrics": "^4.0.0",
     "@storybook/react-webpack5": "^10.2.7",
@@ -179,7 +180,6 @@
     "babel-plugin-remove-unused-vars": "^2.2.0",
     "babel-plugin-transform-remove-imports": "^1.7.0",
     "change-case": "^4.1.2",
-    "cheerio": "1.0.0-rc.11",
     "fast-glob": "^3.3.2",
     "fs-extra": "^10.1.0",
     "html-validate": "^10.13.1",
@@ -191,7 +191,6 @@
     "sanitize-html": "^2.12.1",
     "skott": "^0.32.1",
     "storybook": "^10.2.7",
-    "svgo": "^2.8.0",
     "title-case": "^3.0.3"
   },
   "peerDependencies": {
