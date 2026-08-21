@@ -50,8 +50,8 @@ const svgrConfig = {
 
 const platformSuffixPattern = /^(web|ios|android|native)$/i;
 const skippedOnWebPlatforms = new Set(['ios', 'android', 'native']);
-// Web uses IconThumb + CSS `direction` instead of separate up/down drawings.
-const skippedWebStems = new Set(['thumbUp', 'thumbDown']);
+
+const skippedWebStems = new Set(['rating']);
 
 const parseIconFileName = (svgFilePath: string) => {
   const baseName = path.basename(svgFilePath, '.svg');
