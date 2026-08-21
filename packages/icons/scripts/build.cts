@@ -9,10 +9,11 @@ import { optimize } from 'svgo';
 const packageDir = path.join(__dirname, '..');
 const svgDir = path.join(packageDir, 'svg');
 
-const validColors = ['currentColor', 'none', '#000'];
+const validColors = ['none', '#000'];
 
 const svgoConfig = {
   multipass: true,
+  js2svg: { pretty: true },
   plugins: [
     {
       name: 'preset-default',
@@ -33,8 +34,7 @@ const svgoConfig = {
 };
 
 const optimiseSvg = (rawSvg: string, fileName: string) => {
-  const svg = rawSvg.replace(/ data-name=".*?"/g, '');
-  const optimisedSvg = optimize(svg, svgoConfig).data;
+  const optimisedSvg = optimize(rawSvg, svgoConfig).data;
 
   const $ = load(optimisedSvg);
   $('svg *').each((_i, el) => {
@@ -60,7 +60,7 @@ const optimiseSvg = (rawSvg: string, fileName: string) => {
       const rawSvg = await fs.readFile(svgFilePath, 'utf-8');
       const optimisedSvg = optimiseSvg(rawSvg, fileName);
 
-      await fs.writeFile(svgFilePath, `${optimisedSvg}\n`, 'utf-8');
+      await fs.writeFile(svgFilePath, optimisedSvg, 'utf-8');
     }),
   );
 })();
