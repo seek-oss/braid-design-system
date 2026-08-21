@@ -17,11 +17,8 @@
       "executor": "nx:noop"
     },
     "generate:icons": {
-      "inputs": [
-        "{workspaceRoot}/packages/icons/svg/*.svg",
-        "{workspaceRoot}/packages/icons/package.json",
-        "scripts"
-      ],
+      "dependsOn": ["^build"],
+      "inputs": ["{workspaceRoot}/packages/icons/dist/*.svg", "scripts"],
       "outputs": [
         "{projectRoot}/src/**/components/icons/*/*Svg.tsx",
         "{projectRoot}/src/**/components/icons/index.ts"
