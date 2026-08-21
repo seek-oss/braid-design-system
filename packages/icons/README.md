@@ -2,7 +2,7 @@
 
 SVG assets for Braid icons.
 
-See the [iconography browse docs](https://seek-oss.github.io/braid-design-system/foundations/iconography/browse) for the full list of icons available as Braid components. 
+See the [iconography browse docs](https://seek-oss.github.io/braid-design-system/foundations/iconography/browse) for the full list of icons available as Braid components.
 
 ```sh
 npm install @braid-design-system/icons
