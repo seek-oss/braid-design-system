@@ -64,7 +64,7 @@
     "react-use": "^17.4.0",
     "sku": "16.1.1",
     "unist-util-visit": "^5.0.0",
-    "webpack": "5.108.1"
+    "webpack": "^5.109.0"
   },
   "skuSkipPostInstall": true,
   "skuSkipConfigure": true,
