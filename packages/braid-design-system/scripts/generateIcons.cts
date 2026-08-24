@@ -51,8 +51,6 @@ const svgrConfig = {
 const platformSuffixPattern = /^(web|ios|android|native)$/i;
 const skippedOnWebPlatforms = new Set(['ios', 'android', 'native']);
 
-const skippedWebStems = new Set(['rating']);
-
 const parseIconFileName = (svgFilePath: string) => {
   const baseName = path.basename(svgFilePath, '.svg');
   const [maybePlatform, ...stemParts] = baseName.split('.').reverse();
@@ -68,11 +66,8 @@ const parseDrawingStem = (stem: string) => {
 };
 
 const shouldSkipOnWeb = (svgFilePath: string) => {
-  const { stem, platform } = parseIconFileName(svgFilePath);
-  if (platform !== undefined && skippedOnWebPlatforms.has(platform)) {
-    return true;
-  }
-  return skippedWebStems.has(parseDrawingStem(stem).svgName);
+  const { platform } = parseIconFileName(svgFilePath);
+  return platform !== undefined && skippedOnWebPlatforms.has(platform);
 };
 
 const isWebOverride = (svgFilePath: string) => parseIconFileName(svgFilePath).platform === 'web';
@@ -209,10 +204,19 @@ const webSvgSources = (svgFilePaths: string[]): string[] => {
   );
 
   // Create icons/index.ts
-  const iconComponentNames = await glob(['Icon*', '!*.*'], {
+  const iconComponentDirs = await glob(['Icon*', '!*.*'], {
     cwd: iconComponentsDir,
     onlyFiles: false,
   });
+  const iconComponentNames = (
+    await Promise.all(
+      iconComponentDirs.map(async (componentDir) => {
+        const componentName = path.basename(componentDir);
+        const hasComponent = await fs.pathExists(path.join(iconComponentsDir, componentName, `${componentName}.tsx`));
+        return hasComponent ? componentDir : null;
+      }),
+    )
+  ).filter((componentDir): componentDir is string => componentDir !== null);
 
   const iconExports = iconComponentNames
     .map((componentFile) => path.basename(componentFile, '.tsx'))

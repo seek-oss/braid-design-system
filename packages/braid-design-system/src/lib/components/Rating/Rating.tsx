@@ -7,9 +7,9 @@ import type { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
 import { type TextProps, Text } from '../Text/Text';
 import { IconContainer } from '../icons/IconContainer';
-import { IconStarActiveSvg as IconStarFullSvg } from '../icons/IconStar/IconStarActiveSvg';
-import { IconStarHalfSvg } from '../icons/IconStar/IconStarHalfSvg';
-import { IconStarSvg as IconStarEmptySvg } from '../icons/IconStar/IconStarSvg';
+import { IconRatingEmptySvg } from '../icons/IconRating/IconRatingEmptySvg';
+import { IconRatingFullSvg } from '../icons/IconRating/IconRatingFullSvg';
+import { IconRatingHalfSvg } from '../icons/IconRating/IconRatingHalfSvg';
 import { iconSlotSpace } from '../private/iconSlotSpace';
 
 import * as styles from './Rating.css';
@@ -21,14 +21,14 @@ type RatingStar = {
   percent: number;
 } & UseIconProps;
 const RatingStar = ({ percent, ...restProps }: RatingStar) => {
-  let component = IconStarEmptySvg;
+  let component = IconRatingEmptySvg;
 
   if (percent >= 25 && percent < 75) {
-    component = IconStarHalfSvg;
+    component = IconRatingHalfSvg;
   }
 
   if (percent >= 75) {
-    component = IconStarFullSvg;
+    component = IconRatingFullSvg;
   }
 
   return (
