@@ -87,39 +87,6 @@ export const DefaultAccordionWithoutDividers = {
     );
   },
 };
-export const DefaultAccordionWithCustomSpace = {
-  name: 'Default Accordion with custom space',
-  render: () => {
-    const [expanded1, setExpanded1] = useState(false);
-    const [expanded2, setExpanded2] = useState(true);
-    const [expanded3, setExpanded3] = useState(false);
-    return (
-      <Accordion space="xlarge">
-        <AccordionItem
-          label="Accordion item 1"
-          expanded={expanded1}
-          onToggle={setExpanded1}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 2"
-          expanded={expanded2}
-          onToggle={setExpanded2}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 3"
-          expanded={expanded3}
-          onToggle={setExpanded3}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-      </Accordion>
-    );
-  },
-};
 
 export const StandardSecondaryAccordion = {
   name: 'Standard secondary Accordion',
