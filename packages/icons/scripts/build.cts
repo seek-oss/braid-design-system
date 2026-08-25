@@ -33,7 +33,7 @@ const svgoConfig = {
   ],
 };
 
-let failedColorSvgs = [];
+const failedColorSvgs: string[] = [];
 
 const optimiseSvg = (rawSvg: string, fileName: string) => {
   const optimisedSvg = optimize(rawSvg, svgoConfig).data;
