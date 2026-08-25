@@ -33,6 +33,8 @@ const svgoConfig = {
   ],
 };
 
+let failedColorSvgs = [];
+
 const optimiseSvg = (rawSvg: string, fileName: string) => {
   const optimisedSvg = optimize(rawSvg, svgoConfig).data;
 
@@ -43,7 +45,7 @@ const optimiseSvg = (rawSvg: string, fileName: string) => {
     ['stroke', 'fill'].forEach((attr) => {
       const color = $el.attr(attr);
       if (color && !validColors.includes(color)) {
-        throw new Error(`${fileName}: Invalid ${attr} color: ${$.html(el)}`);
+        failedColorSvgs.push(fileName);
       }
     });
   });
@@ -63,4 +65,8 @@ const optimiseSvg = (rawSvg: string, fileName: string) => {
       await fs.writeFile(svgFilePath, optimisedSvg, 'utf-8');
     }),
   );
+
+  if (failedColorSvgs.length > 0) {
+    throw new Error(`Invalid color: \n  ${failedColorSvgs.join('\n  ')}`);
+  }
 })();
