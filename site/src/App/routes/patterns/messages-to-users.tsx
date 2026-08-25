@@ -1,0 +1,88 @@
+import { LinkableHeading } from '@braid-design-system/docs-ui';
+import { List, Stack, Strong, Text, TextLink } from 'braid-design-system';
+
+import { PatternLayout, patternPage } from './PatternLayout';
+
+const MessagesToUsers = () => (
+  <PatternLayout
+    slug="messages-to-users"
+    sections={[
+      { href: '#messaging-components', label: 'Messaging components' },
+      { href: '#messaging-patterns', label: 'Messaging patterns' },
+    ]}
+  >
+    <LinkableHeading>Messaging components</LinkableHeading>
+    <Text>
+      Braid includes a variety of messaging components, each with their own
+      purpose and intended use.
+    </Text>
+    <Stack space="large">
+      <Stack space="small">
+        <Text>
+          <Strong>
+            <TextLink href="/components/Alert">Alert</TextLink> and{' '}
+            <TextLink href="/components/Notice">Notice</TextLink>
+          </Strong>
+        </Text>
+        <Text>
+          Inform the user of an important status or condition relevant to their
+          current task. They sit within the context of the page, close to the
+          issue to which they relate.
+        </Text>
+      </Stack>
+      <Stack space="small">
+        <Text>
+          <Strong>
+            <TextLink href="/components/useToast">useToast</TextLink>
+          </Strong>
+        </Text>
+        <Text>
+          Briefly acknowledges a user action without interrupting their flow.
+          Toasts float at the bottom of the screen and disappear after a few
+          seconds.
+        </Text>
+      </Stack>
+      <Stack space="small">
+        <Text>
+          <Strong>
+            <TextLink href="/components/FieldMessage">FieldMessage</TextLink>
+          </Strong>
+        </Text>
+        <Text>
+          For displaying messages below a custom input field that isn&rsquo;t
+          provided by Braid.
+        </Text>
+      </Stack>
+    </Stack>
+
+    <LinkableHeading>Messaging patterns</LinkableHeading>
+    <List>
+      <Text>
+        <TextLink href="/patterns/empty-states">Empty states</TextLink> — Occurs
+        when there is no data available at the present time, and informs the
+        user about what they might see when there is data, and/or what they
+        should do next.
+      </Text>
+      <Text>
+        <TextLink href="/patterns/error-states">Error states</TextLink> — Occurs
+        when the website or app fails to complete an expected action, and
+        informs the user that a problem has occurred.
+      </Text>
+      <Text>
+        <TextLink href="/patterns/nudge">Nudge</TextLink> — A prominent message
+        that encourages the user to take a specific action on something relevant
+        at that moment. A nudge is always actionable and drives desired
+        behaviour.
+      </Text>
+      <Text>
+        <TextLink href="/patterns/service-outage-banners">
+          Service outage banners
+        </TextLink>{' '}
+        — Inform users of upcoming interruptions to SEEK products and services.
+        This can include outages to the entire system or to specific products.
+      </Text>
+    </List>
+  </PatternLayout>
+);
+
+export default patternPage('messages-to-users', <MessagesToUsers />);

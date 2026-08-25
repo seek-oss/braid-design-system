@@ -1,32 +1,22 @@
-import { Heading, Stack } from 'braid-design-system';
+import { Stack } from 'braid-design-system';
 
 import { LandingSection } from '../../LandingCard/LandingSection';
 
-const patternCards = [
-  {
-    href: '/patterns#form-layout',
-    label: 'Form layout',
-    description: 'Placeholder for common form composition patterns.',
-  },
-  {
-    href: '/patterns#empty-states',
-    label: 'Empty states',
-    description: 'Placeholder for empty and zero-result experiences.',
-  },
-  {
-    href: '/patterns#filtering',
-    label: 'Filtering',
-    description: 'Placeholder for search and filter pattern guidance.',
-  },
-] as const;
+import { howToEntries, patternEntries, toLandingCard } from './catalog';
 
 export const Patterns = () => (
   <Stack space="xxlarge">
-    <Heading level="1">Patterns</Heading>
     <LandingSection
-      heading="Explore patterns"
-      introduction="Placeholder cards until pattern pages are added. Links currently point back here."
-      cards={patternCards}
+      heading="Patterns"
+      headingComponent="h1"
+      introduction="Reusable compositions of Braid components for common product experiences, plus practical how-tos for applying them."
+      cards={patternEntries.map(toLandingCard)}
+    />
+    <LandingSection
+      heading="How to"
+      headingLevel="3"
+      introduction="Practical guidance for applying Braid to specific layout and visual problems."
+      cards={howToEntries.map(toLandingCard)}
     />
   </Stack>
 );
