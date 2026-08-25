@@ -2,6 +2,8 @@ import { Heading, Stack } from 'braid-design-system';
 
 import { LandingSection } from '../../LandingCard/LandingSection';
 
+import { cssFoundationDocs } from './cssDocs';
+
 const foundationCards = [
   {
     href: '/foundations/layout',
@@ -18,7 +20,12 @@ const foundationCards = [
     label: 'Iconography',
     description: 'Guidance for using and browsing Braid icons.',
   },
-] as const;
+  ...cssFoundationDocs.map((doc) => ({
+    href: doc.path,
+    label: doc.title,
+    description: doc.description,
+  })),
+];
 
 export const Foundations = () => (
   <Stack space="xxlarge">

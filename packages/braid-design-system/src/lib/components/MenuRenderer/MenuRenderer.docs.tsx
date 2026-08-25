@@ -242,7 +242,9 @@ const docs: ComponentDocs = {
             Alternatively, choose from <Strong>small</Strong>,{' '}
             <Strong>medium</Strong> or <Strong>large</Strong> which are ratios
             of the{' '}
-            <TextLink href="/css/vars#vars.contentwidth">contentWidth</TextLink>{' '}
+            <TextLink href="/foundations/vars#vars.contentwidth">
+              contentWidth
+            </TextLink>{' '}
             scale for the selected theme.
           </Text>
         </>

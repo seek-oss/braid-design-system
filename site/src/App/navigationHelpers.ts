@@ -13,6 +13,8 @@ import type {
 } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
+import { cssFoundationDocs } from './routes/foundations/cssDocs';
+
 const componentDocsContext = require.context(
   'braid-src/lib/components/',
   true,
@@ -72,8 +74,13 @@ export const getComponentSnippets = (componentName: string) => {
   }));
 };
 
+const cssFoundationNames = new Set<string>(
+  cssFoundationDocs.map((doc) => doc.name),
+);
+
 const documentedCssNames = Object.keys(css)
   .filter((name) => !undocumentedExports.css.includes(name))
+  .filter((name) => !cssFoundationNames.has(name))
   .sort();
 
 const documentedComponentNames = Object.keys({

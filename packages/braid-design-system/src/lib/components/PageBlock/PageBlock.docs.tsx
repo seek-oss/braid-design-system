@@ -66,9 +66,10 @@ const docs: ComponentDocs = {
           </Text>
           <Text>
             Uses <Strong>{pageBlockGutters.mobile}</Strong> space on{' '}
-            <TextLink href="/css/breakpoints">mobile</TextLink> and the semantic{' '}
-            <Strong>{pageBlockGutters.tablet}</Strong> on{' '}
-            <TextLink href="/css/breakpoints">tablet</TextLink> and above.
+            <TextLink href="/foundations/breakpoints">mobile</TextLink> and the
+            semantic <Strong>{pageBlockGutters.tablet}</Strong> on{' '}
+            <TextLink href="/foundations/breakpoints">tablet</TextLink> and
+            above.
           </Text>
         </>
       ),

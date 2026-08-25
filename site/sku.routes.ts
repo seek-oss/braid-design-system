@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import type { SkuConfig } from 'sku';
 
 import extractExports from './scripts/extractExports';
+import { cssFoundationDocs } from './src/App/routes/foundations/cssDocs';
 import { slugify } from './src/slugify';
 import undocumentedExports from './src/undocumentedExports.json';
 
@@ -40,7 +41,12 @@ const getPages = (relativePath: string): NonNullable<SkuConfig['routes']> => {
 
 // TODO: COLORMODE RELEASE
 // Remove `colorModeStyle` from `undocumentedExports.json`
-const cssNames = getExports('src/css.ts', 'css');
+const cssFoundationNames = new Set<string>(
+  cssFoundationDocs.map((doc) => doc.name),
+);
+const cssNames = getExports('src/css.ts', 'css').filter(
+  (name) => !cssFoundationNames.has(name),
+);
 const componentNames = getExports('src/lib/components/index.ts');
 const testNames = getExports('src/test.ts');
 const iconNames = getExports('src/lib/components/icons/index.ts');
@@ -111,6 +117,12 @@ const routes: SkuConfig['routes'] = [
   cssNames.flatMap((name) => [
     { route: `/css/${name}` },
     { route: `/css/${name}/releases` },
+  ]),
+  cssFoundationDocs.flatMap((doc) => [
+    { route: doc.path },
+    { route: `${doc.path}/releases` },
+    { route: `/css/${doc.name}` },
+    { route: `/css/${doc.name}/releases` },
   ]),
   iconNames.flatMap((name) => [
     { route: `/components/${name}`, name },

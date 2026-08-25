@@ -12,7 +12,7 @@ import {
   documentedCss,
 } from '../navigationHelpers';
 import { navSections } from '../navigationSections';
-import foundations from '../routes/foundations';
+import { foundationNavItems } from '../routes/foundations';
 import gettingStarted from '../routes/getting-started';
 import guides from '../routes/guides';
 import patterns from '../routes/patterns';
@@ -141,11 +141,11 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
         {activeSection?.id === 'foundations' && (
           <SideNavigationSection
             title="Foundations"
-            items={Object.entries(foundations).map(([path, foundation]) => ({
-              name: foundation.title,
-              badge: foundation.badge,
-              path,
-              active: isActive(path),
+            items={foundationNavItems.map((item) => ({
+              name: item.name,
+              badge: item.badge,
+              path: item.path,
+              active: isActive(item.path),
               onClick: onSelect,
             }))}
           />

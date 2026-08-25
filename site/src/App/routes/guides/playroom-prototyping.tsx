@@ -686,7 +686,7 @@ const PlayroomPrototyping = () => (
     </Text>
     <Text>
       Within these styles you also have access to the{' '}
-      <TextLink href="/css/vars">vars</TextLink> and{' '}
+      <TextLink href="/foundations/vars">vars</TextLink> and{' '}
       <TextLink href="/components/useResponsiveValue">responsiveValue</TextLink>{' '}
       APIs which allow you to make your custom styles themed and responsive. For
       example, if we wanted to responsively change the colour of an element:

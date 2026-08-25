@@ -3,7 +3,7 @@ import {
   documentedComponents,
   documentedCss,
 } from '../navigationHelpers';
-import foundations from '../routes/foundations';
+import { foundationNavItems } from '../routes/foundations';
 
 export interface SearchItem {
   name: string;
@@ -14,9 +14,9 @@ export interface SearchItem {
 
 export const searchItems: SearchItem[] = [
   // Foundations
-  ...Object.entries(foundations).map(([path, foundation]) => ({
-    name: foundation.title,
-    path,
+  ...foundationNavItems.map((item) => ({
+    name: item.name,
+    path: item.path,
     category: 'Foundations' as const,
     hasProps: false,
   })),

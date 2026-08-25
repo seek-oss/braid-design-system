@@ -19,7 +19,7 @@ import { Navigation } from './Navigation/Navigation';
 import { AppMeta } from './Seo/AppMeta';
 import { ThemeSettingProvider } from './ThemeSetting';
 import { Components } from './routes/components/Components';
-import foundations from './routes/foundations';
+import foundations, { cssFoundationDocs } from './routes/foundations';
 import { Foundations } from './routes/foundations/Foundations';
 import { GalleryPage } from './routes/gallery';
 import gettingStarted from './routes/getting-started';
@@ -131,6 +131,18 @@ export const App = () => {
                   path="/examples"
                   element={<Navigate to="/patterns" replace />}
                 />
+                {cssFoundationDocs.flatMap((doc) => [
+                  <Route
+                    key={`/css/${doc.name}`}
+                    path={`/css/${doc.name}`}
+                    element={<Navigate to={doc.path} replace />}
+                  />,
+                  <Route
+                    key={`/css/${doc.name}/releases`}
+                    path={`/css/${doc.name}/releases`}
+                    element={<Navigate to={`${doc.path}/releases`} replace />}
+                  />,
+                ])}
                 <Route path="/foundations" element={<Foundations />} />
                 <Route path="/components" element={<Components />} />
                 <Route path="/patterns" element={<Patterns />} />

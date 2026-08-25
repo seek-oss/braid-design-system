@@ -41,6 +41,11 @@ import {
   getComponentSnippets,
   getCssDoc,
 } from '../navigationHelpers';
+import {
+  getCssFoundationDoc,
+  isCssDoc,
+  isCssFoundationDoc,
+} from '../routes/foundations/cssDocs';
 
 import * as styles from './DocNavigation.css';
 
@@ -48,6 +53,7 @@ const DocNavigationItemIndexContext = createContext(-1);
 interface DocsProviderContextValue {
   docsName: string;
   docsType: string;
+  docsTitle?: string;
   docs?: ReturnType<typeof getCssDoc | typeof getComponentDocs>;
   history?: ReturnType<typeof getHistory>;
   snippets?: ReturnType<typeof getComponentSnippets>;
@@ -202,8 +208,11 @@ export const DocNavigation = () => {
   let snippets: DocsProviderContextValue['snippets'] = [];
   let history: DocsProviderContextValue['history'] = [];
   let docs: DocsProviderContextValue['docs'];
+  const docsTitle = isCssFoundationDoc(docsType, docsName)
+    ? (getCssFoundationDoc(docsName)?.title ?? docsName)
+    : docsName;
 
-  if (docsType === 'css') {
+  if (isCssDoc(docsType, docsName)) {
     history = getHistory(docsName);
     docs = getCssDoc(docsName);
   } else {
@@ -241,7 +250,7 @@ export const DocNavigation = () => {
               }}
             />
           ) : null}
-          <Heading level="1">{docsName}</Heading>
+          <Heading level="1">{docsTitle}</Heading>
         </Inline>
         <DocNavigationBar title="Subnavigation">
           <DocNavigationItem href={`/${docsType}/${docsName}`}>
@@ -282,7 +291,7 @@ export const DocNavigation = () => {
         {docs.banner}
       </Stack>
       <DocsContext.Provider
-        value={{ docsName, docsType, docs, history, snippets }}
+        value={{ docsName, docsType, docsTitle, docs, history, snippets }}
       >
         <Outlet />
       </DocsContext.Provider>

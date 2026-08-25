@@ -25,7 +25,8 @@ const docs: CssDoc = {
           <Text>
             The <Strong>responsiveStyle</Strong> function is a convenience for
             authoring responsive styling rules. It accepts sets of rules for
-            each <TextLink href="/css/breakpoints">breakpoint</TextLink>, e.g.{' '}
+            each <TextLink href="/foundations/breakpoints">breakpoint</TextLink>
+            , e.g.{' '}
             {bps.map((b, index) => (
               <Fragment key={b}>
                 {index === bps.length - 1 ? ' or ' : ''}

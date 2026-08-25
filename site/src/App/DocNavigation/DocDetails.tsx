@@ -47,7 +47,7 @@ const hasContent = (example: {
 }) => Boolean(example.description || example.code || example.Example);
 
 export const DocDetails = () => {
-  const { docs, docsName } = useContext(DocsContext);
+  const { docs, docsName, docsTitle } = useContext(DocsContext);
 
   const hasBestPractices = Boolean(
     docs?.docSections?.bestPractices?.some(hasContent),
@@ -170,7 +170,7 @@ export const DocDetails = () => {
 
   return docs ? (
     <>
-      <PageTitle title={docsName} />
+      <PageTitle title={docsTitle ?? docsName} />
       <Box display="flex" gap="xlarge">
         <Box flexGrow={1} minWidth={0}>
           <Stack space="xxlarge">
