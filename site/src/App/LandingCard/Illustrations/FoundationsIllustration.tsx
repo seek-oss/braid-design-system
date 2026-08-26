@@ -22,7 +22,7 @@ export const FoundationsIllustration = () => (
       fillRule="evenodd"
       clipRule="evenodd"
       d="M0 200C0 144.771 44.7715 100 100 100V166.667C81.5905 166.667 66.6667 181.59 66.6667 200H0Z"
-      className={fills.formAccent}
+      className={fills.neutral}
     />
     <path
       fillRule="evenodd"

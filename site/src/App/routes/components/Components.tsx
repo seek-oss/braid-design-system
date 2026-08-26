@@ -29,7 +29,7 @@ export const Components = () => (
       </Heading>
       <Text>lorem</Text>
     </Stack>
-    <Tiles space="xlarge" columns={[1, 2, 3]}>
+    <Tiles space="medium" columns={[1, 2, 3]}>
       {documentedComponents
         .filter((component) => component.category !== 'Logic')
         .map((component) => (

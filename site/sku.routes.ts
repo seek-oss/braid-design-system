@@ -41,11 +41,11 @@ const getPages = (relativePath: string): NonNullable<SkuConfig['routes']> => {
 
 // TODO: COLORMODE RELEASE
 // Remove `colorModeStyle` from `undocumentedExports.json`
-const cssFoundationNames = new Set<string>(
-  cssFoundationDocs.map((doc) => doc.name),
+const cssFoundationSourceNames = new Set<string>(
+  cssFoundationDocs.map((doc) => doc.docsFile ?? doc.name),
 );
 const cssNames = getExports('src/css.ts', 'css').filter(
-  (name) => !cssFoundationNames.has(name),
+  (name) => !cssFoundationSourceNames.has(name),
 );
 const componentNames = getExports('src/lib/components/index.ts');
 const testNames = getExports('src/test.ts');
@@ -104,6 +104,7 @@ const routes: SkuConfig['routes'] = [
   { route: '/foundations/iconography/browse', name: 'browseIcons' },
   { route: '/patterns', name: 'patterns' },
   getPages('src/App/routes/patterns/index.ts'),
+  { route: '/patterns/revealing-secondary-information' },
   { route: '/components', name: 'components' }, // Pre-rendering this route for url backwards compatibility.
   [...componentNames, ...testNames].flatMap((name) =>
     [
@@ -123,6 +124,10 @@ const routes: SkuConfig['routes'] = [
     { route: `${doc.path}/releases` },
     { route: `/css/${doc.name}` },
     { route: `/css/${doc.name}/releases` },
+    ...(doc.redirectsFrom ?? []).flatMap((from) => [
+      { route: from },
+      { route: `${from}/releases` },
+    ]),
   ]),
   iconNames.flatMap((name) => [
     { route: `/components/${name}`, name },

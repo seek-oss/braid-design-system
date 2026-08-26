@@ -62,8 +62,8 @@ export const patternCatalog: PatternEntry[] = [
       'Prompt a relevant, actionable next step at the moment it matters.',
   },
   {
-    slug: 'revealing-secondary-information',
-    title: 'Revealing secondary information',
+    slug: 'secondary-information',
+    title: 'Secondary information',
     kind: 'pattern',
     description:
       'Offer optional extra context, such as definitions or explanatory copy.',

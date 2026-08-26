@@ -16,7 +16,7 @@ const docs: ComponentDocs = {
       <Text weight="medium">
         You should only use this Hook if you’re unable to use{' '}
         <TextLink href="/components/Box">Box</TextLink> or{' '}
-        <TextLink href="/foundations/vars">vars.</TextLink>
+        <TextLink href="/foundations/tokens">vars.</TextLink>
       </Text>
     </Alert>
   ),

@@ -15,7 +15,7 @@ export const Patterns = () => (
         experiences, plus practical how-tos for applying them.
       </Text>
     </Stack>
-    <Tiles space="xlarge" columns={[1, 2, 3]}>
+    <Tiles space="medium" columns={[1, 2, 3]}>
       {patternEntries.map((entry) => (
         <LandingCard key={entry.slug} {...toLandingCard(entry)} />
       ))}
@@ -27,7 +27,7 @@ export const Patterns = () => (
         problems.
       </Text>
     </Stack>
-    <Tiles space="xlarge" columns={[1, 2, 3]}>
+    <Tiles space="medium" columns={[1, 2, 3]}>
       {howToEntries.map((entry) => (
         <LandingCard key={entry.slug} {...toLandingCard(entry)} />
       ))}

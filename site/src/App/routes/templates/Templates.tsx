@@ -30,7 +30,7 @@ export const Templates = () => (
         Placeholder cards for template groups. Content to be refined.
       </Text>
     </Stack>
-    <Tiles space="xlarge" columns={[1, 2, 3]}>
+    <Tiles space="medium" columns={[1, 2, 3]}>
       {templateCards.map((card) => (
         <LandingCard key={card.href} {...card} />
       ))}

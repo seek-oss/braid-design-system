@@ -42,6 +42,7 @@ import {
   getCssDoc,
 } from '../navigationHelpers';
 import {
+  getCssDocFileName,
   getCssFoundationDoc,
   isCssDoc,
   isCssFoundationDoc,
@@ -213,7 +214,7 @@ export const DocNavigation = () => {
     : docsName;
 
   if (isCssDoc(docsType, docsName)) {
-    history = getHistory(docsName);
+    history = getHistory(getCssDocFileName(docsName));
     docs = getCssDoc(docsName);
   } else {
     snippets = getComponentSnippets(docsName) || [];

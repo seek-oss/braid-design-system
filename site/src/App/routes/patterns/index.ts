@@ -16,7 +16,7 @@ import filters from './filters';
 import forms from './forms';
 import messagesToUsers from './messages-to-users';
 import nudge from './nudge';
-import revealingSecondaryInformation from './revealing-secondary-information';
+import secondaryInformation from './secondary-information';
 import serviceOutageBanners from './service-outage-banners';
 import skeletonLoader from './skeleton-loader';
 import socialShare from './social-share';
@@ -32,7 +32,7 @@ const routes: Record<string, Page> = {
   '/patterns/forms': forms,
   '/patterns/messages-to-users': messagesToUsers,
   '/patterns/nudge': nudge,
-  '/patterns/revealing-secondary-information': revealingSecondaryInformation,
+  '/patterns/secondary-information': secondaryInformation,
   '/patterns/service-outage-banners': serviceOutageBanners,
   '/patterns/skeleton-loader': skeletonLoader,
   '/patterns/social-share': socialShare,

@@ -20,9 +20,9 @@ import {
 import { PatternLayout, patternPage } from './PatternLayout';
 import { PlayroomExample } from './PlayroomExample';
 
-const RevealingSecondaryInformation = () => (
+const SecondaryInformation = () => (
   <PatternLayout
-    slug="revealing-secondary-information"
+    slug="secondary-information"
     sections={[
       { href: '#components', label: 'Components' },
       { href: '#alternative-approaches', label: 'Alternative approaches' },
@@ -232,7 +232,4 @@ const RevealingSecondaryInformation = () => (
   </PatternLayout>
 );
 
-export default patternPage(
-  'revealing-secondary-information',
-  <RevealingSecondaryInformation />,
-);
+export default patternPage('secondary-information', <SecondaryInformation />);

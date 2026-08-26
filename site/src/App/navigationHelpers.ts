@@ -13,7 +13,7 @@ import type {
 } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
-import { cssFoundationDocs } from './routes/foundations/cssDocs';
+import { cssFoundationDocs, getCssDocFileName } from './routes/foundations/cssDocs';
 
 const componentDocsContext = require.context(
   'braid-src/lib/components/',
@@ -47,7 +47,7 @@ export const getComponentDocs = (componentName: string) => {
 };
 
 export const getCssDoc = (cssName: string) =>
-  cssDocsContext(`./${cssName}.docs.tsx`).default as CssDoc;
+  cssDocsContext(`./${getCssDocFileName(cssName)}.docs.tsx`).default as CssDoc;
 
 const snippetsContext = require.context(
   'braid-src/lib/components/',
@@ -74,13 +74,13 @@ export const getComponentSnippets = (componentName: string) => {
   }));
 };
 
-const cssFoundationNames = new Set<string>(
-  cssFoundationDocs.map((doc) => doc.name),
+const cssFoundationSourceNames = new Set<string>(
+  cssFoundationDocs.map((doc) => doc.docsFile ?? doc.name),
 );
 
 const documentedCssNames = Object.keys(css)
   .filter((name) => !undocumentedExports.css.includes(name))
-  .filter((name) => !cssFoundationNames.has(name))
+  .filter((name) => !cssFoundationSourceNames.has(name))
   .sort();
 
 const documentedComponentNames = Object.keys({

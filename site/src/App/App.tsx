@@ -131,6 +131,12 @@ export const App = () => {
                   path="/examples"
                   element={<Navigate to="/patterns" replace />}
                 />
+                <Route
+                  path="/patterns/revealing-secondary-information"
+                  element={
+                    <Navigate to="/patterns/secondary-information" replace />
+                  }
+                />
                 {cssFoundationDocs.flatMap((doc) => [
                   <Route
                     key={`/css/${doc.name}`}
@@ -142,6 +148,20 @@ export const App = () => {
                     path={`/css/${doc.name}/releases`}
                     element={<Navigate to={`${doc.path}/releases`} replace />}
                   />,
+                  ...(doc.redirectsFrom ?? []).flatMap((from) => [
+                    <Route
+                      key={from}
+                      path={from}
+                      element={<Navigate to={doc.path} replace />}
+                    />,
+                    <Route
+                      key={`${from}/releases`}
+                      path={`${from}/releases`}
+                      element={
+                        <Navigate to={`${doc.path}/releases`} replace />
+                      }
+                    />,
+                  ]),
                 ])}
                 <Route path="/foundations" element={<Foundations />} />
                 <Route path="/components" element={<Components />} />
