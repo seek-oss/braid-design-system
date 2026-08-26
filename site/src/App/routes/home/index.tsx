@@ -4,77 +4,27 @@ import {
   Heading,
   ButtonLink,
   Inline,
+  Text,
+  Tiles,
   IconNewWindow,
   IconSocialGitHub,
+  Bleed,
+  IconChevron,
 } from 'braid-design-system';
 import { Box } from 'braid-src/lib/components/Box/Box';
 
 import { useConfig } from '../../ConfigContext';
-import { DesignWorkflowIllustration } from '../../LandingCard/Illustrations/DesignWorkflowIllustration';
-import { DevelopmentWorkflowIllustration } from '../../LandingCard/Illustrations/DevelopmentWorkflowIllustration';
-import { TutorialIllustration } from '../../LandingCard/Illustrations/TutorialIllustration';
-import { LandingSection } from '../../LandingCard/LandingSection';
+import { ComponentsIllustration } from '../../LandingCard/Illustrations/ComponentsIllustration';
+import { FoundationsIllustration } from '../../LandingCard/Illustrations/FoundationsIllustration';
+import { LandingCard } from '../../LandingCard/LandingCard';
 
 import * as styles from './home.css';
-
-const gettingStartedCards = [
-  {
-    href: '/getting-started/job-summary',
-    label: 'Job Summary tutorial',
-    description:
-      'Build a real component from scratch and see how Braid pieces fit together.',
-    illustration: <TutorialIllustration />,
-  },
-  {
-    href: '/guides/design-workflow',
-    label: 'Design workflow',
-    description:
-      'How designers use Braid and Playroom to iterate in the same medium as engineers.',
-    illustration: <DesignWorkflowIllustration />,
-  },
-  {
-    href: '/guides/development-workflow',
-    label: 'Development workflow',
-    description:
-      'Set up Braid in your app and start composing accessible UI quickly.',
-    illustration: <DevelopmentWorkflowIllustration />,
-  },
-];
-
-const exploreCards = [
-  {
-    href: '/foundations',
-    label: 'Foundations',
-    description: 'Core concepts like layout, tones and iconography.',
-  },
-  {
-    href: '/components',
-    label: 'Components',
-    description: 'The full suite of React components available in Braid.',
-  },
-  {
-    href: '/patterns',
-    label: 'Patterns',
-    description:
-      'Reusable patterns composing components into common experiences.',
-  },
-  {
-    href: '/templates',
-    label: 'Templates',
-    description: 'Page-level starting points for building new screens.',
-  },
-  {
-    href: '/css',
-    label: 'Styles',
-    description: 'Low-level CSS utilities and styling primitives.',
-  },
-] as const;
 
 export const HomePage = () => {
   const { playroomUrl } = useConfig();
   return (
     <Stack space="xxlarge">
-      <Box className={styles.hero} background="customDark">
+      <Box className={styles.hero}>
         <Box className={styles.contentColumn}>
           <Box className={styles.heroCopy}>
             <Stack space="large">
@@ -110,18 +60,82 @@ export const HomePage = () => {
           </Box>
         </Box>
       </Box>
-      <Stack space="xxlarge">
-        <LandingSection
-          heading="Getting started"
-          introduction="New to Braid? Start with a hands-on tutorial, then dig into the design and development workflows."
-          cards={gettingStartedCards}
-        />
+      <Stack space="xxxlarge">
+        <Stack space="medium">
+          <Tiles space="medium" columns={[1, 2, 3]}>
+            <LandingCard
+              href="/foundations"
+              label="Foundations"
+              description="Core concepts like layout, tones and iconography."
+              illustration={<FoundationsIllustration />}
+              illustrationBackground="brandAccent"
+            />
+            <LandingCard
+              href="/components"
+              label="Components"
+              description="The full suite of React components available in Braid."
+              illustration={<ComponentsIllustration />}
+              illustrationBackground="brandAccentSoftActive"
+            />
+            <LandingCard
+              href="/patterns"
+              label="Patterns"
+              description="Reusable patterns composing components into common experiences."
+              illustration={<ComponentsIllustration />}
+              illustrationBackground="formAccent"
+            />
+          </Tiles>
+          <Tiles space="medium" columns={[1, 2]}>
+            <LandingCard
+              href="/templates"
+              label="Templates"
+              description="Page-level starting points for building new screens."
+            />
+            <LandingCard
+              href="/css"
+              label="Styles"
+              description="Low-level CSS utilities and styling primitives."
+            />
+          </Tiles>
+        </Stack>
 
-        <LandingSection
-          heading="Explore Braid"
-          introduction="Jump into the areas of the system you need most."
-          cards={exploreCards}
-        />
+        <Bleed horizontal="xlarge">
+          <Box className={styles.gettingStartedCard}>
+            <Stack space="medium">
+              <Heading level="2">Getting started</Heading>
+              <Text>
+                New to Braid? Start with a hands-on tutorial, then dig into the
+                design and development workflows.
+              </Text>
+              <Inline space="small">
+                <ButtonLink
+                  href="/getting-started/job-summary"
+                  variant="transparent"
+                  icon={<IconChevron direction="right" />}
+                  iconPosition="trailing"
+                >
+                  Job Summary tutorial
+                </ButtonLink>
+                <ButtonLink
+                  href="/design-workflow"
+                  variant="transparent"
+                  icon={<IconChevron direction="right" />}
+                  iconPosition="trailing"
+                >
+                  Start designing
+                </ButtonLink>
+                <ButtonLink
+                  href="/development-workflow"
+                  variant="transparent"
+                  icon={<IconChevron direction="right" />}
+                  iconPosition="trailing"
+                >
+                  Start developing
+                </ButtonLink>
+              </Inline>
+            </Stack>
+          </Box>
+        </Bleed>
       </Stack>
     </Stack>
   );

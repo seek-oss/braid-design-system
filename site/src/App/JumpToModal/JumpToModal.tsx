@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router';
 
 import { SearchResults } from './SearchResults';
 import {
-  searchItems,
   groupSearchResults,
+  searchCategories,
+  searchItems,
   type SearchItem,
 } from './getSearchItems';
 
@@ -40,12 +41,7 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
 
   const flatResults = useMemo(() => {
     const results: SearchItem[] = [];
-    const categoryOrder = [
-      'Foundations',
-      'Components',
-      'CSS',
-      'Logic',
-    ] as const;
+    const categoryOrder = searchCategories;
 
     categoryOrder.forEach((category) => {
       results.push(...groupedResults[category]);
@@ -138,7 +134,7 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
         icon={<IconSearch />}
         ref={inputRef}
         aria-label="Jump to a component"
-        placeholder="Jump to Foundations, Components, CSS, Logic..."
+        placeholder="Jump to Foundations, Components, Patterns, CSS..."
         value={searchQuery}
         onChange={(e) => {
           setSearchQuery(e.target.value);

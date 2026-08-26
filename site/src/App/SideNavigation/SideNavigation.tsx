@@ -15,7 +15,7 @@ import { navSections } from '../navigationSections';
 import { foundationNavItems } from '../routes/foundations';
 import gettingStarted from '../routes/getting-started';
 import guides from '../routes/guides';
-import patterns from '../routes/patterns';
+import patterns, { howToNavItems, patternNavItems } from '../routes/patterns';
 
 type BadgeLabel = 'New' | 'Deprecated';
 
@@ -61,8 +61,6 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
   const isHomeAdjacent =
     currentPath.startsWith('/guides') ||
     currentPath.startsWith('/getting-started');
-
-  const patternEntries = Object.entries(patterns);
 
   return (
     <Box paddingTop="large">
@@ -176,17 +174,29 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
           </>
         )}
 
-        {activeSection?.id === 'patterns' && patternEntries.length > 0 && (
-          <SideNavigationSection
-            title="Patterns"
-            items={patternEntries.map(([path, pattern]) => ({
-              name: pattern.title,
-              badge: pattern.badge,
-              path,
-              active: isActive(path),
-              onClick: onSelect,
-            }))}
-          />
+        {activeSection?.id === 'patterns' && (
+          <>
+            <SideNavigationSection
+              title="Patterns"
+              items={patternNavItems.map(({ name, path }) => ({
+                name,
+                badge: patterns[path]?.badge,
+                path,
+                active: isActive(path),
+                onClick: onSelect,
+              }))}
+            />
+            <SideNavigationSection
+              title="How to"
+              items={howToNavItems.map(({ name, path }) => ({
+                name,
+                badge: patterns[path]?.badge,
+                path,
+                active: isActive(path),
+                onClick: onSelect,
+              }))}
+            />
+          </>
         )}
 
         {activeSection?.id === 'templates' && (

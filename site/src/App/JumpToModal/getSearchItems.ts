@@ -4,11 +4,27 @@ import {
   documentedCss,
 } from '../navigationHelpers';
 import { foundationNavItems } from '../routes/foundations';
+import {
+  howToEntries,
+  patternEntries,
+  patternHref,
+} from '../routes/patterns/catalog';
+
+export const searchCategories = [
+  'Foundations',
+  'Components',
+  'Patterns',
+  'How to',
+  'CSS',
+  'Logic',
+] as const;
+
+export type SearchCategory = (typeof searchCategories)[number];
 
 export interface SearchItem {
   name: string;
   path: string;
-  category: 'Foundations' | 'Components' | 'CSS' | 'Logic';
+  category: SearchCategory;
   hasProps: boolean;
 }
 
@@ -31,6 +47,22 @@ export const searchItems: SearchItem[] = [
       hasProps: true,
     })),
 
+  // Patterns
+  ...patternEntries.map((entry) => ({
+    name: entry.title,
+    path: patternHref(entry.slug),
+    category: 'Patterns' as const,
+    hasProps: false,
+  })),
+
+  // How to
+  ...howToEntries.map((entry) => ({
+    name: entry.title,
+    path: patternHref(entry.slug),
+    category: 'How to' as const,
+    hasProps: false,
+  })),
+
   // CSS
   ...documentedCss.map((doc) => ({
     name: doc.name,
@@ -48,15 +80,12 @@ export const searchItems: SearchItem[] = [
   })),
 ];
 
-export type GroupedResults = Record<SearchItem['category'], SearchItem[]>;
+export type GroupedResults = Record<SearchCategory, SearchItem[]>;
 
 export const groupSearchResults = (items: SearchItem[]): GroupedResults => {
-  const groups: GroupedResults = {
-    Foundations: [],
-    Components: [],
-    CSS: [],
-    Logic: [],
-  };
+  const groups = Object.fromEntries(
+    searchCategories.map((category) => [category, [] as SearchItem[]]),
+  ) as GroupedResults;
 
   items.forEach((item) => {
     groups[item.category].push(item);

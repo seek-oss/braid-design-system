@@ -121,7 +121,7 @@ export const App = () => {
                 />
                 <Route
                   path="/examples/basic-form"
-                  element={<Navigate to="/patterns" replace />}
+                  element={<Navigate to="/patterns/forms" replace />}
                 />
                 <Route
                   path="/examples/marketing-banner"

@@ -1,6 +1,6 @@
-import { Heading, Stack } from 'braid-design-system';
+import { Heading, Stack, Text, Tiles } from 'braid-design-system';
 
-import { LandingSection } from '../../LandingCard/LandingSection';
+import { LandingCard } from '../../LandingCard/LandingCard';
 
 import { cssFoundationDocs } from './cssDocs';
 
@@ -29,11 +29,18 @@ const foundationCards = [
 
 export const Foundations = () => (
   <Stack space="xxlarge">
-    <Heading level="1">Foundations</Heading>
-    <LandingSection
-      heading="Explore foundations"
-      introduction="Placeholder cards for the core foundation topics. Content to be refined."
-      cards={foundationCards}
-    />
+    <Stack space="medium">
+      <Heading component="h1" level="2">
+        Foundations
+      </Heading>
+      <Text>
+        Placeholder cards for the core foundation topics. Content to be refined.
+      </Text>
+    </Stack>
+    <Tiles space="xlarge" columns={[1, 2, 3]}>
+      {foundationCards.map((card) => (
+        <LandingCard key={card.href} {...card} />
+      ))}
+    </Tiles>
   </Stack>
 );
