@@ -1,25 +1,14 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import { atoms } from 'braid-design-system/css';
-import { palette } from 'braid-src/lib/color/palette';
 import { colorModeStyle } from 'braid-src/lib/css/colorModeStyle';
 import { vars } from 'braid-src/lib/themes/vars.css';
-import { darken } from 'polished';
+
+import {
+  illustrationFills,
+  illustrationThemes,
+} from './illustrationPalette';
 
 const colorTransition = '250ms ease';
-
-const restFills = {
-  light: palette.indigo['400'],
-  accent: palette.indigo['500'],
-  navy: palette.grey['900'],
-  navyMid: palette.grey['800'],
-} as const;
-
-const hoverFills = {
-  light: palette.seekPink['300'],
-  accent: palette.seekPink['500'],
-  navy: palette.seekBlue['700'],
-  navyMid: palette.seekBlue['600'],
-} as const;
 
 export const linkOverlay = style([
   atoms({
@@ -84,35 +73,18 @@ export const mediaCanvas = style(
   }),
 );
 
-export const mediaBackground = styleVariants({
-  brandAccent: {
-    backgroundColor: palette.grey['200'],
+export const illustrationTheme = styleVariants(
+  illustrationThemes,
+  ({ rest, hover }) => ({
+    backgroundColor: rest,
     transition: `background-color ${colorTransition}`,
     selectors: {
       [hoveredMedia]: {
-        backgroundColor: palette.seekBlue['700'],
+        backgroundColor: hover,
       },
     },
-  },
-  brandAccentSoftActive: {
-    backgroundColor: darken(0.025, palette.grey['100']),
-    transition: `background-color ${colorTransition}`,
-    selectors: {
-      [hoveredMedia]: {
-        backgroundColor: darken(0.05, palette.seekPink['50']),
-      },
-    },
-  },
-  formAccent: {
-    backgroundColor: palette.indigo['600'],
-    transition: `background-color ${colorTransition}`,
-    selectors: {
-      [hoveredMedia]: {
-        backgroundColor: palette.seekBlueLight['700'],
-      },
-    },
-  },
-});
+  }),
+);
 
 export const illustration = style({
   width: '80%',
@@ -121,52 +93,12 @@ export const illustration = style({
 
 const hoveredFill = `${linkOverlay}:hover + ${card} ${media} &, ${linkOverlay}:focus-visible + ${card} ${media} &`;
 
-export const fillLight = style({
-  fill: restFills.light,
+export const fills = styleVariants(illustrationFills, ({ rest, hover }) => ({
+  fill: rest,
   transition: `fill ${colorTransition}`,
   selectors: {
     [hoveredFill]: {
-      fill: hoverFills.light,
+      fill: hover,
     },
   },
-});
-
-export const fillAccent = style({
-  fill: restFills.accent,
-  transition: `fill ${colorTransition}`,
-  selectors: {
-    [hoveredFill]: {
-      fill: hoverFills.accent,
-    },
-  },
-});
-
-export const fillNavy = style({
-  fill: restFills.navy,
-  transition: `fill ${colorTransition}`,
-  selectors: {
-    [hoveredFill]: {
-      fill: hoverFills.navy,
-    },
-  },
-});
-
-export const fillNavyMid = style({
-  fill: restFills.navyMid,
-  transition: `fill ${colorTransition}`,
-  selectors: {
-    [hoveredFill]: {
-      fill: hoverFills.navyMid,
-    },
-  },
-});
-
-export const fillFormAccent = style({
-  fill: restFills.navy,
-  transition: `fill ${colorTransition}`,
-  selectors: {
-    [hoveredFill]: {
-      fill: palette.seekBlueLight['700'],
-    },
-  },
-});
+}));

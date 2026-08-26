@@ -4,16 +4,18 @@ import { Heading, Link, Stack, Text } from 'braid-design-system';
 import { Box } from 'braid-src/lib/components/Box/Box';
 import type { ReactNode } from 'react';
 
+import type { IllustrationTheme } from './illustrationPalette';
+
 import * as styles from './LandingCard.css';
 
-export type IllustrationBackground = keyof typeof styles.mediaBackground;
+export type { IllustrationTheme };
 
 export interface LandingCardProps {
   href: string;
   label: string;
   description: string;
   illustration?: ReactNode;
-  illustrationBackground?: IllustrationBackground;
+  illustrationTheme?: IllustrationTheme;
 }
 
 export const LandingCard = ({
@@ -21,7 +23,7 @@ export const LandingCard = ({
   label,
   description,
   illustration,
-  illustrationBackground,
+  illustrationTheme,
 }: LandingCardProps) => (
   <Box position="relative" height="full">
     <Link href={href} className={styles.linkOverlay} aria-label={label} />
@@ -36,8 +38,8 @@ export const LandingCard = ({
         <Box
           className={[
             styles.media,
-            illustrationBackground
-              ? styles.mediaBackground[illustrationBackground]
+            illustrationTheme
+              ? styles.illustrationTheme[illustrationTheme]
               : styles.mediaCanvas,
           ]}
           aria-hidden

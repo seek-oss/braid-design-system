@@ -68,21 +68,21 @@ export const HomePage = () => {
               label="Foundations"
               description="Core concepts like layout, tones and iconography."
               illustration={<FoundationsIllustration />}
-              illustrationBackground="brandAccent"
+              illustrationTheme="foundations"
             />
             <LandingCard
               href="/components"
               label="Components"
               description="The full suite of React components available in Braid."
               illustration={<ComponentsIllustration />}
-              illustrationBackground="brandAccentSoftActive"
+              illustrationTheme="components"
             />
             <LandingCard
               href="/patterns"
               label="Patterns"
               description="Reusable patterns composing components into common experiences."
               illustration={<ComponentsIllustration />}
-              illustrationBackground="formAccent"
+              illustrationTheme="patterns"
             />
           </Tiles>
           <Tiles space="medium" columns={[1, 2]}>
@@ -102,10 +102,10 @@ export const HomePage = () => {
         <Bleed horizontal="xlarge">
           <Box className={styles.gettingStartedCard}>
             <Stack space="medium">
-              <Heading level="2">Getting started</Heading>
+              <Heading level="2">New to Braid? </Heading>
               <Text>
-                New to Braid? Start with a hands-on tutorial, then dig into the
-                design and development workflows.
+                Start with a hands-on tutorial, then dig into the design and
+                development workflows.
               </Text>
               <Inline space="small">
                 <ButtonLink
