@@ -293,11 +293,11 @@ import type { SVGProps } from '../SVGTypes';
 export const IconCautionSvg: FC<SVGProps> = ({ title, titleId, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -569,11 +569,11 @@ import type { SVGProps } from '../SVGTypes';
 export const IconCriticalSvg: FC<SVGProps> = ({ title, titleId, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -638,11 +638,11 @@ import type { SVGProps } from '../SVGTypes';
 export const IconDesktopSvg: FC<SVGProps> = ({ title, titleId, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -806,11 +806,11 @@ export const IconEnlargeActiveSvg: FC<SVGProps> = ({
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -898,11 +898,11 @@ import type { SVGProps } from '../SVGTypes';
 export const IconFlagSvg: FC<SVGProps> = ({ title, titleId, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -920,11 +920,11 @@ import type { SVGProps } from '../SVGTypes';
 export const IconGiftSvg: FC<SVGProps> = ({ title, titleId, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -942,11 +942,11 @@ import type { SVGProps } from '../SVGTypes';
 export const IconGlobeSvg: FC<SVGProps> = ({ title, titleId, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -1247,11 +1247,11 @@ import type { SVGProps } from '../SVGTypes';
 export const IconLanguageSvg: FC<SVGProps> = ({ title, titleId, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -1418,11 +1418,11 @@ export const IconMicrophoneSvg: FC<SVGProps> = ({
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -1463,11 +1463,11 @@ import type { SVGProps } from '../SVGTypes';
 export const IconMobileSvg: FC<SVGProps> = ({ title, titleId, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -1566,11 +1566,11 @@ export const IconNotificationSvg: FC<SVGProps> = ({
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -1740,11 +1740,11 @@ import type { SVGProps } from '../SVGTypes';
 export const IconPhoneSvg: FC<SVGProps> = ({ title, titleId, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -1789,11 +1789,11 @@ export const IconPlatformAndroidSvg: FC<SVGProps> = ({
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -1815,11 +1815,11 @@ export const IconPlatformAppleSvg: FC<SVGProps> = ({
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -2735,11 +2735,11 @@ export const IconStatisticsSvg: FC<SVGProps> = ({
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -2807,11 +2807,11 @@ import type { SVGProps } from '../SVGTypes';
 export const IconThumbSvg: FC<SVGProps> = ({ title, titleId, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -2991,11 +2991,11 @@ export const IconVisibilityHiddenSvg: FC<SVGProps> = ({
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -3017,11 +3017,11 @@ export const IconVisibilitySvg: FC<SVGProps> = ({
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -3044,11 +3044,11 @@ export const IconVisibilityVisibleSvg: FC<SVGProps> = ({
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
@@ -3071,11 +3071,11 @@ export const IconWorkExperienceSvg: FC<SVGProps> = ({
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={16}
-    height={16}
     viewBox="0 0 24 24"
     focusable="false"
     fill="currentColor"
+    width={16}
+    height={16}
     aria-labelledby={titleId}
     {...props}
   >
