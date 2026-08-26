@@ -12,6 +12,7 @@ import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { useContext, useMemo } from 'react';
 
 import { slugify } from '../../slugify';
+import { headerScrollOffset } from '../Navigation/navigationSizes';
 import { PageTitle } from '../Seo/PageTitle';
 
 import { DocExample } from './DocExample';
@@ -50,7 +51,9 @@ export const DocDetails = () => {
   const { docs, docsName, docsTitle } = useContext(DocsContext);
 
   const hasBestPractices = Boolean(
-    docs?.docSections?.bestPractices?.some(hasContent),
+    docs &&
+    'docSections' in docs &&
+    docs.docSections?.bestPractices?.some(hasContent),
   );
 
   /*
@@ -80,7 +83,7 @@ export const DocDetails = () => {
       });
     }
 
-    if (docs.docSections) {
+    if ('docSections' in docs && docs.docSections) {
       Object.entries(docs.docSections).forEach(
         ([sectionKey, docSectionChildren]) => {
           const hasAnyContent = docSectionChildren.some(hasContent);
@@ -162,7 +165,19 @@ export const DocDetails = () => {
     return sections;
   }, [docs, hasBestPractices]);
 
-  const handleTocClick = (_event: React.MouseEvent, id: string) => {
+  const handleTocClick = (event: React.MouseEvent, id: string) => {
+    event.preventDefault();
+
+    const target = document.getElementById(id);
+    if (target) {
+      window.scrollTo({
+        top:
+          window.scrollY +
+          target.getBoundingClientRect().top -
+          headerScrollOffset,
+      });
+    }
+
     try {
       window.history.pushState(null, '', `#${id}`);
     } catch {}
@@ -183,8 +198,14 @@ export const DocDetails = () => {
                 <PlayroomStateProvider>
                   <DocExample
                     Example={docs.Example}
-                    background={docs.examplebackground}
-                    showCodeByDefault={docs.category === 'Logic'}
+                    background={
+                      'examplebackground' in docs
+                        ? docs.examplebackground
+                        : undefined
+                    }
+                    showCodeByDefault={
+                      'category' in docs && docs.category === 'Logic'
+                    }
                   />
                 </PlayroomStateProvider>
               ) : null}
@@ -198,7 +219,8 @@ export const DocDetails = () => {
                 </Stack>
               ) : null}
 
-              {docs.docSections &&
+              {'docSections' in docs &&
+                docs.docSections &&
                 Object.entries(docs.docSections)
                   .filter(([, docSectionChildren]) =>
                     docSectionChildren.some(hasContent),

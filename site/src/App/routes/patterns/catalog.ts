@@ -25,15 +25,13 @@ export const patternCatalog: PatternEntry[] = [
     slug: 'empty-states',
     title: 'Empty states',
     kind: 'pattern',
-    description:
-      'Show what to expect or do next when there’s no data yet.',
+    description: 'Show what to expect or do next when there’s no data yet.',
   },
   {
     slug: 'error-states',
     title: 'Error states',
     kind: 'pattern',
-    description:
-      'Alert users when a requested action couldn’t be completed.',
+    description: 'Alert users when a requested action couldn’t be completed.',
   },
   {
     slug: 'filters',
@@ -45,7 +43,8 @@ export const patternCatalog: PatternEntry[] = [
     slug: 'forms',
     title: 'Forms',
     kind: 'pattern',
-    description: 'Collect input through a set of fields on a page, sidebar or dialog.',
+    description:
+      'Collect input through a set of fields on a page, sidebar or dialog.',
   },
   {
     slug: 'messages-to-users',
@@ -72,8 +71,7 @@ export const patternCatalog: PatternEntry[] = [
     slug: 'service-outage-banners',
     title: 'Service outage banners',
     kind: 'pattern',
-    description:
-      'Warn users about upcoming interruptions or reduced service.',
+    description: 'Warn users about upcoming interruptions or reduced service.',
   },
   {
     slug: 'skeleton-loader',

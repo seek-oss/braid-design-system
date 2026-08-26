@@ -1,4 +1,3 @@
-import { LinkableHeading } from '@braid-design-system/docs-ui';
 import source from '@braid-design-system/source.macro';
 import {
   Badge,
@@ -27,15 +26,13 @@ import {
   MenuItem,
   MenuRenderer,
   OverflowMenu,
-  PageBlock,
   Spread,
   Stack,
   Text,
   TextLink,
 } from 'braid-design-system';
 
-import { PatternLayout, patternPage } from './PatternLayout';
-import { PlayroomExample } from './PlayroomExample';
+import type { PatternDocs } from '../../../types';
 
 interface DividedListItem {
   id: string;
@@ -47,103 +44,98 @@ interface DividedListItem {
   location: string;
 }
 
-const DividedLists = () => (
-  <PatternLayout
-    slug="divided-lists"
-    sections={[
-      { href: '#appearance', label: 'Appearance' },
-      { href: '#when-to-use', label: 'When to use' },
-      { href: '#visual-guidelines', label: 'Visual guidelines' },
-      { href: '#general-best-practice', label: 'General best practice' },
-      {
-        href: '#related-patterns-and-components',
-        label: 'Related patterns and components',
-      },
-    ]}
-  >
-    <LinkableHeading>Appearance</LinkableHeading>
-    <Text>
-      A divided list is a layout approach where related items are stacked
-      vertically and separated by{' '}
-      <TextLink href="/components/Divider">Dividers</TextLink>. Similar to{' '}
-      <TextLink href="/components/Card">Cards</TextLink>, divided lists are
-      highly flexible and can contain many types of content including copy,
-      images, calls to action and layout components. The examples below use{' '}
-      <TextLink href="/components/Columns">Columns</TextLink> to organise
-      content in a structured way.
+export const docs: PatternDocs = {
+  description: (
+    <Text tone="secondary">
+      Display related items in a consecutive list that&rsquo;s easy to scan and
+      act on.
     </Text>
-    <Text>A simple 2-column divided list:</Text>
-    <PlayroomExample
-      Example={() =>
+  ),
+  additional: [
+    {
+      label: 'Appearance',
+      description: (
+        <>
+          <Text>
+            A divided list is a layout approach where related items are stacked
+            vertically and separated by{' '}
+            <TextLink href="/components/Divider">Dividers</TextLink>. Similar to{' '}
+            <TextLink href="/components/Card">Cards</TextLink>, divided lists
+            are highly flexible and can contain many types of content including
+            copy, images, calls to action and layout components. The examples
+            below use <TextLink href="/components/Columns">Columns</TextLink> to
+            organise content in a structured way.
+          </Text>
+          <Text>A simple 2-column divided list:</Text>
+        </>
+      ),
+      Example: () =>
         source(
-          <PageBlock width="medium">
-            <Stack space="xlarge">
-              <Heading level="2">Heading</Heading>
-              <Stack space="large">
-                <Columns space="small">
-                  <Column>
-                    <Stack space="small">
-                      <Text weight="strong">Strong text lorem ipsum</Text>
-                      <Text tone="secondary">
-                        Secondary text dolor sit amet
-                      </Text>
-                    </Stack>
-                  </Column>
-                  <Column width="content">
-                    <ButtonIcon
-                      variant="transparent"
-                      icon={<IconEdit />}
-                      label="Edit"
-                    />
-                  </Column>
-                </Columns>
-                <Divider />
-                <Columns space="small">
-                  <Column>
-                    <Stack space="small">
-                      <Text weight="strong">Strong text</Text>
-                      <Text tone="secondary">
-                        Secondary text consectetur adipiscing
-                      </Text>
-                    </Stack>
-                  </Column>
-                  <Column width="content">
-                    <ButtonIcon
-                      variant="transparent"
-                      icon={<IconEdit />}
-                      label="Edit"
-                    />
-                  </Column>
-                </Columns>
-                <Divider />
-                <Columns space="small">
-                  <Column>
-                    <Stack space="small">
-                      <Text weight="strong">Strong text ipsum</Text>
-                      <Text tone="secondary">Secondary text vel odio</Text>
-                    </Stack>
-                  </Column>
-                  <Column width="content">
-                    <ButtonIcon
-                      variant="transparent"
-                      icon={<IconEdit />}
-                      label="Edit"
-                    />
-                  </Column>
-                </Columns>
-                <Divider />
-              </Stack>
+          <Stack space="xlarge">
+            <Heading level="2">Heading</Heading>
+            <Stack space="large">
+              <Columns space="small">
+                <Column>
+                  <Stack space="small">
+                    <Text weight="strong">Strong text lorem ipsum</Text>
+                    <Text tone="secondary">Secondary text dolor sit amet</Text>
+                  </Stack>
+                </Column>
+                <Column width="content">
+                  <ButtonIcon
+                    variant="transparent"
+                    icon={<IconEdit />}
+                    label="Edit"
+                  />
+                </Column>
+              </Columns>
+              <Divider />
+              <Columns space="small">
+                <Column>
+                  <Stack space="small">
+                    <Text weight="strong">Strong text</Text>
+                    <Text tone="secondary">
+                      Secondary text consectetur adipiscing
+                    </Text>
+                  </Stack>
+                </Column>
+                <Column width="content">
+                  <ButtonIcon
+                    variant="transparent"
+                    icon={<IconEdit />}
+                    label="Edit"
+                  />
+                </Column>
+              </Columns>
+              <Divider />
+              <Columns space="small">
+                <Column>
+                  <Stack space="small">
+                    <Text weight="strong">Strong text ipsum</Text>
+                    <Text tone="secondary">Secondary text vel odio</Text>
+                  </Stack>
+                </Column>
+                <Column width="content">
+                  <ButtonIcon
+                    variant="transparent"
+                    icon={<IconEdit />}
+                    label="Edit"
+                  />
+                </Column>
+              </Columns>
+              <Divider />
             </Stack>
-          </PageBlock>,
-        )
-      }
-    />
-    <Text>
-      A more detailed, multi-column divided list. This prototype uses responsive
-      techniques to hide and reveal content across viewports.
-    </Text>
-    <PlayroomExample
-      Example={({ setDefaultState, getState }) =>
+          </Stack>,
+        ),
+    },
+    {
+      description: (
+        <Text>
+          A more detailed, multi-column divided list. This prototype uses
+          responsive techniques to hide and reveal content across viewports.
+        </Text>
+      ),
+      Example: ({ setDefaultState, getState }) =>
         source(
           <>
             {setDefaultState('data', {
@@ -223,76 +215,205 @@ const DividedLists = () => (
                 },
               ],
             })}
-            <PageBlock>
-              <Stack space="xlarge">
-                <Stack space="medium">
-                  <Heading level="2">Heading example</Heading>
-                  <Text size="small" tone="secondary">
-                    8 lorem ipsum
-                  </Text>
-                </Stack>
-                <Stack component="ul" space="medium">
-                  {getState('data').items.map((row: DividedListItem) => (
-                    <Stack key={row.id} component="li" space="medium">
-                      <Divider />
-                      <Columns
-                        space="medium"
-                        collapseBelow="tablet"
-                        alignY="center"
-                      >
-                        <Column>
-                          <Columns
-                            space={{
-                              mobile: 'small',
-                              tablet: 'medium',
-                            }}
-                            collapseBelow="tablet"
-                            alignY="center"
-                          >
-                            <Column width="content">
-                              <Box style={{ width: 110 }}>
+            <Stack space="xlarge">
+              <Stack space="medium">
+                <Heading level="2">Heading example</Heading>
+                <Text size="small" tone="secondary">
+                  8 lorem ipsum
+                </Text>
+              </Stack>
+              <Stack component="ul" space="medium">
+                {getState('data').items.map((row: DividedListItem) => (
+                  <Stack key={row.id} component="li" space="medium">
+                    <Divider />
+                    <Columns
+                      space="medium"
+                      collapseBelow="tablet"
+                      alignY="center"
+                    >
+                      <Column>
+                        <Columns
+                          space={{
+                            mobile: 'small',
+                            tablet: 'medium',
+                          }}
+                          collapseBelow="tablet"
+                          alignY="center"
+                        >
+                          <Column width="content">
+                            <Box style={{ width: 110 }}>
+                              {
                                 {
-                                  {
-                                    OPEN: (
-                                      <Badge tone="info" bleedY>
-                                        {row.daysRemaining} days left
-                                      </Badge>
-                                    ),
-                                    DRAFT: (
-                                      <Badge tone="caution" bleedY>
-                                        Draft
-                                      </Badge>
-                                    ),
-                                    EXPIRED: (
-                                      <Badge tone="neutral" bleedY>
-                                        Expired
-                                      </Badge>
-                                    ),
-                                  }[row.status]
-                                }
-                              </Box>
-                            </Column>
+                                  OPEN: (
+                                    <Badge tone="info" bleedY>
+                                      {row.daysRemaining} days left
+                                    </Badge>
+                                  ),
+                                  DRAFT: (
+                                    <Badge tone="caution" bleedY>
+                                      Draft
+                                    </Badge>
+                                  ),
+                                  EXPIRED: (
+                                    <Badge tone="neutral" bleedY>
+                                      Expired
+                                    </Badge>
+                                  ),
+                                }[row.status]
+                              }
+                            </Box>
+                          </Column>
+                          <Column>
+                            <Spread space="small" alignY="center">
+                              <Text weight="strong" size="small">
+                                <TextLink href="#">{row.title}</TextLink>
+                              </Text>
+                              <Hidden above="mobile">
+                                <OverflowMenu label="Options">
+                                  <MenuItem icon={<IconRefresh />}>
+                                    Refresh
+                                  </MenuItem>
+                                  <MenuItem icon={<IconEdit />}>Edit</MenuItem>
+                                  <MenuItem icon={<IconCopy />}>Copy</MenuItem>
+                                  <MenuItem icon={<IconNewWindow />}>
+                                    View job
+                                  </MenuItem>
+                                  <MenuItem icon={<IconStatistics />}>
+                                    View info
+                                  </MenuItem>
+                                  <MenuItem
+                                    icon={<IconLocation />}
+                                    badge={<Badge tone="promote">Beta</Badge>}
+                                  >
+                                    Add locations
+                                  </MenuItem>
+                                  <MenuItem icon={<IconNotification />}>
+                                    Notifications
+                                  </MenuItem>
+                                  <MenuItem icon={<IconPersonAdd />}>
+                                    Team access
+                                  </MenuItem>
+                                  <MenuItem icon={<IconDelete />}>
+                                    Expire
+                                  </MenuItem>
+                                  <MenuItem icon={<IconShare />}>
+                                    Share job
+                                  </MenuItem>
+                                </OverflowMenu>
+                              </Hidden>
+                            </Spread>
+                          </Column>
+                        </Columns>
+                      </Column>
+                      <Column hideBelow="desktop" hideAbove="mobile">
+                        <Columns
+                          space={{
+                            mobile: 'small',
+                            tablet: 'medium',
+                          }}
+                          collapseBelow="tablet"
+                          alignY="center"
+                        >
+                          <Column>
+                            <Text
+                              tone="secondary"
+                              size="small"
+                              icon={<IconLocation />}
+                            >
+                              {row.location}
+                            </Text>
+                          </Column>
+                          {row.status !== 'DRAFT' ? (
                             <Column>
-                              <Spread space="small" alignY="center">
-                                <Text weight="strong" size="small">
-                                  <TextLink href="#">{row.title}</TextLink>
+                              <Inline space="xsmall" alignY="center">
+                                <Text
+                                  size="small"
+                                  icon={<IconPeople />}
+                                  tone="secondary"
+                                >
+                                  <TextLink href="#" weight="weak">
+                                    {row.numberOfCandidates} candidate
+                                    {row.numberOfCandidates !== 1 ? 's' : ''}
+                                  </TextLink>
                                 </Text>
-                                <Hidden above="mobile">
-                                  <OverflowMenu label="Options">
-                                    <MenuItem icon={<IconRefresh />}>
-                                      Refresh
-                                    </MenuItem>
-                                    <MenuItem icon={<IconEdit />}>
-                                      Edit
-                                    </MenuItem>
-                                    <MenuItem icon={<IconCopy />}>
-                                      Copy
-                                    </MenuItem>
+                                {row.numberOfNewCandidates ? (
+                                  <Text tone="positive" size="small">
+                                    ({row.numberOfNewCandidates} new)
+                                  </Text>
+                                ) : null}
+                              </Inline>
+                            </Column>
+                          ) : null}
+                        </Columns>
+                      </Column>
+                      <Column width="content" hideBelow="tablet">
+                        <Box style={{ width: 175 }}>
+                          <Inline space="none" alignY="center" align="right">
+                            <Columns space="medium" alignY="center">
+                              {row.status === 'OPEN' ? (
+                                <Column>
+                                  <ButtonIcon
+                                    variant="transparent"
+                                    icon={<IconSearch />}
+                                    label="Find talent"
+                                  />
+                                </Column>
+                              ) : null}
+                              {row.status !== 'DRAFT' ? (
+                                <Column>
+                                  <ButtonIcon
+                                    variant="transparent"
+                                    icon={<IconStatistics />}
+                                    label="Ad performance"
+                                  />
+                                </Column>
+                              ) : null}
+                              {row.status === 'DRAFT' ? (
+                                <Column>
+                                  <ButtonIcon
+                                    variant="transparent"
+                                    icon={<IconDelete />}
+                                    label="Delete"
+                                  />
+                                </Column>
+                              ) : null}
+                              {row.status !== 'EXPIRED' ? (
+                                <Column>
+                                  <ButtonIcon
+                                    variant="transparent"
+                                    icon={<IconEdit />}
+                                    label="Edit"
+                                  />
+                                </Column>
+                              ) : null}
+                              {row.status !== 'DRAFT' ? (
+                                <Column>
+                                  <ButtonIcon
+                                    variant="transparent"
+                                    icon={<IconCopy />}
+                                    label="Copy"
+                                  />
+                                </Column>
+                              ) : null}
+                              {row.status !== 'DRAFT' ? (
+                                <Column>
+                                  <MenuRenderer
+                                    offsetSpace="small"
+                                    align="right"
+                                    trigger={(triggerProps) => (
+                                      <ButtonIcon
+                                        variant="transparent"
+                                        icon={<IconOverflow />}
+                                        label="Options"
+                                        {...triggerProps}
+                                      />
+                                    )}
+                                  >
                                     <MenuItem icon={<IconNewWindow />}>
                                       View job
                                     </MenuItem>
                                     <MenuItem icon={<IconStatistics />}>
-                                      View info
+                                      View Ad Performance
                                     </MenuItem>
                                     <MenuItem
                                       icon={<IconLocation />}
@@ -312,237 +433,116 @@ const DividedLists = () => (
                                     <MenuItem icon={<IconShare />}>
                                       Share job
                                     </MenuItem>
-                                  </OverflowMenu>
-                                </Hidden>
-                              </Spread>
-                            </Column>
-                          </Columns>
-                        </Column>
-                        <Column hideBelow="desktop" hideAbove="mobile">
-                          <Columns
-                            space={{
-                              mobile: 'small',
-                              tablet: 'medium',
-                            }}
-                            collapseBelow="tablet"
-                            alignY="center"
-                          >
-                            <Column>
-                              <Text
-                                tone="secondary"
-                                size="small"
-                                icon={<IconLocation />}
-                              >
-                                {row.location}
-                              </Text>
-                            </Column>
-                            {row.status !== 'DRAFT' ? (
-                              <Column>
-                                <Inline space="xsmall" alignY="center">
-                                  <Text
-                                    size="small"
-                                    icon={<IconPeople />}
-                                    tone="secondary"
-                                  >
-                                    <TextLink href="#" weight="weak">
-                                      {row.numberOfCandidates} candidate
-                                      {row.numberOfCandidates !== 1 ? 's' : ''}
-                                    </TextLink>
-                                  </Text>
-                                  {row.numberOfNewCandidates ? (
-                                    <Text tone="positive" size="small">
-                                      ({row.numberOfNewCandidates} new)
-                                    </Text>
-                                  ) : null}
-                                </Inline>
-                              </Column>
-                            ) : null}
-                          </Columns>
-                        </Column>
-                        <Column width="content" hideBelow="tablet">
-                          <Box style={{ width: 175 }}>
-                            <Inline space="none" alignY="center" align="right">
-                              <Columns space="medium" alignY="center">
-                                {row.status === 'OPEN' ? (
-                                  <Column>
-                                    <ButtonIcon
-                                      variant="transparent"
-                                      icon={<IconSearch />}
-                                      label="Find talent"
-                                    />
-                                  </Column>
-                                ) : null}
-                                {row.status !== 'DRAFT' ? (
-                                  <Column>
-                                    <ButtonIcon
-                                      variant="transparent"
-                                      icon={<IconStatistics />}
-                                      label="Ad performance"
-                                    />
-                                  </Column>
-                                ) : null}
-                                {row.status === 'DRAFT' ? (
-                                  <Column>
-                                    <ButtonIcon
-                                      variant="transparent"
-                                      icon={<IconDelete />}
-                                      label="Delete"
-                                    />
-                                  </Column>
-                                ) : null}
-                                {row.status !== 'EXPIRED' ? (
-                                  <Column>
-                                    <ButtonIcon
-                                      variant="transparent"
-                                      icon={<IconEdit />}
-                                      label="Edit"
-                                    />
-                                  </Column>
-                                ) : null}
-                                {row.status !== 'DRAFT' ? (
-                                  <Column>
-                                    <ButtonIcon
-                                      variant="transparent"
-                                      icon={<IconCopy />}
-                                      label="Copy"
-                                    />
-                                  </Column>
-                                ) : null}
-                                {row.status !== 'DRAFT' ? (
-                                  <Column>
-                                    <MenuRenderer
-                                      offsetSpace="small"
-                                      align="right"
-                                      trigger={(triggerProps) => (
-                                        <ButtonIcon
-                                          variant="transparent"
-                                          icon={<IconOverflow />}
-                                          label="Options"
-                                          {...triggerProps}
-                                        />
-                                      )}
-                                    >
-                                      <MenuItem icon={<IconNewWindow />}>
-                                        View job
-                                      </MenuItem>
-                                      <MenuItem icon={<IconStatistics />}>
-                                        View Ad Performance
-                                      </MenuItem>
-                                      <MenuItem
-                                        icon={<IconLocation />}
-                                        badge={
-                                          <Badge tone="promote">Beta</Badge>
-                                        }
-                                      >
-                                        Add locations
-                                      </MenuItem>
-                                      <MenuItem icon={<IconNotification />}>
-                                        Notifications
-                                      </MenuItem>
-                                      <MenuItem icon={<IconPersonAdd />}>
-                                        Team access
-                                      </MenuItem>
-                                      <MenuItem icon={<IconDelete />}>
-                                        Expire
-                                      </MenuItem>
-                                      <MenuItem icon={<IconShare />}>
-                                        Share job
-                                      </MenuItem>
-                                    </MenuRenderer>
-                                  </Column>
-                                ) : null}
-                              </Columns>
-                            </Inline>
-                          </Box>
-                        </Column>
-                      </Columns>
-                    </Stack>
-                  ))}
-                  <Divider />
-                </Stack>
+                                  </MenuRenderer>
+                                </Column>
+                              ) : null}
+                            </Columns>
+                          </Inline>
+                        </Box>
+                      </Column>
+                    </Columns>
+                  </Stack>
+                ))}
+                <Divider />
               </Stack>
-            </PageBlock>
+            </Stack>
           </>,
-        )
-      }
-    />
+        ),
+    },
+    {
+      label: 'When to use',
+      description: (
+        <>
+          <Text>Use a divided list:</Text>
+          <List>
+            <Text>
+              To display a group of related items consecutively in an organised
+              way
+            </Text>
+            <Text>
+              To allow the user to easily locate an individual item and take
+              action on that item
+            </Text>
+            <Text>
+              When it&rsquo;s important for the user to view each list item as a
+              whole
+            </Text>
+          </List>
+          <Text>Don&rsquo;t use a divided list:</Text>
+          <List>
+            <Text>
+              To display a numerical dataset using rows and columns. Use layout
+              suitable for tabular data instead.
+            </Text>
+            <Text>
+              To provide a summary and entry point to more detailed information.
+              Use a <TextLink href="/components/Card">Card</TextLink> instead.
+            </Text>
+          </List>
+        </>
+      ),
+    },
+    {
+      label: 'Visual guidelines',
+      description: (
+        <List>
+          <Text>
+            It&rsquo;s generally recommended to include a heading above the
+            divided list
+          </Text>
+          <Text>
+            When it makes sense, consider including an item count below the
+            heading (for example, 26 job ads)
+          </Text>
+          <Text>
+            Display leading and trailing dividers. If the divided list is
+            displayed directly below a heading, you may choose to omit the
+            leading divider
+          </Text>
+          <Text>
+            Avoid displaying a column header row, as this will need to be hidden
+            on mobile. Instead, label content in place so that it can be
+            understood without a header
+          </Text>
+        </List>
+      ),
+    },
+    {
+      label: 'General best practice',
+      description: (
+        <List>
+          <Text>Group related content in a logical way</Text>
+          <Text>
+            Include relevant actions. A divided list is about helping users take
+            action on the appropriate list item
+          </Text>
+          <Text>
+            On smaller devices, divided lists should collapse into a stack so
+            the user can continue to view each item as a whole
+          </Text>
+        </List>
+      ),
+    },
+    {
+      label: 'Related patterns and components',
+      description: (
+        <List>
+          <Text>
+            <TextLink href="/components/Card">Card</TextLink> — To provide a
+            summary and entry point to more detailed information
+          </Text>
+          <Text>
+            <TextLink href="/components/Divider">Divider</TextLink> — To
+            separate consecutive list items
+          </Text>
+          <Text>
+            <TextLink href="/patterns/bulk-actions">Bulk actions</TextLink> — To
+            apply the same action to multiple list items
+          </Text>
+        </List>
+      ),
+    },
+  ],
+};
 
-    <LinkableHeading>When to use</LinkableHeading>
-    <Text>Use a divided list:</Text>
-    <List>
-      <Text>
-        To display a group of related items consecutively in an organised way
-      </Text>
-      <Text>
-        To allow the user to easily locate an individual item and take action on
-        that item
-      </Text>
-      <Text>
-        When it&rsquo;s important for the user to view each list item as a whole
-      </Text>
-    </List>
-    <Text>Don&rsquo;t use a divided list:</Text>
-    <List>
-      <Text>
-        To display a numerical dataset using rows and columns. Use layout
-        suitable for tabular data instead.
-      </Text>
-      <Text>
-        To provide a summary and entry point to more detailed information. Use a{' '}
-        <TextLink href="/components/Card">Card</TextLink> instead.
-      </Text>
-    </List>
-
-    <LinkableHeading>Visual guidelines</LinkableHeading>
-    <List>
-      <Text>
-        It&rsquo;s generally recommended to include a heading above the divided
-        list
-      </Text>
-      <Text>
-        When it makes sense, consider including an item count below the heading
-        (for example, 26 job ads)
-      </Text>
-      <Text>
-        Display leading and trailing dividers. If the divided list is displayed
-        directly below a heading, you may choose to omit the leading divider
-      </Text>
-      <Text>
-        Avoid displaying a column header row, as this will need to be hidden on
-        mobile. Instead, label content in place so that it can be understood
-        without a header
-      </Text>
-    </List>
-
-    <LinkableHeading>General best practice</LinkableHeading>
-    <List>
-      <Text>Group related content in a logical way</Text>
-      <Text>
-        Include relevant actions. A divided list is about helping users take
-        action on the appropriate list item
-      </Text>
-      <Text>
-        On smaller devices, divided lists should collapse into a stack so the
-        user can continue to view each item as a whole
-      </Text>
-    </List>
-
-    <LinkableHeading>Related patterns and components</LinkableHeading>
-    <List>
-      <Text>
-        <TextLink href="/components/Card">Card</TextLink> — To provide a summary
-        and entry point to more detailed information
-      </Text>
-      <Text>
-        <TextLink href="/components/Divider">Divider</TextLink> — To separate
-        consecutive list items
-      </Text>
-      <Text>
-        <TextLink href="/patterns/bulk-actions">Bulk actions</TextLink> — To
-        apply the same action to multiple list items
-      </Text>
-    </List>
-  </PatternLayout>
-);
-
-export default patternPage('divided-lists', <DividedLists />);
+export default docs;

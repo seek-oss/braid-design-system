@@ -8,6 +8,7 @@ import type { SkuConfig } from 'sku';
 
 import extractExports from './scripts/extractExports';
 import { cssFoundationDocs } from './src/App/routes/foundations/cssDocs';
+import { patternCatalog } from './src/App/routes/patterns/catalog';
 import { slugify } from './src/slugify';
 import undocumentedExports from './src/undocumentedExports.json';
 
@@ -103,7 +104,7 @@ const routes: SkuConfig['routes'] = [
   getTemplateRoutes(),
   { route: '/foundations/iconography/browse', name: 'browseIcons' },
   { route: '/patterns', name: 'patterns' },
-  getPages('src/App/routes/patterns/index.ts'),
+  patternCatalog.map((entry) => ({ route: `/patterns/${entry.slug}` })),
   { route: '/patterns/revealing-secondary-information' },
   { route: '/components', name: 'components' }, // Pre-rendering this route for url backwards compatibility.
   [...componentNames, ...testNames].flatMap((name) =>

@@ -1,4 +1,3 @@
-import { LinkableHeading } from '@braid-design-system/docs-ui';
 import source from '@braid-design-system/source.macro';
 import {
   Accordion,
@@ -17,46 +16,52 @@ import {
   TooltipRenderer,
 } from 'braid-design-system';
 
-import { PatternLayout, patternPage } from './PatternLayout';
-import { PlayroomExample } from './PlayroomExample';
+import type { PatternDocs } from '../../../types';
 
-const SecondaryInformation = () => (
-  <PatternLayout
-    slug="secondary-information"
-    sections={[
-      { href: '#components', label: 'Components' },
-      { href: '#alternative-approaches', label: 'Alternative approaches' },
-    ]}
-  >
-    <Text>
-      This page includes general advice for revealing secondary information at
-      the user&rsquo;s request. The examples here are not exhaustive — by
-      joining components together Braid supports many approaches and
-      combinations. For further support please reach out in{' '}
-      <TextLink href="https://seekchat.slack.com/archives/CMBLA5Q1E">
-        #braid-design-support
-      </TextLink>
-      .
+export const docs: PatternDocs = {
+  description: (
+    <Text tone="secondary">
+      Offer optional extra context, such as definitions or explanatory copy.
     </Text>
-
-    <LinkableHeading>Components</LinkableHeading>
-    <Text>
-      When revealing secondary info, the most relevant components may be
-      Tooltip, Disclosure, Dialog and Accordion.
-    </Text>
-
-    <Text>
-      <Strong>
-        <TextLink href="/components/TooltipRenderer">TooltipRenderer</TextLink>
-      </Strong>
-    </Text>
-    <Text>
-      For revealing a small amount of text on mouse hover. Supports text only,
-      no interactive elements. Best suited for providing a short definition of
-      what something means or does (a few words).
-    </Text>
-    <PlayroomExample
-      Example={() =>
+  ),
+  additional: [
+    {
+      description: (
+        <Text>
+          This page includes general advice for revealing secondary information
+          at the user&rsquo;s request. The examples here are not exhaustive — by
+          joining components together Braid supports many approaches and
+          combinations. For further support please reach out in{' '}
+          <TextLink href="https://seekchat.slack.com/archives/CMBLA5Q1E">
+            #braid-design-support
+          </TextLink>
+          .
+        </Text>
+      ),
+    },
+    {
+      label: 'Components',
+      description: (
+        <>
+          <Text>
+            When revealing secondary info, the most relevant components may be
+            Tooltip, Disclosure, Dialog and Accordion.
+          </Text>
+          <Text>
+            <Strong>
+              <TextLink href="/components/TooltipRenderer">
+                TooltipRenderer
+              </TextLink>
+            </Strong>
+          </Text>
+          <Text>
+            For revealing a small amount of text on mouse hover. Supports text
+            only, no interactive elements. Best suited for providing a short
+            definition of what something means or does (a few words).
+          </Text>
+        </>
+      ),
+      Example: () =>
         source(
           <Text>
             Salary is listed as a package{' '}
@@ -68,23 +73,25 @@ const SecondaryInformation = () => (
               )}
             </TooltipRenderer>
           </Text>,
-        )
-      }
-    />
-
-    <Text>
-      <Strong>
-        <TextLink href="/components/Disclosure">Disclosure</TextLink>
-      </Strong>
-    </Text>
-    <Text>
-      For revealing a small amount of expandable content inline with a light
-      visual treatment. Supports rich formatting and interactive elements,
-      however may be best suited for simple text and links (e.g. “Show/hide
-      payment details”).
-    </Text>
-    <PlayroomExample
-      Example={() =>
+        ),
+    },
+    {
+      description: (
+        <>
+          <Text>
+            <Strong>
+              <TextLink href="/components/Disclosure">Disclosure</TextLink>
+            </Strong>
+          </Text>
+          <Text>
+            For revealing a small amount of expandable content inline with a
+            light visual treatment. Supports rich formatting and interactive
+            elements, however may be best suited for simple text and links (e.g.
+            “Show/hide payment details”).
+          </Text>
+        </>
+      ),
+      Example: () =>
         source(
           <Disclosure
             expandLabel="Show payment details"
@@ -95,22 +102,24 @@ const SecondaryInformation = () => (
               <TextLink href="#">View billing policy</TextLink>
             </Text>
           </Disclosure>,
-        )
-      }
-    />
-
-    <Text>
-      <Strong>
-        <TextLink href="/components/Accordion">Accordion</TextLink>
-      </Strong>
-    </Text>
-    <Text>
-      For revealing sections of content in a vertically stacked list with a
-      prominent visual treatment. Supports rich formatting and interactive
-      elements.
-    </Text>
-    <PlayroomExample
-      Example={() =>
+        ),
+    },
+    {
+      description: (
+        <>
+          <Text>
+            <Strong>
+              <TextLink href="/components/Accordion">Accordion</TextLink>
+            </Strong>
+          </Text>
+          <Text>
+            For revealing sections of content in a vertically stacked list with
+            a prominent visual treatment. Supports rich formatting and
+            interactive elements.
+          </Text>
+        </>
+      ),
+      Example: () =>
         source(
           <Accordion>
             <AccordionItem label="What is included in a job ad?">
@@ -126,22 +135,25 @@ const SecondaryInformation = () => (
               </Text>
             </AccordionItem>
           </Accordion>,
-        )
-      }
-    />
-
-    <Text>
-      <Strong>
-        <TextLink href="/components/Dialog">Dialog</TextLink>
-      </Strong>
-    </Text>
-    <Text>
-      For revealing a moderate amount of content in a modal. Supports rich
-      formatting and interactive elements. Best suited for content several
-      sentences in length, or when images and/or further actions are required.
-    </Text>
-    <PlayroomExample
-      Example={({ getState, setState, setDefaultState }) =>
+        ),
+    },
+    {
+      description: (
+        <>
+          <Text>
+            <Strong>
+              <TextLink href="/components/Dialog">Dialog</TextLink>
+            </Strong>
+          </Text>
+          <Text>
+            For revealing a moderate amount of content in a modal. Supports rich
+            formatting and interactive elements. Best suited for content several
+            sentences in length, or when images and/or further actions are
+            required.
+          </Text>
+        </>
+      ),
+      Example: ({ getState, setState, setDefaultState }) =>
         source(
           <>
             {setDefaultState('dialog', false)}
@@ -165,22 +177,23 @@ const SecondaryInformation = () => (
               </Stack>
             </Dialog>
           </>,
-        )
-      }
-    />
-
-    <LinkableHeading>Alternative approaches</LinkableHeading>
-    <Text>
-      In addition to revealing secondary info in response to a user action, you
-      may also choose to surface more info upfront but display it in a less
-      prominent way. A simple and effective way to achieve this is to use plain{' '}
-      <TextLink href="/components/Text">Text</TextLink> and tailor properties
-      such as <Strong>size</Strong> and <Strong>tone</Strong>. This can be a
-      good option for copy you want surfaced at all times, such as legal fine
-      print or explanatory copy, which is important to a process.
-    </Text>
-    <PlayroomExample
-      Example={() =>
+        ),
+    },
+    {
+      label: 'Alternative approaches',
+      description: (
+        <Text>
+          In addition to revealing secondary info in response to a user action,
+          you may also choose to surface more info upfront but display it in a
+          less prominent way. A simple and effective way to achieve this is to
+          use plain <TextLink href="/components/Text">Text</TextLink> and tailor
+          properties such as <Strong>size</Strong> and <Strong>tone</Strong>.
+          This can be a good option for copy you want surfaced at all times,
+          such as legal fine print or explanatory copy, which is important to a
+          process.
+        </Text>
+      ),
+      Example: () =>
         source(
           <Box padding="medium">
             <Stack space="xlarge">
@@ -226,10 +239,9 @@ const SecondaryInformation = () => (
               </Stack>
             </Stack>
           </Box>,
-        )
-      }
-    />
-  </PatternLayout>
-);
+        ),
+    },
+  ],
+};
 
-export default patternPage('secondary-information', <SecondaryInformation />);
+export default docs;

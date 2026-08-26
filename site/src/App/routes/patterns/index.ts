@@ -1,4 +1,4 @@
-import type { Page } from '../../../types';
+import type { PatternDocs } from '../../../types';
 
 import bulkActions from './bulk-actions';
 import {
@@ -22,38 +22,37 @@ import skeletonLoader from './skeleton-loader';
 import socialShare from './social-share';
 import wideScreenLayouts from './wide-screen-layouts';
 
-// Quoted keys are extracted by sku.routes.ts for pre-rendering.
-const routes: Record<string, Page> = {
-  '/patterns/bulk-actions': bulkActions,
-  '/patterns/divided-lists': dividedLists,
-  '/patterns/empty-states': emptyStates,
-  '/patterns/error-states': errorStates,
-  '/patterns/filters': filters,
-  '/patterns/forms': forms,
-  '/patterns/messages-to-users': messagesToUsers,
-  '/patterns/nudge': nudge,
-  '/patterns/secondary-information': secondaryInformation,
-  '/patterns/service-outage-banners': serviceOutageBanners,
-  '/patterns/skeleton-loader': skeletonLoader,
-  '/patterns/social-share': socialShare,
-  '/patterns/data-vis-palette': dataVisPalette,
-  '/patterns/content-density': contentDensity,
-  '/patterns/wide-screen-layouts': wideScreenLayouts,
+const patternDocsBySlug: Record<string, PatternDocs> = {
+  'bulk-actions': bulkActions,
+  'divided-lists': dividedLists,
+  'empty-states': emptyStates,
+  'error-states': errorStates,
+  filters,
+  forms,
+  'messages-to-users': messagesToUsers,
+  nudge,
+  'secondary-information': secondaryInformation,
+  'service-outage-banners': serviceOutageBanners,
+  'skeleton-loader': skeletonLoader,
+  'social-share': socialShare,
+  'data-vis-palette': dataVisPalette,
+  'content-density': contentDensity,
+  'wide-screen-layouts': wideScreenLayouts,
 };
 
-const catalogPaths = patternCatalog.map((entry) => patternHref(entry.slug));
-const routePaths = Object.keys(routes);
-const missingPages = catalogPaths.filter((path) => !routes[path]);
-const extraPages = routePaths.filter((path) => !catalogPaths.includes(path));
+const catalogSlugs = patternCatalog.map((entry) => entry.slug);
+const docsSlugs = Object.keys(patternDocsBySlug);
+const missingDocs = catalogSlugs.filter((slug) => !patternDocsBySlug[slug]);
+const extraDocs = docsSlugs.filter((slug) => !catalogSlugs.includes(slug));
 
-if (missingPages.length > 0 || extraPages.length > 0) {
+if (missingDocs.length > 0 || extraDocs.length > 0) {
   throw new Error(
     [
-      missingPages.length > 0
-        ? `Catalog entries missing pages: ${missingPages.join(', ')}`
+      missingDocs.length > 0
+        ? `Catalog entries missing docs: ${missingDocs.join(', ')}`
         : null,
-      extraPages.length > 0
-        ? `Pattern pages missing catalog entries: ${extraPages.join(', ')}`
+      extraDocs.length > 0
+        ? `Pattern docs missing catalog entries: ${extraDocs.join(', ')}`
         : null,
     ]
       .filter(Boolean)
@@ -61,7 +60,15 @@ if (missingPages.length > 0 || extraPages.length > 0) {
   );
 }
 
-export default routes;
+export const getPatternDocs = (slug: string): PatternDocs => {
+  const docs = patternDocsBySlug[slug];
+
+  if (!docs) {
+    throw new Error(`Unknown pattern slug: ${slug}`);
+  }
+
+  return docs;
+};
 
 export const patternNavItems = patternEntries.map((entry) => ({
   name: entry.title,

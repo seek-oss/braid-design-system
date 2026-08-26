@@ -1,4 +1,3 @@
-import { LinkableHeading } from '@braid-design-system/docs-ui';
 import source from '@braid-design-system/source.macro';
 import {
   Box,
@@ -18,52 +17,56 @@ import {
   TextLink,
 } from 'braid-design-system';
 
-import { PatternLayout, patternPage } from './PatternLayout';
-import { PlayroomExample } from './PlayroomExample';
+import type { PatternDocs } from '../../../types';
 
-const SocialShare = () => (
-  <PatternLayout
-    slug="social-share"
-    sections={[
-      { href: '#web', label: 'Web' },
-      { href: '#mobile-and-apps', label: 'Mobile and apps' },
-      { href: '#relevant-components', label: 'Relevant components' },
-    ]}
-  >
-    <LinkableHeading>Web</LinkableHeading>
-    <List>
-      <Text>
-        It&rsquo;s recommended to present social share as a single menu.
-      </Text>
-      <Text>
-        Consider ordering your items alphabetically, and placing “Copy link” at
-        the bottom.
-      </Text>
-      <Text>Include logo icons next to each menu item.</Text>
-      <Text>
-        You may choose a menu trigger to meet your specific UI needs by using{' '}
-        <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>.
-        Suggested triggers include Button or ButtonIcon, and you can specify a
-        variant and/or tone to meet your needs.
-      </Text>
-      <Text>
-        The menu can be aligned to the left or the right of the trigger.
-      </Text>
-      <Text>
-        When the user makes a selection from the menu, consider opening the
-        share link in a new tab and closing the menu.
-      </Text>
-      <Text>
-        When the user selects “Copy link”, consider closing the menu and
-        providing a positive{' '}
-        <TextLink href="/components/useToast">Toast</TextLink> that alerts the
-        user that the link has been copied successfully.
-      </Text>
-    </List>
-    <Text>A right-aligned example triggered by a transparent Button:</Text>
-    <PlayroomExample
-      showCodeByDefault
-      Example={({ showToast }) =>
+export const docs: PatternDocs = {
+  description: (
+    <Text tone="secondary">
+      Let users broadcast SEEK content to their social networks.
+    </Text>
+  ),
+  additional: [
+    {
+      label: 'Web',
+      description: (
+        <>
+          <List>
+            <Text>
+              It&rsquo;s recommended to present social share as a single menu.
+            </Text>
+            <Text>
+              Consider ordering your items alphabetically, and placing “Copy
+              link” at the bottom.
+            </Text>
+            <Text>Include logo icons next to each menu item.</Text>
+            <Text>
+              You may choose a menu trigger to meet your specific UI needs by
+              using{' '}
+              <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>.
+              Suggested triggers include Button or ButtonIcon, and you can
+              specify a variant and/or tone to meet your needs.
+            </Text>
+            <Text>
+              The menu can be aligned to the left or the right of the trigger.
+            </Text>
+            <Text>
+              When the user makes a selection from the menu, consider opening
+              the share link in a new tab and closing the menu.
+            </Text>
+            <Text>
+              When the user selects “Copy link”, consider closing the menu and
+              providing a positive{' '}
+              <TextLink href="/components/useToast">Toast</TextLink> that alerts
+              the user that the link has been copied successfully.
+            </Text>
+          </List>
+          <Text>
+            A right-aligned example triggered by a transparent Button:
+          </Text>
+        </>
+      ),
+      showCodeByDefault: true,
+      Example: ({ showToast }) =>
         source(
           <Box padding="small">
             <Inline space="none" align="right">
@@ -121,13 +124,14 @@ const SocialShare = () => (
               </MenuRenderer>
             </Inline>
           </Box>,
-        )
-      }
-    />
-    <Text>A left-aligned example triggered by a ButtonIcon:</Text>
-    <PlayroomExample
-      showCodeByDefault
-      Example={({ showToast }) =>
+        ),
+    },
+    {
+      description: (
+        <Text>A left-aligned example triggered by a ButtonIcon:</Text>
+      ),
+      showCodeByDefault: true,
+      Example: ({ showToast }) =>
         source(
           <Box padding="medium">
             <Inline space="none">
@@ -183,48 +187,53 @@ const SocialShare = () => (
               </MenuRenderer>
             </Inline>
           </Box>,
-        )
-      }
-    />
+        ),
+    },
+    {
+      label: 'Mobile and apps',
+      description: (
+        <List>
+          <Text>
+            For basic share options, it&rsquo;s recommended to utilise the
+            native OS share sheet.
+          </Text>
+          <Text>
+            If you require additional options not included in the native OS
+            share sheet, you may want to create a custom sheet. If you create a
+            custom sheet, consider including an option to open the native sheet
+            from within the custom menu.
+          </Text>
+          <Text>
+            Similarly to web, you may choose an appropriate trigger to meet your
+            needs, however the relevant OS share icon may be most appropriate.
+          </Text>
+        </List>
+      ),
+    },
+    {
+      label: 'Relevant components',
+      description: (
+        <List>
+          <Text>
+            <TextLink href="/components/MenuItem">MenuItem</TextLink> — For
+            displaying buttons and links within a menu
+          </Text>
+          <Text>
+            <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink> —
+            For custom menu components
+          </Text>
+          <Text>
+            <TextLink href="/components/Button">Button</TextLink> — For a
+            semantic button
+          </Text>
+          <Text>
+            <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink> — For
+            buttons containing only an icon
+          </Text>
+        </List>
+      ),
+    },
+  ],
+};
 
-    <LinkableHeading>Mobile and apps</LinkableHeading>
-    <List>
-      <Text>
-        For basic share options, it&rsquo;s recommended to utilise the native OS
-        share sheet.
-      </Text>
-      <Text>
-        If you require additional options not included in the native OS share
-        sheet, you may want to create a custom sheet. If you create a custom
-        sheet, consider including an option to open the native sheet from within
-        the custom menu.
-      </Text>
-      <Text>
-        Similarly to web, you may choose an appropriate trigger to meet your
-        needs, however the relevant OS share icon may be most appropriate.
-      </Text>
-    </List>
-
-    <LinkableHeading>Relevant components</LinkableHeading>
-    <List>
-      <Text>
-        <TextLink href="/components/MenuItem">MenuItem</TextLink> — For
-        displaying buttons and links within a menu
-      </Text>
-      <Text>
-        <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink> — For
-        custom menu components
-      </Text>
-      <Text>
-        <TextLink href="/components/Button">Button</TextLink> — For a semantic
-        button
-      </Text>
-      <Text>
-        <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink> — For
-        buttons containing only an icon
-      </Text>
-    </List>
-  </PatternLayout>
-);
-
-export default patternPage('social-share', <SocialShare />);
+export default docs;

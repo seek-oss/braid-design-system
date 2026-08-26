@@ -25,7 +25,6 @@ import { GalleryPage } from './routes/gallery';
 import gettingStarted from './routes/getting-started';
 import guides from './routes/guides';
 import { HomePage } from './routes/home';
-import patterns from './routes/patterns';
 import { Patterns } from './routes/patterns/Patterns';
 import { ReleasesPage } from './routes/releases';
 import { Styles } from './routes/styles/Styles';
@@ -107,7 +106,6 @@ export const App = () => {
                 {Object.entries({
                   ...guides,
                   ...foundations,
-                  ...patterns,
                   ...gettingStarted,
                 }).map(([path, routeProps]) => (
                   <Route key={path} {...routeProps} path={path} />
@@ -157,9 +155,7 @@ export const App = () => {
                     <Route
                       key={`${from}/releases`}
                       path={`${from}/releases`}
-                      element={
-                        <Navigate to={`${doc.path}/releases`} replace />
-                      }
+                      element={<Navigate to={`${doc.path}/releases`} replace />}
                     />,
                   ]),
                 ])}

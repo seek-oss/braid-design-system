@@ -35,6 +35,7 @@ import {
   useNavigate,
 } from 'react-router';
 
+import type { PatternDocs } from '../../types';
 import { getHistory } from '../Updates';
 import {
   getComponentDocs,
@@ -47,6 +48,8 @@ import {
   isCssDoc,
   isCssFoundationDoc,
 } from '../routes/foundations/cssDocs';
+import { getPatternDocs } from '../routes/patterns';
+import { getPatternEntry } from '../routes/patterns/catalog';
 
 import * as styles from './DocNavigation.css';
 
@@ -55,7 +58,10 @@ interface DocsProviderContextValue {
   docsName: string;
   docsType: string;
   docsTitle?: string;
-  docs?: ReturnType<typeof getCssDoc | typeof getComponentDocs>;
+  docs?:
+    | ReturnType<typeof getCssDoc>
+    | ReturnType<typeof getComponentDocs>
+    | PatternDocs;
   history?: ReturnType<typeof getHistory>;
   snippets?: ReturnType<typeof getComponentSnippets>;
 }
@@ -209,11 +215,17 @@ export const DocNavigation = () => {
   let snippets: DocsProviderContextValue['snippets'] = [];
   let history: DocsProviderContextValue['history'] = [];
   let docs: DocsProviderContextValue['docs'];
-  const docsTitle = isCssFoundationDoc(docsType, docsName)
-    ? (getCssFoundationDoc(docsName)?.title ?? docsName)
-    : docsName;
+  const isPatternDocs = docsType === 'patterns';
+  let docsTitle = docsName;
+  if (isPatternDocs) {
+    docsTitle = getPatternEntry(docsName).title;
+  } else if (isCssFoundationDoc(docsType, docsName)) {
+    docsTitle = getCssFoundationDoc(docsName)?.title ?? docsName;
+  }
 
-  if (isCssDoc(docsType, docsName)) {
+  if (isPatternDocs) {
+    docs = getPatternDocs(docsName);
+  } else if (isCssDoc(docsType, docsName)) {
     history = getHistory(getCssDocFileName(docsName));
     docs = getCssDoc(docsName);
   } else {
@@ -253,43 +265,45 @@ export const DocNavigation = () => {
           ) : null}
           <Heading level="1">{docsTitle}</Heading>
         </Inline>
-        <DocNavigationBar title="Subnavigation">
-          <DocNavigationItem href={`/${docsType}/${docsName}`}>
-            Details
-          </DocNavigationItem>
-          {docsType === 'components' && docsName.indexOf('use') !== 0 ? (
-            <DocNavigationItem href={`/${docsType}/${docsName}/props`}>
-              Props
+        {isPatternDocs ? null : (
+          <DocNavigationBar title="Subnavigation">
+            <DocNavigationItem href={`/${docsType}/${docsName}`}>
+              Details
             </DocNavigationItem>
-          ) : null}
-          <DocNavigationItem
-            href={`/${docsType}/${docsName}/releases`}
-            badge={
-              updateCount > 0 ? (
-                <Badge
-                  tone="promote"
-                  weight="strong"
-                  title={`${updateCount} release${
-                    updateCount === 1 ? '' : 's'
-                  } in the last two months`}
-                >
-                  {String(updateCount)}
-                </Badge>
-              ) : undefined
-            }
-          >
-            Releases
-          </DocNavigationItem>
-          {snippets.length > 0 ? (
-            <DocNavigationItem href={`/${docsType}/${docsName}/snippets`}>
-              Snippets
+            {docsType === 'components' && docsName.indexOf('use') !== 0 ? (
+              <DocNavigationItem href={`/${docsType}/${docsName}/props`}>
+                Props
+              </DocNavigationItem>
+            ) : null}
+            <DocNavigationItem
+              href={`/${docsType}/${docsName}/releases`}
+              badge={
+                updateCount > 0 ? (
+                  <Badge
+                    tone="promote"
+                    weight="strong"
+                    title={`${updateCount} release${
+                      updateCount === 1 ? '' : 's'
+                    } in the last two months`}
+                  >
+                    {String(updateCount)}
+                  </Badge>
+                ) : undefined
+              }
+            >
+              Releases
             </DocNavigationItem>
-          ) : null}
-        </DocNavigationBar>
-        {'deprecationWarning' in docs && docs.deprecationWarning ? (
+            {snippets.length > 0 ? (
+              <DocNavigationItem href={`/${docsType}/${docsName}/snippets`}>
+                Snippets
+              </DocNavigationItem>
+            ) : null}
+          </DocNavigationBar>
+        )}
+        {docs && 'deprecationWarning' in docs && docs.deprecationWarning ? (
           <Alert tone="caution">{docs.deprecationWarning}</Alert>
         ) : null}
-        {docs.banner}
+        {docs && 'banner' in docs ? docs.banner : null}
       </Stack>
       <DocsContext.Provider
         value={{ docsName, docsType, docsTitle, docs, history, snippets }}

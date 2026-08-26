@@ -15,7 +15,7 @@ import { navSections } from '../navigationSections';
 import { foundationNavItems } from '../routes/foundations';
 import gettingStarted from '../routes/getting-started';
 import guides from '../routes/guides';
-import patterns, { howToNavItems, patternNavItems } from '../routes/patterns';
+import { howToNavItems, patternNavItems } from '../routes/patterns';
 
 type BadgeLabel = 'New' | 'Deprecated';
 
@@ -180,7 +180,6 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
               title="Patterns"
               items={patternNavItems.map(({ name, path }) => ({
                 name,
-                badge: patterns[path]?.badge,
                 path,
                 active: isActive(path),
                 onClick: onSelect,
@@ -190,7 +189,6 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
               title="How to"
               items={howToNavItems.map(({ name, path }) => ({
                 name,
-                badge: patterns[path]?.badge,
                 path,
                 active: isActive(path),
                 onClick: onSelect,
