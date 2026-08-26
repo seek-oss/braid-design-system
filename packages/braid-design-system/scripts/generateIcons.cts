@@ -51,55 +51,56 @@ const svgrConfig = {
 const platformSuffixPattern = /^(web|ios|android|native)$/i;
 const skippedOnWebPlatforms = new Set(['ios', 'android', 'native']);
 
-const parseIconFileName = (svgFilePath: string) => {
-  const baseName = path.basename(svgFilePath, '.svg');
+type IconSvgSource = {
+  filePath: string;
+  stem: string;
+  platform?: string;
+  svgName: string;
+  variantName?: string;
+};
+
+const parseIconSvgSource = (filePath: string): IconSvgSource => {
+  const baseName = path.basename(filePath, '.svg');
   const [maybePlatform, ...stemParts] = baseName.split('.').reverse();
-  if (stemParts.length > 0 && platformSuffixPattern.test(maybePlatform)) {
-    return { stem: stemParts.reverse().join('.'), platform: maybePlatform.toLowerCase() };
-  }
-  return { stem: baseName, platform: undefined };
-};
-
-const parseDrawingStem = (stem: string) => {
+  const hasPlatformSuffix = stemParts.length > 0 && platformSuffixPattern.test(maybePlatform);
+  const stem = hasPlatformSuffix ? stemParts.reverse().join('.') : baseName;
   const [svgName, variantName] = stem.split('-');
-  return { svgName, variantName };
-};
 
-const shouldSkipOnWeb = (svgFilePath: string) => {
-  const { platform } = parseIconFileName(svgFilePath);
-  return platform !== undefined && skippedOnWebPlatforms.has(platform);
+  return {
+    filePath,
+    stem,
+    platform: hasPlatformSuffix ? maybePlatform.toLowerCase() : undefined,
+    svgName,
+    variantName,
+  };
 };
-
-const isWebOverride = (svgFilePath: string) => parseIconFileName(svgFilePath).platform === 'web';
 
 // Prefer `.web` over an unsuffixed file with the same stem (`chevron.web.svg` beats `chevron.svg`).
-const webSvgSources = (svgFilePaths: string[]): string[] => {
-  const svgPathsByStem = new Map<string, string>();
+const webSvgSources = (svgFilePaths: string[]): IconSvgSource[] => {
+  const sourcesByStem = new Map<string, IconSvgSource>();
 
-  for (const svgFilePath of svgFilePaths) {
-    if (shouldSkipOnWeb(svgFilePath)) {
+  for (const filePath of svgFilePaths) {
+    const source = parseIconSvgSource(filePath);
+
+    if (source.platform && skippedOnWebPlatforms.has(source.platform)) {
       continue;
     }
 
-    const { stem } = parseIconFileName(svgFilePath);
-    const existing = svgPathsByStem.get(stem);
-
-    if (!existing || isWebOverride(svgFilePath) || !isWebOverride(existing)) {
-      svgPathsByStem.set(stem, svgFilePath);
+    const existing = sourcesByStem.get(source.stem);
+    if (!existing || source.platform === 'web') {
+      sourcesByStem.set(source.stem, source);
     }
   }
 
-  return [...svgPathsByStem.values()];
+  return [...sourcesByStem.values()];
 };
 
 (async () => {
   const packageDir = path.dirname(require.resolve('@braid-design-system/icons/package.json'));
-  const svgFilePaths = webSvgSources(await glob('svg/*.svg', { cwd: packageDir, absolute: true }));
+  const svgSources = webSvgSources(await glob('svg/*.svg', { cwd: packageDir, absolute: true }));
   const writtenSvgComponents = new Set<string>();
 
-  const filePromises = svgFilePaths.map(async (svgFilePath) => {
-    const { svgName, variantName } = parseDrawingStem(parseIconFileName(svgFilePath).stem);
-
+  const filePromises = svgSources.map(async ({ filePath: svgFilePath, svgName, variantName }) => {
     const svg = await fs.readFile(svgFilePath, 'utf-8');
     const isAllCaps = svgName.toUpperCase() === svgName;
     const iconName = `Icon${isAllCaps ? svgName : pascalCase(svgName)}`;
