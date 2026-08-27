@@ -88,6 +88,11 @@ const AlternativesSection = ({
 export const DocDetails = () => {
   const { docs, docsName, docsTitle } = useContext(DocsContext);
 
+  const alternatives =
+    docs && 'alternatives' in docs && docs.alternatives?.length
+      ? docs.alternatives
+      : undefined;
+
   const hasBestPractices = Boolean(
     docs &&
     'docSections' in docs &&
@@ -148,7 +153,7 @@ export const DocDetails = () => {
           if (sectionKey === 'bestPractices') {
             const bestPracticesChildren: TocSection[] = [...children];
 
-            if ('alternatives' in docs && docs.alternatives.length > 0) {
+            if (alternatives) {
               bestPracticesChildren.push({
                 id: 'alternatives',
                 label: 'Alternatives',
@@ -188,11 +193,7 @@ export const DocDetails = () => {
       }
     });
 
-    if (
-      !hasBestPractices &&
-      'alternatives' in docs &&
-      docs.alternatives.length > 0
-    ) {
+    if (!hasBestPractices && alternatives) {
       sections.push({
         id: 'alternatives',
         label: 'Alternatives',
@@ -201,7 +202,7 @@ export const DocDetails = () => {
     }
 
     return sections;
-  }, [docs, hasBestPractices]);
+  }, [alternatives, docs, hasBestPractices]);
 
   const handleTocClick = (event: React.MouseEvent, id: string) => {
     event.preventDefault();
@@ -283,12 +284,8 @@ export const DocDetails = () => {
                               />
                             ),
                           )}
-                          {sectionKey === 'bestPractices' &&
-                          'alternatives' in docs &&
-                          docs.alternatives.length > 0 ? (
-                            <AlternativesSection
-                              alternatives={docs.alternatives}
-                            />
+                          {sectionKey === 'bestPractices' && alternatives ? (
+                            <AlternativesSection alternatives={alternatives} />
                           ) : null}
                         </Stack>
                       </Stack>
@@ -303,10 +300,8 @@ export const DocDetails = () => {
                 />
               ))}
 
-              {'alternatives' in docs &&
-              !hasBestPractices &&
-              docs.alternatives.length > 0 ? (
-                <AlternativesSection alternatives={docs.alternatives} />
+              {!hasBestPractices && alternatives ? (
+                <AlternativesSection alternatives={alternatives} />
               ) : null}
             </Stack>
           </Stack>
