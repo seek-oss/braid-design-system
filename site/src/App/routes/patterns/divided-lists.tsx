@@ -51,6 +51,22 @@ export const docs: PatternDocs = {
       scannability.
     </Text>
   ),
+  alternatives: [
+    {
+      name: 'Card',
+      description:
+        'To provide a summary and entry point to more detailed information',
+    },
+    {
+      name: 'Divider',
+      description: 'To separate consecutive list items',
+    },
+    {
+      name: 'bulk-actions',
+      section: 'patterns',
+      description: 'To apply the same action to multiple list items',
+    },
+  ],
   additional: [
     {
       label: 'Appearance',
@@ -519,25 +535,6 @@ export const docs: PatternDocs = {
           <Text>
             On smaller devices, divided lists should collapse into a stack so
             the user can continue to view each item as a whole
-          </Text>
-        </List>
-      ),
-    },
-    {
-      label: 'Related patterns and components',
-      description: (
-        <List>
-          <Text>
-            <TextLink href="/components/Card">Card</TextLink> — To provide a
-            summary and entry point to more detailed information
-          </Text>
-          <Text>
-            <TextLink href="/components/Divider">Divider</TextLink> — To
-            separate consecutive list items
-          </Text>
-          <Text>
-            <TextLink href="/patterns/bulk-actions">Bulk actions</TextLink> — To
-            apply the same action to multiple list items
           </Text>
         </List>
       ),

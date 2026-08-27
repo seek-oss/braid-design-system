@@ -26,6 +26,35 @@ export const docs: PatternDocs = {
       specific behaviour relevant to their current context.
     </Text>
   ),
+  alternatives: [
+    {
+      name: 'Alert',
+      description:
+        'For informing the user of an important status or condition',
+    },
+    {
+      name: 'Notice',
+      description:
+        'For informing the user of an important status or condition',
+    },
+    {
+      name: 'empty-states',
+      section: 'patterns',
+      description: 'For when there is no data available at the present time',
+    },
+    {
+      name: 'error-states',
+      section: 'patterns',
+      description:
+        'For when the website or app fails to complete an expected action',
+    },
+    {
+      name: 'messages-to-users',
+      section: 'patterns',
+      description:
+        'A group of patterns and components that communicate conditions, indicate events, or show responses to user actions',
+    },
+  ],
   additional: [
     {
       label: 'Component anatomy',
@@ -658,33 +687,6 @@ export const docs: PatternDocs = {
             </Columns>
           </Box>,
         ),
-    },
-    {
-      label: 'Related patterns and components',
-      description: (
-        <List>
-          <Text>
-            <TextLink href="/components/Alert">Alert</TextLink> and{' '}
-            <TextLink href="/components/Notice">Notice</TextLink> — For
-            informing the user of an important status or condition
-          </Text>
-          <Text>
-            <TextLink href="/patterns/empty-states">Empty states</TextLink> —
-            For when there is no data available at the present time
-          </Text>
-          <Text>
-            <TextLink href="/patterns/error-states">Error states</TextLink> —
-            For when the website or app fails to complete an expected action
-          </Text>
-          <Text>
-            <TextLink href="/patterns/messages-to-users">
-              Messages to users
-            </TextLink>{' '}
-            — A group of patterns and components that communicate conditions,
-            indicate events, or show responses to user actions
-          </Text>
-        </List>
-      ),
     },
   ],
 };

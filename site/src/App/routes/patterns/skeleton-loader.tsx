@@ -58,6 +58,24 @@ export const docs: PatternDocs = {
       giving the impression of faster, progressive loading.
     </Text>
   ),
+  alternatives: [
+    {
+      name: 'Loader',
+      description:
+        'For indicating that content is loading in a more minimal way',
+    },
+    {
+      name: 'empty-states',
+      section: 'patterns',
+      description: 'For when there is no data available at the present time',
+    },
+    {
+      name: 'error-states',
+      section: 'patterns',
+      description:
+        'For when the website or app fails to complete an expected action',
+    },
+  ],
   additional: [
     {
       label: 'Appearance',
@@ -195,25 +213,6 @@ export const docs: PatternDocs = {
             </Text>
           </List>
         </>
-      ),
-    },
-    {
-      label: 'Related patterns and components',
-      description: (
-        <List>
-          <Text>
-            <TextLink href="/components/Loader">Loader</TextLink> — For
-            indicating that content is loading in a more minimal way
-          </Text>
-          <Text>
-            <TextLink href="/patterns/empty-states">Empty states</TextLink> —
-            For when there is no data available at the present time
-          </Text>
-          <Text>
-            <TextLink href="/patterns/error-states">Error states</TextLink> —
-            For when the website or app fails to complete an expected action
-          </Text>
-        </List>
       ),
     },
   ],

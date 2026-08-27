@@ -14,6 +14,7 @@ import { useContext, useMemo } from 'react';
 import { slugify } from '../../slugify';
 import { headerScrollOffset } from '../Navigation/navigationSizes';
 import { PageTitle } from '../Seo/PageTitle';
+import { patternCatalog } from '../routes/patterns/catalog';
 
 import { DocExample } from './DocExample';
 import { DocsContext } from './DocNavigation';
@@ -46,6 +47,43 @@ const hasContent = (example: {
   code?: unknown;
   Example?: unknown;
 }) => Boolean(example.description || example.code || example.Example);
+
+const getAlternativeHref = (alt: { name: string; section?: string }) =>
+  `/${alt.section || 'components'}/${alt.name}`;
+
+const getAlternativeLabel = (alt: { name: string; section?: string }) =>
+  alt.section === 'patterns'
+    ? (patternCatalog.find((entry) => entry.slug === alt.name)?.title ??
+      alt.name)
+    : alt.name;
+
+const AlternativesSection = ({
+  alternatives,
+}: {
+  alternatives: Array<{
+    name: string;
+    description: string;
+    section?: string;
+  }>;
+}) => (
+  <Stack space={headingSpacing}>
+    <Heading level="3">
+      <TitleLink copyable label="Alternatives">
+        Alternatives
+      </TitleLink>
+    </Heading>
+    <List space="medium">
+      {alternatives.map((alt) => (
+        <Text key={`${alt.section ?? 'components'}-${alt.name}`}>
+          <TextLink hitArea="large" href={getAlternativeHref(alt)}>
+            {getAlternativeLabel(alt)}
+          </TextLink>{' '}
+          <Secondary>— {alt.description}</Secondary>
+        </Text>
+      ))}
+    </List>
+  </Stack>
+);
 
 export const DocDetails = () => {
   const { docs, docsName, docsTitle } = useContext(DocsContext);
@@ -248,27 +286,9 @@ export const DocDetails = () => {
                           {sectionKey === 'bestPractices' &&
                           'alternatives' in docs &&
                           docs.alternatives.length > 0 ? (
-                            <Stack space={headingSpacing}>
-                              <Heading level="3">
-                                <TitleLink copyable label="Alternatives">
-                                  Alternatives
-                                </TitleLink>
-                              </Heading>
-
-                              <List space="medium">
-                                {docs.alternatives.map((alt) => (
-                                  <Text key={`${alt.name}`}>
-                                    <TextLink
-                                      hitArea="large"
-                                      href={`/${alt.section || 'components'}/${alt.name}`}
-                                    >
-                                      {alt.name}
-                                    </TextLink>{' '}
-                                    <Secondary>— {alt.description}</Secondary>
-                                  </Text>
-                                ))}
-                              </List>
-                            </Stack>
+                            <AlternativesSection
+                              alternatives={docs.alternatives}
+                            />
                           ) : null}
                         </Stack>
                       </Stack>
@@ -286,26 +306,7 @@ export const DocDetails = () => {
               {'alternatives' in docs &&
               !hasBestPractices &&
               docs.alternatives.length > 0 ? (
-                <Stack space={headingSpacing}>
-                  <Heading level="3">
-                    <TitleLink copyable label="Alternatives">
-                      Alternatives
-                    </TitleLink>
-                  </Heading>
-                  <List space="medium">
-                    {docs.alternatives.map((alt) => (
-                      <Text key={`${alt.name}`}>
-                        <TextLink
-                          hitArea="large"
-                          href={`/${alt.section || 'components'}/${alt.name}`}
-                        >
-                          {alt.name}
-                        </TextLink>{' '}
-                        <Secondary>— {alt.description}</Secondary>
-                      </Text>
-                    ))}
-                  </List>
-                </Stack>
+                <AlternativesSection alternatives={docs.alternatives} />
               ) : null}
             </Stack>
           </Stack>

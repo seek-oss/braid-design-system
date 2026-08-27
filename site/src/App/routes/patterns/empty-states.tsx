@@ -28,6 +28,22 @@ export const docs: PatternDocs = {
       users on what to do next.
     </Text>
   ),
+  alternatives: [
+    {
+      name: 'error-states',
+      section: 'patterns',
+      description:
+        'For when the website or app fails to complete an expected action',
+    },
+    {
+      name: 'Alert',
+      description: 'For in-flow messaging',
+    },
+    {
+      name: 'Notice',
+      description: 'For lighter in-flow messaging',
+    },
+  ],
   additional: [
     {
       label: 'Large and full-page empty states',
@@ -328,25 +344,6 @@ export const docs: PatternDocs = {
           <Text>
             First-time user — the user understands what actions they must take
             to populate data
-          </Text>
-        </List>
-      ),
-    },
-    {
-      label: 'Related patterns and components',
-      description: (
-        <List>
-          <Text>
-            <TextLink href="/patterns/error-states">Error states</TextLink> —
-            For when the website or app fails to complete an expected action
-          </Text>
-          <Text>
-            <TextLink href="/components/Alert">Alert</TextLink> — For in-flow
-            messaging
-          </Text>
-          <Text>
-            <TextLink href="/components/Notice">Notice</TextLink> — For lighter
-            in-flow messaging
           </Text>
         </List>
       ),

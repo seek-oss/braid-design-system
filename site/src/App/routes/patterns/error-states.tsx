@@ -28,6 +28,21 @@ export const docs: PatternDocs = {
       problem and how to proceed.
     </Text>
   ),
+  alternatives: [
+    {
+      name: 'empty-states',
+      section: 'patterns',
+      description: 'For when there is no data available at the present time',
+    },
+    {
+      name: 'Alert',
+      description: 'For in-flow messaging',
+    },
+    {
+      name: 'Notice',
+      description: 'For lighter in-flow messaging',
+    },
+  ],
   additional: [
     {
       label: 'Large and full-page error states',
@@ -333,25 +348,6 @@ export const docs: PatternDocs = {
           </Text>
           <Text>Configuration required, such as an unsupported browser</Text>
           <Text>Not found, such as a missing page or bad request</Text>
-        </List>
-      ),
-    },
-    {
-      label: 'Related patterns and components',
-      description: (
-        <List>
-          <Text>
-            <TextLink href="/patterns/empty-states">Empty states</TextLink> —
-            For when there is no data available at the present time
-          </Text>
-          <Text>
-            <TextLink href="/components/Alert">Alert</TextLink> — For in-flow
-            messaging
-          </Text>
-          <Text>
-            <TextLink href="/components/Notice">Notice</TextLink> — For lighter
-            in-flow messaging
-          </Text>
         </List>
       ),
     },
