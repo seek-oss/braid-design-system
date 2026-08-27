@@ -49,24 +49,24 @@ export const docs: PatternDocs = {
   docSections: {
     appearance: [
       {
-        label: 'Appearance',
+        label: 'Anatomy',
         description: (
-          <Text>
-            The anatomy of bulk actions consists of standalone{' '}
-            <TextLink href="/components/Checkbox#standalone">
-              Checkboxes
-            </TextLink>{' '}
-            with{' '}
-            <TextLink href="/components/Checkbox#tri-state-support">
-              tri-state support
-            </TextLink>
-            , paired with relevant CTAs (most likely in the form of{' '}
-            <TextLink href="/components/Button">Buttons</TextLink> or{' '}
-            <TextLink href="/components/ButtonIcon">ButtonIcons</TextLink>).
-            Below is an example of bulk actions in isolation, followed by an
-            example in the context of a{' '}
-            <TextLink href="/patterns/divided-lists">Divided List</TextLink>.
-          </Text>
+          <>
+            <Text>
+              Bulk actions consist of standalone{' '}
+              <TextLink href="/components/Checkbox#standalone">
+                Checkboxes
+              </TextLink>{' '}
+              with{' '}
+              <TextLink href="/components/Checkbox#tri-state-support">
+                tri-state support
+              </TextLink>
+              , paired with relevant CTAs most likely in the form of{' '}
+              <TextLink href="/components/Button">Buttons</TextLink> or{' '}
+              <TextLink href="/components/ButtonIcon">ButtonIcons</TextLink>.
+            </Text>
+            <Text>An isolated example of bulk actions:</Text>
+          </>
         ),
         Example: ({ setDefaultState, getState, setState, toggleState }) =>
           source(
@@ -151,8 +151,12 @@ export const docs: PatternDocs = {
           ),
       },
       {
-        label: 'In context example',
-        description: <Text>Bulk actions in a Divided List:</Text>,
+        description: (
+          <Text>
+            An example in the context of a{' '}
+            <TextLink href="/patterns/divided-lists">Divided List</TextLink>:
+          </Text>
+        ),
         Example: ({
           setDefaultState,
           getState,
@@ -395,7 +399,7 @@ export const docs: PatternDocs = {
       {
         label: 'General best practice',
         description: (
-          <List>
+          <List space="large">
             <Text>
               Use a <Strong>CheckboxStandalone</Strong> for selection and
               provide each with an <Strong>aria-label</Strong> or{' '}
