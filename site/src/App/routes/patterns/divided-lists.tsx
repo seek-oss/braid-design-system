@@ -67,7 +67,8 @@ export const docs: PatternDocs = {
       description: 'To apply the same action to multiple list items',
     },
   ],
-  additional: [
+  docSections: {
+    appearance: [
     {
       label: 'Appearance',
       description: (
@@ -466,6 +467,49 @@ export const docs: PatternDocs = {
         ),
     },
     {
+      label: 'Visual guidelines',
+      description: (
+        <List space="large">
+          <Text>
+            It&rsquo;s generally recommended to include a heading above the
+            divided list
+          </Text>
+          <Text>
+            When it makes sense, consider including an item count below the
+            heading (for example, 26 job ads)
+          </Text>
+          <Text>
+            Display leading and trailing dividers. If the divided list is
+            displayed directly below a heading, you may choose to omit the
+            leading divider
+          </Text>
+          <Text>
+            Avoid displaying a column header row, as this will need to be hidden
+            on mobile. Instead, label content in place so that it can be
+            understood without a header
+          </Text>
+        </List>
+      ),
+    },
+    ],
+    bestPractices: [
+    {
+      label: 'General best practice',
+      description: (
+        <List space="large">
+          <Text>Group related content in a logical way</Text>
+          <Text>
+            Include relevant actions. A divided list is about helping users take
+            action on the appropriate list item
+          </Text>
+          <Text>
+            On smaller devices, divided lists should collapse into a stack so
+            the user can continue to view each item as a whole
+          </Text>
+        </List>
+      ),
+    },
+    {
       label: 'When to use',
       description: (
         <>
@@ -498,48 +542,8 @@ export const docs: PatternDocs = {
         </>
       ),
     },
-    {
-      label: 'Visual guidelines',
-      description: (
-        <List space="large">
-          <Text>
-            It&rsquo;s generally recommended to include a heading above the
-            divided list
-          </Text>
-          <Text>
-            When it makes sense, consider including an item count below the
-            heading (for example, 26 job ads)
-          </Text>
-          <Text>
-            Display leading and trailing dividers. If the divided list is
-            displayed directly below a heading, you may choose to omit the
-            leading divider
-          </Text>
-          <Text>
-            Avoid displaying a column header row, as this will need to be hidden
-            on mobile. Instead, label content in place so that it can be
-            understood without a header
-          </Text>
-        </List>
-      ),
-    },
-    {
-      label: 'General best practice',
-      description: (
-        <List space="large">
-          <Text>Group related content in a logical way</Text>
-          <Text>
-            Include relevant actions. A divided list is about helping users take
-            action on the appropriate list item
-          </Text>
-          <Text>
-            On smaller devices, divided lists should collapse into a stack so
-            the user can continue to view each item as a whole
-          </Text>
-        </List>
-      ),
-    },
-  ],
+    ],
+  },
 };
 
 export default docs;

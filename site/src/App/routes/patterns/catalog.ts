@@ -17,7 +17,7 @@ export const patternCatalog: PatternEntry[] = [
   },
   {
     slug: 'divided-lists',
-    title: 'Divided lists',
+    title: 'Divided list',
     kind: 'pattern',
     description:
       'Displays a list of related items separated by dividers, for easy scannability.',
