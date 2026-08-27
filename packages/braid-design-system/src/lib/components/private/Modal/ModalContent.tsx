@@ -166,20 +166,18 @@ const ModalContentScrollLayout = ({
       /* Sentinel element for delaying scroll mask until after the coverImage */
       coverImageEnabled && <span ref={contentStartRef} />
     }
-    <Box height={applyFullHeight ? 'full' : undefined}>
-      <Box
-        display="flex"
-        gap="large"
-        flexDirection="column"
-        height={!coverImageEnabled && hasFooter ? 'full' : undefined}
-        paddingY={modalPadding}
-        paddingBottom={
-          hasFooter ? { mobile: 'small', tablet: 'none' } : undefined
-        }
-        paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
-      >
-        {children}
-      </Box>
+    <Box
+      display="flex"
+      gap="large"
+      flexDirection="column"
+      height={applyFullHeight ? 'full' : undefined}
+      paddingY={modalPadding}
+      paddingBottom={
+        hasFooter ? { mobile: 'small', tablet: 'none' } : undefined
+      }
+      paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
+    >
+      {children}
     </Box>
   </ScrollContainer>
 );
