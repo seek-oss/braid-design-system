@@ -171,10 +171,8 @@ const ModalContentScrollLayout = ({
       gap="large"
       flexDirection="column"
       height={applyFullHeight ? 'full' : undefined}
-      paddingY={modalPadding}
-      paddingBottom={
-        hasFooter ? { mobile: 'small', tablet: 'none' } : undefined
-      }
+      paddingTop={modalPadding}
+      paddingBottom={!hasFooter ? modalPadding : undefined}
       paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
     >
       {children}
@@ -316,7 +314,7 @@ export const ModalContent = ({
         ref={headingRef}
         reserveCloseArea
       />
-      {children}
+      <Box height="full">{children}</Box>
     </ModalContentScrollLayout>
   );
 
@@ -403,7 +401,7 @@ export const ModalContent = ({
           paddingRight={isDrawer ? pageBlockGutters : modalPadding}
           className={!isDrawer && styles.maxSize[position]}
         >
-          <Bleed space="xsmall" horizontal="xxsmall">
+          <Bleed space="xxsmall">
             <Box
               position="relative"
               background="surface"
