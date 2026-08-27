@@ -1,9 +1,7 @@
 import source from '@braid-design-system/source.macro';
 import {
-  Actions,
   Badge,
   Box,
-  Button,
   ButtonIcon,
   Column,
   Columns,
@@ -32,7 +30,6 @@ import {
   Stack,
   Text,
   TextLink,
-  Tiles,
 } from 'braid-design-system';
 
 import type { PatternDocs } from '../../../types';
@@ -521,21 +518,6 @@ export const docs: PatternDocs = {
             </Text>
           </List>
         ),
-        Example: () =>
-          source(
-            <Tiles space="xlarge" columns={[1, 2]}>
-              <Stack space="small">
-                <Text tone="secondary" size="small">
-                  On mobile
-                </Text>
-                <Actions>
-                  <Button variant="solid">Solid</Button>
-                  <Button variant="ghost">Ghost</Button>
-                  <Button variant="transparent">Transparent</Button>
-                </Actions>
-              </Stack>
-            </Tiles>,
-          ),
       },
       {
         label: 'When to use',
