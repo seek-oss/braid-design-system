@@ -13,7 +13,10 @@ import type {
 } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
-import { cssFoundationDocs, getCssDocFileName } from './routes/foundations/cssDocs';
+import {
+  cssFoundationDocs,
+  getCssDocFileName,
+} from './routes/foundations/cssDocs';
 
 const componentDocsContext = require.context(
   'braid-src/lib/components/',

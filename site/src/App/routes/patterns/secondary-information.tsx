@@ -21,9 +21,8 @@ import type { PatternDocs } from '../../../types';
 export const docs: PatternDocs = {
   description: (
     <Text>
-      Represents a group of components and patterns used to reveal
-      non-critical, supplementary information without cluttering the primary
-      content.
+      Represents a group of components and patterns used to reveal non-critical,
+      supplementary information without cluttering the primary content.
     </Text>
   ),
   additional: [

@@ -39,7 +39,11 @@ const DestinationCard = ({
   icon: ReactNode;
 }) => (
   <Box position="relative" height="full">
-    <Link href={href} className={landingCardStyles.linkOverlay} aria-label={label} />
+    <Link
+      href={href}
+      className={landingCardStyles.linkOverlay}
+      aria-label={label}
+    />
     <Box
       background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
       overflow="hidden"
