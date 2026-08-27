@@ -74,7 +74,8 @@ export interface CssDoc {
 
 export interface PatternDocs {
   description?: ReactNodeNoStrings;
-  additional: ComponentExample[];
+  docSections?: DocSections;
+  additional?: ComponentExample[];
 }
 
 export interface TemplateDocs {
