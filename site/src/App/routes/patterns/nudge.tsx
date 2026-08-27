@@ -38,12 +38,12 @@ export const docs: PatternDocs = {
         'For informing the user of an important status or condition',
     },
     {
-      name: 'empty-states',
+      name: 'empty-state',
       section: 'patterns',
       description: 'For when there is no data available at the present time',
     },
     {
-      name: 'error-states',
+      name: 'error-state',
       section: 'patterns',
       description:
         'For when the website or app fails to complete an expected action',
@@ -185,7 +185,7 @@ export const docs: PatternDocs = {
               (consider using an{' '}
               <TextLink href="/components/Alert">Alert</TextLink> or{' '}
               <TextLink href="/components/Notice">Notice</TextLink>, or an{' '}
-              <TextLink href="/patterns/error-states">error state</TextLink>{' '}
+              <TextLink href="/patterns/error-state">error state</TextLink>{' '}
               instead)
             </Text>
             <Text>

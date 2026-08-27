@@ -30,7 +30,7 @@ export const docs: PatternDocs = {
   ),
   alternatives: [
     {
-      name: 'error-states',
+      name: 'error-state',
       section: 'patterns',
       description:
         'For when the website or app fails to complete an expected action',

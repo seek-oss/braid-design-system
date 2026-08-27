@@ -40,7 +40,7 @@ export const docs: PatternDocs = {
         'To provide a summary and entry point to more detailed information',
     },
     {
-      name: 'divided-lists',
+      name: 'divided-list',
       section: 'patterns',
       description:
         'To display a group of related items consecutively in an organised way',
@@ -154,7 +154,7 @@ export const docs: PatternDocs = {
         description: (
           <Text>
             An example in the context of a{' '}
-            <TextLink href="/patterns/divided-lists">Divided List</TextLink>:
+            <TextLink href="/patterns/divided-list">Divided List</TextLink>:
           </Text>
         ),
         Example: ({

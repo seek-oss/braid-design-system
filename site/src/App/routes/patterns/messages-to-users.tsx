@@ -66,13 +66,13 @@ export const docs: PatternDocs = {
       description: (
         <List space="large">
           <Text>
-            <TextLink href="/patterns/empty-states">Empty states</TextLink> —
+            <TextLink href="/patterns/empty-state">Empty state</TextLink> —
             Occurs when there is no data available at the present time, and
             informs the user about what they might see when there is data,
             and/or what they should do next.
           </Text>
           <Text>
-            <TextLink href="/patterns/error-states">Error states</TextLink> —
+            <TextLink href="/patterns/error-state">Error state</TextLink> —
             Occurs when the website or app fails to complete an expected action,
             and informs the user that a problem has occurred.
           </Text>
@@ -83,8 +83,8 @@ export const docs: PatternDocs = {
             drives desired behaviour.
           </Text>
           <Text>
-            <TextLink href="/patterns/service-outage-banners">
-              Service outage banners
+            <TextLink href="/patterns/service-outage-banner">
+              Service outage banner
             </TextLink>{' '}
             — Inform users of upcoming interruptions to SEEK products and
             services. This can include outages to the entire system or to

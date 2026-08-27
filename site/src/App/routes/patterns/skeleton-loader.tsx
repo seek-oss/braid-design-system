@@ -65,12 +65,12 @@ export const docs: PatternDocs = {
         'For indicating that content is loading in a more minimal way',
     },
     {
-      name: 'empty-states',
+      name: 'empty-state',
       section: 'patterns',
       description: 'For when there is no data available at the present time',
     },
     {
-      name: 'error-states',
+      name: 'error-state',
       section: 'patterns',
       description:
         'For when the website or app fails to complete an expected action',
@@ -203,12 +203,12 @@ export const docs: PatternDocs = {
             </Text>
             <Text>
               When there is no data available at the present time — use an{' '}
-              <TextLink href="/patterns/empty-states">empty state</TextLink>{' '}
+              <TextLink href="/patterns/empty-state">empty state</TextLink>{' '}
               instead
             </Text>
             <Text>
               When the website or app fails to complete an expected action — use
-              an <TextLink href="/patterns/error-states">error state</TextLink>{' '}
+              an <TextLink href="/patterns/error-state">error state</TextLink>{' '}
               instead
             </Text>
           </List>

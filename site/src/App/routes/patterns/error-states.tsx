@@ -30,7 +30,7 @@ export const docs: PatternDocs = {
   ),
   alternatives: [
     {
-      name: 'empty-states',
+      name: 'empty-state',
       section: 'patterns',
       description: 'For when there is no data available at the present time',
     },
