@@ -143,10 +143,10 @@ export const docs: PatternDocs = {
         description: (
           <Text>
             For empty states that sit within content, such as a dashboard widget
-            or tile. Consider using an{' '}
-            <TextLink href="/components/Alert">Alert</TextLink> or{' '}
-            <TextLink href="/components/Notice">Notice</TextLink> with the tone{' '}
-            <Strong>info</Strong>.
+            or tile, use an <TextLink href="/components/Alert">Alert</TextLink>{' '}
+            or <TextLink href="/components/Notice">Notice</TextLink> with the
+            tone <Strong>info</Strong>. Do not use a large format empty state
+            inline.
           </Text>
         ),
         Example: () =>
@@ -189,16 +189,6 @@ export const docs: PatternDocs = {
               </Card>
             </Tiles>,
           ),
-      },
-      {
-        description: (
-          <Text>
-            A Notice may work well on tiles or cards that have a visual bounding
-            box. If greater visual prominence is required, an Alert can be used
-            instead — but consider how this would look if multiple empty states
-            appear at once.
-          </Text>
-        ),
       },
     ],
     bestPractices: [
