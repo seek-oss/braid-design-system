@@ -106,7 +106,7 @@ export const docs: PatternDocs = {
       label: 'Visual guidelines',
       description: (
         <>
-          <List>
+          <List space="large">
             <Text>
               Size, layout, and spacing of skeleton elements should replicate
               the size, layout, and spacing of actual content where possible.
@@ -127,7 +127,7 @@ export const docs: PatternDocs = {
             </Text>
             <Text>Height suggestions for text elements:</Text>
           </List>
-          <List>
+          <List space="large">
             <Text>Use medium for Heading level 1</Text>
             <Text>Use small for Heading level 2, 3, and 4</Text>
             <Text>Use xsmall for Text</Text>
@@ -142,7 +142,7 @@ export const docs: PatternDocs = {
     {
       label: 'General best practice',
       description: (
-        <List>
+        <List space="large">
           <Text>Design skeletons to resemble actual content structure.</Text>
           <Text>Avoid overuse. Focus on key content areas.</Text>
           <Text>
@@ -165,7 +165,7 @@ export const docs: PatternDocs = {
       description: (
         <>
           <Text>Use skeletons for:</Text>
-          <List>
+          <List space="large">
             <Text>
               Areas of content that are likely to have longer load times
             </Text>
@@ -183,7 +183,7 @@ export const docs: PatternDocs = {
             </Text>
           </List>
           <Text>Don&rsquo;t use skeletons for:</Text>
-          <List>
+          <List space="large">
             <Text>
               Small, low-priority elements (for example icons or secondary
               elements)

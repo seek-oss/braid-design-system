@@ -94,7 +94,7 @@ export const docs: PatternDocs = {
     {
       description: (
         <>
-          <List>
+          <List space="large">
             <Text>
               Illustration (recommended): A static image that relates to the
               user&rsquo;s situation
@@ -279,7 +279,7 @@ export const docs: PatternDocs = {
     {
       label: 'General guidelines',
       description: (
-        <List>
+        <List space="large">
           <Text>
             Be as specific as possible. This helps users resolve the issue.
             Don&rsquo;t try to address multiple error scenarios in one message.
@@ -311,7 +311,7 @@ export const docs: PatternDocs = {
             resolve issues faster and can turn a negative moment into a more
             lasting connection.
           </Text>
-          <List>
+          <List space="large">
             <Text>
               <Strong>Instruct</Strong> when the user can resolve it quickly.
               Tell them clearly what to do and don&rsquo;t make it a big deal.
@@ -338,7 +338,7 @@ export const docs: PatternDocs = {
     {
       label: 'When to use',
       description: (
-        <List>
+        <List space="large">
           <Text>
             Permissions issues such as unauthorised or forbidden access
           </Text>

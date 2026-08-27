@@ -31,7 +31,7 @@ export const docs: PatternDocs = {
       label: 'Web',
       description: (
         <>
-          <List>
+          <List space="large">
             <Text>
               It&rsquo;s recommended to present social share as a single menu.
             </Text>
@@ -193,7 +193,7 @@ export const docs: PatternDocs = {
     {
       label: 'Mobile and apps',
       description: (
-        <List>
+        <List space="large">
           <Text>
             For basic share options, it&rsquo;s recommended to utilise the
             native OS share sheet.
@@ -214,7 +214,7 @@ export const docs: PatternDocs = {
     {
       label: 'Relevant components',
       description: (
-        <List>
+        <List space="large">
           <Text>
             <TextLink href="/components/MenuItem">MenuItem</TextLink> — For
             displaying buttons and links within a menu

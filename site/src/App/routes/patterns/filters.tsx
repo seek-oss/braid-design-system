@@ -51,7 +51,7 @@ export const docs: PatternDocs = {
           <Text>
             <Strong>General best practice</Strong>
           </Text>
-          <List>
+          <List space="large">
             <Text>
               Be intentional with the filters you provide. Show only relevant
               filters. Promote the most important filters and minimise less
@@ -74,7 +74,7 @@ export const docs: PatternDocs = {
           <Text>
             <Strong>Desktop and tablet</Strong>
           </Text>
-          <List>
+          <List space="large">
             <Text>
               Users should be able to view and interact with filters at the same
               time as the data set. Filters may collapse, expand or hide, but
@@ -93,7 +93,7 @@ export const docs: PatternDocs = {
           <Text>
             <Strong>Mobile and apps</Strong>
           </Text>
-          <List>
+          <List space="large">
             <Text>
               Place filters in a{' '}
               <TextLink href="/components/Drawer">Drawer</TextLink> (or bottom
@@ -123,7 +123,7 @@ export const docs: PatternDocs = {
             create them, such as Checkbox and RadioGroup. The filtering system
             still needs to be accessible as a whole. Ensure users can:
           </Text>
-          <List>
+          <List space="large">
             <Text>Easily identify and understand labels for all controls</Text>
             <Text>Be notified of state changes</Text>
             <Text>Complete all actions with the keyboard</Text>
@@ -134,7 +134,7 @@ export const docs: PatternDocs = {
     {
       label: 'When to use',
       description: (
-        <List>
+        <List space="large">
           <Text>
             Applying filters to hide and show items in a list — to create
             efficiencies while performing a task, or to help users find

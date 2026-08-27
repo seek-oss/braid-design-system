@@ -64,7 +64,7 @@ export const docs: PatternDocs = {
     {
       label: 'Messaging patterns',
       description: (
-        <List>
+        <List space="large">
           <Text>
             <TextLink href="/patterns/empty-states">Empty states</TextLink> —
             Occurs when there is no data available at the present time, and

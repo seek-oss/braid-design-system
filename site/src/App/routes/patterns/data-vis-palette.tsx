@@ -66,7 +66,7 @@ export const docs: PatternDocs = {
       label: 'Summary',
       description: (
         <>
-          <List>
+          <List space="large">
             <Text>Updated palette to support NVL colour updates</Text>
             <Text>
               Zero minor issues for 96% of the population in light mode, down
@@ -172,7 +172,7 @@ export const docs: PatternDocs = {
             together.
           </Text>
           <Text>You can inspect the palettes in Viz Palette:</Text>
-          <List>
+          <List space="large">
             <Text>
               <TextLink href="https://projects.susielu.com/viz-palette?colors=[%22#e60278%22,%22#072254%22,%22#3e8fe0%22,%22#5b2084%22,%22#1fa575%22,%22#10727f%22,%22#a00043%22,%22#a04bcb%22,%22#1d559d%22,%22#ef672a%22,%22#838fa5%22,%22#d5292a%22,%22#5c0202%22,%22#08492d%22]&backgroundColor=%22white%22&fontColor=%22black%22&mode=%22normal%22">
                 Viz Palette — light mode

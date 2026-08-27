@@ -29,7 +29,7 @@ export const docs: PatternDocs = {
       description: (
         <>
           <Text>A service outage banner should let customers know:</Text>
-          <List>
+          <List space="large">
             <Text>What parts of the site are impacted</Text>
             <Text>How they&rsquo;ll be impacted</Text>
             <Text>When the site will be impacted</Text>
@@ -105,7 +105,7 @@ export const docs: PatternDocs = {
             messaging. Create a custom component and follow the recommendations
             below.
           </Text>
-          <List>
+          <List space="large">
             <Text>
               Choose an appropriate{' '}
               <TextLink href="/foundations/tones">tone</TextLink> for your
@@ -139,7 +139,7 @@ export const docs: PatternDocs = {
           <Text>
             <Strong>Technical detail</Strong>
           </Text>
-          <List>
+          <List space="large">
             <Text>
               Create a custom banner using{' '}
               <TextLink href="/components/Box">Box</TextLink> with{' '}
@@ -205,7 +205,7 @@ export const docs: PatternDocs = {
     },
     {
       description: (
-        <List>
+        <List space="large">
           <Text>
             Use the existing <TextLink href="/components/Alert">Alert</TextLink>{' '}
             component.
@@ -319,7 +319,7 @@ export const docs: PatternDocs = {
     },
     {
       description: (
-        <List>
+        <List space="large">
           <Text>
             Widespread outage banners should sit at the very top of the page —
             above the site navigation.

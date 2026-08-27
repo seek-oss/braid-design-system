@@ -98,7 +98,7 @@ export const docs: PatternDocs = {
           <Text>
             <Strong>Anatomy</Strong>
           </Text>
-          <List>
+          <List space="large">
             <Text>
               Illustration (recommended): A static image that relates to the
               user&rsquo;s situation
@@ -303,7 +303,7 @@ export const docs: PatternDocs = {
             Empty states usually fall into one of four categories. The type
             determines the response.
           </Text>
-          <List>
+          <List space="large">
             <Text>
               <Strong>Negative</Strong> — the content doesn&rsquo;t exist and
               there&rsquo;s nothing for the user to do. Explain why, offer a
@@ -332,7 +332,7 @@ export const docs: PatternDocs = {
     {
       label: 'When to use',
       description: (
-        <List>
+        <List space="large">
           <Text>
             No data yet — the user understands what will be available when data
             has been added

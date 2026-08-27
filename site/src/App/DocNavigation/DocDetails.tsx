@@ -72,7 +72,7 @@ const AlternativesSection = ({
         Alternatives
       </TitleLink>
     </Heading>
-    <List space="medium">
+    <List space="large">
       {alternatives.map((alt) => (
         <Text key={`${alt.section ?? 'components'}-${alt.name}`}>
           <TextLink hitArea="large" href={getAlternativeHref(alt)}>

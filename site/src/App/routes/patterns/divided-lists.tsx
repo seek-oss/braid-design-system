@@ -470,7 +470,7 @@ export const docs: PatternDocs = {
       description: (
         <>
           <Text>Use a divided list:</Text>
-          <List>
+          <List space="large">
             <Text>
               To display a group of related items consecutively in an organised
               way
@@ -485,7 +485,7 @@ export const docs: PatternDocs = {
             </Text>
           </List>
           <Text>Don&rsquo;t use a divided list:</Text>
-          <List>
+          <List space="large">
             <Text>
               To display a numerical dataset using rows and columns. Use layout
               suitable for tabular data instead.
@@ -501,7 +501,7 @@ export const docs: PatternDocs = {
     {
       label: 'Visual guidelines',
       description: (
-        <List>
+        <List space="large">
           <Text>
             It&rsquo;s generally recommended to include a heading above the
             divided list
@@ -526,7 +526,7 @@ export const docs: PatternDocs = {
     {
       label: 'General best practice',
       description: (
-        <List>
+        <List space="large">
           <Text>Group related content in a logical way</Text>
           <Text>
             Include relevant actions. A divided list is about helping users take

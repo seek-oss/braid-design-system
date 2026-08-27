@@ -117,7 +117,7 @@ export const docs: PatternDocs = {
     },
     {
       description: (
-        <List>
+        <List space="large">
           <Text>
             Heading (optional): A short description of the action the user might
             like to take.
@@ -143,7 +143,7 @@ export const docs: PatternDocs = {
     {
       label: 'General best practice',
       description: (
-        <List>
+        <List space="large">
           <Text>
             A nudge should always be actionable and drive desired behaviour.
           </Text>
@@ -169,13 +169,13 @@ export const docs: PatternDocs = {
       description: (
         <>
           <Text>Use a nudge to:</Text>
-          <List>
+          <List space="large">
             <Text>Suggest a product or feature to users</Text>
             <Text>Drive specific behaviour within a product or feature</Text>
             <Text>Lead to better outcomes for SEEK or the user</Text>
           </List>
           <Text>Don&rsquo;t use a nudge if:</Text>
-          <List>
+          <List space="large">
             <Text>
               There&rsquo;s no action or behaviour associated with the message
               (consider using plain text instead)
@@ -576,7 +576,7 @@ export const docs: PatternDocs = {
     {
       label: 'Illustrations',
       description: (
-        <List>
+        <List space="large">
           <Text>
             Choose an illustration that&rsquo;s relevant to the user&rsquo;s
             situation from the NVL illustration library.
@@ -607,7 +607,7 @@ export const docs: PatternDocs = {
     {
       label: 'Calls-to-action',
       description: (
-        <List>
+        <List space="large">
           <Text>A nudge should include a primary CTA.</Text>
           <Text>
             For standard and small nudges, a{' '}
