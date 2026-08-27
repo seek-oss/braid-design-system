@@ -4,7 +4,7 @@ import type { PatternDocs } from '../../../types';
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
+    <Text>
       Communicate time-sensitive conditions, events or responses in the UI.
     </Text>
   ),

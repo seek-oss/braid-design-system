@@ -20,7 +20,7 @@ import type { PatternDocs } from '../../../types';
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
+    <Text>
       Offer optional extra context, such as definitions or explanatory copy.
     </Text>
   ),

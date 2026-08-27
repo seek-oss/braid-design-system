@@ -18,7 +18,7 @@ import type { PatternDocs } from '../../../types';
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
+    <Text>
       Warn users about upcoming interruptions or reduced service.
     </Text>
   ),

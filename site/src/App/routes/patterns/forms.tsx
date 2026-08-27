@@ -25,7 +25,7 @@ import type { PatternDocs } from '../../../types';
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
+    <Text>
       Collect input through a set of fields on a page, sidebar or dialog.
     </Text>
   ),

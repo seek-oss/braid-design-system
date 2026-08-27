@@ -24,7 +24,7 @@ import * as styles from './wide-screen-layouts.css';
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
+    <Text>
       Braid components allow you to create and tailor your page widths and
       layouts to meet your customers&rsquo; needs. Whilst infinite variation is
       possible, the width and layout of content and pages should be carefully

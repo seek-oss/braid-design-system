@@ -21,9 +21,7 @@ import type { PatternDocs } from '../../../types';
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
-      Let users broadcast SEEK content to their social networks.
-    </Text>
+    <Text>Let users broadcast SEEK content to their social networks.</Text>
   ),
   additional: [
     {

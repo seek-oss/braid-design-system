@@ -56,7 +56,7 @@ const Swatches = ({ colours }: { colours: string[] }) => (
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
+    <Text>
       Use SEEK&rsquo;s accessible colour palette for data visualisations.
     </Text>
   ),

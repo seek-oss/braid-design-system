@@ -28,11 +28,7 @@ import { Placeholder } from 'braid-design-system/playroom/components';
 import type { PatternDocs } from '../../../types';
 
 export const docs: PatternDocs = {
-  description: (
-    <Text tone="secondary">
-      Let users narrow or rearrange content on a page.
-    </Text>
-  ),
+  description: <Text>Let users narrow or rearrange content on a page.</Text>,
   additional: [
     {
       label: 'Visual guidelines',

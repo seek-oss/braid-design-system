@@ -112,7 +112,7 @@ const DebugSpaceY = ({
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
+    <Text>
       When designing with Braid components you have the ability to tailor
       content density to meet your needs. If you desire an airy feel in the UI,
       components can be displayed larger with more spacing. For a more condensed
