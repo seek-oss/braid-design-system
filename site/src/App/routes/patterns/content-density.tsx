@@ -113,12 +113,8 @@ const DebugSpaceY = ({
 export const docs: PatternDocs = {
   description: (
     <Text>
-      When designing with Braid components you have the ability to tailor
-      content density to meet your needs. If you desire an airy feel in the UI,
-      components can be displayed larger with more spacing. For a more condensed
-      UI, components can be displayed smaller with tighter spacing. This post
-      walks through the basic fundamentals of how to tailor content density
-      using Braid components.
+      How to adjust the size and spacing of components to create a more airy or
+      more condensed UI.
     </Text>
   ),
   additional: [
