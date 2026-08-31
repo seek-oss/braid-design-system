@@ -24,8 +24,9 @@ import type { PatternDocs } from '../../../types';
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
-      Apply the same action to multiple items at once.
+    <Text>
+      Allows users to select multiple items in a list and apply the same action
+      to all of them.
     </Text>
   ),
   additional: [

@@ -4,8 +4,9 @@ import type { PatternDocs } from '../../../types';
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
-      Communicate time-sensitive conditions, events or responses in the UI.
+    <Text>
+      Represents a group of patterns and components used to communicate
+      conditions, events, or responses to user actions.
     </Text>
   ),
   additional: [

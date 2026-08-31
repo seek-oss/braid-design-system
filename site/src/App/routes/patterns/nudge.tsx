@@ -21,12 +21,9 @@ import type { PatternDocs } from '../../../types';
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
-      A nudge is a prominent message that encourages the user to take a specific
-      action on something relevant at that moment. This could include suggesting
-      a new product or feature, or how to use the current product or feature in
-      a new or better way. A nudge is always actionable and drives desired
-      behaviour.
+    <Text>
+      Displays a prominent, actionable message that drives users toward a
+      specific behaviour relevant to their current context.
     </Text>
   ),
   additional: [

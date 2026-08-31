@@ -18,8 +18,9 @@ import type { PatternDocs } from '../../../types';
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
-      Warn users about upcoming interruptions or reduced service.
+    <Text>
+      Informs users of an existing or upcoming outage or reduced service level,
+      affecting the whole system or specific products.
     </Text>
   ),
   additional: [

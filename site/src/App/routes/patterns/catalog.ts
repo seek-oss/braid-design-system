@@ -12,100 +12,106 @@ export const patternCatalog: PatternEntry[] = [
     slug: 'bulk-actions',
     title: 'Bulk actions',
     kind: 'pattern',
-    description: 'Apply the same action to multiple items at once.',
+    description:
+      'Allows users to select multiple items in a list and apply the same action to all of them.',
   },
   {
     slug: 'divided-lists',
     title: 'Divided lists',
     kind: 'pattern',
     description:
-      'Display related items in a consecutive list that’s easy to scan and act on.',
+      'Displays a list of related items separated by dividers, for easy scannability.',
   },
   {
     slug: 'empty-states',
     title: 'Empty states',
     kind: 'pattern',
-    description: 'Show what to expect or do next when there’s no data yet.',
+    description:
+      'Displays a message in place of content when none is available, guiding users on what to do next.',
   },
   {
     slug: 'error-states',
     title: 'Error states',
     kind: 'pattern',
-    description: 'Alert users when a requested action couldn’t be completed.',
+    description:
+      'Displays a message when an expected action fails, alerting users to the problem and how to proceed.',
   },
   {
     slug: 'filters',
     title: 'Filters',
     kind: 'pattern',
-    description: 'Let users narrow or rearrange content on a page.',
+    description:
+      'Allows users to narrow down content or data by one or more criteria, making relevant items easier to find.',
   },
   {
     slug: 'forms',
     title: 'Forms',
     kind: 'pattern',
     description:
-      'Collect input through a set of fields on a page, sidebar or dialog.',
+      'Displays a structured set of input fields that guides users through entering, validating, and submitting information.',
   },
   {
     slug: 'messages-to-users',
     title: 'Messages to users',
     kind: 'pattern',
     description:
-      'Communicate time-sensitive conditions, events or responses in the UI.',
+      'Represents a group of patterns and components used to communicate conditions, events, or responses to user actions.',
   },
   {
     slug: 'nudge',
     title: 'Nudge',
     kind: 'pattern',
     description:
-      'Prompt a relevant, actionable next step at the moment it matters.',
+      'Displays a prominent, actionable message that drives users toward a specific behaviour relevant to their current context.',
   },
   {
     slug: 'secondary-information',
     title: 'Secondary information',
     kind: 'pattern',
     description:
-      'Offer optional extra context, such as definitions or explanatory copy.',
+      'Represents a group of components and patterns used to reveal non-critical, supplementary information without cluttering the primary content.',
   },
   {
     slug: 'service-outage-banners',
     title: 'Service outage banners',
     kind: 'pattern',
-    description: 'Warn users about upcoming interruptions or reduced service.',
+    description:
+      'Informs users of an existing or upcoming outage or reduced service level, affecting the whole system or specific products.',
   },
   {
     slug: 'skeleton-loader',
     title: 'Skeleton loader',
     kind: 'pattern',
     description:
-      'Show placeholder content so a page feels like it’s loading progressively.',
+      'Displays visual placeholders that mimic real content while it loads, giving the impression of faster, progressive loading.',
   },
   {
     slug: 'social-share',
     title: 'Social share',
     kind: 'pattern',
-    description: 'Let users broadcast SEEK content to their social networks.',
+    description:
+      'Allows users to share content, such as a job ad or article, to their social networks or with specific individuals.',
   },
   {
     slug: 'data-vis-palette',
     title: 'Data vis palette',
     kind: 'how-to',
     description:
-      'Use SEEK’s accessible colour palette for data visualisations.',
+      'How to create consistent, on-brand, and accessible data visualisations using a dedicated colour palette.',
   },
   {
     slug: 'content-density',
     title: 'Tailoring content density',
     kind: 'how-to',
     description:
-      'Adjust size and spacing of Braid components to tailor content density.',
+      'How to adjust the size and spacing of components to create a more airy or more condensed UI.',
   },
   {
     slug: 'wide-screen-layouts',
     title: 'Wide-screen layouts',
     kind: 'how-to',
     description:
-      'Considerations and examples for building wide-screen layouts with Braid.',
+      'How to tailor page width and layout to balance readability, scannability, and adaptability across devices.',
   },
 ];
 

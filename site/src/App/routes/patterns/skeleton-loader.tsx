@@ -53,9 +53,9 @@ const SkeletonButtonSmall = ({ width }: { width: string | number }) => (
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
-      Show placeholder content so a page feels like it&rsquo;s loading
-      progressively.
+    <Text>
+      Displays visual placeholders that mimic real content while it loads,
+      giving the impression of faster, progressive loading.
     </Text>
   ),
   additional: [

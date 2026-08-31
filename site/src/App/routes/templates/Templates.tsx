@@ -26,9 +26,7 @@ export const Templates = () => (
       <Heading component="h1" level="2">
         Templates
       </Heading>
-      <Text>
-        Placeholder cards for template groups. Content to be refined.
-      </Text>
+      <Text>Placeholder cards for template groups. Content to be refined.</Text>
     </Stack>
     <Tiles space="medium" columns={[1, 2, 3]}>
       {templateCards.map((card) => (

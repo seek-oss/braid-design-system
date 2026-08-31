@@ -46,9 +46,9 @@ interface DividedListItem {
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
-      Display related items in a consecutive list that&rsquo;s easy to scan and
-      act on.
+    <Text>
+      Displays a list of related items separated by dividers, for easy
+      scannability.
     </Text>
   ),
   additional: [

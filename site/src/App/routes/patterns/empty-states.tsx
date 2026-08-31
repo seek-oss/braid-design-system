@@ -23,12 +23,9 @@ import type { PatternDocs } from '../../../types';
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
-      An empty state occurs when there is no data available at the present time.
-      An empty state can be used to give the user clues about what they might
-      see when there is data, and/or to explain what they should do next. An
-      empty state may be large and take up most of the page, or it may be small
-      and sit within other content.
+    <Text>
+      Displays a message in place of content when none is available, guiding
+      users on what to do next.
     </Text>
   ),
   additional: [

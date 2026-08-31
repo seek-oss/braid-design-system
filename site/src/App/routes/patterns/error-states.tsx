@@ -23,12 +23,9 @@ import type { PatternDocs } from '../../../types';
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
-      An error state occurs when the website or app fails to complete an
-      expected action. The error state is shown after the user has requested the
-      action and alerts them that a problem has occurred. An error state may be
-      large and take up most of the page, or it may be small and sit within
-      other content.
+    <Text>
+      Displays a message when an expected action fails, alerting users to the
+      problem and how to proceed.
     </Text>
   ),
   additional: [

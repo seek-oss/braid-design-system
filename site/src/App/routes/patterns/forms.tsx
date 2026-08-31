@@ -25,8 +25,9 @@ import type { PatternDocs } from '../../../types';
 
 export const docs: PatternDocs = {
   description: (
-    <Text tone="secondary">
-      Collect input through a set of fields on a page, sidebar or dialog.
+    <Text>
+      Displays a structured set of input fields that guides users through
+      entering, validating, and submitting information.
     </Text>
   ),
   additional: [
