@@ -28,11 +28,9 @@
       ],
       // `assert` might be getting confused with `node:assert`? Not sure why it's not detected.
       // Babel presets are referenced by strings instead of imports so are not detected.
-      // `@seek/brand-elements` is for upcoming docs branding work.
       "ignoreDependencies": [
         "assert",
         "@babel/preset-typescript",
-        "@seek/brand-elements",
       ],
     },
     "storybook": {

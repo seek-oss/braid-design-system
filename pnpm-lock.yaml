@@ -434,9 +434,6 @@ importers:
       '@braid-design-system/source.macro':
         specifier: workspace:*
         version: link:../packages/source.macro
-      '@seek/brand-elements':
-        specifier: ^1.1.0
-        version: 1.1.0(babel-plugin-macros@3.1.0)(braid-design-system@packages+braid-design-system)(react@19.2.8)
       '@types/babel__core':
         specifier: ^7.20.1
         version: 7.20.5
@@ -3234,12 +3231,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@seek/brand-elements@1.1.0':
-    resolution: {integrity: sha512-r0RZqDCmwRGlHqrIUfsS7qDOjcq9+0hj3cIPpcgDO7VLkWtDyy8MU9bfmS3uh6egRRu6je2pmCFh+xqrjAprtw==}
-    peerDependencies:
-      braid-design-system: ^34.0.0
-      react: ^18.0.0 || ^19.0.0
-
   '@sidvind/better-ajv-errors@5.0.0':
     resolution: {integrity: sha512-FeI/V2KGtOaDX+r0akidCGYy79lVR4YnAqk1GFgZFuHADErCAEmtZL4+IdCAcDXHqfZsII3fs9DrfC1pIR+19w==}
     engines: {node: ^20.19 || ^22.12 || >= 24.0}
@@ -5944,6 +5935,7 @@ packages:
   eslint@9.39.5:
     resolution: {integrity: sha512-DgZS62aPLXKlnxILS/AYCoRvHaZeXceIzlXPkkGGzJWSow1aEk0lbTlxUSlyjC8jcaKxAdOnTDz+o1JFSBsyjw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -12965,16 +12957,6 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.62.4':
     optional: true
-
-  '@seek/brand-elements@1.1.0(babel-plugin-macros@3.1.0)(braid-design-system@packages+braid-design-system)(react@19.2.8)':
-    dependencies:
-      '@vanilla-extract/css': 1.21.2(babel-plugin-macros@3.1.0)
-      '@vanilla-extract/dynamic': 2.1.5
-      assert: 2.1.0
-      braid-design-system: link:packages/braid-design-system
-      react: 19.2.8
-    transitivePeerDependencies:
-      - babel-plugin-macros
 
   '@sidvind/better-ajv-errors@5.0.0(ajv@8.20.0)':
     dependencies:
