@@ -1,0 +1,10 @@
+.dn5sx11 {
+  z-index: 99999;
+  cursor: crosshair;
+}
+.dn5sx13 {
+  z-index: 99999;
+  background: var(--e0a3bgr);
+  transition: all 50ms ease;
+  transition-delay: 50ms;
+}
