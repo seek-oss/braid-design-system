@@ -523,20 +523,41 @@ export const docs: PatternDocs = {
       {
         label: 'When to use',
         description: (
-          <List space="large">
-            <Text>
-              No data yet — the user understands what will be available when
-              data has been added
-            </Text>
-            <Text>
-              No results when searching — the user understands how to adjust
-              search criteria or filters
-            </Text>
-            <Text>
-              First-time user — the user understands what actions they must take
-              to populate data
-            </Text>
-          </List>
+          <Stack space="xlarge">
+            <Stack space="large">
+              <Text>Use an empty state when:</Text>
+              <List space="large">
+                <Text>there is no data to display yet</Text>
+                <Text>there are no matching search results</Text>
+                <Text>
+                  a first time user must take an action to populate the data
+                </Text>
+              </List>
+            </Stack>
+            <Stack space="large">
+              <Text>Don&rsquo;t use an empty state when:</Text>
+              <List space="large">
+                <Text>
+                  the website or app failed to complete an expected action (use
+                  an{' '}
+                  <TextLink href="/patterns/error-state">Error state</TextLink>{' '}
+                  instead)
+                </Text>
+                <Text>
+                  the message sits within a section, card, or widget (use an{' '}
+                  <TextLink href="/components/Alert">Alert</TextLink> or{' '}
+                  <TextLink href="/components/Notice">Notice</TextLink> instead)
+                </Text>
+                <Text>
+                  content is still loading (use a{' '}
+                  <TextLink href="/patterns/skeleton-loader">
+                    Skeleton loader
+                  </TextLink>{' '}
+                  instead).
+                </Text>
+              </List>
+            </Stack>
+          </Stack>
         ),
       },
     ],
