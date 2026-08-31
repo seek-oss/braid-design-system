@@ -1,4 +1,13 @@
-import { List, Stack, Strong, Text, TextLink } from 'braid-design-system';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+  Text,
+  TextLink,
+} from 'braid-design-system';
 
 import type { PatternDocs } from '../../../types';
 
@@ -11,86 +20,140 @@ export const docs: PatternDocs = {
   ),
   additional: [
     {
-      label: 'Messaging components',
+      label: 'Components',
       description: (
-        <>
-          <Text>
-            Braid includes a variety of messaging components, each with their
-            own purpose and intended use.
-          </Text>
-          <Stack space="large">
-            <Stack space="small">
-              <Text>
-                <Strong>
+        <Table label="Messaging components" alignY="top">
+          <TableHeader>
+            <TableRow>
+              <TableHeaderCell wrap width="30%" minWidth={150}>
+                <Text size="small">Component</Text>
+              </TableHeaderCell>
+              <TableHeaderCell wrap width="70%" minWidth={200}>
+                <Text size="small">Purpose and use</Text>
+              </TableHeaderCell>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell wrap width="30%" minWidth={150}>
+                <Text size="small">
                   <TextLink href="/components/Alert">Alert</TextLink> and{' '}
                   <TextLink href="/components/Notice">Notice</TextLink>
-                </Strong>
-              </Text>
-              <Text>
-                Inform the user of an important status or condition relevant to
-                their current task. They sit within the context of the page,
-                close to the issue to which they relate.
-              </Text>
-            </Stack>
-            <Stack space="small">
-              <Text>
-                <Strong>
+                </Text>
+              </TableCell>
+              <TableCell wrap width="70%" minWidth={200}>
+                <Text size="small">
+                  A conditional message provided in response to user action or
+                  system activity, and presented in the context of the user
+                  flow.
+                </Text>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell wrap width="30%" minWidth={150}>
+                <Text size="small">
                   <TextLink href="/components/useToast">useToast</TextLink>
-                </Strong>
-              </Text>
-              <Text>
-                Briefly acknowledges a user action without interrupting their
-                flow. Toasts float at the bottom of the screen and disappear
-                after a few seconds.
-              </Text>
-            </Stack>
-            <Stack space="small">
-              <Text>
-                <Strong>
+                </Text>
+              </TableCell>
+              <TableCell wrap width="70%" minWidth={200}>
+                <Text size="small">
+                  A brief, temporary message that appears at the bottom of the
+                  screen to acknowledge user actions without interrupting their
+                  workflow.
+                </Text>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell wrap width="30%" minWidth={150}>
+                <Text size="small">
                   <TextLink href="/components/FieldMessage">
                     FieldMessage
                   </TextLink>
-                </Strong>
-              </Text>
-              <Text>
-                For displaying messages below a custom input field that
-                isn&rsquo;t provided by Braid.
-              </Text>
-            </Stack>
-          </Stack>
-        </>
+                </Text>
+              </TableCell>
+              <TableCell wrap width="70%" minWidth={200}>
+                <Text size="small">
+                  This component is only required when building a custom field
+                  that isn&rsquo;t provided by Braid.
+                </Text>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       ),
     },
     {
-      label: 'Messaging patterns',
+      label: 'Patterns',
       description: (
-        <List>
-          <Text>
-            <TextLink href="/patterns/empty-states">Empty states</TextLink> —
-            Occurs when there is no data available at the present time, and
-            informs the user about what they might see when there is data,
-            and/or what they should do next.
-          </Text>
-          <Text>
-            <TextLink href="/patterns/error-states">Error states</TextLink> —
-            Occurs when the website or app fails to complete an expected action,
-            and informs the user that a problem has occurred.
-          </Text>
-          <Text>
-            <TextLink href="/patterns/nudge">Nudge</TextLink> — A prominent
-            message that encourages the user to take a specific action on
-            something relevant at that moment. A nudge is always actionable and
-            drives desired behaviour.
-          </Text>
-          <Text>
-            <TextLink href="/patterns/service-outage-banners">
-              Service outage banners
-            </TextLink>{' '}
-            — Inform users of upcoming interruptions to SEEK products and
-            services. This can include outages to the entire system or to
-            specific products.
-          </Text>
-        </List>
+        <Table label="Messaging patterns" alignY="top">
+          <TableHeader>
+            <TableRow>
+              <TableHeaderCell wrap width="30%" minWidth={150}>
+                <Text size="small">Pattern</Text>
+              </TableHeaderCell>
+              <TableHeaderCell wrap width="70%" minWidth={200}>
+                <Text size="small">Purpose and use</Text>
+              </TableHeaderCell>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell wrap width="30%" minWidth={150}>
+                <Text size="small">
+                  <TextLink href="/patterns/empty-state">Empty state</TextLink>
+                </Text>
+              </TableCell>
+              <TableCell wrap width="70%" minWidth={200}>
+                <Text size="small">
+                  Displays a message in place of content when none is available,
+                  guiding users on what to do next.
+                </Text>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell wrap width="30%" minWidth={150}>
+                <Text size="small">
+                  <TextLink href="/patterns/error-state">Error state</TextLink>
+                </Text>
+              </TableCell>
+              <TableCell wrap width="70%" minWidth={200}>
+                <Text size="small">
+                  Displays a message when an expected action fails, alerting
+                  users to the problem and how to proceed.
+                </Text>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell wrap width="30%" minWidth={150}>
+                <Text size="small">
+                  <TextLink href="/patterns/nudge">Nudge</TextLink>
+                </Text>
+              </TableCell>
+              <TableCell wrap width="70%" minWidth={200}>
+                <Text size="small">
+                  Displays a prominent, actionable message that drives users
+                  toward a specific behaviour relevant to their current context.
+                </Text>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell wrap width="30%" minWidth={150}>
+                <Text size="small">
+                  <TextLink href="/patterns/service-outage-banner">
+                    Service outage banner
+                  </TextLink>
+                </Text>
+              </TableCell>
+              <TableCell wrap width="70%" minWidth={200}>
+                <Text size="small">
+                  Informs users of an existing or upcoming outage or reduced
+                  service level, affecting the whole system or specific
+                  products.
+                </Text>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       ),
     },
   ],

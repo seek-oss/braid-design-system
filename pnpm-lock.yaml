@@ -434,9 +434,6 @@ importers:
       '@braid-design-system/source.macro':
         specifier: workspace:*
         version: link:../packages/source.macro
-      '@seek/brand-elements':
-        specifier: ^1.1.0
-        version: 1.1.0(babel-plugin-macros@3.1.0)(braid-design-system@packages+braid-design-system)(react@19.2.8)
       '@types/babel__core':
         specifier: ^7.20.1
         version: 7.20.5
@@ -3228,12 +3225,6 @@ packages:
     resolution: {integrity: sha512-zD6NdeWEByGE9QF9vCrlJ5YQB4oq9q91kPZS37Jwj5hOkvR1lTBSpsKhKDw4IJtbQ35LsTS1HD9DZYGKIshU1Q==}
     cpu: [x64]
     os: [win32]
-
-  '@seek/brand-elements@1.1.0':
-    resolution: {integrity: sha512-r0RZqDCmwRGlHqrIUfsS7qDOjcq9+0hj3cIPpcgDO7VLkWtDyy8MU9bfmS3uh6egRRu6je2pmCFh+xqrjAprtw==}
-    peerDependencies:
-      braid-design-system: ^34.0.0
-      react: ^18.0.0 || ^19.0.0
 
   '@sidvind/better-ajv-errors@5.0.0':
     resolution: {integrity: sha512-FeI/V2KGtOaDX+r0akidCGYy79lVR4YnAqk1GFgZFuHADErCAEmtZL4+IdCAcDXHqfZsII3fs9DrfC1pIR+19w==}
@@ -12959,16 +12950,6 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.62.4':
     optional: true
-
-  '@seek/brand-elements@1.1.0(babel-plugin-macros@3.1.0)(braid-design-system@packages+braid-design-system)(react@19.2.8)':
-    dependencies:
-      '@vanilla-extract/css': 1.21.2(babel-plugin-macros@3.1.0)
-      '@vanilla-extract/dynamic': 2.1.5
-      assert: 2.1.0
-      braid-design-system: link:packages/braid-design-system
-      react: 19.2.8
-    transitivePeerDependencies:
-      - babel-plugin-macros
 
   '@sidvind/better-ajv-errors@5.0.0(ajv@8.20.0)':
     dependencies:

@@ -231,9 +231,10 @@ export const DocNavigation = () => {
   } else {
     snippets = getComponentSnippets(docsName) || [];
 
-    docs = getComponentDocs(docsName);
-    const relevantNames = docs.subComponents
-      ? [docsName, ...docs.subComponents]
+    const componentDocs = getComponentDocs(docsName);
+    docs = componentDocs;
+    const relevantNames = componentDocs.subComponents
+      ? [docsName, ...componentDocs.subComponents]
       : [docsName];
 
     history = getHistory(...relevantNames);

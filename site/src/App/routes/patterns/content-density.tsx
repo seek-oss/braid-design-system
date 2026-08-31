@@ -125,7 +125,7 @@ export const docs: PatternDocs = {
           <Text>
             When tailoring content density it&rsquo;s important to consider:
           </Text>
-          <List>
+          <List space="large">
             <Text>Component size</Text>
             <Text>Vertical spacing</Text>
             <Text>Horizontal spacing</Text>

@@ -11,6 +11,7 @@
     },
     "packages/braid-design-system": {
       "entry": ["src/**/*.{docs,gallery,screenshots,snippets}.tsx"],
+      "ignoreUnresolved": ["./Icon.*Svg"],
       // `site` is imported by .docs.tsx files which are only consumed by the site workspace
       "ignoreDependencies": ["assert", "site"],
     },
@@ -31,12 +32,7 @@
       ],
       // `assert` might be getting confused with `node:assert`? Not sure why it's not detected.
       // Babel presets are referenced by strings instead of imports so are not detected.
-      // `@seek/brand-elements` is for upcoming docs branding work.
-      "ignoreDependencies": [
-        "assert",
-        "@babel/preset-typescript",
-        "@seek/brand-elements",
-      ],
+      "ignoreDependencies": ["assert", "@babel/preset-typescript"],
     },
     "storybook": {
       "entry": [

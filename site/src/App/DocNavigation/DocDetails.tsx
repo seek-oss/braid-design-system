@@ -14,6 +14,7 @@ import { useContext, useMemo } from 'react';
 import { slugify } from '../../slugify';
 import { headerScrollOffset } from '../Navigation/navigationSizes';
 import { PageTitle } from '../Seo/PageTitle';
+import { patternCatalog } from '../routes/patterns/catalog';
 
 import { DocExample } from './DocExample';
 import { DocsContext } from './DocNavigation';
@@ -47,8 +48,56 @@ const hasContent = (example: {
   Example?: unknown;
 }) => Boolean(example.description || example.code || example.Example);
 
+const getAlternativeHref = (alt: { name: string; section?: string }) =>
+  `/${alt.section || 'components'}/${alt.name}`;
+
+const getAlternativeLabel = (alt: { name: string; section?: string }) =>
+  alt.section === 'patterns'
+    ? (patternCatalog.find((entry) => entry.slug === alt.name)?.title ??
+      alt.name)
+    : alt.name;
+
+const AlternativesSection = ({
+  alternatives,
+  heading,
+}: {
+  alternatives: Array<{
+    name: string;
+    description: string;
+    section?: string;
+  }>;
+  heading: string;
+}) => (
+  <Stack space={headingSpacing}>
+    <Heading level="3">
+      <TitleLink copyable label={heading}>
+        {heading}
+      </TitleLink>
+    </Heading>
+    <List space="large">
+      {alternatives.map((alt) => (
+        <Text key={`${alt.section ?? 'components'}-${alt.name}`}>
+          <TextLink hitArea="large" href={getAlternativeHref(alt)}>
+            {getAlternativeLabel(alt)}
+          </TextLink>{' '}
+          <Secondary>— {alt.description}</Secondary>
+        </Text>
+      ))}
+    </List>
+  </Stack>
+);
+
 export const DocDetails = () => {
-  const { docs, docsName, docsTitle } = useContext(DocsContext);
+  const { docs, docsName, docsTitle, docsType } = useContext(DocsContext);
+
+  const alternatives =
+    docs && 'alternatives' in docs && docs.alternatives?.length
+      ? docs.alternatives
+      : undefined;
+
+  const alternativesHeading =
+    docsType === 'patterns' ? 'Related' : 'Alternatives';
+  const alternativesId = slugify(alternativesHeading);
 
   const hasBestPractices = Boolean(
     docs &&
@@ -65,7 +114,7 @@ export const DocDetails = () => {
         as for now as it's where most content sits currently,
         but will likely be deprecated in the future as we
         align content to the docSection structure.
-      - Alternatives (top-level when no bestPractices section, otherwise nested within it)
+      - Alternatives/Related (top-level when no bestPractices section, otherwise nested within it)
 
   */
   const tocSections = useMemo(() => {
@@ -110,11 +159,11 @@ export const DocDetails = () => {
           if (sectionKey === 'bestPractices') {
             const bestPracticesChildren: TocSection[] = [...children];
 
-            if ('alternatives' in docs && docs.alternatives.length > 0) {
+            if (alternatives) {
               bestPracticesChildren.push({
-                id: 'alternatives',
-                label: 'Alternatives',
-                href: '#alternatives',
+                id: alternativesId,
+                label: alternativesHeading,
+                href: `#${alternativesId}`,
               });
             }
 
@@ -150,20 +199,22 @@ export const DocDetails = () => {
       }
     });
 
-    if (
-      !hasBestPractices &&
-      'alternatives' in docs &&
-      docs.alternatives.length > 0
-    ) {
+    if (!hasBestPractices && alternatives) {
       sections.push({
-        id: 'alternatives',
-        label: 'Alternatives',
-        href: '#alternatives',
+        id: alternativesId,
+        label: alternativesHeading,
+        href: `#${alternativesId}`,
       });
     }
 
     return sections;
-  }, [docs, hasBestPractices]);
+  }, [
+    alternatives,
+    alternativesHeading,
+    alternativesId,
+    docs,
+    hasBestPractices,
+  ]);
 
   const handleTocClick = (event: React.MouseEvent, id: string) => {
     event.preventDefault();
@@ -245,30 +296,11 @@ export const DocDetails = () => {
                               />
                             ),
                           )}
-                          {sectionKey === 'bestPractices' &&
-                          'alternatives' in docs &&
-                          docs.alternatives.length > 0 ? (
-                            <Stack space={headingSpacing}>
-                              <Heading level="3">
-                                <TitleLink copyable label="Alternatives">
-                                  Alternatives
-                                </TitleLink>
-                              </Heading>
-
-                              <List space="medium">
-                                {docs.alternatives.map((alt) => (
-                                  <Text key={`${alt.name}`}>
-                                    <TextLink
-                                      hitArea="large"
-                                      href={`/${alt.section || 'components'}/${alt.name}`}
-                                    >
-                                      {alt.name}
-                                    </TextLink>{' '}
-                                    <Secondary>— {alt.description}</Secondary>
-                                  </Text>
-                                ))}
-                              </List>
-                            </Stack>
+                          {sectionKey === 'bestPractices' && alternatives ? (
+                            <AlternativesSection
+                              alternatives={alternatives}
+                              heading={alternativesHeading}
+                            />
                           ) : null}
                         </Stack>
                       </Stack>
@@ -283,29 +315,11 @@ export const DocDetails = () => {
                 />
               ))}
 
-              {'alternatives' in docs &&
-              !hasBestPractices &&
-              docs.alternatives.length > 0 ? (
-                <Stack space={headingSpacing}>
-                  <Heading level="3">
-                    <TitleLink copyable label="Alternatives">
-                      Alternatives
-                    </TitleLink>
-                  </Heading>
-                  <List space="medium">
-                    {docs.alternatives.map((alt) => (
-                      <Text key={`${alt.name}`}>
-                        <TextLink
-                          hitArea="large"
-                          href={`/${alt.section || 'components'}/${alt.name}`}
-                        >
-                          {alt.name}
-                        </TextLink>{' '}
-                        <Secondary>— {alt.description}</Secondary>
-                      </Text>
-                    ))}
-                  </List>
-                </Stack>
+              {!hasBestPractices && alternatives ? (
+                <AlternativesSection
+                  alternatives={alternatives}
+                  heading={alternativesHeading}
+                />
               ) : null}
             </Stack>
           </Stack>

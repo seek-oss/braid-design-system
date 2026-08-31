@@ -16,22 +16,22 @@ export const patternCatalog: PatternEntry[] = [
       'Allows users to select multiple items in a list and apply the same action to all of them.',
   },
   {
-    slug: 'divided-lists',
-    title: 'Divided lists',
+    slug: 'divided-list',
+    title: 'Divided list',
     kind: 'pattern',
     description:
       'Displays a list of related items separated by dividers, for easy scannability.',
   },
   {
-    slug: 'empty-states',
-    title: 'Empty states',
+    slug: 'empty-state',
+    title: 'Empty state',
     kind: 'pattern',
     description:
       'Displays a message in place of content when none is available, guiding users on what to do next.',
   },
   {
-    slug: 'error-states',
-    title: 'Error states',
+    slug: 'error-state',
+    title: 'Error state',
     kind: 'pattern',
     description:
       'Displays a message when an expected action fails, alerting users to the problem and how to proceed.',
@@ -72,8 +72,8 @@ export const patternCatalog: PatternEntry[] = [
       'Represents a group of components and patterns used to reveal non-critical, supplementary information without cluttering the primary content.',
   },
   {
-    slug: 'service-outage-banners',
-    title: 'Service outage banners',
+    slug: 'service-outage-banner',
+    title: 'Service outage banner',
     kind: 'pattern',
     description:
       'Informs users of an existing or upcoming outage or reduced service level, affecting the whole system or specific products.',

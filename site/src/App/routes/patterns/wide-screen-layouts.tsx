@@ -33,7 +33,7 @@ export const docs: PatternDocs = {
     {
       label: 'Best practice',
       description: (
-        <List>
+        <List space="large">
           <Text>
             Limit content area widths on large screens to optimise readability
           </Text>
@@ -57,7 +57,7 @@ export const docs: PatternDocs = {
           <Text>
             Keeping line lengths to around 12–15 words per line improves:
           </Text>
-          <List>
+          <List space="large">
             <Text>Focus and reading speed</Text>
             <Text>
               Comfort for users with visual or cognitive differences such as low
@@ -75,7 +75,7 @@ export const docs: PatternDocs = {
           <Text>
             Horizontal scrolling should always be intentional and accessible:
           </Text>
-          <List>
+          <List space="large">
             <Text>Maintain focus states for keyboard navigation</Text>
             <Text>Avoid horizontal scrolling of continuous text</Text>
           </List>
@@ -85,7 +85,7 @@ export const docs: PatternDocs = {
     {
       label: 'Relevant components',
       description: (
-        <List>
+        <List space="large">
           <Text>
             <TextLink href="/components/PageBlock">PageBlock</TextLink> —
             Provides a top-level page container, constraining the content width
@@ -135,7 +135,7 @@ export const docs: PatternDocs = {
     {
       label: '1. Full-width responsive — collapsing to stack',
       description: (
-        <List>
+        <List space="large">
           <Text>Content runs full width on all screen sizes</Text>
           <Text>Content stacks vertically on smaller screens</Text>
           <Text>Avoid long line lengths in wider views</Text>
@@ -165,7 +165,7 @@ export const docs: PatternDocs = {
     {
       label: '2. Full-width responsive — moving content to a drawer',
       description: (
-        <List>
+        <List space="large">
           <Text>Content runs full width on all screen sizes</Text>
           <Text>
             Sections that can&rsquo;t be stacked on smaller screens can be moved
@@ -220,7 +220,7 @@ export const docs: PatternDocs = {
     {
       label: '3. Full-width horizontal scroll',
       description: (
-        <List>
+        <List space="large">
           <Text>Content runs full width on all screen sizes</Text>
           <Text>Content scrolls horizontally on all screen sizes</Text>
           <Text>
@@ -315,7 +315,7 @@ export const docs: PatternDocs = {
     {
       label: '4. Constrained max width',
       description: (
-        <List>
+        <List space="large">
           <Text>
             The page extends to a maximum width determined by the product team
             as optimal for their experience
@@ -356,7 +356,7 @@ export const docs: PatternDocs = {
     {
       label: '5. Full width split view',
       description: (
-        <List>
+        <List space="large">
           <Text>Content area is divided into summary and detail</Text>
           <Text>
             Summary cards can wrap from two columns on wide screens to one
@@ -484,7 +484,7 @@ export const docs: PatternDocs = {
     {
       label: '6. Responsive grid layout',
       description: (
-        <List>
+        <List space="large">
           <Text>Content area is divided into columns</Text>
           <Text>The number of columns changes based on screen width</Text>
           <Text>
