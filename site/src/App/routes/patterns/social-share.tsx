@@ -1,8 +1,6 @@
 import source from '@braid-design-system/source.macro';
 import {
-  Box,
   Button,
-  ButtonIcon,
   Heading,
   IconLink,
   IconShare,
@@ -48,65 +46,63 @@ export const docs: PatternDocs = {
   docSections: {
     appearance: [
       {
-        label: 'Web',
+        label: 'Anatomy',
         Example: ({ showToast }) =>
           source(
-            <Box padding="small">
-              <Inline space="none" align="right">
-                <MenuRenderer
-                  offsetSpace="small"
-                  align="right"
-                  width="small"
-                  trigger={(triggerProps) => (
-                    <Button
-                      variant="transparent"
-                      icon={<IconShare />}
-                      {...triggerProps}
-                    >
-                      Share job
-                    </Button>
-                  )}
+            <Inline space="none">
+              <MenuRenderer
+                offsetSpace="small"
+                align="right"
+                width="small"
+                trigger={(triggerProps) => (
+                  <Button
+                    variant="transparent"
+                    icon={<IconShare />}
+                    {...triggerProps}
+                  >
+                    Share job
+                  </Button>
+                )}
+              >
+                <MenuItemLink
+                  href="#"
+                  target="_blank"
+                  icon={<IconSocialFacebook />}
                 >
-                  <MenuItemLink
-                    href="#"
-                    target="_blank"
-                    icon={<IconSocialFacebook />}
-                  >
-                    Facebook
-                  </MenuItemLink>
-                  <MenuItemLink
-                    href="#"
-                    target="_blank"
-                    icon={<IconSocialInstagram />}
-                  >
-                    Instagram
-                  </MenuItemLink>
-                  <MenuItemLink
-                    href="#"
-                    target="_blank"
-                    icon={<IconSocialLinkedIn />}
-                  >
-                    LinkedIn
-                  </MenuItemLink>
-                  <MenuItemLink href="#" target="_blank" icon={<IconSocialX />}>
-                    Twitter
-                  </MenuItemLink>
-                  <MenuItemLink
-                    href="#"
-                    icon={<IconLink />}
-                    onClick={() =>
-                      showToast({
-                        message: 'Link copied',
-                        tone: 'positive',
-                        key: '1',
-                      })
-                    }
-                  >
-                    Copy link
-                  </MenuItemLink>
-                </MenuRenderer>
-              </Inline>
-            </Box>,
+                  Facebook
+                </MenuItemLink>
+                <MenuItemLink
+                  href="#"
+                  target="_blank"
+                  icon={<IconSocialInstagram />}
+                >
+                  Instagram
+                </MenuItemLink>
+                <MenuItemLink
+                  href="#"
+                  target="_blank"
+                  icon={<IconSocialLinkedIn />}
+                >
+                  LinkedIn
+                </MenuItemLink>
+                <MenuItemLink href="#" target="_blank" icon={<IconSocialX />}>
+                  Twitter
+                </MenuItemLink>
+                <MenuItemLink
+                  href="#"
+                  icon={<IconLink />}
+                  onClick={() =>
+                    showToast({
+                      message: 'Link copied',
+                      tone: 'positive',
+                      key: '1',
+                    })
+                  }
+                >
+                  Copy link
+                </MenuItemLink>
+              </MenuRenderer>
+            </Inline>,
           ),
       },
       {
@@ -115,121 +111,50 @@ export const docs: PatternDocs = {
             <Heading level="4">Visual guidelines</Heading>
             <List space="large">
               <Text>
-                It&rsquo;s recommended to present social share as a single menu.
+                Present share as a single menu with logo icons, ordered
+                alphabetically and “Copy link” last.
               </Text>
               <Text>
-                Consider ordering your items alphabetically, and placing “Copy
-                link” at the bottom.
-              </Text>
-              <Text>Include logo icons next to each menu item.</Text>
-              <Text>
-                You may choose a menu trigger to meet your specific UI needs by
-                using{' '}
+                Use{' '}
                 <TextLink href="/components/MenuRenderer">
                   MenuRenderer
-                </TextLink>
-                . Suggested triggers include Button or ButtonIcon, and you can
-                specify a variant and/or tone to meet your needs.
+                </TextLink>{' '}
+                with a Button or ButtonIcon trigger, aligned left or right.
               </Text>
               <Text>
-                The menu can be aligned to the left or the right of the trigger.
+                On selection, open the share link in a new tab and close the
+                menu.
               </Text>
               <Text>
-                When the user makes a selection from the menu, consider opening
-                the share link in a new tab and closing the menu.
-              </Text>
-              <Text>
-                When the user selects “Copy link”, consider closing the menu and
-                providing a positive{' '}
-                <TextLink href="/components/useToast">Toast</TextLink> that
-                alerts the user that the link has been copied successfully.
+                For “Copy link”, close the menu and show a positive{' '}
+                <TextLink href="/components/useToast">Toast</TextLink>.
               </Text>
             </List>
           </>
         ),
       },
+    ],
+    bestPractices: [
       {
         label: 'Mobile and apps',
-        Example: ({ showToast }) =>
-          source(
-            <Box padding="medium">
-              <Inline space="none">
-                <MenuRenderer
-                  offsetSpace="small"
-                  width="small"
-                  trigger={(triggerProps) => (
-                    <ButtonIcon
-                      variant="transparent"
-                      icon={<IconShare />}
-                      label="Share job"
-                      {...triggerProps}
-                    />
-                  )}
-                >
-                  <MenuItemLink
-                    href="#"
-                    target="_blank"
-                    icon={<IconSocialFacebook />}
-                  >
-                    Facebook
-                  </MenuItemLink>
-                  <MenuItemLink
-                    href="#"
-                    target="_blank"
-                    icon={<IconSocialInstagram />}
-                  >
-                    Instagram
-                  </MenuItemLink>
-                  <MenuItemLink
-                    href="#"
-                    target="_blank"
-                    icon={<IconSocialLinkedIn />}
-                  >
-                    LinkedIn
-                  </MenuItemLink>
-                  <MenuItemLink href="#" target="_blank" icon={<IconSocialX />}>
-                    Twitter
-                  </MenuItemLink>
-                  <MenuItemLink
-                    href="#"
-                    icon={<IconLink />}
-                    onClick={() =>
-                      showToast({
-                        message: 'Link copied',
-                        tone: 'positive',
-                        key: '1',
-                      })
-                    }
-                  >
-                    Copy link
-                  </MenuItemLink>
-                </MenuRenderer>
-              </Inline>
-            </Box>,
-          ),
-      },
-      {
         description: (
-          <>
-            <Heading level="4">Visual guidelines</Heading>
-            <List space="large">
-              <Text>
-                For basic share options, it&rsquo;s recommended to utilise the
-                native OS share sheet.
-              </Text>
-              <Text>
-                If you require additional options not included in the native OS
-                share sheet, you may want to create a custom sheet. If you
-                create a custom sheet, consider including an option to open the
-                native sheet from within the custom menu.
-              </Text>
-              <Text>
-                Similarly to web, you may choose an appropriate trigger to meet
-                your needs, however the relevant OS share icon may be most
-                appropriate.
-              </Text>
-            </List>
-          </>
+          <List space="large">
+            <Text>
+              For basic share options, it&rsquo;s recommended to utilise the
+              native OS share sheet.
+            </Text>
+            <Text>
+              If you require additional options not included in the native OS
+              share sheet, you may want to create a custom sheet. If you create
+              a custom sheet, consider including an option to open the native
+              sheet from within the custom menu.
+            </Text>
+            <Text>
+              Similarly to web, you may choose an appropriate trigger to meet
+              your needs, however the relevant OS share icon may be most
+              appropriate.
+            </Text>
+          </List>
         ),
       },
     ],
