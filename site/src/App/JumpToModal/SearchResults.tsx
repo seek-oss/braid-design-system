@@ -10,6 +10,7 @@ import {
   ButtonLink,
   Spread,
 } from 'braid-design-system';
+import type { ReactNode } from 'react';
 
 import {
   searchCategories,
@@ -24,6 +25,7 @@ interface SearchResultsProps {
   selectedIndex: number;
   onSelectIndex: (index: number) => void;
   onNavigate: (path: string) => void;
+  placeholder?: ReactNode;
 }
 
 export const SearchResults = ({
@@ -33,8 +35,13 @@ export const SearchResults = ({
   selectedIndex,
   onSelectIndex,
   onNavigate,
+  placeholder,
 }: SearchResultsProps) => {
   if (flatResults.length === 0) {
+    if (!searchQuery.trim()) {
+      return <>{placeholder}</>;
+    }
+
     return (
       <Box
         background="neutralLight"
@@ -46,9 +53,7 @@ export const SearchResults = ({
         borderRadius="standard"
       >
         <Text tone="secondary" size="xsmall" align="center">
-          {searchQuery.trim()
-            ? 'No results found.'
-            : 'Matching pages will appear here.'}
+          No results found.
         </Text>
       </Box>
     );

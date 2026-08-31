@@ -3,6 +3,7 @@ import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContaine
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 
+import { SearchLanding } from './SearchLanding';
 import { SearchResults } from './SearchResults';
 import {
   groupSearchResults,
@@ -155,6 +156,7 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
                   navigate(path);
                   onClose();
                 }}
+                placeholder={<SearchLanding />}
               />
             </Box>
           </Box>
