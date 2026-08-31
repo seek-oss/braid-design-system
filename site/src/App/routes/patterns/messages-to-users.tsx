@@ -1,5 +1,4 @@
 import {
-  Stack,
   Table,
   TableBody,
   TableCell,
@@ -21,76 +20,70 @@ export const docs: PatternDocs = {
   ),
   additional: [
     {
-      label: 'Messaging components',
+      label: 'Components',
       description: (
-        <Stack space="large">
-          <Text>
-            Braid includes a variety of messaging components, each with their
-            own purpose and intended use.
-          </Text>
-          <Table label="Messaging components" alignY="top">
-            <TableHeader>
-              <TableRow>
-                <TableHeaderCell wrap width="30%" minWidth={150}>
-                  <Text size="small">Component</Text>
-                </TableHeaderCell>
-                <TableHeaderCell wrap width="70%" minWidth={200}>
-                  <Text size="small">Purpose and use</Text>
-                </TableHeaderCell>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell wrap width="30%" minWidth={150}>
-                  <Text size="small">
-                    <TextLink href="/components/Alert">Alert</TextLink> and{' '}
-                    <TextLink href="/components/Notice">Notice</TextLink>
-                  </Text>
-                </TableCell>
-                <TableCell wrap width="70%" minWidth={200}>
-                  <Text size="small">
-                    A conditional message provided in response to user action or
-                    system activity, and presented in the context of the user
-                    flow.
-                  </Text>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell wrap width="30%" minWidth={150}>
-                  <Text size="small">
-                    <TextLink href="/components/useToast">useToast</TextLink>
-                  </Text>
-                </TableCell>
-                <TableCell wrap width="70%" minWidth={200}>
-                  <Text size="small">
-                    A brief, temporary message that appears at the bottom of the
-                    screen to acknowledge user actions without interrupting
-                    their workflow.
-                  </Text>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell wrap width="30%" minWidth={150}>
-                  <Text size="small">
-                    <TextLink href="/components/FieldMessage">
-                      FieldMessage
-                    </TextLink>
-                  </Text>
-                </TableCell>
-                <TableCell wrap width="70%" minWidth={200}>
-                  <Text size="small">
-                    This component is only required when building a custom field
-                    that isn&rsquo;t provided by Braid.
-                  </Text>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </Stack>
+        <Table label="Messaging components" alignY="top">
+          <TableHeader>
+            <TableRow>
+              <TableHeaderCell wrap width="30%" minWidth={150}>
+                <Text size="small">Component</Text>
+              </TableHeaderCell>
+              <TableHeaderCell wrap width="70%" minWidth={200}>
+                <Text size="small">Purpose and use</Text>
+              </TableHeaderCell>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell wrap width="30%" minWidth={150}>
+                <Text size="small">
+                  <TextLink href="/components/Alert">Alert</TextLink> and{' '}
+                  <TextLink href="/components/Notice">Notice</TextLink>
+                </Text>
+              </TableCell>
+              <TableCell wrap width="70%" minWidth={200}>
+                <Text size="small">
+                  A conditional message provided in response to user action or
+                  system activity, and presented in the context of the user
+                  flow.
+                </Text>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell wrap width="30%" minWidth={150}>
+                <Text size="small">
+                  <TextLink href="/components/useToast">useToast</TextLink>
+                </Text>
+              </TableCell>
+              <TableCell wrap width="70%" minWidth={200}>
+                <Text size="small">
+                  A brief, temporary message that appears at the bottom of the
+                  screen to acknowledge user actions without interrupting their
+                  workflow.
+                </Text>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell wrap width="30%" minWidth={150}>
+                <Text size="small">
+                  <TextLink href="/components/FieldMessage">
+                    FieldMessage
+                  </TextLink>
+                </Text>
+              </TableCell>
+              <TableCell wrap width="70%" minWidth={200}>
+                <Text size="small">
+                  This component is only required when building a custom field
+                  that isn&rsquo;t provided by Braid.
+                </Text>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       ),
     },
     {
-      label: 'Messaging patterns',
+      label: 'Patterns',
       description: (
         <Table label="Messaging patterns" alignY="top">
           <TableHeader>
