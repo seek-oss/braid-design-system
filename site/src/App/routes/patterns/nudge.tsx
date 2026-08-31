@@ -364,155 +364,28 @@ export const docs: PatternDocs = {
             <Text>
               If you&rsquo;re placing your nudge in a narrow space, such as a
               sidebar, you can choose to adopt the stacked layout on desktop
-              and/or tablet.
+              and/or tablet (
+              <TextLink
+                target="_blank"
+                href="https://seek-oss.github.io/braid-design-system/playroom/preview/#?code=N4Igxg9gJgpiBcIA8BhCAbArgWwHYGcACAJxgDcZj8ZD8AHAQzBgF4AdEfbB9dDwyLwZ1qAIRjoIAd3YgALgwBG6GHI4A+NrkKFUGHNqkBLKHIAWsgMwB6AKwatOnUgAK6JjDMZYxQmZhGAOZmcizAABwATLYAvoTuihKyALIMRtqQuHIwWfzWmtq61mhYeAXOJQblTkgAygpgANa0jMyyXDx8INVOum4eXug+fgHBocDRAAxxCUkctSYwigy+mdm5IIT5jr26ohAAHoTLTYHEEJi4ULIAZhDE2ACCYMxZtRA3apuMUFDpgbJApg5NliPxFPcfAAlBh-TD4WTuYiBGAOQq7XT1JjNegedrcXhojG9PSlAg9YkVfRlHaUkn7A60um9E6NM4XK7tTDEG4eDhM5k6CHEaGwozw26YQkgAWCn5-XAA4DAQjYCCKIwqeCEDgHA4daUAGkICmUqm1uoNXUIMRisuZf3o7gAnrJ0uh0jBRJImvz0YKKYK+u5mIMfPbBfgzMJWBxzpcoH6gxjZug3bwIEnk71jKYLMBSPQIAQjBQAGo8TAwAAUwAjQbVGq1OpAAHZInRGSBDfXBaaVHILW2O12e-7szEAJR28fJ-xBEJhQt0Yv4UswCtYGt12fZxuamBD9udjhj7MY-vmlvH0e9ylTmfnraBulIawMl8Yt+VGm73akgxCFzcxZDWHIvk-YkkFEYE5GLABJTI712MgViMBgslkORiAw3FSA2ZDeiMTIwiQRDixQFQVmfR9z1TWRKIgags2zM0YETP8MW2TiamKalcEg5w+LJfBBN0H8CBIchKGoFo8Q4bB2PFbB+EEdwRC9CRpCwpQByJQUAN-bM6gaHFWljTgCS6MSvwAFRgA45CA0ZFw4fBsOLQINBQUgGGyQgMMIfUrMIXBMCgFE33sxybP-aKnLXAAvCyrX0p8AFVZIYULwpRE0IEIKBiHXFoYDAIwbmI45PAYMgjAuXxzD8+IYFhIg4OqkFKEI3YLjkSBFKIO5VnhODFKoQh7kIWoAFEZoAaQAOh6oT4tikl4toIxkvxTo0vPJB4oAGXSRoYJBYt1B81r-LCiKYCihy5BO3Aztgy6VqKNaerfLEmli79+LEwGRMg37TJfN8Py0WVXBDTxvEoEYF3GKYZiUOYQAWWBllWYt1i+Z8mXB7FqhBqotHJvBRK0bt5H8RSEE4GAYEaAApdV8BAGIgA"
+              >
+                example
+              </TextLink>
+              ).
+            </Text>
+            <Text>
+              Or if you prefer a more compact display, columns can be maintained
+              in narrow spaces (
+              <TextLink
+                target="_blank"
+                href="https://seek-oss.github.io/braid-design-system/playroom/preview/#?code=N4Igxg9gJgpiBcIA8BhCAbArgWwHYGcACAJxgDcZj8ZD8AHAQzBgF4AdEfbB9dDwyLwZ1qAIRjoIAd3YgALgwBG6GHI4A+NrkKFUGHNqkBLKHIAWsgMwB6AKwatOnUgAK6JjDMZYxQmZhGAOZmcizAABwATLYAvoTuihKyALIMRtqQuHIwWfzWmtq61mhYeAXOJQblTkgAygpgANa0jMyyXDx8INVOum4eXug+fgHBocDRAAxxCUkctSYwigy+mdm5IIT5Wo69uqIQAB6Ey02BxBCYuFCyAGYQxNgAgmDMWbUQt2qbjFBQ6YFZIFMHJssR+IoHj4AEoMf6YfCydzEQIwByFPa6Sp4IikChUGj0Dztbi8fiCdwiGDiSQyDgKZSqdGY3p6UqGEzmWRrHLfHosir6HEtYkcQ4dMndXYC1nY3D8mU1A6HaWKvanRrnS7XdqYYi3DwcVVqpyQ4gwuFGBF3TCS40mwi-f64QFi8Wkrr2k3-ejuACesnS6HS1MkTSNGIdCodrnczEGPi9DvwZmErA4FyuUAjDpZs3Qgd4EBzub2xlMFmApHoEAIRgoADUeJgYAAKYBJ3PYCCKIwqeCEDgAdkidBVIAANJ2HQyVHIB8PR+Op5HS4QYgBKGLTxX+IIhMLVui1-D1mBNrBtjurteEbu9-uDkAjsccFe3vaz1QL59Lt87mVN23G8TW2ECZSQaxlWjAVILlGCWTZAxCHLLkOB5DYENg0QQTkWsAElMgAzEyBWIwGCyWQ5GICiiVIDZiL2IxMjCJBCNrFAVBWLZ1GAj981kTiIGoEs10ZGBs3AgUwNzOChXlAC5PZfAsKKeDpyQspFPqJhmiJNoOAlLpVNZAAVGBDjkFDRgPQzqNrQINBQUgGGyQgKMId1OkIXBMCgVFIPMyyTJqIKrNPAAvdNOA9ZlSwAVWodyfL81FCDwwgoGIM93LAOQjBPdLUysrioHSiATlUMFCEuORIGwGB8AAOkYwKLLkELnDC2gjCiklOji2SwoAGXSRocNBWt1GcmBXJoBgUv8mA2ss0bcHG3Cpta6wwpCyCdKaVSlKqJNjpxaNIOgnYb1jAZvEoEZ93GKYZiUOYQAWWBllWWt1m+HjVX2hpGmqM6FNwMGVK0Sd5H8BqEE4GAYEaAApHt8BAGIgA"
+              >
+                example
+              </TextLink>
+              ).
             </Text>
           </>
         ),
-        Example: ({ responsiveValue }) =>
-          source(
-            <Columns reverse space="small" collapseBelow="tablet">
-              <Column width="3/5">
-                <Placeholder height={825} label="Main content" />
-              </Column>
-              <Column>
-                <Stack space="small">
-                  <Placeholder height={250} label="Sidebar content" />
-                  <Box
-                    background="formAccentSoft"
-                    padding="gutter"
-                    borderRadius="large"
-                  >
-                    <Stack space="small">
-                      <Columns space="none">
-                        <Column>
-                          <Box
-                            background="surface"
-                            borderRadius="full"
-                            padding={{ mobile: 'xxsmall', tablet: 'xsmall' }}
-                            display="inlineBlock"
-                          >
-                            <Placeholder
-                              shape="round"
-                              label="illo"
-                              width={responsiveValue({
-                                mobile: '72px',
-                                tablet: '72px',
-                              })}
-                              height={responsiveValue({
-                                mobile: '72px',
-                                tablet: '72px',
-                              })}
-                            />
-                          </Box>
-                        </Column>
-                        <Column width="content">
-                          <ButtonIcon
-                            variant="transparent"
-                            icon={<IconClear />}
-                            label="Close"
-                            bleed
-                          />
-                        </Column>
-                      </Columns>
-                      <Columns reverse space="medium" collapseBelow="tablet">
-                        <Column>
-                          <Stack space="small">
-                            <Text weight="strong">Create an xsmall nudge</Text>
-                            <Text size="small">
-                              Use a nudge to drive specific behaviour that leads
-                              to better outcomes for customers or SEEK.
-                            </Text>
-                            <Text size="small">
-                              <TextLinkButton>Create nudge</TextLinkButton>
-                            </Text>
-                          </Stack>
-                        </Column>
-                      </Columns>
-                    </Stack>
-                  </Box>
-
-                  <Placeholder height={250} label="Sidebar content" />
-                </Stack>
-              </Column>
-            </Columns>,
-          ),
-      },
-      {
-        description: (
-          <Text>
-            Or if you prefer a more compact display, columns can be maintained
-            in narrow spaces.
-          </Text>
-        ),
-        Example: ({ responsiveValue }) =>
-          source(
-            <Columns reverse space="small" collapseBelow="tablet">
-              <Column width="3/5">
-                <Placeholder height={825} label="Main content" />
-              </Column>
-              <Column>
-                <Stack space="small">
-                  <Placeholder height={250} label="Sidebar content" />
-
-                  <Box
-                    background="formAccentSoft"
-                    padding="gutter"
-                    borderRadius="large"
-                  >
-                    <Columns reverse space="small" collapseBelow="tablet">
-                      <Column width="content">
-                        <Columns space="xsmall">
-                          <Column>
-                            <Box
-                              background="surface"
-                              borderRadius="full"
-                              padding="xxsmall"
-                              display="inlineBlock"
-                            >
-                              <Placeholder
-                                shape="round"
-                                label="illo"
-                                width={responsiveValue({
-                                  mobile: '72px',
-                                  tablet: '72px',
-                                })}
-                                height={responsiveValue({
-                                  mobile: '72px',
-                                  tablet: '72px',
-                                })}
-                              />
-                            </Box>
-                          </Column>
-                          <Column width="content">
-                            <ButtonIcon
-                              variant="transparent"
-                              icon={<IconClear />}
-                              label="Close"
-                              bleed
-                            />
-                          </Column>
-                        </Columns>
-                      </Column>
-                      <Column>
-                        <Stack space="small">
-                          <Text weight="strong">Create an xsmall nudge</Text>
-                          <Text size="small">
-                            Use a nudge to drive actions that lead to better
-                            outcomes.
-                          </Text>
-                          <Text size="small">
-                            <TextLinkButton>Create a nudge</TextLinkButton>
-                          </Text>
-                        </Stack>
-                      </Column>
-                    </Columns>
-                  </Box>
-
-                  <Placeholder height={250} label="Sidebar content" />
-                </Stack>
-              </Column>
-            </Columns>,
-          ),
       },
     ],
     interaction: [
