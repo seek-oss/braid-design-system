@@ -156,10 +156,6 @@ export const allTemplateDocs = templateDocsContext.keys().map((filename) => {
   return { group, name, slug: slugify(docs.title), ...docs };
 });
 
-export const getTemplateDoc = (group: string, name: string): TemplateDocs =>
-  templateDocsContext(`./${group}/${name}/${name}.docs.tsx`)
-    .default as TemplateDocs;
-
 /**
  * Static lookup mapping slugged template names to template metadata.
  * Enables URL-based resolution like `/templates/standard-page` without knowing the group.

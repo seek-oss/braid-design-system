@@ -12,6 +12,7 @@ import {
   Bleed,
   IconChevron,
   Link,
+  Spread,
 } from 'braid-design-system';
 import { Box } from 'braid-src/lib/components/Box/Box';
 import type { ReactNode } from 'react';
@@ -23,6 +24,8 @@ import { StylesIllustration } from '../../LandingCard/Illustrations/StylesIllust
 import { TemplatesIllustration } from '../../LandingCard/Illustrations/TemplatesIllustration';
 import { LandingCard } from '../../LandingCard/LandingCard';
 import { Logo } from '../../Logo/Logo';
+
+import { HeroShowcase } from './HeroShowcase';
 
 import * as styles from './home.css';
 import * as landingCardStyles from '../../LandingCard/LandingCard.css';
@@ -39,7 +42,11 @@ const DestinationCard = ({
   icon: ReactNode;
 }) => (
   <Box position="relative" height="full">
-    <Link href={href} className={landingCardStyles.linkOverlay} aria-label={label} />
+    <Link
+      href={href}
+      className={landingCardStyles.linkOverlay}
+      aria-label={label}
+    />
     <Box
       background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
       overflow="hidden"
@@ -68,12 +75,22 @@ export const HomePage = () => {
     <Stack space="xxxlarge">
       <Box className={styles.hero}>
         <Box className={styles.contentColumn}>
-          <Box className={styles.heroCopy}>
-            <Heading level="1">
-              Welcome to Braid, the themeable design system for the{' '}
-              <TextLink href="https://au.seek.com/about">SEEK Group.</TextLink>
-            </Heading>
-          </Box>
+          <Spread space="xlarge" alignY="center">
+            <Box className={styles.heroColumn}>
+              <Heading level="1">
+                Welcome to Braid, the themeable design system for the{' '}
+                <TextLink href="https://au.seek.com/about">
+                  SEEK Group.
+                </TextLink>
+              </Heading>
+            </Box>
+            <Box
+              className={styles.heroColumn}
+              display={{ mobile: 'none', desktop: 'block' }}
+            >
+              <HeroShowcase />
+            </Box>
+          </Spread>
         </Box>
       </Box>
 

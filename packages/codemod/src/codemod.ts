@@ -32,7 +32,7 @@ const pluginsForVersion = {
 
 type Version = keyof typeof pluginsForVersion;
 
-export function babelRecast({
+function babelRecast({
   version,
   code,
   filePath,

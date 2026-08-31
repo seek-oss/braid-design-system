@@ -14,6 +14,9 @@
       // `site` is imported by .docs.tsx files which are only consumed by the site workspace
       "ignoreDependencies": ["assert", "site"],
     },
+    "packages/codemod": {
+      "entry": ["src/index.ts", "src/wrapper.ts"],
+    },
     "site": {
       "entry": [
         "playroom.config.mts",

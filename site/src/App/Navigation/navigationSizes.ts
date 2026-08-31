@@ -6,7 +6,6 @@ const menuButton = 38;
 export const headerSpaceY = 'small';
 const headerPaddingY = tokens.grid * tokens.space[headerSpaceY];
 const headerHeightPx = menuButton + headerPaddingY * 2;
-export const menuButtonSize = `${menuButton}px`;
 export const headerHeight = `${headerHeightPx}px`;
 export const headerScrollOffset =
   headerHeightPx + tokens.grid * tokens.space.large;

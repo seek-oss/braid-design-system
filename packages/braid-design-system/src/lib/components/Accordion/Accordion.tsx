@@ -22,7 +22,7 @@ import {
   normalizeResponsiveValue,
 } from '../../css/atoms/sprinkles.css';
 
-export const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
+const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 
 export interface AccordionProps {
   children: ReactNodeNoStrings;
@@ -30,6 +30,7 @@ export interface AccordionProps {
   size?: AccordionContextValue['size'];
   tone?: AccordionContextValue['tone'];
   weight?: AccordionContextValue['weight'];
+  /** @deprecated The spacing is now derived from the `size` prop and will be removed in a future release. */
   space?: RequiredResponsiveValue<(typeof validSpaceValues)[number]>;
   data?: DataAttributeMap;
 }
@@ -46,7 +47,7 @@ const defaultSpaceForSize = {
   undivided: {
     xsmall: 'medium',
     small: 'medium',
-    standard: 'large',
+    standard: 'medium',
     large: 'large',
   },
 } satisfies Record<

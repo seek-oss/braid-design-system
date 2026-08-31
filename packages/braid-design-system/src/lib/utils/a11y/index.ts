@@ -10,7 +10,7 @@ import {
 const AA_TEXT_CONTRAST = 4.52;
 
 // http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html#key-terms
-export function contrast(color1: string, color2: string): number {
+function contrast(color1: string, color2: string): number {
   // `0.05` seems to be to avoid "divide by zero"
   // errors in the case of black
   const L1 = getLuminance(color1) + 0.05;
@@ -69,7 +69,7 @@ export function findClosestAccessibleLighterColor(
   return maxColor;
 }
 
-export function findClosestAccessibleDarkerColor(
+function findClosestAccessibleDarkerColor(
   inputColor: string,
   fixedColor: string,
   contrastRatio: number = AA_TEXT_CONTRAST,

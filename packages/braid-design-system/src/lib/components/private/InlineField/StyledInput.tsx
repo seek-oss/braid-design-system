@@ -19,7 +19,7 @@ import * as styles from './InlineField.css';
 import type { Size } from './InlineField.css';
 
 const tones = ['neutral', 'critical'] as const;
-export type InlineFieldTone = (typeof tones)[number];
+type InlineFieldTone = (typeof tones)[number];
 
 export type CheckboxChecked =
   NonNullable<InputElementProps['checked']> | 'mixed';

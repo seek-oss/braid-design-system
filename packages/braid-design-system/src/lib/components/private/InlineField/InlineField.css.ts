@@ -105,7 +105,7 @@ export const hoverOverlay = style({
   },
 });
 
-export const indicator = style({
+const indicator = style({
   selectors: {
     [`${hoverOverlay} > &`]: {
       opacity: 0.2,

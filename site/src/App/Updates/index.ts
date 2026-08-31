@@ -36,7 +36,7 @@ interface Updated {
 
 type Update = Updated | New;
 
-export interface Release {
+interface Release {
   version: string;
   updates: Update[];
 }
@@ -113,13 +113,6 @@ const getNew = memo((...names: string[]) =>
 );
 
 export const isNew = (...names: string[]) => getNew(...names).length > 0;
-
-const getUpdated = memo((...names: string[]) =>
-  intersection(names, Array.from(updatedThings.values())),
-);
-
-export const isUpdated = (...names: string[]) =>
-  getUpdated(...names).length > 0;
 
 export const getHistory = memo((...names: string[]) => {
   let releventReleases = new Set<string>();

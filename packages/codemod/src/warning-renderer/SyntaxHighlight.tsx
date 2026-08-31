@@ -2,7 +2,7 @@ import { type Theme, highlight } from 'cli-highlight';
 import { Text } from 'ink';
 import * as React from 'react';
 
-export interface Props {
+interface Props {
   code: string;
   language?: string;
   theme?: Theme;

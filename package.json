@@ -19,7 +19,7 @@
     "storybook:chromatic": "nx run storybook:chromatic",
     "lint": "concurrently --group 'pnpm:lint:*'",
     "lint:eslint": "eslint --cache .",
-    "lint:knip": "knip --dependencies --treat-config-hints-as-errors",
+    "lint:knip": "knip --treat-config-hints-as-errors",
     "lint:manypkg": "manypkg check",
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "nx run-many --target=lint:tsc",
@@ -75,7 +75,7 @@
   "volta": {
     "node": "24.19.0"
   },
-  "packageManager": "pnpm@11.21.0",
+  "packageManager": "pnpm@11.23.0",
   "manypkg": {
     "workspaceProtocol": "require"
   },

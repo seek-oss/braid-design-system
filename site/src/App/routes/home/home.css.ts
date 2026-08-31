@@ -3,7 +3,6 @@ import { calc } from '@vanilla-extract/css-utils';
 import { atoms } from 'braid-design-system/css';
 import { palette } from 'braid-src/lib/color/palette';
 import { colorModeStyle } from 'braid-src/lib/css/colorModeStyle';
-import { responsiveStyle } from 'braid-src/lib/css/responsiveStyle';
 import { vars } from 'braid-src/lib/themes/vars.css';
 import { darken } from 'polished';
 
@@ -45,7 +44,7 @@ export const hero = style([
   }),
   {
     marginInline: 'calc(50% - 50vw)',
-    minHeight: '40vh',
+    minHeight: '50vh',
     marginTop: calc.negate(calc.add(vars.space.small, vars.space.xxlarge)),
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'right center',
@@ -66,12 +65,15 @@ export const contentColumn = style([
   },
 ]);
 
-export const heroCopy = style(
-  responsiveStyle({
-    mobile: { maxWidth: '100%' },
-    desktop: { maxWidth: '50%' },
-  }),
-);
+export const heroColumn = style({
+  minWidth: 0,
+});
+
+globalStyle(`${hero} ${heroColumn}`, {
+  flexGrow: 1,
+  flexShrink: 1,
+  flexBasis: '0%',
+});
 
 export const gettingStartedCard = style([
   atoms({

@@ -5,26 +5,6 @@ import { vars } from '../../themes/vars.css';
 
 export const menuYPadding = createVar();
 
-export const backdrop = style({
-  width: '100vw',
-  height: '100vh',
-});
-
-export const triggerVars = {
-  top: createVar(),
-  left: createVar(),
-  bottom: createVar(),
-  right: createVar(),
-};
-
-// Top and bottom reversed to allow for a more natural API
-export const menuPosition = style({
-  top: triggerVars.bottom,
-  bottom: triggerVars.top,
-  left: triggerVars.left,
-  right: triggerVars.right,
-});
-
 const widthVar = createVar();
 const baseWidth = style({
   width: calc(widthVar).divide(4).toString(),

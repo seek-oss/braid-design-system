@@ -93,6 +93,7 @@ export const Rating: FC<RatingProps> = ({
       <Box
         component="span"
         className={styles.inlineFlex}
+        role="img"
         aria-label={
           ariaLabel || `${rating.toFixed(1)} out of ${ratingArr.length}`
         }

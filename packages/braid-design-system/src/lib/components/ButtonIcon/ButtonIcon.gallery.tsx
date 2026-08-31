@@ -84,12 +84,7 @@ export const galleryItems: GalleryComponent = {
               </Text>
             </Inline>
             <Inline space="small" alignY="center">
-              <ButtonIcon
-                tone="formAccent"
-                variant="soft"
-                icon={<IconAdd />}
-                label="Add"
-              />
+              <ButtonIcon tone="formAccent" icon={<IconAdd />} label="Add" />
               <ButtonIcon
                 tone="formAccent"
                 variant="transparent"
@@ -99,6 +94,19 @@ export const galleryItems: GalleryComponent = {
               />
               <Text tone="secondary" size="xsmall">
                 FORMACCENT
+              </Text>
+            </Inline>
+            <Inline space="small" alignY="center">
+              <ButtonIcon tone="brandAccent" icon={<IconAdd />} label="Add" />
+              <ButtonIcon
+                tone="brandAccent"
+                variant="transparent"
+                bleed={false}
+                icon={<IconAdd />}
+                label="Add"
+              />
+              <Text tone="secondary" size="xsmall">
+                BRANDACCENT
               </Text>
             </Inline>
           </Stack>,

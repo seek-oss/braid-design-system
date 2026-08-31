@@ -75,7 +75,7 @@ export type MonthPickerBaseProps = Omit<
   monthNames?: MonthNames;
 };
 export type MonthPickerLabelProps = FieldLabelVariant;
-export type MonthPickerProps = MonthPickerBaseProps & MonthPickerLabelProps;
+type MonthPickerProps = MonthPickerBaseProps & MonthPickerLabelProps;
 
 const getMonths = (monthNames: MonthNames) =>
   monthNames.map((monthName, i) => (
