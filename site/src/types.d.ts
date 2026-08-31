@@ -83,6 +83,7 @@ export interface CssDoc {
 export interface PatternDocs {
   description?: ReactNodeNoStrings;
   alternatives?: DocAlternative[];
+  accessibility?: ReactNodeNoStrings;
   docSections?: DocSections;
   additional?: ComponentExample[];
 }
