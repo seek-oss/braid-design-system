@@ -157,7 +157,7 @@ export const docs: PatternDocs = {
         ),
         Example: () =>
           source(
-            <Tiles columns={3} space="small">
+            <Tiles columns={{ mobile: 1, tablet: 3 }} space="small">
               <Card height="full">
                 <Stack space="large">
                   <Heading level="4">Widget title</Heading>
@@ -215,23 +215,23 @@ export const docs: PatternDocs = {
               >
                 <TableHeader>
                   <TableRow>
-                    <TableHeaderCell wrap width="20%">
+                    <TableHeaderCell wrap width="20%" minWidth={150}>
                       <Text size="small">Happens when&hellip;</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell wrap width="20%">
+                    <TableHeaderCell wrap width="20%" minWidth={150}>
                       <Text size="small">Example</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell wrap width="30%">
+                    <TableHeaderCell wrap width="30%" minWidth={200}>
                       <Text size="small">How to respond</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell wrap width="30%">
+                    <TableHeaderCell wrap width="30%" minWidth={200}>
                       <Text size="small">Recommended message</Text>
                     </TableHeaderCell>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell wrap width="20%">
+                    <TableCell wrap width="20%" minWidth={150}>
                       <List space="medium">
                         <Text size="small">
                           the content doesn&rsquo;t exist
@@ -241,13 +241,13 @@ export const docs: PatternDocs = {
                         </Text>
                       </List>
                     </TableCell>
-                    <TableCell wrap width="20%">
+                    <TableCell wrap width="20%" minWidth={150}>
                       <Text size="small">
                         The job ad hasn&rsquo;t been live for long enough to
                         collect ad performance data.
                       </Text>
                     </TableCell>
-                    <TableCell wrap width="30%">
+                    <TableCell wrap width="30%" minWidth={200}>
                       <List space="medium">
                         <Text size="small">
                           Explain why there&rsquo;s no content.
@@ -262,7 +262,7 @@ export const docs: PatternDocs = {
                         </Text>
                       </List>
                     </TableCell>
-                    <TableCell wrap width="30%">
+                    <TableCell wrap width="30%" minWidth={200}>
                       <Stack space="large">
                         <Stack space="medium">
                           <Text size="small" weight="strong">
@@ -298,23 +298,23 @@ export const docs: PatternDocs = {
               >
                 <TableHeader>
                   <TableRow>
-                    <TableHeaderCell wrap width="20%">
+                    <TableHeaderCell wrap width="20%" minWidth={150}>
                       <Text size="small">Happens when&hellip;</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell wrap width="20%">
+                    <TableHeaderCell wrap width="20%" minWidth={150}>
                       <Text size="small">Example</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell wrap width="30%">
+                    <TableHeaderCell wrap width="30%" minWidth={200}>
                       <Text size="small">How to respond</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell wrap width="30%">
+                    <TableHeaderCell wrap width="30%" minWidth={200}>
                       <Text size="small">Recommended message</Text>
                     </TableHeaderCell>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell wrap width="20%">
+                    <TableCell wrap width="20%" minWidth={150}>
                       <List space="medium">
                         <Text size="small">
                           the content doesn&rsquo;t exist
@@ -324,13 +324,13 @@ export const docs: PatternDocs = {
                         </Text>
                       </List>
                     </TableCell>
-                    <TableCell wrap width="20%">
+                    <TableCell wrap width="20%" minWidth={150}>
                       <Text size="small">
                         There are no matching search results. The user can
                         change their search parameters.
                       </Text>
                     </TableCell>
-                    <TableCell wrap width="30%">
+                    <TableCell wrap width="30%" minWidth={200}>
                       <List space="medium">
                         <Text size="small">
                           Explain clearly what the user needs to do.
@@ -351,7 +351,7 @@ export const docs: PatternDocs = {
                         </Text>
                       </List>
                     </TableCell>
-                    <TableCell wrap width="30%">
+                    <TableCell wrap width="30%" minWidth={200}>
                       <Stack space="medium">
                         <Text size="small" weight="strong">
                           No matching search results
@@ -376,23 +376,23 @@ export const docs: PatternDocs = {
               >
                 <TableHeader>
                   <TableRow>
-                    <TableHeaderCell wrap width="20%">
+                    <TableHeaderCell wrap width="20%" minWidth={150}>
                       <Text size="small">Happens when&hellip;</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell wrap width="20%">
+                    <TableHeaderCell wrap width="20%" minWidth={150}>
                       <Text size="small">Example</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell wrap width="30%">
+                    <TableHeaderCell wrap width="30%" minWidth={200}>
                       <Text size="small">How to respond</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell wrap width="30%">
+                    <TableHeaderCell wrap width="30%" minWidth={200}>
                       <Text size="small">Recommended message</Text>
                     </TableHeaderCell>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell wrap width="20%">
+                    <TableCell wrap width="20%" minWidth={150}>
                       <List space="medium">
                         <Text size="small">
                           the user has cleared outstanding items
@@ -403,13 +403,13 @@ export const docs: PatternDocs = {
                         <Text size="small">everything is working well</Text>
                       </List>
                     </TableCell>
-                    <TableCell wrap width="20%">
+                    <TableCell wrap width="20%" minWidth={150}>
                       <Text size="small">
                         A hirer has cleared all the job applications in their
                         inbox.
                       </Text>
                     </TableCell>
-                    <TableCell wrap width="30%">
+                    <TableCell wrap width="30%" minWidth={200}>
                       <List space="medium">
                         <Text size="small">
                           Acknowledge the work the user has done to get to this
@@ -427,7 +427,7 @@ export const docs: PatternDocs = {
                         </Text>
                       </List>
                     </TableCell>
-                    <TableCell wrap width="30%">
+                    <TableCell wrap width="30%" minWidth={200}>
                       <Stack space="medium">
                         <Text size="small" weight="strong">
                           All applications cleared
@@ -451,23 +451,23 @@ export const docs: PatternDocs = {
               >
                 <TableHeader>
                   <TableRow>
-                    <TableHeaderCell wrap width="20%">
+                    <TableHeaderCell wrap width="20%" minWidth={150}>
                       <Text size="small">Happens when&hellip;</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell wrap width="20%">
+                    <TableHeaderCell wrap width="20%" minWidth={150}>
                       <Text size="small">Example</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell wrap width="30%">
+                    <TableHeaderCell wrap width="30%" minWidth={200}>
                       <Text size="small">How to respond</Text>
                     </TableHeaderCell>
-                    <TableHeaderCell wrap width="30%">
+                    <TableHeaderCell wrap width="30%" minWidth={200}>
                       <Text size="small">Recommended message</Text>
                     </TableHeaderCell>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell wrap width="20%">
+                    <TableCell wrap width="20%" minWidth={150}>
                       <List space="medium">
                         <Text size="small">
                           the user hasn&rsquo;t used the feature yet
@@ -477,12 +477,12 @@ export const docs: PatternDocs = {
                         </Text>
                       </List>
                     </TableCell>
-                    <TableCell wrap width="20%">
+                    <TableCell wrap width="20%" minWidth={150}>
                       <Text size="small">
                         A candidate hasn&rsquo;t saved any jobs yet.
                       </Text>
                     </TableCell>
-                    <TableCell wrap width="30%">
+                    <TableCell wrap width="30%" minWidth={200}>
                       <List space="medium">
                         <Text size="small">
                           Explain clearly what the feature is and what needs to
@@ -502,7 +502,7 @@ export const docs: PatternDocs = {
                         </Text>
                       </List>
                     </TableCell>
-                    <TableCell wrap width="30%">
+                    <TableCell wrap width="30%" minWidth={200}>
                       <Stack space="medium">
                         <Text size="small" weight="strong">
                           No saved jobs yet
