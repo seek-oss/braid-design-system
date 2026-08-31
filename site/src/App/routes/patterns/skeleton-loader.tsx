@@ -79,7 +79,7 @@ export const docs: PatternDocs = {
   docSections: {
     appearance: [
       {
-        label: 'Appearance',
+        label: 'Anatomy',
         Example: () =>
           source(
             <Box paddingY="xsmall">
