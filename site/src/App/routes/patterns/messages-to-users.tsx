@@ -49,9 +49,9 @@ export const docs: PatternDocs = {
                 </TableCell>
                 <TableCell wrap width="70%" minWidth={200}>
                   <Text size="small">
-                    Inform the user of an important status or condition relevant
-                    to their current task. They sit within the context of the
-                    page, close to the issue to which they relate.
+                    A conditional message provided in response to user action or
+                    system activity, and presented in the context of the user
+                    flow.
                   </Text>
                 </TableCell>
               </TableRow>
@@ -63,9 +63,9 @@ export const docs: PatternDocs = {
                 </TableCell>
                 <TableCell wrap width="70%" minWidth={200}>
                   <Text size="small">
-                    Briefly acknowledges a user action without interrupting
-                    their flow. Toasts float at the bottom of the screen and
-                    disappear after a few seconds.
+                    A brief, temporary message that appears at the bottom of the
+                    screen to acknowledge user actions without interrupting
+                    their workflow.
                   </Text>
                 </TableCell>
               </TableRow>
@@ -79,8 +79,8 @@ export const docs: PatternDocs = {
                 </TableCell>
                 <TableCell wrap width="70%" minWidth={200}>
                   <Text size="small">
-                    For displaying messages below a custom input field that
-                    isn&rsquo;t provided by Braid.
+                    This component is only required when building a custom field
+                    that isn&rsquo;t provided by Braid.
                   </Text>
                 </TableCell>
               </TableRow>
@@ -112,9 +112,8 @@ export const docs: PatternDocs = {
               </TableCell>
               <TableCell wrap width="70%" minWidth={200}>
                 <Text size="small">
-                  Occurs when there is no data available at the present time,
-                  and informs the user about what they might see when there is
-                  data, and/or what they should do next.
+                  Displays a message in place of content when none is available,
+                  guiding users on what to do next.
                 </Text>
               </TableCell>
             </TableRow>
@@ -126,8 +125,8 @@ export const docs: PatternDocs = {
               </TableCell>
               <TableCell wrap width="70%" minWidth={200}>
                 <Text size="small">
-                  Occurs when the website or app fails to complete an expected
-                  action, and informs the user that a problem has occurred.
+                  Displays a message when an expected action fails, alerting
+                  users to the problem and how to proceed.
                 </Text>
               </TableCell>
             </TableRow>
@@ -139,9 +138,8 @@ export const docs: PatternDocs = {
               </TableCell>
               <TableCell wrap width="70%" minWidth={200}>
                 <Text size="small">
-                  A prominent message that encourages the user to take a
-                  specific action on something relevant at that moment. A nudge
-                  is always actionable and drives desired behaviour.
+                  Displays a prominent, actionable message that drives users
+                  toward a specific behaviour relevant to their current context.
                 </Text>
               </TableCell>
             </TableRow>
@@ -155,9 +153,9 @@ export const docs: PatternDocs = {
               </TableCell>
               <TableCell wrap width="70%" minWidth={200}>
                 <Text size="small">
-                  Inform users of upcoming interruptions to SEEK products and
-                  services. This can include outages to the entire system or to
-                  specific products.
+                  Informs users of an existing or upcoming outage or reduced
+                  service level, affecting the whole system or specific
+                  products.
                 </Text>
               </TableCell>
             </TableRow>
