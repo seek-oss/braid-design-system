@@ -29,13 +29,11 @@ export const docs: PatternDocs = {
   alternatives: [
     {
       name: 'Alert',
-      description:
-        'For informing the user of an important status or condition',
+      description: 'For informing the user of an important status or condition',
     },
     {
       name: 'Notice',
-      description:
-        'For informing the user of an important status or condition',
+      description: 'For informing the user of an important status or condition',
     },
     {
       name: 'empty-state',
