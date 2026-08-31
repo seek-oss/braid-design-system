@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import type { ComponentProps } from 'react';
 
-import { Text, Heading, IconRenderer, Stack } from '../';
+import { ButtonIcon, IconRenderer, Inline, Text, Heading, Stack } from '../';
 
 const meta = {
   title: 'Components/IconRenderer',
@@ -13,8 +13,9 @@ type Story = StoryObj<typeof IconRenderer>;
 
 const CustomIcon = ({
   tone,
-}: Pick<ComponentProps<typeof IconRenderer>, 'tone'>) => (
-  <IconRenderer tone={tone}>
+  size,
+}: Pick<ComponentProps<typeof IconRenderer>, 'tone' | 'size'>) => (
+  <IconRenderer tone={tone} size={size}>
     {({ className }) => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -80,5 +81,15 @@ export const ExplicitToneInHeading: Story = {
     <Heading level="2" icon={<CustomIcon tone="brandAccent" />}>
       Heading 2 with custom icon
     </Heading>
+  ),
+};
+
+export const InButtonIcon: Story = {
+  render: () => (
+    <Inline space="large" alignY="center">
+      <ButtonIcon size="small" icon={<CustomIcon />} label="Small" />
+      <ButtonIcon size="standard" icon={<CustomIcon />} label="Standard" />
+      <ButtonIcon size="large" icon={<CustomIcon />} label="Large" />
+    </Inline>
   ),
 };
