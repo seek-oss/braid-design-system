@@ -1,18 +1,22 @@
 import source from '@braid-design-system/source.macro';
 import {
   Actions,
+  Badge,
   Box,
   Button,
   Card,
-  Column,
-  Columns,
   ContentBlock,
   Heading,
-  Inline,
   List,
   Notice,
   Stack,
   Strong,
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
   Text,
   TextLink,
   Tiles,
@@ -142,113 +146,6 @@ export const docs: PatternDocs = {
         ),
       },
       {
-        Example: ({ responsiveValue }) =>
-          source(
-            <Box background="surface" borderRadius="large" padding="gutter">
-              <ContentBlock width="small">
-                <Stack space={{ mobile: 'medium', desktop: 'large' }}>
-                  <Placeholder
-                    shape="round"
-                    width={responsiveValue({
-                      mobile: '96px',
-                      tablet: '128px',
-                      desktop: '192px',
-                    })}
-                    height={responsiveValue({
-                      mobile: '96px',
-                      tablet: '128px',
-                      desktop: '192px',
-                    })}
-                  />
-                  <Stack space="medium">
-                    <Heading level="2" weight="weak">
-                      How an error might look
-                    </Heading>
-                    <Text tone="secondary">
-                      This is a left aligned example with a short summary. You
-                      can use a button or{' '}
-                      <TextLink href="#">a TextLink</TextLink> to suit your
-                      needs.
-                    </Text>
-                    <List space="medium" tone="secondary">
-                      <Text>List item one</Text>
-                      <Text>List item two</Text>
-                      <Text>List item three</Text>
-                    </List>
-                    <Inline space="none">
-                      <Button variant="ghost">Button</Button>
-                    </Inline>
-                  </Stack>
-                </Stack>
-              </ContentBlock>
-            </Box>,
-          ),
-      },
-      {
-        description: (
-          <Text>
-            For left aligned error states, the illustration can sit beside the
-            copy to save vertical space when the content is lengthy. Left
-            aligned illustrations still stack on mobile.
-          </Text>
-        ),
-        Example: ({ responsiveValue }) =>
-          source(
-            <Box background="surface" borderRadius="large" padding="gutter">
-              <ContentBlock width="small">
-                <Columns
-                  space={{
-                    mobile: 'medium',
-                    tablet: 'medium',
-                    desktop: 'large',
-                  }}
-                  collapseBelow="tablet"
-                  alignY="top"
-                >
-                  <Column width="content">
-                    <Placeholder
-                      shape="round"
-                      width={responsiveValue({
-                        mobile: '96px',
-                        tablet: '128px',
-                        desktop: '192px',
-                      })}
-                      height={responsiveValue({
-                        mobile: '96px',
-                        tablet: '128px',
-                        desktop: '192px',
-                      })}
-                    />
-                  </Column>
-                  <Column>
-                    <Stack space="medium">
-                      <Heading level="2" weight="weak">
-                        How an error might look
-                      </Heading>
-                      <Text tone="secondary">
-                        This is a left aligned example with a short summary. You
-                        can use a button or{' '}
-                        <TextLink href="#">a TextLink</TextLink> to suit your
-                        needs.
-                      </Text>
-                      <List space="medium" tone="secondary">
-                        <Text>List item one</Text>
-                        <Text>List item two</Text>
-                        <Text>List item three</Text>
-                        <Text>List item four</Text>
-                        <Text>List item five</Text>
-                      </List>
-                      <Inline space="none">
-                        <Button variant="ghost">Button</Button>
-                      </Inline>
-                    </Stack>
-                  </Column>
-                </Columns>
-              </ContentBlock>
-            </Box>,
-          ),
-      },
-      {
         label: 'Small and inline',
         description: (
           <Text>
@@ -304,30 +201,230 @@ export const docs: PatternDocs = {
     ],
     bestPractices: [
       {
-        label: 'General guidelines',
+        label: 'General best practice',
         description: (
-          <List space="large">
-            <Text>
-              Be as specific as possible. This helps users resolve the issue.
-              Don&rsquo;t try to address multiple error scenarios in one
-              message.
-            </Text>
-            <Text>
-              Project calm. Show the ideal state of something being fixed rather
-              than something being broken. Avoid negative words such as error,
-              oops, invalid, failed, problem and wrong.
-            </Text>
-            <Text>
-              Don&rsquo;t blame the user. Make it about what we can&rsquo;t do,
-              instead of what the user didn&rsquo;t do. Don&rsquo;t assume how
-              they feel or trivialise the situation.
-            </Text>
-            <Text>
-              More isn&rsquo;t always better. If the user needs to follow
-              complicated instructions, break the process into steps. Generally
-              avoid “please” and “sorry”.
-            </Text>
-          </List>
+          <>
+            <List space="large">
+              <Text>
+                <Strong>More isn&rsquo;t always better.</Strong> Reading takes
+                time and effort, so let&rsquo;s make it easier for people to
+                understand what&rsquo;s happening.
+              </Text>
+              <Text>
+                <Strong>Make the complex simple.</Strong> Break down complicated
+                processes into easy-to-follow steps.
+              </Text>
+            </List>
+            <Table label="Error state general guidelines" alignY="top">
+              <TableHeader>
+                <TableRow>
+                  <TableHeaderCell wrap width="50%" minWidth={200}>
+                    <Text size="small">Do</Text>
+                  </TableHeaderCell>
+                  <TableHeaderCell wrap width="50%" minWidth={200}>
+                    <Text size="small">Don&rsquo;t</Text>
+                  </TableHeaderCell>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell wrap width="50%" minWidth={200}>
+                    <Stack space="medium">
+                      <Text size="small" weight="strong">
+                        Be as specific as possible.
+                      </Text>
+                      <Text size="small">
+                        This helps users resolve the issue. If they end up
+                        calling Customer Service, it helps CS with
+                        troubleshooting.
+                      </Text>
+                    </Stack>
+                  </TableCell>
+                  <TableCell wrap width="50%" minWidth={200}>
+                    <Stack space="medium">
+                      <Text size="small" weight="strong">
+                        Don&rsquo;t try to address multiple error scenarios in
+                        one message.
+                      </Text>
+                      <Text size="small">
+                        The more generic the message, the less helpful. If
+                        individual errors cannot be implemented all at once,
+                        create the messages anyway and put them in the backlog.
+                      </Text>
+                    </Stack>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell wrap width="50%" minWidth={200}>
+                    <Stack space="medium">
+                      <Badge tone="positive">Example</Badge>
+                      <Text size="small" weight="strong">
+                        We can&rsquo;t give you access to this right now.
+                      </Text>
+                      <Text size="small">Try:</Text>
+                      <List space="medium">
+                        <Text size="small">Refreshing the page</Text>
+                        <Text size="small">
+                          Signing out and signing in again
+                        </Text>
+                        <Text size="small">Asking your admin for access</Text>
+                      </List>
+                      <Text size="small">
+                        If it still doesn&rsquo;t work, reach out to our
+                        Customer Service team on 1300 658 700.
+                      </Text>
+                    </Stack>
+                  </TableCell>
+                  <TableCell wrap width="50%" minWidth={200}>
+                    <Stack space="medium">
+                      <Badge tone="critical">Example</Badge>
+                      <Text size="small" weight="strong">
+                        Apparently you&rsquo;re not authorised to view this
+                        page.
+                      </Text>
+                      <Text size="small">
+                        Not sure why you&rsquo;re not&hellip; maybe try heading
+                        to our homepage or contact support.
+                      </Text>
+                    </Stack>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell wrap width="50%" minWidth={200}>
+                    <Stack space="medium">
+                      <Text size="small" weight="strong">
+                        Project calm or light-heartedness as appropriate.
+                      </Text>
+                      <Text size="small">
+                        Users will start to mirror the emotional state that we
+                        show them.
+                      </Text>
+                      <Text size="small">
+                        Show the ideal state (problem fixed, calm person)
+                        instead of the present, negative state.
+                      </Text>
+                      <Text size="small">
+                        Use imagery that focuses on the positive state of
+                        something being fixed, instead of something being
+                        broken.
+                      </Text>
+                    </Stack>
+                  </TableCell>
+                  <TableCell wrap width="50%" minWidth={200}>
+                    <Stack space="medium">
+                      <Text size="small" weight="strong">
+                        Avoid negative words, such as:
+                      </Text>
+                      <List space="medium">
+                        <Text size="small">Error</Text>
+                        <Text size="small">Mistake</Text>
+                        <Text size="small">Oops</Text>
+                        <Text size="small">Invalid</Text>
+                        <Text size="small">Failed</Text>
+                        <Text size="small">Problem</Text>
+                        <Text size="small">Wrong</Text>
+                      </List>
+                      <Text size="small">
+                        These words make people feel anxious and your product
+                        seem less reliable.
+                      </Text>
+                    </Stack>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell wrap width="50%" minWidth={200}>
+                    <Stack space="medium">
+                      <Badge tone="positive">Example</Badge>
+                      <Text size="small" weight="strong">
+                        Can we try that again?
+                      </Text>
+                      <Text size="small">
+                        Refresh the page to see your job search results.
+                      </Text>
+                    </Stack>
+                  </TableCell>
+                  <TableCell wrap width="50%" minWidth={200}>
+                    <Stack space="medium">
+                      <Badge tone="critical">Example</Badge>
+                      <Text size="small" weight="strong">
+                        Oops! Let&rsquo;s try this again.
+                      </Text>
+                      <Text size="small">
+                        Just hit refresh and your jobs will be right here.
+                      </Text>
+                    </Stack>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell wrap width="50%" minWidth={200}>
+                    <Stack space="medium">
+                      <Text size="small" weight="strong">
+                        Show an understanding that the user might be in a
+                        challenging situation.
+                      </Text>
+                    </Stack>
+                  </TableCell>
+                  <TableCell wrap width="50%" minWidth={200}>
+                    <Stack space="medium">
+                      <Text size="small" weight="strong">
+                        Don&rsquo;t blame the user.
+                      </Text>
+                      <List space="medium">
+                        <Text size="small">
+                          Try to make it about what{' '}
+                          <Strong>we can&rsquo;t do</Strong>, instead of what
+                          the <Strong>user didn&rsquo;t do</Strong>.
+                        </Text>
+
+                        <Text size="small">
+                          Don&rsquo;t assume you know how they feel.
+                        </Text>
+                        <Text size="small">
+                          Don&rsquo;t trivialise the situation.
+                        </Text>
+                      </List>
+                    </Stack>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell wrap width="50%" minWidth={200}>
+                    <Stack space="medium">
+                      <Badge tone="positive">Example</Badge>
+                      <Text size="small" weight="strong">
+                        We need this information for your application:
+                      </Text>
+                      <List space="medium">
+                        <Text size="small">
+                          Cover letter - select one of the cover letter options
+                        </Text>
+                        <Text size="small">
+                          Resum&eacute; - select one of the resum&eacute;
+                          options
+                        </Text>
+                      </List>
+                    </Stack>
+                  </TableCell>
+                  <TableCell wrap width="50%" minWidth={200}>
+                    <Stack space="medium">
+                      <Badge tone="critical">Example</Badge>
+                      <Text size="small" weight="strong">
+                        Before you can continue with the application, please
+                        address the following issues:
+                      </Text>
+                      <List space="medium">
+                        <Text size="small">
+                          Cover letter - Please make a selection
+                        </Text>
+                        <Text size="small">
+                          Resum&eacute; - Please make a selection
+                        </Text>
+                      </List>
+                    </Stack>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </>
         ),
       },
       {
