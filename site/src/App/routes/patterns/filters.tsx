@@ -1,4 +1,4 @@
-import { List, Text, TextLink } from 'braid-design-system';
+import { List, Stack, Text, TextLink } from 'braid-design-system';
 
 import type { PatternDocs } from '../../../types';
 
@@ -43,7 +43,8 @@ export const docs: PatternDocs = {
             </Text>
             <Text>
               Apply filters as soon as a selection is made. If results are slow
-              to return, use an confirmation button to batch changes.
+              to return, use a confirmation button to apply serveral changes at
+              once.
             </Text>
           </List>
         ),
@@ -101,17 +102,30 @@ export const docs: PatternDocs = {
       {
         label: 'When to use',
         description: (
-          <List space="large">
-            <Text>
-              Applying filters to hide and show items in a list — to create
-              efficiencies while performing a task, or to help users find
-              something and make a decision
-            </Text>
-            <Text>
-              Manipulating a data set to gain insights — for example an
-              analytics usage report
-            </Text>
-          </List>
+          <Stack space="xlarge">
+            <Stack space="large">
+              <Text>Use filters when:</Text>
+              <List space="large">
+                <Text>users need to hide and show items in a list</Text>
+                <Text>
+                  users need to narrow down a large data set to gain insights
+                </Text>
+              </List>
+            </Stack>
+            <Stack space="large">
+              <Text>Don&rsquo;t use filters when:</Text>
+              <List space="large">
+                <Text>
+                  users only need to change the order of items, not hide them
+                  (provide a sort option instead)
+                </Text>
+                <Text>
+                  there are only a few predefined views to switch between
+                  (provide a view toggle instead).
+                </Text>
+              </List>
+            </Stack>
+          </Stack>
         ),
       },
     ],
