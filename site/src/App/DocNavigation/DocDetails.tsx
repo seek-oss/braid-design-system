@@ -59,17 +59,19 @@ const getAlternativeLabel = (alt: { name: string; section?: string }) =>
 
 const AlternativesSection = ({
   alternatives,
+  heading,
 }: {
   alternatives: Array<{
     name: string;
     description: string;
     section?: string;
   }>;
+  heading: string;
 }) => (
   <Stack space={headingSpacing}>
     <Heading level="3">
-      <TitleLink copyable label="Alternatives">
-        Alternatives
+      <TitleLink copyable label={heading}>
+        {heading}
       </TitleLink>
     </Heading>
     <List space="large">
@@ -86,12 +88,16 @@ const AlternativesSection = ({
 );
 
 export const DocDetails = () => {
-  const { docs, docsName, docsTitle } = useContext(DocsContext);
+  const { docs, docsName, docsTitle, docsType } = useContext(DocsContext);
 
   const alternatives =
     docs && 'alternatives' in docs && docs.alternatives?.length
       ? docs.alternatives
       : undefined;
+
+  const alternativesHeading =
+    docsType === 'patterns' ? 'Related' : 'Alternatives';
+  const alternativesId = slugify(alternativesHeading);
 
   const hasBestPractices = Boolean(
     docs &&
@@ -108,7 +114,7 @@ export const DocDetails = () => {
         as for now as it's where most content sits currently,
         but will likely be deprecated in the future as we
         align content to the docSection structure.
-      - Alternatives (top-level when no bestPractices section, otherwise nested within it)
+      - Alternatives/Related (top-level when no bestPractices section, otherwise nested within it)
 
   */
   const tocSections = useMemo(() => {
@@ -155,9 +161,9 @@ export const DocDetails = () => {
 
             if (alternatives) {
               bestPracticesChildren.push({
-                id: 'alternatives',
-                label: 'Alternatives',
-                href: '#alternatives',
+                id: alternativesId,
+                label: alternativesHeading,
+                href: `#${alternativesId}`,
               });
             }
 
@@ -195,14 +201,20 @@ export const DocDetails = () => {
 
     if (!hasBestPractices && alternatives) {
       sections.push({
-        id: 'alternatives',
-        label: 'Alternatives',
-        href: '#alternatives',
+        id: alternativesId,
+        label: alternativesHeading,
+        href: `#${alternativesId}`,
       });
     }
 
     return sections;
-  }, [alternatives, docs, hasBestPractices]);
+  }, [
+    alternatives,
+    alternativesHeading,
+    alternativesId,
+    docs,
+    hasBestPractices,
+  ]);
 
   const handleTocClick = (event: React.MouseEvent, id: string) => {
     event.preventDefault();
@@ -285,7 +297,10 @@ export const DocDetails = () => {
                             ),
                           )}
                           {sectionKey === 'bestPractices' && alternatives ? (
-                            <AlternativesSection alternatives={alternatives} />
+                            <AlternativesSection
+                              alternatives={alternatives}
+                              heading={alternativesHeading}
+                            />
                           ) : null}
                         </Stack>
                       </Stack>
@@ -301,7 +316,10 @@ export const DocDetails = () => {
               ))}
 
               {!hasBestPractices && alternatives ? (
-                <AlternativesSection alternatives={alternatives} />
+                <AlternativesSection
+                  alternatives={alternatives}
+                  heading={alternativesHeading}
+                />
               ) : null}
             </Stack>
           </Stack>
