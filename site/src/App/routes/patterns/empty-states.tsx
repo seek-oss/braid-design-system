@@ -9,6 +9,12 @@ import {
   Notice,
   Stack,
   Strong,
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
   Text,
   TextLink,
   Tiles,
@@ -195,35 +201,323 @@ export const docs: PatternDocs = {
       {
         label: 'Content guidelines',
         description: (
-          <>
+          <Stack space="xxlarge">
             <Text>
               Empty states usually fall into one of four categories. The type
               determines the response.
             </Text>
-            <List space="large">
-              <Text>
-                <Strong>Negative</Strong> — the content doesn&rsquo;t exist and
-                there&rsquo;s nothing for the user to do. Explain why, offer a
-                workaround if there is one, and be clear about whether content
-                is coming later.
-              </Text>
-              <Text>
-                <Strong>Neutral</Strong> — the content doesn&rsquo;t exist and
-                there&rsquo;s something for the user to do. Explain clearly what
-                they need to do and include a CTA if appropriate.
-              </Text>
-              <Text>
-                <Strong>Positive</Strong> — the user has cleared outstanding
-                items. Acknowledge the work and celebrate in proportion to the
-                effort.
-              </Text>
-              <Text>
-                <Strong>Onboarding</Strong> — the user hasn&rsquo;t used the
-                feature yet. Explain what the feature is, why it matters, and
-                what they should do next.
-              </Text>
-            </List>
-          </>
+            <Stack space="medium">
+              <Heading level="4">Negative</Heading>
+              <Text>Aim of response: Support</Text>
+              <Table
+                label="Negative empty state content guidelines"
+                alignY="top"
+              >
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell wrap width="20%">
+                      <Text size="small">Happens when&hellip;</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="20%">
+                      <Text size="small">Example</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="30%">
+                      <Text size="small">How to respond</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="30%">
+                      <Text size="small">Recommended message</Text>
+                    </TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell wrap width="20%">
+                      <List space="medium">
+                        <Text size="small">
+                          the content doesn&rsquo;t exist
+                        </Text>
+                        <Text size="small">
+                          there&rsquo;s nothing for the user to do
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="20%">
+                      <Text size="small">
+                        The job ad hasn&rsquo;t been live for long enough to
+                        collect ad performance data.
+                      </Text>
+                    </TableCell>
+                    <TableCell wrap width="30%">
+                      <List space="medium">
+                        <Text size="small">
+                          Explain why there&rsquo;s no content.
+                        </Text>
+                        <Text size="small">
+                          Offer a workaround if there is one.
+                        </Text>
+                        <Text size="small">
+                          Be clear about whether the content is being created,
+                          i.e. they can come back later, vs. we have no plans to
+                          create this content.
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="30%">
+                      <Stack space="large">
+                        <Stack space="medium">
+                          <Text size="small" weight="strong">
+                            No active jobs now
+                          </Text>
+                          <Text size="small">
+                            [Company name] hasn&rsquo;t posted any new jobs. Use
+                            our job search to find other vacancies.
+                          </Text>
+                        </Stack>
+                        <Stack space="small">
+                          <Text size="small" weight="strong">
+                            No job applicants yet
+                          </Text>
+                          <Text size="small">
+                            This job ad hasn&rsquo;t received any applications.
+                            Check how it&rsquo;s performing against other
+                            similar ads.
+                          </Text>
+                        </Stack>
+                      </Stack>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </Stack>
+            <Stack space="medium">
+              <Heading level="4">Neutral</Heading>
+              <Text>Aim of response: Instruct</Text>
+              <Table
+                label="Neutral empty state content guidelines"
+                alignY="top"
+              >
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell wrap width="20%">
+                      <Text size="small">Happens when&hellip;</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="20%">
+                      <Text size="small">Example</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="30%">
+                      <Text size="small">How to respond</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="30%">
+                      <Text size="small">Recommended message</Text>
+                    </TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell wrap width="20%">
+                      <List space="medium">
+                        <Text size="small">
+                          the content doesn&rsquo;t exist
+                        </Text>
+                        <Text size="small">
+                          there&rsquo;s something for the user to do
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="20%">
+                      <Text size="small">
+                        There are no matching search results. The user can
+                        change their search parameters.
+                      </Text>
+                    </TableCell>
+                    <TableCell wrap width="30%">
+                      <List space="medium">
+                        <Text size="small">
+                          Explain clearly what the user needs to do.
+                        </Text>
+                        <Text size="small">
+                          Take the time and space to break the process into
+                          steps.
+                        </Text>
+                        <Text size="small">
+                          Provide as much information as needed to help users.
+                        </Text>
+                        <Text size="small">
+                          If the process is particularly tedious, try to inject
+                          some playfulness, if appropriate.
+                        </Text>
+                        <Text size="small">
+                          Include a clear CTA, if appropriate.
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="30%">
+                      <Stack space="medium">
+                        <Text size="small" weight="strong">
+                          No matching search results
+                        </Text>
+                        <Text size="small">
+                          We couldn&rsquo;t find anything that matched your
+                          search. Try adjusting the filters to broaden your
+                          search.
+                        </Text>
+                      </Stack>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </Stack>
+            <Stack space="medium">
+              <Heading level="4">Positive</Heading>
+              <Text>Aim of response: Celebrate</Text>
+              <Table
+                label="Positive empty state content guidelines"
+                alignY="top"
+              >
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell wrap width="20%">
+                      <Text size="small">Happens when&hellip;</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="20%">
+                      <Text size="small">Example</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="30%">
+                      <Text size="small">How to respond</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="30%">
+                      <Text size="small">Recommended message</Text>
+                    </TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell wrap width="20%">
+                      <List space="medium">
+                        <Text size="small">
+                          the user has cleared outstanding items
+                        </Text>
+                        <Text size="small">
+                          there&rsquo;s nothing for the user to do
+                        </Text>
+                        <Text size="small">everything is working well</Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="20%">
+                      <Text size="small">
+                        A hirer has cleared all the job applications in their
+                        inbox.
+                      </Text>
+                    </TableCell>
+                    <TableCell wrap width="30%">
+                      <List space="medium">
+                        <Text size="small">
+                          Acknowledge the work the user has done to get to this
+                          point.
+                        </Text>
+                        <Text size="small">
+                          Celebrate their achievement with the appropriate level
+                          of excitement proportionate to the amount of effort
+                          they&rsquo;ve put in.
+                        </Text>
+                        <Text size="small">
+                          This is the time to inject playfulness and personality
+                          into the message, but make sure it&rsquo;ll translate
+                          well.
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="30%">
+                      <Stack space="medium">
+                        <Text size="small" weight="strong">
+                          All applications cleared
+                        </Text>
+                        <Text size="small">
+                          Great job! You&rsquo;ve cleared all the applications
+                          here.
+                        </Text>
+                      </Stack>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </Stack>
+            <Stack space="medium">
+              <Heading level="4">Onboarding</Heading>
+              <Text>Aim of response: Explain</Text>
+              <Table
+                label="Onboarding empty state content guidelines"
+                alignY="top"
+              >
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell wrap width="20%">
+                      <Text size="small">Happens when&hellip;</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="20%">
+                      <Text size="small">Example</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="30%">
+                      <Text size="small">How to respond</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="30%">
+                      <Text size="small">Recommended message</Text>
+                    </TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell wrap width="20%">
+                      <List space="medium">
+                        <Text size="small">
+                          the user hasn&rsquo;t used the feature yet
+                        </Text>
+                        <Text size="small">
+                          there&rsquo;s something for the user to do
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="20%">
+                      <Text size="small">
+                        A candidate hasn&rsquo;t saved any jobs yet.
+                      </Text>
+                    </TableCell>
+                    <TableCell wrap width="30%">
+                      <List space="medium">
+                        <Text size="small">
+                          Explain clearly what the feature is and what needs to
+                          be done.
+                        </Text>
+                        <Text size="small">
+                          Help the user understand why they should do this. Try
+                          to link this to the JTBD or task they&rsquo;re trying
+                          to complete.
+                        </Text>
+                        <Text size="small">
+                          Give them a glimpse of what would happen if they were
+                          to complete the task or use the feature.
+                        </Text>
+                        <Text size="small">
+                          Include a clear CTA, if appropriate.
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="30%">
+                      <Stack space="medium">
+                        <Text size="small" weight="strong">
+                          No saved jobs yet
+                        </Text>
+                        <Text size="small">
+                          Save jobs you&rsquo;re interested in so you can come
+                          back to them later.
+                        </Text>
+                      </Stack>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </Stack>
+          </Stack>
         ),
       },
       {
