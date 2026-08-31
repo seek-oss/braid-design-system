@@ -9,6 +9,22 @@ export const docs: PatternDocs = {
       making relevant items easier to find.
     </Text>
   ),
+  alternatives: [
+    {
+      name: 'bulk-actions',
+      section: 'patterns',
+      description:
+        'For applying a single action across multiple selected items.',
+    },
+    {
+      name: 'Checkbox',
+      description: 'For selecting multiple values.',
+    },
+    {
+      name: 'RadioGroup',
+      description: 'For selecting a single value.',
+    },
+  ],
   accessibility: (
     <>
       <Text>
