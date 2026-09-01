@@ -8,7 +8,6 @@ import {
   patternHref,
 } from './catalog';
 import contentDensity from './docs/content-density';
-import dataVisPalette from './docs/data-vis-palette';
 import dividedLists from './docs/divided-lists';
 import emptyStates from './docs/empty-states';
 import errorMessages from './docs/error-messages';
@@ -37,7 +36,6 @@ const patternDocsBySlug: Record<string, PatternDocs> = {
   'service-outage-banner': serviceOutageBanners,
   'skeleton-loader': skeletonLoader,
   'social-share': socialShare,
-  'data-vis-palette': dataVisPalette,
   'content-density': contentDensity,
   'wide-screen-layouts': wideScreenLayouts,
 };

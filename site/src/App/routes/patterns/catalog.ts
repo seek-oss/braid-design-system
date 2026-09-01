@@ -102,13 +102,6 @@ export const patternCatalog: PatternEntry[] = [
       'Allows users to share content, such as a job ad or article, to their social networks or with specific individuals.',
   },
   {
-    slug: 'data-vis-palette',
-    title: 'Data vis palette',
-    kind: 'how-to',
-    description:
-      'How to create consistent, on-brand, and accessible data visualisations using a dedicated colour palette.',
-  },
-  {
     slug: 'content-density',
     title: 'Tailoring content density',
     kind: 'how-to',
