@@ -16,11 +16,11 @@ Avatar is decorative and hidden from assistive technologies. Name the person wit
 **EXAMPLE USAGE:**
 
 ```jsx
-<Avatar variant="initials" name="Leia Elise" />
-<Avatar variant="icon" name="Leia Elise" />
+<Avatar variant="initials" name="Leia Organa" />
+<Avatar variant="icon" name="Leia Organa" />
 <Avatar
   variant="initials"
-  name="Leia Elise"
+  name="Leia Organa"
   photoUrl="https://example.com/photo.jpg"
 />
 ```
