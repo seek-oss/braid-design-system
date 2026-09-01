@@ -21,7 +21,7 @@ import buildDataAttributes, {
 import * as styles from './Avatar.css';
 
 export const validAvatarVariants = ['icon', 'initials'] as const;
-export type AvatarVariant = (typeof validAvatarVariants)[number];
+type AvatarVariant = (typeof validAvatarVariants)[number];
 
 export const validAvatarSizes = [
   'small',
@@ -29,7 +29,7 @@ export const validAvatarSizes = [
   'large',
   'xlarge',
 ] as const;
-export type AvatarSize = (typeof validAvatarSizes)[number];
+type AvatarSize = (typeof validAvatarSizes)[number];
 
 export interface AvatarProps {
   variant: AvatarVariant;

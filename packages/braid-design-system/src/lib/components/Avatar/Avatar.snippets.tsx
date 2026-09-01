@@ -12,18 +12,18 @@ import type { Snippets } from '../private/Snippets';
 export const snippets: Snippets = [
   {
     description: 'Initials',
-    code: source(<Avatar variant="initials" name="Leia Elise" />),
+    code: source(<Avatar variant="initials" name="Leia Organa" />),
   },
   {
     description: 'Icon',
-    code: source(<Avatar variant="icon" name="Leia Elise" />),
+    code: source(<Avatar variant="icon" name="Leia Organa" />),
   },
   {
     description: 'Photo',
     code: source(
       <Avatar
         variant="initials"
-        name="Leia Elise"
+        name="Leia Organa"
         photoUrl="https://example.com/photo.jpg"
       />,
     ),
@@ -32,9 +32,9 @@ export const snippets: Snippets = [
     description: 'With name',
     code: source(
       <Inline space="medium" alignY="center">
-        <Avatar variant="initials" name="Leia Elise" />
+        <Avatar variant="initials" name="Leia Organa" />
         <Stack space="xsmall">
-          <Text>Leia Elise</Text>
+          <Text>Leia Organa</Text>
           <Text size="small" tone="secondary">
             Product Designer
           </Text>
@@ -46,16 +46,16 @@ export const snippets: Snippets = [
     description: 'Sizes',
     code: source(
       <Inline space="small" alignY="center">
-        <Avatar variant="initials" name="Leia Elise" size="small" />
-        <Avatar variant="initials" name="Leia Elise" size="standard" />
-        <Avatar variant="initials" name="Leia Elise" size="large" />
-        <Avatar variant="initials" name="Leia Elise" size="xlarge" />
+        <Avatar variant="initials" name="Leia Organa" size="small" />
+        <Avatar variant="initials" name="Leia Organa" size="standard" />
+        <Avatar variant="initials" name="Leia Organa" size="large" />
+        <Avatar variant="initials" name="Leia Organa" size="xlarge" />
       </Inline>,
     ),
   },
   {
     description: 'Border',
-    code: source(<Avatar variant="initials" name="Leia Elise" border />),
+    code: source(<Avatar variant="initials" name="Leia Organa" border />),
   },
   {
     description: 'Custom icon',
@@ -63,6 +63,6 @@ export const snippets: Snippets = [
   },
   {
     description: 'Loading',
-    code: source(<Avatar variant="initials" name="Leia Elise" loading />),
+    code: source(<Avatar variant="initials" name="Leia Organa" loading />),
   },
 ];

@@ -31,12 +31,12 @@ const docs: ComponentDocs = {
       <Inline space="small" alignY="center">
         <Avatar
           variant="initials"
-          name="Leia Elise"
+          name="Leia Organa"
           size="xlarge"
           photoUrl={photoUrl}
         />
-        <Avatar variant="initials" name="Leia Elise" size="large" />
-        <Avatar variant="icon" name="Leia Elise" />
+        <Avatar variant="initials" name="Leia Organa" size="large" />
+        <Avatar variant="icon" name="Leia Organa" />
       </Inline>,
     );
 
@@ -44,12 +44,12 @@ const docs: ComponentDocs = {
       <Inline space="small" alignY="center">
         <Avatar
           variant="initials"
-          name="Leia Elise"
+          name="Leia Organa"
           size="xlarge"
           photoUrl="https://example.com/photo.jpg"
         />
-        <Avatar variant="initials" name="Leia Elise" size="large" />
-        <Avatar variant="icon" name="Leia Elise" />
+        <Avatar variant="initials" name="Leia Organa" size="large" />
+        <Avatar variant="icon" name="Leia Organa" />
       </Inline>,
     );
 
@@ -107,13 +107,13 @@ const docs: ComponentDocs = {
         source(
           <Inline space="medium" alignY="center">
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="Leia Elise" />
+              <Avatar variant="initials" name="Leia Organa" />
               <Text size="small" tone="secondary">
                 initials
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="icon" name="Leia Elise" />
+              <Avatar variant="icon" name="Leia Organa" />
               <Text size="small" tone="secondary">
                 icon
               </Text>
@@ -132,11 +132,11 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Inline space="medium" alignY="center">
-            <Avatar variant="initials" name="Leia Elise" />
-            <Avatar variant="initials" name="John Lennon" />
-            <Avatar variant="initials" name="Ringo Starr" />
-            <Avatar variant="initials" name="Paul McCartney" />
-            <Avatar variant="initials" name="George Harrison" />
+            <Avatar variant="initials" name="C-3PO" />
+            <Avatar variant="initials" name="Leia Organa" />
+            <Avatar variant="initials" name="Obi-Wan Kenobi" />
+            <Avatar variant="initials" name="Darth Vader" />
+            <Avatar variant="initials" name="Qui-Gon Jinn" />
           </Inline>,
         ),
     },
@@ -155,7 +155,7 @@ const docs: ComponentDocs = {
         source(
           <Inline space="medium" alignY="center">
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="Leia Elise" />
+              <Avatar variant="initials" name="Leia Organa" />
               <Text size="small" tone="secondary">
                 from name
               </Text>
@@ -167,11 +167,7 @@ const docs: ComponentDocs = {
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar
-                variant="initials"
-                name="247"
-                icon={<IconPeople />}
-              />
+              <Avatar variant="initials" name="247" icon={<IconPeople />} />
               <Text size="small" tone="secondary">
                 custom fallback
               </Text>
@@ -190,10 +186,10 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Inline space="medium" alignY="center">
-            <Avatar variant="initials" name="Leia Elise" size="small" />
-            <Avatar variant="initials" name="Leia Elise" size="standard" />
-            <Avatar variant="initials" name="Leia Elise" size="large" />
-            <Avatar variant="initials" name="Leia Elise" size="xlarge" />
+            <Avatar variant="initials" name="Leia Organa" size="small" />
+            <Avatar variant="initials" name="Leia Organa" size="standard" />
+            <Avatar variant="initials" name="Leia Organa" size="large" />
+            <Avatar variant="initials" name="Leia Organa" size="xlarge" />
           </Inline>,
         ),
     },
@@ -219,7 +215,7 @@ const docs: ComponentDocs = {
             <Stack space="small" align="center">
               <Avatar
                 variant="initials"
-                name="Leia Elise"
+                name="Leia Organa"
                 photoUrl={photoUrl}
               />
               <Text size="small" tone="secondary">
@@ -227,13 +223,13 @@ const docs: ComponentDocs = {
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="Leia Elise" photoError />
+              <Avatar variant="initials" name="Leia Organa" photoError />
               <Text size="small" tone="secondary">
                 error
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="Leia Elise" />
+              <Avatar variant="initials" name="Leia Organa" />
               <Text size="small" tone="secondary">
                 no photo
               </Text>
@@ -246,7 +242,7 @@ const docs: ComponentDocs = {
             <Stack space="small" align="center">
               <Avatar
                 variant="initials"
-                name="Leia Elise"
+                name="Leia Organa"
                 photoUrl="https://example.com/photo.jpg"
               />
               <Text size="small" tone="secondary">
@@ -254,13 +250,13 @@ const docs: ComponentDocs = {
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="Leia Elise" photoError />
+              <Avatar variant="initials" name="Leia Organa" photoError />
               <Text size="small" tone="secondary">
                 error
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="Leia Elise" />
+              <Avatar variant="initials" name="Leia Organa" />
               <Text size="small" tone="secondary">
                 no photo
               </Text>
@@ -280,7 +276,7 @@ const docs: ComponentDocs = {
         </Text>
       ),
       Example: () =>
-        source(<Avatar variant="initials" name="Leia Elise" loading />),
+        source(<Avatar variant="initials" name="Leia Organa" loading />),
     },
     {
       label: 'Border',
@@ -296,12 +292,12 @@ const docs: ComponentDocs = {
             <Inline space="small" alignY="center">
               <Avatar
                 variant="initials"
-                name="Leia Elise"
+                name="Leia Organa"
                 photoUrl={photoUrl}
                 border
               />
-              <Avatar variant="initials" name="Leia Elise" border />
-              <Avatar variant="icon" name="Leia Elise" border />
+              <Avatar variant="initials" name="Leia Organa" border />
+              <Avatar variant="icon" name="Leia Organa" border />
             </Inline>
           </Box>,
         );
@@ -311,12 +307,12 @@ const docs: ComponentDocs = {
             <Inline space="small" alignY="center">
               <Avatar
                 variant="initials"
-                name="Leia Elise"
+                name="Leia Organa"
                 photoUrl="https://example.com/photo.jpg"
                 border
               />
-              <Avatar variant="initials" name="Leia Elise" border />
-              <Avatar variant="icon" name="Leia Elise" border />
+              <Avatar variant="initials" name="Leia Organa" border />
+              <Avatar variant="icon" name="Leia Organa" border />
             </Inline>
           </Box>,
         );
@@ -355,11 +351,11 @@ const docs: ComponentDocs = {
           <Stack space="medium">
             <Columns space="medium" alignY="center">
               <Column width="content">
-                <Avatar variant="initials" name="Leia Elise" />
+                <Avatar variant="initials" name="Leia Organa" />
               </Column>
               <Column>
                 <Stack space="xsmall">
-                  <Text>Leia Elise</Text>
+                  <Text>Leia Organa</Text>
                   <Text size="small" tone="secondary">
                     Product Designer
                   </Text>
@@ -426,7 +422,7 @@ const docs: ComponentDocs = {
       code: `
         <Avatar
           variant="initials"
-          name="Leia Elise"
+          name="Leia Organa"
           data={{ testid: 'avatar-1' }}
           // => data-testid="avatar-1"
         />

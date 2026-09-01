@@ -155,6 +155,29 @@ exports[`Autosuggest 1`] = `
 }
 `;
 
+exports[`Avatar 1`] = `
+{
+  exportType: component,
+  props: {
+    border?: boolean
+    data?: DataAttributeMap
+    icon?: ReactNode
+    loading?: boolean
+    name?: string
+    photoError?: boolean
+    photoUrl?: string
+    size?: 
+        | "large"
+        | "small"
+        | "standard"
+        | "xlarge"
+    variant: 
+        | "icon"
+        | "initials"
+},
+}
+`;
+
 exports[`Badge 1`] = `
 {
   exportType: component,
