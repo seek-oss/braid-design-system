@@ -2,11 +2,12 @@ import source from '@braid-design-system/source.macro';
 import {
   Actions,
   Badge,
-  Box,
+  Bleed,
   Button,
   Card,
   ContentBlock,
   Heading,
+  Inline,
   List,
   Notice,
   Stack,
@@ -59,42 +60,39 @@ export const docs: PatternDocs = {
         ),
         Example: ({ responsiveValue }) =>
           source(
-            <Box background="surface" borderRadius="large" padding="gutter">
-              <ContentBlock width="small">
-                <Stack
-                  align="center"
-                  space={{ mobile: 'medium', desktop: 'large' }}
-                >
-                  <Placeholder
-                    shape="round"
-                    width={responsiveValue({
-                      mobile: '96px',
-                      tablet: '128px',
-                      desktop: '192px',
-                    })}
-                    height={responsiveValue({
-                      mobile: '96px',
-                      tablet: '128px',
-                      desktop: '192px',
-                    })}
-                  />
-                  <Stack space="medium" align="center">
-                    <Heading level="2" weight="weak" align="center">
-                      How an error might look
-                    </Heading>
-                    <Text tone="secondary" align="center">
-                      This is a center aligned example with a short summary. You
-                      can use a button or{' '}
-                      <TextLink href="#">a TextLink</TextLink> to suit your
-                      needs.
-                    </Text>
-                    <Actions>
-                      <Button variant="ghost">Button</Button>
-                    </Actions>
-                  </Stack>
+            <ContentBlock width="small">
+              <Stack
+                align="center"
+                space={{ mobile: 'medium', desktop: 'large' }}
+              >
+                <Placeholder
+                  shape="round"
+                  width={responsiveValue({
+                    mobile: '96px',
+                    tablet: '128px',
+                    desktop: '192px',
+                  })}
+                  height={responsiveValue({
+                    mobile: '96px',
+                    tablet: '128px',
+                    desktop: '192px',
+                  })}
+                />
+                <Stack space="medium" align="center">
+                  <Heading level="2" weight="weak" align="center">
+                    How an error might look
+                  </Heading>
+                  <Text tone="secondary" align="center">
+                    This is a center aligned example with a short summary. You
+                    can use a button or <TextLink href="#">a TextLink</TextLink>{' '}
+                    to suit your needs.
+                  </Text>
+                  <Actions>
+                    <Button variant="ghost">Button</Button>
+                  </Actions>
                 </Stack>
-              </ContentBlock>
-            </Box>,
+              </Stack>
+            </ContentBlock>,
           ),
       },
       {
@@ -206,13 +204,12 @@ export const docs: PatternDocs = {
           <>
             <List space="large">
               <Text>
-                <Strong>More isn&rsquo;t always better.</Strong> Reading takes
-                time and effort, so let&rsquo;s make it easier for people to
-                understand what&rsquo;s happening.
+                More isn&rsquo;t always better. Reading takes time and effort,
+                so let&rsquo;s make it easier for people to understand
+                what&rsquo;s happening.
               </Text>
               <Text>
-                <Strong>Make the complex simple.</Strong> Break down complicated
-                processes into easy-to-follow steps.
+                Break down complicated processes into easy-to-follow steps.
               </Text>
             </List>
             <Table label="Error state general guidelines" alignY="top">
@@ -430,34 +427,103 @@ export const docs: PatternDocs = {
       {
         label: 'Content guidelines',
         description: (
-          <>
-            <Text>
-              Errors are pain points. Handling them with empathy helps users
-              resolve issues faster and can turn a negative moment into a more
-              lasting connection.
-            </Text>
-            <List space="large">
+          <Stack space="xxlarge">
+            <Stack space="xlarge">
               <Text>
-                <Strong>Instruct</Strong> when the user can resolve it quickly.
-                Tell them clearly what to do and don&rsquo;t make it a big deal.
+                As errors are negative moments or pain points in someone&rsquo;s
+                interaction with our products, it&rsquo;s important for us to
+                handle errors in an empathetic and supportive way.
               </Text>
+              <Stack space="large">
+                <Text>Handling an error well:</Text>
+                <List space="large">
+                  <Text>
+                    Helps users resolve an error quicker. When someone is
+                    frustrated, they&rsquo;re more likely to keep trying
+                    something that doesn&rsquo;t work, which keeps them caught
+                    in an error loop. If they&rsquo;re calm, they see more
+                    options and can problem-solve better.
+                  </Text>
+                  <Text>
+                    Helps us turn a negative moment into a positive one. If
+                    someone feels supported through a negative moment, it helps
+                    build a more lasting connection to SEEK.
+                  </Text>
+                </List>
+              </Stack>
+            </Stack>
+            <Stack space="large">
+              <Heading level="4">
+                How people might feel when an error happens
+              </Heading>
               <Text>
-                <Strong>Reassure</Strong> when they need to wait for SEEK.
-                There&rsquo;s little they can do, so let them know we&rsquo;re
-                working on it. Light humour can be appropriate.
+                Understanding how someone might feel when they encounter an
+                error helps us craft an appropriate response.
               </Text>
-              <Text>
-                <Strong>Explain</Strong> when they can resolve it but it takes
-                many steps. Break the process down and provide as much
-                information as needed.
-              </Text>
-              <Text>
-                <Strong>Support</Strong> when they can&rsquo;t complete a
-                critical or time-sensitive task. Be helpful and calm. This is
-                not the time to be playful.
-              </Text>
-            </List>
-          </>
+              <Tiles columns={{ mobile: 1, tablet: 2 }} space="small">
+                <Card height="full">
+                  <Stack space="medium">
+                    <Bleed horizontal="xsmall">
+                      <Inline space="xsmall">
+                        <Badge tone="critical">High impact</Badge>
+                        <Badge tone="caution">Low effort</Badge>
+                      </Inline>
+                    </Bleed>
+                    <Heading level="4">Frustrated</Heading>
+                    <Text>Reassure</Text>
+                    <Text size="small" tone="secondary">
+                      Task cannot be completed.
+                    </Text>
+                  </Stack>
+                </Card>
+                <Card height="full">
+                  <Stack space="medium">
+                    <Bleed horizontal="xsmall">
+                      <Inline space="xsmall">
+                        <Badge tone="critical">High impact</Badge>
+                        <Badge tone="critical">High effort</Badge>
+                      </Inline>
+                    </Bleed>
+                    <Heading level="4">Infuriated</Heading>
+                    <Text>Apologise, Support</Text>
+                    <Text size="small" tone="secondary">
+                      Task cannot be completed.
+                    </Text>
+                  </Stack>
+                </Card>
+                <Card height="full">
+                  <Stack space="medium">
+                    <Bleed horizontal="xsmall">
+                      <Inline space="xsmall">
+                        <Badge tone="caution">Low impact</Badge>
+                        <Badge tone="caution">Low effort</Badge>
+                      </Inline>
+                    </Bleed>
+                    <Heading level="4">Annoyed</Heading>
+                    <Text>Instruct</Text>
+                    <Text size="small" tone="secondary">
+                      Task interrupted but can be resolved.
+                    </Text>
+                  </Stack>
+                </Card>
+                <Card height="full">
+                  <Stack space="medium">
+                    <Bleed horizontal="xsmall">
+                      <Inline space="xsmall">
+                        <Badge tone="caution">Low impact</Badge>
+                        <Badge tone="critical">High effort</Badge>
+                      </Inline>
+                    </Bleed>
+                    <Heading level="4">Irritated</Heading>
+                    <Text>Explain</Text>
+                    <Text size="small" tone="secondary">
+                      Task interrupted but can be resolved.
+                    </Text>
+                  </Stack>
+                </Card>
+              </Tiles>
+            </Stack>
+          </Stack>
         ),
       },
       {
