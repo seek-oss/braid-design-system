@@ -62,18 +62,19 @@ export const docs: PatternDocs = {
     {
       name: 'Loader',
       description:
-        'For indicating that content is loading in a more minimal way',
+        'For indicating that content is loading in a more minimal way.',
     },
     {
       name: 'empty-state',
       section: 'patterns',
-      description: 'For when there is no data available at the present time',
+      description:
+        'For communicating an absence of data and directing users toward their next step.',
     },
     {
       name: 'error-state',
       section: 'patterns',
       description:
-        'For when the website or app fails to complete an expected action',
+        'For communicating a failed action and guiding users toward a resolution.',
     },
   ],
   docSections: {
@@ -106,38 +107,25 @@ export const docs: PatternDocs = {
       {
         label: 'Visual guidelines',
         description: (
-          <>
-            <List space="large">
-              <Text>
-                Size, layout, and spacing of skeleton elements should replicate
-                the size, layout, and spacing of actual content where possible.
-              </Text>
-              <Text>
-                Skeleton elements representing text and icons should be fully
-                rounded using <Strong>borderRadius=&quot;full&quot;</Strong>.
-              </Text>
-              <Text>
-                All other skeleton elements should replicate component rounding,
-                for example a button or badge using{' '}
-                <Strong>borderRadius=&quot;standard&quot;</Strong>.
-              </Text>
-              <Text>
-                Colour for all skeleton elements should be{' '}
-                <Strong>neutralLight</Strong> (
-                <Strong>background=&quot;neutralLight&quot;</Strong>).
-              </Text>
-              <Text>Height suggestions for text elements:</Text>
-            </List>
-            <List space="large">
-              <Text>Use medium for Heading level 1</Text>
-              <Text>Use small for Heading level 2, 3, and 4</Text>
-              <Text>Use xsmall for Text</Text>
-            </List>
+          <List space="large">
             <Text>
-              Avoid animation. A standardised approach to skeleton animation can
-              be considered when capacity allows.
+              Match the size, layout, and spacing of the real content.
             </Text>
-          </>
+            <Text>
+              Use <Strong>background=&quot;neutralLight&quot;</Strong> for every
+              skeleton element.
+            </Text>
+            <Text>
+              Use <Strong>borderRadius=&quot;full&quot;</Strong> for text and
+              icons. Match the real component for everything else, such as{' '}
+              <Strong>borderRadius=&quot;standard&quot;</Strong> on buttons and
+              badges.
+            </Text>
+            <Text>
+              For height, use medium for Heading level 1, small for Heading 2–4,
+              and xsmall for Text.
+            </Text>
+          </List>
         ),
       },
     ],
@@ -146,19 +134,17 @@ export const docs: PatternDocs = {
         label: 'General best practice',
         description: (
           <List space="large">
-            <Text>Design skeletons to resemble actual content structure.</Text>
-            <Text>Avoid overuse. Focus on key content areas.</Text>
+            <Text>Use skeletons only on key content areas.</Text>
             <Text>
-              Ensure skeletons are screen-reader accessible and work as expected
-              in dark mode.
+              Make skeletons accessible to screen readers, and check them in
+              dark mode.
             </Text>
             <Text>
-              Scale skeletons to reflect changes in content size and density on
-              small screens.
+              Scale skeletons with content size and density on small screens.
             </Text>
-            <Text>Show skeletons only as long as needed.</Text>
+            <Text>Show skeletons only as long as they are needed.</Text>
             <Text>
-              Keep skeleton code lightweight to avoid slowing load times.
+              Keep skeleton code lightweight so it does not slow the load.
             </Text>
           </List>
         ),
@@ -177,7 +163,7 @@ export const docs: PatternDocs = {
                 </Text>
                 <Text>
                   the content is essential or prominent, such as job ads or
-                  profiles
+                  profiles.
                 </Text>
               </List>
             </Stack>
@@ -191,7 +177,6 @@ export const docs: PatternDocs = {
                 <Text>
                   elements are small, low-priority, or expected to load quickly
                 </Text>
-                <Text>moving between pages in a single-page app</Text>
                 <Text>
                   there is no data to display (use an{' '}
                   <TextLink href="/patterns/empty-state">Empty state</TextLink>{' '}
@@ -200,7 +185,7 @@ export const docs: PatternDocs = {
                 <Text>
                   an expected action failed (use an{' '}
                   <TextLink href="/patterns/error-state">Error state</TextLink>{' '}
-                  instead)
+                  instead).
                 </Text>
               </List>
             </Stack>

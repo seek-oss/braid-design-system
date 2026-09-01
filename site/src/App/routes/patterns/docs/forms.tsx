@@ -1,7 +1,6 @@
 import source from '@braid-design-system/source.macro';
 import {
   Actions,
-  Box,
   Button,
   Column,
   Columns,
@@ -126,11 +125,11 @@ export const docs: PatternDocs = {
         label: 'Width',
         description: (
           <Text>
-            To define form width, place it within a{' '}
-            <TextLink href="/components/ContentBlock">ContentBlock</TextLink>{' '}
-            (or <TextLink href="/components/PageBlock">PageBlock</TextLink>).
-            Use size <Strong>small</Strong> so fields stay a manageable length.
-            In special cases the width can be increased to{' '}
+            Place the form within a{' '}
+            <TextLink href="/components/ContentBlock">ContentBlock</TextLink> or{' '}
+            <TextLink href="/components/PageBlock">PageBlock</TextLink> to
+            constrain the width. Use size <Strong>small</Strong> so fields stay
+            a manageable length. In special cases the width can be increased to{' '}
             <Strong>medium</Strong> to display larger blocks of content
             horizontally.
           </Text>
@@ -140,7 +139,7 @@ export const docs: PatternDocs = {
         label: 'Multi-page forms',
         description: (
           <Text>
-            When designing very long forms, break the form into steps using{' '}
+            Break long forms into smaller steps using{' '}
             <TextLink href="/components/Stepper">Stepper</TextLink>. Display
             validation on each page as the user attempts to progress. Give
             controls to move forwards and backwards, and when possible allow the
@@ -290,12 +289,10 @@ export const docs: PatternDocs = {
             <Stack space="large">
               <Heading level="4">Reserve message space</Heading>
               <Text>
-                If a form has several required fields, consider{' '}
-                <Strong>reserveMessageSpace</Strong>. This reserves space below
-                the field and keeps content from shifting when a validation
-                message appears. Take the same approach for all fields so they
-                display evenly. If a form has few or no required fields, it may
-                not be necessary.
+                If a form has several required fields, consider using the{' '}
+                <Strong>reserveMessageSpace</Strong> property. This reserves
+                space below the field and keeps content from shifting when a
+                validation message appears.
               </Text>
             </Stack>
           </Stack>
@@ -310,132 +307,126 @@ export const docs: PatternDocs = {
               {setDefaultState('Name2', '')}
               {setDefaultState('RoleTitle2', '')}
               {setDefaultState('textfield', '')}
-              <Columns space="gutter" collapseBelow="tablet">
+              <Columns space="xxlarge" collapseBelow="tablet">
                 <Column>
-                  <Box padding="xlarge" boxShadow="borderNeutralLight">
-                    <Stack space="xlarge">
-                      <Stack space="small">
-                        <Heading level="4">With reserve message space</Heading>
-                        <Text>Stack space = medium</Text>
-                      </Stack>
-                      <Stack space="medium">
-                        <TextField
-                          label="Name"
-                          onChange={setState('Name')}
-                          value={getState('Name')}
-                          reserveMessageSpace
-                          message={
-                            getState('shouldValidate') === true &&
-                            getState('Name').length === 0
-                              ? 'Enter your name'
-                              : undefined
-                          }
-                          tone={
-                            getState('shouldValidate') === true &&
-                            getState('Name').length === 0
-                              ? 'critical'
-                              : undefined
-                          }
-                        />
-                        <TextField
-                          label="Role title"
-                          onChange={setState('RoleTitle')}
-                          value={getState('RoleTitle')}
-                          reserveMessageSpace
-                          message={
-                            getState('shouldValidate') === true &&
-                            getState('RoleTitle').length === 0
-                              ? 'Enter your role title'
-                              : undefined
-                          }
-                          tone={
-                            getState('shouldValidate') === true &&
-                            getState('RoleTitle').length === 0
-                              ? 'critical'
-                              : undefined
-                          }
-                        />
-                        <TextField
-                          label="Phone number"
-                          onChange={setState('textfield')}
-                          value={getState('textfield')}
-                          secondaryLabel="optional"
-                          reserveMessageSpace
-                        />
-                        <Actions>
-                          <Button
-                            variant="solid"
-                            onClick={() => setState('shouldValidate', true)}
-                          >
-                            Submit
-                          </Button>
-                        </Actions>
-                      </Stack>
+                  <Stack space="large">
+                    <Stack space="small">
+                      <Heading level="4">With reserve message space</Heading>
+                      <Text>Stack space = medium</Text>
                     </Stack>
-                  </Box>
+                    <Stack space="medium">
+                      <TextField
+                        label="Name"
+                        onChange={setState('Name')}
+                        value={getState('Name')}
+                        reserveMessageSpace
+                        message={
+                          getState('shouldValidate') === true &&
+                          getState('Name').length === 0
+                            ? 'Enter your name'
+                            : undefined
+                        }
+                        tone={
+                          getState('shouldValidate') === true &&
+                          getState('Name').length === 0
+                            ? 'critical'
+                            : undefined
+                        }
+                      />
+                      <TextField
+                        label="Role title"
+                        onChange={setState('RoleTitle')}
+                        value={getState('RoleTitle')}
+                        reserveMessageSpace
+                        message={
+                          getState('shouldValidate') === true &&
+                          getState('RoleTitle').length === 0
+                            ? 'Enter your role title'
+                            : undefined
+                        }
+                        tone={
+                          getState('shouldValidate') === true &&
+                          getState('RoleTitle').length === 0
+                            ? 'critical'
+                            : undefined
+                        }
+                      />
+                      <TextField
+                        label="Phone number"
+                        onChange={setState('textfield')}
+                        value={getState('textfield')}
+                        secondaryLabel="optional"
+                        reserveMessageSpace
+                      />
+                      <Actions>
+                        <Button
+                          variant="solid"
+                          onClick={() => setState('shouldValidate', true)}
+                        >
+                          Submit
+                        </Button>
+                      </Actions>
+                    </Stack>
+                  </Stack>
                 </Column>
                 <Column>
-                  <Box padding="xlarge" boxShadow="borderNeutralLight">
-                    <Stack space="xlarge">
-                      <Stack space="small">
-                        <Heading level="4">
-                          Without reserve message space
-                        </Heading>
-                        <Text>Stack space = medium</Text>
-                      </Stack>
-                      <Stack space="medium">
-                        <TextField
-                          label="Name"
-                          onChange={setState('Name2')}
-                          value={getState('Name2')}
-                          message={
-                            getState('shouldValidate2') === true &&
-                            getState('Name2').length === 0
-                              ? 'Enter your name'
-                              : undefined
-                          }
-                          tone={
-                            getState('shouldValidate2') === true &&
-                            getState('Name2').length === 0
-                              ? 'critical'
-                              : undefined
-                          }
-                        />
-                        <TextField
-                          label="Role title"
-                          onChange={setState('RoleTitle2')}
-                          value={getState('RoleTitle2')}
-                          message={
-                            getState('shouldValidate2') === true &&
-                            getState('RoleTitle2').length === 0
-                              ? 'Enter your role title'
-                              : undefined
-                          }
-                          tone={
-                            getState('shouldValidate2') === true &&
-                            getState('RoleTitle2').length === 0
-                              ? 'critical'
-                              : undefined
-                          }
-                        />
-                        <TextField
-                          label="Phone number"
-                          onChange={setState('textfield')}
-                          value={getState('textfield')}
-                          secondaryLabel="optional"
-                          reserveMessageSpace
-                        />
-                        <Actions>
-                          <Button
-                            variant="solid"
-                            onClick={() => setState('shouldValidate2', true)}
-                          >
-                            Submit
-                          </Button>
-                        </Actions>
-                      </Stack>
+                  <Stack space="large">
+                    <Stack space="small">
+                      <Heading level="4">Without reserve message space</Heading>
+                      <Text>Stack space = medium</Text>
                     </Stack>
-                  </Box>
+                    <Stack space="medium">
+                      <TextField
+                        label="Name"
+                        onChange={setState('Name2')}
+                        value={getState('Name2')}
+                        message={
+                          getState('shouldValidate2') === true &&
+                          getState('Name2').length === 0
+                            ? 'Enter your name'
+                            : undefined
+                        }
+                        tone={
+                          getState('shouldValidate2') === true &&
+                          getState('Name2').length === 0
+                            ? 'critical'
+                            : undefined
+                        }
+                      />
+                      <TextField
+                        label="Role title"
+                        onChange={setState('RoleTitle2')}
+                        value={getState('RoleTitle2')}
+                        message={
+                          getState('shouldValidate2') === true &&
+                          getState('RoleTitle2').length === 0
+                            ? 'Enter your role title'
+                            : undefined
+                        }
+                        tone={
+                          getState('shouldValidate2') === true &&
+                          getState('RoleTitle2').length === 0
+                            ? 'critical'
+                            : undefined
+                        }
+                      />
+                      <TextField
+                        label="Phone number"
+                        onChange={setState('textfield')}
+                        value={getState('textfield')}
+                        secondaryLabel="optional"
+                        reserveMessageSpace
+                      />
+                      <Actions>
+                        <Button
+                          variant="solid"
+                          onClick={() => setState('shouldValidate2', true)}
+                        >
+                          Submit
+                        </Button>
+                      </Actions>
+                    </Stack>
+                  </Stack>
                 </Column>
               </Columns>
             </>,

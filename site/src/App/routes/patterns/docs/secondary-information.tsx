@@ -100,7 +100,7 @@ export const docs: PatternDocs = {
           To surface secondary info upfront, use{' '}
           <TextLink href="/components/Text">Text</TextLink> and adjust the{' '}
           <Strong>size</Strong> or <Strong>tone</Strong> to acheive the desired
-          promq. This works well for always-visible copy such as legal or
+          prominence. This works well for always-visible copy such as legal or
           explanatory text (
           <TextLink
             target="_blank"
