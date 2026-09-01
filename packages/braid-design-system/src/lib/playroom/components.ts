@@ -12,6 +12,7 @@ export { Accordion } from '../components/Accordion/Accordion.playroom';
 export { AccordionItem } from '../components/Accordion/AccordionItem.playroom';
 export { Alert } from '../components/Alert/Alert.playroom';
 export { Autosuggest } from '../components/Autosuggest/Autosuggest.playroom';
+export { Avatar } from '../components/Avatar/Avatar.playroom';
 export { Badge } from '../components/Badge/Badge.playroom';
 export { Bleed } from '../components/Bleed/Bleed.playroom';
 export { Box } from '../components/Box/Box.playroom';
