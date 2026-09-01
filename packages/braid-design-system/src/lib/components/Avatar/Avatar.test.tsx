@@ -25,28 +25,28 @@ describe('Avatar', () => {
     expectedColour: string;
   }>([
     {
-      initials: 'S',
-      name: 'SEEK Avatar',
+      initials: 'Q',
+      name: 'Qui-Gon Jinn',
       expectedColour: palette.seekBlueLight[200],
     },
     {
-      initials: 'A',
-      name: 'Aquaman',
+      initials: 'Y',
+      name: 'Yoda',
       expectedColour: palette.orange[200],
     },
     {
-      initials: 'F',
-      name: 'Fish',
+      initials: 'D',
+      name: 'Darth Vader',
       expectedColour: palette.purple[200],
     },
     {
-      initials: 'A',
-      name: 'ABC',
+      initials: 'L',
+      name: 'Leia Organa',
       expectedColour: palette.red[200],
     },
     {
-      initials: 'C',
-      name: 'Carbonara',
+      initials: 'O',
+      name: 'Obi-Wan Kenobi',
       expectedColour: palette.seekPink[200],
     },
   ])(
@@ -73,7 +73,7 @@ describe('Avatar', () => {
     },
     {
       scenario: 'capitalise initials',
-      name: 'leia elise',
+      name: 'leia organa',
       expectedInitials: 'L',
     },
     {

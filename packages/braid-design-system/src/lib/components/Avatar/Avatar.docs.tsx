@@ -161,13 +161,13 @@ const docs: ComponentDocs = {
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="247" />
+              <Avatar variant="initials" name="2187" />
               <Text size="small" tone="secondary">
                 no letters
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="247" icon={<IconPeople />} />
+              <Avatar variant="initials" name="2187" icon={<IconPeople />} />
               <Text size="small" tone="secondary">
                 custom fallback
               </Text>
@@ -364,11 +364,11 @@ const docs: ComponentDocs = {
             </Columns>
             <Columns space="medium" alignY="center">
               <Column width="content">
-                <Avatar variant="initials" name="Jordan Lee" />
+                <Avatar variant="initials" name="Ezra Bridger" />
               </Column>
               <Column>
                 <Stack space="xsmall">
-                  <Text>Jordan Lee</Text>
+                  <Text>Ezra Bridger</Text>
                   <Text size="small" tone="secondary">
                     Recruiter
                   </Text>
