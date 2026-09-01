@@ -4,8 +4,8 @@ import { Box } from '../../Box/Box';
 import { IconContainer, type IconContainerProps } from '../IconContainer';
 
 import { IconSentimentNegativeSvg } from './IconSentimentNegativeSvg';
+import { IconSentimentNeutralSvg } from './IconSentimentNeutralSvg';
 import { IconSentimentPositiveSvg } from './IconSentimentPositiveSvg';
-import { IconSentimentSvg } from './IconSentimentSvg';
 
 type Feeling = 'positive' | 'negative' | 'neutral';
 
@@ -16,7 +16,7 @@ export type IconSentimentProps = IconContainerProps & {
 const feelingToIcon: Record<Feeling, ComponentType> = {
   positive: IconSentimentPositiveSvg,
   negative: IconSentimentNegativeSvg,
-  neutral: IconSentimentSvg,
+  neutral: IconSentimentNeutralSvg,
 };
 
 export const IconSentiment: FC<IconSentimentProps> = ({

@@ -180,6 +180,9 @@ importers:
       '@babel/types':
         specifier: ^7.26.0
         version: 7.29.8
+      '@braid-design-system/icons':
+        specifier: workspace:*
+        version: link:../icons
       '@braid-design-system/source.macro':
         specifier: workspace:*
         version: link:../source.macro
@@ -249,9 +252,6 @@ importers:
       change-case:
         specifier: ^4.1.2
         version: 4.1.2
-      cheerio:
-        specifier: 1.0.0-rc.11
-        version: 1.0.0-rc.11
       fast-glob:
         specifier: ^3.3.2
         version: 3.3.3
@@ -285,9 +285,6 @@ importers:
       storybook:
         specifier: ^10.2.7
         version: 10.5.8(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8)
-      svgo:
-        specifier: ^2.8.0
-        version: 2.8.3
       title-case:
         specifier: ^3.0.3
         version: 3.0.3
@@ -388,6 +385,21 @@ importers:
       typescript:
         specifier: ~5.9.3
         version: 5.9.3
+
+  packages/icons:
+    devDependencies:
+      cheerio:
+        specifier: 1.0.0-rc.11
+        version: 1.0.0-rc.11
+      fast-glob:
+        specifier: ^3.3.2
+        version: 3.3.3
+      fs-extra:
+        specifier: ^10.1.0
+        version: 10.1.0
+      svgo:
+        specifier: ^2.8.0
+        version: 2.8.3
 
   packages/source.macro:
     dependencies:
