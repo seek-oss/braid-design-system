@@ -324,6 +324,29 @@ export const docs: PatternDocs = {
       affecting the whole system or specific products.
     </Text>
   ),
+  alternatives: [
+    {
+      name: 'Alert',
+      description:
+        'For strong in-flow messages that sit at page or section level.',
+    },
+    {
+      name: 'Dialog',
+      description:
+        'For exposing additional content in a modal with rich formatting.',
+    },
+    {
+      name: 'Box',
+      description:
+        'For creating custom layouts and UI elements when there is no Braid equivalent.',
+    },
+    {
+      name: 'messages-to-users',
+      section: 'patterns',
+      description:
+        'For finding the right messaging component or pattern based on context and urgency.',
+    },
+  ],
   docSections: {
     appearance: [
       {
