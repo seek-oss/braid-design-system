@@ -18,7 +18,7 @@ import {
 } from 'braid-design-system';
 import { Placeholder } from 'braid-design-system/playroom/components';
 
-import type { PatternDocs } from '../../../types';
+import type { PatternDocs } from '../../../../types';
 
 import * as styles from './wide-screen-layouts.css';
 

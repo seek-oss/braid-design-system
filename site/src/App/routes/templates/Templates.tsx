@@ -1,6 +1,7 @@
-import { Heading, Stack, Text, Tiles } from 'braid-design-system';
-
-import { LandingCard } from '../../LandingCard/LandingCard';
+import {
+  LandingCardTiles,
+  SectionLanding,
+} from '../../SectionLanding/SectionLanding';
 
 const templateCards = [
   {
@@ -21,17 +22,10 @@ const templateCards = [
 ];
 
 export const Templates = () => (
-  <Stack space="xxlarge">
-    <Stack space="medium">
-      <Heading component="h1" level="2">
-        Templates
-      </Heading>
-      <Text>Placeholder cards for template groups. Content to be refined.</Text>
-    </Stack>
-    <Tiles space="medium" columns={[1, 2, 3]}>
-      {templateCards.map((card) => (
-        <LandingCard key={card.href} {...card} />
-      ))}
-    </Tiles>
-  </Stack>
+  <SectionLanding
+    title="Templates"
+    intro="Placeholder cards for template groups. Content to be refined."
+  >
+    <LandingCardTiles cards={templateCards} />
+  </SectionLanding>
 );

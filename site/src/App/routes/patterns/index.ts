@@ -1,26 +1,26 @@
 import type { PatternDocs } from '../../../types';
 
-import bulkActions from './bulk-actions';
+import bulkActions from './docs/bulk-actions';
 import {
   howToEntries,
   patternCatalog,
   patternEntries,
   patternHref,
 } from './catalog';
-import contentDensity from './content-density';
-import dataVisPalette from './data-vis-palette';
-import dividedLists from './divided-lists';
-import emptyStates from './empty-states';
-import errorStates from './error-states';
-import filters from './filters';
-import forms from './forms';
-import messagesToUsers from './messages-to-users';
-import nudge from './nudge';
-import secondaryInformation from './secondary-information';
-import serviceOutageBanners from './service-outage-banners';
-import skeletonLoader from './skeleton-loader';
-import socialShare from './social-share';
-import wideScreenLayouts from './wide-screen-layouts';
+import contentDensity from './docs/content-density';
+import dataVisPalette from './docs/data-vis-palette';
+import dividedLists from './docs/divided-lists';
+import emptyStates from './docs/empty-states';
+import errorStates from './docs/error-states';
+import filters from './docs/filters';
+import forms from './docs/forms';
+import messagesToUsers from './docs/messages-to-users';
+import nudge from './docs/nudge';
+import secondaryInformation from './docs/secondary-information';
+import serviceOutageBanners from './docs/service-outage-banners';
+import skeletonLoader from './docs/skeleton-loader';
+import socialShare from './docs/social-share';
+import wideScreenLayouts from './docs/wide-screen-layouts';
 
 const patternDocsBySlug: Record<string, PatternDocs> = {
   'bulk-actions': bulkActions,

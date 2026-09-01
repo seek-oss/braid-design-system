@@ -11,11 +11,9 @@ import {
   IconHistory,
   Bleed,
   IconChevron,
-  Link,
   Spread,
 } from 'braid-design-system';
 import { Box } from 'braid-src/lib/components/Box/Box';
-import type { ReactNode } from 'react';
 
 import { useConfig } from '../../ConfigContext';
 import { ComponentsIllustration } from '../../LandingCard/Illustrations/ComponentsIllustration';
@@ -24,50 +22,11 @@ import { StylesIllustration } from '../../LandingCard/Illustrations/StylesIllust
 import { TemplatesIllustration } from '../../LandingCard/Illustrations/TemplatesIllustration';
 import { LandingCard } from '../../LandingCard/LandingCard';
 import { Logo } from '../../Logo/Logo';
+import { gettingStartedLinks } from '../../gettingStartedLinks';
 
 import { HeroShowcase } from './HeroShowcase';
 
 import * as styles from './home.css';
-import * as landingCardStyles from '../../LandingCard/LandingCard.css';
-
-const DestinationCard = ({
-  href,
-  label,
-  description,
-  icon,
-}: {
-  href: string;
-  label: string;
-  description: string;
-  icon: ReactNode;
-}) => (
-  <Box position="relative" height="full">
-    <Link
-      href={href}
-      className={landingCardStyles.linkOverlay}
-      aria-label={label}
-    />
-    <Box
-      background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
-      overflow="hidden"
-      borderRadius="large"
-      height="full"
-      className={landingCardStyles.card}
-    >
-      <Box padding="gutter">
-        <Stack space="medium">
-          <Box className={styles.destinationIcon} aria-hidden>
-            {icon}
-          </Box>
-          <Stack space="small">
-            <Heading level="4">{label}</Heading>
-            <Text tone="secondary">{description}</Text>
-          </Stack>
-        </Stack>
-      </Box>
-    </Box>
-  </Box>
-);
 
 export const HomePage = () => {
   const { playroomUrl } = useConfig();
@@ -152,75 +111,46 @@ export const HomePage = () => {
               development workflows.
             </Text>
             <Inline space="small">
-              <ButtonLink
-                href="/getting-started/job-summary"
-                variant="transparent"
-                icon={<IconChevron direction="right" />}
-                iconPosition="trailing"
-              >
-                Job Summary tutorial
-              </ButtonLink>
-              <ButtonLink
-                href="/design-workflow"
-                variant="transparent"
-                icon={<IconChevron direction="right" />}
-                iconPosition="trailing"
-              >
-                Start designing
-              </ButtonLink>
-              <ButtonLink
-                href="/development-workflow"
-                variant="transparent"
-                icon={<IconChevron direction="right" />}
-                iconPosition="trailing"
-              >
-                Start developing
-              </ButtonLink>
+              {gettingStartedLinks.map(({ href, label }) => (
+                <ButtonLink
+                  key={href}
+                  href={href}
+                  variant="transparent"
+                  icon={<IconChevron direction="right" />}
+                  iconPosition="trailing"
+                >
+                  {label}
+                </ButtonLink>
+              ))}
             </Inline>
           </Stack>
         </Box>
       </Bleed>
 
       <Tiles space="medium" columns={[1, 2, 4]}>
-        <DestinationCard
+        <LandingCard
           href="/releases"
           label="Releases"
           description="What’s new in Braid."
-          icon={
-            <Box className={styles.destinationGlyph}>
-              <IconHistory size="fill" />
-            </Box>
-          }
+          icon={<IconHistory size="fill" />}
         />
-        <DestinationCard
+        <LandingCard
           href="/gallery"
           label="Gallery"
           description="Browse every component in one place."
-          icon={
-            <Box className={styles.destinationGlyph}>
-              <Logo iconOnly height="100%" width="100%" />
-            </Box>
-          }
+          icon={<Logo iconOnly height="100%" width="100%" />}
         />
-        <DestinationCard
+        <LandingCard
           href={playroomUrl}
           label="Playroom"
           description="Prototype with live Braid components."
-          icon={
-            <Box className={styles.destinationGlyph}>
-              <IconNewWindow size="fill" />
-            </Box>
-          }
+          icon={<IconNewWindow size="fill" />}
         />
-        <DestinationCard
+        <LandingCard
           href="https://github.com/seek-oss/braid-design-system"
           label="GitHub"
           description="Source, issues, and release history."
-          icon={
-            <Box className={styles.destinationGlyph}>
-              <IconSocialGitHub size="fill" />
-            </Box>
-          }
+          icon={<IconSocialGitHub size="fill" />}
         />
       </Tiles>
     </Stack>

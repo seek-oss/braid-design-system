@@ -25,7 +25,7 @@ import {
 import { vars } from 'braid-design-system/css';
 import { Placeholder } from 'braid-design-system/playroom/components';
 
-import type { PatternDocs } from '../../../types';
+import type { PatternDocs } from '../../../../types';
 
 type SpaceName = 'xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 

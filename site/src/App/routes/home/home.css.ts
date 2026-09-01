@@ -6,17 +6,8 @@ import { colorModeStyle } from 'braid-src/lib/css/colorModeStyle';
 import { vars } from 'braid-src/lib/themes/vars.css';
 import { darken } from 'polished';
 
-import {
-  illustrationCanvas,
-  illustrationFills,
-} from '../../LandingCard/illustrationPalette';
 import { contentBlockXLWidth } from '../../Navigation/navigationSizes';
 
-import {
-  card,
-  inColorMode,
-  linkOverlay,
-} from '../../LandingCard/LandingCard.css';
 
 const canvasLight = darken(0.025, palette.grey['100']);
 
@@ -91,56 +82,3 @@ export const gettingStartedCard = style([
   }),
 ]);
 
-const destinationColorTransition = '250ms ease';
-const hoveredDestination = `${linkOverlay}:hover + ${card} &, ${linkOverlay}:focus-visible + ${card} &`;
-const inMode = (mode: keyof typeof inColorMode, selector: string) =>
-  `${inColorMode[mode]} ${selector.replaceAll(', ', `, ${inColorMode[mode]} `)}`;
-
-const destinationRest = colorModeStyle({
-  lightMode: {
-    backgroundColor: illustrationCanvas.rest.light,
-    color: illustrationFills.neutral.rest.light,
-  },
-  darkMode: {
-    backgroundColor: illustrationCanvas.rest.dark,
-    color: illustrationFills.neutral.rest.dark,
-  },
-});
-
-export const destinationIcon = style([
-  atoms({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 'large',
-  }),
-  destinationRest,
-  {
-    width: 56,
-    height: 56,
-    transition: `background-color ${destinationColorTransition}, color ${destinationColorTransition}`,
-    selectors: {
-      ...destinationRest.selectors,
-      [inMode('light', hoveredDestination)]: {
-        backgroundColor: illustrationCanvas.hover.light,
-        color: illustrationFills.neutral.hover.light,
-      },
-      [inMode('dark', hoveredDestination)]: {
-        backgroundColor: illustrationCanvas.hover.dark,
-        color: illustrationFills.neutral.hover.dark,
-      },
-    },
-  },
-]);
-
-export const destinationGlyph = style({
-  width: 28,
-  height: 28,
-  color: 'inherit',
-});
-
-globalStyle(`${destinationIcon} svg`, {
-  color: 'inherit',
-  fill: 'currentColor',
-  transition: `fill ${destinationColorTransition}`,
-});

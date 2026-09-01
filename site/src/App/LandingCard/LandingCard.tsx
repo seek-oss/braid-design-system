@@ -12,6 +12,7 @@ export interface LandingCardProps {
   description: string;
   illustration?: ReactNode;
   illustrationSize?: 'standard' | 'compact';
+  icon?: ReactNode;
 }
 
 export const LandingCard = ({
@@ -20,6 +21,7 @@ export const LandingCard = ({
   description,
   illustration,
   illustrationSize = 'standard',
+  icon,
 }: LandingCardProps) => {
   const compact = Boolean(illustration) && illustrationSize === 'compact';
   const mediaClass = compact ? styles.mediaCompact : styles.media;
@@ -33,8 +35,15 @@ export const LandingCard = ({
   const copy = (
     <Box padding="gutter">
       <Stack space="medium">
-        <Heading level="4">{label}</Heading>
-        <Text tone="secondary">{description}</Text>
+        {icon ? (
+          <Box className={styles.destinationIcon} aria-hidden>
+            <Box className={styles.destinationGlyph}>{icon}</Box>
+          </Box>
+        ) : null}
+        <Stack space={icon ? 'small' : 'medium'}>
+          <Heading level="4">{label}</Heading>
+          <Text tone="secondary">{description}</Text>
+        </Stack>
       </Stack>
     </Box>
   );

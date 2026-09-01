@@ -11,6 +11,30 @@ const foundations = {
   '/foundations/iconography': iconography,
 };
 
+
+const foundationDescriptions: Record<keyof typeof foundations, string> = {
+  '/foundations/layout':
+    'Spacing, structure, and composition primitives.',
+  '/foundations/tones':
+    'Semantic colour language used across components.',
+  '/foundations/iconography':
+    'Guidance for using and browsing Braid icons.',
+};
+
+export const foundationLandingCards = [
+  ...Object.entries(foundations).map(([href, foundation]) => ({
+    href,
+    label: foundation.title,
+    description:
+      foundationDescriptions[href as keyof typeof foundationDescriptions],
+  })),
+  ...cssFoundationDocs.map((doc) => ({
+    href: doc.path,
+    label: doc.title,
+    description: doc.description,
+  })),
+];
+
 export default foundations;
 
 export const foundationNavItems: Array<{

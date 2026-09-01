@@ -1,7 +1,8 @@
-import { Box, Link, Stack, Text, Tiles, Heading } from 'braid-design-system';
+import { Box, Link, Stack, Text, Tiles } from 'braid-design-system';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 
 import { documentedComponents } from '../../navigationHelpers';
+import { SectionLanding } from '../../SectionLanding/SectionLanding';
 import { ScaledPreview } from '../templates';
 
 import * as styles from '../templates/templateGroupPage.css';
@@ -22,13 +23,7 @@ const ComponentTile = ({
 );
 
 export const Components = () => (
-  <Stack space="xxlarge">
-    <Stack space="medium">
-      <Heading component="h1" level="2">
-        Components
-      </Heading>
-      <Text>lorem</Text>
-    </Stack>
+  <SectionLanding title="Components" intro="lorem">
     <Tiles space="medium" columns={[1, 2, 3]}>
       {documentedComponents
         .filter((component) => component.category !== 'Logic')
@@ -36,5 +31,5 @@ export const Components = () => (
           <ComponentTile key={component.name} {...component} />
         ))}
     </Tiles>
-  </Stack>
+  </SectionLanding>
 );

@@ -10,7 +10,7 @@ import {
 } from 'braid-design-system';
 import { vars } from 'braid-design-system/css';
 
-import type { PatternDocs } from '../../../types';
+import type { PatternDocs } from '../../../../types';
 
 const SkeletonImage = ({
   height,

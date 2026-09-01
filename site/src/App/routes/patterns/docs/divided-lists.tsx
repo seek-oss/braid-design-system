@@ -32,7 +32,7 @@ import {
   TextLink,
 } from 'braid-design-system';
 
-import type { PatternDocs } from '../../../types';
+import type { PatternDocs } from '../../../../types';
 
 interface DividedListItem {
   id: string;

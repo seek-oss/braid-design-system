@@ -1,4 +1,4 @@
-import { style, styleVariants } from '@vanilla-extract/css';
+import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
 import { atoms, responsiveStyle } from 'braid-design-system/css';
 import { colorModeSelectors } from 'braid-src/lib/css/atoms/sprinkles.css';
 import { colorModeStyle } from 'braid-src/lib/css/colorModeStyle';
@@ -163,3 +163,55 @@ export const fills = styleVariants(illustrationFills, ({ rest, hover }) => ({
   transition: `fill ${colorTransition}`,
   ...adaptiveStyle('fill', rest, hover, hoveredFill),
 }));
+
+const destinationColorTransition = '250ms ease';
+const hoveredDestination = `${linkOverlay}:hover + ${card} &, ${linkOverlay}:focus-visible + ${card} &`;
+
+const destinationRest = colorModeStyle({
+  lightMode: {
+    backgroundColor: illustrationCanvas.rest.light,
+    color: illustrationFills.neutral.rest.light,
+  },
+  darkMode: {
+    backgroundColor: illustrationCanvas.rest.dark,
+    color: illustrationFills.neutral.rest.dark,
+  },
+});
+
+export const destinationIcon = style([
+  atoms({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 'large',
+  }),
+  destinationRest,
+  {
+    width: 56,
+    height: 56,
+    transition: `background-color ${destinationColorTransition}, color ${destinationColorTransition}`,
+    selectors: {
+      ...destinationRest.selectors,
+      [inMode('light', hoveredDestination)]: {
+        backgroundColor: illustrationCanvas.hover.light,
+        color: illustrationFills.neutral.hover.light,
+      },
+      [inMode('dark', hoveredDestination)]: {
+        backgroundColor: illustrationCanvas.hover.dark,
+        color: illustrationFills.neutral.hover.dark,
+      },
+    },
+  },
+]);
+
+export const destinationGlyph = style({
+  width: 28,
+  height: 28,
+  color: 'inherit',
+});
+
+globalStyle(`${destinationIcon} svg`, {
+  color: 'inherit',
+  fill: 'currentColor',
+  transition: `fill ${destinationColorTransition}`,
+});

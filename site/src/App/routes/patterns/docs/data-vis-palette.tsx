@@ -1,6 +1,6 @@
 import { Box, List, Stack, Strong, Text, TextLink } from 'braid-design-system';
 
-import type { PatternDocs } from '../../../types';
+import type { PatternDocs } from '../../../../types';
 
 const lightPalette = [
   '#e60278',
