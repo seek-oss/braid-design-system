@@ -89,7 +89,11 @@ export const InButtonIcon: Story = {
     <Inline space="large" alignY="center">
       <ButtonIcon size="small" icon={<CustomIcon />} label="Small" />
       <ButtonIcon size="standard" icon={<CustomIcon />} label="Standard" />
-      <ButtonIcon size="large" icon={<CustomIcon />} label="Large" />
+      <ButtonIcon
+        size="large"
+        icon={<CustomIcon tone="critical" />}
+        label="Large"
+      />
     </Inline>
   ),
 };
