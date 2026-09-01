@@ -18,6 +18,7 @@ import { Box } from 'braid-src/lib/components/Box/Box';
 import { useConfig } from '../../ConfigContext';
 import { ComponentsIllustration } from '../../LandingCard/Illustrations/ComponentsIllustration';
 import { FoundationsIllustration } from '../../LandingCard/Illustrations/FoundationsIllustration';
+import { PatternsIllustration } from '../../LandingCard/Illustrations/PatternsIllustration';
 import { StylesIllustration } from '../../LandingCard/Illustrations/StylesIllustration';
 import { TemplatesIllustration } from '../../LandingCard/Illustrations/TemplatesIllustration';
 import { LandingCard } from '../../LandingCard/LandingCard';
@@ -80,7 +81,7 @@ export const HomePage = () => {
               href="/patterns"
               label="Patterns"
               description="Reusable patterns composing components into common experiences. Practical recipes for forms, lists, and everyday layouts."
-              illustration={<ComponentsIllustration />}
+              illustration={<PatternsIllustration />}
             />
           </Tiles>
           <Tiles space="medium" columns={[1, 2]}>

@@ -28,7 +28,11 @@ export const LandingCard = ({
 
   const media = illustration ? (
     <Box className={[mediaClass, styles.mediaCanvas]} aria-hidden>
-      <Box className={styles.illustration}>{illustration}</Box>
+      <Box
+        className={compact ? styles.illustrationCompact : styles.illustration}
+      >
+        {illustration}
+      </Box>
     </Box>
   ) : null;
 

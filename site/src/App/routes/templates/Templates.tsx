@@ -14,11 +14,6 @@ const templateCards = [
     label: 'Sections',
     description: 'Composable content blocks to drop into page layouts.',
   },
-  {
-    href: '/templates',
-    label: 'Coming soon',
-    description: 'Placeholder for additional template groups.',
-  },
 ];
 
 export const Templates = () => (

@@ -157,6 +157,12 @@ export const illustration = style({
   height: '80%',
 });
 
+export const illustrationCompact = style({
+  width: '80%',
+  height: '80%',
+  aspectRatio: '1 / 1',
+});
+
 const hoveredFill = `${linkOverlay}:hover + ${card} ${mediaSlot} &, ${linkOverlay}:focus-visible + ${card} ${mediaSlot} &`;
 
 export const fills = styleVariants(illustrationFills, ({ rest, hover }) => ({
