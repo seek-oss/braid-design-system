@@ -11,6 +11,7 @@ import contentDensity from './docs/content-density';
 import dataVisPalette from './docs/data-vis-palette';
 import dividedLists from './docs/divided-lists';
 import emptyStates from './docs/empty-states';
+import errorMessages from './docs/error-messages';
 import errorStates from './docs/error-states';
 import filters from './docs/filters';
 import forms from './docs/forms';
@@ -26,6 +27,7 @@ const patternDocsBySlug: Record<string, PatternDocs> = {
   'bulk-actions': bulkActions,
   'divided-list': dividedLists,
   'empty-state': emptyStates,
+  'error-messages': errorMessages,
   'error-state': errorStates,
   filters,
   forms,

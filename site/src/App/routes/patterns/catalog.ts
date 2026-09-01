@@ -5,6 +5,7 @@ export interface PatternEntry {
   title: string;
   description: string;
   kind: PatternKind;
+  parent?: string;
 }
 
 export const patternCatalog: PatternEntry[] = [
@@ -35,6 +36,14 @@ export const patternCatalog: PatternEntry[] = [
     kind: 'pattern',
     description:
       'Displays a message when an expected action fails, alerting users to the problem and how to proceed.',
+  },
+  {
+    slug: 'error-messages',
+    title: 'Error messages',
+    kind: 'pattern',
+    parent: 'error-state',
+    description:
+      'A library of existing error messages to reuse or adapt when designing error states.',
   },
   {
     slug: 'filters',
@@ -127,12 +136,29 @@ export const getPatternEntry = (slug: string): PatternEntry => {
   return entry;
 };
 
+const invalidParents = patternCatalog.filter(
+  (entry) =>
+    entry.parent && !patternCatalog.some((item) => item.slug === entry.parent),
+);
+
+if (invalidParents.length > 0) {
+  throw new Error(
+    `Pattern catalog entries have unknown parents: ${invalidParents
+      .map((entry) => `${entry.slug} → ${entry.parent}`)
+      .join(', ')}`,
+  );
+}
+
 export const patternEntries = patternCatalog.filter(
-  (entry) => entry.kind === 'pattern',
+  (entry) => entry.kind === 'pattern' && !entry.parent,
 );
 
 export const howToEntries = patternCatalog.filter(
-  (entry) => entry.kind === 'how-to',
+  (entry) => entry.kind === 'how-to' && !entry.parent,
+);
+
+export const patternChildEntries = patternCatalog.filter((entry) =>
+  Boolean(entry.parent),
 );
 
 export const toLandingCard = (entry: PatternEntry) => ({

@@ -758,6 +758,13 @@ export const docs: PatternDocs = {
                   </TableRow>
                 </TableBody>
               </Table>
+              <Text>
+                See the{' '}
+                <TextLink href="/patterns/error-messages">
+                  error messages
+                </TextLink>{' '}
+                library for existing copy to reuse or adapt.
+              </Text>
             </Stack>
           </Stack>
         ),
