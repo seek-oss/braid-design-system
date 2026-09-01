@@ -1,5 +1,59 @@
 # braid-design-system
 
+## 34.8.0
+
+### Minor Changes
+
+- **IconRenderer:** Add support for `size="fill"` ([#2132](https://github.com/seek-oss/braid-design-system/pull/2132))
+
+  **EXAMPLE USAGE:**
+  Provides the ability for custom icons to be sized to their container in the same way as Braid icons.
+
+  ```jsx
+  <Box style={{ height: 60, width: 60 }}>
+    <IconRenderer size="fill">
+      {({ className }) => (
+        <svg
+          viewBox="0 0 24 24"
+          className={className}
+          fill="currentcolor"
+          aria-hidden
+        >
+          ...
+        </svg>
+      )}
+    </IconRenderer>
+  </Box>
+  ```
+
+- **Accordion:** Deprecate `space` prop and update spacing defaults ([#2120](https://github.com/seek-oss/braid-design-system/pull/2120))
+
+  The `space` prop is now deprecated and will be removed in a future release. Spacing between items is now automatically derived from the `size` prop.
+
+  The following default spacing value has been updated:
+
+  | `dividers` | `size`     | Previous default | New default |
+  | ---------- | ---------- | ---------------- | ----------- |
+  | `false`    | `standard` | `large`          | `medium`    |
+
+  **MIGRATION GUIDE:**
+
+  If the updated default causes an undesired visual change, you can preserve the previous spacing by explicitly setting the `space` prop while migrating:
+
+  ```diff
+   <Accordion
+  +  space="large"
+     dividers={false}
+     size="standard"
+   >
+  ```
+
+### Patch Changes
+
+- **Dialog, Drawer:** Improve close button positioning on mobile ([#2130](https://github.com/seek-oss/braid-design-system/pull/2130))
+
+- **Drawer:** Ensure full height content extends to available height ([#2130](https://github.com/seek-oss/braid-design-system/pull/2130))
+
 ## 34.7.0
 
 ### Minor Changes
