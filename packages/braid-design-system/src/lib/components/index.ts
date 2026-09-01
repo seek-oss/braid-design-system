@@ -17,6 +17,7 @@ export { Actions } from './Actions/Actions';
 export { Alert } from './Alert/Alert';
 export { Autosuggest } from './Autosuggest/Autosuggest';
 export { filterSuggestions } from './Autosuggest/filterSuggestions';
+export { Avatar } from './Avatar/Avatar';
 export { Badge } from './Badge/Badge';
 export { Bleed } from './Bleed/Bleed';
 // TODO: COLORMODE RELEASE
