@@ -55,16 +55,16 @@ export const docs: PatternDocs = {
     {
       name: 'Card',
       description:
-        'To provide a summary and entry point to more detailed information',
+        'For providing a summary and entry point to more detailed information.',
     },
     {
       name: 'Divider',
-      description: 'To separate consecutive list items',
+      description: 'For separating consecutive list items.',
     },
     {
       name: 'bulk-actions',
       section: 'patterns',
-      description: 'To apply the same action to multiple list items',
+      description: 'For applying the same action to multiple list items.',
     },
   ],
   docSections: {
@@ -522,35 +522,38 @@ export const docs: PatternDocs = {
       {
         label: 'When to use',
         description: (
-          <>
-            <Text>Use a divided list:</Text>
-            <List space="large">
-              <Text>
-                to display a group of related items consecutively in an
-                organised way
-              </Text>
-              <Text>
-                to allow the user to easily locate an individual item and take
-                action on that item
-              </Text>
-              <Text>
-                when it&rsquo;s important for the user to view each list item as
-                a whole.
-              </Text>
-            </List>
-            <Text>Don&rsquo;t use a divided list:</Text>
-            <List space="large">
-              <Text>
-                to display a numerical dataset using rows and columns (use a{' '}
-                <TextLink href="/components/Table">Table</TextLink> instead)
-              </Text>
-              <Text>
-                to provide a summary and entry point to more detailed
-                information (use a{' '}
-                <TextLink href="/components/Card">Card</TextLink> instead).
-              </Text>
-            </List>
-          </>
+          <Stack space="xlarge">
+            <Stack space="large">
+              <Text>Use a divided list when:</Text>
+              <List space="large">
+                <Text>
+                  displaying a group of related items consecutively in an
+                  organised way
+                </Text>
+                <Text>
+                  users need to locate an individual item and take action on it
+                </Text>
+                <Text>
+                  it&rsquo;s important for the user to view each list item as a
+                  whole.
+                </Text>
+              </List>
+            </Stack>
+            <Stack space="large">
+              <Text>Don&rsquo;t use a divided list when:</Text>
+              <List space="large">
+                <Text>
+                  displaying a numerical dataset using rows and columns (use a{' '}
+                  <TextLink href="/components/Table">Table</TextLink> instead)
+                </Text>
+                <Text>
+                  providing a summary and entry point to more detailed
+                  information (use a{' '}
+                  <TextLink href="/components/Card">Card</TextLink> instead).
+                </Text>
+              </List>
+            </Stack>
+          </Stack>
         ),
       },
     ],

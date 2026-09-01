@@ -35,15 +35,15 @@ export const docs: PatternDocs = {
       name: 'error-state',
       section: 'patterns',
       description:
-        'For when the website or app fails to complete an expected action',
+        'For when the website or app fails to complete an expected action.',
     },
     {
       name: 'Alert',
-      description: 'For in-flow messaging',
+      description: 'For in-flow messaging.',
     },
     {
       name: 'Notice',
-      description: 'For lighter in-flow messaging',
+      description: 'For lighter in-flow messaging.',
     },
   ],
   docSections: {
@@ -530,7 +530,7 @@ export const docs: PatternDocs = {
                 <Text>there is no data to display yet</Text>
                 <Text>there are no matching search results</Text>
                 <Text>
-                  a first time user must take an action to populate the data
+                  a first time user must take an action to populate the data.
                 </Text>
               </List>
             </Stack>

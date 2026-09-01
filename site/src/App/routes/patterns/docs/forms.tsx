@@ -10,6 +10,7 @@ import {
   IconArrow,
   IconSend,
   Inline,
+  List,
   Stack,
   Step,
   Stepper,
@@ -444,6 +445,34 @@ export const docs: PatternDocs = {
               scrolling to the first error.
             </Text>
           </>
+        ),
+      },
+    ],
+    bestPractices: [
+      {
+        label: 'When to use',
+        description: (
+          <Stack space="xlarge">
+            <Stack space="large">
+              <Text>Use a form when:</Text>
+              <List space="large">
+                <Text>
+                  users need to enter, validate, and submit information
+                </Text>
+                <Text>a task has multiple related fields.</Text>
+              </List>
+            </Stack>
+            <Stack space="large">
+              <Text>Don&rsquo;t use a form when:</Text>
+              <List space="large">
+                <Text>
+                  users need to narrow a list rather than act on it (use{' '}
+                  <TextLink href="/patterns/filters">Filters</TextLink>{' '}
+                  instead).
+                </Text>
+              </List>
+            </Stack>
+          </Stack>
         ),
       },
     ],

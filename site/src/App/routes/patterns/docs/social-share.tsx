@@ -9,6 +9,7 @@ import {
   IconSocialX,
   Inline,
   List,
+  Stack,
   MenuItemLink,
   MenuRenderer,
   Text,
@@ -27,19 +28,19 @@ export const docs: PatternDocs = {
   alternatives: [
     {
       name: 'MenuItem',
-      description: 'For displaying buttons and links within a menu',
+      description: 'For displaying buttons and links within a menu.',
     },
     {
       name: 'MenuRenderer',
-      description: 'For custom menu components',
+      description: 'For custom menu components.',
     },
     {
       name: 'Button',
-      description: 'For a semantic button',
+      description: 'For a semantic button.',
     },
     {
       name: 'ButtonIcon',
-      description: 'For buttons containing only an icon',
+      description: 'For buttons containing only an icon.',
     },
   ],
   docSections: {
@@ -160,6 +161,40 @@ export const docs: PatternDocs = {
               appropriate.
             </Text>
           </List>
+        ),
+      },
+      {
+        label: 'When to use',
+        description: (
+          <Stack space="xlarge">
+            <Stack space="large">
+              <Text>Use social share:</Text>
+              <List space="large">
+                <Text>
+                  to allow users to share content with social networks or
+                  specific people.
+                </Text>
+              </List>
+            </Stack>
+            <Stack space="large">
+              <Text>Don&rsquo;t use social share:</Text>
+              <List space="large">
+                <Text>
+                  to provide a single action such as copy link (use a{' '}
+                  <TextLink href="/components/Button">Button</TextLink> or{' '}
+                  <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink>{' '}
+                  instead)
+                </Text>
+                <Text>
+                  to build a general menu that is not for sharing (use a{' '}
+                  <TextLink href="/components/MenuRenderer">
+                    MenuRenderer
+                  </TextLink>{' '}
+                  instead).
+                </Text>
+              </List>
+            </Stack>
+          </Stack>
         ),
       },
     ],

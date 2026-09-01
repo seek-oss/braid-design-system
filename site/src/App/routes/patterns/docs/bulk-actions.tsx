@@ -32,18 +32,18 @@ export const docs: PatternDocs = {
   alternatives: [
     {
       name: 'Checkbox',
-      description: 'To allow users to make multiple selections',
+      description: 'For allowing users to make multiple selections.',
     },
     {
       name: 'Card',
       description:
-        'To provide a summary and entry point to more detailed information',
+        'For providing a summary and entry point to more detailed information.',
     },
     {
       name: 'divided-list',
       section: 'patterns',
       description:
-        'To display a group of related items consecutively in an organised way',
+        'For displaying a group of related items consecutively in an organised way.',
     },
   ],
   docSections: {
@@ -425,6 +425,38 @@ export const docs: PatternDocs = {
               confirmation message.
             </Text>
           </List>
+        ),
+      },
+      {
+        label: 'When to use',
+        description: (
+          <Stack space="xlarge">
+            <Stack space="large">
+              <Text>Use bulk actions:</Text>
+              <List space="large">
+                <Text>
+                  to let users apply the same action to multiple items at once
+                </Text>
+                <Text>
+                  in lists that contain more than one actionable item.
+                </Text>
+              </List>
+            </Stack>
+            <Stack space="large">
+              <Text>Don&rsquo;t use bulk actions:</Text>
+              <List space="large">
+                <Text>
+                  to let users change the order of items (provide a sort option
+                  instead)
+                </Text>
+                <Text>
+                  if users need to narrow a list rather than act on it (use{' '}
+                  <TextLink href="/patterns/filters">Filters</TextLink>{' '}
+                  instead).
+                </Text>
+              </List>
+            </Stack>
+          </Stack>
         ),
       },
     ],

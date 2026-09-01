@@ -36,15 +36,15 @@ export const docs: PatternDocs = {
     {
       name: 'empty-state',
       section: 'patterns',
-      description: 'For when there is no data available at the present time',
+      description: 'For when there is no data available at the present time.',
     },
     {
       name: 'Alert',
-      description: 'For in-flow messaging',
+      description: 'For in-flow messaging.',
     },
     {
       name: 'Notice',
-      description: 'For lighter in-flow messaging',
+      description: 'For lighter in-flow messaging.',
     },
   ],
   docSections: {
@@ -480,7 +480,7 @@ export const docs: PatternDocs = {
                 </Text>
                 <Text>
                   a page or resource cannot be found, such as a missing page or
-                  bad request
+                  bad request.
                 </Text>
               </List>
             </Stack>

@@ -772,6 +772,39 @@ export const docs: PatternDocs = {
           </>
         ),
       },
+      {
+        label: 'When to use',
+        description: (
+          <Stack space="xlarge">
+            <Stack space="large">
+              <Text>Use a service outage banner when:</Text>
+              <List space="large">
+                <Text>
+                  an entire system or product is unavailable or reduced
+                </Text>
+                <Text>
+                  to inform customers about upcoming planned disruptions.
+                </Text>
+              </List>
+            </Stack>
+            <Stack space="large">
+              <Text>Don&rsquo;t use a service outage banner when:</Text>
+              <List space="large">
+                <Text>
+                  a single user action failed (use an{' '}
+                  <TextLink href="/patterns/error-state">Error state</TextLink>{' '}
+                  instead)
+                </Text>
+                <Text>
+                  there is no data available yet (use an{' '}
+                  <TextLink href="/patterns/empty-state">Empty state</TextLink>{' '}
+                  instead)
+                </Text>
+              </List>
+            </Stack>
+          </Stack>
+        ),
+      },
     ],
   },
 };

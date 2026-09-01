@@ -124,7 +124,7 @@ export const docs: PatternDocs = {
               <List space="large">
                 <Text>users need to hide and show items in a list</Text>
                 <Text>
-                  users need to narrow down a large data set to gain insights
+                  users need to narrow down a large data set to gain insights.
                 </Text>
               </List>
             </Stack>
