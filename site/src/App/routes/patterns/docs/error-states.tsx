@@ -523,6 +523,242 @@ export const docs: PatternDocs = {
                 </Card>
               </Tiles>
             </Stack>
+            <Stack space="large">
+              <Heading level="4">How to respond to errors</Heading>
+              <Table label="How to respond to errors" alignY="top">
+                <TableHeader>
+                  <TableRow>
+                    <TableHeaderCell wrap width="20%" minWidth={150}>
+                      <Text size="small">If the error&hellip;</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="10%" minWidth={120}>
+                      <Text size="small">User feels</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="10%" minWidth={110}>
+                      <Text size="small">Our goal</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="30%" minWidth={180}>
+                      <Text size="small">How to respond</Text>
+                    </TableHeaderCell>
+                    <TableHeaderCell wrap width="30%" minWidth={180}>
+                      <Text size="small">Recommended message</Text>
+                    </TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell wrap width="20%" minWidth={150}>
+                      <List space="medium">
+                        <Text size="small">can be resolved by the user</Text>
+                        <Text size="small">is easy and quick to resolve</Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="10%" minWidth={120}>
+                      <Text size="small">Annoyed</Text>
+                    </TableCell>
+                    <TableCell wrap width="10%" minWidth={110}>
+                      <Text size="small" weight="strong">
+                        Instruct
+                      </Text>
+                    </TableCell>
+                    <TableCell wrap width="30%" minWidth={180}>
+                      <List space="medium">
+                        <Text size="small">
+                          Tell the user clearly what they need to do to resolve
+                          the error.
+                        </Text>
+                        <Text size="small">
+                          It&rsquo;s an easy fix so let&rsquo;s get them back on
+                          track quickly.
+                        </Text>
+                        <Text size="small">
+                          Don&rsquo;t make this a big deal i.e. don&rsquo;t use
+                          negative words.
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="30%" minWidth={180}>
+                      <Text size="small">
+                        Select one of the cover letter options.
+                      </Text>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell wrap width="20%" minWidth={150}>
+                      <List space="medium">
+                        <Text size="small">
+                          can&rsquo;t be resolved by the user (low to no effort
+                          is needed from the user)
+                        </Text>
+                        <Text size="small">
+                          requires the user to wait for SEEK (or someone else)
+                          to resolve it
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="10%" minWidth={120}>
+                      <Text size="small">Frustrated</Text>
+                    </TableCell>
+                    <TableCell wrap width="10%" minWidth={110}>
+                      <Text size="small" weight="strong">
+                        Reassure
+                      </Text>
+                    </TableCell>
+                    <TableCell wrap width="30%" minWidth={180}>
+                      <List space="medium">
+                        <Text size="small">
+                          Since there&rsquo;s not much the user can do, reassure
+                          them that we&rsquo;re doing all we can.
+                        </Text>
+                        <Text size="small">
+                          This is an opportunity to introduce some
+                          light-heartedness.
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="30%" minWidth={180}>
+                      <Stack space="medium">
+                        <Text size="small" weight="strong">
+                          We&rsquo;re working on it
+                        </Text>
+                        <Text size="small">
+                          We can&rsquo;t load this right now but we&rsquo;re
+                          doing our best to fix it.
+                        </Text>
+                        <Text size="small">
+                          Try refreshing the page or check back later.
+                        </Text>
+                      </Stack>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell wrap width="20%" minWidth={150}>
+                      <List space="medium">
+                        <Text size="small">can be resolved by the user</Text>
+                        <Text size="small">
+                          requires user to go through many steps to resolve it
+                        </Text>
+                        <Text size="small">
+                          user can continue with their task or other parts of
+                          the process
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="10%" minWidth={120}>
+                      <Text size="small">Irritated</Text>
+                    </TableCell>
+                    <TableCell wrap width="10%" minWidth={110}>
+                      <Text size="small" weight="strong">
+                        Explain
+                      </Text>
+                    </TableCell>
+                    <TableCell wrap width="30%" minWidth={180}>
+                      <List space="medium">
+                        <Text size="small">
+                          Explain clearly what the user needs to do.
+                        </Text>
+                        <Text size="small">
+                          Take the time and space to break the process into
+                          steps.
+                        </Text>
+                        <Text size="small">
+                          Provide as much information as needed to help users
+                          resolve the error.
+                        </Text>
+                        <Text size="small">
+                          If the process is particularly tedious, try to inject
+                          some playfulness, if appropriate.
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="30%" minWidth={180}>
+                      <Stack space="medium">
+                        <Text size="small" weight="strong">
+                          Get access with Premium Talent Search
+                        </Text>
+                        <Text size="small">
+                          Our Customer Service team can help to organise a
+                          subscription.
+                        </Text>
+                        <Text size="small">
+                          Or you can browse talent search matches for your
+                          active job ads.
+                        </Text>
+                      </Stack>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell wrap width="20%" minWidth={150}>
+                      <List space="medium">
+                        <Text size="small">
+                          can&rsquo;t be resolved by the user or requires the
+                          user to go through many steps
+                        </Text>
+                        <Text size="small">
+                          prevents the user from completing a critical or
+                          time-sensitive task
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="10%" minWidth={120}>
+                      <Text size="small">Infuriated</Text>
+                    </TableCell>
+                    <TableCell wrap width="10%" minWidth={110}>
+                      <Text size="small" weight="strong">
+                        Support
+                      </Text>
+                    </TableCell>
+                    <TableCell wrap width="30%" minWidth={180}>
+                      <List space="medium">
+                        <Text size="small">
+                          It&rsquo;s always best to avoid a situation that would
+                          infuriate someone.
+                        </Text>
+                        <Text size="small">
+                          Sometimes it might not be our fault or something we
+                          have control over.
+                        </Text>
+                        <Text size="small">
+                          Be helpful, supportive and calm to defuse the
+                          situation.
+                        </Text>
+                        <Text size="small">
+                          This is not the time to be upbeat or playful.
+                        </Text>
+                      </List>
+                    </TableCell>
+                    <TableCell wrap width="30%" minWidth={180}>
+                      <Stack space="large">
+                        <Stack space="medium">
+                          <Text size="small" weight="strong">
+                            We&rsquo;re trying to connect
+                          </Text>
+                          <Text size="small">
+                            Check your internet connection and try again.
+                          </Text>
+                          <Text size="small">
+                            If it still doesn&rsquo;t work, you may have to
+                            contact your network provider.
+                          </Text>
+                          <Text size="small">
+                            We&rsquo;re always here to help, so reach out
+                            anytime.
+                          </Text>
+                        </Stack>
+                        <Stack space="medium">
+                          <Text size="small" weight="strong">
+                            Are you offline?
+                          </Text>
+                          <Text size="small">
+                            Check your internet connection and try again.
+                          </Text>
+                        </Stack>
+                      </Stack>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </Stack>
           </Stack>
         ),
       },
