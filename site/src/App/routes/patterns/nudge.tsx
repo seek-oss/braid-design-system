@@ -115,22 +115,32 @@ export const docs: PatternDocs = {
         description: (
           <List space="large">
             <Text>
-              Heading (optional): A short description of the action the user
-              might like to take.
+              <TextLink href="/components/Heading">Heading</TextLink>{' '}
+              (optional): A short description of the action the user might like
+              to take.
             </Text>
-            <Text>Text: A concise explanation of the benefit to the user.</Text>
-            <Text>Button or TextLink: A clear action for what to do next.</Text>
+            <Text>
+              <TextLink href="/components/Text">Text</TextLink>: A concise
+              explanation of the benefit to the user.
+            </Text>
+            <Text>
+              <TextLink href="/components/Button">Button</TextLink> or{' '}
+              <TextLink href="/components/TextLink">TextLink</TextLink>: A clear
+              action for what to do next.
+            </Text>
             <Text>
               Illustration (optional): A static image that relates to the
               user&rsquo;s situation, sitting on a circle with background colour{' '}
               <Strong>surface</Strong>.
             </Text>
             <Text>
-              Dismiss button (optional): When appropriate, give the user the
-              option to dismiss the nudge.
+              <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink>{' '}
+              (optional): When appropriate, give the user the option to dismiss
+              the nudge.
             </Text>
             <Text>
-              Bounding box: Display the message in a Box with a{' '}
+              Bounding box: Display the message in a{' '}
+              <TextLink href="/components/Box">Box</TextLink> with a{' '}
               <Strong>formAccentSoft</Strong> background.
             </Text>
           </List>
@@ -140,12 +150,9 @@ export const docs: PatternDocs = {
         label: 'Size',
         description: (
           <Text>
-            Nudges can be sized up and down to fit in the context of your
-            product. Below are 3 sizing options: standard, small and xsmall.
-            Sizing is applied holistically — with heading, text, CTA and
-            illustration sizing up and down together. Choose sizing that fits
-            well in the context of the nudge placement, and align with adjacent
-            text sizing where possible.
+            Choose standard, small, or xsmall to fit the placement and match
+            nearby text. Heading, body, CTA, and illustration should always
+            scale together to maintain proportions.
           </Text>
         ),
         Example: ({ responsiveValue }) =>
@@ -323,10 +330,7 @@ export const docs: PatternDocs = {
           <List space="large">
             <Text>
               Choose an illustration that&rsquo;s relevant to the user&rsquo;s
-              situation from the NVL illustration library.
-            </Text>
-            <Text>
-              Set the illustration on a circle with background colour set to{' '}
+              situation and set it on a circle with background colour{' '}
               <Strong>surface</Strong>.
             </Text>
             <Text>
@@ -393,13 +397,11 @@ export const docs: PatternDocs = {
         label: 'Calls-to-action',
         description: (
           <List space="large">
-            <Text>A nudge should include a primary CTA.</Text>
+            <Text>A nudge should always include a primary CTA.</Text>
             <Text>
               For standard and small nudges, a{' '}
               <TextLink href="/components/Button">Button</TextLink> may work
-              best. Button styles should align with the default display of the
-              relevant theme — for seekJobs this will be a ghost button, and for
-              APAC this will be a formAccent solid button.
+              best.
             </Text>
             <Text>
               If providing a secondary CTA, create hierarchy by pairing the
@@ -488,13 +490,11 @@ export const docs: PatternDocs = {
             </Text>
             <Text>
               Nudges are visually prominent so as to intentionally grab the
-              user&rsquo;s attention. As such, they should be used with care.
-              Avoid too many nudges on the same screen, as they can be
-              disruptive to the user&rsquo;s task.
+              user&rsquo;s attention. Use them with care and avoid too many
+              nudges on the same screen.
             </Text>
             <Text>
-              As a general rule of thumb, aim to limit usage to 1 nudge per
-              screen.
+              As a general rule, aim to limit usage to 1 nudge per screen.
             </Text>
           </List>
         ),
