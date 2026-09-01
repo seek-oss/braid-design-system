@@ -166,20 +166,16 @@ const ModalContentScrollLayout = ({
       /* Sentinel element for delaying scroll mask until after the coverImage */
       coverImageEnabled && <span ref={contentStartRef} />
     }
-    <Box height={applyFullHeight ? 'full' : undefined}>
-      <Box
-        display="flex"
-        gap="large"
-        flexDirection="column"
-        height={!coverImageEnabled && hasFooter ? 'full' : undefined}
-        paddingY={modalPadding}
-        paddingBottom={
-          hasFooter ? { mobile: 'small', tablet: 'none' } : undefined
-        }
-        paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
-      >
-        {children}
-      </Box>
+    <Box
+      display="flex"
+      gap="large"
+      flexDirection="column"
+      height={applyFullHeight ? 'full' : undefined}
+      paddingTop={modalPadding}
+      paddingBottom={!hasFooter ? modalPadding : undefined}
+      paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
+    >
+      {children}
     </Box>
   </ScrollContainer>
 );
@@ -318,7 +314,7 @@ export const ModalContent = ({
         ref={headingRef}
         reserveCloseArea
       />
-      {children}
+      <Box height="full">{children}</Box>
     </ModalContentScrollLayout>
   );
 
@@ -405,7 +401,7 @@ export const ModalContent = ({
           paddingRight={isDrawer ? pageBlockGutters : modalPadding}
           className={!isDrawer && styles.maxSize[position]}
         >
-          <Bleed space="xsmall" horizontal="xxsmall">
+          <Bleed space="xxsmall">
             <Box
               position="relative"
               background="surface"
