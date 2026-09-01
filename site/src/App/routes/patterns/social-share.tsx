@@ -1,7 +1,6 @@
 import source from '@braid-design-system/source.macro';
 import {
   Button,
-  Heading,
   IconLink,
   IconShare,
   IconSocialFacebook,
@@ -107,30 +106,36 @@ export const docs: PatternDocs = {
       },
       {
         description: (
-          <>
-            <Heading level="4">Visual guidelines</Heading>
-            <List space="large">
-              <Text>
-                Present share as a single menu with logo icons, ordered
-                alphabetically and “Copy link” last.
-              </Text>
-              <Text>
-                Use{' '}
-                <TextLink href="/components/MenuRenderer">
-                  MenuRenderer
-                </TextLink>{' '}
-                with a Button or ButtonIcon trigger, aligned left or right.
-              </Text>
-              <Text>
-                On selection, open the share link in a new tab and close the
-                menu.
-              </Text>
-              <Text>
-                For “Copy link”, close the menu and show a positive{' '}
-                <TextLink href="/components/useToast">Toast</TextLink>.
-              </Text>
-            </List>
-          </>
+          <List space="large">
+            <Text>
+              <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>:
+              A single share menu, aligned left or right of the trigger
+            </Text>
+            <Text>
+              <TextLink href="/components/Button">Button</TextLink> or{' '}
+              <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink>: The
+              menu trigger. Choose variant and tone to suit the UI
+            </Text>
+            <Text>
+              <TextLink href="/components/MenuItem">MenuItemLink</TextLink>: One
+              item per destination, with a logo icon. Order alphabetically and
+              put “Copy link” last
+            </Text>
+          </List>
+        ),
+      },
+    ],
+    interaction: [
+      {
+        label: 'After a selection',
+        description: (
+          <List space="large">
+            <Text>Open the share link in a new tab and close the menu.</Text>
+            <Text>
+              For “Copy link”, close the menu and show a positive{' '}
+              <TextLink href="/components/useToast">Toast</TextLink>.
+            </Text>
+          </List>
         ),
       },
     ],

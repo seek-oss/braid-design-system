@@ -715,19 +715,24 @@ export const docs: PatternDocs = {
                 onClose={() => toggleState('dialog')}
               >
                 <Stack space="large">
-                  <Text>
-                    Job Ads will be slower than usual. You might notice this in:
-                  </Text>
-                  <List>
-                    <Text>Ad budget balances</Text>
-                    <Text>Performance rating in the job list</Text>
-                  </List>
-                  <Text>You can still:</Text>
-                  <List>
-                    <Text>Create, edit and explore jobs</Text>
-                    <Text>Receive candidate applications</Text>
-                    <Text>Manage your applicants</Text>
-                  </List>
+                  <Stack space="small">
+                    <Text>
+                      Job Ads will be slower than usual. You might notice this
+                      in:
+                    </Text>
+                    <List>
+                      <Text>Ad budget balances</Text>
+                      <Text>Performance rating in the job list</Text>
+                    </List>
+                  </Stack>
+                  <Stack space="small">
+                    <Text>You can still:</Text>
+                    <List>
+                      <Text>Create, edit and explore jobs</Text>
+                      <Text>Receive candidate applications</Text>
+                      <Text>Manage your applicants</Text>
+                    </List>
+                  </Stack>
                 </Stack>
               </Dialog>
             </>,
