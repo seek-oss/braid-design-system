@@ -6048,6 +6048,7 @@ exports[`IconRenderer 1`] = `
   exportType: component,
   props: {
     children: ({ className }: { className: string; }) => ReactElement<unknown, string | JSXElementConstructor<any>> | null
+    size?: "fill"
     tone?: 
         | "brandAccent"
         | "caution"

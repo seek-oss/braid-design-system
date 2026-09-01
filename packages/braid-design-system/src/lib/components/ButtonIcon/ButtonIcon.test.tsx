@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-import { ButtonIcon, IconBookmark, Text } from '..';
+import { ButtonIcon, IconBookmark, IconRenderer, Text } from '..';
 import { BraidTestProvider } from '../../../test';
 
 describe('ButtonIcon', () => {
@@ -89,5 +89,31 @@ describe('ButtonIcon', () => {
 
     const button = getByLabelText('Bookmark');
     expect(button).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  it('should support IconRenderer in icon slot', () => {
+    const { getByLabelText } = render(
+      <BraidTestProvider>
+        <ButtonIcon
+          label="Custom"
+          icon={
+            <IconRenderer>
+              {({ className }) => (
+                <svg
+                  viewBox="0 0 24 24"
+                  className={className}
+                  fill="currentColor"
+                  aria-hidden
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                </svg>
+              )}
+            </IconRenderer>
+          }
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(getByLabelText('Custom')).toBeInTheDocument();
   });
 });

@@ -366,9 +366,11 @@ export const IconsDetails = () => (
             To make the alignment of icons and typography as seamless as
             possible, IconRenderer supports{' '}
             <TextLink href="#size-inline">inline sizing</TextLink>. As a result,
-            it must be used inside either a{' '}
+            for inline sizing, it must be used inside either a{' '}
             <TextLink href="/components/Text">Text</TextLink> or{' '}
             <TextLink href="/components/Heading">Heading</TextLink> component.
+            It can also be passed to the <Strong>icon</Strong> slot of{' '}
+            <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink>.
           </Text>
           <Text>For example, here is a custom circle alongside a Heading:</Text>
           <PlayroomStateProvider>

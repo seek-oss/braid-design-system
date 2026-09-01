@@ -1,6 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import type { ComponentProps } from 'react';
 
-import { Box, ButtonIcon, Inline, Heading, IconBookmark, Stack } from '../';
+import {
+  Box,
+  ButtonIcon,
+  Inline,
+  Heading,
+  IconBookmark,
+  Stack,
+  IconRenderer,
+} from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 import { LayoutTest } from '../../utils/LayoutTest';
 import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchable';
@@ -30,6 +39,25 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof ButtonIcon>;
+
+const CustomIcon = ({
+  size,
+  tone,
+}: Pick<ComponentProps<typeof IconRenderer>, 'size' | 'tone'>) => (
+  <IconRenderer size={size} tone={tone}>
+    {({ className }) => (
+      <svg
+        viewBox="0 0 24 24"
+        focusable="false"
+        fill="currentColor"
+        aria-hidden
+        className={className}
+      >
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+      </svg>
+    )}
+  </IconRenderer>
+);
 
 export const Default: Story = {
   args: {
@@ -367,6 +395,32 @@ export const Contrast: Story = {
         />
       </Inline>
     </BackgroundContrastTest>
+  ),
+};
+
+export const CustomIconSlot: Story = {
+  name: 'Custom icon',
+  render: () => (
+    <Inline space="large" alignY="center">
+      <ButtonIcon
+        variant="soft"
+        size="small"
+        icon={<CustomIcon />}
+        label="Small"
+      />
+      <ButtonIcon
+        variant="soft"
+        size="standard"
+        icon={<CustomIcon />}
+        label="Standard"
+      />
+      <ButtonIcon
+        variant="soft"
+        size="large"
+        icon={<CustomIcon />}
+        label="Large"
+      />
+    </Inline>
   ),
 };
 
