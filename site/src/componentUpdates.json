@@ -5650,5 +5650,35 @@
         "summary": "**ButtonIcon:** Default accent tones to `solid` when `variant` is omitted\n\nAccent tones (`formAccent`, `brandAccent`) now default to `solid` when `variant` is omitted — existing `formAccent` usage can pass `variant=\"soft\"` to keep the previous look.\n\n**EXAMPLE USAGE:**\n```jsx\n<ButtonIcon tone=\"formAccent\" icon={<IconAdd />} label=\"Add\" />\n```"
       }
     ]
+  },
+  {
+    "version": "34.8.0",
+    "updates": [
+      {
+        "updated": [
+          "IconRenderer"
+        ],
+        "summary": "**IconRenderer:** Add support for `size=\"fill\"`\n\n**EXAMPLE USAGE:**\nProvides the ability for custom icons to be sized to their container in the same way as Braid icons.\n\n```jsx\n<Box style={{ height: 60, width: 60 }}>\n  <IconRenderer size=\"fill\">\n    {({ className }) => (\n      <svg\n        viewBox=\"0 0 24 24\"\n        className={className}\n        fill=\"currentcolor\"\n        aria-hidden\n      >\n        ...\n      </svg>\n    )}\n  </IconRenderer>\n</Box>\n```"
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer:** Improve close button positioning on mobile"
+      },
+      {
+        "updated": [
+          "Drawer"
+        ],
+        "summary": "**Drawer:** Ensure full height content extends to available height"
+      },
+      {
+        "updated": [
+          "Accordion"
+        ],
+        "summary": "**Accordion:** Deprecate `space` prop and update spacing defaults\n\nThe `space` prop is now deprecated and will be removed in a future release. Spacing between items is now automatically derived from the `size` prop.\n\nThe following default spacing value has been updated:\n\n| `dividers` | `size` | Previous default | New default |\n| --- | --- | --- | --- |\n| `false` | `standard` | `large` | `medium` |\n\n**MIGRATION GUIDE:**\n\nIf the updated default causes an undesired visual change, you can preserve the previous spacing by explicitly setting the `space` prop while migrating:\n\n```diff\n <Accordion\n+  space=\"large\"\n   dividers={false}\n   size=\"standard\"\n >\n```"
+      }
+    ]
   }
 ]
