@@ -655,6 +655,65 @@ export const docs: PatternDocs = {
         description: (
           <>
             <Heading level="4">Writing your own message</Heading>
+            <Text>
+              If the scenario you need isn&apos;s covered, use this template to
+              craft your own message:
+            </Text>
+            <Text>
+              &ldquo;We&rsquo;re improving our site.{' '}
+              <Strong>[Affected task]</Strong> will be{' '}
+              <Strong>[how it will be affected]</Strong> until{' '}
+              <Strong>[time day date]</Strong>. Sorry for any inconvenience. If
+              you need help, reach out to our Customer Service team.&rdquo;
+            </Text>
+          </>
+        ),
+        Example: ({ getState, toggleState, setDefaultState }) =>
+          source(
+            <>
+              {setDefaultState('dialog', false)}
+              <Alert
+                tone="caution"
+                onClose={() => {}}
+                closeLabel="Close caution alert"
+              >
+                <Text>
+                  We&rsquo;re improving our site. Posting a job ad will be{' '}
+                  <TextLink href="#" onClick={() => toggleState('dialog')}>
+                    slower than usual
+                  </TextLink>{' '}
+                  until 11 am, Friday 13 Jan 2023. Sorry for any inconvenience.
+                  If you need help, reach out to our Customer Service team.
+                </Text>
+              </Alert>
+              <Dialog
+                title="We&rsquo;re improving SEEK"
+                open={getState('dialog')}
+                onClose={() => toggleState('dialog')}
+              >
+                <Stack space="large">
+                  <Text>
+                    Job Ads will be slower than usual. You might notice this in:
+                  </Text>
+                  <List>
+                    <Text>Ad budget balances</Text>
+                    <Text>Performance rating in the job list</Text>
+                  </List>
+                  <Text>You can still:</Text>
+                  <List>
+                    <Text>Create, edit and explore jobs</Text>
+                    <Text>Receive candidate applications</Text>
+                    <Text>Manage your applicants</Text>
+                  </List>
+                </Stack>
+              </Dialog>
+            </>,
+          ),
+      },
+      {
+        description: (
+          <>
+            <Text weight="strong">Recommendations</Text>
             <List space="large">
               <Text>
                 Focus on the task that&rsquo;s likely to be disrupted. Try not
