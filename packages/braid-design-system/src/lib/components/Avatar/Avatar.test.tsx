@@ -114,7 +114,7 @@ describe('Avatar', () => {
       const photoUrl = 'https://example.com/photo.jpg';
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Elise" variant="initials" photoUrl={photoUrl} />
+          <Avatar name="Leia Organa" variant="initials" photoUrl={photoUrl} />
         </BraidTestProvider>,
       );
 
@@ -132,7 +132,7 @@ describe('Avatar', () => {
     it('renders initials when no photo is provided and variant is initials', () => {
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Elise" variant="initials" />
+          <Avatar name="Leia Organa" variant="initials" />
         </BraidTestProvider>,
       );
 
@@ -143,7 +143,7 @@ describe('Avatar', () => {
     it('renders icon when no photo is provided and variant is icon', () => {
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Elise" variant="icon" />
+          <Avatar name="Leia Organa" variant="icon" />
         </BraidTestProvider>,
       );
 
@@ -155,7 +155,7 @@ describe('Avatar', () => {
       render(
         <BraidTestProvider>
           <Avatar
-            name="Leia Elise"
+            name="Leia Organa"
             variant="initials"
             photoUrl="https://invalid-path/photo.jpg"
           />
@@ -176,7 +176,7 @@ describe('Avatar', () => {
       render(
         <BraidTestProvider>
           <Avatar
-            name="Leia Elise"
+            name="Leia Organa"
             variant="initials"
             photoUrl="https://example.com/photo.jpg"
             photoError
@@ -192,7 +192,7 @@ describe('Avatar', () => {
       render(
         <BraidTestProvider>
           <Avatar
-            name="Leia Elise"
+            name="Leia Organa"
             variant="initials"
             photoUrl="https://example.com/valid-photo.jpg"
             photoError
@@ -210,7 +210,7 @@ describe('Avatar', () => {
       render(
         <BraidTestProvider>
           <Avatar
-            name="Leia Elise"
+            name="Leia Organa"
             variant="initials"
             loading
             data={{ testid: 'avatar' }}
@@ -227,16 +227,14 @@ describe('Avatar', () => {
   });
 
   describe('Size support', () => {
-    it.each(
-      [
-        ['small', textSizeUntrimmed.small],
-        ['standard', textSizeUntrimmed.standard],
-        ['large', textSizeUntrimmed.large],
-      ] as const,
-    )('uses Text size styles for %s', (size, textSizeClass) => {
+    it.each([
+      ['small', textSizeUntrimmed.small],
+      ['standard', textSizeUntrimmed.standard],
+      ['large', textSizeUntrimmed.large],
+    ] as const)('uses Text size styles for %s', (size, textSizeClass) => {
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Elise" variant="initials" size={size} />
+          <Avatar name="Leia Organa" variant="initials" size={size} />
         </BraidTestProvider>,
       );
 
@@ -249,7 +247,7 @@ describe('Avatar', () => {
     it('uses Heading level 3 styles for xlarge size', () => {
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Elise" variant="initials" size="xlarge" />
+          <Avatar name="Leia Organa" variant="initials" size="xlarge" />
         </BraidTestProvider>,
       );
 
@@ -264,7 +262,7 @@ describe('Avatar', () => {
       render(
         <BraidTestProvider>
           <Avatar
-            name="Leia Elise"
+            name="Leia Organa"
             variant="initials"
             data={{ testid: 'avatar' }}
           />
@@ -278,7 +276,7 @@ describe('Avatar', () => {
       render(
         <BraidTestProvider>
           <Avatar
-            name="Leia Elise"
+            name="Leia Organa"
             variant="initials"
             border
             data={{ testid: 'avatar' }}
@@ -293,7 +291,7 @@ describe('Avatar', () => {
       render(
         <BraidTestProvider>
           <Avatar
-            name="Leia Elise"
+            name="Leia Organa"
             variant="initials"
             photoUrl="https://example.com/photo.jpg"
             border
@@ -309,7 +307,7 @@ describe('Avatar', () => {
       render(
         <BraidTestProvider>
           <Avatar
-            name="Leia Elise"
+            name="Leia Organa"
             variant="icon"
             border
             data={{ testid: 'avatar' }}
@@ -324,7 +322,7 @@ describe('Avatar', () => {
       render(
         <BraidTestProvider>
           <Avatar
-            name="Leia Elise"
+            name="Leia Organa"
             variant="initials"
             loading
             border
@@ -343,7 +341,7 @@ describe('Avatar', () => {
         const { unmount } = render(
           <BraidTestProvider>
             <Avatar
-              name="Leia Elise"
+              name="Leia Organa"
               variant="initials"
               size={size}
               border
