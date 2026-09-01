@@ -9,23 +9,23 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Initials',
-      Example: () => source(<Avatar variant="initials" name="Leia Elise" />),
+      Example: () => source(<Avatar variant="initials" name="Leia Organa" />),
     },
     {
       label: 'Icon',
-      Example: () => source(<Avatar variant="icon" name="Leia Elise" />),
+      Example: () => source(<Avatar variant="icon" name="Leia Organa" />),
     },
     {
       label: 'Photo',
       Example: () => {
         const { value } = source(
-          <Avatar variant="initials" name="Leia Elise" photoUrl={photoUrl} />,
+          <Avatar variant="initials" name="Leia Organa" photoUrl={photoUrl} />,
         );
 
         const { code } = source(
           <Avatar
             variant="initials"
-            name="Leia Elise"
+            name="Leia Organa"
             photoUrl="https://example.com/photo.jpg"
           />,
         );
@@ -38,10 +38,10 @@ export const galleryItems: GalleryComponent = {
       Example: () =>
         source(
           <Inline space="small" alignY="center">
-            <Avatar variant="initials" name="Leia Elise" size="small" />
-            <Avatar variant="initials" name="Leia Elise" size="standard" />
-            <Avatar variant="initials" name="Leia Elise" size="large" />
-            <Avatar variant="initials" name="Leia Elise" size="xlarge" />
+            <Avatar variant="initials" name="Leia Organa" size="small" />
+            <Avatar variant="initials" name="Leia Organa" size="standard" />
+            <Avatar variant="initials" name="Leia Organa" size="large" />
+            <Avatar variant="initials" name="Leia Organa" size="xlarge" />
           </Inline>,
         ),
     },
@@ -52,12 +52,12 @@ export const galleryItems: GalleryComponent = {
     {
       label: 'Loading',
       Example: () =>
-        source(<Avatar variant="initials" name="Leia Elise" loading />),
+        source(<Avatar variant="initials" name="Leia Organa" loading />),
     },
     {
       label: 'Border',
       Example: () =>
-        source(<Avatar variant="initials" name="Leia Elise" border />),
+        source(<Avatar variant="initials" name="Leia Organa" border />),
     },
   ],
 };
