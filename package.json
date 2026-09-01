@@ -73,9 +73,9 @@
     "vitest": "^4.1.0"
   },
   "volta": {
-    "node": "24.19.0"
+    "node": "24.20.0"
   },
-  "packageManager": "pnpm@11.23.0",
+  "packageManager": "pnpm@11.24.0",
   "manypkg": {
     "workspaceProtocol": "require"
   },

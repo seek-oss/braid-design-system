@@ -2,11 +2,9 @@ import type { FC } from 'react';
 
 import wireframe from '../../themes/wireframe';
 
-import {
-  type AccordionProps,
-  Accordion as BraidAccordion,
-  validSpaceValues,
-} from './Accordion';
+import { type AccordionProps, Accordion as BraidAccordion } from './Accordion';
+
+const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 
 import { mapResponsiveValue } from '../../css/atoms/sprinkles.css';
 
