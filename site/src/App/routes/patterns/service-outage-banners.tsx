@@ -29,9 +29,8 @@ export const docs: PatternDocs = {
         label: 'Widespread outages',
         description: (
           <Text>
-            Take this approach when the disruption to service impacts entire
-            systems or products. This includes, but isn&rsquo;t limited to,
-            site-wide maintenance, product outages and overdue accounts.
+            For service disruptions that impact entire systems or products, such
+            as site-wide maintenance, product outages and overdue accounts.
           </Text>
         ),
         Example: ({ getState, toggleState, setDefaultState }) =>
@@ -77,13 +76,9 @@ export const docs: PatternDocs = {
             </Text>
             <List space="large">
               <Text>
-                Use a Critical or Caution{' '}
+                Apply a <Strong>critical</Strong> or <Strong>caution</Strong>{' '}
                 <TextLink href="/foundations/tones">tone</TextLink> and matching
                 icon.
-              </Text>
-              <Text>
-                Place the banner at the very top of the page, above the site
-                navigation.
               </Text>
               <Text>
                 Provide a “Read more” link which opens a{' '}
@@ -91,18 +86,21 @@ export const docs: PatternDocs = {
                 relevant.
               </Text>
               <Text>
-                Align the banner look and feel to the latest{' '}
-                <TextLink href="/components/Alert">Alert</TextLink> component
-                style, but do not round the corners.
+                Place the banner at the very top of the page, above the site
+                navigation.
               </Text>
               <Text>
-                Widespread disruption banners should remain constant, without
-                the option for the user to dismiss them.
+                Widespread disruption banners should remain constant without the
+                option to dismiss them.
               </Text>
             </List>
-            <Text>
-              <Strong>Technical detail</Strong>
-            </Text>
+          </>
+        ),
+      },
+      {
+        description: (
+          <>
+            <Heading level="4">Technical details</Heading>
             <List space="large">
               <Text>
                 Create a custom banner using{' '}
@@ -115,21 +113,22 @@ export const docs: PatternDocs = {
                 to follow PageBlock screen gutters.
               </Text>
               <Text>
-                Set the background to the light version of the selected tone,
-                for example <Strong>criticalLight</Strong>,{' '}
-                <Strong>cautionLight</Strong> or <Strong>infoLight</Strong>.
-              </Text>
-              <Text>
-                Use the corresponding icon:{' '}
+                Set the background to the light version of the selected tone
+                (e.g. <Strong>criticalLight</Strong>) and use the corresponding
+                icon (e.g.{' '}
                 <TextLink href="/components/IconCritical">
                   IconCritical
-                </TextLink>{' '}
-                or{' '}
-                <TextLink href="/components/IconCaution">IconCaution</TextLink>.
+                </TextLink>
+                ).
               </Text>
               <Text>
-                Left-align the banner text and wrap it in a centre-aligned Stack
-                so icon spacing stays uniform.
+                Left-align the banner text and wrap it in a centre-aligned{' '}
+                <Strong>Stack</Strong> so icon spacing stays uniform.
+              </Text>
+              <Text>
+                Align the banner look and feel to the latest{' '}
+                <TextLink href="/components/Alert">Alert</TextLink> component
+                style, but do not round the corners.
               </Text>
             </List>
           </>
@@ -139,9 +138,8 @@ export const docs: PatternDocs = {
         label: 'Isolated outages',
         description: (
           <Text>
-            Take this approach when the disruption impacts a specific part of a
-            product. This includes, but isn&rsquo;t limited to, specific feature
-            outages and limited site access.
+            For service disruptions that impact a specific part of a product,
+            such as specific feature outages and limited site access.
           </Text>
         ),
         Example: () =>
@@ -163,25 +161,23 @@ export const docs: PatternDocs = {
             <Heading level="4">Anatomy</Heading>
             <List space="large">
               <Text>
-                Use the existing{' '}
-                <TextLink href="/components/Alert">Alert</TextLink> component.
+                Use the <TextLink href="/components/Alert">Alert</TextLink>{' '}
+                component in tone <Strong>critical</Strong> or{' '}
+                <Strong>caution</Strong>.
               </Text>
               <Text>
-                Use a Critical or Caution{' '}
-                <TextLink href="/foundations/tones">tone</TextLink> and matching
-                icon.
-              </Text>
-              <Text>
-                Provide a “Read more” link which opens a Dialog when relevant.
+                Provide a “Read more” link which opens a{' '}
+                <TextLink href="/components/Dialog">Dialog</TextLink> when
+                relevant.
               </Text>
               <Text>
                 Place the Alert within the context of the page, below the site
                 navigation.
               </Text>
               <Text>
-                Isolated disruption banners should generally remain constant. If
-                your scenario warrants a dismissible banner, Alert supports this
-                via <Strong>onClose</Strong>.
+                Isolated disruption banners should generally remain constant but
+                can be made dismissible using the <Strong>onClose</Strong>{' '}
+                property.
               </Text>
             </List>
           </>
@@ -192,9 +188,19 @@ export const docs: PatternDocs = {
       {
         label: 'Stacking multiple banners',
         description: (
-          <Text>
-            When you need to show multiple outage banners on the same page:
-          </Text>
+          <List space="large">
+            <Text>
+              Widespread banners should sit at the very top of the page,{' '}
+              <Strong>above the site navigation</Strong>.
+            </Text>
+            <Text>
+              Isolated banners should sit within the context of the page,{' '}
+              <Strong>below the site navigation</Strong>.
+            </Text>
+            <Text>
+              Critical banners should be placed above caution banners.
+            </Text>
+          </List>
         ),
         Example: ({ getState, toggleState, setDefaultState }) =>
           source(
@@ -278,23 +284,6 @@ export const docs: PatternDocs = {
             </>,
           ),
       },
-      {
-        description: (
-          <List space="large">
-            <Text>
-              Widespread outage banners should sit at the very top of the page —
-              above the site navigation.
-            </Text>
-            <Text>
-              Isolated outage banners should sit within the context of the page
-              — below the site navigation.
-            </Text>
-            <Text>
-              Critical banners should be placed above caution banners.
-            </Text>
-          </List>
-        ),
-      },
     ],
     bestPractices: [
       {
@@ -303,16 +292,16 @@ export const docs: PatternDocs = {
           <>
             <Text>A service outage banner should let customers know:</Text>
             <List space="large">
-              <Text>What parts of the site are impacted</Text>
-              <Text>How they&rsquo;ll be impacted</Text>
-              <Text>When the site will be impacted</Text>
-              <Text>When to expect regular performance</Text>
+              <Text>what parts of the site are impacted</Text>
+              <Text>how they&rsquo;ll be impacted</Text>
+              <Text>when the site will be impacted</Text>
+              <Text>when to expect regular performance.</Text>
             </List>
             <Text>
-              Service outage banners should also be used in conjunction with
-              other communications. Ideally, the customer would have heard about
-              the outage before arriving on platform. The outage banner should
-              serve as a reminder, rather than be the first news of the outage.
+              Service outage banners should be used in conjunction with other
+              communications. Ideally, the customer would have heard about the
+              outage before arriving on platform. The outage banner should serve
+              as a reminder rather than be the first news of the outage.
             </Text>
           </>
         ),
