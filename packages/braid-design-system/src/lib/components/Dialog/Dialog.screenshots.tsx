@@ -162,6 +162,21 @@ export const CoverImageXsmallWidthWithOverflowLayout: Story = {
   },
 };
 
+export const CoverImageWithFooterAndOverflowLayout: Story = {
+  name: 'Cover Image layout (with footer & overflow)',
+  args: {
+    title: 'Cover image test',
+    coverImage: coverImagePlaceholderUrl,
+    width: 'small',
+    footer: <Placeholder height={50} width="100%" label="Footer" />,
+    children: (
+      <Stack space="xlarge">
+        <Placeholder width="100%" height={1000} />
+      </Stack>
+    ),
+  },
+};
+
 export const IllustrationLayout: Story = {
   name: 'Illustration layout',
   args: {
