@@ -2,6 +2,7 @@ import { snippets as Accordion } from './snippets/Accordion';
 import { snippets as Actions } from './snippets/Actions';
 import { snippets as Alert } from './snippets/Alert';
 import { snippets as Autosuggest } from './snippets/Autosuggest';
+import { snippets as Avatar } from './snippets/Avatar';
 import { snippets as Badge } from './snippets/Badge';
 import { snippets as Bleed } from './snippets/Bleed';
 import { snippets as BrandedContainer } from './snippets/BrandedContainer';
@@ -77,6 +78,7 @@ const snippetsMap = {
   Actions,
   Alert,
   Autosuggest,
+  Avatar,
   Badge,
   Bleed,
   Button,
