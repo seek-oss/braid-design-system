@@ -101,8 +101,8 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
                 : selectedItem.path;
             navigate(targetPath);
             onClose();
+            e.preventDefault();
           }
-          e.preventDefault();
           break;
       }
     };
@@ -156,7 +156,7 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
                   navigate(path);
                   onClose();
                 }}
-                placeholder={<SearchLanding />}
+                placeholder={<SearchLanding onSelect={onClose} />}
               />
             </Box>
           </Box>

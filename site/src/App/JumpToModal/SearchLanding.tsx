@@ -3,7 +3,11 @@ import { Box, Column, Columns, Stack } from 'braid-design-system';
 
 import { gettingStartedLinks } from '../gettingStartedLinks';
 
-export const SearchLanding = () => (
+interface SearchLandingProps {
+  onSelect: () => void;
+}
+
+export const SearchLanding = ({ onSelect }: SearchLandingProps) => (
   <Box height="full" paddingX="gutter" paddingY="xlarge">
     <Columns space="gutter" alignY="top">
       <Column>
@@ -13,6 +17,7 @@ export const SearchLanding = () => (
             items={gettingStartedLinks.map(({ href, label }) => ({
               name: label,
               path: href,
+              onClick: onSelect,
             }))}
           />
           <SideNavigationSection
@@ -21,14 +26,17 @@ export const SearchLanding = () => (
               {
                 name: 'Tokens',
                 path: '/foundations/tokens',
+                onClick: onSelect,
               },
               {
                 name: 'Layout',
                 path: '/foundations/layout',
+                onClick: onSelect,
               },
               {
                 name: 'Iconography',
                 path: '/foundations/iconography',
+                onClick: onSelect,
               },
             ]}
           />
@@ -41,14 +49,17 @@ export const SearchLanding = () => (
             {
               name: 'Components',
               path: '/components',
+              onClick: onSelect,
             },
             {
               name: 'Patterns',
               path: '/patterns',
+              onClick: onSelect,
             },
             {
               name: 'Styles',
               path: '/css',
+              onClick: onSelect,
             },
           ]}
         />
