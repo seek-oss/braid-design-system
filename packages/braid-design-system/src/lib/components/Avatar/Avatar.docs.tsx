@@ -291,8 +291,7 @@ const docs: ComponentDocs = {
           data is fetched. This is shown instead of photo, initials, or icon.
         </Text>
       ),
-      Example: () =>
-        source(<Avatar name="Leia Organa" loading />),
+      Example: () => source(<Avatar name="Leia Organa" loading />),
     },
     {
       label: 'Border',
