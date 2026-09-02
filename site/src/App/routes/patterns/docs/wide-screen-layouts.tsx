@@ -15,6 +15,7 @@ import {
   Stack,
   Strong,
   Text,
+  TextLink,
   Tiles,
 } from 'braid-design-system';
 import { Placeholder } from 'braid-design-system/playroom/components';
@@ -32,67 +33,27 @@ export const docs: PatternDocs = {
   ),
   alternatives: [
     {
-      name: 'PageBlock',
-      description:
-        'Provides a top-level page container, constraining the content width while maintaining common screen gutters on smaller devices',
-    },
-    {
-      name: 'ContentBlock',
-      description:
-        'Provides a container to constrain the maximum width of the content it wraps',
-    },
-    {
-      name: 'Columns',
-      description: 'For creating horizontal layouts that work for your product',
-    },
-    {
-      name: 'Stack',
-      description:
-        'For vertical stacking of content or collapsed elements on smaller screens',
-    },
-    {
-      name: 'Tiles',
-      description:
-        'For laying out a collection of elements that wrap across a product-determined number of columns',
-    },
-    {
-      name: 'Drawer',
-      description:
-        "For housing content that benefits from a focused view or that can't be stacked on smaller screens",
-    },
-    {
       name: 'layout',
       section: 'foundations',
       description:
-        'All available components needed to create an infinite variety of content and page layouts',
+        'Foundations document that outlines all available layout components and how to use them.',
     },
   ],
   accessibility: (
-    <>
-      <Text>Keeping line lengths to around 12–15 words per line improves:</Text>
-      <List space="large">
-        <Text>Focus and reading speed</Text>
-        <Text>
-          Comfort for users with visual or cognitive differences such as low
-          vision, dyslexia, or cognitive load sensitivities
-        </Text>
-        <Text>Mobile or zoomed-in experiences</Text>
-        <Text>
-          Ability to locate the start of the next line quickly and easily
-        </Text>
-      </List>
+    <List space="large">
       <Text>
-        Standard regular Braid text wraps at 12–15 words per line at a width of
-        approximately 600px.
+        Keep line lengths to around 12&ndash;15 words (size{' '}
+        <Strong>standard</Strong>{' '}
+        <TextLink href="/components/Text">Text</TextLink> naturally wraps to
+        this length in a <Strong>small</Strong> content width). This improves
+        focus, reading speed, and comfort for users with low vision, dyslexia,
+        or cognitive load sensitivities, including on mobile or when zoomed in.
       </Text>
       <Text>
-        Horizontal scrolling should always be intentional and accessible:
+        Horizontal scrolling should always be intentional. Keep focus states for
+        keyboard navigation, and avoid scrolling continuous text horizontally.
       </Text>
-      <List space="large">
-        <Text>Maintain focus states for keyboard navigation</Text>
-        <Text>Avoid horizontal scrolling of continuous text</Text>
-      </List>
-    </>
+    </List>
   ),
   docSections: {
     bestPractices: [
@@ -101,23 +62,24 @@ export const docs: PatternDocs = {
         description: (
           <List space="large">
             <Text>
-              Limit content area widths on large screens to optimise readability
-            </Text>
-            <Text>Test with customers to ensure a wider layout adds value</Text>
-            <Text>
-              Ensure wide-screen layouts adapt to smaller screens by stacking
-              content or moving it to a separate area (for example a drawer,
-              sheet or page)
-            </Text>
-            <Text>Align related products to create consistency</Text>
-            <Text>
-              Use horizontal scroll only when it adds value to an experience
+              Limit content width on large screens so line lengths stay
+              readable.
             </Text>
             <Text>
-              Use <Strong>PageBlock</Strong> as the top-level page container,
-              then nest <Strong>ContentBlock</Strong> when a nested section
-              needs a narrower measure — for example body copy inside a
-              full-width layout
+              Test with customers and align related products for consistency.
+            </Text>
+            <Text>
+              On smaller screens, stack content or move it into a{' '}
+              <TextLink href="/components/Drawer">Drawer</TextLink>, sheet, or
+              page.
+            </Text>
+            <Text>Use horizontal scroll only when it adds value.</Text>
+            <Text>
+              Use <TextLink href="/components/PageBlock">PageBlock</TextLink> as
+              the top-level page container. Nest{' '}
+              <TextLink href="/components/ContentBlock">ContentBlock</TextLink>{' '}
+              when a section needs a narrower measure, for example body copy
+              inside a full-width layout.
             </Text>
           </List>
         ),
@@ -176,7 +138,8 @@ export const docs: PatternDocs = {
               <Text>Content runs full width on all screen sizes</Text>
               <Text>
                 Sections that can&rsquo;t be stacked on smaller screens can be
-                moved to a drawer or separate page
+                moved to a <TextLink href="/components/Drawer">Drawer</TextLink>{' '}
+                or separate page
               </Text>
             </List>
           </>
@@ -376,8 +339,9 @@ export const docs: PatternDocs = {
                 column on smaller screens
               </Text>
               <Text>
-                Detail areas can be moved to a drawer or separate page on
-                smaller screens
+                Detail areas can be moved to a{' '}
+                <TextLink href="/components/Drawer">Drawer</TextLink> or
+                separate page on smaller screens
               </Text>
             </List>
           </>
@@ -506,9 +470,10 @@ export const docs: PatternDocs = {
               <Text>Content area is divided into columns</Text>
               <Text>The number of columns changes based on screen width</Text>
               <Text>
-                Breakpoints and column counts can be configured as needed. Tiles
-                supports Braid breakpoints; additional large-screen columns can
-                be handled in product CSS if required.
+                Breakpoints and column counts can be configured as needed.{' '}
+                <TextLink href="/components/Tiles">Tiles</TextLink> supports
+                Braid breakpoints; additional large-screen columns can be
+                handled in product CSS if required.
               </Text>
             </List>
           </>

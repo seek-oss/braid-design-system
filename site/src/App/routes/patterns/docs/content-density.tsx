@@ -118,6 +118,14 @@ export const docs: PatternDocs = {
       more condensed UI.
     </Text>
   ),
+  alternatives: [
+    {
+      name: 'layout',
+      section: 'foundations',
+      description:
+        'Foundations document that outlines all available layout components and how to use them.',
+    },
+  ],
   docSections: {
     bestPractices: [
       {
