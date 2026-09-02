@@ -228,11 +228,7 @@ describe('Avatar', () => {
     it('renders a shimmer skeleton without initials or a photo', () => {
       render(
         <BraidTestProvider>
-          <Avatar
-            name="Leia Organa"
-            loading
-            data={{ testid: 'avatar' }}
-          />
+          <Avatar name="Leia Organa" loading data={{ testid: 'avatar' }} />
         </BraidTestProvider>,
       );
 
@@ -280,10 +276,7 @@ describe('Avatar', () => {
     it('does not apply border class by default', () => {
       render(
         <BraidTestProvider>
-          <Avatar
-            name="Leia Organa"
-            data={{ testid: 'avatar' }}
-          />
+          <Avatar name="Leia Organa" data={{ testid: 'avatar' }} />
         </BraidTestProvider>,
       );
 
@@ -293,11 +286,7 @@ describe('Avatar', () => {
     it('applies border class when border prop is true', () => {
       render(
         <BraidTestProvider>
-          <Avatar
-            name="Leia Organa"
-            border
-            data={{ testid: 'avatar' }}
-          />
+          <Avatar name="Leia Organa" border data={{ testid: 'avatar' }} />
         </BraidTestProvider>,
       );
 
