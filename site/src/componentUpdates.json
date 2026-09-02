@@ -5677,7 +5677,7 @@
         "updated": [
           "Accordion"
         ],
-        "summary": "**Accordion:** Deprecate `space` prop and update spacing defaults\n\nThe `space` prop is now deprecated and will be removed in a future release. Spacing between items is now automatically derived from the `size` prop.\n\nThe following default spacing value has been updated:\n\n| `dividers` | `size` | Previous default | New default |\n| --- | --- | --- | --- |\n| `false` | `standard` | `large` | `medium` |\n\n**MIGRATION GUIDE:**\n\nIf the updated default causes an undesired visual change, you can preserve the previous spacing by explicitly setting the `space` prop while migrating:\n\n```diff\n <Accordion\n+  space=\"large\"\n   dividers={false}\n   size=\"standard\"\n >\n```"
+        "summary": "**Accordion:** Deprecate `space` prop and update spacing defaults\n\nThe `space` prop is now deprecated and will be removed in a future release. Spacing between items is now automatically derived from the `size` prop.\n\nThe following default spacing value has been updated: for `dividers={false}` and `size=\"standard\"`, the default space is now `medium` (previously `large`).\n\n**MIGRATION GUIDE:**\n\nIf the updated default causes an undesired visual change, you can preserve the previous spacing by explicitly setting the `space` prop while migrating:\n\n```diff\n <Accordion\n+  space=\"large\"\n   dividers={false}\n   size=\"standard\"\n >\n```"
       }
     ]
   }
