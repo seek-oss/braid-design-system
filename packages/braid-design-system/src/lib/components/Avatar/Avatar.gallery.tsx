@@ -9,7 +9,7 @@ export const galleryItems: GalleryComponent = {
   examples: [
     {
       label: 'Initials',
-      Example: () => source(<Avatar variant="initials" name="Leia Organa" />),
+      Example: () => source(<Avatar name="Leia Organa" />),
     },
     {
       label: 'Icon',
@@ -19,12 +19,11 @@ export const galleryItems: GalleryComponent = {
       label: 'Photo',
       Example: () => {
         const { value } = source(
-          <Avatar variant="initials" name="Leia Organa" photoUrl={photoUrl} />,
+          <Avatar name="Leia Organa" photoUrl={photoUrl} />,
         );
 
         const { code } = source(
           <Avatar
-            variant="initials"
             name="Leia Organa"
             photoUrl="https://example.com/photo.jpg"
           />,
@@ -38,10 +37,11 @@ export const galleryItems: GalleryComponent = {
       Example: () =>
         source(
           <Inline space="small" alignY="center">
-            <Avatar variant="initials" name="Leia Organa" size="small" />
-            <Avatar variant="initials" name="Leia Organa" size="standard" />
-            <Avatar variant="initials" name="Leia Organa" size="large" />
-            <Avatar variant="initials" name="Leia Organa" size="xlarge" />
+            <Avatar name="Leia Organa" size="xsmall" />
+            <Avatar name="Leia Organa" size="small" />
+            <Avatar name="Leia Organa" size="standard" />
+            <Avatar name="Leia Organa" size="large" />
+            <Avatar name="Leia Organa" size="xlarge" />
           </Inline>,
         ),
     },
@@ -51,13 +51,11 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Loading',
-      Example: () =>
-        source(<Avatar variant="initials" name="Leia Organa" loading />),
+      Example: () => source(<Avatar name="Leia Organa" loading />),
     },
     {
       label: 'Border',
-      Example: () =>
-        source(<Avatar variant="initials" name="Leia Organa" border />),
+      Example: () => source(<Avatar name="Leia Organa" border />),
     },
   ],
 };

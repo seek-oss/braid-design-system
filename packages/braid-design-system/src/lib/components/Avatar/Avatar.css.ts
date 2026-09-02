@@ -9,6 +9,7 @@ const avatarSizeInPx = {
   large: 64,
   standard: 48,
   small: 32,
+  xsmall: 24,
 } as const;
 
 export const size = styleVariants(avatarSizeInPx, (pixels) => ({
