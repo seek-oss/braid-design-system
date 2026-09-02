@@ -1,6 +1,13 @@
 import assert from 'assert';
 
-import { Children, useMemo, type FC } from 'react';
+import {
+  Children,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+  type FC,
+} from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
 import { Divider } from '../Divider/Divider';
@@ -30,6 +37,13 @@ export interface AccordionProps {
   size?: AccordionContextValue['size'];
   tone?: AccordionContextValue['tone'];
   weight?: AccordionContextValue['weight'];
+  /**
+   * When true, opening an item closes any other open item.
+   * Starts with all items collapsed. Item-level `expanded` cannot be set.
+   * `onToggle` fires on the item that was clicked, and with `false` on the
+   * item that was closed as a result.
+   */
+  exclusive?: boolean;
   /** @deprecated The spacing is now derived from the `size` prop and will be removed in a future release. */
   space?: RequiredResponsiveValue<(typeof validSpaceValues)[number]>;
   data?: DataAttributeMap;
@@ -60,6 +74,7 @@ export const Accordion: FC<AccordionProps> = ({
   size = defaultSize,
   tone,
   weight,
+  exclusive = false,
   space: spaceProp,
   dividers = true,
   data,
@@ -90,9 +105,63 @@ export const Accordion: FC<AccordionProps> = ({
     buildDataAttributes({ data, validateRestProps: restProps });
   }
 
+  const [openItemId, setOpenItemId] = useState<string | null>(null);
+  const openItemIdRef = useRef<string | null>(null);
+  const itemTogglesRef = useRef(new Map<string, (expanded: boolean) => void>());
+
+  openItemIdRef.current = openItemId;
+
+  const registerItemToggle = useCallback(
+    (itemId: string, onToggle?: (expanded: boolean) => void) => {
+      if (onToggle) {
+        itemTogglesRef.current.set(itemId, onToggle);
+      } else {
+        itemTogglesRef.current.delete(itemId);
+      }
+
+      return () => {
+        itemTogglesRef.current.delete(itemId);
+      };
+    },
+    [],
+  );
+
+  const onItemToggle = useCallback((itemId: string, expanded: boolean) => {
+    const current = openItemIdRef.current;
+
+    if (expanded) {
+      if (current && current !== itemId) {
+        itemTogglesRef.current.get(current)?.(false);
+      }
+
+      setOpenItemId(itemId);
+      return;
+    }
+
+    if (current === itemId) {
+      setOpenItemId(null);
+    }
+  }, []);
+
   const contextValue = useMemo(
-    () => ({ size, tone, weight }),
-    [size, tone, weight],
+    () => ({
+      size,
+      tone,
+      weight,
+      exclusive,
+      openItemId,
+      onItemToggle,
+      registerItemToggle,
+    }),
+    [
+      size,
+      tone,
+      weight,
+      exclusive,
+      openItemId,
+      onItemToggle,
+      registerItemToggle,
+    ],
   );
 
   const space =

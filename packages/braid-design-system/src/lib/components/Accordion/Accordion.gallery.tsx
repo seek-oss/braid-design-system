@@ -46,6 +46,23 @@ export const galleryItems: GalleryComponent = {
         ),
     },
     {
+      label: 'Exclusive',
+      Example: () =>
+        source(
+          <Accordion exclusive>
+            <AccordionItem label="Item 1">
+              <Placeholder height={100} />
+            </AccordionItem>
+            <AccordionItem label="Item 2">
+              <Placeholder height={100} />
+            </AccordionItem>
+            <AccordionItem label="Item 3">
+              <Placeholder height={100} />
+            </AccordionItem>
+          </Accordion>,
+        ),
+    },
+    {
       label: 'With a Badge',
       Example: () =>
         source(
