@@ -29,13 +29,8 @@ const docs: ComponentDocs = {
   Example: () => {
     const { value } = source(
       <Inline space="small" alignY="center">
-        <Avatar
-          variant="initials"
-          name="Leia Organa"
-          size="xlarge"
-          photoUrl={photoUrl}
-        />
-        <Avatar variant="initials" name="Leia Organa" size="large" />
+        <Avatar name="Leia Organa" size="xlarge" photoUrl={photoUrl} />
+        <Avatar name="Leia Organa" size="large" />
         <Avatar variant="icon" name="Leia Organa" />
       </Inline>,
     );
@@ -43,12 +38,11 @@ const docs: ComponentDocs = {
     const { code } = source(
       <Inline space="small" alignY="center">
         <Avatar
-          variant="initials"
           name="Leia Organa"
           size="xlarge"
           photoUrl="https://example.com/photo.jpg"
         />
-        <Avatar variant="initials" name="Leia Organa" size="large" />
+        <Avatar name="Leia Organa" size="large" />
         <Avatar variant="icon" name="Leia Organa" />
       </Inline>,
     );
@@ -58,17 +52,24 @@ const docs: ComponentDocs = {
   accessibility: (
     <>
       <Text>
-        Avatar is decorative. The root is hidden from assistive technologies,
-        and photos use an empty <Strong>alt</Strong>, so initials and images are
-        not announced. Name the person with adjacent text, or on a wrapping
-        control such as a <TextLink href="/components/Button">Button</TextLink>{' '}
-        or <TextLink href="/components/MenuItem">MenuItem</TextLink>. Do not use
-        Avatar as the only identifier.
+        Avatar is decorative by default. The root is hidden from assistive
+        technologies, and photos use an empty <Strong>alt</Strong>, so initials
+        and images are not announced. Name the person with adjacent text, or on
+        a wrapping control such as a{' '}
+        <TextLink href="/components/Button">Button</TextLink> or{' '}
+        <TextLink href="/components/MenuItem">MenuItem</TextLink>.
       </Text>
       <Text>
-        Avatar is not interactive and <Strong>small</Strong> is below the 48px
-        target size. If the avatar is the control, wrap it so the accessible
-        name and hit area come from that control.
+        If there is no adjacent name, pass <Strong>label</Strong> so the avatar
+        is exposed as an image with that accessible name. Do not pass{' '}
+        <Strong>label</Strong> when the name is already visible beside the
+        avatar.
+      </Text>
+      <Text>
+        Avatar is not interactive. <Strong>xsmall</Strong> and{' '}
+        <Strong>small</Strong> are below the 48px target size. If the avatar is
+        the control, wrap it so the accessible name and hit area come from that
+        control.
       </Text>
       <Text>
         The <Strong>loading</Strong> shimmer is visual only. It is paused when{' '}
@@ -97,17 +98,19 @@ const docs: ComponentDocs = {
       label: 'Variants',
       description: (
         <Text>
-          Use <Strong>initials</Strong> to derive the first letter from{' '}
-          <Strong>name</Strong>, or <Strong>icon</Strong> to show{' '}
+          Defaults to initials from <Strong>name</Strong>. Pass{' '}
+          <Strong>variant=&quot;icon&quot;</Strong> to show{' '}
           <TextLink href="/components/IconProfile">IconProfile</TextLink> (or a
-          custom <Strong>icon</Strong>).
+          custom <Strong>icon</Strong>) instead. Pass{' '}
+          <Strong>variant=&quot;initials&quot;</Strong> only when you need to be
+          explicit.
         </Text>
       ),
       Example: () =>
         source(
           <Inline space="medium" alignY="center">
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="Leia Organa" />
+              <Avatar name="Leia Organa" />
               <Text size="small" tone="secondary">
                 initials
               </Text>
@@ -132,11 +135,11 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Inline space="medium" alignY="center">
-            <Avatar variant="initials" name="C-3PO" />
-            <Avatar variant="initials" name="Leia Organa" />
-            <Avatar variant="initials" name="Obi-Wan Kenobi" />
-            <Avatar variant="initials" name="Darth Vader" />
-            <Avatar variant="initials" name="Qui-Gon Jinn" />
+            <Avatar name="C-3PO" />
+            <Avatar name="Leia Organa" />
+            <Avatar name="Obi-Wan Kenobi" />
+            <Avatar name="Darth Vader" />
+            <Avatar name="Qui-Gon Jinn" />
           </Inline>,
         ),
     },
@@ -144,9 +147,8 @@ const docs: ComponentDocs = {
       label: 'Fallback when initials cannot be determined',
       description: (
         <Text>
-          If <Strong>variant</Strong> is <Strong>initials</Strong> and a letter
-          cannot be derived from <Strong>name</Strong> (for example an empty
-          value, numbers, or punctuation),{' '}
+          If a letter cannot be derived from <Strong>name</Strong> (for example
+          an empty value, numbers, or punctuation),{' '}
           <TextLink href="/components/IconProfile">IconProfile</TextLink> is
           shown. Pass <Strong>icon</Strong> to override that fallback.
         </Text>
@@ -155,19 +157,19 @@ const docs: ComponentDocs = {
         source(
           <Inline space="medium" alignY="center">
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="Leia Organa" />
+              <Avatar name="Leia Organa" />
               <Text size="small" tone="secondary">
                 from name
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="2187" />
+              <Avatar name="2187" />
               <Text size="small" tone="secondary">
                 no letters
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="2187" icon={<IconPeople />} />
+              <Avatar name="2187" icon={<IconPeople />} />
               <Text size="small" tone="secondary">
                 custom fallback
               </Text>
@@ -176,20 +178,39 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Sizing',
+      label: 'Initials override',
       description: (
         <Text>
-          Available in <Strong>small</Strong>, <Strong>standard</Strong>,{' '}
-          <Strong>large</Strong> and <Strong>xlarge</Strong>.
+          Pass <Strong>initials</Strong> to set the letters yourself (up to two
+          characters). Colour is still hashed from <Strong>name</Strong> when it
+          is provided.
         </Text>
       ),
       Example: () =>
         source(
           <Inline space="medium" alignY="center">
-            <Avatar variant="initials" name="Leia Organa" size="small" />
-            <Avatar variant="initials" name="Leia Organa" size="standard" />
-            <Avatar variant="initials" name="Leia Organa" size="large" />
-            <Avatar variant="initials" name="Leia Organa" size="xlarge" />
+            <Avatar name="Leia Organa" />
+            <Avatar name="Leia Organa" initials="LO" />
+          </Inline>,
+        ),
+    },
+    {
+      label: 'Sizing',
+      description: (
+        <Text>
+          Available in <Strong>xsmall</Strong>, <Strong>small</Strong>,{' '}
+          <Strong>standard</Strong>, <Strong>large</Strong> and{' '}
+          <Strong>xlarge</Strong>.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Inline space="medium" alignY="center">
+            <Avatar name="Leia Organa" size="xsmall" />
+            <Avatar name="Leia Organa" size="small" />
+            <Avatar name="Leia Organa" size="standard" />
+            <Avatar name="Leia Organa" size="large" />
+            <Avatar name="Leia Organa" size="xlarge" />
           </Inline>,
         ),
     },
@@ -213,23 +234,19 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Inline space="medium" alignY="center">
             <Stack space="small" align="center">
-              <Avatar
-                variant="initials"
-                name="Leia Organa"
-                photoUrl={photoUrl}
-              />
+              <Avatar name="Leia Organa" photoUrl={photoUrl} />
               <Text size="small" tone="secondary">
                 photo
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="Leia Organa" photoError />
+              <Avatar name="Leia Organa" photoError />
               <Text size="small" tone="secondary">
                 error
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="Leia Organa" />
+              <Avatar name="Leia Organa" />
               <Text size="small" tone="secondary">
                 no photo
               </Text>
@@ -241,7 +258,6 @@ const docs: ComponentDocs = {
           <Inline space="medium" alignY="center">
             <Stack space="small" align="center">
               <Avatar
-                variant="initials"
                 name="Leia Organa"
                 photoUrl="https://example.com/photo.jpg"
               />
@@ -250,13 +266,13 @@ const docs: ComponentDocs = {
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="Leia Organa" photoError />
+              <Avatar name="Leia Organa" photoError />
               <Text size="small" tone="secondary">
                 error
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="initials" name="Leia Organa" />
+              <Avatar name="Leia Organa" />
               <Text size="small" tone="secondary">
                 no photo
               </Text>
@@ -276,7 +292,7 @@ const docs: ComponentDocs = {
         </Text>
       ),
       Example: () =>
-        source(<Avatar variant="initials" name="Leia Organa" loading />),
+        source(<Avatar name="Leia Organa" loading />),
     },
     {
       label: 'Border',
@@ -290,13 +306,8 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Box background="brand" padding="medium" borderRadius="standard">
             <Inline space="small" alignY="center">
-              <Avatar
-                variant="initials"
-                name="Leia Organa"
-                photoUrl={photoUrl}
-                border
-              />
-              <Avatar variant="initials" name="Leia Organa" border />
+              <Avatar name="Leia Organa" photoUrl={photoUrl} border />
+              <Avatar name="Leia Organa" border />
               <Avatar variant="icon" name="Leia Organa" border />
             </Inline>
           </Box>,
@@ -306,12 +317,11 @@ const docs: ComponentDocs = {
           <Box background="brand" padding="medium" borderRadius="standard">
             <Inline space="small" alignY="center">
               <Avatar
-                variant="initials"
                 name="Leia Organa"
                 photoUrl="https://example.com/photo.jpg"
                 border
               />
-              <Avatar variant="initials" name="Leia Organa" border />
+              <Avatar name="Leia Organa" border />
               <Avatar variant="icon" name="Leia Organa" border />
             </Inline>
           </Box>,
@@ -338,11 +348,23 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Accessible name',
+      description: (
+        <Text>
+          Pass <Strong>label</Strong> when the avatar is the only representation
+          of the person. Skip it when the name is already in adjacent text or on
+          a wrapping control.
+        </Text>
+      ),
+      Example: () => source(<Avatar name="Leia Organa" label="Leia Organa" />),
+    },
+    {
       label: 'Composition',
       description: (
         <Text>
           Pair Avatar with visible text (or a labelled control) so the name is
-          available to everyone. If the avatar is the control, wrap it so the
+          available to everyone. If the avatar is the only identifier, pass{' '}
+          <Strong>label</Strong>. If the avatar is the control, wrap it so the
           accessible name and hit area come from that control.
         </Text>
       ),
@@ -351,7 +373,7 @@ const docs: ComponentDocs = {
           <Stack space="medium">
             <Columns space="medium" alignY="center">
               <Column width="content">
-                <Avatar variant="initials" name="Leia Organa" />
+                <Avatar name="Leia Organa" />
               </Column>
               <Column>
                 <Stack space="xsmall">
@@ -364,7 +386,7 @@ const docs: ComponentDocs = {
             </Columns>
             <Columns space="medium" alignY="center">
               <Column width="content">
-                <Avatar variant="initials" name="Ezra Bridger" />
+                <Avatar name="Ezra Bridger" />
               </Column>
               <Column>
                 <Stack space="xsmall">
@@ -400,7 +422,10 @@ const docs: ComponentDocs = {
           <Stack space="large">
             <Text>Don&rsquo;t use an Avatar:</Text>
             <List space="large">
-              <Text>as the only identifier for a person</Text>
+              <Text>
+                as the only identifier for a person, unless you pass{' '}
+                <Strong>label</Strong>
+              </Text>
               <Text>
                 for a company or organisation (use{' '}
                 <TextLink href="/components/IconCompany">IconCompany</TextLink>{' '}
@@ -421,7 +446,6 @@ const docs: ComponentDocs = {
     dataAttributeDocs({
       code: `
         <Avatar
-          variant="initials"
           name="Leia Organa"
           data={{ testid: 'avatar-1' }}
           // => data-testid="avatar-1"

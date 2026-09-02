@@ -12,7 +12,7 @@ import type { Snippets } from '../private/Snippets';
 export const snippets: Snippets = [
   {
     description: 'Initials',
-    code: source(<Avatar variant="initials" name="Leia Organa" />),
+    code: source(<Avatar name="Leia Organa" />),
   },
   {
     description: 'Icon',
@@ -21,18 +21,14 @@ export const snippets: Snippets = [
   {
     description: 'Photo',
     code: source(
-      <Avatar
-        variant="initials"
-        name="Leia Organa"
-        photoUrl="https://example.com/photo.jpg"
-      />,
+      <Avatar name="Leia Organa" photoUrl="https://example.com/photo.jpg" />,
     ),
   },
   {
     description: 'With name',
     code: source(
       <Inline space="medium" alignY="center">
-        <Avatar variant="initials" name="Leia Organa" />
+        <Avatar name="Leia Organa" />
         <Stack space="xsmall">
           <Text>Leia Organa</Text>
           <Text size="small" tone="secondary">
@@ -46,16 +42,17 @@ export const snippets: Snippets = [
     description: 'Sizes',
     code: source(
       <Inline space="small" alignY="center">
-        <Avatar variant="initials" name="Leia Organa" size="small" />
-        <Avatar variant="initials" name="Leia Organa" size="standard" />
-        <Avatar variant="initials" name="Leia Organa" size="large" />
-        <Avatar variant="initials" name="Leia Organa" size="xlarge" />
+        <Avatar name="Leia Organa" size="xsmall" />
+        <Avatar name="Leia Organa" size="small" />
+        <Avatar name="Leia Organa" size="standard" />
+        <Avatar name="Leia Organa" size="large" />
+        <Avatar name="Leia Organa" size="xlarge" />
       </Inline>,
     ),
   },
   {
     description: 'Border',
-    code: source(<Avatar variant="initials" name="Leia Organa" border />),
+    code: source(<Avatar name="Leia Organa" border />),
   },
   {
     description: 'Custom icon',
@@ -63,6 +60,6 @@ export const snippets: Snippets = [
   },
   {
     description: 'Loading',
-    code: source(<Avatar variant="initials" name="Leia Organa" loading />),
+    code: source(<Avatar name="Leia Organa" loading />),
   },
 ];

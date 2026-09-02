@@ -18,6 +18,10 @@ const hexToRgbString = (hex: string): string => {
   return `rgb(${r}, ${g}, ${b})`;
 };
 
+const expectVisibleSvg = (container: HTMLElement) => {
+  expect(container.querySelector('svg')).toBeVisible();
+};
+
 describe('Avatar', () => {
   it.each<{
     initials: string;
@@ -54,7 +58,7 @@ describe('Avatar', () => {
     ({ name, expectedColour, initials }) => {
       render(
         <BraidTestProvider>
-          <Avatar name={name} variant="initials" data={{ testid: 'avatar' }} />
+          <Avatar name={name} data={{ testid: 'avatar' }} />
         </BraidTestProvider>,
       );
 
@@ -89,7 +93,7 @@ describe('Avatar', () => {
   ])('should $scenario', ({ name, expectedInitials }) => {
     render(
       <BraidTestProvider>
-        <Avatar variant="initials" name={name} />
+        <Avatar name={name} />
       </BraidTestProvider>,
     );
 
@@ -97,16 +101,13 @@ describe('Avatar', () => {
   });
 
   it('should fallback to icon if initials cannot be determined', () => {
-    render(
+    const { container } = render(
       <BraidTestProvider>
-        <Avatar
-          variant="initials"
-          name="@@@ )@(#*)!@(&%^(!*&@#(!*& (@*#&!!__!++= ','''';;;;"
-        />
+        <Avatar name="@@@ )@(#*)!@(&%^(!*&@#(!*& (@*#&!!__!++= ','''';;;;" />
       </BraidTestProvider>,
     );
 
-    expect(screen.getByTestId('fallback-icon')).toBeVisible();
+    expectVisibleSvg(container);
   });
 
   describe('Photo functionality', () => {
@@ -114,7 +115,7 @@ describe('Avatar', () => {
       const photoUrl = 'https://example.com/photo.jpg';
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Organa" variant="initials" photoUrl={photoUrl} />
+          <Avatar name="Leia Organa" photoUrl={photoUrl} />
         </BraidTestProvider>,
       );
 
@@ -129,19 +130,39 @@ describe('Avatar', () => {
       expect(imgElement).toBeVisible();
     });
 
-    it('renders initials when no photo is provided and variant is initials', () => {
+    it('infers initials from name when variant is omitted', () => {
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Organa" variant="initials" />
+          <Avatar name="Leia Organa" />
         </BraidTestProvider>,
       );
 
       expect(screen.getByText('L')).toBeVisible();
-      expect(screen.queryByRole('img')).toBeNull();
+    });
+
+    it('uses the initials prop instead of deriving from name', () => {
+      render(
+        <BraidTestProvider>
+          <Avatar name="Leia Organa" initials="LO" />
+        </BraidTestProvider>,
+      );
+
+      expect(screen.getByText('LO')).toBeVisible();
+      expect(screen.queryByText('L')).toBeNull();
+    });
+
+    it('exposes an accessible name when label is set', () => {
+      render(
+        <BraidTestProvider>
+          <Avatar name="Leia Organa" label="Leia Organa" />
+        </BraidTestProvider>,
+      );
+
+      expect(screen.getByRole('img', { name: 'Leia Organa' })).toBeVisible();
     });
 
     it('renders icon when no photo is provided and variant is icon', () => {
-      render(
+      const { container } = render(
         <BraidTestProvider>
           <Avatar name="Leia Organa" variant="icon" />
         </BraidTestProvider>,
@@ -149,14 +170,14 @@ describe('Avatar', () => {
 
       expect(screen.queryByRole('img')).toBeNull();
       expect(screen.queryByText('L')).toBeNull();
+      expectVisibleSvg(container);
     });
 
     it('renders broken icon when photo is invalid', () => {
-      render(
+      const { container } = render(
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            variant="initials"
             photoUrl="https://invalid-path/photo.jpg"
           />
         </BraidTestProvider>,
@@ -169,15 +190,14 @@ describe('Avatar', () => {
       });
 
       expect(screen.queryByRole('img')).toBeNull();
-      expect(screen.getByTestId('broken-icon')).toBeVisible();
+      expectVisibleSvg(container);
     });
 
     it('renders broken icon when photoError is true', () => {
-      render(
+      const { container } = render(
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            variant="initials"
             photoUrl="https://example.com/photo.jpg"
             photoError
           />
@@ -185,15 +205,14 @@ describe('Avatar', () => {
       );
 
       expect(screen.queryByRole('img')).toBeNull();
-      expect(screen.getByTestId('broken-icon')).toBeVisible();
+      expectVisibleSvg(container);
     });
 
     it('prioritizes photoError over photoUrl', () => {
-      render(
+      const { container } = render(
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            variant="initials"
             photoUrl="https://example.com/valid-photo.jpg"
             photoError
           />
@@ -201,7 +220,7 @@ describe('Avatar', () => {
       );
 
       expect(screen.queryByRole('img')).toBeNull();
-      expect(screen.getByTestId('broken-icon')).toBeVisible();
+      expectVisibleSvg(container);
     });
   });
 
@@ -211,7 +230,6 @@ describe('Avatar', () => {
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            variant="initials"
             loading
             data={{ testid: 'avatar' }}
           />
@@ -228,13 +246,14 @@ describe('Avatar', () => {
 
   describe('Size support', () => {
     it.each([
+      ['xsmall', textSizeUntrimmed.xsmall],
       ['small', textSizeUntrimmed.small],
       ['standard', textSizeUntrimmed.standard],
       ['large', textSizeUntrimmed.large],
     ] as const)('uses Text size styles for %s', (size, textSizeClass) => {
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Organa" variant="initials" size={size} />
+          <Avatar name="Leia Organa" size={size} />
         </BraidTestProvider>,
       );
 
@@ -247,7 +266,7 @@ describe('Avatar', () => {
     it('uses Heading level 3 styles for xlarge size', () => {
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Organa" variant="initials" size="xlarge" />
+          <Avatar name="Leia Organa" size="xlarge" />
         </BraidTestProvider>,
       );
 
@@ -263,7 +282,6 @@ describe('Avatar', () => {
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            variant="initials"
             data={{ testid: 'avatar' }}
           />
         </BraidTestProvider>,
@@ -277,7 +295,6 @@ describe('Avatar', () => {
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            variant="initials"
             border
             data={{ testid: 'avatar' }}
           />
@@ -292,7 +309,6 @@ describe('Avatar', () => {
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            variant="initials"
             photoUrl="https://example.com/photo.jpg"
             border
             data={{ testid: 'avatar' }}
@@ -323,7 +339,6 @@ describe('Avatar', () => {
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            variant="initials"
             loading
             border
             data={{ testid: 'avatar' }}
@@ -335,14 +350,13 @@ describe('Avatar', () => {
     });
 
     it('applies border to all sizes', () => {
-      const sizes = ['small', 'standard', 'large', 'xlarge'] as const;
+      const sizes = ['xsmall', 'small', 'standard', 'large', 'xlarge'] as const;
 
       sizes.forEach((size) => {
         const { unmount } = render(
           <BraidTestProvider>
             <Avatar
               name="Leia Organa"
-              variant="initials"
               size={size}
               border
               data={{ testid: 'avatar' }}

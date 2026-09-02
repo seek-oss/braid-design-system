@@ -9,18 +9,14 @@ new:
 
 **Avatar:** Add component
 
-A decorative user avatar that can show a photo, initials derived from `name`, or an icon. Available in `small`, `standard`, `large` and `xlarge` sizes, with `loading` and photo error states.
+A user avatar that can show a photo, initials derived from `name` (or an `initials` override), or an icon. Available in `xsmall`, `small`, `standard`, `large` and `xlarge` sizes, with `loading` and photo error states.
 
-Avatar is decorative and hidden from assistive technologies. Name the person with adjacent text, or on a wrapping control such as a `Button` or `MenuItem`.
+Avatar is decorative by default. Name the person with adjacent text, a wrapping control such as a `Button` or `MenuItem`, or `label` when the avatar is the only identifier.
 
 **EXAMPLE USAGE:**
 
 ```jsx
-<Avatar variant="initials" name="Leia Organa" />
+<Avatar name="Leia Organa" />
 <Avatar variant="icon" name="Leia Organa" />
-<Avatar
-  variant="initials"
-  name="Leia Organa"
-  photoUrl="https://example.com/photo.jpg"
-/>
+<Avatar name="Leia Organa" photoUrl="https://example.com/photo.jpg" />
 ```
