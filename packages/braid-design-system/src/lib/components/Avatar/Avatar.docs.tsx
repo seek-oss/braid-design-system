@@ -178,19 +178,30 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Initials override',
+      label: 'Multi-lingual support',
       description: (
         <Text>
-          Pass <Strong>initials</Strong> to set the letters yourself (up to two
-          characters). Colour is still hashed from <Strong>name</Strong> when it
-          is provided.
+          The first Unicode letter of <Strong>name</Strong> is shown, so scripts
+          such as Latin, Thai and Chinese work without extra configuration.
+          Numbers, punctuation and symbols are skipped. If no letter is found,
+          the icon fallback is used.
         </Text>
       ),
       Example: () =>
         source(
           <Inline space="medium" alignY="center">
-            <Avatar name="Leia Organa" />
-            <Avatar name="Leia Organa" initials="LO" />
+            <Stack space="small" align="center">
+              <Avatar name="สมชาย จันทร์" />
+              <Text size="small" tone="secondary">
+                Thai
+              </Text>
+            </Stack>
+            <Stack space="small" align="center">
+              <Avatar name="李 伟" />
+              <Text size="small" tone="secondary">
+                Chinese
+              </Text>
+            </Stack>
           </Inline>,
         ),
     },

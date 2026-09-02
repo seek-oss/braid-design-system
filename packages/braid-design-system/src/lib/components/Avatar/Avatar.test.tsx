@@ -140,17 +140,6 @@ describe('Avatar', () => {
       expect(screen.getByText('L')).toBeVisible();
     });
 
-    it('uses the initials prop instead of deriving from name', () => {
-      render(
-        <BraidTestProvider>
-          <Avatar name="Leia Organa" initials="LO" />
-        </BraidTestProvider>,
-      );
-
-      expect(screen.getByText('LO')).toBeVisible();
-      expect(screen.queryByText('L')).toBeNull();
-    });
-
     it('exposes an accessible name when label is set', () => {
       render(
         <BraidTestProvider>

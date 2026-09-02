@@ -162,7 +162,6 @@ exports[`Avatar 1`] = `
     border?: boolean
     data?: DataAttributeMap
     icon?: ReactNode
-    initials?: string
     label?: string
     loading?: boolean
     name?: string
