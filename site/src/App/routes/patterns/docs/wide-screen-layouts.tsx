@@ -6,6 +6,7 @@ import {
   Column,
   Columns,
   Drawer,
+  Heading,
   Hidden,
   IconArrow,
   Inline,
@@ -13,7 +14,6 @@ import {
   Stack,
   Strong,
   Text,
-  TextLink,
   Tiles,
 } from 'braid-design-system';
 import { Placeholder } from 'braid-design-system/playroom/components';
@@ -29,417 +29,372 @@ export const docs: PatternDocs = {
       and adaptability across devices.
     </Text>
   ),
-  additional: [
+  alternatives: [
     {
-      label: 'Best practice',
-      description: (
-        <List space="large">
-          <Text>
-            Limit content area widths on large screens to optimise readability
-          </Text>
-          <Text>Test with customers to ensure a wider layout adds value</Text>
-          <Text>
-            Ensure wide-screen layouts adapt to smaller screens by stacking
-            content or moving it to a separate area (for example a drawer, sheet
-            or page)
-          </Text>
-          <Text>Align related products to create consistency</Text>
-          <Text>
-            Use horizontal scroll only when it adds value to an experience
-          </Text>
-        </List>
-      ),
+      name: 'PageBlock',
+      description:
+        'Provides a top-level page container, constraining the content width while maintaining common screen gutters on smaller devices',
     },
     {
-      label: 'Accessibility considerations',
-      description: (
-        <>
-          <Text>
-            Keeping line lengths to around 12–15 words per line improves:
-          </Text>
-          <List space="large">
-            <Text>Focus and reading speed</Text>
-            <Text>
-              Comfort for users with visual or cognitive differences such as low
-              vision, dyslexia, or cognitive load sensitivities
-            </Text>
-            <Text>Mobile or zoomed-in experiences</Text>
-            <Text>
-              Ability to locate the start of the next line quickly and easily
-            </Text>
-          </List>
-          <Text>
-            Standard regular Braid text wraps at 12–15 words per line at a width
-            of approximately 600px.
-          </Text>
-          <Text>
-            Horizontal scrolling should always be intentional and accessible:
-          </Text>
-          <List space="large">
-            <Text>Maintain focus states for keyboard navigation</Text>
-            <Text>Avoid horizontal scrolling of continuous text</Text>
-          </List>
-        </>
-      ),
+      name: 'ContentBlock',
+      description:
+        'Provides a container to constrain the maximum width of the content it wraps',
     },
     {
-      label: 'Relevant components',
-      description: (
-        <List space="large">
-          <Text>
-            <TextLink href="/components/PageBlock">PageBlock</TextLink> —
-            Provides a top-level page container, constraining the content width
-            while maintaining common screen gutters on smaller devices
-          </Text>
-          <Text>
-            <TextLink href="/components/ContentBlock">ContentBlock</TextLink> —
-            Provides a container to constrain the maximum width of the content
-            it wraps
-          </Text>
-          <Text>
-            <TextLink href="/components/Columns">Columns</TextLink> — For
-            creating horizontal layouts that work for your product
-          </Text>
-          <Text>
-            <TextLink href="/components/Stack">Stack</TextLink> — For vertical
-            stacking of content or collapsed elements on smaller screens
-          </Text>
-          <Text>
-            <TextLink href="/components/Tiles">Tiles</TextLink> — For laying out
-            a collection of elements that wrap across a product-determined
-            number of columns
-          </Text>
-          <Text>
-            <TextLink href="/components/Drawer">Drawer</TextLink> — For housing
-            content that benefits from a focused view or that can&rsquo;t be
-            stacked on smaller screens
-          </Text>
-          <Text>
-            <TextLink href="/foundations/layout">Layout components</TextLink> —
-            All available components needed to create an infinite variety of
-            content and page layouts
-          </Text>
-        </List>
-      ),
+      name: 'Columns',
+      description: 'For creating horizontal layouts that work for your product',
     },
     {
-      label: 'Examples',
-      description: (
+      name: 'Stack',
+      description:
+        'For vertical stacking of content or collapsed elements on smaller screens',
+    },
+    {
+      name: 'Tiles',
+      description:
+        'For laying out a collection of elements that wrap across a product-determined number of columns',
+    },
+    {
+      name: 'Drawer',
+      description:
+        "For housing content that benefits from a focused view or that can't be stacked on smaller screens",
+    },
+    {
+      name: 'layout',
+      section: 'foundations',
+      description:
+        'All available components needed to create an infinite variety of content and page layouts',
+    },
+  ],
+  accessibility: (
+    <>
+      <Text>Keeping line lengths to around 12–15 words per line improves:</Text>
+      <List space="large">
+        <Text>Focus and reading speed</Text>
         <Text>
-          The examples below are a small sample of wide-screen layouts. The
-          principles can be combined to meet your particular requirements.
-          Resize the browser window to see how they adapt.
+          Comfort for users with visual or cognitive differences such as low
+          vision, dyslexia, or cognitive load sensitivities
         </Text>
-      ),
-    },
-    {
-      label: '1. Full-width responsive — collapsing to stack',
-      description: (
-        <List space="large">
-          <Text>Content runs full width on all screen sizes</Text>
-          <Text>Content stacks vertically on smaller screens</Text>
-          <Text>Avoid long line lengths in wider views</Text>
-        </List>
-      ),
-      Example: () =>
-        source(
-          <Stack space="medium">
-            <Placeholder
-              height={100}
-              label="This area expands to full screen width on all screen sizes"
-            />
-            <Columns space="medium" collapseBelow="desktop">
-              <Column>
-                <Placeholder height={300} label="Content area 1" />
-              </Column>
-              <Column width="1/2">
-                <Placeholder height={300} label="Content area 2" />
-              </Column>
-              <Column>
-                <Placeholder height={200} label="Content area 3" />
-              </Column>
-            </Columns>
-          </Stack>,
+        <Text>Mobile or zoomed-in experiences</Text>
+        <Text>
+          Ability to locate the start of the next line quickly and easily
+        </Text>
+      </List>
+      <Text>
+        Standard regular Braid text wraps at 12–15 words per line at a width of
+        approximately 600px.
+      </Text>
+      <Text>
+        Horizontal scrolling should always be intentional and accessible:
+      </Text>
+      <List space="large">
+        <Text>Maintain focus states for keyboard navigation</Text>
+        <Text>Avoid horizontal scrolling of continuous text</Text>
+      </List>
+    </>
+  ),
+  docSections: {
+    bestPractices: [
+      {
+        label: 'General best practice',
+        description: (
+          <List space="large">
+            <Text>
+              Limit content area widths on large screens to optimise readability
+            </Text>
+            <Text>Test with customers to ensure a wider layout adds value</Text>
+            <Text>
+              Ensure wide-screen layouts adapt to smaller screens by stacking
+              content or moving it to a separate area (for example a drawer,
+              sheet or page)
+            </Text>
+            <Text>Align related products to create consistency</Text>
+            <Text>
+              Use horizontal scroll only when it adds value to an experience
+            </Text>
+            <Text>
+              Use <Strong>PageBlock</Strong> as the top-level page container,
+              then nest <Strong>ContentBlock</Strong> when a nested section
+              needs a narrower measure — for example body copy inside a
+              full-width layout
+            </Text>
+          </List>
         ),
-    },
-    {
-      label: '2. Full-width responsive — moving content to a drawer',
-      description: (
-        <List space="large">
-          <Text>Content runs full width on all screen sizes</Text>
+      },
+      {
+        label: 'Examples',
+        description: (
           <Text>
-            Sections that can&rsquo;t be stacked on smaller screens can be moved
-            to a drawer or separate page
+            The examples below are a small sample of wide-screen layouts. The
+            principles can be combined to meet your particular requirements.
+            Resize the browser window to see how they adapt.
           </Text>
-        </List>
-      ),
-      Example: ({ getState, setState, setDefaultState }) =>
-        source(
+        ),
+      },
+      {
+        description: (
           <>
-            {setDefaultState('drawerOpen', false)}
-            <Stack space="gutter">
+            <Heading level="4">
+              Full-width responsive — collapsing to stack
+            </Heading>
+            <List space="large">
+              <Text>Content runs full width on all screen sizes</Text>
+              <Text>Content stacks vertically on smaller screens</Text>
+              <Text>Avoid long line lengths in wider views</Text>
+            </List>
+          </>
+        ),
+        Example: () =>
+          source(
+            <Stack space="medium">
               <Placeholder
                 height={100}
                 label="This area expands to full screen width on all screen sizes"
               />
-              <Hidden above="tablet">
-                <Inline space="none" align="right">
-                  <Button
-                    icon={<IconArrow direction="right" />}
-                    iconPosition="trailing"
-                    onClick={() => setState('drawerOpen', true)}
-                  >
-                    Access Content area 3
-                  </Button>
-                </Inline>
-              </Hidden>
-              <Columns space="small" collapseBelow="desktop">
+              <Columns space="medium" collapseBelow="desktop">
                 <Column>
-                  <Placeholder height={200} label="Content area 1" />
-                </Column>
-                <Column>
-                  <Placeholder height={200} label="Content area 2" />
-                </Column>
-                <Column hideBelow="desktop">
-                  <Placeholder height={200} label="Content area 3" />
-                </Column>
-              </Columns>
-              <Hidden above="desktop">
-                <Drawer
-                  title="Content area 3"
-                  open={getState('drawerOpen')}
-                  onClose={() => setState('drawerOpen', false)}
-                >
-                  <Placeholder height={200} label="Content area 3" />
-                </Drawer>
-              </Hidden>
-            </Stack>
-          </>,
-        ),
-    },
-    {
-      label: '3. Full-width horizontal scroll',
-      description: (
-        <List space="large">
-          <Text>Content runs full width on all screen sizes</Text>
-          <Text>Content scrolls horizontally on all screen sizes</Text>
-          <Text>
-            Ideal for connected horizontal content, such as Kanban boards
-          </Text>
-        </List>
-      ),
-      Example: () =>
-        source(
-          <Stack space="medium">
-            <Placeholder
-              height={100}
-              label="This area expands to full screen width on all screen sizes"
-            />
-            <Box overflow="auto">
-              <Box display="flex" gap="small">
-                <Box flexShrink={0}>
-                  <Placeholder
-                    height={256}
-                    width={300}
-                    label="Content area 1"
-                  />
-                </Box>
-                <Box flexShrink={0}>
-                  <Placeholder
-                    height={256}
-                    width={300}
-                    label="Content area 2"
-                  />
-                </Box>
-                <Box flexShrink={0}>
-                  <Placeholder
-                    height={256}
-                    width={300}
-                    label="Content area 3"
-                  />
-                </Box>
-                <Box flexShrink={0}>
-                  <Placeholder
-                    height={256}
-                    width={300}
-                    label="Content area 4"
-                  />
-                </Box>
-                <Box flexShrink={0}>
-                  <Placeholder
-                    height={256}
-                    width={300}
-                    label="Content area 5"
-                  />
-                </Box>
-                <Box flexShrink={0}>
-                  <Placeholder
-                    height={256}
-                    width={300}
-                    label="Content area 6"
-                  />
-                </Box>
-                <Box flexShrink={0}>
-                  <Placeholder
-                    height={256}
-                    width={300}
-                    label="Content area 7"
-                  />
-                </Box>
-                <Box flexShrink={0}>
-                  <Placeholder
-                    height={256}
-                    width={300}
-                    label="Content area 8"
-                  />
-                </Box>
-                <Box flexShrink={0}>
-                  <Placeholder
-                    height={256}
-                    width={300}
-                    label="Content area 9"
-                  />
-                </Box>
-                <Box flexShrink={0}>
-                  <Placeholder
-                    height={256}
-                    width={300}
-                    label="Content area 10"
-                  />
-                </Box>
-              </Box>
-            </Box>
-          </Stack>,
-        ),
-    },
-    {
-      label: '4. Constrained max width',
-      description: (
-        <List space="large">
-          <Text>
-            The page extends to a maximum width determined by the product team
-            as optimal for their experience
-          </Text>
-          <Text>
-            If the window is narrower than the max width, the page runs full
-            width
-          </Text>
-          <Text>
-            The optimal max width will vary by product. Teams should explore and
-            test what works with their content.
-          </Text>
-        </List>
-      ),
-      Example: () =>
-        source(
-          <Box style={{ maxWidth: '1400px', marginInline: 'auto' }}>
-            <Stack space="medium">
-              <Placeholder height={100} label="Maximum width set to 1400px" />
-              <Columns space="medium" collapseBelow="tablet">
-                <Column width="1/2">
                   <Placeholder height={300} label="Content area 1" />
                 </Column>
-                <Column>
-                  <Placeholder height={200} label="Content area 2" />
+                <Column width="1/2">
+                  <Placeholder height={300} label="Content area 2" />
                 </Column>
                 <Column>
                   <Placeholder height={200} label="Content area 3" />
                 </Column>
-                <Column>
-                  <Placeholder height={200} label="Content area 4" />
-                </Column>
               </Columns>
-            </Stack>
-          </Box>,
-        ),
-    },
-    {
-      label: '5. Full width split view',
-      description: (
-        <List space="large">
-          <Text>Content area is divided into summary and detail</Text>
-          <Text>
-            Summary cards can wrap from two columns on wide screens to one
-            column on smaller screens
-          </Text>
-          <Text>
-            Detail areas can be moved to a drawer or separate page on smaller
-            screens
-          </Text>
-        </List>
-      ),
-      Example: ({ getState, setState, setDefaultState }) =>
-        source(
+            </Stack>,
+          ),
+      },
+      {
+        description: (
           <>
-            {setDefaultState('drawerOpen', false)}
-            <Stack space="gutter">
+            <Heading level="4">
+              Full-width responsive — moving content to a drawer
+            </Heading>
+            <List space="large">
+              <Text>Content runs full width on all screen sizes</Text>
+              <Text>
+                Sections that can&rsquo;t be stacked on smaller screens can be
+                moved to a drawer or separate page
+              </Text>
+            </List>
+          </>
+        ),
+        Example: ({ getState, setState, setDefaultState }) =>
+          source(
+            <>
+              {setDefaultState('drawerOpen', false)}
+              <Stack space="gutter">
+                <Placeholder
+                  height={100}
+                  label="This area expands to full screen width on all screen sizes"
+                />
+                <Hidden above="tablet">
+                  <Inline space="none" align="right">
+                    <Button
+                      icon={<IconArrow direction="right" />}
+                      iconPosition="trailing"
+                      onClick={() => setState('drawerOpen', true)}
+                    >
+                      Access Content area 3
+                    </Button>
+                  </Inline>
+                </Hidden>
+                <Columns space="small" collapseBelow="desktop">
+                  <Column>
+                    <Placeholder height={200} label="Content area 1" />
+                  </Column>
+                  <Column>
+                    <Placeholder height={200} label="Content area 2" />
+                  </Column>
+                  <Column hideBelow="desktop">
+                    <Placeholder height={200} label="Content area 3" />
+                  </Column>
+                </Columns>
+                <Hidden above="desktop">
+                  <Drawer
+                    title="Content area 3"
+                    open={getState('drawerOpen')}
+                    onClose={() => setState('drawerOpen', false)}
+                  >
+                    <Placeholder height={200} label="Content area 3" />
+                  </Drawer>
+                </Hidden>
+              </Stack>
+            </>,
+          ),
+      },
+      {
+        description: (
+          <>
+            <Heading level="4">Full-width horizontal scroll</Heading>
+            <List space="large">
+              <Text>Content runs full width on all screen sizes</Text>
+              <Text>Content scrolls horizontally on all screen sizes</Text>
+              <Text>
+                Ideal for connected horizontal content, such as Kanban boards
+              </Text>
+            </List>
+          </>
+        ),
+        Example: () =>
+          source(
+            <Stack space="medium">
               <Placeholder
                 height={100}
                 label="This area expands to full screen width on all screen sizes"
               />
-              <Columns space="gutter">
-                <Column>
-                  <Tiles
-                    space="gutter"
-                    columns={{ mobile: 1, tablet: 1, desktop: 1, wide: 2 }}
-                  >
-                    <Hidden above="tablet">
-                      <Inline space="none" align="right">
-                        <Button
-                          size="small"
-                          icon={<IconArrow direction="right" />}
-                          iconPosition="trailing"
-                          onClick={() => setState('drawerOpen', true)}
-                        >
-                          Access Content area 2
-                        </Button>
-                      </Inline>
-                    </Hidden>
-                    <Placeholder height={100} label="Content area 1A" />
-                    <Placeholder height={100} label="Content area 1B" />
-                    <Placeholder height={100} label="Content area 1C" />
-                    <Placeholder height={100} label="Content area 1D" />
-                    <Placeholder height={100} label="Content area 1E" />
-                    <Placeholder height={100} label="Content area 1F" />
-                    <Placeholder height={100} label="Content area 1G" />
-                    <Placeholder height={100} label="Content area 1H" />
-                  </Tiles>
-                </Column>
-                <Column width="1/2" hideBelow="desktop">
-                  <Placeholder height={800} label="Content area 2" />
-                </Column>
-              </Columns>
-              <Hidden above="desktop">
-                <Drawer
-                  title="Content area 2"
-                  open={getState('drawerOpen')}
-                  onClose={() => setState('drawerOpen', false)}
-                >
-                  <Placeholder height={200} label="Content area 2" />
-                </Drawer>
-              </Hidden>
-            </Stack>
-          </>,
-        ),
-    },
-    {
-      Example: ({ getState, setState, setDefaultState }) =>
-        source(
+              <Box overflow="auto">
+                <Box display="flex" gap="small">
+                  <Box flexShrink={0}>
+                    <Placeholder
+                      height={256}
+                      width={300}
+                      label="Content area 1"
+                    />
+                  </Box>
+                  <Box flexShrink={0}>
+                    <Placeholder
+                      height={256}
+                      width={300}
+                      label="Content area 2"
+                    />
+                  </Box>
+                  <Box flexShrink={0}>
+                    <Placeholder
+                      height={256}
+                      width={300}
+                      label="Content area 3"
+                    />
+                  </Box>
+                  <Box flexShrink={0}>
+                    <Placeholder
+                      height={256}
+                      width={300}
+                      label="Content area 4"
+                    />
+                  </Box>
+                  <Box flexShrink={0}>
+                    <Placeholder
+                      height={256}
+                      width={300}
+                      label="Content area 5"
+                    />
+                  </Box>
+                  <Box flexShrink={0}>
+                    <Placeholder
+                      height={256}
+                      width={300}
+                      label="Content area 6"
+                    />
+                  </Box>
+                  <Box flexShrink={0}>
+                    <Placeholder
+                      height={256}
+                      width={300}
+                      label="Content area 7"
+                    />
+                  </Box>
+                  <Box flexShrink={0}>
+                    <Placeholder
+                      height={256}
+                      width={300}
+                      label="Content area 8"
+                    />
+                  </Box>
+                  <Box flexShrink={0}>
+                    <Placeholder
+                      height={256}
+                      width={300}
+                      label="Content area 9"
+                    />
+                  </Box>
+                  <Box flexShrink={0}>
+                    <Placeholder
+                      height={256}
+                      width={300}
+                      label="Content area 10"
+                    />
+                  </Box>
+                </Box>
+              </Box>
+            </Stack>,
+          ),
+      },
+      {
+        description: (
           <>
-            {setDefaultState('drawerOpen', false)}
-            <Box style={{ maxWidth: '2000px', marginInline: 'auto' }}>
+            <Heading level="4">Constrained max width</Heading>
+            <List space="large">
+              <Text>
+                The page extends to a maximum width determined by the product
+                team as optimal for their experience
+              </Text>
+              <Text>
+                If the window is narrower than the max width, the page runs full
+                width
+              </Text>
+              <Text>
+                The optimal max width will vary by product. Teams should explore
+                and test what works with their content.
+              </Text>
+            </List>
+          </>
+        ),
+        Example: () =>
+          source(
+            <Box style={{ maxWidth: '1400px', marginInline: 'auto' }}>
+              <Stack space="medium">
+                <Placeholder height={100} label="Maximum width set to 1400px" />
+                <Columns space="medium" collapseBelow="tablet">
+                  <Column width="1/2">
+                    <Placeholder height={300} label="Content area 1" />
+                  </Column>
+                  <Column>
+                    <Placeholder height={200} label="Content area 2" />
+                  </Column>
+                  <Column>
+                    <Placeholder height={200} label="Content area 3" />
+                  </Column>
+                  <Column>
+                    <Placeholder height={200} label="Content area 4" />
+                  </Column>
+                </Columns>
+              </Stack>
+            </Box>,
+          ),
+      },
+      {
+        description: (
+          <>
+            <Heading level="4">Full width split view</Heading>
+            <List space="large">
+              <Text>Content area is divided into summary and detail</Text>
+              <Text>
+                Summary cards can wrap from two columns on wide screens to one
+                column on smaller screens
+              </Text>
+              <Text>
+                Detail areas can be moved to a drawer or separate page on
+                smaller screens
+              </Text>
+            </List>
+          </>
+        ),
+        Example: ({ getState, setState, setDefaultState }) =>
+          source(
+            <>
+              {setDefaultState('drawerOpen', false)}
               <Stack space="gutter">
-                <Placeholder height={100} label="Maximum width set to 2000px" />
+                <Placeholder
+                  height={100}
+                  label="This area expands to full screen width on all screen sizes"
+                />
                 <Columns space="gutter">
                   <Column>
                     <Tiles
                       space="gutter"
-                      columns={{
-                        mobile: 1,
-                        tablet: 1,
-                        desktop: 1,
-                        wide: 2,
-                      }}
+                      columns={{ mobile: 1, tablet: 1, desktop: 1, wide: 2 }}
                     >
                       <Hidden above="tablet">
                         <Inline space="none" align="right">
@@ -477,45 +432,99 @@ export const docs: PatternDocs = {
                   </Drawer>
                 </Hidden>
               </Stack>
-            </Box>
-          </>,
+            </>,
+          ),
+      },
+      {
+        Example: ({ getState, setState, setDefaultState }) =>
+          source(
+            <>
+              {setDefaultState('drawerOpen', false)}
+              <Box style={{ maxWidth: '2000px', marginInline: 'auto' }}>
+                <Stack space="gutter">
+                  <Placeholder
+                    height={100}
+                    label="Maximum width set to 2000px"
+                  />
+                  <Columns space="gutter">
+                    <Column>
+                      <Tiles
+                        space="gutter"
+                        columns={{
+                          mobile: 1,
+                          tablet: 1,
+                          desktop: 1,
+                          wide: 2,
+                        }}
+                      >
+                        <Hidden above="tablet">
+                          <Inline space="none" align="right">
+                            <Button
+                              size="small"
+                              icon={<IconArrow direction="right" />}
+                              iconPosition="trailing"
+                              onClick={() => setState('drawerOpen', true)}
+                            >
+                              Access Content area 2
+                            </Button>
+                          </Inline>
+                        </Hidden>
+                        <Placeholder height={100} label="Content area 1A" />
+                        <Placeholder height={100} label="Content area 1B" />
+                        <Placeholder height={100} label="Content area 1C" />
+                        <Placeholder height={100} label="Content area 1D" />
+                        <Placeholder height={100} label="Content area 1E" />
+                        <Placeholder height={100} label="Content area 1F" />
+                        <Placeholder height={100} label="Content area 1G" />
+                        <Placeholder height={100} label="Content area 1H" />
+                      </Tiles>
+                    </Column>
+                    <Column width="1/2" hideBelow="desktop">
+                      <Placeholder height={800} label="Content area 2" />
+                    </Column>
+                  </Columns>
+                  <Hidden above="desktop">
+                    <Drawer
+                      title="Content area 2"
+                      open={getState('drawerOpen')}
+                      onClose={() => setState('drawerOpen', false)}
+                    >
+                      <Placeholder height={200} label="Content area 2" />
+                    </Drawer>
+                  </Hidden>
+                </Stack>
+              </Box>
+            </>,
+          ),
+      },
+      {
+        description: (
+          <>
+            <Heading level="4">Responsive grid layout</Heading>
+            <List space="large">
+              <Text>Content area is divided into columns</Text>
+              <Text>The number of columns changes based on screen width</Text>
+              <Text>
+                Breakpoints and column counts can be configured as needed. Tiles
+                supports Braid breakpoints; additional large-screen columns can
+                be handled in product CSS if required.
+              </Text>
+            </List>
+          </>
         ),
-    },
-    {
-      label: '6. Responsive grid layout',
-      description: (
-        <List space="large">
-          <Text>Content area is divided into columns</Text>
-          <Text>The number of columns changes based on screen width</Text>
-          <Text>
-            Breakpoints and column counts can be configured as needed. Tiles
-            supports Braid breakpoints; additional large-screen columns can be
-            handled in product CSS if required.
-          </Text>
-        </List>
-      ),
-      Example: () =>
-        source(
-          <Box className={styles.boxGrid}>
-            {Array.from({ length: 20 }, (_, i) => (
-              <Card key={i}>
-                <Text align="center">Card {i + 1}</Text>
-              </Card>
-            ))}
-          </Box>,
-        ),
-    },
-    {
-      label: 'ContentBlock and PageBlock',
-      description: (
-        <Text>
-          Use <Strong>PageBlock</Strong> as the top-level page container, then
-          nest <Strong>ContentBlock</Strong> when a nested section needs a
-          narrower measure — for example body copy inside a full-width layout.
-        </Text>
-      ),
-    },
-  ],
+        Example: () =>
+          source(
+            <Box className={styles.boxGrid}>
+              {Array.from({ length: 20 }, (_, i) => (
+                <Card key={i}>
+                  <Text align="center">Card {i + 1}</Text>
+                </Card>
+              ))}
+            </Box>,
+          ),
+      },
+    ],
+  },
 };
 
 export default docs;
