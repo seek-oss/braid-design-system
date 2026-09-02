@@ -759,8 +759,8 @@ export const docs: PatternDocs = {
                 </TableBody>
               </Table>
               <Text>
-                SEEKers can visit the APAC Writing Space for existing error
-                messages and guides.
+                SEEKers can visit the internal APAC Writing Space for further
+                guidance and examples.
               </Text>
             </Stack>
           </Stack>
