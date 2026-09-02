@@ -11,6 +11,7 @@ import {
   IconArrow,
   Inline,
   List,
+  PageBlock,
   Stack,
   Strong,
   Text,
@@ -512,16 +513,73 @@ export const docs: PatternDocs = {
             </List>
           </>
         ),
-        Example: () =>
-          source(
-            <Box className={styles.boxGrid}>
-              {Array.from({ length: 20 }, (_, i) => (
-                <Card key={i}>
-                  <Text align="center">Card {i + 1}</Text>
-                </Card>
-              ))}
-            </Box>,
-          ),
+        Example: () => {
+          const { value: visual } = source(
+            <>
+              <Box paddingTop="large" />
+              <PageBlock width="full">
+                <Box className={styles.boxGrid}>
+                  {Array.from({ length: 20 }, (_, i) => (
+                    <Card key={i}>
+                      <Box padding="medium">
+                        <Text align="center">Card {i + 1}</Text>
+                      </Box>
+                    </Card>
+                  ))}
+                </Box>
+              </PageBlock>
+            </>,
+          );
+
+          return {
+            code: `<style jsx>{\`
+  .boxGrid {
+    display: grid;
+    gap: \${vars.space.small};
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: \${breakpoints.tablet}px) {
+    .boxGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: \${breakpoints.desktop}px) {
+    .boxGrid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (min-width: \${breakpoints.wide}px) {
+    .boxGrid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media (min-width: 1600px) {
+    .boxGrid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  @media (min-width: 2000px) {
+    .boxGrid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+\`}</style>
+<Box paddingTop="large" />
+<PageBlock width="full">
+  <Box className="boxGrid">
+    {Array.from({ length: 20 }, (_, i) => (
+      <Card key={i}>
+        <Box padding="medium">
+          <Text align="center">Card {i + 1}</Text>
+        </Box>
+      </Card>
+    ))}
+  </Box>
+</PageBlock>`,
+            value: visual,
+          };
+        },
       },
     ],
   },
