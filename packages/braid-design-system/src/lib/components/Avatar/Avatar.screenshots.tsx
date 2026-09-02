@@ -11,7 +11,6 @@ const meta = {
   title: 'Components/Avatar',
   component: Avatar,
   args: {
-    variant: 'initials',
     name: 'Leia Organa',
   },
 } satisfies Meta<typeof Avatar>;
@@ -19,11 +18,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof Avatar>;
 
-export const Initials: Story = {
-  args: {
-    variant: 'initials',
-  },
-};
+export const Initials: Story = {};
 
 export const Icon: Story = {
   args: {
@@ -37,7 +32,7 @@ export const InitialsSizes: Story = {
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
-          <Avatar variant="initials" name="Leia Organa" size={size} />
+          <Avatar name="Leia Organa" size={size} />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
@@ -65,12 +60,7 @@ export const PhotoSizes: Story = {
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
-          <Avatar
-            variant="initials"
-            name="Leia Organa"
-            size={size}
-            photoUrl={photoUrl}
-          />
+          <Avatar name="Leia Organa" size={size} photoUrl={photoUrl} />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
@@ -84,12 +74,7 @@ export const PhotoErrorSizes: Story = {
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
-          <Avatar
-            variant="initials"
-            name="Leia Organa"
-            size={size}
-            photoError
-          />
+          <Avatar name="Leia Organa" size={size} photoError />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
@@ -103,7 +88,7 @@ export const BorderSizes: Story = {
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
-          <Avatar variant="initials" name="Leia Organa" size={size} border />
+          <Avatar name="Leia Organa" size={size} border />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
@@ -117,7 +102,7 @@ export const LoadingSizes: Story = {
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
-          <Avatar variant="initials" name="Leia Organa" size={size} loading />
+          <Avatar name="Leia Organa" size={size} loading />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
@@ -153,9 +138,9 @@ export const Contrast: Story = {
   ),
   render: () => (
     <Inline space="small" alignY="center">
-      <Avatar variant="initials" name="Leia Organa" border />
+      <Avatar name="Leia Organa" border />
       <Avatar variant="icon" name="Leia Organa" border />
-      <Avatar variant="initials" name="Leia Organa" loading border />
+      <Avatar name="Leia Organa" loading border />
     </Inline>
   ),
 };

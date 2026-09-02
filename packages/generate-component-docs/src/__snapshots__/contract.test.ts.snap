@@ -162,6 +162,8 @@ exports[`Avatar 1`] = `
     border?: boolean
     data?: DataAttributeMap
     icon?: ReactNode
+    initials?: string
+    label?: string
     loading?: boolean
     name?: string
     photoError?: boolean
@@ -171,7 +173,8 @@ exports[`Avatar 1`] = `
         | "small"
         | "standard"
         | "xlarge"
-    variant: 
+        | "xsmall"
+    variant?: 
         | "icon"
         | "initials"
 },
