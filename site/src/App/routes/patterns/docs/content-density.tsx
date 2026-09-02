@@ -16,6 +16,7 @@ import {
   IconShare,
   Inline,
   List,
+  PageBlock,
   Stack,
   Strong,
   Text,
@@ -237,8 +238,8 @@ export const docs: PatternDocs = {
             from <Strong>none</Strong> to <Strong>xxxlarge</Strong>.
           </Text>
         ),
-        Example: ({ getState, setState, setDefaultState }) =>
-          source(
+        Example: ({ getState, setState, setDefaultState }) => {
+          const { value: visual } = source(
             <>
               {setDefaultState('debug', false)}
 
@@ -299,312 +300,227 @@ export const docs: PatternDocs = {
                 </Columns>
               </Stack>
             </>,
-          ),
+          );
+
+          const { code: codeDemo } = source(
+            <Box padding="xlarge">
+              <Stack space="xlarge">
+                <PageBlock width="small">
+                  <Columns collapseBelow="tablet" space="large">
+                    <Column>
+                      <Stack space="large">
+                        <Text>Large</Text>
+                        <Placeholder height={60} label="UI component" />
+                        <Placeholder height={60} label="UI component" />
+                        <Placeholder height={60} label="UI component" />
+                      </Stack>
+                    </Column>
+                    <Column>
+                      <Stack space="medium">
+                        <Text>Medium</Text>
+                        <Placeholder height={60} label="UI component" />
+                        <Placeholder height={60} label="UI component" />
+                        <Placeholder height={60} label="UI component" />
+                      </Stack>
+                    </Column>
+                    <Column>
+                      <Stack space="small">
+                        <Text>Small</Text>
+                        <Placeholder height={60} label="UI component" />
+                        <Placeholder height={60} label="UI component" />
+                        <Placeholder height={60} label="UI component" />
+                      </Stack>
+                    </Column>
+                    <Column>
+                      <Stack space="xsmall">
+                        <Text>Xsmall</Text>
+                        <Placeholder height={60} label="UI component" />
+                        <Placeholder height={60} label="UI component" />
+                        <Placeholder height={60} label="UI component" />
+                      </Stack>
+                    </Column>
+                  </Columns>
+                </PageBlock>
+              </Stack>
+            </Box>,
+          );
+
+          return {
+            code: codeDemo,
+            value: visual,
+          };
+        },
       },
       {
         description: (
           <Text>
             When designing custom solutions with{' '}
             <TextLink href="/components/Box">Box</TextLink>, vertical spacing
-            can also be applied via padding or margin.
+            can also be applied using the <Strong>padding</Strong> or{' '}
+            <Strong>margin</Strong> properties.
           </Text>
         ),
-        Example: ({ getState, setState, setDefaultState }) =>
-          source(
-            <>
-              {setDefaultState('debug', false)}
-              <Stack space="xlarge">
-                <Box paddingY="medium" background="neutralLight">
-                  <ContentBlock width="xsmall">
-                    <Toggle
-                      label="Show spacing"
-                      size="small"
-                      on={getState('debug')}
-                      onChange={(on) => setState('debug', on)}
-                    />
-                  </ContentBlock>
-                </Box>
-                <ContentBlock width="xsmall">
-                  <Stack space="xlarge">
-                    <Stack space="medium">
-                      <Stack space="xsmall">
-                        <Text weight="strong">Card component</Text>
-                        <Text>Large padding by default</Text>
-                      </Stack>
-                      <Box
-                        boxShadow="borderNeutralLight"
-                        borderRadius="large"
-                        padding={getState('debug') ? 'none' : 'large'}
-                      >
-                        <Columns space="none" collapseBelow="tablet">
-                          <Column width="content">
-                            {getState('debug') ? (
-                              <DebugSpaceY space="large" marginTop="large" />
-                            ) : null}
-                          </Column>
-                          <Column>
-                            {getState('debug') ? (
-                              <DebugSpace
-                                space="large"
-                                xxsmall="neutralLight"
-                              />
-                            ) : null}
-                            <Stack space={getState('debug') ? 'none' : 'small'}>
-                              <Stack
-                                space={getState('debug') ? 'none' : 'xxsmall'}
-                              >
-                                <Text weight="strong">Strong text</Text>
-                                {getState('debug') ? (
-                                  <DebugSpace
-                                    space="xxsmall"
-                                    xxsmall="neutralLight"
-                                  />
-                                ) : null}
-                                <Text size="small">Small text</Text>
-                              </Stack>
-                              {getState('debug') ? (
-                                <DebugSpace
-                                  space="small"
-                                  xxsmall="neutralLight"
-                                />
-                              ) : null}
-                              <Text size="xsmall">
-                                Xsmall text lorem ipsum dolor sit amet
-                                consectetur adipiscing elit. Vivamus iaculis ut
-                                neque sit amet.
-                              </Text>
-                              {getState('debug') ? (
-                                <DebugSpace
-                                  space="small"
-                                  xxsmall="neutralLight"
-                                />
-                              ) : null}
-                              <Text tone="secondary" size="xsmall">
-                                Xsmall, secondary text
-                              </Text>
-                              {getState('debug') ? (
-                                <DebugSpace
-                                  space="small"
-                                  xxsmall="neutralLight"
-                                />
-                              ) : null}
-                              <Text size="xsmall">
-                                <TextLink href="#">Xsmall text link</TextLink>
-                              </Text>
-                            </Stack>
-                            {getState('debug') ? (
-                              <DebugSpace
-                                space="large"
-                                xxsmall="neutralLight"
-                              />
-                            ) : null}
-                          </Column>
-                          <Column width="content">
-                            {getState('debug') ? (
-                              <DebugSpaceY space="large" marginTop="large" />
-                            ) : null}
-                          </Column>
-                        </Columns>
-                      </Box>
-                    </Stack>
-                    <Stack space="medium">
-                      <Stack space="xsmall">
-                        <Text weight="strong">Custom example</Text>
-                        <Text>Medium padding</Text>
-                      </Stack>
-                      <Box
-                        boxShadow="borderNeutralLight"
-                        borderRadius="large"
-                        padding={getState('debug') ? 'none' : 'medium'}
-                      >
-                        <Columns space="none" collapseBelow="tablet">
-                          <Column width="content">
-                            {getState('debug') ? (
-                              <DebugSpaceY space="medium" marginTop="large" />
-                            ) : null}
-                          </Column>
-                          <Column>
-                            {getState('debug') ? (
-                              <DebugSpace
-                                space="medium"
-                                xxsmall="neutralLight"
-                              />
-                            ) : null}
-                            <Stack space={getState('debug') ? 'none' : 'small'}>
-                              <Stack
-                                space={getState('debug') ? 'none' : 'xxsmall'}
-                              >
-                                <Text size="small" weight="strong">
-                                  Strong small text
-                                </Text>
-                                {getState('debug') ? (
-                                  <DebugSpace
-                                    space="xxsmall"
-                                    xxsmall="neutralLight"
-                                  />
-                                ) : null}
-                                <Text size="xsmall">Xsmall text</Text>
-                              </Stack>
-                              {getState('debug') ? (
-                                <DebugSpace
-                                  space="small"
-                                  xxsmall="neutralLight"
-                                />
-                              ) : null}
-                              <Text size="xsmall">
-                                Xsmall text lorem ipsum dolor sit amet
-                                consectetur adipiscing elit. Vivamus iaculis ut
-                                neque sit amet.
-                              </Text>
-                              {getState('debug') ? (
-                                <DebugSpace
-                                  space="small"
-                                  xxsmall="neutralLight"
-                                />
-                              ) : null}
-                              <Text tone="secondary" size="xsmall">
-                                Xsmall, secondary text
-                              </Text>
-                              {getState('debug') ? (
-                                <DebugSpace
-                                  space="small"
-                                  xxsmall="neutralLight"
-                                />
-                              ) : null}
-                              <Text size="xsmall">
-                                <TextLink href="#">Xsmall text link</TextLink>
-                              </Text>
-                            </Stack>
-                            {getState('debug') ? (
-                              <DebugSpace
-                                space="medium"
-                                xxsmall="neutralLight"
-                              />
-                            ) : null}
-                          </Column>
-                          <Column width="content">
-                            {getState('debug') ? (
-                              <DebugSpaceY space="medium" marginTop="large" />
-                            ) : null}
-                          </Column>
-                        </Columns>
-                      </Box>
-                    </Stack>
-                  </Stack>
-                </ContentBlock>
-              </Stack>
-            </>,
-          ),
       },
       {
         label: 'Horizontal spacing',
         description: (
           <Text>
-            Horizontal spacing can be tailored using layout components such as{' '}
-            <TextLink href="/components/Columns">Columns</TextLink>,{' '}
-            <TextLink href="/components/Tiles">Tiles</TextLink> and{' '}
-            <TextLink href="/components/Inline">Inline</TextLink>. As with
-            Stack, these accept any value from the space scale.
+            Use <TextLink href="/components/Columns">Columns</TextLink>,{' '}
+            <TextLink href="/components/Tiles">Tiles</TextLink>,{' '}
+            <TextLink href="/components/Inline">Inline</TextLink> and{' '}
+            <TextLink href="/components/Spread">Spread</TextLink> to control
+            horizontal spacing. They accept any value from our{' '}
+            <TextLink href="/foundations/layout#spacing">space scale</TextLink>,
+            from <Strong>none</Strong> to <Strong>xxxlarge</Strong>.
           </Text>
         ),
-        Example: ({ getState, setState, setDefaultState }) =>
-          source(
+        Example: ({ getState, setState, setDefaultState }) => {
+          const { value: visual } = source(
             <>
               {setDefaultState('debug', false)}
-              <Box boxShadow="borderNeutralLight" paddingBottom="xxlarge">
-                <Stack space="xlarge">
-                  <Box paddingY="medium" background="neutralLight">
-                    <Toggle
-                      label="Show spacing"
-                      size="small"
-                      on={getState('debug')}
-                      onChange={(on) => setState('debug', on)}
-                    />
-                  </Box>
-                  <Stack space="large">
-                    <Stack space="medium">
-                      <Text>Large</Text>
-                      <Inline space={getState('debug') ? 'none' : 'large'}>
-                        <Placeholder height={60} label="UI component" />
-                        {getState('debug') ? (
-                          <DebugSpaceY space="large" height={60} />
-                        ) : null}
-                        <Placeholder height={60} label="UI component" />
-                        {getState('debug') ? (
-                          <DebugSpaceY space="large" height={60} />
-                        ) : null}
-                        <Placeholder height={60} label="UI component" />
-                        {getState('debug') ? (
-                          <DebugSpaceY space="large" height={60} />
-                        ) : null}
-                        <Placeholder height={60} label="UI component" />
-                      </Inline>
-                    </Stack>
-                    <Stack space="medium">
-                      <Text>Medium</Text>
-                      <Inline space={getState('debug') ? 'none' : 'medium'}>
-                        <Placeholder height={60} label="UI component" />
-                        {getState('debug') ? (
-                          <DebugSpaceY space="medium" height={60} />
-                        ) : null}
-                        <Placeholder height={60} label="UI component" />
-                        {getState('debug') ? (
-                          <DebugSpaceY space="medium" height={60} />
-                        ) : null}
-                        <Placeholder height={60} label="UI component" />
-                        {getState('debug') ? (
-                          <DebugSpaceY space="medium" height={60} />
-                        ) : null}
-                        <Placeholder height={60} label="UI component" />
-                      </Inline>
-                    </Stack>
-                    <Stack space="medium">
-                      <Text>Small</Text>
-                      <Inline space={getState('debug') ? 'none' : 'small'}>
-                        <Placeholder height={60} label="UI component" />
-                        {getState('debug') ? (
-                          <DebugSpaceY space="small" height={60} />
-                        ) : null}
-                        <Placeholder height={60} label="UI component" />
-                        {getState('debug') ? (
-                          <DebugSpaceY space="small" height={60} />
-                        ) : null}
-                        <Placeholder height={60} label="UI component" />
-                        {getState('debug') ? (
-                          <DebugSpaceY space="small" height={60} />
-                        ) : null}
-                        <Placeholder height={60} label="UI component" />
-                      </Inline>
-                    </Stack>
-                    <Stack space="medium">
-                      <Text>Xsmall</Text>
-                      <Inline space={getState('debug') ? 'none' : 'xsmall'}>
-                        <Placeholder height={60} label="UI component" />
-                        {getState('debug') ? (
-                          <DebugSpaceY space="xsmall" height={60} />
-                        ) : null}
-                        <Placeholder height={60} label="UI component" />
-                        {getState('debug') ? (
-                          <DebugSpaceY space="xsmall" height={60} />
-                        ) : null}
-                        <Placeholder height={60} label="UI component" />
-                        {getState('debug') ? (
-                          <DebugSpaceY space="xsmall" height={60} />
-                        ) : null}
-                        <Placeholder height={60} label="UI component" />
-                      </Inline>
-                    </Stack>
+              <Stack space="xlarge">
+                <Box padding="medium" background="neutralLight">
+                  <Toggle
+                    label="Show spacing"
+                    size="small"
+                    on={getState('debug')}
+                    onChange={(on) => setState('debug', on)}
+                  />
+                </Box>
+                <Stack space="large">
+                  <Stack space="medium">
+                    <Text>Large</Text>
+                    <Inline space={getState('debug') ? 'none' : 'large'}>
+                      <Placeholder height={60} label="UI component" />
+                      {getState('debug') ? (
+                        <DebugSpaceY space="large" height={60} />
+                      ) : null}
+                      <Placeholder height={60} label="UI component" />
+                      {getState('debug') ? (
+                        <DebugSpaceY space="large" height={60} />
+                      ) : null}
+                      <Placeholder height={60} label="UI component" />
+                      {getState('debug') ? (
+                        <DebugSpaceY space="large" height={60} />
+                      ) : null}
+                      <Placeholder height={60} label="UI component" />
+                    </Inline>
+                  </Stack>
+                  <Stack space="medium">
+                    <Text>Medium</Text>
+                    <Inline space={getState('debug') ? 'none' : 'medium'}>
+                      <Placeholder height={60} label="UI component" />
+                      {getState('debug') ? (
+                        <DebugSpaceY space="medium" height={60} />
+                      ) : null}
+                      <Placeholder height={60} label="UI component" />
+                      {getState('debug') ? (
+                        <DebugSpaceY space="medium" height={60} />
+                      ) : null}
+                      <Placeholder height={60} label="UI component" />
+                      {getState('debug') ? (
+                        <DebugSpaceY space="medium" height={60} />
+                      ) : null}
+                      <Placeholder height={60} label="UI component" />
+                    </Inline>
+                  </Stack>
+                  <Stack space="medium">
+                    <Text>Small</Text>
+                    <Inline space={getState('debug') ? 'none' : 'small'}>
+                      <Placeholder height={60} label="UI component" />
+                      {getState('debug') ? (
+                        <DebugSpaceY space="small" height={60} />
+                      ) : null}
+                      <Placeholder height={60} label="UI component" />
+                      {getState('debug') ? (
+                        <DebugSpaceY space="small" height={60} />
+                      ) : null}
+                      <Placeholder height={60} label="UI component" />
+                      {getState('debug') ? (
+                        <DebugSpaceY space="small" height={60} />
+                      ) : null}
+                      <Placeholder height={60} label="UI component" />
+                    </Inline>
+                  </Stack>
+                  <Stack space="medium">
+                    <Text>Xsmall</Text>
+                    <Inline space={getState('debug') ? 'none' : 'xsmall'}>
+                      <Placeholder height={60} label="UI component" />
+                      {getState('debug') ? (
+                        <DebugSpaceY space="xsmall" height={60} />
+                      ) : null}
+                      <Placeholder height={60} label="UI component" />
+                      {getState('debug') ? (
+                        <DebugSpaceY space="xsmall" height={60} />
+                      ) : null}
+                      <Placeholder height={60} label="UI component" />
+                      {getState('debug') ? (
+                        <DebugSpaceY space="xsmall" height={60} />
+                      ) : null}
+                      <Placeholder height={60} label="UI component" />
+                    </Inline>
                   </Stack>
                 </Stack>
-              </Box>
+              </Stack>
             </>,
-          ),
+          );
+
+          const { code: codeDemo } = source(
+            <PageBlock width="small">
+              <Stack space="xlarge">
+                <Stack space="medium">
+                  <Text>Large</Text>
+                  <Inline space="large">
+                    <Placeholder height={60} label="UI component" />
+                    <Placeholder height={60} label="UI component" />
+                    <Placeholder height={60} label="UI component" />
+                    <Placeholder height={60} label="UI component" />
+                  </Inline>
+                </Stack>
+                <Stack space="medium">
+                  <Text>Medium</Text>
+                  <Inline space="medium">
+                    <Placeholder height={60} label="UI component" />
+                    <Placeholder height={60} label="UI component" />
+                    <Placeholder height={60} label="UI component" />
+                    <Placeholder height={60} label="UI component" />
+                  </Inline>
+                </Stack>
+                <Stack space="medium">
+                  <Text>Small</Text>
+                  <Inline space="small">
+                    <Placeholder height={60} label="UI component" />
+                    <Placeholder height={60} label="UI component" />
+                    <Placeholder height={60} label="UI component" />
+                    <Placeholder height={60} label="UI component" />
+                  </Inline>
+                </Stack>
+                <Stack space="medium">
+                  <Text>Xsmall</Text>
+                  <Inline space="xsmall">
+                    <Placeholder height={60} label="UI component" />
+                    <Placeholder height={60} label="UI component" />
+                    <Placeholder height={60} label="UI component" />
+                    <Placeholder height={60} label="UI component" />
+                  </Inline>
+                </Stack>
+              </Stack>
+            </PageBlock>,
+          );
+
+          return {
+            code: codeDemo,
+            value: visual,
+          };
+        },
       },
       {
         description: (
           <Text>
-            When designing custom solutions with Box, horizontal spacing can
-            also be applied via padding or margin.
+            When designing custom solutions with{' '}
+            <TextLink href="/components/Box">Box</TextLink>, horizontal spacing
+            can also be applied using the <Strong>padding</Strong> or{' '}
+            <Strong>margin</Strong> properties.
           </Text>
         ),
       },
@@ -613,304 +529,409 @@ export const docs: PatternDocs = {
         description: (
           <>
             <Text>
-              Size and spacing should be considered holistically. As a general
-              rule, if components are displayed smaller the spacing around them
-              should also be smaller. Likewise, as component size increases so
-              should the spacing around them. Content should be organised and
-              grouped in a logical way — related content should sit more closely
-              together.
+              Spacing should be scaled to align with component size. Smaller
+              components need less breathing space, larger ones need more.
+              Related content should be grouped together.
             </Text>
-            <Text>The same page header content in two approaches to size:</Text>
+            <Text>The same page header at two sizes:</Text>
           </>
         ),
-        Example: ({ getState, setState, setDefaultState }) =>
-          source(
+        Example: ({ getState, setState, setDefaultState }) => {
+          const { value: visual } = source(
             <>
               {setDefaultState('debug', false)}
-              <Box boxShadow="borderNeutralLight" paddingBottom="xxlarge">
-                <Stack space="xlarge">
-                  <Box paddingY="medium" background="neutralLight">
-                    <Toggle
-                      label="Show spacing"
-                      size="small"
-                      on={getState('debug')}
-                      onChange={(on) => setState('debug', on)}
-                    />
-                  </Box>
-                  <Stack space="xxlarge">
-                    <Stack space={getState('debug') ? 'none' : 'xlarge'}>
-                      <Heading level="1">Heading level 1</Heading>
+              <Stack space="xlarge">
+                <Box padding="medium" background="neutralLight">
+                  <Toggle
+                    label="Show spacing"
+                    size="small"
+                    on={getState('debug')}
+                    onChange={(on) => setState('debug', on)}
+                  />
+                </Box>
+                <Stack space="xxlarge">
+                  <Stack space={getState('debug') ? 'none' : 'xlarge'}>
+                    <Heading level="1">Heading level 1</Heading>
+                    {getState('debug') ? (
+                      <DebugSpace space="xlarge" fallback="criticalLight" />
+                    ) : null}
+                    <Text size="large">
+                      Large text lorem ipsum dolor sit amet consectetur
+                      adipiscing elit. Vivamus iaculis ut neque sit amet
+                      egestas.
+                    </Text>
+                    {getState('debug') ? (
+                      <DebugSpace space="xlarge" fallback="criticalLight" />
+                    ) : null}
+                    <Inline space={getState('debug') ? 'none' : 'medium'}>
+                      <ButtonIcon
+                        size="large"
+                        icon={<IconBookmark />}
+                        label="Bookmark"
+                        id="density-heading1-bookmark"
+                      />
                       {getState('debug') ? (
-                        <DebugSpace space="xlarge" fallback="criticalLight" />
+                        <DebugSpaceY
+                          space="medium"
+                          height={30}
+                          marginTop="xxsmall"
+                          paddingLeft="xxsmall"
+                        />
                       ) : null}
-                      <Text size="large">
-                        Large text lorem ipsum dolor sit amet consectetur
-                        adipiscing elit. Vivamus iaculis ut neque sit amet
-                        egestas.
-                      </Text>
+                      <ButtonIcon
+                        size="large"
+                        icon={<IconAdd />}
+                        label="Add"
+                        id="density-heading1-add"
+                      />
                       {getState('debug') ? (
-                        <DebugSpace space="xlarge" fallback="criticalLight" />
+                        <DebugSpaceY
+                          space="medium"
+                          height={30}
+                          marginTop="xxsmall"
+                          paddingLeft="xxsmall"
+                        />
                       ) : null}
-                      <Inline space={getState('debug') ? 'none' : 'medium'}>
-                        <ButtonIcon
-                          size="large"
-                          icon={<IconBookmark />}
-                          label="Bookmark"
-                          id="density-heading1-bookmark"
-                        />
-                        {getState('debug') ? (
-                          <DebugSpaceY
-                            space="medium"
-                            height={30}
-                            marginTop="xxsmall"
-                            paddingLeft="xxsmall"
-                          />
-                        ) : null}
-                        <ButtonIcon
-                          size="large"
-                          icon={<IconAdd />}
-                          label="Add"
-                          id="density-heading1-add"
-                        />
-                        {getState('debug') ? (
-                          <DebugSpaceY
-                            space="medium"
-                            height={30}
-                            marginTop="xxsmall"
-                            paddingLeft="xxsmall"
-                          />
-                        ) : null}
-                        <ButtonIcon
-                          size="large"
-                          icon={<IconShare />}
-                          label="Share"
-                          id="density-heading1-share"
-                        />
-                        {getState('debug') ? (
-                          <DebugSpaceY
-                            space="medium"
-                            height={30}
-                            marginTop="xxsmall"
-                            paddingLeft="xxsmall"
-                          />
-                        ) : null}
-                        <ButtonIcon
-                          size="large"
-                          icon={<IconOverflow />}
-                          label="More"
-                          id="density-heading1-more"
-                        />
-                      </Inline>
-                    </Stack>
-                    <Divider />
-                    <Stack space={getState('debug') ? 'none' : 'large'}>
-                      <Heading level="2">Heading level 2</Heading>
+                      <ButtonIcon
+                        size="large"
+                        icon={<IconShare />}
+                        label="Share"
+                        id="density-heading1-share"
+                      />
                       {getState('debug') ? (
-                        <DebugSpace space="large" fallback="criticalLight" />
+                        <DebugSpaceY
+                          space="medium"
+                          height={30}
+                          marginTop="xxsmall"
+                          paddingLeft="xxsmall"
+                        />
                       ) : null}
-                      <Text>
-                        Standard text lorem ipsum dolor sit amet consectetur
-                        adipiscing elit. Vivamus iaculis ut neque sit amet
-                        egestas.
-                      </Text>
+                      <ButtonIcon
+                        size="large"
+                        icon={<IconOverflow />}
+                        label="More"
+                        id="density-heading1-more"
+                      />
+                    </Inline>
+                  </Stack>
+                  <Divider />
+                  <Stack space={getState('debug') ? 'none' : 'large'}>
+                    <Heading level="2">Heading level 2</Heading>
+                    {getState('debug') ? (
+                      <DebugSpace space="large" fallback="criticalLight" />
+                    ) : null}
+                    <Text>
+                      Standard text lorem ipsum dolor sit amet consectetur
+                      adipiscing elit. Vivamus iaculis ut neque sit amet
+                      egestas.
+                    </Text>
+                    {getState('debug') ? (
+                      <DebugSpace space="large" fallback="criticalLight" />
+                    ) : null}
+                    <Inline space={getState('debug') ? 'none' : 'small'}>
+                      <ButtonIcon
+                        icon={<IconBookmark />}
+                        label="Bookmark"
+                        id="density-heading2-bookmark"
+                      />
                       {getState('debug') ? (
-                        <DebugSpace space="large" fallback="criticalLight" />
+                        <DebugSpaceY
+                          space="small"
+                          height={30}
+                          marginTop="xxsmall"
+                          paddingLeft="xxsmall"
+                        />
                       ) : null}
-                      <Inline space={getState('debug') ? 'none' : 'small'}>
-                        <ButtonIcon
-                          icon={<IconBookmark />}
-                          label="Bookmark"
-                          id="density-heading2-bookmark"
+                      <ButtonIcon
+                        icon={<IconAdd />}
+                        label="Add"
+                        id="density-heading2-add"
+                      />
+                      {getState('debug') ? (
+                        <DebugSpaceY
+                          space="small"
+                          height={30}
+                          marginTop="xxsmall"
+                          paddingLeft="xxsmall"
                         />
-                        {getState('debug') ? (
-                          <DebugSpaceY
-                            space="small"
-                            height={30}
-                            marginTop="xxsmall"
-                            paddingLeft="xxsmall"
-                          />
-                        ) : null}
-                        <ButtonIcon
-                          icon={<IconAdd />}
-                          label="Add"
-                          id="density-heading2-add"
+                      ) : null}
+                      <ButtonIcon
+                        icon={<IconShare />}
+                        label="Share"
+                        id="density-heading2-share"
+                      />
+                      {getState('debug') ? (
+                        <DebugSpaceY
+                          space="small"
+                          height={30}
+                          marginTop="xxsmall"
+                          paddingLeft="xxsmall"
                         />
-                        {getState('debug') ? (
-                          <DebugSpaceY
-                            space="small"
-                            height={30}
-                            marginTop="xxsmall"
-                            paddingLeft="xxsmall"
-                          />
-                        ) : null}
-                        <ButtonIcon
-                          icon={<IconShare />}
-                          label="Share"
-                          id="density-heading2-share"
-                        />
-                        {getState('debug') ? (
-                          <DebugSpaceY
-                            space="small"
-                            height={30}
-                            marginTop="xxsmall"
-                            paddingLeft="xxsmall"
-                          />
-                        ) : null}
-                        <ButtonIcon
-                          icon={<IconOverflow />}
-                          label="More"
-                          id="density-heading2-more"
-                        />
-                      </Inline>
-                    </Stack>
+                      ) : null}
+                      <ButtonIcon
+                        icon={<IconOverflow />}
+                        label="More"
+                        id="density-heading2-more"
+                      />
+                    </Inline>
                   </Stack>
                 </Stack>
-              </Box>
+              </Stack>
             </>,
-          ),
+          );
+
+          const { code: codeDemo } = source(
+            <Stack space="xlarge">
+              <Stack space="xxlarge">
+                <Stack space="xlarge">
+                  <Heading level="1">Heading level 1</Heading>
+                  <Text size="large">
+                    Large text lorem ipsum dolor sit amet consectetur adipiscing
+                    elit. Vivamus iaculis ut neque sit amet egestas.
+                  </Text>
+                  <Inline space="medium">
+                    <ButtonIcon
+                      size="large"
+                      icon={<IconBookmark />}
+                      label="Bookmark"
+                    />
+                    <ButtonIcon size="large" icon={<IconAdd />} label="Add" />
+                    <ButtonIcon
+                      size="large"
+                      icon={<IconShare />}
+                      label="Share"
+                    />
+                    <ButtonIcon
+                      size="large"
+                      icon={<IconOverflow />}
+                      label="More"
+                    />
+                  </Inline>
+                </Stack>
+                <Divider />
+                <Stack space="large">
+                  <Heading level="2">Heading level 2</Heading>
+                  <Text>
+                    Standard text lorem ipsum dolor sit amet consectetur
+                    adipiscing elit. Vivamus iaculis ut neque sit amet egestas.
+                  </Text>
+                  <Inline space="small">
+                    <ButtonIcon icon={<IconBookmark />} label="Bookmark" />
+                    <ButtonIcon icon={<IconAdd />} label="Add" />
+                    <ButtonIcon icon={<IconShare />} label="Share" />
+                    <ButtonIcon icon={<IconOverflow />} label="More" />
+                  </Inline>
+                </Stack>
+              </Stack>
+            </Stack>,
+          );
+
+          return {
+            code: codeDemo,
+            value: visual,
+          };
+        },
       },
       {
         description: (
           <Text>The same card design with three approaches to size:</Text>
         ),
-        Example: ({ getState, setState, setDefaultState }) =>
-          source(
+        Example: ({ getState, setState, setDefaultState }) => {
+          const { value: visual } = source(
             <>
               {setDefaultState('debug', false)}
-              <Box boxShadow="borderNeutralLight" paddingBottom="xxlarge">
-                <Stack space="xlarge">
-                  <Box paddingY="medium" background="neutralLight">
-                    <ContentBlock width="xsmall">
-                      <Toggle
-                        label="Show spacing"
-                        size="small"
-                        on={getState('debug')}
-                        onChange={(on) => setState('debug', on)}
-                      />
-                    </ContentBlock>
-                  </Box>
-                  <ContentBlock width="xsmall">
-                    <Stack space="small">
-                      <Card>
-                        <Stack space={getState('debug') ? 'none' : 'large'}>
-                          <Stack space={getState('debug') ? 'none' : 'small'}>
-                            <Heading level="4">Heading level 4</Heading>
-                            {getState('debug') ? (
-                              <DebugSpace
-                                space="small"
-                                xxsmall="neutralLight"
-                              />
-                            ) : null}
-                            <Text>Standard text</Text>
-                          </Stack>
-                          {getState('debug') ? (
-                            <DebugSpace space="large" xxsmall="neutralLight" />
-                          ) : null}
-                          <Text>
-                            Standard text lorem ipsum dolor sit amet consectetur
-                            adipiscing elit. Vivamus iaculis ut neque sit amet
-                            egestas.{' '}
-                          </Text>
-                          {getState('debug') ? (
-                            <DebugSpace space="large" xxsmall="neutralLight" />
-                          ) : null}
-                          <Text tone="secondary">Standard, secondary text</Text>
-                          {getState('debug') ? (
-                            <DebugSpace space="large" xxsmall="neutralLight" />
-                          ) : null}
-                          <Inline space="small">
-                            <Button>Button</Button>
-                          </Inline>
-                        </Stack>
-                      </Card>
-                      <Card>
-                        <Stack space={getState('debug') ? 'none' : 'medium'}>
-                          <Stack space={getState('debug') ? 'none' : 'xsmall'}>
-                            <Text size="large" weight="strong">
-                              Large, strong text
-                            </Text>
-                            {getState('debug') ? (
-                              <DebugSpace
-                                space="xsmall"
-                                xxsmall="neutralLight"
-                              />
-                            ) : null}
-                            <Text size="small">Small text</Text>
-                          </Stack>
-                          {getState('debug') ? (
-                            <DebugSpace space="medium" xxsmall="neutralLight" />
-                          ) : null}
-                          <Text size="small">
-                            Small text lorem ipsum dolor sit amet consectetur
-                            adipiscing elit. Vivamus iaculis ut neque sit amet
-                            egestas.{' '}
-                          </Text>
-                          {getState('debug') ? (
-                            <DebugSpace space="medium" xxsmall="neutralLight" />
-                          ) : null}
-                          <Text tone="secondary" size="small">
-                            Small, secondary text
-                          </Text>
-                          {getState('debug') ? (
-                            <DebugSpace space="medium" xxsmall="neutralLight" />
-                          ) : null}
-                          <Actions>
-                            <Button size="small">Small button</Button>
-                          </Actions>
-                        </Stack>
-                      </Card>
-                      <Card>
+              <Stack space="xlarge">
+                <Box padding="medium" background="neutralLight">
+                  <Toggle
+                    label="Show spacing"
+                    size="small"
+                    on={getState('debug')}
+                    onChange={(on) => setState('debug', on)}
+                  />
+                </Box>
+                <ContentBlock width="xsmall">
+                  <Stack space="small">
+                    <Card>
+                      <Stack space={getState('debug') ? 'none' : 'large'}>
                         <Stack space={getState('debug') ? 'none' : 'small'}>
-                          <Stack space={getState('debug') ? 'none' : 'xxsmall'}>
-                            <Text weight="strong">Strong text</Text>
-                            {getState('debug') ? (
-                              <DebugSpace
-                                space="xxsmall"
-                                xxsmall="neutralLight"
-                              />
-                            ) : null}
-                            <Text size="small">Small text</Text>
-                          </Stack>
+                          <Heading level="4">Heading level 4</Heading>
                           {getState('debug') ? (
                             <DebugSpace space="small" xxsmall="neutralLight" />
                           ) : null}
-                          <Text size="xsmall">
-                            Xsmall text lorem ipsum dolor sit amet consectetur
-                            adipiscing elit. Vivamus iaculis ut neque sit amet
-                            egestas.
-                          </Text>
-                          {getState('debug') ? (
-                            <DebugSpace space="small" xxsmall="neutralLight" />
-                          ) : null}
-                          <Text tone="secondary" size="xsmall">
-                            Xsmall, secondary text
-                          </Text>
-                          {getState('debug') ? (
-                            <DebugSpace space="small" xxsmall="neutralLight" />
-                          ) : null}
-                          <Text size="xsmall">
-                            <TextLink href="#">Xsmall text link</TextLink>
-                          </Text>
+                          <Text>Standard text</Text>
                         </Stack>
-                      </Card>
-                    </Stack>
-                  </ContentBlock>
-                </Stack>
-              </Box>
+                        {getState('debug') ? (
+                          <DebugSpace space="large" xxsmall="neutralLight" />
+                        ) : null}
+                        <Text>
+                          Standard text lorem ipsum dolor sit amet consectetur
+                          adipiscing elit. Vivamus iaculis ut neque sit amet
+                          egestas.{' '}
+                        </Text>
+                        {getState('debug') ? (
+                          <DebugSpace space="large" xxsmall="neutralLight" />
+                        ) : null}
+                        <Text tone="secondary">Standard, secondary text</Text>
+                        {getState('debug') ? (
+                          <DebugSpace space="large" xxsmall="neutralLight" />
+                        ) : null}
+                        <Inline space="small">
+                          <Button>Button</Button>
+                        </Inline>
+                      </Stack>
+                    </Card>
+                    <Card>
+                      <Stack space={getState('debug') ? 'none' : 'medium'}>
+                        <Stack space={getState('debug') ? 'none' : 'xsmall'}>
+                          <Text size="large" weight="strong">
+                            Large, strong text
+                          </Text>
+                          {getState('debug') ? (
+                            <DebugSpace space="xsmall" xxsmall="neutralLight" />
+                          ) : null}
+                          <Text size="small">Small text</Text>
+                        </Stack>
+                        {getState('debug') ? (
+                          <DebugSpace space="medium" xxsmall="neutralLight" />
+                        ) : null}
+                        <Text size="small">
+                          Small text lorem ipsum dolor sit amet consectetur
+                          adipiscing elit. Vivamus iaculis ut neque sit amet
+                          egestas.{' '}
+                        </Text>
+                        {getState('debug') ? (
+                          <DebugSpace space="medium" xxsmall="neutralLight" />
+                        ) : null}
+                        <Text tone="secondary" size="small">
+                          Small, secondary text
+                        </Text>
+                        {getState('debug') ? (
+                          <DebugSpace space="medium" xxsmall="neutralLight" />
+                        ) : null}
+                        <Actions>
+                          <Button size="small">Small button</Button>
+                        </Actions>
+                      </Stack>
+                    </Card>
+                    <Card>
+                      <Stack space={getState('debug') ? 'none' : 'small'}>
+                        <Stack space={getState('debug') ? 'none' : 'xxsmall'}>
+                          <Text weight="strong">Strong text</Text>
+                          {getState('debug') ? (
+                            <DebugSpace
+                              space="xxsmall"
+                              xxsmall="neutralLight"
+                            />
+                          ) : null}
+                          <Text size="small">Small text</Text>
+                        </Stack>
+                        {getState('debug') ? (
+                          <DebugSpace space="small" xxsmall="neutralLight" />
+                        ) : null}
+                        <Text size="xsmall">
+                          Xsmall text lorem ipsum dolor sit amet consectetur
+                          adipiscing elit. Vivamus iaculis ut neque sit amet
+                          egestas.
+                        </Text>
+                        {getState('debug') ? (
+                          <DebugSpace space="small" xxsmall="neutralLight" />
+                        ) : null}
+                        <Text tone="secondary" size="xsmall">
+                          Xsmall, secondary text
+                        </Text>
+                        {getState('debug') ? (
+                          <DebugSpace space="small" xxsmall="neutralLight" />
+                        ) : null}
+                        <Text size="xsmall">
+                          <TextLink href="#">Xsmall text link</TextLink>
+                        </Text>
+                      </Stack>
+                    </Card>
+                  </Stack>
+                </ContentBlock>
+              </Stack>
             </>,
-          ),
+          );
+
+          const { code: codeDemo } = source(
+            <ContentBlock width="xsmall">
+              <Stack space="small">
+                <Card>
+                  <Stack space="large">
+                    <Stack space="small">
+                      <Heading level="4">Heading level 4</Heading>
+                      <Text>Standard text</Text>
+                    </Stack>
+                    <Text>
+                      Standard text lorem ipsum dolor sit amet consectetur
+                      adipiscing elit. Vivamus iaculis ut neque sit amet
+                      egestas.
+                    </Text>
+                    <Text tone="secondary">Standard, secondary text</Text>
+                    <Inline space="small">
+                      <Button>Button</Button>
+                    </Inline>
+                  </Stack>
+                </Card>
+                <Card>
+                  <Stack space="medium">
+                    <Stack space="xsmall">
+                      <Text size="large" weight="strong">
+                        Large, strong text
+                      </Text>
+                      <Text size="small">Small text</Text>
+                    </Stack>
+                    <Text size="small">
+                      Small text lorem ipsum dolor sit amet consectetur
+                      adipiscing elit. Vivamus iaculis ut neque sit amet
+                      egestas.
+                    </Text>
+                    <Text tone="secondary" size="small">
+                      Small, secondary text
+                    </Text>
+                    <Actions>
+                      <Button size="small">Small button</Button>
+                    </Actions>
+                  </Stack>
+                </Card>
+                <Card>
+                  <Stack space="small">
+                    <Stack space="xxsmall">
+                      <Text weight="strong">Strong text</Text>
+                      <Text size="small">Small text</Text>
+                    </Stack>
+                    <Text size="xsmall">
+                      Xsmall text lorem ipsum dolor sit amet consectetur
+                      adipiscing elit. Vivamus iaculis ut neque sit amet
+                      egestas.
+                    </Text>
+                    <Text tone="secondary" size="xsmall">
+                      Xsmall, secondary text
+                    </Text>
+                    <Text size="xsmall">
+                      <TextLink href="#">Xsmall text link</TextLink>
+                    </Text>
+                  </Stack>
+                </Card>
+              </Stack>
+            </ContentBlock>,
+          );
+
+          return {
+            code: codeDemo,
+            value: visual,
+          };
+        },
       },
       {
         label: 'Impacts to usability',
         description: (
           <Text>
-            Generally speaking, making content smaller or more condensed will
-            make it harder to read and scan. This trade-off may make sense in
-            some contexts, and it&rsquo;s up to product teams to strike the
-            right balance. In addition to considering how you display content,
-            consider what content you&rsquo;re displaying. Simplifying, reducing
-            detail and removing unnecessary content will go a long way in making
-            our products meaningful and easy to use.
+            Condensing content makes it harder to read and scan. That trade-off
+            can make sense in some contexts, but should be considered carefully.
+            Also consider what you show, not just how you show it. Simplifying,
+            reducing detail and removing unnecessary content makes products
+            easier to use.
           </Text>
         ),
       },
