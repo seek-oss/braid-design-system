@@ -759,11 +759,8 @@ export const docs: PatternDocs = {
                 </TableBody>
               </Table>
               <Text>
-                See the{' '}
-                <TextLink href="/patterns/error-messages">
-                  error messages
-                </TextLink>{' '}
-                library for existing copy to reuse or adapt.
+                SEEKers can visit the APAC Writing Space for existing error
+                messages and guides.
               </Text>
             </Stack>
           </Stack>

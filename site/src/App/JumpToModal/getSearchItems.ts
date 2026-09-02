@@ -6,7 +6,6 @@ import {
 import { foundationNavItems } from '../routes/foundations';
 import {
   howToEntries,
-  patternChildEntries,
   patternEntries,
   patternHref,
 } from '../routes/patterns/catalog';
@@ -49,7 +48,7 @@ export const searchItems: SearchItem[] = [
     })),
 
   // Patterns
-  ...[...patternEntries, ...patternChildEntries].map((entry) => ({
+  ...patternEntries.map((entry) => ({
     name: entry.title,
     path: patternHref(entry.slug),
     category: 'Patterns' as const,
