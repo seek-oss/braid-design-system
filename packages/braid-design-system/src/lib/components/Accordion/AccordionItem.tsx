@@ -1,13 +1,18 @@
 import assert from 'assert';
 
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import {
   type FC,
   type ReactElement,
   type ReactNode,
   cloneElement,
   useContext,
+  useLayoutEffect,
+  useRef,
+  useState,
 } from 'react';
 
+import { useFallbackId } from '../../hooks/useFallbackId';
 import type { BadgeProps } from '../Badge/Badge';
 import { Box } from '../Box/Box';
 import {
@@ -16,7 +21,6 @@ import {
   useDisclosure,
 } from '../Disclosure/useDisclosure';
 import { Spread } from '../Spread/Spread';
-import { Stack } from '../Stack/Stack';
 import { type TextProps, Text } from '../Text/Text';
 import { IconChevron } from '../icons';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
@@ -39,6 +43,18 @@ const itemSpaceForSize = {
   standard: 'medium',
   large: 'medium',
 } as const;
+
+const minDurationMs = 200;
+const maxDurationMs = 500;
+const pixelsPerSecond = 320;
+
+const durationMsForHeight = (height: number) =>
+  Math.round(
+    Math.min(
+      maxDurationMs,
+      Math.max(minDurationMs, (height / pixelsPerSecond) * 1000),
+    ),
+  );
 
 export interface AccordionItemBaseProps {
   label: string;
@@ -108,23 +124,75 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   const tone = accordionContext?.tone ?? toneProp ?? 'neutral';
   const weight = accordionContext?.weight ?? weightProp ?? 'medium';
   const itemSpace = itemSpaceForSize[size] ?? 'none';
+  const [durationMs, setDurationMs] = useState(minDurationMs);
+  const contentSizeRef = useRef<HTMLElement>(null);
 
   assert(
     typeof label === 'undefined' || typeof label === 'string',
     'Label must be a string',
   );
 
+  const resolvedId = useFallbackId(id);
+  const exclusive = Boolean(accordionContext?.exclusive);
+
+  assert(
+    !(exclusive && restProps.expanded !== undefined),
+    'expanded cannot be set on AccordionItem when inside an exclusive Accordion. Exclusive accordions start collapsed and manage expansion themselves. Use onToggle to observe changes, or omit exclusive and control expanded on the item.',
+  );
+
+  let disclosureState: DisclosureStateProps = {
+    onToggle: restProps.onToggle,
+  };
+
+  if (exclusive) {
+    disclosureState = {
+      expanded: accordionContext?.openItemId === resolvedId,
+      onToggle: (nextExpanded) => {
+        accordionContext?.onItemToggle?.(resolvedId, nextExpanded);
+        restProps.onToggle?.(nextExpanded);
+      },
+    };
+  } else if (restProps.expanded !== undefined) {
+    disclosureState = {
+      expanded: restProps.expanded,
+      onToggle: restProps.onToggle,
+    };
+  }
+
   const { expanded, buttonProps, contentProps } = useDisclosure({
-    id,
-    ...(restProps.expanded !== undefined
-      ? {
-          onToggle: restProps.onToggle,
-          expanded: restProps.expanded,
-        }
-      : {
-          onToggle: restProps.onToggle,
-        }),
+    id: resolvedId,
+    ...disclosureState,
   });
+
+  useLayoutEffect(() => {
+    if (!exclusive) {
+      return;
+    }
+
+    return accordionContext?.registerItemToggle?.(
+      resolvedId,
+      restProps.onToggle,
+    );
+  }, [accordionContext, exclusive, resolvedId, restProps.onToggle]);
+
+  useLayoutEffect(() => {
+    const node = contentSizeRef.current;
+
+    if (!node) {
+      return;
+    }
+
+    const updateDuration = () => {
+      setDurationMs(durationMsForHeight(node.scrollHeight));
+    };
+
+    updateDuration();
+
+    const observer = new ResizeObserver(updateDuration);
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, [children, itemSpace, size]);
 
   if (process.env.NODE_ENV !== 'production') {
     /**
@@ -135,7 +203,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   }
 
   return (
-    <Stack space={itemSpace} data={data}>
+    <Box data={data}>
       <Box position="relative" display="flex">
         <Box
           component="button"
@@ -174,9 +242,24 @@ export const AccordionItem: FC<AccordionItemProps> = ({
           </Box>
         </Box>
       </Box>
-      <Box display={expanded ? 'block' : 'none'} {...contentProps}>
-        {children}
+      <Box
+        className={[
+          styles.content,
+          expanded ? styles.contentExpanded : undefined,
+        ]}
+        style={assignInlineVars({
+          [styles.animationDuration]: `${durationMs}ms`,
+        })}
+        aria-hidden={expanded ? undefined : true}
+        inert={expanded ? undefined : true}
+        {...contentProps}
+      >
+        <Box className={styles.contentInner}>
+          <Box ref={contentSizeRef} paddingTop={itemSpace}>
+            {children}
+          </Box>
+        </Box>
       </Box>
-    </Stack>
+    </Box>
   );
 };

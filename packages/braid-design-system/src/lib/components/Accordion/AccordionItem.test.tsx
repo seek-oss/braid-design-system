@@ -29,26 +29,30 @@ describe('AccordionItem', () => {
       ),
     ).toHTMLValidate({
       extends: ['html-validate:recommended'],
+      rules: {
+        // React generates `inert="true"` / `inert=""` which cannot be changed
+        'attribute-boolean-style': 'warn',
+      },
     });
   });
 
   it('should provide internal state by default', async () => {
-    const { getByRole, getByText } = render(
+    const { getByRole } = render(
       <BraidTestProvider>
         <AccordionItem label="Label">Content</AccordionItem>
       </BraidTestProvider>,
     );
 
     const button = getByRole('button');
-    const content = getByText('Content');
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
+    );
 
     // Label should be inside button
     expect(htmlToText(button.innerHTML)).toEqual('Label');
 
-    // 'aria-controls' should point at accordion content
-    expect(content.getAttribute('id')).toEqual(
-      button.getAttribute('aria-controls'),
-    );
+    expect(content).not.toBeNull();
+    expect(content).toHaveTextContent('Content');
 
     expect(button.getAttribute('aria-expanded')).toEqual('false');
 
@@ -98,18 +102,18 @@ describe('AccordionItem', () => {
       );
     };
 
-    const { getByRole, getByText } = render(<TestCase />);
+    const { getByRole } = render(<TestCase />);
 
     const button = getByRole('button');
-    const content = getByText('Content');
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
+    );
 
     // Label should be inside button
     expect(htmlToText(button.innerHTML)).toEqual('Label');
 
-    // 'aria-controls' should point at accordion content
-    expect(content.getAttribute('id')).toEqual(
-      button.getAttribute('aria-controls'),
-    );
+    expect(content).not.toBeNull();
+    expect(content).toHaveTextContent('Content');
 
     expect(button.getAttribute('aria-expanded')).toEqual('true');
 
@@ -118,5 +122,47 @@ describe('AccordionItem', () => {
 
     await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('true');
+  });
+
+  it('should hide collapsed content from the accessibility tree', async () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <AccordionItem label="Label">Content</AccordionItem>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
+    );
+
+    expect(content).toHaveAttribute('aria-hidden', 'true');
+    expect(content).toHaveAttribute('inert');
+
+    await userEvent.click(button);
+    expect(content).not.toHaveAttribute('aria-hidden');
+    expect(content).not.toHaveAttribute('inert');
+
+    await userEvent.click(button);
+    expect(content).toHaveAttribute('aria-hidden', 'true');
+    expect(content).toHaveAttribute('inert');
+  });
+
+  it('should hide collapsed content from the tab order', async () => {
+    const { getByRole, queryByRole } = render(
+      <BraidTestProvider>
+        <AccordionItem label="Label">
+          <a href="/">Hidden link</a>
+        </AccordionItem>
+      </BraidTestProvider>,
+    );
+
+    expect(queryByRole('link')).toBeNull();
+
+    await userEvent.click(getByRole('button', { name: 'Label' }));
+    expect(getByRole('link', { name: 'Hidden link' })).toBeInTheDocument();
+
+    await userEvent.click(getByRole('button', { name: 'Label' }));
+    expect(queryByRole('link')).toBeNull();
   });
 });
