@@ -74,6 +74,22 @@ export const snippets: Snippets = [
     ),
   },
   {
+    description: 'Exclusive',
+    code: source(
+      <Accordion exclusive>
+        <AccordionItem label="Item 1">
+          <Placeholder height={100} />
+        </AccordionItem>
+        <AccordionItem label="Item 2">
+          <Placeholder height={100} />
+        </AccordionItem>
+        <AccordionItem label="Item 3">
+          <Placeholder height={100} />
+        </AccordionItem>
+      </Accordion>,
+    ),
+  },
+  {
     description: 'Large standalone item',
     code: source(
       <AccordionItem label="Label">

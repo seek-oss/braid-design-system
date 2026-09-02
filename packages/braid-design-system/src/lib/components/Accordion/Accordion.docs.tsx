@@ -39,12 +39,27 @@ const docs: ComponentDocs = {
       </Accordion>,
     ),
   accessibility: (
-    <Text>
-      Follows the{' '}
-      <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">
-        WAI-ARIA Disclosure Pattern.
-      </TextLink>
-    </Text>
+    <Stack space="large">
+      <Text>
+        Follows the{' '}
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">
+          WAI-ARIA Disclosure Pattern
+        </TextLink>
+        . Each item is a disclosure, including when <Strong>exclusive</Strong>{' '}
+        is set. This is not the{' '}
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
+          Accordion Pattern
+        </TextLink>{' '}
+        (no heading wrapper or arrow-key movement between items).
+      </Text>
+      <Text>
+        Collapsed panels stay in the document at zero height so they can
+        animate, with <Strong>visibility: hidden</Strong>,{' '}
+        <Strong>aria-hidden</Strong> and <Strong>inert</Strong>. That replaces{' '}
+        <Strong>display: none</Strong>. Find-in-page or print behaviour can
+        differ.
+      </Text>
+    </Stack>
   ),
   alternatives: [
     {
@@ -179,14 +194,61 @@ const docs: ComponentDocs = {
     ],
     interaction: [
       {
+        label: 'Exclusive',
+        description: (
+          <Stack space="large">
+            <Text>
+              Set the <Strong>exclusive</Strong> prop to ensure only one item
+              can be expanded at a time. Opening an item will close any other
+              open item. Clicking the open item will collapse it. Exclusive
+              accordions start with all items collapsed.
+            </Text>
+            <Text>
+              Item-level <Strong>expanded</Strong> cannot be used with{' '}
+              <Strong>exclusive</Strong>. Expansion is managed by the Accordion,
+              which always starts collapsed. There is no controlled exclusive
+              API in this release.
+            </Text>
+            <Text>
+              <Strong>onToggle</Strong> fires on the item that was clicked. If
+              another item was open, that item also receives{' '}
+              <Strong>onToggle(false)</Strong>. To start an item open, omit{' '}
+              <Strong>exclusive</Strong> and control <Strong>expanded</Strong>{' '}
+              yourself (see Managing state).
+            </Text>
+          </Stack>
+        ),
+        Example: () =>
+          source(
+            <Accordion exclusive>
+              <AccordionItem label="Accordion item 1">
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 2">
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 3">
+                <Placeholder height={80} />
+              </AccordionItem>
+            </Accordion>,
+          ),
+      },
+      {
         label: 'Managing state',
         description: (
-          <Text>
-            An <Strong>AccordionItem</Strong>, by default, manages its own state
-            internally. If you&rsquo;d like to take control of the state, you
-            can do so using the <Strong>expanded</Strong> and{' '}
-            <Strong>onToggle</Strong> props.
-          </Text>
+          <Stack space="large">
+            <Text>
+              An <Strong>AccordionItem</Strong>, by default, manages its own
+              state internally. If you&rsquo;d like to take control of the
+              state, you can do so using the <Strong>expanded</Strong> and{' '}
+              <Strong>onToggle</Strong> props.
+            </Text>
+            <Text>
+              To start an item open, initialise your state to{' '}
+              <Strong>true</Strong>. Do not combine this with{' '}
+              <Strong>exclusive</Strong>.
+            </Text>
+          </Stack>
         ),
         Example: ({ setDefaultState, getState, toggleState }) =>
           source(
