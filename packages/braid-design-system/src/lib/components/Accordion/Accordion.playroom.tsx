@@ -35,12 +35,14 @@ export const Accordion: FC<AccordionProps> = ({
   size,
   tone,
   weight,
+  exclusive,
   ...restProps
 }) => (
   <BraidAccordion
     size={typeof size === 'boolean' ? undefined : size}
     tone={typeof tone === 'boolean' ? undefined : tone}
     weight={typeof weight === 'boolean' ? undefined : weight}
+    exclusive={typeof exclusive === 'boolean' ? exclusive : undefined}
     space={
       typeof space === 'string' || Array.isArray(space)
         ? filterSpace(space)

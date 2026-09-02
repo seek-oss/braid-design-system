@@ -17,6 +17,9 @@ import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchab
 const meta = {
   title: 'Components/Accordion',
   component: Accordion,
+  parameters: {
+    chromatic: { delay: 600 },
+  },
 } satisfies Meta<typeof Accordion>;
 
 export default meta;
@@ -415,6 +418,23 @@ export const VirtualTouchTarget = {
         <Placeholder height={80} />
       </AccordionItem>
     </Box>
+  ),
+};
+
+export const ExclusiveAccordion = {
+  name: 'Exclusive Accordion',
+  render: () => (
+    <Accordion exclusive>
+      <AccordionItem label="Accordion item 1">
+        <Placeholder height={80} />
+      </AccordionItem>
+      <AccordionItem label="Accordion item 2">
+        <Placeholder height={80} />
+      </AccordionItem>
+      <AccordionItem label="Accordion item 3">
+        <Placeholder height={80} />
+      </AccordionItem>
+    </Accordion>
   ),
 };
 

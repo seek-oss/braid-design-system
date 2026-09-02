@@ -1,7 +1,8 @@
-import type { FC } from 'react';
+import { useContext, type FC } from 'react';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 
+import { AccordionContext } from './AccordionContext';
 import {
   type AccordionItemProps,
   type AccordionItemBaseProps,
@@ -27,6 +28,7 @@ export const AccordionItem: FC<PlayroomAccordionItemProps> = ({
   icon,
   ...restProps
 }) => {
+  const exclusive = Boolean(useContext(AccordionContext)?.exclusive);
   const [state, handleChange] = useFallbackState(
     stateName,
     expanded,
@@ -36,8 +38,9 @@ export const AccordionItem: FC<PlayroomAccordionItemProps> = ({
 
   return (
     <BraidAccordionItem
-      expanded={state}
-      onToggle={handleChange}
+      {...(exclusive
+        ? { onToggle: handleChange }
+        : { expanded: state, onToggle: handleChange })}
       label={typeof label !== 'boolean' ? label : ''}
       size={typeof size === 'boolean' ? undefined : size}
       tone={typeof tone === 'boolean' ? undefined : tone}
