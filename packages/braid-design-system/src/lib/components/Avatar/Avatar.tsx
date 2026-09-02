@@ -24,6 +24,7 @@ export const validAvatarVariants = ['icon', 'initials'] as const;
 type AvatarVariant = (typeof validAvatarVariants)[number];
 
 export const validAvatarSizes = [
+  'xsmall',
   'small',
   'standard',
   'large',
@@ -32,8 +33,10 @@ export const validAvatarSizes = [
 type AvatarSize = (typeof validAvatarSizes)[number];
 
 export interface AvatarProps {
-  variant: AvatarVariant;
+  variant?: AvatarVariant;
   name?: string;
+  initials?: string;
+  label?: string;
   size?: AvatarSize;
   loading?: boolean;
   photoUrl?: string;
@@ -56,6 +59,7 @@ const avatarSizeToBorderRadius = {
   large: 'standard',
   standard: 'standard',
   small: 'standard',
+  xsmall: 'standard',
 } as const satisfies Record<
   AvatarSize,
   ComponentProps<typeof Box>['borderRadius']
@@ -66,6 +70,7 @@ const avatarSizeToTextSize = {
   large: 'large',
   standard: 'standard',
   small: 'small',
+  xsmall: 'xsmall',
 } as const satisfies Record<AvatarSize, ComponentProps<typeof Text>['size']>;
 
 interface AvatarTextContentProps {
@@ -91,7 +96,7 @@ const AvatarTextContent = ({ size, children }: AvatarTextContentProps) => {
 
 const validCharactersRegex = /\p{L}/u;
 
-const getInitials = (fullName: string): string | null => {
+const getInitialsFromName = (fullName: string): string | null => {
   let initials = '';
   const names = fullName
     .split(' ')
@@ -111,6 +116,27 @@ const getInitials = (fullName: string): string | null => {
   return initials.toLocaleUpperCase();
 };
 
+const resolveInitials = (
+  initialsProp: string | undefined,
+  name: string,
+): string | null => {
+  if (initialsProp !== undefined && initialsProp.trim() !== '') {
+    let letters = '';
+    for (const character of initialsProp) {
+      if (validCharactersRegex.test(character)) {
+        letters += character;
+        if (letters.length === 2) {
+          break;
+        }
+      }
+    }
+
+    return letters.length === 0 ? null : letters.toLocaleUpperCase();
+  }
+
+  return getInitialsFromName(name);
+};
+
 const backgroundColourForName = (name: string) => {
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
@@ -122,6 +148,8 @@ const backgroundColourForName = (name: string) => {
 
 export const Avatar = ({
   name = '',
+  initials: initialsProp,
+  label,
   variant,
   size = 'standard',
   loading = false,
@@ -132,10 +160,12 @@ export const Avatar = ({
   data,
   ...restProps
 }: AvatarProps): ReactElement => {
-  assert(
-    validAvatarVariants.indexOf(variant) >= 0,
-    `Avatar variant of "${variant}" is not valid.`,
-  );
+  if (variant !== undefined) {
+    assert(
+      validAvatarVariants.indexOf(variant) >= 0,
+      `Avatar variant of "${variant}" is not valid.`,
+    );
+  }
   assert(
     validAvatarSizes.indexOf(size) >= 0,
     `Avatar size of "${size}" is not valid.`,
@@ -155,10 +185,13 @@ export const Avatar = ({
     }
   };
 
+  const labelled = Boolean(label);
   const commonBoxProps = {
     className: [styles.size[size], border ? styles.border : undefined],
-    'aria-hidden': true as const,
     borderRadius: avatarSizeToBorderRadius[size],
+    ...(labelled
+      ? { role: 'img' as const, 'aria-label': label }
+      : { 'aria-hidden': true as const }),
     ...buildDataAttributes({ data, validateRestProps: restProps }),
   };
 
@@ -180,7 +213,7 @@ export const Avatar = ({
         background="neutralLight"
       >
         <AvatarTextContent size={size}>
-          <IconImageBroken data={{ testid: 'broken-icon' }} />
+          <IconImageBroken />
         </AvatarTextContent>
       </Box>
     );
@@ -199,6 +232,7 @@ export const Avatar = ({
           ref={handleImageRef}
           src={photoUrl}
           alt=""
+          aria-hidden
           onError={() => setImageError(true)}
           onLoad={() => setImageLoaded(true)}
           className={[
@@ -210,13 +244,15 @@ export const Avatar = ({
     );
   }
 
-  const avatarIcon = icon ?? <IconProfile data={{ testid: 'fallback-icon' }} />;
-  const initials = variant === 'initials' ? getInitials(name) : null;
-  const textContent =
-    variant === 'icon' ? avatarIcon : (initials ?? avatarIcon);
+  const avatarIcon = icon ?? <IconProfile />;
+  const resolvedInitials = resolveInitials(initialsProp, name);
+  const showIcon = variant === 'icon' || resolvedInitials === null;
+  const textContent = showIcon ? avatarIcon : resolvedInitials;
 
-  const hasInitials = initials !== null;
-  const colour = hasInitials ? backgroundColourForName(name) : null;
+  const colour =
+    !showIcon && resolvedInitials
+      ? backgroundColourForName(name || resolvedInitials)
+      : null;
 
   return (
     <Box
