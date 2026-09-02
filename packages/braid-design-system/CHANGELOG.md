@@ -30,11 +30,7 @@
 
   The `space` prop is now deprecated and will be removed in a future release. Spacing between items is now automatically derived from the `size` prop.
 
-  The following default spacing value has been updated:
-
-  | `dividers` | `size`     | Previous default | New default |
-  | ---------- | ---------- | ---------------- | ----------- |
-  | `false`    | `standard` | `large`          | `medium`    |
+  The following default spacing value has been updated: for `dividers={false}` and `size="standard"`, the default space is now `medium` (previously `large`).
 
   **MIGRATION GUIDE:**
 
