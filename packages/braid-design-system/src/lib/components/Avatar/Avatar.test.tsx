@@ -4,7 +4,8 @@ import { Avatar } from '..';
 import { BraidTestProvider } from '../../../test';
 import { palette } from '../../color/palette';
 
-import { border as borderStyle } from './Avatar.css';
+import { border as borderStyle, imageLoaded } from './Avatar.css';
+import { photoPlaceholderUrl } from './photoPlaceholder.css';
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
 import { shimmerAnimation } from '../private/Skeleton/Skeleton.css';
 
@@ -128,6 +129,43 @@ describe('Avatar', () => {
       });
 
       expect(imgElement).toBeVisible();
+      expect(imgElement).toHaveClass(imageLoaded);
+    });
+
+    it('shows a photo that is already complete without waiting for onLoad', () => {
+      const completeDescriptor = Object.getOwnPropertyDescriptor(
+        HTMLImageElement.prototype,
+        'complete',
+      );
+
+      Object.defineProperty(HTMLImageElement.prototype, 'complete', {
+        configurable: true,
+        get() {
+          return true;
+        },
+      });
+
+      try {
+        render(
+          <BraidTestProvider>
+            <Avatar name="Leia Organa" photoUrl={photoPlaceholderUrl} />
+          </BraidTestProvider>,
+        );
+
+        const imgElement = screen.getByRole('presentation', { hidden: true });
+        expect(imgElement).toHaveClass(imageLoaded);
+      } finally {
+        if (completeDescriptor) {
+          Object.defineProperty(
+            HTMLImageElement.prototype,
+            'complete',
+            completeDescriptor,
+          );
+        } else {
+          delete (HTMLImageElement.prototype as { complete?: boolean })
+            .complete;
+        }
+      }
     });
 
     it('infers initials from name when variant is omitted', () => {

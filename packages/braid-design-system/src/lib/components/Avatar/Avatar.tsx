@@ -1,7 +1,8 @@
 import assert from 'assert';
 
 import {
-  useEffect,
+  useLayoutEffect,
+  useRef,
   useState,
   type ComponentProps,
   type ReactElement,
@@ -142,17 +143,14 @@ export const Avatar = ({
 
   const [imageError, setImageError] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const imageRef = useRef<HTMLImageElement | null>(null);
 
-  useEffect(() => {
-    setImageLoaded(false);
+  useLayoutEffect(() => {
     setImageError(false);
+    // Data URIs and cached images can be complete before onLoad. Do not
+    // require naturalHeight — SVG placeholders often report 0.
+    setImageLoaded(Boolean(imageRef.current?.complete));
   }, [photoUrl]);
-
-  const handleImageRef = (img: HTMLImageElement | null) => {
-    if (img && img.complete && img.naturalHeight !== 0) {
-      setImageLoaded(true);
-    }
-  };
 
   const labelled = Boolean(label);
   const commonBoxProps = {
@@ -198,7 +196,8 @@ export const Avatar = ({
       >
         <Box
           component="img"
-          ref={handleImageRef}
+          key={photoUrl}
+          ref={imageRef}
           src={photoUrl}
           alt=""
           aria-hidden
