@@ -232,12 +232,15 @@ const docs: ComponentDocs = {
           <Text>
             Pass a URL from your user or profile data as{' '}
             <Strong>photoUrl</Strong>. When set, the photo is shown instead of
-            initials or icon.
+            initials or icon. Use an image at least twice the display size (48,
+            64, 96, 128 and 192 pixels for <Strong>xsmall</Strong> through{' '}
+            <Strong>xlarge</Strong>).
           </Text>
           <Text>
             If the image fails to load, or <Strong>photoError</Strong> is set, a
             broken image icon is shown. <Strong>loading</Strong> still takes
-            precedence while data is fetched.
+            precedence while data is fetched. Omit <Strong>photoUrl</Strong>{' '}
+            when the photo must not be shown, for example when names are hidden.
           </Text>
         </>
       ),
@@ -374,8 +377,11 @@ const docs: ComponentDocs = {
         <Text>
           Pair Avatar with visible text (or a labelled control) so the name is
           available to everyone. If the avatar is the only identifier, pass{' '}
-          <Strong>label</Strong>. If the avatar is the control, wrap it so the
-          accessible name and hit area come from that control.
+          <Strong>label</Strong>. If the avatar is the control — for example
+          opening a photo menu — wrap it in a{' '}
+          <TextLink href="/components/Button">Button</TextLink> or{' '}
+          <TextLink href="/components/MenuItem">MenuItem</TextLink> so the
+          accessible name, keyboard focus, and hit area come from that control.
         </Text>
       ),
       Example: () =>
