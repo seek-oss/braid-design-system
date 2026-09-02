@@ -35,7 +35,6 @@ type AvatarSize = (typeof validAvatarSizes)[number];
 export interface AvatarProps {
   variant?: AvatarVariant;
   name?: string;
-  initials?: string;
   label?: string;
   size?: AvatarSize;
   loading?: boolean;
@@ -96,45 +95,16 @@ const AvatarTextContent = ({ size, children }: AvatarTextContentProps) => {
 
 const validCharactersRegex = /\p{L}/u;
 
-const getInitialsFromName = (fullName: string): string | null => {
-  let initials = '';
+const getInitials = (fullName: string): string | null => {
   const names = fullName
     .split(' ')
-    .filter((name) => name.length > 0 && validCharactersRegex.test(name[0]));
+    .filter((part) => part.length > 0 && validCharactersRegex.test(part[0]));
 
-  for (const name of names) {
-    if (initials.length === 1) {
-      break;
-    }
-    initials = initials + name[0];
-  }
-
-  if (initials.length === 0) {
+  if (names.length === 0) {
     return null;
   }
 
-  return initials.toLocaleUpperCase();
-};
-
-const resolveInitials = (
-  initialsProp: string | undefined,
-  name: string,
-): string | null => {
-  if (initialsProp !== undefined && initialsProp.trim() !== '') {
-    let letters = '';
-    for (const character of initialsProp) {
-      if (validCharactersRegex.test(character)) {
-        letters += character;
-        if (letters.length === 2) {
-          break;
-        }
-      }
-    }
-
-    return letters.length === 0 ? null : letters.toLocaleUpperCase();
-  }
-
-  return getInitialsFromName(name);
+  return names[0][0].toLocaleUpperCase();
 };
 
 const backgroundColourForName = (name: string) => {
@@ -148,7 +118,6 @@ const backgroundColourForName = (name: string) => {
 
 export const Avatar = ({
   name = '',
-  initials: initialsProp,
   label,
   variant,
   size = 'standard',
@@ -245,14 +214,12 @@ export const Avatar = ({
   }
 
   const avatarIcon = icon ?? <IconProfile />;
-  const resolvedInitials = resolveInitials(initialsProp, name);
+  const resolvedInitials = getInitials(name);
   const showIcon = variant === 'icon' || resolvedInitials === null;
   const textContent = showIcon ? avatarIcon : resolvedInitials;
 
   const colour =
-    !showIcon && resolvedInitials
-      ? backgroundColourForName(name || resolvedInitials)
-      : null;
+    !showIcon && resolvedInitials ? backgroundColourForName(name) : null;
 
   return (
     <Box
