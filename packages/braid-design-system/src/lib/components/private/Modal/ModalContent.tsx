@@ -314,7 +314,7 @@ export const ModalContent = ({
         ref={headingRef}
         reserveCloseArea
       />
-      <Box height="full">{children}</Box>
+      {children}
     </ModalContentScrollLayout>
   );
 

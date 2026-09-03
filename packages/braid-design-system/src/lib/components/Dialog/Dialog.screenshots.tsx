@@ -54,6 +54,19 @@ export const DefaultLayout: Story = {
   },
 };
 
+export const DefaultStackSpace: Story = {
+  name: 'Default stack space',
+  args: {
+    title: 'Default stack space',
+    children: (
+      <>
+        <Placeholder height={100} width="100%" />
+        <Placeholder height={100} width="100%" />
+      </>
+    ),
+  },
+};
+
 export const CoverImageLayout: Story = {
   name: 'Cover Image layout (no width)',
   args: {
