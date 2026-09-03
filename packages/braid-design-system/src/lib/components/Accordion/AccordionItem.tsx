@@ -133,18 +133,18 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   );
 
   const resolvedId = useFallbackId(id);
-  const exclusive = Boolean(accordionContext?.exclusive);
+  const autoCollapse = Boolean(accordionContext?.autoCollapse);
 
   assert(
-    !(exclusive && restProps.expanded !== undefined),
-    'expanded cannot be set on AccordionItem when inside an exclusive Accordion. Exclusive accordions start collapsed and manage expansion themselves. Use onToggle to observe changes, or omit exclusive and control expanded on the item.',
+    !(autoCollapse && restProps.expanded !== undefined),
+    'expanded cannot be set on AccordionItem when autoCollapse is set on Accordion. Accordions with autoCollapse start collapsed and manage expansion themselves. Use onToggle to observe changes, or omit autoCollapse and control expanded on the item.',
   );
 
   let disclosureState: DisclosureStateProps = {
     onToggle: restProps.onToggle,
   };
 
-  if (exclusive) {
+  if (autoCollapse) {
     disclosureState = {
       expanded: accordionContext?.openItemId === resolvedId,
       onToggle: (nextExpanded) => {
@@ -165,7 +165,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   });
 
   useLayoutEffect(() => {
-    if (!exclusive) {
+    if (!autoCollapse) {
       return;
     }
 
@@ -173,7 +173,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
       resolvedId,
       restProps.onToggle,
     );
-  }, [accordionContext, exclusive, resolvedId, restProps.onToggle]);
+  }, [accordionContext, autoCollapse, resolvedId, restProps.onToggle]);
 
   useLayoutEffect(() => {
     const node = contentSizeRef.current;

@@ -46,10 +46,10 @@ export const galleryItems: GalleryComponent = {
         ),
     },
     {
-      label: 'Exclusive',
+      label: 'Auto collapse',
       Example: () =>
         source(
-          <Accordion exclusive>
+          <Accordion autoCollapse>
             <AccordionItem label="Item 1">
               <Placeholder height={100} />
             </AccordionItem>
