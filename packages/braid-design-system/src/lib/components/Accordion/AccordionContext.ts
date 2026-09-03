@@ -8,7 +8,7 @@ export interface AccordionContextValue {
   size?: TextProps['size'];
   tone?: (typeof validTones)[number];
   weight?: TextProps['weight'];
-  exclusive?: boolean;
+  autoCollapse?: boolean;
   openItemId?: string | null;
   onItemToggle?: (itemId: string, expanded: boolean) => void;
   registerItemToggle?: (

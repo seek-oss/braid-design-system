@@ -74,9 +74,9 @@ export const snippets: Snippets = [
     ),
   },
   {
-    description: 'Exclusive',
+    description: 'Auto collapse',
     code: source(
-      <Accordion exclusive>
+      <Accordion autoCollapse>
         <AccordionItem label="Item 1">
           <Placeholder height={100} />
         </AccordionItem>

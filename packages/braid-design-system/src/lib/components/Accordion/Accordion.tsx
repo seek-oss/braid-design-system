@@ -43,7 +43,7 @@ export interface AccordionProps {
    * `onToggle` fires on the item that was clicked, and with `false` on the
    * item that was closed as a result.
    */
-  exclusive?: boolean;
+  autoCollapse?: boolean;
   /** @deprecated The spacing is now derived from the `size` prop and will be removed in a future release. */
   space?: RequiredResponsiveValue<(typeof validSpaceValues)[number]>;
   data?: DataAttributeMap;
@@ -74,7 +74,7 @@ export const Accordion: FC<AccordionProps> = ({
   size = defaultSize,
   tone,
   weight,
-  exclusive = false,
+  autoCollapse = false,
   space: spaceProp,
   dividers = true,
   data,
@@ -148,7 +148,7 @@ export const Accordion: FC<AccordionProps> = ({
       size,
       tone,
       weight,
-      exclusive,
+      autoCollapse,
       openItemId,
       onItemToggle,
       registerItemToggle,
@@ -157,7 +157,7 @@ export const Accordion: FC<AccordionProps> = ({
       size,
       tone,
       weight,
-      exclusive,
+      autoCollapse,
       openItemId,
       onItemToggle,
       registerItemToggle,

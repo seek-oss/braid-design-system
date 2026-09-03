@@ -45,8 +45,8 @@ const docs: ComponentDocs = {
         <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">
           WAI-ARIA Disclosure Pattern
         </TextLink>
-        . Each item is a disclosure, including when <Strong>exclusive</Strong>{' '}
-        is set. This is not the{' '}
+        . Each item is a disclosure, including when{' '}
+        <Strong>autoCollapse</Strong> is set. This is not the{' '}
         <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
           Accordion Pattern
         </TextLink>{' '}
@@ -194,33 +194,33 @@ const docs: ComponentDocs = {
     ],
     interaction: [
       {
-        label: 'Exclusive',
+        label: 'Auto collapse',
         description: (
           <Stack space="large">
             <Text>
-              Set the <Strong>exclusive</Strong> prop to ensure only one item
+              Set the <Strong>autoCollapse</Strong> prop to ensure only one item
               can be expanded at a time. Opening an item will close any other
-              open item. Clicking the open item will collapse it. Exclusive
-              accordions start with all items collapsed.
+              open item. Clicking the open item will collapse it. Accordions
+              with <Strong>autoCollapse</Strong> start with all items collapsed.
             </Text>
             <Text>
               Item-level <Strong>expanded</Strong> cannot be used with{' '}
-              <Strong>exclusive</Strong>. Expansion is managed by the Accordion,
-              which always starts collapsed. There is no controlled exclusive
-              API in this release.
+              <Strong>autoCollapse</Strong>. Expansion is managed by the
+              Accordion, which always starts collapsed. There is no controlled
+              autoCollapse API in this release.
             </Text>
             <Text>
               <Strong>onToggle</Strong> fires on the item that was clicked. If
               another item was open, that item also receives{' '}
               <Strong>onToggle(false)</Strong>. To start an item open, omit{' '}
-              <Strong>exclusive</Strong> and control <Strong>expanded</Strong>{' '}
-              yourself (see Managing state).
+              <Strong>autoCollapse</Strong> and control{' '}
+              <Strong>expanded</Strong> yourself (see Managing state).
             </Text>
           </Stack>
         ),
         Example: () =>
           source(
-            <Accordion exclusive>
+            <Accordion autoCollapse>
               <AccordionItem label="Accordion item 1">
                 <Placeholder height={80} />
               </AccordionItem>
@@ -246,7 +246,7 @@ const docs: ComponentDocs = {
             <Text>
               To start an item open, initialise your state to{' '}
               <Strong>true</Strong>. Do not combine this with{' '}
-              <Strong>exclusive</Strong>.
+              <Strong>autoCollapse</Strong>.
             </Text>
           </Stack>
         ),

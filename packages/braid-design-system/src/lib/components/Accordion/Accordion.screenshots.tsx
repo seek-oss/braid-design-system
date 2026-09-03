@@ -421,10 +421,10 @@ export const VirtualTouchTarget = {
   ),
 };
 
-export const ExclusiveAccordion = {
-  name: 'Exclusive Accordion',
+export const AutoCollapseAccordion = {
+  name: 'Accordion with autoCollapse',
   render: () => (
-    <Accordion exclusive>
+    <Accordion autoCollapse>
       <AccordionItem label="Accordion item 1">
         <Placeholder height={80} />
       </AccordionItem>
