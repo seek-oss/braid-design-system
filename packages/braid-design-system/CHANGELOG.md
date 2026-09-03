@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 34.8.1
+
+### Patch Changes
+
+- **Drawer, Dialog:** Restore default stack spacing to content ([#2137](https://github.com/seek-oss/braid-design-system/pull/2137))
+
 ## 34.8.0
 
 ### Minor Changes
