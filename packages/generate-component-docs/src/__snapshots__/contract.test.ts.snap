@@ -4,10 +4,10 @@ exports[`Accordion 1`] = `
 {
   exportType: component,
   props: {
+    autoCollapse?: boolean
     children: ReactNodeNoStrings
     data?: DataAttributeMap
     dividers?: boolean
-    exclusive?: boolean
     size?: 
         | "large"
         | "small"
