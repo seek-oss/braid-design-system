@@ -25,10 +25,10 @@ describe('Accordion', () => {
     expect(second).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it('should close the open item when another is opened if exclusive', async () => {
+  it('should close the open item when another is opened if autoCollapse', async () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Accordion exclusive>
+        <Accordion autoCollapse>
           <AccordionItem label="One">First</AccordionItem>
           <AccordionItem label="Two">Second</AccordionItem>
           <AccordionItem label="Three">Third</AccordionItem>
@@ -51,10 +51,10 @@ describe('Accordion', () => {
     expect(third).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('should allow the open item to be collapsed when exclusive', async () => {
+  it('should allow the open item to be collapsed when autoCollapse', async () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Accordion exclusive>
+        <Accordion autoCollapse>
           <AccordionItem label="One">First</AccordionItem>
           <AccordionItem label="Two">Second</AccordionItem>
         </Accordion>
@@ -70,13 +70,13 @@ describe('Accordion', () => {
     expect(first).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('should fire onToggle on the item that was clicked when exclusive', async () => {
+  it('should fire onToggle on the item that was clicked when autoCollapse', async () => {
     const onOne = vi.fn();
     const onTwo = vi.fn();
 
     const { getByRole } = render(
       <BraidTestProvider>
-        <Accordion exclusive>
+        <Accordion autoCollapse>
           <AccordionItem label="One" onToggle={onOne}>
             First
           </AccordionItem>
@@ -96,14 +96,14 @@ describe('Accordion', () => {
     expect(onOne).toHaveBeenLastCalledWith(false);
   });
 
-  it('should not share exclusive state across Accordion instances', async () => {
+  it('should not share autoCollapse state across Accordion instances', async () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Accordion exclusive>
+        <Accordion autoCollapse>
           <AccordionItem label="A one">A</AccordionItem>
           <AccordionItem label="A two">A2</AccordionItem>
         </Accordion>
-        <Accordion exclusive>
+        <Accordion autoCollapse>
           <AccordionItem label="B one">B</AccordionItem>
           <AccordionItem label="B two">B2</AccordionItem>
         </Accordion>
@@ -123,11 +123,11 @@ describe('Accordion', () => {
     );
   });
 
-  it('should not allow expanded on AccordionItem when exclusive', () => {
+  it('should not allow expanded on AccordionItem when autoCollapse', () => {
     expect(() =>
       render(
         <BraidTestProvider>
-          <Accordion exclusive>
+          <Accordion autoCollapse>
             <AccordionItem label="One" expanded onToggle={() => {}}>
               First
             </AccordionItem>

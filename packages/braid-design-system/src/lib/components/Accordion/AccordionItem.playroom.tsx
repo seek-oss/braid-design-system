@@ -28,7 +28,7 @@ export const AccordionItem: FC<PlayroomAccordionItemProps> = ({
   icon,
   ...restProps
 }) => {
-  const exclusive = Boolean(useContext(AccordionContext)?.exclusive);
+  const autoCollapse = Boolean(useContext(AccordionContext)?.autoCollapse);
   const [state, handleChange] = useFallbackState(
     stateName,
     expanded,
@@ -38,7 +38,7 @@ export const AccordionItem: FC<PlayroomAccordionItemProps> = ({
 
   return (
     <BraidAccordionItem
-      {...(exclusive
+      {...(autoCollapse
         ? { onToggle: handleChange }
         : { expanded: state, onToggle: handleChange })}
       label={typeof label !== 'boolean' ? label : ''}
