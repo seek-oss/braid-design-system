@@ -68,6 +68,7 @@ export const Spread: FC<SpreadProps> = ({
       alignItems={alignItems}
       gap={space}
       className={[
+        styles.noFlexShrink,
         isHorizontal ? styles.fitContent : undefined,
         isVertical ? styles.maxWidth : undefined,
       ]}

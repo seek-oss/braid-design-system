@@ -298,3 +298,14 @@ export const TestTextTruncationVerticalShouldBeLimitedToContainerWidthAndRespect
       </Stack>
     ),
   };
+
+export const TestChildrenShouldNotShrink: Story = {
+  name: 'Test: Children should not change dimensions based on available space (should not shrink)',
+  render: () => (
+    <Box style={{ height: 150, background: 'rgba(255,0,255,0.3)' }}>
+      <Spread space="none" direction="vertical">
+        <Placeholder height={400} label="Should not squash into pink box" />
+      </Spread>
+    </Box>
+  ),
+};
