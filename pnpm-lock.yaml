@@ -561,8 +561,8 @@ importers:
         specifier: ^17.4.0
         version: 17.6.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       sku:
-        specifier: 16.1.1
-        version: 16.1.1(77af0f9747f9977b5705446604d362e5)
+        specifier: 16.2.0
+        version: 16.2.0(e56b159fa152b9cda355dfa33843c845)
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.1.0
@@ -597,8 +597,8 @@ importers:
         specifier: ^7.6.3
         version: 7.18.2(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       sku:
-        specifier: 16.1.1
-        version: 16.1.1(36b57264ef9826acc280fded3cd926f9)
+        specifier: 16.2.0
+        version: 16.2.0(23819ac32e37856eb94bfb41366fe8ad)
       storybook:
         specifier: ^10.2.7
         version: 10.5.8(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8)
@@ -3261,8 +3261,8 @@ packages:
     resolution: {integrity: sha512-E8kDGIbPZSxNfJfDzvy8pBmcy33evsTZxUqwhoCR4IIDBT76gZ5qIEIkFemZDmDRb9XLiUZSZAunyqLxP/r85w==}
     engines: {node: '>=22.19.0'}
 
-  '@sku-lib/vite@2.0.2':
-    resolution: {integrity: sha512-gB4EKVgP2sYQKbambriyfL1rMjv3asxIXmIayQXsEEo+Wstvx6qP+a+EqBEeMBSISRw5+4tyTgQYpjmHl/KIzA==}
+  '@sku-lib/vite@2.0.3':
+    resolution: {integrity: sha512-mwoulG4uQZ6EQSZQN/K7mEsrnnxKZFpIK46G0r/+J89v+efzDQRB+A9wMGFfI3XrAKrPcD9EJjzNAxcPh1BHbg==}
     engines: {node: '>=22.19.0'}
     peerDependencies:
       '@types/react': ^18.0.0 || ^19.0.0
@@ -4120,8 +4120,8 @@ packages:
   '@vocab/pseudo-localize@1.0.2':
     resolution: {integrity: sha512-W9NzX0zrznGX7ghNz0VDi5nj+CLyBdpde4fXfwFwUdsS0p/ApvxZ+8jZ7Dn0W/VavKzjnknyNQO2H7IoYNQQZw==}
 
-  '@vocab/vite@1.0.5':
-    resolution: {integrity: sha512-Muh2OvCKn5uVk8W37d/X+BESr7rSxoFhgfzz1ByjGjIp6IMbgt0CK5Kf7c4PVOVh2u7RvUwhvYcyZzeP6dW+oA==}
+  '@vocab/vite@1.0.6':
+    resolution: {integrity: sha512-fP2/XOkVBqjGvCBq5eyoxuNaCn1ev/NeCgf6d+wgzHYt7npO/isX2cKXnuXWu95UQpWoaVVpS6Kg2xQ7+u6uaA==}
     peerDependencies:
       vite: ^6.0.0 || ^7.0.0 || ^8.0.0
 
@@ -9085,8 +9085,8 @@ packages:
     resolution: {integrity: sha512-r1X49+6Xnf5ahzf0KwoezYvyU97mo/K0tcUaIIUPaNNCG5epYxllnMZmo+XdmWmuxfk4jKcY+C5jz6Uwq69iAA==}
     hasBin: true
 
-  sku@16.1.1:
-    resolution: {integrity: sha512-Kr4mA1xCx4wknox9iwJLM9wnd8Z0OkUoEDBKctu38aJLOIRTgA57yvSgn1FJoRDJgmNpKboM3yK/FIjyVvGZ+Q==}
+  sku@16.2.0:
+    resolution: {integrity: sha512-9rPNDSJNC5LBQkzxY/KZsoutGqxeqJb6DYBOjdtB2chgIuGjfC/aniviyeWAslwwnM7WGwk5NV1PCkm7DXlFxg==}
     engines: {node: '>=24.16.0'}
     hasBin: true
     peerDependencies:
@@ -9095,6 +9095,7 @@ packages:
       '@types/react': ^18.0.0 || ^19.0.0
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
+      react-router: ^8
       vitest: ^4.1.0
     peerDependenciesMeta:
       '@storybook/react-vite':
@@ -9102,6 +9103,8 @@ packages:
       '@storybook/react-webpack5':
         optional: true
       react-dom:
+        optional: true
+      react-router:
         optional: true
       vitest:
         optional: true
@@ -12987,7 +12990,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@sku-lib/vite@2.0.2(@types/react@19.2.18)(react@19.2.8)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))':
+  '@sku-lib/vite@2.0.3(@types/react@19.2.18)(react@19.2.8)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))':
     dependencies:
       '@types/react': 19.2.18
       obug: 2.1.4
@@ -14247,7 +14250,7 @@ snapshots:
 
   '@vocab/pseudo-localize@1.0.2': {}
 
-  '@vocab/vite@1.0.5(supports-color@8.1.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))':
+  '@vocab/vite@1.0.6(supports-color@8.1.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))':
     dependencies:
       '@vocab/core': 1.8.2(supports-color@8.1.1)
       cjs-module-lexer: 2.2.1
@@ -20236,7 +20239,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  sku@16.1.1(36b57264ef9826acc280fded3cd926f9):
+  sku@16.2.0(23819ac32e37856eb94bfb41366fe8ad):
     dependencies:
       '@babel/core': 7.29.7(supports-color@8.1.1)
       '@babel/generator': 7.29.8
@@ -20256,9 +20259,10 @@ snapshots:
       '@pmmmwh/react-refresh-webpack-plugin': 0.6.2(react-refresh@0.18.0)(type-fest@5.8.0)(webpack-dev-server@5.2.6(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)(webpack@5.109.2(@swc/core@1.16.0)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.26)))(webpack-hot-middleware@2.26.1)(webpack@5.109.2(@swc/core@1.16.0)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.26))
       '@rolldown/plugin-babel': 0.2.3(@babel/core@7.29.7(supports-color@8.1.1))(@babel/plugin-transform-runtime@7.29.7(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@babel/runtime@7.29.7)(rolldown@1.2.4)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))
       '@sku-lib/babel-plugin-display-name': 0.0.2(supports-color@8.1.1)
-      '@sku-lib/vite': 2.0.2(@types/react@19.2.18)(react@19.2.8)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))
+      '@sku-lib/vite': 2.0.3(@types/react@19.2.18)(react@19.2.8)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))
       '@swc/core': 1.16.0
       '@types/express': 4.17.25
+      '@types/express-serve-static-core': 4.19.9
       '@types/jest': 30.0.0
       '@types/loadable__component': 5.13.10
       '@types/loadable__server': 5.12.11
@@ -20272,7 +20276,7 @@ snapshots:
       '@vocab/core': 1.8.2(supports-color@8.1.1)
       '@vocab/phrase': 2.2.3(supports-color@8.1.1)
       '@vocab/pseudo-localize': 1.0.2
-      '@vocab/vite': 1.0.5(supports-color@8.1.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))
+      '@vocab/vite': 1.0.6(supports-color@8.1.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))
       '@vocab/webpack': 1.2.25(supports-color@8.1.1)(webpack@5.109.2(@swc/core@1.16.0)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.26))
       babel-jest: 30.4.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1)
       babel-loader: 10.1.1(@babel/core@7.29.7(supports-color@8.1.1))(webpack@5.109.2(@swc/core@1.16.0)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.26))
@@ -20335,6 +20339,7 @@ snapshots:
     optionalDependencies:
       '@storybook/react-webpack5': 10.5.8(@swc/core@1.16.0)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.26)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.5.8(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(supports-color@8.1.1)(typescript@5.9.3)
       react-dom: 19.2.8(react@19.2.8)
+      react-router: 7.18.2(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       vitest: 4.1.10(@types/node@22.20.1)(jsdom@26.1.0(supports-color@8.1.1))(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))
     transitivePeerDependencies:
       - '@minify-html/node'
@@ -20382,7 +20387,7 @@ snapshots:
       - webpack-plugin-serve
       - yaml
 
-  sku@16.1.1(77af0f9747f9977b5705446604d362e5):
+  sku@16.2.0(e56b159fa152b9cda355dfa33843c845):
     dependencies:
       '@babel/core': 7.29.7(supports-color@8.1.1)
       '@babel/generator': 7.29.8
@@ -20402,9 +20407,10 @@ snapshots:
       '@pmmmwh/react-refresh-webpack-plugin': 0.6.2(react-refresh@0.18.0)(type-fest@5.8.0)(webpack-dev-server@5.2.6(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)(webpack@5.109.2(@swc/core@1.16.0)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.26)))(webpack-hot-middleware@2.26.1)(webpack@5.109.2(@swc/core@1.16.0)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.26))
       '@rolldown/plugin-babel': 0.2.3(@babel/core@7.29.7(supports-color@8.1.1))(@babel/plugin-transform-runtime@7.29.7(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@babel/runtime@7.29.7)(rolldown@1.2.4)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))
       '@sku-lib/babel-plugin-display-name': 0.0.2(supports-color@8.1.1)
-      '@sku-lib/vite': 2.0.2(@types/react@19.2.18)(react@19.2.8)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))
+      '@sku-lib/vite': 2.0.3(@types/react@19.2.18)(react@19.2.8)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))
       '@swc/core': 1.16.0
       '@types/express': 4.17.25
+      '@types/express-serve-static-core': 4.19.9
       '@types/jest': 30.0.0
       '@types/loadable__component': 5.13.10
       '@types/loadable__server': 5.12.11
@@ -20418,7 +20424,7 @@ snapshots:
       '@vocab/core': 1.8.2(supports-color@8.1.1)
       '@vocab/phrase': 2.2.3(supports-color@8.1.1)
       '@vocab/pseudo-localize': 1.0.2
-      '@vocab/vite': 1.0.5(supports-color@8.1.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))
+      '@vocab/vite': 1.0.6(supports-color@8.1.1)(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))
       '@vocab/webpack': 1.2.25(supports-color@8.1.1)(webpack@5.109.2(@swc/core@1.16.0)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.26))
       babel-jest: 30.4.1(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1)
       babel-loader: 10.1.1(@babel/core@7.29.7(supports-color@8.1.1))(webpack@5.109.2(@swc/core@1.16.0)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.26))
@@ -20481,6 +20487,7 @@ snapshots:
     optionalDependencies:
       '@storybook/react-webpack5': 10.5.8(@swc/core@1.16.0)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.26)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.5.8(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(supports-color@8.1.1)(typescript@6.0.3)
       react-dom: 19.2.8(react@19.2.8)
+      react-router: 7.18.2(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       vitest: 4.1.10(@types/node@22.20.1)(jsdom@26.1.0(supports-color@8.1.1))(vite@8.2.1(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.50.0)(tsx@4.23.12)(yaml@2.9.0))
     transitivePeerDependencies:
       - '@minify-html/node'
