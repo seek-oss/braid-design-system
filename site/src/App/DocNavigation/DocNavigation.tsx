@@ -11,9 +11,7 @@ import {
   Text,
   Inline,
   ButtonIcon,
-  IconArrow,
   IconChevron,
-  TextLink,
 } from 'braid-design-system';
 import { useBackgroundLightness } from 'braid-src/lib/components/Box/BackgroundContext';
 import { negativeMargin } from 'braid-src/lib/css/negativeMargin/negativeMargin';
@@ -56,7 +54,7 @@ import {
   isIconDocsName,
 } from '../routes/foundations/iconDocs';
 import { getPatternDocs } from '../routes/patterns';
-import { getPatternEntry, patternHref } from '../routes/patterns/catalog';
+import { getPatternEntry } from '../routes/patterns/catalog';
 
 import * as styles from './DocNavigation.css';
 
@@ -234,13 +232,9 @@ export const DocNavigation = () => {
   let history: DocsProviderContextValue['history'] = [];
   let docs: DocsProviderContextValue['docs'];
   const isPatternDocs = docsType === 'patterns';
-  const patternEntry = isPatternDocs ? getPatternEntry(docsName) : undefined;
-  const parentEntry = patternEntry?.parent
-    ? getPatternEntry(patternEntry.parent)
-    : undefined;
   let docsTitle = docsName;
   if (isPatternDocs) {
-    docsTitle = patternEntry?.title ?? docsName;
+    docsTitle = getPatternEntry(docsName).title;
   } else if (isCssFoundationDoc(docsType, docsName)) {
     docsTitle = getCssFoundationDoc(docsName)?.title ?? docsName;
   }
@@ -271,36 +265,23 @@ export const DocNavigation = () => {
   return (
     <Stack space={['xlarge', 'xxlarge']}>
       <Stack space={['large', 'xlarge']}>
-        <Stack space="medium">
-          {parentEntry ? (
-            <Text tone="secondary" size="small">
-              <TextLink
-                href={patternHref(parentEntry.slug)}
-                weight="weak"
-                icon={<IconArrow direction="left" />}
-              >
-                {parentEntry.title}
-              </TextLink>
-            </Text>
+        <Inline space="small" alignY="center">
+          {iconBrowseSearch !== undefined ? (
+            <ButtonIcon
+              variant="transparent"
+              size="large"
+              label="Back to browse"
+              icon={<IconChevron direction="left" />}
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/foundations/iconography/browse', {
+                  state: { iconBrowseSearch },
+                });
+              }}
+            />
           ) : null}
-          <Inline space="small" alignY="center">
-            {iconBrowseSearch !== undefined ? (
-              <ButtonIcon
-                variant="transparent"
-                size="large"
-                label="Back to browse"
-                icon={<IconChevron direction="left" />}
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate('/foundations/iconography/browse', {
-                    state: { iconBrowseSearch },
-                  });
-                }}
-              />
-            ) : null}
-            <Heading level="1">{docsTitle}</Heading>
-          </Inline>
-        </Stack>
+          <Heading level="1">{docsTitle}</Heading>
+        </Inline>
         {isPatternDocs ? null : (
           <DocNavigationBar title="Subnavigation">
             <DocNavigationItem href={docsPath}>Details</DocNavigationItem>
