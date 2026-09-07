@@ -4,6 +4,7 @@ import {
   documentedCss,
 } from '../navigationHelpers';
 import { foundationNavItems } from '../routes/foundations';
+import guides from '../routes/guides';
 import {
   howToEntries,
   patternChildEntries,
@@ -12,6 +13,7 @@ import {
 } from '../routes/patterns/catalog';
 
 export const searchCategories = [
+  'Guides',
   'Foundations',
   'Components',
   'Patterns',
@@ -30,6 +32,14 @@ export interface SearchItem {
 }
 
 export const searchItems: SearchItem[] = [
+  // Guides
+  ...Object.entries(guides).map(([path, guide]) => ({
+    name: guide.title,
+    path,
+    category: 'Guides' as const,
+    hasProps: false,
+  })),
+
   // Foundations
   ...foundationNavItems.map((item) => ({
     name: item.name,

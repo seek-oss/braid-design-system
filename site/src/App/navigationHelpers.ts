@@ -161,7 +161,8 @@ export const allTemplateDocs = templateDocsContext.keys().map((filename) => {
 
 /**
  * Static lookup mapping slugged template names to template metadata.
- * Enables URL-based resolution like `/templates/standard-page` without knowing the group.
+ * Enables URL-based resolution like `/patterns/templates/layouts/standard-page`
+ * from the slugged title without listing every path by hand.
  *
  * @example
  * const info = templateLookup['standard-page'];

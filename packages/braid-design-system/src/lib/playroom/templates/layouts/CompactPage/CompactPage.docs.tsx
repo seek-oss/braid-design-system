@@ -29,7 +29,7 @@ const docs: TemplateDocs = {
       </Text>
       <Text>
         If a more relaxed reading experience is needed, consider{' '}
-        <TextLink href="/templates/standard-page">Standard Page</TextLink>{' '}
+        <TextLink href="/patterns/templates/layouts/standard-page">Standard Page</TextLink>{' '}
         instead.
       </Text>
     </>

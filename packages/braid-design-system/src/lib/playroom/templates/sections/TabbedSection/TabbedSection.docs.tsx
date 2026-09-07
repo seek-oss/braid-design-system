@@ -20,7 +20,7 @@ const docs: TemplateDocs = {
       users need to switch between — such as different views of related data or
       alternative task paths. Avoid tabs when all content should be visible
       simultaneously; consider a{' '}
-      <TextLink href="/templates/standard-section">Standard Section</TextLink>{' '}
+      <TextLink href="/patterns/templates/sections/standard-section">Standard Section</TextLink>{' '}
       stack instead.
     </Text>
   ),

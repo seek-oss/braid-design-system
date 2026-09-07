@@ -18,6 +18,8 @@ import { useThemeSettings } from '../../ThemeSetting';
 import { allTemplateDocs } from '../../navigationHelpers';
 import { useSourceFromExample } from '../../useSourceFromExample/useSourceFromExample';
 
+import { templateDetailPath, templateGroupPath } from './templateDocs';
+
 import * as styles from './templateGroupPage.css';
 
 export const DefaultContainer = ({ children }: { children: ReactNode }) => (
@@ -83,7 +85,7 @@ const TemplateTile = ({
   <PlayroomStateProvider>
     <Box position="relative">
       <Link
-        href={`/templates/${groupName}/${docs.slug}`}
+        href={templateDetailPath(groupName, docs.slug)}
         className={styles.tileLinkOverlay}
       />
       <Stack space="small">
@@ -101,7 +103,7 @@ export const TemplateGroup = () => {
   const templates = allTemplateDocs.filter((doc) => doc.group === groupName);
 
   if (!description) {
-    return <Navigate to="/templates/layouts" replace />;
+    return <Navigate to={templateGroupPath('layouts')} replace />;
   }
 
   const title = groupName.charAt(0).toUpperCase() + groupName.slice(1);

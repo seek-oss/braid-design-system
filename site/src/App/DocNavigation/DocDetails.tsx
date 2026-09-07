@@ -14,6 +14,7 @@ import { useContext, useMemo } from 'react';
 import { slugify } from '../../slugify';
 import { headerScrollOffset } from '../Navigation/navigationSizes';
 import { PageTitle } from '../Seo/PageTitle';
+import { iconDocsPath, isIconDocsName } from '../routes/foundations/iconDocs';
 import { patternCatalog } from '../routes/patterns/catalog';
 
 import { DocExample } from './DocExample';
@@ -49,7 +50,9 @@ const hasContent = (example: {
 }) => Boolean(example.description || example.code || example.Example);
 
 const getAlternativeHref = (alt: { name: string; section?: string }) =>
-  `/${alt.section || 'components'}/${alt.name}`;
+  !alt.section && isIconDocsName(alt.name)
+    ? iconDocsPath(alt.name)
+    : `/${alt.section || 'components'}/${alt.name}`;
 
 const getAlternativeLabel = (alt: { name: string; section?: string }) =>
   alt.section === 'patterns'

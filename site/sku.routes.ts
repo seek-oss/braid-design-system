@@ -9,6 +9,7 @@ import type { SkuConfig } from 'sku';
 import extractExports from './scripts/extractExports';
 import { cssFoundationDocs } from './src/App/routes/foundations/cssDocs';
 import { patternCatalog } from './src/App/routes/patterns/catalog';
+import { templatePathPrefix } from './src/App/routes/templates/templateDocs';
 import { slugify } from './src/slugify';
 import undocumentedExports from './src/undocumentedExports.json';
 
@@ -75,9 +76,14 @@ const getTemplateRoutes = (): NonNullable<SkuConfig['routes']> => {
           const [group, name] = parts;
           groups.add(group);
           const routeName = name.replace(/([a-z0-9])([A-Z])/g, '$1-$2');
-          templateRoutes.push({
-            route: `/templates/${group}/${slugify(routeName)}`,
-          });
+          templateRoutes.push(
+            {
+              route: `${templatePathPrefix}/${group}/${slugify(routeName)}`,
+            },
+            {
+              route: `/templates/${group}/${slugify(routeName)}`,
+            },
+          );
         }
       }
     }
@@ -85,9 +91,10 @@ const getTemplateRoutes = (): NonNullable<SkuConfig['routes']> => {
 
   scanDir(templatesDir);
 
-  const groupRoutes = [...groups].map((group) => ({
-    route: `/templates/${group}`,
-  }));
+  const groupRoutes = [...groups].flatMap((group) => [
+    { route: `${templatePathPrefix}/${group}` },
+    { route: `/templates/${group}` },
+  ]);
 
   return [...groupRoutes, ...templateRoutes];
 };
@@ -96,11 +103,15 @@ const routes: SkuConfig['routes'] = [
   { route: '/', name: 'home' },
   { route: '/releases', name: 'releases' },
   { route: '/gallery', name: 'gallery' },
-  getPages('src/App/routes/getting-started/index.ts'),
+  { route: '/guides', name: 'guides' },
   getPages('src/App/routes/guides/index.ts'),
+  { route: '/getting-started' },
+  { route: '/getting-started/job-summary' },
+  { route: '/examples/job-summary' },
   { route: '/foundations', name: 'foundations' },
   getPages('src/App/routes/foundations/index.ts'),
-  { route: '/templates', name: 'templates' },
+  { route: templatePathPrefix, name: 'templates' },
+  { route: '/templates' },
   getTemplateRoutes(),
   { route: '/foundations/iconography/browse', name: 'browseIcons' },
   { route: '/patterns', name: 'patterns' },
@@ -131,7 +142,10 @@ const routes: SkuConfig['routes'] = [
     ]),
   ]),
   iconNames.flatMap((name) => [
-    { route: `/components/${name}`, name },
+    { route: `/foundations/iconography/${name}`, name },
+    { route: `/foundations/iconography/${name}/props` },
+    { route: `/foundations/iconography/${name}/releases` },
+    { route: `/components/${name}` },
     { route: `/components/${name}/props` },
     { route: `/components/${name}/releases` },
   ]),

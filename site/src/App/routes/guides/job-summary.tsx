@@ -21,10 +21,10 @@ import {
 import { Placeholder } from 'braid-design-system/playroom/components';
 import type { ComponentProps } from 'react';
 
-import type { Page } from '../../../../types';
-import Code from '../../../Code/Code';
-import { PageTitle } from '../../../Seo/PageTitle';
-import { TextStack } from '../../../TextStack/TextStack';
+import type { Page } from '../../../types';
+import Code from '../../Code/Code';
+import { PageTitle } from '../../Seo/PageTitle';
+import { TextStack } from '../../TextStack/TextStack';
 
 type ReactNodeNoStrings = ComponentProps<typeof Stack>['children'];
 
@@ -45,15 +45,10 @@ const page: Page = {
   title: 'Job Summary',
   element: (
     <TextStack>
-      <Stack space="medium">
-        <Heading level="3" weight="weak">
-          <PageTitle title="Job Summary Tutorial" />
-          Getting Started /
-        </Heading>
-        <Heading component="h1" level="2">
-          Job Summary
-        </Heading>
-      </Stack>
+      <Heading level="1">
+        <PageTitle title="Job Summary Tutorial" />
+        Job Summary
+      </Heading>
 
       <Code collapsedByDefault>
         <Card>

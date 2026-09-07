@@ -50,6 +50,11 @@ import {
   isCssDoc,
   isCssFoundationDoc,
 } from '../routes/foundations/cssDocs';
+import {
+  iconDocsPath,
+  iconographyPath,
+  isIconDocsName,
+} from '../routes/foundations/iconDocs';
 import { getPatternDocs } from '../routes/patterns';
 import { getPatternEntry, patternHref } from '../routes/patterns/catalog';
 
@@ -211,9 +216,20 @@ export const DocNavigationBar = ({
 
 export const DocNavigation = () => {
   const { docsName = '', docsType = '' } = useParams();
-  const { state } = useLocation();
+  const { state, pathname } = useLocation();
   const navigate = useNavigate();
   const iconBrowseSearch: string | undefined = state?.iconBrowseSearch;
+  const isIconFoundationDoc =
+    docsType === '' &&
+    isIconDocsName(docsName) &&
+    pathname.startsWith(`${iconographyPath}/`);
+  const docsPath = isIconFoundationDoc
+    ? iconDocsPath(docsName)
+    : `/${docsType}/${docsName}`;
+  const showComponentProps =
+    (docsType === 'components' || isIconFoundationDoc) &&
+    docsName.indexOf('use') !== 0;
+
   let snippets: DocsProviderContextValue['snippets'] = [];
   let history: DocsProviderContextValue['history'] = [];
   let docs: DocsProviderContextValue['docs'];
@@ -287,16 +303,14 @@ export const DocNavigation = () => {
         </Stack>
         {isPatternDocs ? null : (
           <DocNavigationBar title="Subnavigation">
-            <DocNavigationItem href={`/${docsType}/${docsName}`}>
-              Details
-            </DocNavigationItem>
-            {docsType === 'components' && docsName.indexOf('use') !== 0 ? (
-              <DocNavigationItem href={`/${docsType}/${docsName}/props`}>
+            <DocNavigationItem href={docsPath}>Details</DocNavigationItem>
+            {showComponentProps ? (
+              <DocNavigationItem href={`${docsPath}/props`}>
                 Props
               </DocNavigationItem>
             ) : null}
             <DocNavigationItem
-              href={`/${docsType}/${docsName}/releases`}
+              href={`${docsPath}/releases`}
               badge={
                 updateCount > 0 ? (
                   <Badge
@@ -314,7 +328,7 @@ export const DocNavigation = () => {
               Releases
             </DocNavigationItem>
             {snippets.length > 0 ? (
-              <DocNavigationItem href={`/${docsType}/${docsName}/snippets`}>
+              <DocNavigationItem href={`${docsPath}/snippets`}>
                 Snippets
               </DocNavigationItem>
             ) : null}

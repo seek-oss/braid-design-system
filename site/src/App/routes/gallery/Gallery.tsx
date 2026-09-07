@@ -62,6 +62,7 @@ import {
   galleryComponents as allGalleryComponents,
   getComponentDocs,
 } from '../../navigationHelpers';
+import { iconDocsPath } from '../../routes/foundations/iconDocs';
 import { useSourceFromExample } from '../../useSourceFromExample/useSourceFromExample';
 
 import { GalleryPanel } from './GalleryPanel';
@@ -240,6 +241,9 @@ const GalleryItem = ({
   const updateCount = markAsNew ? actualUpdateCount - 1 : actualUpdateCount;
 
   const isIcon = componentDocs.category === 'Icon';
+  const docsPath = isIcon
+    ? iconDocsPath(item.name)
+    : `/components/${item.name}`;
 
   return (
     <Box
@@ -260,10 +264,7 @@ const GalleryItem = ({
         <Box position="relative">
           <Inline space="small" alignY="center">
             <Heading component="h3" level={isIcon ? '3' : '2'}>
-              <TextLink
-                href={`/components/${item.name}`}
-                target="gallery-detail"
-              >
+              <TextLink href={docsPath} target="gallery-detail">
                 {isIcon ? item.name.replace('Icon', '') : item.name}
               </TextLink>
             </Heading>
@@ -271,7 +272,7 @@ const GalleryItem = ({
               <Box
                 component={Link}
                 cursor="pointer"
-                href={`/components/${item.name}/releases`}
+                href={`${docsPath}/releases`}
                 target="gallery-detail"
                 title="Added in the last two months"
               >
@@ -286,7 +287,7 @@ const GalleryItem = ({
               <Box
                 component={Link}
                 cursor="pointer"
-                href={`/components/${item.name}/releases`}
+                href={`${docsPath}/releases`}
                 target="gallery-detail"
                 title={`${updateCount} update${
                   updateCount === 1 ? '' : 's'

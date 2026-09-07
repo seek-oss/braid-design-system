@@ -28,9 +28,9 @@ const docs: TemplateDocs = {
       </Text>
       <Text>
         For standard content pages, prefer{' '}
-        <TextLink href="/templates/standard-page">Standard Page</TextLink>. For
+        <TextLink href="/patterns/templates/layouts/standard-page">Standard Page</TextLink>. For
         dense, task-focused interfaces, prefer{' '}
-        <TextLink href="/templates/compact-page">Compact Page</TextLink>.
+        <TextLink href="/patterns/templates/layouts/compact-page">Compact Page</TextLink>.
       </Text>
     </>
   ),

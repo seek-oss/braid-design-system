@@ -83,7 +83,6 @@ export const SearchResults = ({
                       <Spread space="small" alignY="center">
                         <ButtonLink
                           variant={isSelected ? 'soft' : 'transparent'}
-                          tone="formAccent"
                           size="small"
                           href={item.path}
                           onClick={() => onNavigate(item.path)}

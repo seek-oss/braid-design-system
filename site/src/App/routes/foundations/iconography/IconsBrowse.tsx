@@ -14,6 +14,8 @@ import didYouMean, { ReturnTypeEnums } from 'didyoumean2';
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
+import { iconDocsPath } from '../iconDocs';
+
 import { iconsKeywords } from './iconsKeywords';
 
 import * as styles from './IconsBrowse.css';
@@ -65,7 +67,7 @@ const IconTile = ({
   onNavigate: (href: string) => void;
 }) => {
   const IconComponent = icons[icon.name];
-  const href = `/components/${icon.name}`;
+  const href = iconDocsPath(icon.name);
 
   return (
     <Link

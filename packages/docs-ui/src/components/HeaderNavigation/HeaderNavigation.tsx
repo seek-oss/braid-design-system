@@ -62,7 +62,15 @@ export const HeaderNavigation = ({
 
   return (
     <Box display="flex" alignItems="center">
-      <Box>
+      <Box
+        display={{
+          mobile: 'flex',
+          wide: 'block',
+        }}
+        alignItems="center"
+        flexDirection="row"
+        flexGrow={{ mobile: 1, wide: 0 }}
+      >
         <Hidden print>
           <Box
             paddingRight="medium"

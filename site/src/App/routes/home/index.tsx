@@ -23,7 +23,7 @@ import { StylesIllustration } from '../../LandingCard/Illustrations/StylesIllust
 import { TemplatesIllustration } from '../../LandingCard/Illustrations/TemplatesIllustration';
 import { LandingCard } from '../../LandingCard/LandingCard';
 import { Logo } from '../../Logo/Logo';
-import { gettingStartedLinks } from '../../gettingStartedLinks';
+import { guideLandingCards } from '../../routes/guides';
 
 import { HeroShowcase } from './HeroShowcase';
 
@@ -86,7 +86,7 @@ export const HomePage = () => {
           </Tiles>
           <Tiles space="medium" columns={[1, 2]}>
             <LandingCard
-              href="/templates"
+              href="/patterns/templates"
               label="Templates"
               description="Page-level starting points for building new screens. Copy a layout or section and swap in your content."
               illustration={<TemplatesIllustration />}
@@ -108,11 +108,11 @@ export const HomePage = () => {
           <Stack space="medium">
             <Heading level="2">New to Braid?</Heading>
             <Text>
-              Start with a hands-on tutorial, then dig into the design and
+              Browse the guides for a hands-on tutorial, then the design and
               development workflows.
             </Text>
             <Inline space="small">
-              {gettingStartedLinks.map(({ href, label }) => (
+              {guideLandingCards.slice(0, 3).map(({ href, label }) => (
                 <ButtonLink
                   key={href}
                   href={href}

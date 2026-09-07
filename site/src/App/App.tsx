@@ -6,9 +6,17 @@ import {
   makeLinkComponent,
 } from 'braid-design-system';
 import docsTheme from 'braid-design-system/themes/docs';
+import * as icons from 'braid-src/lib/components/icons';
 import { darkMode } from 'braid-src/lib/css/atoms/sprinkles.css';
 import { StrictMode, useEffect } from 'react';
-import { Route, Routes, Navigate, Link as ReactRouterLink } from 'react-router';
+import {
+  Route,
+  Routes,
+  Navigate,
+  Link as ReactRouterLink,
+  useLocation,
+  useParams,
+} from 'react-router';
 
 import { DocDetails } from './DocNavigation/DocDetails';
 import { DocNavigation } from './DocNavigation/DocNavigation';
@@ -21,9 +29,14 @@ import { ThemeSettingProvider } from './ThemeSetting';
 import { Components } from './routes/components/Components';
 import foundations, { cssFoundationDocs } from './routes/foundations';
 import { Foundations } from './routes/foundations/Foundations';
+import {
+  iconDocsPath,
+  iconographyPath,
+  isIconDocsName,
+} from './routes/foundations/iconDocs';
 import { GalleryPage } from './routes/gallery';
-import gettingStarted from './routes/getting-started';
 import guides from './routes/guides';
+import { Guides } from './routes/guides/Guides';
 import { HomePage } from './routes/home';
 import { Patterns } from './routes/patterns/Patterns';
 import { ReleasesPage } from './routes/releases';
@@ -31,6 +44,11 @@ import { Styles } from './routes/styles/Styles';
 import { TemplateGroup } from './routes/templates';
 import { TemplateDetail } from './routes/templates/TemplateDetail';
 import { Templates } from './routes/templates/Templates';
+import {
+  templateDetailPath,
+  templateGroupPath,
+  templatePathPrefix,
+} from './routes/templates/templateDocs';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>
@@ -60,6 +78,46 @@ const CustomLink = makeLinkComponent(
       />
     ),
 );
+
+const iconDocNames = Object.keys(icons);
+
+const RedirectToIconDocs = ({
+  name,
+  page,
+}: {
+  name: string;
+  page?: 'props' | 'releases';
+}) => {
+  const { state } = useLocation();
+
+  return (
+    <Navigate to={iconDocsPath(name, page)} replace={true} state={state} />
+  );
+};
+
+const IconFoundationDocs = () => {
+  const { docsName = '' } = useParams();
+
+  if (!isIconDocsName(docsName)) {
+    return <Navigate to={iconographyPath} replace={true} />;
+  }
+
+  return <DocNavigation />;
+};
+
+const RedirectToPatternTemplates = () => {
+  const { groupName, templateName } = useParams();
+  const { state } = useLocation();
+
+  let to = templatePathPrefix;
+  if (groupName && templateName) {
+    to = templateDetailPath(groupName, templateName);
+  } else if (groupName) {
+    to = templateGroupPath(groupName);
+  }
+
+  return <Navigate to={to} replace={true} state={state} />;
+};
 
 export const App = () => {
   // TODO: COLORMODE RELEASE
@@ -106,16 +164,21 @@ export const App = () => {
                 {Object.entries({
                   ...guides,
                   ...foundations,
-                  ...gettingStarted,
                 }).map(([path, routeProps]) => (
                   <Route key={path} {...routeProps} path={path} />
                 ))}
                 {/* Redirects for relocated/removed pages */}
                 <Route
+                  path="/getting-started"
+                  element={<Navigate to="/guides" replace />}
+                />
+                <Route
                   path="/examples/job-summary"
-                  element={
-                    <Navigate to="/getting-started/job-summary" replace />
-                  }
+                  element={<Navigate to="/guides/job-summary" replace />}
+                />
+                <Route
+                  path="/getting-started/job-summary"
+                  element={<Navigate to="/guides/job-summary" replace />}
                 />
                 <Route
                   path="/examples/basic-form"
@@ -159,19 +222,57 @@ export const App = () => {
                     />,
                   ]),
                 ])}
+                {iconDocNames.flatMap((name) => [
+                  <Route
+                    key={`/components/${name}`}
+                    path={`/components/${name}`}
+                    element={<RedirectToIconDocs name={name} />}
+                  />,
+                  <Route
+                    key={`/components/${name}/props`}
+                    path={`/components/${name}/props`}
+                    element={<RedirectToIconDocs name={name} page="props" />}
+                  />,
+                  <Route
+                    key={`/components/${name}/releases`}
+                    path={`/components/${name}/releases`}
+                    element={<RedirectToIconDocs name={name} page="releases" />}
+                  />,
+                ])}
+                <Route path="/guides" element={<Guides />} />
                 <Route path="/foundations" element={<Foundations />} />
+                <Route
+                  path="/foundations/iconography/:docsName"
+                  element={<IconFoundationDocs />}
+                >
+                  <Route path="" element={<DocDetails />} />
+                  <Route path="props" element={<DocProps />} />
+                  <Route path="releases" element={<DocReleases />} />
+                </Route>
                 <Route path="/components" element={<Components />} />
                 <Route path="/patterns" element={<Patterns />} />
-                <Route path="/templates" element={<Templates />} />
-                <Route path="/css" element={<Styles />} />
+                <Route path="/patterns/templates" element={<Templates />} />
                 <Route
-                  path="/templates/:groupName"
+                  path="/patterns/templates/:groupName"
                   element={<TemplateGroup />}
                 />
                 <Route
-                  path="/templates/:groupName/:templateName"
+                  path="/patterns/templates/:groupName/:templateName"
                   element={<TemplateDetail />}
                 />
+                <Route
+                  path="/templates"
+                  element={<Navigate to={templatePathPrefix} replace />}
+                />
+                <Route
+                  path="/templates/:groupName"
+                  element={<RedirectToPatternTemplates />}
+                />
+                <Route
+                  path="/templates/:groupName/:templateName"
+                  element={<RedirectToPatternTemplates />}
+                />
+                <Route path="/css" element={<Styles />} />
                 <Route path=":docsType">
                   <Route path=":docsName" element={<DocNavigation />}>
                     <Route path="" element={<DocDetails />} />

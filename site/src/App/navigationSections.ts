@@ -10,7 +10,7 @@
  */
 
 export type NavSectionId =
-  'foundations' | 'components' | 'patterns' | 'templates' | 'styles';
+  'guides' | 'foundations' | 'components' | 'patterns' | 'styles';
 
 export interface NavSection {
   /** Stable identifier used to switch side-nav content. */
@@ -24,6 +24,12 @@ export interface NavSection {
 }
 
 export const navSections = [
+  {
+    id: 'guides',
+    label: 'Guides',
+    href: '/guides',
+    pathPrefixes: ['/guides'],
+  },
   {
     id: 'foundations',
     label: 'Foundations',
@@ -40,13 +46,7 @@ export const navSections = [
     id: 'patterns',
     label: 'Patterns',
     href: '/patterns',
-    pathPrefixes: ['/patterns'],
-  },
-  {
-    id: 'templates',
-    label: 'Templates',
-    href: '/templates',
-    pathPrefixes: ['/templates'],
+    pathPrefixes: ['/patterns', '/templates'],
   },
   {
     id: 'styles',

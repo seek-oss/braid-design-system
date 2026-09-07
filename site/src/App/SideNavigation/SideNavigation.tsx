@@ -13,9 +13,9 @@ import {
 } from '../navigationHelpers';
 import { navSections } from '../navigationSections';
 import { foundationNavItems } from '../routes/foundations';
-import gettingStarted from '../routes/getting-started';
 import guides from '../routes/guides';
 import { howToNavItems, patternNavItems } from '../routes/patterns';
+import { templateGroupPath } from '../routes/templates/templateDocs';
 
 type BadgeLabel = 'New' | 'Deprecated';
 
@@ -54,13 +54,8 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
   );
 
   // The landing page has no sidebar; its resource links are rendered on the
-  // page itself (see routes/home). Guides and getting-started live under the
-  // homepage conceptually — their sidenav only appears when you're on one of
-  // those pages (same pattern as Resources on the tutorial).
+  // page itself (see routes/home).
   const isHome = currentPath === '/';
-  const isHomeAdjacent =
-    currentPath.startsWith('/guides') ||
-    currentPath.startsWith('/getting-started');
 
   return (
     <Box paddingTop="large">
@@ -81,59 +76,43 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
         </Box>
 
         {!activeSection && !isHome && (
-          <>
-            {isHomeAdjacent ? (
-              <>
-                <SideNavigationSection
-                  title="Getting started"
-                  items={Object.entries(gettingStarted).map(
-                    ([path, entry]) => ({
-                      name: entry.title,
-                      badge: entry.badge,
-                      path,
-                      active: isActive(path),
-                      onClick: onSelect,
-                    }),
-                  )}
-                />
-                <SideNavigationSection
-                  title="Guides"
-                  items={Object.entries(guides).map(([path, guide]) => ({
-                    name: guide.title,
-                    badge: guide.badge,
-                    path,
-                    active: isActive(path),
-                    onClick: onSelect,
-                  }))}
-                />
-              </>
-            ) : null}
+          <SideNavigationSection
+            title="Resources"
+            hideTitle={true}
+            items={[
+              {
+                name: 'Releases',
+                path: '/releases',
+                active: isActive('/releases'),
+                onClick: onSelect,
+              },
+              {
+                name: 'Gallery',
+                path: '/gallery',
+              },
+              {
+                name: 'Playroom',
+                path: playroomUrl,
+              },
+              {
+                name: 'GitHub',
+                path: 'https://github.com/seek-oss/braid-design-system',
+              },
+            ]}
+          />
+        )}
 
-            <SideNavigationSection
-              title="Resources"
-              hideTitle={true}
-              items={[
-                {
-                  name: 'Releases',
-                  path: '/releases',
-                  active: isActive('/releases'),
-                  onClick: onSelect,
-                },
-                {
-                  name: 'Gallery',
-                  path: '/gallery',
-                },
-                {
-                  name: 'Playroom',
-                  path: playroomUrl,
-                },
-                {
-                  name: 'GitHub',
-                  path: 'https://github.com/seek-oss/braid-design-system',
-                },
-              ]}
-            />
-          </>
+        {activeSection?.id === 'guides' && (
+          <SideNavigationSection
+            title="Guides"
+            items={Object.entries(guides).map(([path, guide]) => ({
+              name: guide.title,
+              badge: guide.badge,
+              path,
+              active: isActive(path),
+              onClick: onSelect,
+            }))}
+          />
         )}
 
         {activeSection?.id === 'foundations' && (
@@ -186,6 +165,16 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
               }))}
             />
             <SideNavigationSection
+              title="Templates"
+              items={templateGroups.map((group) => ({
+                name: group.at(0)?.toUpperCase() + group.slice(1),
+                path: templateGroupPath(group.toLowerCase()),
+                badge: 'New',
+                active: isActive(templateGroupPath(group.toLowerCase())),
+                onClick: onSelect,
+              }))}
+            />
+            <SideNavigationSection
               title="How to"
               items={howToNavItems.map(({ name, path }) => ({
                 name,
@@ -195,19 +184,6 @@ export const SideNavigation = ({ onSelect }: SideNavigationProps) => {
               }))}
             />
           </>
-        )}
-
-        {activeSection?.id === 'templates' && (
-          <SideNavigationSection
-            title="Templates"
-            items={templateGroups.map((group) => ({
-              name: group.at(0)?.toUpperCase() + group.slice(1),
-              path: `/templates/${group.toLowerCase()}`,
-              badge: 'New',
-              active: isActive(`/templates/${group.toLowerCase()}`),
-              onClick: onSelect,
-            }))}
-          />
         )}
 
         {activeSection?.id === 'styles' && (

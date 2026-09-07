@@ -32,20 +32,21 @@ pnpm --filter site build:site     # production build / pre-render
 There are three concepts worth understanding up front: **sections**, **routes**,
 and **content pages**.
 
-### 1. Navigation sections (the single source of truth)
+### 1. Navigation sections
 
 [`src/App/navigationSections.ts`](./src/App/navigationSections.ts) declares the
-top-level sections of the site (Foundations, Components, Patterns, Templates,
-Styles). Each entry has an `id`, `label`, landing `href`, the `pathPrefixes`
-that mark it active, and a `description` used on the landing page.
+top-level sections of the site (Guides, Foundations, Components, Patterns,
+Styles). Each entry has an `id`, `label`, landing `href`, and the
+`pathPrefixes` that mark it active.
 
-This one file drives:
+This file drives:
 
 - the header navigation — [`src/App/Navigation/Navigation.tsx`](./src/App/Navigation/Navigation.tsx)
-- the contextual side navigation — [`src/App/SideNavigation/SideNavigation.tsx`](./src/App/SideNavigation/SideNavigation.tsx)
-- the "Explore Braid" cards on the landing page — [`src/App/routes/home/index.tsx`](./src/App/routes/home/index.tsx)
+- which contextual side navigation is shown — [`src/App/SideNavigation/SideNavigation.tsx`](./src/App/SideNavigation/SideNavigation.tsx)
 
-Keep `navigationSections.ts` free of React/runtime imports so it stays cheap to
+It does **not** drive homepage Explore cards (those are authored in
+[`src/App/routes/home/index.tsx`](./src/App/routes/home/index.tsx)) and it has no
+`description` field. Keep it free of React/runtime imports so it stays cheap to
 import anywhere.
 
 The landing page (`/`) has **no side navigation**. The side column is hidden on
@@ -69,8 +70,7 @@ Routes are declared in **two** places that must stay in sync:
 
 Component, CSS, icon and template pages are handled generically (see the
 `:docsType/:docsName` catch-all in `App.tsx`). The hand-authored sections
-(guides, foundations, examples, getting-started) are spread in from their
-`index.ts` files.
+(guides, foundations) are spread in from their `index.ts` files.
 
 ### 3. Content pages
 
@@ -79,19 +79,18 @@ by section:
 
 | Folder                   | Section             | Notes                                           |
 | ------------------------ | ------------------- | ----------------------------------------------- |
-| `home/`                  | Landing page        | Intro + "Getting started" + section cards       |
-| `getting-started/`       | Getting Started     | Currently the Job Summary tutorial              |
-| `guides/`                | Guides              | Nested under the Foundations section in the nav |
+| `home/`                  | Landing page        | Marketing intro + section cards + guide links   |
+| `guides/`                | Guides              | Landing + Job Summary, workflows, contribution  |
 | `foundations/`           | Foundations         | layout, tones, iconography                      |
-| `patterns/`              | Patterns            | Placeholder — `Patterns.tsx` + empty `index.ts` |
-| `templates/`             | Templates           | Reads template docs from the braid package      |
+| `patterns/`              | Patterns            | Pattern docs, templates, and how-tos            |
+| `templates/`             | Templates           | Nested under Patterns at `/patterns/templates`  |
 | `components/`, `styles/` | Components / Styles | Render docs sourced from the braid package      |
 
 Each section `index.ts` exports an object keyed by route `path`, e.g.
 
 ```ts
 export default {
-  '/getting-started/job-summary': jobSummary,
+  '/guides/design-workflow': designWorkflow,
 };
 ```
 

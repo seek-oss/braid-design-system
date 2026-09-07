@@ -1,8 +1,6 @@
 import { SideNavigationSection } from '@braid-design-system/docs-ui';
 import { Box, Column, Columns, Stack } from 'braid-design-system';
 
-import { gettingStartedLinks } from '../gettingStartedLinks';
-
 interface SearchLandingProps {
   onSelect: () => void;
 }
@@ -13,12 +11,24 @@ export const SearchLanding = ({ onSelect }: SearchLandingProps) => (
       <Column>
         <Stack space="xlarge">
           <SideNavigationSection
-            title="Getting Started"
-            items={gettingStartedLinks.map(({ href, label }) => ({
-              name: label,
-              path: href,
-              onClick: onSelect,
-            }))}
+            title="Guides"
+            items={[
+              {
+                name: 'Job Summary tutorial',
+                path: '/guides/job-summary',
+                onClick: onSelect,
+              },
+              {
+                name: 'Start designing',
+                path: '/guides/design-workflow',
+                onClick: onSelect,
+              },
+              {
+                name: 'Start developing',
+                path: '/guides/development-workflow',
+                onClick: onSelect,
+              },
+            ]}
           />
           <SideNavigationSection
             title="Foundations"
