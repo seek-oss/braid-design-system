@@ -6,8 +6,6 @@ import {
   Box,
   Column,
   Columns,
-  IconPeople,
-  IconProfile,
   Inline,
   List,
   Stack,
@@ -99,10 +97,10 @@ const docs: ComponentDocs = {
         <Text>
           Defaults to initials from <Strong>name</Strong>. Pass{' '}
           <Strong>variant=&quot;icon&quot;</Strong> to show{' '}
-          <TextLink href="/components/IconProfile">IconProfile</TextLink> (or a
-          custom <Strong>icon</Strong>) instead. Pass{' '}
-          <Strong>variant=&quot;initials&quot;</Strong> only when you need to be
-          explicit.
+          <TextLink href="/components/IconProfile">IconProfile</TextLink>{' '}
+          instead. Pass <Strong>variant=&quot;initials&quot;</Strong> only when
+          you need to be explicit. Add-photo or camera chrome belongs in the
+          product around Avatar, not as a custom fallback on the component.
         </Text>
       ),
       Example: () =>
@@ -149,7 +147,7 @@ const docs: ComponentDocs = {
           If a letter cannot be derived from <Strong>name</Strong> (for example
           an empty value, numbers, or punctuation),{' '}
           <TextLink href="/components/IconProfile">IconProfile</TextLink> is
-          shown. Pass <Strong>icon</Strong> to override that fallback.
+          shown.
         </Text>
       ),
       Example: () =>
@@ -165,12 +163,6 @@ const docs: ComponentDocs = {
               <Avatar name="2187" />
               <Text size="small" tone="secondary">
                 no letters
-              </Text>
-            </Stack>
-            <Stack space="small" align="center">
-              <Avatar name="2187" icon={<IconPeople />} />
-              <Text size="small" tone="secondary">
-                custom fallback
               </Text>
             </Stack>
           </Inline>,
@@ -341,23 +333,6 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Custom icon',
-      description: (
-        <Text>
-          Pass a custom <Strong>icon</Strong> when <Strong>variant</Strong> is{' '}
-          <Strong>icon</Strong>, or when initials cannot be determined from the
-          name.
-        </Text>
-      ),
-      Example: () =>
-        source(
-          <Inline space="medium" alignY="center">
-            <Avatar variant="icon" icon={<IconPeople />} />
-            <Avatar variant="icon" icon={<IconProfile />} />
-          </Inline>,
-        ),
-    },
-    {
       label: 'Accessible name',
       description: (
         <Text>
@@ -450,6 +425,11 @@ const docs: ComponentDocs = {
               </Text>
               <Text>
                 as a standalone interactive control without wrapping it.
+              </Text>
+              <Text>
+                to swap in a custom fallback such as add-photo. Empty is{' '}
+                <TextLink href="/components/IconProfile">IconProfile</TextLink>;
+                put that chrome in the product around Avatar.
               </Text>
             </List>
           </Stack>
