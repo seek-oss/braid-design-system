@@ -1,5 +1,8 @@
 import { palette } from '../../color/palette';
 
+export const photoExampleUrl =
+  'https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?w=192&h=192&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.4&fp-z=1.8';
+
 export const photoPlaceholderUrl = `data:image/svg+xml;base64,${Buffer.from(
   `<svg
 xmlns="http://www.w3.org/2000/svg"

@@ -17,7 +17,7 @@ import {
 } from '../';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
-import { photoPlaceholderUrl as photoUrl } from './photoPlaceholder.css';
+import { photoExampleUrl as photoUrl } from './photoPlaceholder.css';
 
 const docs: ComponentDocs = {
   category: 'Content',

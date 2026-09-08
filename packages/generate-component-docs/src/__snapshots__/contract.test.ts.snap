@@ -172,7 +172,6 @@ exports[`Avatar 1`] = `
         | "small"
         | "standard"
         | "xlarge"
-        | "xsmall"
     variant?: 
         | "icon"
         | "initials"
