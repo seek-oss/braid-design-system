@@ -66,10 +66,9 @@ const docs: ComponentDocs = {
         avatar.
       </Text>
       <Text>
-        Avatar is not interactive. <Strong>xsmall</Strong> and{' '}
-        <Strong>small</Strong> are below the 48px target size. If the avatar is
-        the control, wrap it so the accessible name and hit area come from that
-        control.
+        Avatar is not interactive. <Strong>small</Strong> is below the 48px
+        target size. If the avatar is the control, wrap it so the accessible
+        name and hit area come from that control.
       </Text>
       <Text>
         The <Strong>loading</Strong> shimmer is visual only. It is paused when{' '}
@@ -209,15 +208,13 @@ const docs: ComponentDocs = {
       label: 'Sizing',
       description: (
         <Text>
-          Available in <Strong>xsmall</Strong>, <Strong>small</Strong>,{' '}
-          <Strong>standard</Strong>, <Strong>large</Strong> and{' '}
-          <Strong>xlarge</Strong>.
+          Available in <Strong>small</Strong>, <Strong>standard</Strong>,{' '}
+          <Strong>large</Strong> and <Strong>xlarge</Strong>.
         </Text>
       ),
       Example: () =>
         source(
           <Inline space="medium" alignY="center">
-            <Avatar name="Leia Organa" size="xsmall" />
             <Avatar name="Leia Organa" size="small" />
             <Avatar name="Leia Organa" size="standard" />
             <Avatar name="Leia Organa" size="large" />
@@ -232,8 +229,8 @@ const docs: ComponentDocs = {
           <Text>
             Pass a URL from your user or profile data as{' '}
             <Strong>photoUrl</Strong>. When set, the photo is shown instead of
-            initials or icon. Use an image at least twice the display size (48,
-            64, 96, 128 and 192 pixels for <Strong>xsmall</Strong> through{' '}
+            initials or icon. Use an image at least twice the display size (64,
+            96, 128 and 192 pixels for <Strong>small</Strong> through{' '}
             <Strong>xlarge</Strong>).
           </Text>
           <Text>
