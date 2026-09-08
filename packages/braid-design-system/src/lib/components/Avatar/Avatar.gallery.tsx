@@ -1,7 +1,7 @@
 import source from '@braid-design-system/source.macro';
 import type { GalleryComponent } from 'site/types';
 
-import { Avatar, IconPeople, Inline } from '../';
+import { Avatar, Inline } from '../';
 
 import { photoExampleUrl as photoUrl } from './photoPlaceholder.css';
 
@@ -43,10 +43,6 @@ export const galleryItems: GalleryComponent = {
             <Avatar name="Leia Organa" size="xlarge" />
           </Inline>,
         ),
-    },
-    {
-      label: 'Custom icon',
-      Example: () => source(<Avatar variant="icon" icon={<IconPeople />} />),
     },
     {
       label: 'Loading',

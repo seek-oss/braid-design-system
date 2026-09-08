@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { Avatar, IconPeople, Inline, Stack, Text } from '../';
+import { Avatar, Inline, Stack, Text } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 import { validAvatarSizes } from './Avatar';
@@ -103,25 +103,6 @@ export const LoadingSizes: Story = {
       {validAvatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
           <Avatar name="Leia Organa" size={size} loading />
-          <Text size="small">{size}</Text>
-        </Stack>
-      ))}
-    </Inline>
-  ),
-};
-
-export const CustomIcon: Story = {
-  name: 'Custom icon',
-  render: () => (
-    <Inline space="medium" alignY="center">
-      {validAvatarSizes.map((size) => (
-        <Stack key={size} space="xsmall" align="center">
-          <Avatar
-            variant="icon"
-            name="Leia Organa"
-            size={size}
-            icon={<IconPeople />}
-          />
           <Text size="small">{size}</Text>
         </Stack>
       ))}

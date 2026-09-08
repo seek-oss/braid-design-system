@@ -161,7 +161,6 @@ exports[`Avatar 1`] = `
   props: {
     border?: boolean
     data?: DataAttributeMap
-    icon?: ReactNode
     label?: string
     loading?: boolean
     name?: string
