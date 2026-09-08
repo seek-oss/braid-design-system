@@ -1,12 +1,6 @@
 import source from '@braid-design-system/source.macro';
 
-import {
-  Avatar,
-  IconPeople,
-  Inline,
-  Stack,
-  Text,
-} from '../../playroom/components';
+import { Avatar, Inline, Stack, Text } from '../../playroom/components';
 import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
@@ -52,10 +46,6 @@ export const snippets: Snippets = [
   {
     description: 'Border',
     code: source(<Avatar name="Leia Organa" border />),
-  },
-  {
-    description: 'Custom icon',
-    code: source(<Avatar variant="icon" icon={<IconPeople />} />),
   },
   {
     description: 'Loading',
