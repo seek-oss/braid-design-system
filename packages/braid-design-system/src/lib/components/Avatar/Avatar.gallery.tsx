@@ -3,7 +3,7 @@ import type { GalleryComponent } from 'site/types';
 
 import { Avatar, Inline } from '../';
 
-import { photoExampleUrl as photoUrl } from './photoPlaceholder.css';
+import { photoExampleUrl } from './photoPlaceholder.css';
 
 export const galleryItems: GalleryComponent = {
   examples: [
@@ -12,21 +12,18 @@ export const galleryItems: GalleryComponent = {
       Example: () => source(<Avatar name="Leia Organa" />),
     },
     {
-      label: 'Icon',
-      Example: () => source(<Avatar variant="icon" name="Leia Organa" />),
+      label: 'Empty',
+      Example: () => source(<Avatar />),
     },
     {
       label: 'Photo',
       Example: () => {
         const { value } = source(
-          <Avatar name="Leia Organa" photoUrl={photoUrl} />,
+          <Avatar name="Leia Organa" src={photoExampleUrl} />,
         );
 
         const { code } = source(
-          <Avatar
-            name="Leia Organa"
-            photoUrl="https://example.com/photo.jpg"
-          />,
+          <Avatar name="Leia Organa" src="https://example.com/photo.jpg" />,
         );
 
         return { code, value };

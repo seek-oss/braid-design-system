@@ -21,9 +21,6 @@ import buildDataAttributes, {
 
 import * as styles from './Avatar.css';
 
-export const validAvatarVariants = ['icon', 'initials'] as const;
-type AvatarVariant = (typeof validAvatarVariants)[number];
-
 export const validAvatarSizes = [
   'small',
   'standard',
@@ -33,14 +30,13 @@ export const validAvatarSizes = [
 type AvatarSize = (typeof validAvatarSizes)[number];
 
 export interface AvatarProps {
-  variant?: AvatarVariant;
-  name?: string;
-  label?: string;
   size?: AvatarSize;
-  loading?: boolean;
-  photoUrl?: string;
-  photoError?: boolean;
   border?: boolean;
+  label?: string;
+  name?: string;
+  src?: string;
+  loading?: boolean;
+  broken?: boolean;
   data?: DataAttributeMap;
 }
 
@@ -116,21 +112,14 @@ const backgroundColourForName = (name: string) => {
 export const Avatar = ({
   name = '',
   label,
-  variant,
   size = 'standard',
   loading = false,
-  photoUrl,
-  photoError = false,
+  src,
+  broken = false,
   border = false,
   data,
   ...restProps
 }: AvatarProps): ReactElement => {
-  if (variant !== undefined) {
-    assert(
-      validAvatarVariants.indexOf(variant) >= 0,
-      `Avatar variant of "${variant}" is not valid.`,
-    );
-  }
   assert(
     validAvatarSizes.indexOf(size) >= 0,
     `Avatar size of "${size}" is not valid.`,
@@ -145,7 +134,7 @@ export const Avatar = ({
     // Data URIs and cached images can be complete before onLoad. Do not
     // require naturalHeight — SVG placeholders often report 0.
     setImageLoaded(Boolean(imageRef.current?.complete));
-  }, [photoUrl]);
+  }, [src]);
 
   const labelled = Boolean(label);
   const commonBoxProps = {
@@ -165,7 +154,7 @@ export const Avatar = ({
     );
   }
 
-  if (photoError || (photoUrl && imageError)) {
+  if (broken || (src && imageError)) {
     return (
       <Box
         {...commonBoxProps}
@@ -181,7 +170,7 @@ export const Avatar = ({
     );
   }
 
-  if (photoUrl) {
+  if (src) {
     return (
       <Box
         {...commonBoxProps}
@@ -191,9 +180,9 @@ export const Avatar = ({
       >
         <Box
           component="img"
-          key={photoUrl}
+          key={src}
           ref={imageRef}
-          src={photoUrl}
+          src={src}
           alt=""
           aria-hidden
           onError={() => setImageError(true)}
@@ -208,7 +197,7 @@ export const Avatar = ({
   }
 
   const resolvedInitials = getInitials(name);
-  const showIcon = variant === 'icon' || resolvedInitials === null;
+  const showIcon = resolvedInitials === null;
   const textContent = showIcon ? <IconProfile /> : resolvedInitials;
 
   const colour =

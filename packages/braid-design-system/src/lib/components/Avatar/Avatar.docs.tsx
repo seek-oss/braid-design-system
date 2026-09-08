@@ -15,7 +15,7 @@ import {
 } from '../';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
-import { photoExampleUrl as photoUrl } from './photoPlaceholder.css';
+import { photoExampleUrl } from './photoPlaceholder.css';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -27,9 +27,9 @@ const docs: ComponentDocs = {
   Example: () => {
     const { value } = source(
       <Inline space="small" alignY="center">
-        <Avatar name="Leia Organa" size="xlarge" photoUrl={photoUrl} />
+        <Avatar name="Leia Organa" size="xlarge" src={photoExampleUrl} />
         <Avatar name="Leia Organa" size="large" />
-        <Avatar variant="icon" name="Leia Organa" />
+        <Avatar />
       </Inline>,
     );
 
@@ -38,10 +38,10 @@ const docs: ComponentDocs = {
         <Avatar
           name="Leia Organa"
           size="xlarge"
-          photoUrl="https://example.com/photo.jpg"
+          src="https://example.com/photo.jpg"
         />
         <Avatar name="Leia Organa" size="large" />
-        <Avatar variant="icon" name="Leia Organa" />
+        <Avatar />
       </Inline>,
     );
 
@@ -92,15 +92,13 @@ const docs: ComponentDocs = {
   ],
   additional: [
     {
-      label: 'Variants',
+      label: 'Empty',
       description: (
         <Text>
-          Defaults to initials from <Strong>name</Strong>. Pass{' '}
-          <Strong>variant=&quot;icon&quot;</Strong> to show{' '}
-          <TextLink href="/components/IconProfile">IconProfile</TextLink>{' '}
-          instead. Pass <Strong>variant=&quot;initials&quot;</Strong> only when
-          you need to be explicit. Add-photo or camera chrome belongs in the
-          product around Avatar, not as a custom fallback on the component.
+          Omit <Strong>name</Strong>, or pass a value with no letter, to show{' '}
+          <TextLink href="/components/IconProfile">IconProfile</TextLink>.
+          Add-photo or camera chrome belongs in the product around Avatar, not
+          as a custom fallback on the component.
         </Text>
       ),
       Example: () =>
@@ -109,13 +107,13 @@ const docs: ComponentDocs = {
             <Stack space="small" align="center">
               <Avatar name="Leia Organa" />
               <Text size="small" tone="secondary">
-                initials
+                name
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar variant="icon" name="Leia Organa" />
+              <Avatar />
               <Text size="small" tone="secondary">
-                icon
+                empty
               </Text>
             </Stack>
           </Inline>,
@@ -219,17 +217,16 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Pass a URL from your user or profile data as{' '}
-            <Strong>photoUrl</Strong>. When set, the photo is shown instead of
-            initials or icon. Use an image at least twice the display size (64,
-            96, 128 and 192 pixels for <Strong>small</Strong> through{' '}
-            <Strong>xlarge</Strong>).
+            Pass a URL from your user or profile data as <Strong>src</Strong>.
+            When set, the photo is shown instead of initials or icon. Use an
+            image at least twice the display size (64, 96, 128 and 192 pixels
+            for <Strong>small</Strong> through <Strong>xlarge</Strong>).
           </Text>
           <Text>
-            If the image fails to load, or <Strong>photoError</Strong> is set, a
+            If the image fails to load, or <Strong>broken</Strong> is set, a
             broken image icon is shown. <Strong>loading</Strong> still takes
-            precedence while data is fetched. Omit <Strong>photoUrl</Strong>{' '}
-            when the photo must not be shown, for example when names are hidden.
+            precedence while data is fetched. Omit <Strong>src</Strong> when the
+            photo must not be shown, for example when names are hidden.
           </Text>
         </>
       ),
@@ -237,13 +234,13 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Inline space="medium" alignY="center">
             <Stack space="small" align="center">
-              <Avatar name="Leia Organa" photoUrl={photoUrl} />
+              <Avatar name="Leia Organa" src={photoExampleUrl} />
               <Text size="small" tone="secondary">
                 photo
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar name="Leia Organa" photoError />
+              <Avatar name="Leia Organa" broken />
               <Text size="small" tone="secondary">
                 error
               </Text>
@@ -260,16 +257,13 @@ const docs: ComponentDocs = {
         const { code } = source(
           <Inline space="medium" alignY="center">
             <Stack space="small" align="center">
-              <Avatar
-                name="Leia Organa"
-                photoUrl="https://example.com/photo.jpg"
-              />
+              <Avatar name="Leia Organa" src="https://example.com/photo.jpg" />
               <Text size="small" tone="secondary">
                 photo
               </Text>
             </Stack>
             <Stack space="small" align="center">
-              <Avatar name="Leia Organa" photoError />
+              <Avatar name="Leia Organa" broken />
               <Text size="small" tone="secondary">
                 error
               </Text>
@@ -308,9 +302,9 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Box background="brand" padding="medium" borderRadius="standard">
             <Inline space="small" alignY="center">
-              <Avatar name="Leia Organa" photoUrl={photoUrl} border />
+              <Avatar name="Leia Organa" src={photoExampleUrl} border />
               <Avatar name="Leia Organa" border />
-              <Avatar variant="icon" name="Leia Organa" border />
+              <Avatar border />
             </Inline>
           </Box>,
         );
@@ -320,11 +314,11 @@ const docs: ComponentDocs = {
             <Inline space="small" alignY="center">
               <Avatar
                 name="Leia Organa"
-                photoUrl="https://example.com/photo.jpg"
+                src="https://example.com/photo.jpg"
                 border
               />
               <Avatar name="Leia Organa" border />
-              <Avatar variant="icon" name="Leia Organa" border />
+              <Avatar border />
             </Inline>
           </Box>,
         );
