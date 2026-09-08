@@ -25,7 +25,6 @@ export const validAvatarVariants = ['icon', 'initials'] as const;
 type AvatarVariant = (typeof validAvatarVariants)[number];
 
 export const validAvatarSizes = [
-  'xsmall',
   'small',
   'standard',
   'large',
@@ -59,7 +58,6 @@ const avatarSizeToBorderRadius = {
   large: 'standard',
   standard: 'standard',
   small: 'standard',
-  xsmall: 'standard',
 } as const satisfies Record<
   AvatarSize,
   ComponentProps<typeof Box>['borderRadius']
@@ -70,7 +68,6 @@ const avatarSizeToTextSize = {
   large: 'large',
   standard: 'standard',
   small: 'small',
-  xsmall: 'xsmall',
 } as const satisfies Record<AvatarSize, ComponentProps<typeof Text>['size']>;
 
 interface AvatarTextContentProps {

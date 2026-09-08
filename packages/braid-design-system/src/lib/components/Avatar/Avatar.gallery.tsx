@@ -37,7 +37,6 @@ export const galleryItems: GalleryComponent = {
       Example: () =>
         source(
           <Inline space="small" alignY="center">
-            <Avatar name="Leia Organa" size="xsmall" />
             <Avatar name="Leia Organa" size="small" />
             <Avatar name="Leia Organa" size="standard" />
             <Avatar name="Leia Organa" size="large" />

@@ -269,7 +269,6 @@ describe('Avatar', () => {
 
   describe('Size support', () => {
     it.each([
-      ['xsmall', textSizeUntrimmed.xsmall],
       ['small', textSizeUntrimmed.small],
       ['standard', textSizeUntrimmed.standard],
       ['large', textSizeUntrimmed.large],
@@ -366,7 +365,7 @@ describe('Avatar', () => {
     });
 
     it('applies border to all sizes', () => {
-      const sizes = ['xsmall', 'small', 'standard', 'large', 'xlarge'] as const;
+      const sizes = ['small', 'standard', 'large', 'xlarge'] as const;
 
       sizes.forEach((size) => {
         const { unmount } = render(
