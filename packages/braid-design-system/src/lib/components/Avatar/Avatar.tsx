@@ -41,7 +41,6 @@ export interface AvatarProps {
   photoUrl?: string;
   photoError?: boolean;
   border?: boolean;
-  icon?: ReactNode;
   data?: DataAttributeMap;
 }
 
@@ -123,7 +122,6 @@ export const Avatar = ({
   photoUrl,
   photoError = false,
   border = false,
-  icon,
   data,
   ...restProps
 }: AvatarProps): ReactElement => {
@@ -209,10 +207,9 @@ export const Avatar = ({
     );
   }
 
-  const avatarIcon = icon ?? <IconProfile />;
   const resolvedInitials = getInitials(name);
   const showIcon = variant === 'icon' || resolvedInitials === null;
-  const textContent = showIcon ? avatarIcon : resolvedInitials;
+  const textContent = showIcon ? <IconProfile /> : resolvedInitials;
 
   const colour =
     !showIcon && resolvedInitials ? backgroundColourForName(name) : null;
