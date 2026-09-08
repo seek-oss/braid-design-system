@@ -18,11 +18,15 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof Avatar>;
 
-export const Initials: Story = {};
-
-export const Icon: Story = {
+export const Initials: Story = {
   args: {
-    variant: 'icon',
+    name: 'Leia Organa',
+  },
+};
+
+export const Empty: Story = {
+  args: {
+    name: '',
   },
 };
 
@@ -40,13 +44,13 @@ export const InitialsSizes: Story = {
   ),
 };
 
-export const IconSizes: Story = {
-  name: 'Icon sizes',
+export const EmptySizes: Story = {
+  name: 'Empty sizes',
   render: () => (
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
-          <Avatar variant="icon" name="Leia Organa" size={size} />
+          <Avatar size={size} />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
@@ -60,7 +64,7 @@ export const PhotoSizes: Story = {
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
-          <Avatar name="Leia Organa" size={size} photoUrl={photoUrl} />
+          <Avatar name="Leia Organa" size={size} src={photoUrl} />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
@@ -74,7 +78,7 @@ export const PhotoErrorSizes: Story = {
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
-          <Avatar name="Leia Organa" size={size} photoError />
+          <Avatar name="Leia Organa" size={size} broken />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
@@ -120,7 +124,7 @@ export const Contrast: Story = {
   render: () => (
     <Inline space="small" alignY="center">
       <Avatar name="Leia Organa" border />
-      <Avatar variant="icon" name="Leia Organa" border />
+      <Avatar border />
       <Avatar name="Leia Organa" loading border />
     </Inline>
   ),

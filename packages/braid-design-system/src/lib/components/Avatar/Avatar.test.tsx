@@ -116,7 +116,7 @@ describe('Avatar', () => {
       const photoUrl = 'https://example.com/photo.jpg';
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Organa" photoUrl={photoUrl} />
+          <Avatar name="Leia Organa" src={photoUrl} />
         </BraidTestProvider>,
       );
 
@@ -148,7 +148,7 @@ describe('Avatar', () => {
       try {
         render(
           <BraidTestProvider>
-            <Avatar name="Leia Organa" photoUrl={photoPlaceholderUrl} />
+            <Avatar name="Leia Organa" src={photoPlaceholderUrl} />
           </BraidTestProvider>,
         );
 
@@ -168,7 +168,7 @@ describe('Avatar', () => {
       }
     });
 
-    it('infers initials from name when variant is omitted', () => {
+    it('infers initials from name', () => {
       render(
         <BraidTestProvider>
           <Avatar name="Leia Organa" />
@@ -188,10 +188,10 @@ describe('Avatar', () => {
       expect(screen.getByRole('img', { name: 'Leia Organa' })).toBeVisible();
     });
 
-    it('renders icon when no photo is provided and variant is icon', () => {
+    it('renders IconProfile when name is omitted', () => {
       const { container } = render(
         <BraidTestProvider>
-          <Avatar name="Leia Organa" variant="icon" />
+          <Avatar />
         </BraidTestProvider>,
       );
 
@@ -203,10 +203,7 @@ describe('Avatar', () => {
     it('renders broken icon when photo is invalid', () => {
       const { container } = render(
         <BraidTestProvider>
-          <Avatar
-            name="Leia Organa"
-            photoUrl="https://invalid-path/photo.jpg"
-          />
+          <Avatar name="Leia Organa" src="https://invalid-path/photo.jpg" />
         </BraidTestProvider>,
       );
 
@@ -220,13 +217,13 @@ describe('Avatar', () => {
       expectVisibleSvg(container);
     });
 
-    it('renders broken icon when photoError is true', () => {
+    it('renders broken icon when broken is true', () => {
       const { container } = render(
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            photoUrl="https://example.com/photo.jpg"
-            photoError
+            src="https://example.com/photo.jpg"
+            broken
           />
         </BraidTestProvider>,
       );
@@ -235,13 +232,13 @@ describe('Avatar', () => {
       expectVisibleSvg(container);
     });
 
-    it('prioritizes photoError over photoUrl', () => {
+    it('prioritizes broken over src', () => {
       const { container } = render(
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            photoUrl="https://example.com/valid-photo.jpg"
-            photoError
+            src="https://example.com/valid-photo.jpg"
+            broken
           />
         </BraidTestProvider>,
       );
@@ -319,12 +316,12 @@ describe('Avatar', () => {
       expect(screen.getByTestId('avatar').className).toContain(borderStyle);
     });
 
-    it('applies border to photo variant', () => {
+    it('applies border to a photo', () => {
       render(
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            photoUrl="https://example.com/photo.jpg"
+            src="https://example.com/photo.jpg"
             border
             data={{ testid: 'avatar' }}
           />
@@ -334,15 +331,10 @@ describe('Avatar', () => {
       expect(screen.getByTestId('avatar').className).toContain(borderStyle);
     });
 
-    it('applies border to icon variant', () => {
+    it('applies border to empty Avatar', () => {
       render(
         <BraidTestProvider>
-          <Avatar
-            name="Leia Organa"
-            variant="icon"
-            border
-            data={{ testid: 'avatar' }}
-          />
+          <Avatar border data={{ testid: 'avatar' }} />
         </BraidTestProvider>,
       );
 

@@ -160,20 +160,17 @@ exports[`Avatar 1`] = `
   exportType: component,
   props: {
     border?: boolean
+    broken?: boolean
     data?: DataAttributeMap
     label?: string
     loading?: boolean
     name?: string
-    photoError?: boolean
-    photoUrl?: string
     size?: 
         | "large"
         | "small"
         | "standard"
         | "xlarge"
-    variant?: 
-        | "icon"
-        | "initials"
+    src?: string
 },
 }
 `;

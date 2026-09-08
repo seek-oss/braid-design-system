@@ -9,13 +9,13 @@ export const snippets: Snippets = [
     code: source(<Avatar name="Leia Organa" />),
   },
   {
-    description: 'Icon',
-    code: source(<Avatar variant="icon" name="Leia Organa" />),
+    description: 'Empty',
+    code: source(<Avatar />),
   },
   {
     description: 'Photo',
     code: source(
-      <Avatar name="Leia Organa" photoUrl="https://example.com/photo.jpg" />,
+      <Avatar name="Leia Organa" src="https://example.com/photo.jpg" />,
     ),
   },
   {
