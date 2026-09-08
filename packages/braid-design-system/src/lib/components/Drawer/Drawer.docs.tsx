@@ -9,6 +9,7 @@ import {
   Text,
   TextLink,
   Strong,
+  Heading,
   IconLanguage,
   Checkbox,
   Alert,
@@ -154,6 +155,52 @@ const docs: ComponentDocs = {
             <Box borderRadius="xlarge" overflow="hidden">
               <DrawerPreview>
                 <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
+                  <Placeholder
+                    height={200}
+                    width="100%"
+                    label="Drawer Content"
+                  />
+                </DrawerContent>
+                <Screen />
+              </DrawerPreview>
+            </Box>
+          ),
+        };
+      },
+    },
+    {
+      label: 'Drawers without a visible title',
+      description: (
+        <Text>
+          To omit the visible title, provide a relevant{' '}
+          <Strong>aria-label</Strong> so the Drawer still has an accessible
+          name. An optional <Strong>aria-description</Strong> can provide
+          additional context to screen reader users. Include a level 2 heading
+          within the Drawer content to maintain a clear heading structure.
+        </Text>
+      ),
+      background: false,
+      Example: () => {
+        const { code, value } = source<DrawerElement>(
+          <Drawer
+            aria-label="Job details"
+            aria-description="Details about the selected job"
+            width="small"
+            open={true}
+            onClose={() => {}}
+          >
+            <Heading level="2">Job details</Heading>
+            <Placeholder height={200} width="100%" label="Drawer Content" />
+          </Drawer>,
+        );
+
+        return {
+          code,
+          value: (
+            <Box borderRadius="xlarge" overflow="hidden">
+              <DrawerPreview>
+                <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
+                  <Heading level="2">Job details</Heading>
                   <Placeholder
                     height={200}
                     width="100%"

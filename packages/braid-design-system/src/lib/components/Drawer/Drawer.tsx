@@ -19,14 +19,45 @@ const modalStyle = {
   illustration: undefined,
 } as const;
 
-export interface DrawerProps extends Omit<
+type DrawerHeaderProps =
+  | {
+      title: string;
+      description?: ModalContentProps['description'];
+      'aria-label'?: never;
+      'aria-description'?: never;
+    }
+  | {
+      title?: never;
+      description?: never;
+      'aria-label': string;
+      'aria-description'?: string;
+    };
+
+const assertAccessibleName = ({
+  title,
+  'aria-label': ariaLabel,
+}: {
+  title?: string;
+  'aria-label'?: string;
+}) =>
+  assert(
+    (typeof title === 'string') !== (typeof ariaLabel === 'string'),
+    'Drawer requires either a title or an aria-label',
+  );
+
+export type DrawerProps = Omit<
   ModalProps,
-  keyof typeof modalStyle | 'width' | 'position' | 'coverImage'
-> {
-  width?: (typeof validWidths)[number];
-  position?: (typeof validPositions)[number];
-  footer?: ModalContentProps['footer'];
-}
+  | keyof typeof modalStyle
+  | 'width'
+  | 'position'
+  | 'coverImage'
+  | keyof DrawerHeaderProps
+> &
+  DrawerHeaderProps & {
+    width?: (typeof validWidths)[number];
+    position?: (typeof validPositions)[number];
+    footer?: ModalContentProps['footer'];
+  };
 
 export const Drawer: FC<DrawerProps> = ({
   width = defaultWidth,
@@ -39,6 +70,7 @@ export const Drawer: FC<DrawerProps> = ({
     validPositions.indexOf(position) >= 0,
     `Invalid position: ${position}`,
   );
+  assertAccessibleName(restProps);
 
   return (
     <Modal
@@ -51,14 +83,19 @@ export const Drawer: FC<DrawerProps> = ({
   );
 };
 
-interface DrawerContentProps extends Omit<
+type DrawerContentProps = Omit<
   ModalContentProps,
-  keyof typeof modalStyle | 'width' | 'position' | 'coverImage'
-> {
-  width?: (typeof validWidths)[number];
-  position?: (typeof validPositions)[number];
-  footer?: ModalContentProps['footer'];
-}
+  | keyof typeof modalStyle
+  | 'width'
+  | 'position'
+  | 'coverImage'
+  | keyof DrawerHeaderProps
+> &
+  DrawerHeaderProps & {
+    width?: (typeof validWidths)[number];
+    position?: (typeof validPositions)[number];
+    footer?: ModalContentProps['footer'];
+  };
 
 export const DrawerContent = ({
   width = defaultWidth,
@@ -71,6 +108,7 @@ export const DrawerContent = ({
     validPositions.indexOf(position) >= 0,
     `Invalid position: ${position}`,
   );
+  assertAccessibleName(restProps);
 
   return (
     <ModalContent

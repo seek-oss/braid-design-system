@@ -16,6 +16,7 @@ import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
 import { Column } from '../../Column/Column';
 import { Columns } from '../../Columns/Columns';
 import { Heading } from '../../Heading/Heading';
+import { HiddenVisually } from '../../HiddenVisually/HiddenVisually';
 import { pageBlockGutters } from '../../PageBlock/pageBlockGutters';
 import { Stack } from '../../Stack/Stack';
 import { IconClear } from '../../icons';
@@ -46,6 +47,12 @@ type ModalContentCommonProps = {
   footer?: ReactNode;
 };
 
+export type ModalAccessibleNameProps = {
+  title?: string;
+  'aria-label'?: string;
+  'aria-description'?: string;
+};
+
 export type ModalContentProps = ModalContentCommonProps &
   (
     | {
@@ -55,10 +62,12 @@ export type ModalContentProps = ModalContentCommonProps &
     | { coverImage?: string; illustration?: never }
   );
 
-type ModalContentInternalProps = ModalContentCommonProps & {
-  coverImage?: string;
-  illustration?: ReactNodeNoStrings;
-};
+type ModalContentInternalProps = Omit<ModalContentCommonProps, 'title'> &
+  ModalAccessibleNameProps & {
+    coverImage?: string;
+    dialogRef?: Ref<HTMLElement>;
+    illustration?: ReactNodeNoStrings;
+  };
 
 const modalPadding = { mobile: 'gutter', tablet: 'large' } as const;
 
@@ -253,7 +262,10 @@ export const ModalContent = ({
   illustration,
   coverImage,
   title,
+  'aria-label': ariaLabel,
+  'aria-description': ariaDescription,
   headingRef: headingRefProp,
+  dialogRef,
   modalRef: modalRefProp,
   scrollLock = true,
   position,
@@ -303,17 +315,19 @@ export const ModalContent = ({
       coverImageEnabled={coverImageEnabled}
       hasFooter={Boolean(footer)}
     >
-      <ModalContentHeader
-        title={title}
-        headingLevel={headingLevel}
-        description={description}
-        descriptionId={descriptionId}
-        illustration={
-          illustration && !coverImageEnabled ? illustration : undefined
-        }
-        ref={headingRef}
-        reserveCloseArea
-      />
+      {title ? (
+        <ModalContentHeader
+          title={title}
+          headingLevel={headingLevel}
+          description={description}
+          descriptionId={descriptionId}
+          illustration={
+            illustration && !coverImageEnabled ? illustration : undefined
+          }
+          ref={headingRef}
+          reserveCloseArea
+        />
+      ) : null}
       {children}
     </ModalContentScrollLayout>
   );
@@ -324,10 +338,14 @@ export const ModalContent = ({
 
   return (
     <Box
+      ref={dialogRef}
       role="dialog"
-      aria-label={title} // Using aria-labelledby would announce the heading after the dialog content.
-      aria-describedby={description ? descriptionId : undefined}
+      aria-label={ariaLabel || title} // Using aria-labelledby would announce the heading after the dialog content.
+      aria-describedby={
+        (title && description) || ariaDescription ? descriptionId : undefined
+      }
       aria-modal="true"
+      tabIndex={title ? undefined : -1}
       id={resolvedId}
       onKeyDown={handleEscape}
       position="relative"
@@ -351,6 +369,9 @@ export const ModalContent = ({
         width={width !== 'content' ? 'full' : undefined}
         maxWidth={width !== 'content' ? width : undefined}
       >
+        {ariaDescription ? (
+          <HiddenVisually id={descriptionId}>{ariaDescription}</HiddenVisually>
+        ) : null}
         <RemoveScroll
           noRelative // Allows portalled elements to be positioned correctly relative to the viewport size
           forwardProps
