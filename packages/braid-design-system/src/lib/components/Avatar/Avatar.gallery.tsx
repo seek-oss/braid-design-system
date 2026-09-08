@@ -3,7 +3,7 @@ import type { GalleryComponent } from 'site/types';
 
 import { Avatar, IconPeople, Inline } from '../';
 
-import { photoPlaceholderUrl as photoUrl } from './photoPlaceholder.css';
+import { photoExampleUrl as photoUrl } from './photoPlaceholder.css';
 
 export const galleryItems: GalleryComponent = {
   examples: [
