@@ -1,0 +1,10 @@
+._56j7zn1 {
+  z-index: 99999;
+  cursor: crosshair;
+}
+._56j7zn3 {
+  z-index: 99999;
+  background: var(--_1kb4nanr);
+  transition: all 50ms ease;
+  transition-delay: 50ms;
+}
