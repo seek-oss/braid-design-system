@@ -39,11 +39,12 @@ const assertAccessibleName = ({
 }: {
   title?: string;
   'aria-label'?: string;
-}) =>
+}) => {
   assert(
     (typeof title === 'string') !== (typeof ariaLabel === 'string'),
     'Drawer requires either a title or an aria-label',
   );
+};
 
 export type DrawerProps = Omit<
   ModalProps,
