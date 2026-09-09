@@ -35,14 +35,26 @@ type DrawerHeaderProps =
 
 const assertAccessibleName = ({
   title,
+  description,
   'aria-label': ariaLabel,
+  'aria-description': ariaDescription,
 }: {
   title?: string;
+  description?: ModalContentProps['description'];
   'aria-label'?: string;
+  'aria-description'?: string;
 }) => {
   assert(
     (typeof title === 'string') !== (typeof ariaLabel === 'string'),
     'Drawer requires either a title or an aria-label',
+  );
+  assert(
+    description === undefined || typeof title === 'string',
+    'Drawer description can only be used with a title',
+  );
+  assert(
+    ariaDescription === undefined || typeof ariaLabel === 'string',
+    'Drawer aria-description can only be used with an aria-label',
   );
 };
 
