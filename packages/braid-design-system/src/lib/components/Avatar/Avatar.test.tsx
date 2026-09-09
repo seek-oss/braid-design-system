@@ -4,7 +4,7 @@ import { Avatar } from '..';
 import { BraidTestProvider } from '../../../test';
 import { palette } from '../../color/palette';
 
-import { border as borderStyle, imageLoaded } from './Avatar.css';
+import { keyline as keylineStyle, imageLoaded } from './Avatar.css';
 import { photoPlaceholderUrl } from './photoPlaceholder.css';
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
 import { shimmerAnimation } from '../private/Skeleton/Skeleton.css';
@@ -116,7 +116,7 @@ describe('Avatar', () => {
       const photoUrl = 'https://example.com/photo.jpg';
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Organa" src={photoUrl} />
+          <Avatar name="Leia Organa" photoUrl={photoUrl} />
         </BraidTestProvider>,
       );
 
@@ -148,7 +148,7 @@ describe('Avatar', () => {
       try {
         render(
           <BraidTestProvider>
-            <Avatar name="Leia Organa" src={photoPlaceholderUrl} />
+            <Avatar name="Leia Organa" photoUrl={photoPlaceholderUrl} />
           </BraidTestProvider>,
         );
 
@@ -178,10 +178,10 @@ describe('Avatar', () => {
       expect(screen.getByText('L')).toBeVisible();
     });
 
-    it('exposes an accessible name when label is set', () => {
+    it('exposes an accessible name when aria-label is set', () => {
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Organa" label="Leia Organa" />
+          <Avatar name="Leia Organa" aria-label="Leia Organa" />
         </BraidTestProvider>,
       );
 
@@ -203,7 +203,10 @@ describe('Avatar', () => {
     it('renders broken icon when photo is invalid', () => {
       const { container } = render(
         <BraidTestProvider>
-          <Avatar name="Leia Organa" src="https://invalid-path/photo.jpg" />
+          <Avatar
+            name="Leia Organa"
+            photoUrl="https://invalid-path/photo.jpg"
+          />
         </BraidTestProvider>,
       );
 
@@ -212,36 +215,6 @@ describe('Avatar', () => {
       act(() => {
         imgElement.dispatchEvent(new Event('error'));
       });
-
-      expect(screen.queryByRole('img')).toBeNull();
-      expectVisibleSvg(container);
-    });
-
-    it('renders broken icon when broken is true', () => {
-      const { container } = render(
-        <BraidTestProvider>
-          <Avatar
-            name="Leia Organa"
-            src="https://example.com/photo.jpg"
-            broken
-          />
-        </BraidTestProvider>,
-      );
-
-      expect(screen.queryByRole('img')).toBeNull();
-      expectVisibleSvg(container);
-    });
-
-    it('prioritizes broken over src', () => {
-      const { container } = render(
-        <BraidTestProvider>
-          <Avatar
-            name="Leia Organa"
-            src="https://example.com/valid-photo.jpg"
-            broken
-          />
-        </BraidTestProvider>,
-      );
 
       expect(screen.queryByRole('img')).toBeNull();
       expectVisibleSvg(container);
@@ -295,68 +268,70 @@ describe('Avatar', () => {
     });
   });
 
-  describe('Border functionality', () => {
-    it('does not apply border class by default', () => {
+  describe('Keyline', () => {
+    it('does not apply keyline class by default', () => {
       render(
         <BraidTestProvider>
           <Avatar name="Leia Organa" data={{ testid: 'avatar' }} />
         </BraidTestProvider>,
       );
 
-      expect(screen.getByTestId('avatar').className).not.toContain(borderStyle);
+      expect(screen.getByTestId('avatar').className).not.toContain(
+        keylineStyle,
+      );
     });
 
-    it('applies border class when border prop is true', () => {
+    it('applies keyline class when keyline is true', () => {
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Organa" border data={{ testid: 'avatar' }} />
+          <Avatar name="Leia Organa" keyline data={{ testid: 'avatar' }} />
         </BraidTestProvider>,
       );
 
-      expect(screen.getByTestId('avatar').className).toContain(borderStyle);
+      expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
     });
 
-    it('applies border to a photo', () => {
+    it('applies keyline to a photo', () => {
       render(
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            src="https://example.com/photo.jpg"
-            border
+            photoUrl="https://example.com/photo.jpg"
+            keyline
             data={{ testid: 'avatar' }}
           />
         </BraidTestProvider>,
       );
 
-      expect(screen.getByTestId('avatar').className).toContain(borderStyle);
+      expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
     });
 
-    it('applies border to empty Avatar', () => {
+    it('applies keyline to empty Avatar', () => {
       render(
         <BraidTestProvider>
-          <Avatar border data={{ testid: 'avatar' }} />
+          <Avatar keyline data={{ testid: 'avatar' }} />
         </BraidTestProvider>,
       );
 
-      expect(screen.getByTestId('avatar').className).toContain(borderStyle);
+      expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
     });
 
-    it('applies border in loading state', () => {
+    it('applies keyline in loading state', () => {
       render(
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
             loading
-            border
+            keyline
             data={{ testid: 'avatar' }}
           />
         </BraidTestProvider>,
       );
 
-      expect(screen.getByTestId('avatar').className).toContain(borderStyle);
+      expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
     });
 
-    it('applies border to all sizes', () => {
+    it('applies keyline to all sizes', () => {
       const sizes = ['small', 'standard', 'large', 'xlarge'] as const;
 
       sizes.forEach((size) => {
@@ -365,13 +340,13 @@ describe('Avatar', () => {
             <Avatar
               name="Leia Organa"
               size={size}
-              border
+              keyline
               data={{ testid: 'avatar' }}
             />
           </BraidTestProvider>,
         );
 
-        expect(screen.getByTestId('avatar').className).toContain(borderStyle);
+        expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
         unmount();
       });
     });

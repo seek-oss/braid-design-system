@@ -31,12 +31,11 @@ type AvatarSize = (typeof validAvatarSizes)[number];
 
 export interface AvatarProps {
   size?: AvatarSize;
-  border?: boolean;
-  label?: string;
+  keyline?: boolean;
+  'aria-label'?: string;
   name?: string;
-  src?: string;
+  photoUrl?: string;
   loading?: boolean;
-  broken?: boolean;
   data?: DataAttributeMap;
 }
 
@@ -111,12 +110,11 @@ const backgroundColourForName = (name: string) => {
 
 export const Avatar = ({
   name = '',
-  label,
+  'aria-label': ariaLabel,
   size = 'standard',
   loading = false,
-  src,
-  broken = false,
-  border = false,
+  photoUrl,
+  keyline = false,
   data,
   ...restProps
 }: AvatarProps): ReactElement => {
@@ -134,14 +132,14 @@ export const Avatar = ({
     // Data URIs and cached images can be complete before onLoad. Do not
     // require naturalHeight — SVG placeholders often report 0.
     setImageLoaded(Boolean(imageRef.current?.complete));
-  }, [src]);
+  }, [photoUrl]);
 
-  const labelled = Boolean(label);
+  const labelled = Boolean(ariaLabel);
   const commonBoxProps = {
-    className: [styles.size[size], border ? styles.border : undefined],
+    className: [styles.size[size], keyline ? styles.keyline : undefined],
     borderRadius: avatarSizeToBorderRadius[size],
     ...(labelled
-      ? { role: 'img' as const, 'aria-label': label }
+      ? { role: 'img' as const, 'aria-label': ariaLabel }
       : { 'aria-hidden': true as const }),
     ...buildDataAttributes({ data, validateRestProps: restProps }),
   };
@@ -154,7 +152,7 @@ export const Avatar = ({
     );
   }
 
-  if (broken || (src && imageError)) {
+  if (photoUrl && imageError) {
     return (
       <Box
         {...commonBoxProps}
@@ -170,7 +168,7 @@ export const Avatar = ({
     );
   }
 
-  if (src) {
+  if (photoUrl) {
     return (
       <Box
         {...commonBoxProps}
@@ -180,9 +178,9 @@ export const Avatar = ({
       >
         <Box
           component="img"
-          key={src}
+          key={photoUrl}
           ref={imageRef}
-          src={src}
+          src={photoUrl}
           alt=""
           aria-hidden
           onError={() => setImageError(true)}

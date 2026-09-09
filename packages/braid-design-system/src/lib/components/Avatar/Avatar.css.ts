@@ -17,7 +17,7 @@ export const size = styleVariants(avatarSizeInPx, (pixels) => ({
   boxSizing: 'border-box',
 }));
 
-export const border = style({
+export const keyline = style({
   borderWidth: vars.borderWidth.standard,
   borderStyle: 'solid',
   ...colorModeStyle({
