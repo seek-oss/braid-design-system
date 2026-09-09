@@ -27,7 +27,7 @@ const docs: ComponentDocs = {
   Example: () => {
     const { value } = source(
       <Inline space="small" alignY="center">
-        <Avatar name="Leia Organa" size="xlarge" src={photoExampleUrl} />
+        <Avatar name="Leia Organa" size="xlarge" photoUrl={photoExampleUrl} />
         <Avatar name="Leia Organa" size="large" />
         <Avatar />
       </Inline>,
@@ -38,7 +38,7 @@ const docs: ComponentDocs = {
         <Avatar
           name="Leia Organa"
           size="xlarge"
-          src="https://example.com/photo.jpg"
+          photoUrl="https://example.com/photo.jpg"
         />
         <Avatar name="Leia Organa" size="large" />
         <Avatar />
@@ -58,9 +58,9 @@ const docs: ComponentDocs = {
         <TextLink href="/components/MenuItem">MenuItem</TextLink>.
       </Text>
       <Text>
-        If there is no adjacent name, pass <Strong>label</Strong> so the avatar
-        is exposed as an image with that accessible name. Do not pass{' '}
-        <Strong>label</Strong> when the name is already visible beside the
+        If there is no adjacent name, pass <Strong>aria-label</Strong> so the
+        avatar is exposed as an image with that accessible name. Do not pass{' '}
+        <Strong>aria-label</Strong> when the name is already visible beside the
         avatar.
       </Text>
       <Text>
@@ -217,16 +217,17 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Pass a URL from your user or profile data as <Strong>src</Strong>.
-            When set, the photo is shown instead of initials or icon. Use an
-            image at least twice the display size (64, 96, 128 and 192 pixels
-            for <Strong>small</Strong> through <Strong>xlarge</Strong>).
+            Pass a URL from your user or profile data as{' '}
+            <Strong>photoUrl</Strong>. When set, the photo is shown instead of
+            initials or icon. Use an image at least twice the display size (64,
+            96, 128 and 192 pixels for <Strong>small</Strong> through{' '}
+            <Strong>xlarge</Strong>).
           </Text>
           <Text>
-            If the image fails to load, or <Strong>broken</Strong> is set, a
-            broken image icon is shown. <Strong>loading</Strong> still takes
-            precedence while data is fetched. Omit <Strong>src</Strong> when the
-            photo must not be shown, for example when names are hidden.
+            If the image fails to load, a broken image icon is shown.{' '}
+            <Strong>loading</Strong> still takes precedence while data is
+            fetched. Omit <Strong>photoUrl</Strong> when the photo must not be
+            shown, for example when names are hidden.
           </Text>
         </>
       ),
@@ -234,15 +235,9 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Inline space="medium" alignY="center">
             <Stack space="small" align="center">
-              <Avatar name="Leia Organa" src={photoExampleUrl} />
+              <Avatar name="Leia Organa" photoUrl={photoExampleUrl} />
               <Text size="small" tone="secondary">
                 photo
-              </Text>
-            </Stack>
-            <Stack space="small" align="center">
-              <Avatar name="Leia Organa" broken />
-              <Text size="small" tone="secondary">
-                error
               </Text>
             </Stack>
             <Stack space="small" align="center">
@@ -257,15 +252,12 @@ const docs: ComponentDocs = {
         const { code } = source(
           <Inline space="medium" alignY="center">
             <Stack space="small" align="center">
-              <Avatar name="Leia Organa" src="https://example.com/photo.jpg" />
+              <Avatar
+                name="Leia Organa"
+                photoUrl="https://example.com/photo.jpg"
+              />
               <Text size="small" tone="secondary">
                 photo
-              </Text>
-            </Stack>
-            <Stack space="small" align="center">
-              <Avatar name="Leia Organa" broken />
-              <Text size="small" tone="secondary">
-                error
               </Text>
             </Stack>
             <Stack space="small" align="center">
@@ -291,10 +283,10 @@ const docs: ComponentDocs = {
       Example: () => source(<Avatar name="Leia Organa" loading />),
     },
     {
-      label: 'Border',
+      label: 'Keyline',
       description: (
         <Text>
-          Set <Strong>border</Strong> to add an inset ring. Useful when avatars
+          Set <Strong>keyline</Strong> to add an inset ring. Useful when avatars
           overlap or sit on a coloured background.
         </Text>
       ),
@@ -302,9 +294,9 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Box background="brand" padding="medium" borderRadius="standard">
             <Inline space="small" alignY="center">
-              <Avatar name="Leia Organa" src={photoExampleUrl} border />
-              <Avatar name="Leia Organa" border />
-              <Avatar border />
+              <Avatar name="Leia Organa" photoUrl={photoExampleUrl} keyline />
+              <Avatar name="Leia Organa" keyline />
+              <Avatar keyline />
             </Inline>
           </Box>,
         );
@@ -314,11 +306,11 @@ const docs: ComponentDocs = {
             <Inline space="small" alignY="center">
               <Avatar
                 name="Leia Organa"
-                src="https://example.com/photo.jpg"
-                border
+                photoUrl="https://example.com/photo.jpg"
+                keyline
               />
-              <Avatar name="Leia Organa" border />
-              <Avatar border />
+              <Avatar name="Leia Organa" keyline />
+              <Avatar keyline />
             </Inline>
           </Box>,
         );
@@ -330,12 +322,13 @@ const docs: ComponentDocs = {
       label: 'Accessible name',
       description: (
         <Text>
-          Pass <Strong>label</Strong> when the avatar is the only representation
-          of the person. Skip it when the name is already in adjacent text or on
-          a wrapping control.
+          Pass <Strong>aria-label</Strong> when the avatar is the only
+          representation of the person. Skip it when the name is already in
+          adjacent text or on a wrapping control.
         </Text>
       ),
-      Example: () => source(<Avatar name="Leia Organa" label="Leia Organa" />),
+      Example: () =>
+        source(<Avatar name="Leia Organa" aria-label="Leia Organa" />),
     },
     {
       label: 'Composition',
@@ -343,8 +336,8 @@ const docs: ComponentDocs = {
         <Text>
           Pair Avatar with visible text (or a labelled control) so the name is
           available to everyone. If the avatar is the only identifier, pass{' '}
-          <Strong>label</Strong>. If the avatar is the control — for example
-          opening a photo menu — wrap it in a{' '}
+          <Strong>aria-label</Strong>. If the avatar is the control — for
+          example opening a photo menu — wrap it in a{' '}
           <TextLink href="/components/Button">Button</TextLink> or{' '}
           <TextLink href="/components/MenuItem">MenuItem</TextLink> so the
           accessible name, keyboard focus, and hit area come from that control.
@@ -406,7 +399,7 @@ const docs: ComponentDocs = {
             <List space="large">
               <Text>
                 as the only identifier for a person, unless you pass{' '}
-                <Strong>label</Strong>
+                <Strong>aria-label</Strong>
               </Text>
               <Text>
                 for a company or organisation (use{' '}

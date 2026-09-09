@@ -159,18 +159,17 @@ exports[`Avatar 1`] = `
 {
   exportType: component,
   props: {
-    border?: boolean
-    broken?: boolean
+    aria-label?: string
     data?: DataAttributeMap
-    label?: string
+    keyline?: boolean
     loading?: boolean
     name?: string
+    photoUrl?: string
     size?: 
         | "large"
         | "small"
         | "standard"
         | "xlarge"
-    src?: string
 },
 }
 `;

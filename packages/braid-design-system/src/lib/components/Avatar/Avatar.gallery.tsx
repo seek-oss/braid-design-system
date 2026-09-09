@@ -19,11 +19,14 @@ export const galleryItems: GalleryComponent = {
       label: 'Photo',
       Example: () => {
         const { value } = source(
-          <Avatar name="Leia Organa" src={photoExampleUrl} />,
+          <Avatar name="Leia Organa" photoUrl={photoExampleUrl} />,
         );
 
         const { code } = source(
-          <Avatar name="Leia Organa" src="https://example.com/photo.jpg" />,
+          <Avatar
+            name="Leia Organa"
+            photoUrl="https://example.com/photo.jpg"
+          />,
         );
 
         return { code, value };
@@ -46,8 +49,8 @@ export const galleryItems: GalleryComponent = {
       Example: () => source(<Avatar name="Leia Organa" loading />),
     },
     {
-      label: 'Border',
-      Example: () => source(<Avatar name="Leia Organa" border />),
+      label: 'Keyline',
+      Example: () => source(<Avatar name="Leia Organa" keyline />),
     },
   ],
 };

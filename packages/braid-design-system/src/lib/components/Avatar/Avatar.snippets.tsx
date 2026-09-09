@@ -15,7 +15,7 @@ export const snippets: Snippets = [
   {
     description: 'Photo',
     code: source(
-      <Avatar name="Leia Organa" src="https://example.com/photo.jpg" />,
+      <Avatar name="Leia Organa" photoUrl="https://example.com/photo.jpg" />,
     ),
   },
   {
@@ -44,8 +44,8 @@ export const snippets: Snippets = [
     ),
   },
   {
-    description: 'Border',
-    code: source(<Avatar name="Leia Organa" border />),
+    description: 'Keyline',
+    code: source(<Avatar name="Leia Organa" keyline />),
   },
   {
     description: 'Loading',

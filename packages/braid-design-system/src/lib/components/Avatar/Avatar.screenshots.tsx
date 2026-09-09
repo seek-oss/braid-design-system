@@ -64,7 +64,7 @@ export const PhotoSizes: Story = {
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
-          <Avatar name="Leia Organa" size={size} src={photoUrl} />
+          <Avatar name="Leia Organa" size={size} photoUrl={photoUrl} />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
@@ -78,21 +78,30 @@ export const PhotoErrorSizes: Story = {
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
-          <Avatar name="Leia Organa" size={size} broken />
+          <Avatar
+            name="Leia Organa"
+            size={size}
+            photoUrl="https://invalid-path/photo.jpg"
+          />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
     </Inline>
   ),
+  play: async ({ canvasElement }) => {
+    canvasElement.querySelectorAll('img').forEach((img) => {
+      img.dispatchEvent(new Event('error'));
+    });
+  },
 };
 
-export const BorderSizes: Story = {
-  name: 'Border sizes',
+export const KeylineSizes: Story = {
+  name: 'Keyline sizes',
   render: () => (
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
-          <Avatar name="Leia Organa" size={size} border />
+          <Avatar name="Leia Organa" size={size} keyline />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
@@ -123,9 +132,9 @@ export const Contrast: Story = {
   ),
   render: () => (
     <Inline space="small" alignY="center">
-      <Avatar name="Leia Organa" border />
-      <Avatar border />
-      <Avatar name="Leia Organa" loading border />
+      <Avatar name="Leia Organa" keyline />
+      <Avatar keyline />
+      <Avatar name="Leia Organa" loading keyline />
     </Inline>
   ),
 };
