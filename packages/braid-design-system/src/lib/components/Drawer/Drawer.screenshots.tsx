@@ -47,6 +47,14 @@ export const DefaultLayout: Story = {
   },
 };
 
+export const UntitledLayout: Story = {
+  name: 'Layout: No visible title',
+  args: {
+    'aria-label': 'Untitled test',
+    width: 'medium',
+  },
+};
+
 export const DefaultStackSpace: Story = {
   name: 'Default stack space',
   args: {
