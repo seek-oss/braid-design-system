@@ -98,6 +98,29 @@ export const sideNavigationContainer = style([
   sideNavigationBorder,
 ]);
 
+/**
+ * Lets the scrolling navigation list shrink within the side navigation's flex
+ * column, so the footer below it always stays in view.
+ */
+export const scrollableNavArea = style({
+  minHeight: 0,
+});
+
+/**
+ * Separates the pinned footer at the bottom of the side navigation from the
+ * scrolling list above it.
+ */
+export const sideNavigationFooter = style(
+  colorModeStyle({
+    lightMode: {
+      borderTop: `1px solid ${vars.borderColor.neutralLight}`,
+    },
+    darkMode: {
+      borderTop: `1px solid ${vars.borderColor.neutral}`,
+    },
+  }),
+);
+
 export const pageContent = style([
   headerOffset,
   hidePageContentOnSmallerScreensWhenOpen,

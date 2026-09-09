@@ -55,3 +55,28 @@ export const navSections = [
     pathPrefixes: ['/css'],
   },
 ] as const satisfies readonly NavSection[];
+
+const isWithin = (pathname: string, path: string) =>
+  pathname === path || pathname.startsWith(`${path}/`);
+
+/**
+ * The top-level section a pathname belongs to, used to highlight the header
+ * link and to choose which side navigation content to show.
+ */
+export const getActiveSection = (pathname: string) =>
+  navSections.find(({ pathPrefixes }) =>
+    pathPrefixes.some((prefix) => isWithin(pathname, prefix)),
+  );
+
+/**
+ * Whether a navigation item should render as active.
+ *
+ * Items match their own page and anything nested below it, so `/components` is
+ * active on `/components/Box/props`. Pass `exact` for section landing links,
+ * which would otherwise stay active across the whole section.
+ */
+export const isNavItemActive = (
+  pathname: string,
+  path: string,
+  { exact = false }: { exact?: boolean } = {},
+) => (exact ? pathname === path : isWithin(pathname, path));

@@ -66,23 +66,13 @@ export const card = style([
       inset: 0,
       borderRadius: 'inherit',
       pointerEvents: 'none',
+      boxShadow: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutralLight}`,
       transition: 'box-shadow 150ms ease',
     },
     selectors: {
-      [`${inColorMode.light} &::after`]: {
-        boxShadow: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutralLight}`,
+      [`${linkOverlay}:hover + &::after`]: {
+        boxShadow: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.neutral}`,
       },
-      [`${inColorMode.dark} &::after`]: {
-        boxShadow: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutral}`,
-      },
-      [`${inMode('light', `${linkOverlay}:hover + &::after, ${linkOverlay}:focus-visible + &::after`)}`]:
-        {
-          boxShadow: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutral}`,
-        },
-      [`${inMode('dark', `${linkOverlay}:hover + &::after, ${linkOverlay}:focus-visible + &::after`)}`]:
-        {
-          boxShadow: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutralLight}`,
-        },
     },
   },
 ]);
@@ -140,7 +130,7 @@ export const mediaCompact = style([
   }),
 ]);
 
-const hoveredMedia = `${linkOverlay}:hover + ${card} &, ${linkOverlay}:focus-visible + ${card} &`;
+const hoveredMedia = `${linkOverlay}:hover + ${card} &`;
 
 export const mediaCanvas = style({
   transition: `background-color ${colorTransition}`,
@@ -163,7 +153,7 @@ export const illustrationCompact = style({
   aspectRatio: '1 / 1',
 });
 
-const hoveredFill = `${linkOverlay}:hover + ${card} ${mediaSlot} &, ${linkOverlay}:focus-visible + ${card} ${mediaSlot} &`;
+const hoveredFill = `${linkOverlay}:hover + ${card} ${mediaSlot} &`;
 
 export const fills = styleVariants(illustrationFills, ({ rest, hover }) => ({
   transition: `fill ${colorTransition}`,
@@ -171,7 +161,7 @@ export const fills = styleVariants(illustrationFills, ({ rest, hover }) => ({
 }));
 
 const destinationColorTransition = '250ms ease';
-const hoveredDestination = `${linkOverlay}:hover + ${card} &, ${linkOverlay}:focus-visible + ${card} &`;
+const hoveredDestination = `${linkOverlay}:hover + ${card} &`;
 
 const destinationRest = colorModeStyle({
   lightMode: {

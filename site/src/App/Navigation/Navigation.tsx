@@ -14,7 +14,7 @@ import {
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContainer/ScrollContainer';
-import { useState, useRef, useEffect, forwardRef } from 'react';
+import { useState, useRef, useEffect, useCallback, forwardRef } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 import { useLocation, Outlet } from 'react-router';
 import { useWindowScroll, useInterval } from 'react-use';
@@ -25,7 +25,7 @@ import { useConfig } from '../ConfigContext';
 import { JumpToModal } from '../JumpToModal/JumpToModal';
 import { Logo } from '../Logo/Logo';
 import { ThemeToggle } from '../ThemeSetting';
-import { navSections } from '../navigationSections';
+import { getActiveSection, navSections } from '../navigationSections';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { useSearchHotkey } from '../useSearchHotkey/useSearchHotkey';
 
@@ -50,7 +50,6 @@ const Header = ({
       menuClick={menuClick}
       onSearchClick={onSearchClick}
       logo={<Logo iconOnly height="28px" width="28px" />}
-      themeToggle={<ThemeToggle size="xsmall" />}
       navLinks={navLinks}
     />
   </Box>
@@ -146,6 +145,9 @@ export const Navigation = () => {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [direction, setDirection] = useState<'up' | 'down' | null>(null);
 
+  // Stable so the side navigation can memoise its item lists
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
   useSearchHotkey({ onOpen: () => setSearchOpen(true) });
 
   const location = useLocation();
@@ -175,15 +177,13 @@ export const Navigation = () => {
 
   const isHome = location.pathname === '/';
 
-  const navLinks: NavLink[] = navSections.map(
-    ({ label, href, pathPrefixes }) => ({
-      label,
-      href,
-      active: pathPrefixes.some((prefix) =>
-        location.pathname.startsWith(prefix),
-      ),
-    }),
-  );
+  const activeSectionId = getActiveSection(location.pathname)?.id;
+
+  const navLinks: NavLink[] = navSections.map(({ id, label, href }) => ({
+    label,
+    href,
+    active: id === activeSectionId,
+  }));
 
   return (
     <Box width="full" className={styles.contentBlockXL}>
@@ -212,6 +212,8 @@ export const Navigation = () => {
           width="full"
           left={0}
           zIndex="sticky"
+          display="flex"
+          flexDirection="column"
           inert={navigationActive ? undefined : true}
           // background={{ lightMode: 'neutralSoft', darkMode: 'surfaceDark' }}
           className={[
@@ -220,11 +222,25 @@ export const Navigation = () => {
             isMenuOpen ? styles.isOpen : undefined,
           ]}
         >
-          <ScrollContainer direction="vertical">
-            <Box paddingX={gutterSize} paddingBottom="xxlarge">
-              <SideNavigation onSelect={() => setMenuOpen(false)} />
-            </Box>
-          </ScrollContainer>
+          <Box flexGrow={1} className={styles.scrollableNavArea}>
+            <ScrollContainer direction="vertical">
+              <Box paddingX={gutterSize} paddingBottom="xxlarge">
+                <SideNavigation
+                  menuOpen={isMenuOpen}
+                  wideLayout={isExpandedSize ?? true}
+                  onSelect={closeMenu}
+                />
+              </Box>
+            </ScrollContainer>
+          </Box>
+          <Box
+            paddingX={gutterSize}
+            paddingY="medium"
+            background="body"
+            className={styles.sideNavigationFooter}
+          >
+            <ThemeToggle size="small" />
+          </Box>
         </Box>
       </RemoveScroll>
       <Box
