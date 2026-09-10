@@ -5,7 +5,7 @@ import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 import { validAvatarSizes } from './Avatar';
 
-import { photoPlaceholderUrl as photoUrl } from './photoPlaceholder.css';
+import { photoPlaceholderUrl as imageUrl } from './photoPlaceholder.css';
 
 const meta = {
   title: 'Components/Avatar',
@@ -64,7 +64,7 @@ export const PhotoSizes: Story = {
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
-          <Avatar name="Leia Organa" size={size} photoUrl={photoUrl} />
+          <Avatar name="Leia Organa" size={size} imageUrl={imageUrl} />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
@@ -81,7 +81,7 @@ export const PhotoErrorSizes: Story = {
           <Avatar
             name="Leia Organa"
             size={size}
-            photoUrl="https://invalid-path/photo.jpg"
+            imageUrl="https://invalid-path/photo.jpg"
           />
           <Text size="small">{size}</Text>
         </Stack>

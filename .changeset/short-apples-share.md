@@ -18,5 +18,5 @@ Avatar is decorative by default. Name the person with adjacent text, a wrapping 
 ```jsx
 <Avatar name="Leia Organa" />
 <Avatar />
-<Avatar name="Leia Organa" photoUrl="https://example.com/photo.jpg" />
+<Avatar name="Leia Organa" imageUrl="https://example.com/photo.jpg" />
 ```
