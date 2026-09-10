@@ -16,7 +16,7 @@ export const galleryItems: GalleryComponent = {
       Example: () => source(<Avatar />),
     },
     {
-      label: 'Photo',
+      label: 'Image',
       Example: () => {
         const { value } = source(
           <Avatar name="Leia Organa" imageUrl={photoExampleUrl} />,

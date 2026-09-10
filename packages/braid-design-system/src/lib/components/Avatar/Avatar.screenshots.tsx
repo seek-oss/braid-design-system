@@ -58,8 +58,8 @@ export const EmptySizes: Story = {
   ),
 };
 
-export const PhotoSizes: Story = {
-  name: 'Photo sizes',
+export const ImageSizes: Story = {
+  name: 'Image sizes',
   render: () => (
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
@@ -72,8 +72,8 @@ export const PhotoSizes: Story = {
   ),
 };
 
-export const PhotoErrorSizes: Story = {
-  name: 'Photo error sizes',
+export const ImageErrorSizes: Story = {
+  name: 'Image error sizes',
   render: () => (
     <Inline space="medium" alignY="center">
       {validAvatarSizes.map((size) => (
