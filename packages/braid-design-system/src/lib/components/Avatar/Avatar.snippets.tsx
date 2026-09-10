@@ -44,10 +44,6 @@ export const snippets: Snippets = [
     ),
   },
   {
-    description: 'Keyline',
-    code: source(<Avatar name="Leia Organa" keyline />),
-  },
-  {
     description: 'Loading',
     code: source(<Avatar name="Leia Organa" loading />),
   },
