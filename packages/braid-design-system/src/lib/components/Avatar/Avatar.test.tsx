@@ -19,10 +19,6 @@ const hexToRgbString = (hex: string): string => {
   return `rgb(${r}, ${g}, ${b})`;
 };
 
-const expectVisibleSvg = (container: HTMLElement) => {
-  expect(container.querySelector('svg')).toBeVisible();
-};
-
 describe('Avatar', () => {
   it.each<{
     initials: string;
@@ -108,11 +104,11 @@ describe('Avatar', () => {
       </BraidTestProvider>,
     );
 
-    expectVisibleSvg(container);
+    expect(container.querySelector('svg')).toBeVisible();
   });
 
-  describe('Photo functionality', () => {
-    it('accepts photo prop without errors', () => {
+  describe('Image', () => {
+    it('accepts imageUrl without errors', () => {
       const imageUrl = 'https://example.com/photo.jpg';
       render(
         <BraidTestProvider>
@@ -132,7 +128,7 @@ describe('Avatar', () => {
       expect(imgElement).toHaveClass(imageLoaded);
     });
 
-    it('shows a photo that is already complete without waiting for onLoad', () => {
+    it('shows an image that is already complete without waiting for onLoad', () => {
       const completeDescriptor = Object.getOwnPropertyDescriptor(
         HTMLImageElement.prototype,
         'complete',
@@ -197,10 +193,10 @@ describe('Avatar', () => {
 
       expect(screen.queryByRole('img')).toBeNull();
       expect(screen.queryByText('L')).toBeNull();
-      expectVisibleSvg(container);
+      expect(container.querySelector('svg')).toBeVisible();
     });
 
-    it('renders broken icon when photo is invalid', () => {
+    it('renders broken icon when image is invalid', () => {
       const { container } = render(
         <BraidTestProvider>
           <Avatar
@@ -217,12 +213,12 @@ describe('Avatar', () => {
       });
 
       expect(screen.queryByRole('img')).toBeNull();
-      expectVisibleSvg(container);
+      expect(container.querySelector('svg')).toBeVisible();
     });
   });
 
   describe('Loading', () => {
-    it('renders a shimmer skeleton without initials or a photo', () => {
+    it('renders a shimmer skeleton without initials or an image', () => {
       render(
         <BraidTestProvider>
           <Avatar name="Leia Organa" loading data={{ testid: 'avatar' }} />
@@ -279,7 +275,7 @@ describe('Avatar', () => {
       expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
     });
 
-    it('applies the surface ring to a photo', () => {
+    it('applies the surface ring to an image', () => {
       render(
         <BraidTestProvider>
           <Avatar
