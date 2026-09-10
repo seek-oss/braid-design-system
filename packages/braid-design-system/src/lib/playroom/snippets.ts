@@ -17,6 +17,7 @@ import { snippets as ContentBlock } from './snippets/ContentBlock';
 import { snippets as Dialog } from './snippets/Dialog';
 import { snippets as Disclosure } from './snippets/Disclosure';
 import { snippets as DividedList } from './snippets/DividedList';
+import { snippets as DividedLists } from './snippets/DividedLists';
 import { snippets as Divider } from './snippets/Divider';
 import { snippets as Drawer } from './snippets/Drawer';
 import { snippets as Dropdown } from './snippets/Dropdown';
@@ -25,6 +26,7 @@ import { snippets as ErrorState } from './snippets/ErrorState';
 import { snippets as FieldLabel } from './snippets/FieldLabel';
 import { snippets as FieldMessage } from './snippets/FieldMessage';
 import { snippets as Form } from './snippets/Form';
+import { snippets as Forms } from './snippets/Forms';
 import { snippets as Heading } from './snippets/Heading';
 import { snippets as Inline } from './snippets/Inline';
 import { snippets as List } from './snippets/List';
@@ -81,8 +83,10 @@ const snippetsMap = {
   TabbedSection,
   TableSection,
   BulkActions,
+  DividedLists,
   EmptyState,
   ErrorState,
+  Forms,
   Nudge,
   ServiceOutageBanner,
   SkeletonLoader,
