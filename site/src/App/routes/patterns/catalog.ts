@@ -55,7 +55,7 @@ export const patternCatalog: PatternEntry[] = [
     title: 'Messages to users',
     kind: 'pattern',
     description:
-      'Represents a group of patterns and components used to communicate conditions, events, or responses to user actions.',
+      'Represents a group of components and patterns used to communicate conditions, events, or responses to user actions.',
   },
   {
     slug: 'nudge',

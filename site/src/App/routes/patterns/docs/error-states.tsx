@@ -37,15 +37,18 @@ export const docs: PatternDocs = {
     {
       name: 'empty-state',
       section: 'patterns',
-      description: 'For when there is no data available at the present time.',
+      description:
+        'For communicating an absence of data and directing users toward their next step.',
     },
     {
       name: 'Alert',
-      description: 'For in-flow messaging.',
+      description:
+        'For strong in-flow messages that sit at page or section level.',
     },
     {
       name: 'Notice',
-      description: 'For lighter in-flow messaging.',
+      description:
+        'For light in-flow messages that sit within a section, card, or widget.',
     },
   ],
   docSections: {
