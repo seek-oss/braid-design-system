@@ -35,15 +35,17 @@ export const docs: PatternDocs = {
       name: 'error-state',
       section: 'patterns',
       description:
-        'For when the website or app fails to complete an expected action.',
+        'For communicating a failed action and guiding users toward a resolution.',
     },
     {
       name: 'Alert',
-      description: 'For in-flow messaging.',
+      description:
+        'For strong in-flow messages that sit at page or section level.',
     },
     {
       name: 'Notice',
-      description: 'For lighter in-flow messaging.',
+      description:
+        'For light in-flow messages that sit within a section, card, or widget.',
     },
   ],
   docSections: {

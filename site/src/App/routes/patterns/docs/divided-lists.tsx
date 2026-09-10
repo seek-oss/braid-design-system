@@ -64,7 +64,7 @@ export const docs: PatternDocs = {
     {
       name: 'bulk-actions',
       section: 'patterns',
-      description: 'For applying the same action to multiple list items.',
+      description: 'For applying a single action across multiple selected items.',
     },
   ],
   docSections: {

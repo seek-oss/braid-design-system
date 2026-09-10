@@ -43,7 +43,7 @@ export const docs: PatternDocs = {
       name: 'divided-list',
       section: 'patterns',
       description:
-        'For displaying a group of related items consecutively in an organised way.',
+        'For displaying a list of related items with clear visual separation.',
     },
   ],
   docSections: {
