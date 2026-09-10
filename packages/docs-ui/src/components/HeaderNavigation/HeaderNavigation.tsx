@@ -116,7 +116,7 @@ export const HeaderNavigation = ({
           />
         </Box>
         {navLinks && (
-          <Inline space="medium">
+          <Inline space="small">
             {navLinks.map(({ label, href, active }) => (
               <NavLink key={label} label={label} href={href} active={active} />
             ))}

@@ -43,21 +43,22 @@ export const tilePreview = style([
 ]);
 
 export const scaleVar = createVar();
+export const stageWidthVar = createVar();
 export const tileStage = style([
   atoms({
     position: 'absolute',
     pointerEvents: 'none',
     userSelect: 'none',
     transition: 'fast',
-    overflow: 'hidden',
   }),
   {
     vars: {
       [scaleVar]: '',
+      [stageWidthVar]: `${STAGE_WIDTH}px`,
     },
     top: '50%',
     left: '50%',
-    width: STAGE_WIDTH,
+    width: stageWidthVar,
     maxHeight: calc(scaleVar).multiply('1000%').toString(),
     transformOrigin: 'center',
     transform: `translate(-50%, -50%) scale(${scaleVar})`,

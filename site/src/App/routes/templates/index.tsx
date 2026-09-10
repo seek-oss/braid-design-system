@@ -34,9 +34,11 @@ const groupDescriptions: Record<string, string> = {
 
 export const ScaledPreview = ({
   aspectRatio = '8 / 5',
+  stageWidth = styles.STAGE_WIDTH,
   ...docs
 }: Pick<(typeof allTemplateDocs)[number], 'Example' | 'Container'> & {
   aspectRatio?: string;
+  stageWidth?: number;
 }) => {
   const outerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0);
@@ -50,11 +52,11 @@ export const ScaledPreview = ({
       return;
     }
     const obs = new ResizeObserver(([entry]) => {
-      setScale(entry.contentRect.width / styles.STAGE_WIDTH);
+      setScale(entry.contentRect.width / stageWidth);
     });
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [stageWidth]);
 
   useIsomorphicLayoutEffect(() => {
     // Remove in favour of direct DOM attribute when we drop React 18 support
@@ -66,7 +68,10 @@ export const ScaledPreview = ({
       <Box
         className={styles.tileStage}
         opacity={scale === 0 ? 0 : undefined}
-        style={assignInlineVars({ [styles.scaleVar]: String(scale) })}
+        style={assignInlineVars({
+          [styles.scaleVar]: String(scale),
+          [styles.stageWidthVar]: `${stageWidth}px`,
+        })}
       >
         {scale !== 0 ? (
           <BraidProvider styleBody={false} theme={theme}>
