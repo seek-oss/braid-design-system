@@ -219,9 +219,10 @@ const docs: ComponentDocs = {
           <Text>
             Pass a URL from your user or profile data as{' '}
             <Strong>imageUrl</Strong>. When set, the image is shown instead of
-            initials or icon. Use an image at least twice the display size (64,
-            96, 128 and 192 pixels for <Strong>small</Strong> through{' '}
-            <Strong>xlarge</Strong>).
+            initials or icon. Avatar boxes are 32, 48, 64 and 96 pixels for{' '}
+            <Strong>small</Strong> through <Strong>xlarge</Strong>. Provide an
+            image at least twice that (64, 96, 128 and 192). The surface ring
+            sits inside the box, so the visible face is slightly smaller.
           </Text>
           <Text>
             If the image fails to load, a broken image icon is shown.{' '}

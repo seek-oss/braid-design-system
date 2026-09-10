@@ -128,9 +128,10 @@ export const Avatar = ({
   useLayoutEffect(() => {
     setImageError(false);
     // Data URIs and cached images can be complete before onLoad. Do not
-    // require naturalHeight — SVG placeholders often report 0.
+    // require naturalHeight — SVG placeholders often report 0. Re-run when
+    // loading ends so a cached image that just mounted is not left at opacity 0.
     setImageLoaded(Boolean(imageRef.current?.complete));
-  }, [imageUrl]);
+  }, [imageUrl, loading]);
 
   const labelled = Boolean(ariaLabel);
   const commonBoxProps = {
@@ -168,12 +169,7 @@ export const Avatar = ({
 
   if (imageUrl) {
     return (
-      <Box
-        {...commonBoxProps}
-        background="neutralLight"
-        overflow="hidden"
-        position="relative"
-      >
+      <Box {...commonBoxProps} background="neutralLight" overflow="hidden">
         <Box
           component="img"
           key={imageUrl}
