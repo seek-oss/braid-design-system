@@ -62,6 +62,11 @@ export const docs: PatternDocs = {
       description: 'For separating consecutive list items.',
     },
     {
+      name: 'Table',
+      description:
+        'For displaying datasets in a structured way using rows and columns.',
+    },
+    {
       name: 'bulk-actions',
       section: 'patterns',
       description: 'For applying a single action across multiple selected items.',

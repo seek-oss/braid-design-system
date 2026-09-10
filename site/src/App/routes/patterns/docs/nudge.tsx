@@ -38,10 +38,10 @@ export const docs: PatternDocs = {
         'For light in-flow messages that sit within a section, card, or widget.',
     },
     {
-      name: 'error-state',
+      name: 'empty-state',
       section: 'patterns',
       description:
-        'For communicating a failed action and guiding users toward a resolution.',
+        'For communicating an absence of data and directing users toward their next step.',
     },
     {
       name: 'messages-to-users',
