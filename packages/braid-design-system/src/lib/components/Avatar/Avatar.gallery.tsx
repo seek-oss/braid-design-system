@@ -48,9 +48,5 @@ export const galleryItems: GalleryComponent = {
       label: 'Loading',
       Example: () => source(<Avatar name="Leia Organa" loading />),
     },
-    {
-      label: 'Keyline',
-      Example: () => source(<Avatar name="Leia Organa" keyline />),
-    },
   ],
 };
