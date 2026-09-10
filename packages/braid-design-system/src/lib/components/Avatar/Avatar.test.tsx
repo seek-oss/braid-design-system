@@ -269,35 +269,22 @@ describe('Avatar', () => {
   });
 
   describe('Keyline', () => {
-    it('does not apply keyline class by default', () => {
+    it('applies the surface ring by default', () => {
       render(
         <BraidTestProvider>
           <Avatar name="Leia Organa" data={{ testid: 'avatar' }} />
         </BraidTestProvider>,
       );
 
-      expect(screen.getByTestId('avatar').className).not.toContain(
-        keylineStyle,
-      );
-    });
-
-    it('applies keyline class when keyline is true', () => {
-      render(
-        <BraidTestProvider>
-          <Avatar name="Leia Organa" keyline data={{ testid: 'avatar' }} />
-        </BraidTestProvider>,
-      );
-
       expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
     });
 
-    it('applies keyline to a photo', () => {
+    it('applies the surface ring to a photo', () => {
       render(
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
             imageUrl="https://example.com/photo.jpg"
-            keyline
             data={{ testid: 'avatar' }}
           />
         </BraidTestProvider>,
@@ -306,32 +293,27 @@ describe('Avatar', () => {
       expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
     });
 
-    it('applies keyline to empty Avatar', () => {
+    it('applies the surface ring to empty Avatar', () => {
       render(
         <BraidTestProvider>
-          <Avatar keyline data={{ testid: 'avatar' }} />
+          <Avatar data={{ testid: 'avatar' }} />
         </BraidTestProvider>,
       );
 
       expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
     });
 
-    it('applies keyline in loading state', () => {
+    it('applies the surface ring in the loading state', () => {
       render(
         <BraidTestProvider>
-          <Avatar
-            name="Leia Organa"
-            loading
-            keyline
-            data={{ testid: 'avatar' }}
-          />
+          <Avatar name="Leia Organa" loading data={{ testid: 'avatar' }} />
         </BraidTestProvider>,
       );
 
       expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
     });
 
-    it('applies keyline to all sizes', () => {
+    it('applies the surface ring to all sizes', () => {
       const sizes = ['small', 'standard', 'large', 'xlarge'] as const;
 
       sizes.forEach((size) => {
@@ -340,7 +322,6 @@ describe('Avatar', () => {
             <Avatar
               name="Leia Organa"
               size={size}
-              keyline
               data={{ testid: 'avatar' }}
             />
           </BraidTestProvider>,

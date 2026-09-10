@@ -95,20 +95,6 @@ export const PhotoErrorSizes: Story = {
   },
 };
 
-export const KeylineSizes: Story = {
-  name: 'Keyline sizes',
-  render: () => (
-    <Inline space="medium" alignY="center">
-      {validAvatarSizes.map((size) => (
-        <Stack key={size} space="xsmall" align="center">
-          <Avatar name="Leia Organa" size={size} keyline />
-          <Text size="small">{size}</Text>
-        </Stack>
-      ))}
-    </Inline>
-  ),
-};
-
 export const LoadingSizes: Story = {
   name: 'Loading sizes',
   render: () => (
@@ -132,9 +118,9 @@ export const Contrast: Story = {
   ),
   render: () => (
     <Inline space="small" alignY="center">
-      <Avatar name="Leia Organa" keyline />
-      <Avatar keyline />
-      <Avatar name="Leia Organa" loading keyline />
+      <Avatar name="Leia Organa" />
+      <Avatar />
+      <Avatar name="Leia Organa" loading />
     </Inline>
   ),
 };
