@@ -27,7 +27,7 @@ const docs: ComponentDocs = {
   Example: () => {
     const { value } = source(
       <Inline space="small" alignY="center">
-        <Avatar name="Leia Organa" size="xlarge" photoUrl={photoExampleUrl} />
+        <Avatar name="Leia Organa" size="xlarge" imageUrl={photoExampleUrl} />
         <Avatar name="Leia Organa" size="large" />
         <Avatar />
       </Inline>,
@@ -38,7 +38,7 @@ const docs: ComponentDocs = {
         <Avatar
           name="Leia Organa"
           size="xlarge"
-          photoUrl="https://example.com/photo.jpg"
+          imageUrl="https://example.com/photo.jpg"
         />
         <Avatar name="Leia Organa" size="large" />
         <Avatar />
@@ -218,7 +218,7 @@ const docs: ComponentDocs = {
         <>
           <Text>
             Pass a URL from your user or profile data as{' '}
-            <Strong>photoUrl</Strong>. When set, the photo is shown instead of
+            <Strong>imageUrl</Strong>. When set, the photo is shown instead of
             initials or icon. Use an image at least twice the display size (64,
             96, 128 and 192 pixels for <Strong>small</Strong> through{' '}
             <Strong>xlarge</Strong>).
@@ -226,7 +226,7 @@ const docs: ComponentDocs = {
           <Text>
             If the image fails to load, a broken image icon is shown.{' '}
             <Strong>loading</Strong> still takes precedence while data is
-            fetched. Omit <Strong>photoUrl</Strong> when the photo must not be
+            fetched. Omit <Strong>imageUrl</Strong> when the photo must not be
             shown, for example when names are hidden.
           </Text>
         </>
@@ -235,7 +235,7 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Inline space="medium" alignY="center">
             <Stack space="small" align="center">
-              <Avatar name="Leia Organa" photoUrl={photoExampleUrl} />
+              <Avatar name="Leia Organa" imageUrl={photoExampleUrl} />
               <Text size="small" tone="secondary">
                 photo
               </Text>
@@ -254,7 +254,7 @@ const docs: ComponentDocs = {
             <Stack space="small" align="center">
               <Avatar
                 name="Leia Organa"
-                photoUrl="https://example.com/photo.jpg"
+                imageUrl="https://example.com/photo.jpg"
               />
               <Text size="small" tone="secondary">
                 photo
@@ -294,7 +294,7 @@ const docs: ComponentDocs = {
         const { value } = source(
           <Box background="brand" padding="medium" borderRadius="standard">
             <Inline space="small" alignY="center">
-              <Avatar name="Leia Organa" photoUrl={photoExampleUrl} keyline />
+              <Avatar name="Leia Organa" imageUrl={photoExampleUrl} keyline />
               <Avatar name="Leia Organa" keyline />
               <Avatar keyline />
             </Inline>
@@ -306,7 +306,7 @@ const docs: ComponentDocs = {
             <Inline space="small" alignY="center">
               <Avatar
                 name="Leia Organa"
-                photoUrl="https://example.com/photo.jpg"
+                imageUrl="https://example.com/photo.jpg"
                 keyline
               />
               <Avatar name="Leia Organa" keyline />

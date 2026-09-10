@@ -113,16 +113,16 @@ describe('Avatar', () => {
 
   describe('Photo functionality', () => {
     it('accepts photo prop without errors', () => {
-      const photoUrl = 'https://example.com/photo.jpg';
+      const imageUrl = 'https://example.com/photo.jpg';
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Organa" photoUrl={photoUrl} />
+          <Avatar name="Leia Organa" imageUrl={imageUrl} />
         </BraidTestProvider>,
       );
 
       const imgElement = screen.getByRole('presentation', { hidden: true });
       expect(imgElement).toBeInTheDocument();
-      expect(imgElement).toHaveAttribute('src', photoUrl);
+      expect(imgElement).toHaveAttribute('src', imageUrl);
 
       act(() => {
         imgElement.dispatchEvent(new Event('load'));
@@ -148,7 +148,7 @@ describe('Avatar', () => {
       try {
         render(
           <BraidTestProvider>
-            <Avatar name="Leia Organa" photoUrl={photoPlaceholderUrl} />
+            <Avatar name="Leia Organa" imageUrl={photoPlaceholderUrl} />
           </BraidTestProvider>,
         );
 
@@ -205,7 +205,7 @@ describe('Avatar', () => {
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            photoUrl="https://invalid-path/photo.jpg"
+            imageUrl="https://invalid-path/photo.jpg"
           />
         </BraidTestProvider>,
       );
@@ -296,7 +296,7 @@ describe('Avatar', () => {
         <BraidTestProvider>
           <Avatar
             name="Leia Organa"
-            photoUrl="https://example.com/photo.jpg"
+            imageUrl="https://example.com/photo.jpg"
             keyline
             data={{ testid: 'avatar' }}
           />
