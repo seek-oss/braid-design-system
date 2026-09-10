@@ -34,7 +34,7 @@ export interface AvatarProps {
   keyline?: boolean;
   'aria-label'?: string;
   name?: string;
-  photoUrl?: string;
+  imageUrl?: string;
   loading?: boolean;
   data?: DataAttributeMap;
 }
@@ -113,7 +113,7 @@ export const Avatar = ({
   'aria-label': ariaLabel,
   size = 'standard',
   loading = false,
-  photoUrl,
+  imageUrl,
   keyline = false,
   data,
   ...restProps
@@ -132,7 +132,7 @@ export const Avatar = ({
     // Data URIs and cached images can be complete before onLoad. Do not
     // require naturalHeight — SVG placeholders often report 0.
     setImageLoaded(Boolean(imageRef.current?.complete));
-  }, [photoUrl]);
+  }, [imageUrl]);
 
   const labelled = Boolean(ariaLabel);
   const commonBoxProps = {
@@ -152,7 +152,7 @@ export const Avatar = ({
     );
   }
 
-  if (photoUrl && imageError) {
+  if (imageUrl && imageError) {
     return (
       <Box
         {...commonBoxProps}
@@ -168,7 +168,7 @@ export const Avatar = ({
     );
   }
 
-  if (photoUrl) {
+  if (imageUrl) {
     return (
       <Box
         {...commonBoxProps}
@@ -178,9 +178,9 @@ export const Avatar = ({
       >
         <Box
           component="img"
-          key={photoUrl}
+          key={imageUrl}
           ref={imageRef}
-          src={photoUrl}
+          src={imageUrl}
           alt=""
           aria-hidden
           onError={() => setImageError(true)}

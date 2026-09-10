@@ -15,7 +15,7 @@ export const snippets: Snippets = [
   {
     description: 'Photo',
     code: source(
-      <Avatar name="Leia Organa" photoUrl="https://example.com/photo.jpg" />,
+      <Avatar name="Leia Organa" imageUrl="https://example.com/photo.jpg" />,
     ),
   },
   {

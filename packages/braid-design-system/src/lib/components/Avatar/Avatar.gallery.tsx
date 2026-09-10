@@ -19,13 +19,13 @@ export const galleryItems: GalleryComponent = {
       label: 'Photo',
       Example: () => {
         const { value } = source(
-          <Avatar name="Leia Organa" photoUrl={photoExampleUrl} />,
+          <Avatar name="Leia Organa" imageUrl={photoExampleUrl} />,
         );
 
         const { code } = source(
           <Avatar
             name="Leia Organa"
-            photoUrl="https://example.com/photo.jpg"
+            imageUrl="https://example.com/photo.jpg"
           />,
         );
 
