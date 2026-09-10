@@ -21,7 +21,7 @@ const docs: ComponentDocs = {
   category: 'Content',
   description: (
     <Text>
-      A decorative user avatar that can show a photo, initials, or an icon.
+      A decorative user avatar that can show an image, initials, or an icon.
     </Text>
   ),
   Example: () => {
@@ -51,7 +51,7 @@ const docs: ComponentDocs = {
     <>
       <Text>
         Avatar is decorative by default. The root is hidden from assistive
-        technologies, and photos use an empty <Strong>alt</Strong>, so initials
+        technologies, and images use an empty <Strong>alt</Strong>, so initials
         and images are not announced. Name the person with adjacent text, or on
         a wrapping control such as a{' '}
         <TextLink href="/components/Button">Button</TextLink> or{' '}
@@ -213,12 +213,12 @@ const docs: ComponentDocs = {
         ),
     },
     {
-      label: 'Photo',
+      label: 'Image',
       description: (
         <>
           <Text>
             Pass a URL from your user or profile data as{' '}
-            <Strong>imageUrl</Strong>. When set, the photo is shown instead of
+            <Strong>imageUrl</Strong>. When set, the image is shown instead of
             initials or icon. Use an image at least twice the display size (64,
             96, 128 and 192 pixels for <Strong>small</Strong> through{' '}
             <Strong>xlarge</Strong>).
@@ -226,7 +226,7 @@ const docs: ComponentDocs = {
           <Text>
             If the image fails to load, a broken image icon is shown.{' '}
             <Strong>loading</Strong> still takes precedence while data is
-            fetched. Omit <Strong>imageUrl</Strong> when the photo must not be
+            fetched. Omit <Strong>imageUrl</Strong> when the image must not be
             shown, for example when names are hidden.
           </Text>
         </>
@@ -237,13 +237,13 @@ const docs: ComponentDocs = {
             <Stack space="small" align="center">
               <Avatar name="Leia Organa" imageUrl={photoExampleUrl} />
               <Text size="small" tone="secondary">
-                photo
+                image
               </Text>
             </Stack>
             <Stack space="small" align="center">
               <Avatar name="Leia Organa" />
               <Text size="small" tone="secondary">
-                no photo
+                no image
               </Text>
             </Stack>
           </Inline>,
@@ -257,13 +257,13 @@ const docs: ComponentDocs = {
                 imageUrl="https://example.com/photo.jpg"
               />
               <Text size="small" tone="secondary">
-                photo
+                image
               </Text>
             </Stack>
             <Stack space="small" align="center">
               <Avatar name="Leia Organa" />
               <Text size="small" tone="secondary">
-                no photo
+                no image
               </Text>
             </Stack>
           </Inline>,
@@ -277,7 +277,7 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           Set <Strong>loading</Strong> to show a shimmering skeleton while user
-          data is fetched. This is shown instead of photo, initials, or icon.
+          data is fetched. This is shown instead of image, initials, or icon.
         </Text>
       ),
       Example: () => source(<Avatar name="Leia Organa" loading />),

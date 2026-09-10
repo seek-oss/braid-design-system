@@ -13,7 +13,7 @@ export const snippets: Snippets = [
     code: source(<Avatar />),
   },
   {
-    description: 'Photo',
+    description: 'Image',
     code: source(
       <Avatar name="Leia Organa" imageUrl="https://example.com/photo.jpg" />,
     ),
