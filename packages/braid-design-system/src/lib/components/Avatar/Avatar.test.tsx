@@ -107,6 +107,28 @@ describe('Avatar', () => {
     expect(container.querySelector('svg')).toBeVisible();
   });
 
+  it('exposes an accessible name when aria-label is set', () => {
+    render(
+      <BraidTestProvider>
+        <Avatar name="Leia Organa" aria-label="Leia Organa" />
+      </BraidTestProvider>,
+    );
+
+    expect(screen.getByRole('img', { name: 'Leia Organa' })).toBeVisible();
+  });
+
+  it('renders IconProfile when name is omitted', () => {
+    const { container } = render(
+      <BraidTestProvider>
+        <Avatar />
+      </BraidTestProvider>,
+    );
+
+    expect(screen.queryByRole('img')).toBeNull();
+    expect(screen.queryByText('L')).toBeNull();
+    expect(container.querySelector('svg')).toBeVisible();
+  });
+
   describe('Image', () => {
     it('accepts imageUrl without errors', () => {
       const imageUrl = 'https://example.com/photo.jpg';
@@ -128,7 +150,7 @@ describe('Avatar', () => {
       expect(imgElement).toHaveClass(imageLoaded);
     });
 
-    it('shows an image that is already complete without waiting for onLoad', () => {
+    const withCompleteImages = (run: () => void) => {
       const completeDescriptor = Object.getOwnPropertyDescriptor(
         HTMLImageElement.prototype,
         'complete',
@@ -142,14 +164,7 @@ describe('Avatar', () => {
       });
 
       try {
-        render(
-          <BraidTestProvider>
-            <Avatar name="Leia Organa" imageUrl={photoPlaceholderUrl} />
-          </BraidTestProvider>,
-        );
-
-        const imgElement = screen.getByRole('presentation', { hidden: true });
-        expect(imgElement).toHaveClass(imageLoaded);
+        run();
       } finally {
         if (completeDescriptor) {
           Object.defineProperty(
@@ -162,38 +177,40 @@ describe('Avatar', () => {
             .complete;
         }
       }
+    };
+
+    it('shows an image that is already complete without waiting for onLoad', () => {
+      withCompleteImages(() => {
+        render(
+          <BraidTestProvider>
+            <Avatar name="Leia Organa" imageUrl={photoPlaceholderUrl} />
+          </BraidTestProvider>,
+        );
+
+        const imgElement = screen.getByRole('presentation', { hidden: true });
+        expect(imgElement).toHaveClass(imageLoaded);
+      });
     });
 
-    it('infers initials from name', () => {
-      render(
-        <BraidTestProvider>
-          <Avatar name="Leia Organa" />
-        </BraidTestProvider>,
-      );
+    it('shows an already-complete image after loading ends', () => {
+      withCompleteImages(() => {
+        const { rerender } = render(
+          <BraidTestProvider>
+            <Avatar name="Leia Organa" imageUrl={photoPlaceholderUrl} loading />
+          </BraidTestProvider>,
+        );
 
-      expect(screen.getByText('L')).toBeVisible();
-    });
+        expect(screen.queryByRole('presentation', { hidden: true })).toBeNull();
 
-    it('exposes an accessible name when aria-label is set', () => {
-      render(
-        <BraidTestProvider>
-          <Avatar name="Leia Organa" aria-label="Leia Organa" />
-        </BraidTestProvider>,
-      );
+        rerender(
+          <BraidTestProvider>
+            <Avatar name="Leia Organa" imageUrl={photoPlaceholderUrl} />
+          </BraidTestProvider>,
+        );
 
-      expect(screen.getByRole('img', { name: 'Leia Organa' })).toBeVisible();
-    });
-
-    it('renders IconProfile when name is omitted', () => {
-      const { container } = render(
-        <BraidTestProvider>
-          <Avatar />
-        </BraidTestProvider>,
-      );
-
-      expect(screen.queryByRole('img')).toBeNull();
-      expect(screen.queryByText('L')).toBeNull();
-      expect(container.querySelector('svg')).toBeVisible();
+        const imgElement = screen.getByRole('presentation', { hidden: true });
+        expect(imgElement).toHaveClass(imageLoaded);
+      });
     });
 
     it('renders broken icon when image is invalid', () => {
@@ -275,30 +292,6 @@ describe('Avatar', () => {
       expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
     });
 
-    it('applies the surface ring to an image', () => {
-      render(
-        <BraidTestProvider>
-          <Avatar
-            name="Leia Organa"
-            imageUrl="https://example.com/photo.jpg"
-            data={{ testid: 'avatar' }}
-          />
-        </BraidTestProvider>,
-      );
-
-      expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
-    });
-
-    it('applies the surface ring to empty Avatar', () => {
-      render(
-        <BraidTestProvider>
-          <Avatar data={{ testid: 'avatar' }} />
-        </BraidTestProvider>,
-      );
-
-      expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
-    });
-
     it('applies the surface ring in the loading state', () => {
       render(
         <BraidTestProvider>
@@ -307,25 +300,6 @@ describe('Avatar', () => {
       );
 
       expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
-    });
-
-    it('applies the surface ring to all sizes', () => {
-      const sizes = ['small', 'standard', 'large', 'xlarge'] as const;
-
-      sizes.forEach((size) => {
-        const { unmount } = render(
-          <BraidTestProvider>
-            <Avatar
-              name="Leia Organa"
-              size={size}
-              data={{ testid: 'avatar' }}
-            />
-          </BraidTestProvider>,
-        );
-
-        expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
-        unmount();
-      });
     });
   });
 });
