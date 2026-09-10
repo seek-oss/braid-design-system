@@ -1,10 +1,7 @@
-import { Heading, Stack, Text, Tiles } from 'braid-design-system';
+import { Divider, Heading, Stack, Text, Tiles } from 'braid-design-system';
 import type { ComponentProps, ReactNode } from 'react';
 
-import {
-  LandingCard,
-  type LandingCardProps,
-} from '../LandingCard/LandingCard';
+import { LandingCard, type LandingCardProps } from '../LandingCard/LandingCard';
 
 export const SectionLanding = ({
   title,
@@ -16,12 +13,13 @@ export const SectionLanding = ({
   children: ComponentProps<typeof Stack>['children'];
 }) => (
   <Stack space="xxlarge">
-    <Stack space="medium">
+    <Stack space="large">
       <Heading component="h1" level="2">
         {title}
       </Heading>
       <Text>{intro}</Text>
     </Stack>
+    <Divider />
     {children}
   </Stack>
 );

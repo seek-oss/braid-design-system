@@ -344,7 +344,7 @@ const docs: CssDoc = {
         <Text>
           You should only use vars if you’re unable to use{' '}
           <TextLink href="/components/Box">Box</TextLink> or{' '}
-          <TextLink href="/css/atoms">atoms</TextLink>.
+          <TextLink href="/styles/atoms">atoms</TextLink>.
         </Text>
       </Alert>
       <List space="medium">

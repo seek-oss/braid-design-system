@@ -8,7 +8,7 @@ import { foundationLandingCards } from '.';
 export const Foundations = () => (
   <SectionLanding
     title="Foundations"
-    intro="Placeholder cards for the core foundation topics. Content to be refined."
+    intro="The shared language behind Braid: layout, tone, iconography, tokens, and breakpoints."
   >
     <LandingCardTiles cards={foundationLandingCards} />
   </SectionLanding>

@@ -29,7 +29,7 @@ const docs: CssDoc = {
           <Text>
             If you want to apply focus styles directly to your custom focusable
             element, use the <Strong>focus</Strong> outline via{' '}
-            <TextLink href="/css/atoms">atoms</TextLink> or{' '}
+            <TextLink href="/styles/atoms">atoms</TextLink> or{' '}
             <TextLink href="/components/Box">Box</TextLink> props.
           </Text>
         </Stack>

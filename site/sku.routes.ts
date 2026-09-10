@@ -126,8 +126,11 @@ const routes: SkuConfig['routes'] = [
       !name.startsWith('use') ? { route: `/components/${name}/props` } : null,
     ].filter((route) => route !== null),
   ),
-  { route: '/css', name: 'styles' },
+  { route: '/styles', name: 'styles' },
+  { route: '/css' },
   cssNames.flatMap((name) => [
+    { route: `/styles/${name}` },
+    { route: `/styles/${name}/releases` },
     { route: `/css/${name}` },
     { route: `/css/${name}/releases` },
   ]),

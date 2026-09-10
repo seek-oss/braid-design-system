@@ -93,7 +93,7 @@ export const HomePage = () => {
               illustrationSize="compact"
             />
             <LandingCard
-              href="/css"
+              href="/styles"
               label="Styles"
               description="Low-level CSS utilities and styling primitives. Atoms and helpers for custom layout when components aren’t enough."
               illustration={<StylesIllustration />}

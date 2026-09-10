@@ -521,7 +521,7 @@ const docs: CssDoc = {
           <Text>
             To apply the focus outline to an element based on the focus of
             another element, see{' '}
-            <TextLink href="/css/outlineStyle">outlineStyle</TextLink>.
+            <TextLink href="/styles/outlineStyle">outlineStyle</TextLink>.
           </Text>
         </>
       ),

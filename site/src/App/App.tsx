@@ -49,6 +49,7 @@ import {
   templateGroupPath,
   templatePathPrefix,
 } from './routes/templates/templateDocs';
+import { navSections } from './navigationSections';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>
@@ -103,6 +104,30 @@ const IconFoundationDocs = () => {
   }
 
   return <DocNavigation />;
+};
+
+const RedirectCssToStyles = () => {
+  const { docsName, page } = useParams();
+  const { state } = useLocation();
+  const suffix = page ? `/${page}` : '';
+
+  return (
+    <Navigate to={`/styles/${docsName}${suffix}`} replace={true} state={state} />
+  );
+};
+
+const RedirectLegacyComponentRoute = () => {
+  const { docsType = '' } = useParams();
+
+  if (docsType === 'styles') {
+    return <Styles />;
+  }
+
+  if (navSections.some((section) => section.href === `/${docsType}`)) {
+    return null;
+  }
+
+  return <Navigate to="/" replace={true} />;
 };
 
 const RedirectToPatternTemplates = () => {
@@ -272,17 +297,33 @@ export const App = () => {
                   path="/templates/:groupName/:templateName"
                   element={<RedirectToPatternTemplates />}
                 />
-                <Route path="/css" element={<Styles />} />
-                <Route path=":docsType">
-                  <Route path=":docsName" element={<DocNavigation />}>
-                    <Route path="" element={<DocDetails />} />
-                    <Route path="props" element={<DocProps />} />
-                    <Route path="releases" element={<DocReleases />} />
-                    <Route path="snippets" element={<DocSnippets />} />
-                  </Route>
-                  {/* Redirect for old components as homepage route */}
-                  <Route path="" element={<Navigate to="/" replace />} />
+                <Route path="/styles" element={<Styles />} />
+                <Route path="/styles/:docsName" element={<DocNavigation />}>
+                  <Route path="" element={<DocDetails />} />
+                  <Route path="props" element={<DocProps />} />
+                  <Route path="releases" element={<DocReleases />} />
+                  <Route path="snippets" element={<DocSnippets />} />
                 </Route>
+                <Route
+                  path="/css"
+                  element={<Navigate to="/styles" replace />}
+                />
+                <Route path="/css/:docsName" element={<RedirectCssToStyles />} />
+                <Route
+                  path="/css/:docsName/:page"
+                  element={<RedirectCssToStyles />}
+                />
+                <Route path=":docsType/:docsName" element={<DocNavigation />}>
+                  <Route path="" element={<DocDetails />} />
+                  <Route path="props" element={<DocProps />} />
+                  <Route path="releases" element={<DocReleases />} />
+                  <Route path="snippets" element={<DocSnippets />} />
+                </Route>
+                {/* Redirect for old components as homepage route */}
+                <Route
+                  path=":docsType"
+                  element={<RedirectLegacyComponentRoute />}
+                />
               </Route>
             </Routes>
           </ToastProvider>

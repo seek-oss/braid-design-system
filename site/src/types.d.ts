@@ -35,7 +35,7 @@ type NavigationSection =
   | 'foundations'
   | 'examples'
   | 'components'
-  | 'css'
+  | 'styles'
   | 'logic'
   | 'patterns';
 

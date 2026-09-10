@@ -175,12 +175,12 @@ export const SideNavigation = ({
       ],
       styles: [
         {
-          title: 'CSS',
+          title: 'Styles',
           items: documentedCss.map((doc) => ({
             name: doc.name,
             badge: getBadge(doc),
-            path: `/css/${doc.name}`,
-            active: isActive(`/css/${doc.name}`),
+            path: `/styles/${doc.name}`,
+            active: isActive(`/styles/${doc.name}`),
             onClick: onSelect,
           })),
         },

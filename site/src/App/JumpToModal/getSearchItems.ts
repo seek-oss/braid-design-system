@@ -17,7 +17,7 @@ export const searchCategories = [
   'Components',
   'Patterns',
   'How to',
-  'CSS',
+  'Styles',
   'Logic',
 ] as const;
 
@@ -73,11 +73,11 @@ export const searchItems: SearchItem[] = [
     hasProps: false,
   })),
 
-  // CSS
+  // Styles
   ...documentedCss.map((doc) => ({
     name: doc.name,
-    path: `/css/${doc.name}`,
-    category: 'CSS' as const,
+    path: `/styles/${doc.name}`,
+    category: 'Styles' as const,
     hasProps: false,
   })),
 

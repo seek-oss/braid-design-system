@@ -78,7 +78,7 @@ const docs: CssDoc = {
             <TextLink href="/components/Box">Box</TextLink> or{' '}
             <TextLink href="/components/Stack">Stack</TextLink>, or in
             stylesheets using the{' '}
-            <TextLink href="/css/responsiveStyle">responsiveStyle</TextLink>{' '}
+            <TextLink href="/styles/responsiveStyle">responsiveStyle</TextLink>{' '}
             utility.
           </Text>
         </Stack>

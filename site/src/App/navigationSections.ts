@@ -51,8 +51,8 @@ export const navSections = [
   {
     id: 'styles',
     label: 'Styles',
-    href: '/css',
-    pathPrefixes: ['/css'],
+    href: '/styles',
+    pathPrefixes: ['/styles', '/css'],
   },
 ] as const satisfies readonly NavSection[];
 

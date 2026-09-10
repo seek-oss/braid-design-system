@@ -68,7 +68,7 @@ export const SearchLanding = ({ onSelect }: SearchLandingProps) => (
             },
             {
               name: 'Styles',
-              path: '/css',
+              path: '/styles',
               onClick: onSelect,
             },
           ]}

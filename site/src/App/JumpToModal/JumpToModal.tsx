@@ -135,7 +135,7 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
         icon={<IconSearch />}
         ref={inputRef}
         aria-label="Jump to a component"
-        placeholder="Jump to Foundations, Components, Patterns, CSS..."
+        placeholder="Jump to Foundations, Components, Patterns, Styles..."
         value={searchQuery}
         onChange={(e) => {
           setSearchQuery(e.target.value);

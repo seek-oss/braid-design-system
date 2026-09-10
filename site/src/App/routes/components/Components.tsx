@@ -34,7 +34,10 @@ const ComponentTile = ({
 };
 
 export const Components = () => (
-  <SectionLanding title="Components" intro="lorem">
+  <SectionLanding
+    title="Components"
+    intro="Ready-made UI for everyday product work. Each component is documented with guidance, examples, and Playroom so you can try it in context."
+  >
     <Tiles space="large" columns={[1, 2, 3]}>
       {documentedComponents
         .filter((component) => component.category !== 'Logic')
