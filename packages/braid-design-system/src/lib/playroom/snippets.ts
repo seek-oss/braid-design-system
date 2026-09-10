@@ -5,6 +5,7 @@ import { snippets as Autosuggest } from './snippets/Autosuggest';
 import { snippets as Badge } from './snippets/Badge';
 import { snippets as Bleed } from './snippets/Bleed';
 import { snippets as BrandedContainer } from './snippets/BrandedContainer';
+import { snippets as BulkActions } from './snippets/BulkActions';
 import { snippets as Button } from './snippets/Button';
 import { snippets as ButtonIcon } from './snippets/ButtonIcon';
 import { snippets as Card } from './snippets/Card';
@@ -19,6 +20,8 @@ import { snippets as DividedList } from './snippets/DividedList';
 import { snippets as Divider } from './snippets/Divider';
 import { snippets as Drawer } from './snippets/Drawer';
 import { snippets as Dropdown } from './snippets/Dropdown';
+import { snippets as EmptyState } from './snippets/EmptyState';
+import { snippets as ErrorState } from './snippets/ErrorState';
 import { snippets as FieldLabel } from './snippets/FieldLabel';
 import { snippets as FieldMessage } from './snippets/FieldMessage';
 import { snippets as Form } from './snippets/Form';
@@ -29,6 +32,7 @@ import { snippets as Loader } from './snippets/Loader';
 import { snippets as MenuRenderer } from './snippets/MenuRenderer';
 import { snippets as MonthPicker } from './snippets/MonthPicker';
 import { snippets as Notice } from './snippets/Notice';
+import { snippets as Nudge } from './snippets/Nudge';
 import { snippets as OverflowMenu } from './snippets/OverflowMenu';
 import { snippets as Page } from './snippets/Page';
 import { snippets as PageBlock } from './snippets/PageBlock';
@@ -37,6 +41,9 @@ import { snippets as PasswordField } from './snippets/PasswordField';
 import { snippets as RadioGroup } from './snippets/RadioGroup';
 import { snippets as Rating } from './snippets/Rating';
 import { snippets as Secondary } from './snippets/Secondary';
+import { snippets as ServiceOutageBanner } from './snippets/ServiceOutageBanner';
+import { snippets as SkeletonLoader } from './snippets/SkeletonLoader';
+import { snippets as SocialShare } from './snippets/SocialShare';
 import { snippets as SpaciousPage } from './snippets/SpaciousPage';
 import { snippets as Spread } from './snippets/Spread';
 import { snippets as Stack } from './snippets/Stack';
@@ -59,7 +66,7 @@ import { snippets as Tiles } from './snippets/Tiles';
 import { snippets as Toggle } from './snippets/Toggle';
 import { snippets as TooltipRenderer } from './snippets/TooltipRenderer';
 
-const groupOrder = ['Layouts', 'Sections', 'Components'];
+const groupOrder = ['Layouts', 'Sections', 'Patterns', 'Components'];
 const allSnippets = [];
 const snippetsMap = {
   BrandedContainer,
@@ -73,6 +80,13 @@ const snippetsMap = {
   SteppedSection,
   TabbedSection,
   TableSection,
+  BulkActions,
+  EmptyState,
+  ErrorState,
+  Nudge,
+  ServiceOutageBanner,
+  SkeletonLoader,
+  SocialShare,
   Accordion,
   Actions,
   Alert,
@@ -137,7 +151,7 @@ for (const [name, snippets] of Object.entries(snippetsMap)) {
 allSnippets.sort((a, b) => {
   const aIndex = groupOrder.indexOf(a.group);
   const bIndex = groupOrder.indexOf(b.group);
-  return (aIndex === -1 ? 3 : aIndex) - (bIndex === -1 ? 3 : bIndex);
+  return (aIndex === -1 ? 4 : aIndex) - (bIndex === -1 ? 4 : bIndex);
 });
 
 export default allSnippets;
