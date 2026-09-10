@@ -31,7 +31,6 @@ type AvatarSize = (typeof validAvatarSizes)[number];
 
 export interface AvatarProps {
   size?: AvatarSize;
-  keyline?: boolean;
   'aria-label'?: string;
   name?: string;
   imageUrl?: string;
@@ -114,7 +113,6 @@ export const Avatar = ({
   size = 'standard',
   loading = false,
   imageUrl,
-  keyline = false,
   data,
   ...restProps
 }: AvatarProps): ReactElement => {
@@ -136,7 +134,7 @@ export const Avatar = ({
 
   const labelled = Boolean(ariaLabel);
   const commonBoxProps = {
-    className: [styles.size[size], keyline ? styles.keyline : undefined],
+    className: [styles.size[size], styles.keyline],
     borderRadius: avatarSizeToBorderRadius[size],
     ...(labelled
       ? { role: 'img' as const, 'aria-label': ariaLabel }

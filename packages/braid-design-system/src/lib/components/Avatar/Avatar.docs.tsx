@@ -286,17 +286,19 @@ const docs: ComponentDocs = {
       label: 'Keyline',
       description: (
         <Text>
-          Set <Strong>keyline</Strong> to add an inset ring. Useful when avatars
-          overlap or sit on a coloured background.
+          Avatar always has a surface-coloured ring so it stays distinct when
+          overlapping or sitting on a coloured background. Coloured rings belong
+          on a wrapping <TextLink href="/components/Box">Box</TextLink>; keep
+          that radius in sync with the Avatar size.
         </Text>
       ),
       Example: () => {
         const { value } = source(
           <Box background="brand" padding="medium" borderRadius="standard">
             <Inline space="small" alignY="center">
-              <Avatar name="Leia Organa" imageUrl={photoExampleUrl} keyline />
-              <Avatar name="Leia Organa" keyline />
-              <Avatar keyline />
+              <Avatar name="Leia Organa" imageUrl={photoExampleUrl} />
+              <Avatar name="Leia Organa" />
+              <Avatar />
             </Inline>
           </Box>,
         );
@@ -307,10 +309,9 @@ const docs: ComponentDocs = {
               <Avatar
                 name="Leia Organa"
                 imageUrl="https://example.com/photo.jpg"
-                keyline
               />
-              <Avatar name="Leia Organa" keyline />
-              <Avatar keyline />
+              <Avatar name="Leia Organa" />
+              <Avatar />
             </Inline>
           </Box>,
         );

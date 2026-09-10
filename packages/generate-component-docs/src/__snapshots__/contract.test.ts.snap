@@ -162,7 +162,6 @@ exports[`Avatar 1`] = `
     aria-label?: string
     data?: DataAttributeMap
     imageUrl?: string
-    keyline?: boolean
     loading?: boolean
     name?: string
     size?: 
