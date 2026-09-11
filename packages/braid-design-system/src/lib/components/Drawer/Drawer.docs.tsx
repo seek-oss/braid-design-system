@@ -189,7 +189,6 @@ const docs: ComponentDocs = {
             open={true}
             onClose={() => {}}
           >
-            <Heading level="2">Job details</Heading>
             <Placeholder height={200} width="100%" label="Drawer Content" />
           </Drawer>,
         );
@@ -200,7 +199,6 @@ const docs: ComponentDocs = {
             <Box borderRadius="xlarge" overflow="hidden">
               <DrawerPreview>
                 <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
-                  <Heading level="2">Job details</Heading>
                   <Placeholder
                     height={200}
                     width="100%"
