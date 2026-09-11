@@ -1,5 +1,6 @@
 import assert from 'assert';
 
+import dedent from 'dedent';
 import type { FC } from 'react';
 
 import { type ModalProps, Modal } from '../private/Modal/Modal';
@@ -33,6 +34,9 @@ type DrawerHeaderProps =
       'aria-description'?: string;
     };
 
+const docsUrl =
+  'https://seek-oss.github.io/braid-design-system/components/Drawer';
+
 const assertAccessibleName = ({
   title,
   description,
@@ -46,15 +50,27 @@ const assertAccessibleName = ({
 }) => {
   assert(
     (typeof title === 'string') !== (typeof ariaLabel === 'string'),
-    'Drawer requires either a title or an aria-label',
+    dedent`
+      Drawer requires either a title or an aria-label.
+
+      See the Drawer documentation for more information: ${docsUrl}#drawers-without-a-visible-title
+    `,
   );
   assert(
     description === undefined || typeof title === 'string',
-    'Drawer description can only be used with a title',
+    dedent`
+      Drawer description can only be used with a title.
+
+      See the Drawer documentation for more information: ${docsUrl}#title-and-description
+    `,
   );
   assert(
     ariaDescription === undefined || typeof ariaLabel === 'string',
-    'Drawer aria-description can only be used with an aria-label',
+    dedent`
+      Drawer aria-description can only be used with an aria-label.
+
+      See the Drawer documentation for more information: ${docsUrl}#drawers-without-a-visible-title
+    `,
   );
 };
 
