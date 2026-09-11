@@ -5692,5 +5692,19 @@
         "summary": "**Drawer, Dialog:** Restore default stack spacing to content"
       }
     ]
+  },
+  {
+    "version": "34.8.2",
+    "updates": [
+      {
+        "updated": [
+          "Table",
+          "Dialog",
+          "Drawer",
+          "MenuRenderer"
+        ],
+        "summary": "**Table, Dialog, Drawer, MenuRenderer:** Hide scroll overflow gradient when printing"
+      }
+    ]
   }
 ]
