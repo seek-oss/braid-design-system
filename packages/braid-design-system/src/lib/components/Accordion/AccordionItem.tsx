@@ -263,10 +263,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
         ]}
         style={assignInlineVars({
           [styles.animationDuration]: `${durationMsForHeight(contentHeight)}ms`,
-          [styles.contentHeightVar]:
-            expanded && contentHeight === 0
-              ? 'auto'
-              : `${expanded ? contentHeight : 0}px`,
+          [styles.contentHeightVar]: `${expanded ? contentHeight : 0}px`,
         })}
         onTransitionEnd={(event: TransitionEvent<HTMLElement>) => {
           if (
