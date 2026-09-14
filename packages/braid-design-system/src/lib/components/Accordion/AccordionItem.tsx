@@ -45,7 +45,17 @@ const itemSpaceForSize = {
   large: 'medium',
 } as const;
 
-const animationDurationMs = 200;
+const minDurationMs = 200;
+const maxDurationMs = 500;
+const pixelsPerSecond = 320;
+
+const durationMsForHeight = (height: number) =>
+  Math.round(
+    Math.min(
+      maxDurationMs,
+      Math.max(minDurationMs, (height / pixelsPerSecond) * 1000),
+    ),
+  );
 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
@@ -164,15 +174,19 @@ export const AccordionItem: FC<AccordionItemProps> = ({
 
   const [trackedExpanded, setTrackedExpanded] = useState(expanded);
   const [animatedHeight, setAnimatedHeight] = useState<number | null>(null);
+  const [animationDurationMs, setAnimationDurationMs] = useState(minDurationMs);
   const isAnimating = animatedHeight !== null;
 
   if (expanded !== trackedExpanded) {
     setTrackedExpanded(expanded);
-    setAnimatedHeight(
-      prefersReducedMotion()
-        ? null
-        : (contentSizeRef.current?.scrollHeight ?? 0),
-    );
+
+    if (prefersReducedMotion()) {
+      setAnimatedHeight(null);
+    } else {
+      const height = contentSizeRef.current?.scrollHeight ?? 0;
+      setAnimatedHeight(height);
+      setAnimationDurationMs(durationMsForHeight(height));
+    }
   }
 
   const finishAnimation = useCallback(() => {
@@ -222,7 +236,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
       cancelled = true;
       window.clearTimeout(timeoutId);
     };
-  }, [expanded, finishAnimation, isAnimating]);
+  }, [animationDurationMs, expanded, finishAnimation, isAnimating]);
 
   let heightClass: string | undefined;
 
@@ -285,7 +299,14 @@ export const AccordionItem: FC<AccordionItemProps> = ({
           expanded || isAnimating ? undefined : styles.contentHidden,
           expanded && !isAnimating ? styles.contentUnclipped : undefined,
         ]}
-        style={isAnimating ? { height: animatedHeight } : undefined}
+        style={
+          isAnimating
+            ? {
+                height: animatedHeight,
+                transitionDuration: `${animationDurationMs}ms`,
+              }
+            : undefined
+        }
         onTransitionEnd={(event: TransitionEvent<HTMLElement>) => {
           if (isHeightTransition(event)) {
             finishAnimation();
