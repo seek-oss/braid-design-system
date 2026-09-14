@@ -418,6 +418,23 @@ export const VirtualTouchTarget = {
   ),
 };
 
+export const AutoCollapseAccordion = {
+  name: 'Accordion with autoCollapse',
+  render: () => (
+    <Accordion autoCollapse>
+      <AccordionItem label="Accordion item 1">
+        <Placeholder height={80} />
+      </AccordionItem>
+      <AccordionItem label="Accordion item 2">
+        <Placeholder height={80} />
+      </AccordionItem>
+      <AccordionItem label="Accordion item 3">
+        <Placeholder height={80} />
+      </AccordionItem>
+    </Accordion>
+  ),
+};
+
 export const AccordionItemWithAnIconShouldFollowTone = {
   name: 'AccordionItem with an icon - should follow tone',
   render: () => (

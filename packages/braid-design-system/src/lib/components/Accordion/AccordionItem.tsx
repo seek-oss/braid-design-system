@@ -4,10 +4,16 @@ import {
   type FC,
   type ReactElement,
   type ReactNode,
+  type TransitionEvent,
   cloneElement,
+  useCallback,
   useContext,
+  useLayoutEffect,
+  useRef,
+  useState,
 } from 'react';
 
+import { useFallbackId } from '../../hooks/useFallbackId';
 import type { BadgeProps } from '../Badge/Badge';
 import { Box } from '../Box/Box';
 import {
@@ -16,7 +22,6 @@ import {
   useDisclosure,
 } from '../Disclosure/useDisclosure';
 import { Spread } from '../Spread/Spread';
-import { Stack } from '../Stack/Stack';
 import { type TextProps, Text } from '../Text/Text';
 import { IconChevron } from '../icons';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
@@ -39,6 +44,26 @@ const itemSpaceForSize = {
   standard: 'medium',
   large: 'medium',
 } as const;
+
+const minDurationMs = 200;
+const maxDurationMs = 500;
+const pixelsPerSecond = 320;
+
+const durationMsForHeight = (height: number) =>
+  Math.round(
+    Math.min(
+      maxDurationMs,
+      Math.max(minDurationMs, (height / pixelsPerSecond) * 1000),
+    ),
+  );
+
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const isHeightTransition = (event: TransitionEvent<HTMLElement>) =>
+  event.propertyName === 'height' && event.target === event.currentTarget;
 
 export interface AccordionItemBaseProps {
   label: string;
@@ -108,23 +133,116 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   const tone = accordionContext?.tone ?? toneProp ?? 'neutral';
   const weight = accordionContext?.weight ?? weightProp ?? 'medium';
   const itemSpace = itemSpaceForSize[size] ?? 'none';
+  const contentSizeRef = useRef<HTMLElement>(null);
 
   assert(
     typeof label === 'undefined' || typeof label === 'string',
     'Label must be a string',
   );
 
+  const resolvedId = useFallbackId(id);
+  const autoCollapse = Boolean(accordionContext?.autoCollapse);
+
+  assert(
+    !(autoCollapse && restProps.expanded !== undefined),
+    'expanded cannot be set on AccordionItem when autoCollapse is set on Accordion. Accordions with autoCollapse start collapsed and manage expansion themselves. Use onToggle to observe changes, or omit autoCollapse and control expanded on the item.',
+  );
+
+  let disclosureState: DisclosureStateProps = {
+    onToggle: restProps.onToggle,
+  };
+
+  if (autoCollapse) {
+    disclosureState = {
+      expanded: accordionContext?.openItemId === resolvedId,
+      onToggle: (nextExpanded) => {
+        accordionContext?.onItemToggle?.(resolvedId, nextExpanded);
+        restProps.onToggle?.(nextExpanded);
+      },
+    };
+  } else if (restProps.expanded !== undefined) {
+    disclosureState = {
+      expanded: restProps.expanded,
+      onToggle: restProps.onToggle,
+    };
+  }
+
   const { expanded, buttonProps, contentProps } = useDisclosure({
-    id,
-    ...(restProps.expanded !== undefined
-      ? {
-          onToggle: restProps.onToggle,
-          expanded: restProps.expanded,
-        }
-      : {
-          onToggle: restProps.onToggle,
-        }),
+    id: resolvedId,
+    ...disclosureState,
   });
+
+  const [trackedExpanded, setTrackedExpanded] = useState(expanded);
+  const [animatedHeight, setAnimatedHeight] = useState<number | null>(null);
+  const [animationDurationMs, setAnimationDurationMs] = useState(minDurationMs);
+  const isAnimating = animatedHeight !== null;
+
+  if (expanded !== trackedExpanded) {
+    setTrackedExpanded(expanded);
+
+    if (prefersReducedMotion()) {
+      setAnimatedHeight(null);
+    } else {
+      const height = contentSizeRef.current?.scrollHeight ?? 0;
+      setAnimatedHeight(height);
+      setAnimationDurationMs(durationMsForHeight(height));
+    }
+  }
+
+  const finishAnimation = useCallback(() => {
+    setAnimatedHeight(null);
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!autoCollapse) {
+      return;
+    }
+
+    return accordionContext?.registerItemToggle?.(
+      resolvedId,
+      restProps.onToggle,
+    );
+  }, [accordionContext, autoCollapse, resolvedId, restProps.onToggle]);
+
+  useLayoutEffect(() => {
+    if (!isAnimating) {
+      return;
+    }
+
+    let cancelled = false;
+
+    if (!expanded) {
+      requestAnimationFrame(() => {
+        if (cancelled) {
+          return;
+        }
+
+        requestAnimationFrame(() => {
+          if (cancelled) {
+            return;
+          }
+
+          setAnimatedHeight(0);
+        });
+      });
+    }
+
+    const timeoutId = window.setTimeout(
+      finishAnimation,
+      animationDurationMs + 50,
+    );
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+    };
+  }, [animationDurationMs, expanded, finishAnimation, isAnimating]);
+
+  let heightClass: string | undefined;
+
+  if (!isAnimating) {
+    heightClass = expanded ? styles.contentOpen : styles.contentClosed;
+  }
 
   if (process.env.NODE_ENV !== 'production') {
     /**
@@ -135,7 +253,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   }
 
   return (
-    <Stack space={itemSpace} data={data}>
+    <Box data={data}>
       <Box position="relative" display="flex">
         <Box
           component="button"
@@ -174,9 +292,39 @@ export const AccordionItem: FC<AccordionItemProps> = ({
           </Box>
         </Box>
       </Box>
-      <Box display={expanded ? 'block' : 'none'} {...contentProps}>
-        {children}
+      <Box
+        className={[
+          styles.content,
+          heightClass,
+          expanded || isAnimating ? undefined : styles.contentHidden,
+          expanded && !isAnimating ? styles.contentUnclipped : undefined,
+        ]}
+        style={
+          isAnimating
+            ? {
+                height: animatedHeight,
+                transitionDuration: `${animationDurationMs}ms`,
+              }
+            : undefined
+        }
+        onTransitionEnd={(event: TransitionEvent<HTMLElement>) => {
+          if (isHeightTransition(event)) {
+            finishAnimation();
+          }
+        }}
+        onTransitionCancel={(event: TransitionEvent<HTMLElement>) => {
+          if (isHeightTransition(event)) {
+            finishAnimation();
+          }
+        }}
+        aria-hidden={expanded ? undefined : true}
+        inert={expanded ? undefined : true}
+        {...contentProps}
+      >
+        <Box ref={contentSizeRef} paddingTop={itemSpace}>
+          {children}
+        </Box>
       </Box>
-    </Stack>
+    </Box>
   );
 };

@@ -39,12 +39,27 @@ const docs: ComponentDocs = {
       </Accordion>,
     ),
   accessibility: (
-    <Text>
-      Follows the{' '}
-      <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">
-        WAI-ARIA Disclosure Pattern.
-      </TextLink>
-    </Text>
+    <Stack space="large">
+      <Text>
+        Follows the{' '}
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">
+          WAI-ARIA Disclosure Pattern
+        </TextLink>
+        . Each item is a disclosure, including when{' '}
+        <Strong>autoCollapse</Strong> is set. This is not the{' '}
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
+          Accordion Pattern
+        </TextLink>
+        .
+      </Text>
+      <Text>
+        Collapsed panels stay in the document at zero height so they can
+        animate, with <Strong>visibility: hidden</Strong>,{' '}
+        <Strong>aria-hidden</Strong> and <Strong>inert</Strong>. That replaces{' '}
+        <Strong>display: none</Strong>. Find-in-page or print behaviour can
+        differ.
+      </Text>
+    </Stack>
   ),
   alternatives: [
     {
@@ -179,14 +194,54 @@ const docs: ComponentDocs = {
     ],
     interaction: [
       {
+        label: 'Auto collapse',
+        description: (
+          <Stack space="large">
+            <Text>
+              Set the <Strong>autoCollapse</Strong> prop so only one item can be
+              open at a time. Opening an item closes any other open item.
+              Clicking the open item collapses it. All items start collapsed.
+            </Text>
+            <Text>
+              Don&rsquo;t set <Strong>expanded</Strong> on items when{' '}
+              <Strong>autoCollapse</Strong> is on. Use <Strong>onToggle</Strong>{' '}
+              to observe changes. To start an item open, omit{' '}
+              <Strong>autoCollapse</Strong> and control{' '}
+              <Strong>expanded</Strong> yourself (see Managing state).
+            </Text>
+          </Stack>
+        ),
+        Example: () =>
+          source(
+            <Accordion autoCollapse>
+              <AccordionItem label="Accordion item 1">
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 2">
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 3">
+                <Placeholder height={80} />
+              </AccordionItem>
+            </Accordion>,
+          ),
+      },
+      {
         label: 'Managing state',
         description: (
-          <Text>
-            An <Strong>AccordionItem</Strong>, by default, manages its own state
-            internally. If you&rsquo;d like to take control of the state, you
-            can do so using the <Strong>expanded</Strong> and{' '}
-            <Strong>onToggle</Strong> props.
-          </Text>
+          <Stack space="large">
+            <Text>
+              An <Strong>AccordionItem</Strong>, by default, manages its own
+              state internally. If you&rsquo;d like to take control of the
+              state, you can do so using the <Strong>expanded</Strong> and{' '}
+              <Strong>onToggle</Strong> props.
+            </Text>
+            <Text>
+              To start an item open, initialise your state to{' '}
+              <Strong>true</Strong>. Do not combine this with{' '}
+              <Strong>autoCollapse</Strong>.
+            </Text>
+          </Stack>
         ),
         Example: ({ setDefaultState, getState, toggleState }) =>
           source(
