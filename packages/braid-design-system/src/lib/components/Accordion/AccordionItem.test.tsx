@@ -165,4 +165,35 @@ describe('AccordionItem', () => {
     await userEvent.click(getByRole('button', { name: 'Label' }));
     expect(queryByRole('link')).toBeNull();
   });
+
+  it('should keep expanded content in document flow without JS measurement', () => {
+    const html = renderToStaticMarkup(
+      <BraidTestProvider>
+        <AccordionItem id="open" label="Label" expanded onToggle={() => {}}>
+          Visible
+        </AccordionItem>
+      </BraidTestProvider>,
+    );
+
+    expect(html).toContain('Visible');
+    expect(html).not.toMatch(/height:\s*0px/);
+  });
+
+  it('should not pin expanded content to a 0px inline height on the client', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <AccordionItem label="Label" expanded onToggle={() => {}}>
+          Content
+        </AccordionItem>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
+    );
+
+    expect(content).not.toBeNull();
+    expect(content?.style.height).not.toBe('0px');
+  });
 });
