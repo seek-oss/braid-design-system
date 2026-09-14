@@ -1,4 +1,4 @@
-import { createVar, fallbackVar, style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 
 import { atoms } from '../../css/atoms/atoms';
 
@@ -16,20 +16,23 @@ export const focusRing = style([
   }),
 ]);
 
-export const animationDuration = createVar();
-export const contentHeightVar = createVar();
-
-const duration = fallbackVar(animationDuration, '200ms');
-
 export const content = style({
   overflow: 'hidden',
-  height: fallbackVar(contentHeightVar, '0px'),
-  transition: `height ${duration} ease`,
+  transition: 'height 200ms ease',
   '@media': {
     'screen and (prefers-reduced-motion: reduce)': {
       transition: 'none',
     },
   },
+});
+
+export const contentOpen = style({
+  height: 'auto',
+  transition: 'none',
+});
+
+export const contentClosed = style({
+  height: 0,
 });
 
 export const contentHidden = style({

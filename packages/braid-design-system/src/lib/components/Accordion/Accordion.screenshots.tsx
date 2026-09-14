@@ -17,9 +17,6 @@ import { debugTouchableAttrForDataProp } from '../private/touchable/debugTouchab
 const meta = {
   title: 'Components/Accordion',
   component: Accordion,
-  parameters: {
-    chromatic: { delay: 600 },
-  },
 } satisfies Meta<typeof Accordion>;
 
 export default meta;
