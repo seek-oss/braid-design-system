@@ -1,12 +1,12 @@
 import assert from 'assert';
 
-import { assignInlineVars } from '@vanilla-extract/dynamic';
 import {
   type FC,
   type ReactElement,
   type ReactNode,
   type TransitionEvent,
   cloneElement,
+  useCallback,
   useContext,
   useLayoutEffect,
   useRef,
@@ -45,17 +45,15 @@ const itemSpaceForSize = {
   large: 'medium',
 } as const;
 
-const minDurationMs = 200;
-const maxDurationMs = 500;
-const pixelsPerSecond = 320;
+const animationDurationMs = 200;
 
-const durationMsForHeight = (height: number) =>
-  Math.round(
-    Math.min(
-      maxDurationMs,
-      Math.max(minDurationMs, (height / pixelsPerSecond) * 1000),
-    ),
-  );
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const isHeightTransition = (event: TransitionEvent<HTMLElement>) =>
+  event.propertyName === 'height' && event.target === event.currentTarget;
 
 export interface AccordionItemBaseProps {
   label: string;
@@ -125,10 +123,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   const tone = accordionContext?.tone ?? toneProp ?? 'neutral';
   const weight = accordionContext?.weight ?? weightProp ?? 'medium';
   const itemSpace = itemSpaceForSize[size] ?? 'none';
-  const [contentHeight, setContentHeight] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
   const contentSizeRef = useRef<HTMLElement>(null);
-  const isFirstToggle = useRef(true);
 
   assert(
     typeof label === 'undefined' || typeof label === 'string',
@@ -167,6 +162,23 @@ export const AccordionItem: FC<AccordionItemProps> = ({
     ...disclosureState,
   });
 
+  const [trackedExpanded, setTrackedExpanded] = useState(expanded);
+  const [animatedHeight, setAnimatedHeight] = useState<number | null>(null);
+  const isAnimating = animatedHeight !== null;
+
+  if (expanded !== trackedExpanded) {
+    setTrackedExpanded(expanded);
+    setAnimatedHeight(
+      prefersReducedMotion()
+        ? null
+        : (contentSizeRef.current?.scrollHeight ?? 0),
+    );
+  }
+
+  const finishAnimation = useCallback(() => {
+    setAnimatedHeight(null);
+  }, []);
+
   useLayoutEffect(() => {
     if (!autoCollapse) {
       return;
@@ -179,33 +191,44 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   }, [accordionContext, autoCollapse, resolvedId, restProps.onToggle]);
 
   useLayoutEffect(() => {
-    const node = contentSizeRef.current;
-
-    if (!node) {
+    if (!isAnimating) {
       return;
     }
 
-    const measure = () => setContentHeight(node.scrollHeight);
-    measure();
+    let cancelled = false;
 
-    const observer = new ResizeObserver(measure);
-    observer.observe(node);
+    if (!expanded) {
+      requestAnimationFrame(() => {
+        if (cancelled) {
+          return;
+        }
 
-    return () => observer.disconnect();
-  }, [itemSpace, size]);
+        requestAnimationFrame(() => {
+          if (cancelled) {
+            return;
+          }
 
-  useLayoutEffect(() => {
-    if (isFirstToggle.current) {
-      isFirstToggle.current = false;
-      return;
+          setAnimatedHeight(0);
+        });
+      });
     }
 
-    const reducedMotion =
-      typeof window.matchMedia === 'function' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const timeoutId = window.setTimeout(
+      finishAnimation,
+      animationDurationMs + 50,
+    );
 
-    setIsAnimating(!reducedMotion);
-  }, [expanded]);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+    };
+  }, [expanded, finishAnimation, isAnimating]);
+
+  let heightClass: string | undefined;
+
+  if (!isAnimating) {
+    heightClass = expanded ? styles.contentOpen : styles.contentClosed;
+  }
 
   if (process.env.NODE_ENV !== 'production') {
     /**
@@ -258,19 +281,19 @@ export const AccordionItem: FC<AccordionItemProps> = ({
       <Box
         className={[
           styles.content,
+          heightClass,
           expanded || isAnimating ? undefined : styles.contentHidden,
           expanded && !isAnimating ? styles.contentUnclipped : undefined,
         ]}
-        style={assignInlineVars({
-          [styles.animationDuration]: `${durationMsForHeight(contentHeight)}ms`,
-          [styles.contentHeightVar]: `${expanded ? contentHeight : 0}px`,
-        })}
+        style={isAnimating ? { height: animatedHeight } : undefined}
         onTransitionEnd={(event: TransitionEvent<HTMLElement>) => {
-          if (
-            event.propertyName === 'height' &&
-            event.target === event.currentTarget
-          ) {
-            setIsAnimating(false);
+          if (isHeightTransition(event)) {
+            finishAnimation();
+          }
+        }}
+        onTransitionCancel={(event: TransitionEvent<HTMLElement>) => {
+          if (isHeightTransition(event)) {
+            finishAnimation();
           }
         }}
         aria-hidden={expanded ? undefined : true}
