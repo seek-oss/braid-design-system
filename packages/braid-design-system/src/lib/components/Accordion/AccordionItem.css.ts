@@ -17,46 +17,25 @@ export const focusRing = style([
 ]);
 
 export const animationDuration = createVar();
+export const contentHeightVar = createVar();
 
 const duration = fallbackVar(animationDuration, '200ms');
 
-const reducedMotion = {
+export const content = style({
+  overflow: 'hidden',
+  height: fallbackVar(contentHeightVar, '0px'),
+  transition: `height ${duration} ease`,
   '@media': {
     'screen and (prefers-reduced-motion: reduce)': {
       transition: 'none',
     },
   },
-} as const;
+});
 
-/*
-  Height animation via grid 0fr → 1fr.
-  Overflow stays hidden until open so Capsize line trims are not cropped.
-  Padding sits on a nested wrapper so the row can collapse to zero.
-  https://css-tricks.com/css-grid-can-do-auto-height-transitions/
-*/
-export const content = style({
-  display: 'grid',
-  gridTemplateRows: '0fr',
+export const contentHidden = style({
   visibility: 'hidden',
-  transition: `grid-template-rows ${duration} ease, visibility 0s linear ${duration}`,
-  ...reducedMotion,
 });
 
-export const contentExpanded = style({
-  gridTemplateRows: '1fr',
-  visibility: 'visible',
-  transition: `grid-template-rows ${duration} ease, visibility 0s linear 0s`,
-  ...reducedMotion,
-});
-
-export const contentInner = style({
-  minHeight: 0,
-  overflow: 'hidden',
-  selectors: {
-    [`${contentExpanded} > &`]: {
-      overflow: 'visible',
-      transition: `overflow 0s linear ${duration}`,
-      ...reducedMotion,
-    },
-  },
+export const contentUnclipped = style({
+  overflow: 'visible',
 });

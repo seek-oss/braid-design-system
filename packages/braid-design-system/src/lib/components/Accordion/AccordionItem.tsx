@@ -5,6 +5,7 @@ import {
   type FC,
   type ReactElement,
   type ReactNode,
+  type TransitionEvent,
   cloneElement,
   useContext,
   useLayoutEffect,
@@ -124,8 +125,10 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   const tone = accordionContext?.tone ?? toneProp ?? 'neutral';
   const weight = accordionContext?.weight ?? weightProp ?? 'medium';
   const itemSpace = itemSpaceForSize[size] ?? 'none';
-  const [durationMs, setDurationMs] = useState(minDurationMs);
+  const [contentHeight, setContentHeight] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
   const contentSizeRef = useRef<HTMLElement>(null);
+  const isFirstToggle = useRef(true);
 
   assert(
     typeof label === 'undefined' || typeof label === 'string',
@@ -182,17 +185,27 @@ export const AccordionItem: FC<AccordionItemProps> = ({
       return;
     }
 
-    const updateDuration = () => {
-      setDurationMs(durationMsForHeight(node.scrollHeight));
-    };
+    const measure = () => setContentHeight(node.scrollHeight);
+    measure();
 
-    updateDuration();
-
-    const observer = new ResizeObserver(updateDuration);
+    const observer = new ResizeObserver(measure);
     observer.observe(node);
 
     return () => observer.disconnect();
   }, [children, itemSpace, size]);
+
+  useLayoutEffect(() => {
+    if (isFirstToggle.current) {
+      isFirstToggle.current = false;
+      return;
+    }
+
+    const reducedMotion =
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    setIsAnimating(!reducedMotion);
+  }, [expanded]);
 
   if (process.env.NODE_ENV !== 'production') {
     /**
@@ -245,19 +258,30 @@ export const AccordionItem: FC<AccordionItemProps> = ({
       <Box
         className={[
           styles.content,
-          expanded ? styles.contentExpanded : undefined,
+          expanded || isAnimating ? undefined : styles.contentHidden,
+          expanded && !isAnimating ? styles.contentUnclipped : undefined,
         ]}
         style={assignInlineVars({
-          [styles.animationDuration]: `${durationMs}ms`,
+          [styles.animationDuration]: `${durationMsForHeight(contentHeight)}ms`,
+          [styles.contentHeightVar]:
+            expanded && contentHeight === 0
+              ? 'auto'
+              : `${expanded ? contentHeight : 0}px`,
         })}
+        onTransitionEnd={(event: TransitionEvent<HTMLElement>) => {
+          if (
+            event.propertyName === 'height' &&
+            event.target === event.currentTarget
+          ) {
+            setIsAnimating(false);
+          }
+        }}
         aria-hidden={expanded ? undefined : true}
         inert={expanded ? undefined : true}
         {...contentProps}
       >
-        <Box className={styles.contentInner}>
-          <Box ref={contentSizeRef} paddingTop={itemSpace}>
-            {children}
-          </Box>
+        <Box ref={contentSizeRef} paddingTop={itemSpace}>
+          {children}
         </Box>
       </Box>
     </Box>
