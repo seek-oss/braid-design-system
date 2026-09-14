@@ -192,7 +192,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
     observer.observe(node);
 
     return () => observer.disconnect();
-  }, [children, itemSpace, size]);
+  }, [itemSpace, size]);
 
   useLayoutEffect(() => {
     if (isFirstToggle.current) {
