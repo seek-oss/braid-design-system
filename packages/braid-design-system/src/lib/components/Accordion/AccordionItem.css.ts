@@ -29,12 +29,9 @@ const reducedMotion = {
 } as const;
 
 /*
-  Animate open/close with grid 0fr → 1fr. Box sprinkles have no `display:
-  grid`, so the grid lives here. Duration is set per item from content
-  height (see AccordionItem). The clip layer has overflow hidden and no
-  padding so the row can collapse to zero; spacing lives on a nested
-  wrapper. When open, overflow becomes visible so Capsize line trims are
-  not cropped.
+  Height animation via grid 0fr → 1fr.
+  Overflow stays hidden until open so Capsize line trims are not cropped.
+  Padding sits on a nested wrapper so the row can collapse to zero.
   https://css-tricks.com/css-grid-can-do-auto-height-transitions/
 */
 export const content = style({

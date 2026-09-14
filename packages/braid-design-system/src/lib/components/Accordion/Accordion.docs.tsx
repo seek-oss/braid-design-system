@@ -49,8 +49,9 @@ const docs: ComponentDocs = {
         <Strong>autoCollapse</Strong> is set. This is not the{' '}
         <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
           Accordion Pattern
-        </TextLink>{' '}
-        (no heading wrapper or arrow-key movement between items).
+        </TextLink>
+        .
+
       </Text>
       <Text>
         Collapsed panels stay in the document at zero height so they can
@@ -198,21 +199,14 @@ const docs: ComponentDocs = {
         description: (
           <Stack space="large">
             <Text>
-              Set the <Strong>autoCollapse</Strong> prop to ensure only one item
-              can be expanded at a time. Opening an item will close any other
-              open item. Clicking the open item will collapse it. Accordions
-              with <Strong>autoCollapse</Strong> start with all items collapsed.
+              Set the <Strong>autoCollapse</Strong> prop so only one item can be
+              open at a time. Opening an item closes any other open item.
+              Clicking the open item collapses it. All items start collapsed.
             </Text>
             <Text>
-              Item-level <Strong>expanded</Strong> cannot be used with{' '}
-              <Strong>autoCollapse</Strong>. Expansion is managed by the
-              Accordion, which always starts collapsed. There is no controlled
-              autoCollapse API in this release.
-            </Text>
-            <Text>
-              <Strong>onToggle</Strong> fires on the item that was clicked. If
-              another item was open, that item also receives{' '}
-              <Strong>onToggle(false)</Strong>. To start an item open, omit{' '}
+              Don&rsquo;t set <Strong>expanded</Strong> on items when{' '}
+              <Strong>autoCollapse</Strong> is on. Use <Strong>onToggle</Strong>{' '}
+              to observe changes. To start an item open, omit{' '}
               <Strong>autoCollapse</Strong> and control{' '}
               <Strong>expanded</Strong> yourself (see Managing state).
             </Text>
