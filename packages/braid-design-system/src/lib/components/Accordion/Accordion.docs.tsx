@@ -51,7 +51,6 @@ const docs: ComponentDocs = {
           Accordion Pattern
         </TextLink>
         .
-
       </Text>
       <Text>
         Collapsed panels stay in the document at zero height so they can
