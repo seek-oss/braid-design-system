@@ -37,12 +37,6 @@ export interface AccordionProps {
   size?: AccordionContextValue['size'];
   tone?: AccordionContextValue['tone'];
   weight?: AccordionContextValue['weight'];
-  /**
-   * When true, opening an item closes any other open item.
-   * Starts with all items collapsed. Item-level `expanded` cannot be set.
-   * `onToggle` fires on the item that was clicked, and with `false` on the
-   * item that was closed as a result.
-   */
   autoCollapse?: boolean;
   /** @deprecated The spacing is now derived from the `size` prop and will be removed in a future release. */
   space?: RequiredResponsiveValue<(typeof validSpaceValues)[number]>;
