@@ -1,12 +1,20 @@
-import {
-  type AvatarProps,
-  Avatar as BraidAvatar,
-  validAvatarSizes,
-} from './Avatar';
+import { forwardRef } from 'react';
 
-export const Avatar = ({ size, ...restProps }: AvatarProps) => (
+import { type AvatarProps, Avatar as BraidAvatar } from './Avatar';
+
+export const Avatar = forwardRef<
+  HTMLElement,
+  Omit<AvatarProps, 'size' | 'icon'> & {
+    size?: string;
+    icon?: AvatarProps['icon'] | boolean;
+  }
+>(({ size, icon, ...restProps }, ref) => (
   <BraidAvatar
-    size={size && validAvatarSizes.includes(size) ? size : undefined}
+    ref={ref}
     {...restProps}
+    size={size as AvatarProps['size']}
+    icon={typeof icon === 'boolean' ? undefined : icon}
   />
-);
+));
+
+Avatar.displayName = 'Avatar';

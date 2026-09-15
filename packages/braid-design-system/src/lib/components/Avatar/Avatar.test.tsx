@@ -1,10 +1,16 @@
 import { act, render, screen } from '@testing-library/react';
+import { vi } from 'vitest';
 
 import { Avatar } from '..';
 import { BraidTestProvider } from '../../../test';
 import { palette } from '../../color/palette';
+import { IconCompany, IconPhotoAdd } from '../icons';
 
-import { keyline as keylineStyle, imageLoaded } from './Avatar.css';
+import {
+  keyline as keylineStyle,
+  imageLoaded,
+  overlayScrim,
+} from './Avatar.css';
 import { photoPlaceholderUrl } from './photoPlaceholder.css';
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
 import { shimmerAnimation } from '../private/Skeleton/Skeleton.css';
@@ -60,7 +66,7 @@ describe('Avatar', () => {
       );
 
       expect(screen.getByText(initials)).toBeVisible();
-      expect(screen.getByTestId('avatar')).toHaveStyle(
+      expect(screen.getByTestId('avatar').firstElementChild).toHaveStyle(
         `background: ${hexToRgbString(expectedColour)}`,
       );
     },
@@ -252,9 +258,12 @@ describe('Avatar', () => {
 
   describe('Size support', () => {
     it.each([
+      ['xsmall', textSizeUntrimmed.xsmall],
       ['small', textSizeUntrimmed.small],
+      ['medium', textSizeUntrimmed.small],
       ['standard', textSizeUntrimmed.standard],
       ['large', textSizeUntrimmed.large],
+      ['xlarge', textSizeUntrimmed.large],
     ] as const)('uses Text size styles for %s', (size, textSizeClass) => {
       render(
         <BraidTestProvider>
@@ -268,16 +277,26 @@ describe('Avatar', () => {
       expect(initials.className).not.toContain(heading['3']);
     });
 
-    it('uses Heading level 3 styles for xlarge size', () => {
+    it('uses Heading level 3 styles for xxlarge size', () => {
       render(
         <BraidTestProvider>
-          <Avatar name="Leia Organa" size="xlarge" />
+          <Avatar name="Leia Organa" size="xxlarge" />
         </BraidTestProvider>,
       );
 
       const initials = screen.getByText('L');
       expect(initials.tagName).toBe('SPAN');
       expect(initials.className).toContain(heading['3']);
+    });
+
+    it('does not throw on unknown sizes', () => {
+      expect(() =>
+        render(
+          <BraidTestProvider>
+            <Avatar name="Leia Organa" size={'xxxlarge' as 'xlarge'} />
+          </BraidTestProvider>,
+        ),
+      ).not.toThrow();
     });
   });
 
@@ -289,7 +308,9 @@ describe('Avatar', () => {
         </BraidTestProvider>,
       );
 
-      expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
+      expect(
+        screen.getByTestId('avatar').firstElementChild?.className,
+      ).toContain(keylineStyle);
     });
 
     it('applies the surface ring in the loading state', () => {
@@ -299,7 +320,102 @@ describe('Avatar', () => {
         </BraidTestProvider>,
       );
 
-      expect(screen.getByTestId('avatar').className).toContain(keylineStyle);
+      expect(
+        screen.getByTestId('avatar').firstElementChild?.className,
+      ).toContain(keylineStyle);
+    });
+  });
+
+  describe('icon fallback', () => {
+    it('shows initials when name and icon are both set', () => {
+      render(
+        <BraidTestProvider>
+          <Avatar name="Leia Organa" icon={<IconPhotoAdd />} />
+        </BraidTestProvider>,
+      );
+
+      expect(screen.getByText('L')).toBeVisible();
+    });
+
+    it('shows the provided icon when name has no letters', () => {
+      const { container } = render(
+        <BraidTestProvider>
+          <Avatar icon={<IconCompany />} />
+        </BraidTestProvider>,
+      );
+
+      expect(screen.queryByText('L')).toBeNull();
+      expect(container.querySelector('svg')).toBeVisible();
+    });
+  });
+
+  describe('aria-label and onClick', () => {
+    it('exposes a button when onClick and aria-label are set', () => {
+      const onClick = vi.fn();
+      render(
+        <BraidTestProvider>
+          <Avatar
+            icon={<IconPhotoAdd />}
+            aria-label="Add photo"
+            onClick={onClick}
+          />
+        </BraidTestProvider>,
+      );
+
+      const button = screen.getByRole('button', { name: 'Add photo' });
+      button.click();
+      expect(onClick).toHaveBeenCalledTimes(1);
+    });
+
+    it('keeps a named image when aria-label is set without onClick', () => {
+      render(
+        <BraidTestProvider>
+          <Avatar name="Leia Organa" aria-label="Leia" />
+        </BraidTestProvider>,
+      );
+
+      expect(screen.getByRole('img', { name: 'Leia' })).toBeVisible();
+      expect(screen.queryByRole('button')).toBeNull();
+    });
+
+    it('throws when onClick is set without aria-label', () => {
+      expect(() =>
+        render(
+          <BraidTestProvider>
+            <Avatar icon={<IconPhotoAdd />} onClick={() => undefined} />
+          </BraidTestProvider>,
+        ),
+      ).toThrow('aria-label');
+    });
+  });
+
+  describe('Hover overlay', () => {
+    it('renders an overlay when imageUrl and icon are both set', () => {
+      render(
+        <BraidTestProvider>
+          <Avatar
+            imageUrl={photoPlaceholderUrl}
+            icon={<IconPhotoAdd />}
+            aria-label="Update photo"
+          />
+        </BraidTestProvider>,
+      );
+
+      expect(document.querySelector(`.${overlayScrim}`)).not.toBeNull();
+    });
+
+    it('does not render an overlay for a named image without icon', () => {
+      render(
+        <BraidTestProvider>
+          <Avatar
+            name="Leia Organa"
+            imageUrl={photoPlaceholderUrl}
+            aria-label="Leia"
+          />
+        </BraidTestProvider>,
+      );
+
+      expect(document.querySelector(`.${overlayScrim}`)).toBeNull();
     });
   });
 });

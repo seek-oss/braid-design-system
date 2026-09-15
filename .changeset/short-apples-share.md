@@ -9,14 +9,16 @@ new:
 
 **Avatar:** Add component
 
-A user avatar that can show an image, initials derived from `name`, or IconProfile when there is no letter. Available in `small`, `standard`, `large` and `xlarge` sizes, with a `loading` state. A surface-coloured ring is always applied so the avatar stays distinct on coloured backgrounds.
-
-Avatar is decorative by default. Name the person with adjacent text, a wrapping control such as a `Button` or `MenuItem`, or `aria-label` when the avatar is the only identifier.
+A rounded-square identity mark for a person or company. Shows an image, initials from `name`, a provided `icon`, or `IconProfile`. Sizes: `xsmall` 24, `small` 32, `medium` 40, `standard` 48, `large` 64, `xlarge` 80, `xxlarge` 96.
 
 **EXAMPLE USAGE:**
 
 ```jsx
 <Avatar name="Leia Organa" />
-<Avatar />
-<Avatar name="Leia Organa" imageUrl="https://example.com/photo.jpg" />
+<Avatar icon={<IconCompany />} />
+<Avatar
+  icon={<IconPhotoAdd />}
+  aria-label="Add photo"
+  onClick={openPicker}
+/>
 ```
