@@ -2,6 +2,8 @@ import { forwardRef } from 'react';
 
 import { type AvatarProps, Avatar as BraidAvatar } from './Avatar';
 
+import * as styles from './Avatar.css';
+
 export const Avatar = forwardRef<
   HTMLElement,
   Omit<AvatarProps, 'size' | 'icon'> & {
@@ -12,7 +14,9 @@ export const Avatar = forwardRef<
   <BraidAvatar
     ref={ref}
     {...restProps}
-    size={size as AvatarProps['size']}
+    size={
+      size && size in styles.size ? (size as AvatarProps['size']) : undefined
+    }
     icon={typeof icon === 'boolean' ? undefined : icon}
   />
 ));
