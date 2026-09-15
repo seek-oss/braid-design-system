@@ -161,14 +161,22 @@ exports[`Avatar 1`] = `
   props: {
     aria-label?: string
     data?: DataAttributeMap
+    icon?: ReactElement<unknown, string | JSXElementConstructor<any>>
     imageUrl?: string
     loading?: boolean
     name?: string
+    onClick?: MouseEventHandler<HTMLButtonElement>
+    ref?: 
+        | (instance: HTMLElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLElement | null>
     size?: 
         | "large"
+        | "medium"
         | "small"
         | "standard"
         | "xlarge"
+        | "xsmall"
+        | "xxlarge"
 },
 }
 `;

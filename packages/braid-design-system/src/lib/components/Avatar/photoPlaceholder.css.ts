@@ -1,7 +1,7 @@
 import { palette } from '../../color/palette';
 
 export const photoExampleUrl =
-  'https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?w=192&h=192&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.4&fp-z=1.8';
+  'http://images.unsplash.com/photo-1786915863186-b1f8f1420524?w=192&h=192&fit=crop&crop=focalpoint&fp-x=0.55&fp-y=0.26&fp-z=4';
 
 export const photoPlaceholderUrl = `data:image/svg+xml;base64,${Buffer.from(
   `<svg
