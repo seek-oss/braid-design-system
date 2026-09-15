@@ -1,15 +1,20 @@
 import assert from 'assert';
 
 import {
+  cloneElement,
+  forwardRef,
+  isValidElement,
   useLayoutEffect,
   useRef,
   useState,
   type ComponentProps,
+  type MouseEventHandler,
   type ReactElement,
   type ReactNode,
 } from 'react';
 
 import { palette } from '../../color/palette';
+import type { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
 import { Heading } from '../Heading/Heading';
 import { Text } from '../Text/Text';
@@ -21,20 +26,16 @@ import buildDataAttributes, {
 
 import * as styles from './Avatar.css';
 
-export const validAvatarSizes = [
-  'small',
-  'standard',
-  'large',
-  'xlarge',
-] as const;
-type AvatarSize = (typeof validAvatarSizes)[number];
+type AvatarSize = keyof typeof styles.size;
 
 export interface AvatarProps {
   size?: AvatarSize;
   'aria-label'?: string;
   name?: string;
   imageUrl?: string;
+  icon?: ReactElement;
   loading?: boolean;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   data?: DataAttributeMap;
 }
 
@@ -47,20 +48,26 @@ const backgroundColours = [
 ] as const;
 
 const avatarSizeToBorderRadius = {
+  xxlarge: 'large',
   xlarge: 'large',
   large: 'standard',
   standard: 'standard',
+  medium: 'standard',
   small: 'standard',
+  xsmall: 'standard',
 } as const satisfies Record<
   AvatarSize,
   ComponentProps<typeof Box>['borderRadius']
 >;
 
 const avatarSizeToTextSize = {
+  xxlarge: 'large',
   xlarge: 'large',
   large: 'large',
   standard: 'standard',
+  medium: 'small',
   small: 'small',
+  xsmall: 'xsmall',
 } as const satisfies Record<AvatarSize, ComponentProps<typeof Text>['size']>;
 
 interface AvatarTextContentProps {
@@ -69,7 +76,7 @@ interface AvatarTextContentProps {
 }
 
 const AvatarTextContent = ({ size, children }: AvatarTextContentProps) => {
-  if (size !== 'xlarge') {
+  if (size !== 'xxlarge') {
     return (
       <Text weight="strong" size={avatarSizeToTextSize[size]} baseline={false}>
         {children}
@@ -107,112 +114,216 @@ const backgroundColourForName = (name: string) => {
   return backgroundColours[Math.abs(hash) % backgroundColours.length];
 };
 
-export const Avatar = ({
-  name = '',
-  'aria-label': ariaLabel,
-  size = 'standard',
-  loading = false,
-  imageUrl,
-  data,
-  ...restProps
-}: AvatarProps): ReactElement => {
+const assertIconHasNoSize = (icon: ReactElement) => {
   assert(
-    validAvatarSizes.indexOf(size) >= 0,
-    `Avatar size of "${size}" is not valid.`,
-  );
-
-  const [imageError, setImageError] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const imageRef = useRef<HTMLImageElement | null>(null);
-
-  useLayoutEffect(() => {
-    setImageError(false);
-    // Data URIs and cached images can be complete before onLoad. Do not
-    // require naturalHeight — SVG placeholders often report 0. Re-run when
-    // loading ends so a cached image that just mounted is not left at opacity 0.
-    setImageLoaded(Boolean(imageRef.current?.complete));
-  }, [imageUrl, loading]);
-
-  const labelled = Boolean(ariaLabel);
-  const commonBoxProps = {
-    className: [styles.size[size], styles.keyline],
-    borderRadius: avatarSizeToBorderRadius[size],
-    ...(labelled
-      ? { role: 'img' as const, 'aria-label': ariaLabel }
-      : { 'aria-hidden': true as const }),
-    ...buildDataAttributes({ data, validateRestProps: restProps }),
-  };
-
-  if (loading) {
-    return (
-      <Box {...commonBoxProps} overflow="hidden">
-        <Skeleton />
-      </Box>
-    );
-  }
-
-  if (imageUrl && imageError) {
-    return (
-      <Box
-        {...commonBoxProps}
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        background="neutralLight"
-      >
-        <AvatarTextContent size={size}>
-          <IconImageBroken />
-        </AvatarTextContent>
-      </Box>
-    );
-  }
-
-  if (imageUrl) {
-    return (
-      <Box {...commonBoxProps} background="neutralLight" overflow="hidden">
-        <Box
-          component="img"
-          key={imageUrl}
-          ref={imageRef}
-          src={imageUrl}
-          alt=""
-          aria-hidden
-          onError={() => setImageError(true)}
-          onLoad={() => setImageLoaded(true)}
-          className={[
-            styles.image,
-            imageLoaded ? styles.imageLoaded : undefined,
-          ]}
-        />
-      </Box>
-    );
-  }
-
-  const resolvedInitials = getInitials(name);
-  const showIcon = resolvedInitials === null;
-  const textContent = showIcon ? <IconProfile /> : resolvedInitials;
-
-  const colour =
-    !showIcon && resolvedInitials ? backgroundColourForName(name) : null;
-
-  return (
-    <Box
-      {...commonBoxProps}
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      background={colour?.type ?? 'neutralSoft'}
-      style={
-        colour
-          ? {
-              background: colour.value,
-            }
-          : undefined
-      }
-    >
-      <AvatarTextContent size={size}>{textContent}</AvatarTextContent>
-    </Box>
+    isValidElement(icon) &&
+      (icon.props as { size?: unknown }).size === undefined,
+    "Icons cannot set the 'size' prop when passed to an Avatar component",
   );
 };
+
+const isAvatarSize = (value: string): value is AvatarSize =>
+  value in styles.size;
+
+const resolveAvatarSize = (size: string): AvatarSize =>
+  isAvatarSize(size) ? size : 'standard';
+
+export const Avatar = forwardRef<HTMLElement, AvatarProps>(
+  (
+    {
+      name = '',
+      'aria-label': ariaLabel,
+      size: sizeProp = 'standard',
+      loading = false,
+      imageUrl,
+      icon,
+      onClick,
+      data,
+      ...restProps
+    },
+    ref,
+  ) => {
+    const size = resolveAvatarSize(sizeProp);
+
+    assert(
+      !onClick || Boolean(ariaLabel),
+      'Avatar with onClick requires aria-label so the button has an accessible name.',
+    );
+
+    if (icon) {
+      assertIconHasNoSize(icon);
+    }
+
+    const [imageError, setImageError] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const imageRef = useRef<HTMLImageElement | null>(null);
+
+    useLayoutEffect(() => {
+      setImageError(false);
+      // Data URIs and cached images can be complete before onLoad. Do not
+      // require naturalHeight — SVG placeholders often report 0. Re-run when
+      // loading ends so a cached image that just mounted is not left at opacity 0.
+      setImageLoaded(Boolean(imageRef.current?.complete));
+    }, [imageUrl, loading]);
+
+    const labelled = Boolean(ariaLabel);
+    const clickable = Boolean(onClick);
+    const showImage = Boolean(imageUrl) && !imageError && !loading;
+    const showHoverOverlay = showImage && Boolean(icon);
+    const borderRadius = avatarSizeToBorderRadius[size];
+
+    let a11yProps;
+    if (clickable) {
+      a11yProps = {
+        component: 'button' as const,
+        type: 'button' as const,
+        onClick,
+        'aria-label': ariaLabel,
+      };
+    } else if (labelled) {
+      a11yProps = { role: 'img' as const, 'aria-label': ariaLabel };
+    } else {
+      a11yProps = { 'aria-hidden': true as const };
+    }
+
+    const rootProps = {
+      ref,
+      display: 'flex' as const,
+      borderRadius,
+      className: [
+        styles.root,
+        styles.size[size],
+        clickable || showHoverOverlay ? styles.clickable : undefined,
+        clickable &&
+        (size === 'xsmall' || size === 'small' || size === 'medium')
+          ? styles.enlargedHitArea
+          : undefined,
+      ],
+      ...a11yProps,
+      ...buildDataAttributes({ data, validateRestProps: restProps }),
+      ...restProps,
+    };
+
+    const faceProps = {
+      className: styles.keyline,
+      borderRadius,
+      overflow: 'hidden' as const,
+      height: 'full' as const,
+      width: 'full' as const,
+    };
+
+    const hoverOverlay = showHoverOverlay ? (
+      <>
+        <Box
+          position="absolute"
+          inset={0}
+          pointerEvents="none"
+          borderRadius={borderRadius}
+          className={styles.overlayScrim}
+        />
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          pointerEvents="none"
+          position="absolute"
+          inset={0}
+          zIndex={1}
+        >
+          <Box className={styles.overlayIcon}>
+            <AvatarTextContent size={size}>
+              {cloneElement(icon as ReactElement<UseIconProps>, {
+                alignY: undefined,
+              })}
+            </AvatarTextContent>
+          </Box>
+        </Box>
+      </>
+    ) : null;
+
+    const face = (() => {
+      if (loading) {
+        return (
+          <Box {...faceProps}>
+            <Skeleton />
+          </Box>
+        );
+      }
+
+      if (imageUrl && imageError) {
+        return (
+          <Box
+            {...faceProps}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            background="neutralLight"
+          >
+            <AvatarTextContent size={size}>
+              <IconImageBroken />
+            </AvatarTextContent>
+          </Box>
+        );
+      }
+
+      if (imageUrl) {
+        return (
+          <Box {...faceProps} background="neutralLight" position="relative">
+            <Box
+              component="img"
+              key={imageUrl}
+              ref={imageRef}
+              src={imageUrl}
+              alt=""
+              aria-hidden
+              onError={() => setImageError(true)}
+              onLoad={() => setImageLoaded(true)}
+              className={[
+                styles.image,
+                imageLoaded ? styles.imageLoaded : undefined,
+              ]}
+            />
+            {hoverOverlay}
+          </Box>
+        );
+      }
+
+      const resolvedInitials = getInitials(name);
+      const showCustomIcon = resolvedInitials === null && Boolean(icon);
+      let textContent: ReactNode = resolvedInitials;
+      if (showCustomIcon) {
+        textContent = icon;
+      } else if (resolvedInitials === null) {
+        textContent = <IconProfile />;
+      }
+
+      const colour =
+        resolvedInitials && !showCustomIcon
+          ? backgroundColourForName(name)
+          : null;
+
+      return (
+        <Box
+          {...faceProps}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          background={colour?.type ?? 'neutralSoft'}
+          style={
+            colour
+              ? {
+                  background: colour.value,
+                }
+              : undefined
+          }
+        >
+          <AvatarTextContent size={size}>{textContent}</AvatarTextContent>
+        </Box>
+      );
+    })();
+
+    return <Box {...rootProps}>{face}</Box>;
+  },
+);
 
 Avatar.displayName = 'Avatar';
