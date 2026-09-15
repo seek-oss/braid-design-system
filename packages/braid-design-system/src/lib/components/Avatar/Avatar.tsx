@@ -47,6 +47,15 @@ const backgroundColours = [
   { value: palette.purple[200], type: 'customLight' },
 ] as const;
 
+const isNonSvgDataUri = (src: string) =>
+  /^data:/i.test(src) && !/^data:image\/svg/i.test(src);
+
+const isEmptyDecodedImage = (img: HTMLImageElement) =>
+  img.naturalWidth === 0 && img.naturalHeight === 0;
+
+const rasterDataUriFailedToDecode = (img: HTMLImageElement) =>
+  img.complete && isEmptyDecodedImage(img) && isNonSvgDataUri(img.src);
+
 const avatarSizeToBorderRadius = {
   xxlarge: 'large',
   xlarge: 'large',
@@ -160,10 +169,47 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
 
     useLayoutEffect(() => {
       setImageError(false);
-      // Data URIs and cached images can be complete before onLoad. Do not
-      // require naturalHeight — SVG placeholders often report 0. Re-run when
-      // loading ends so a cached image that just mounted is not left at opacity 0.
-      setImageLoaded(Boolean(imageRef.current?.complete));
+      const img = imageRef.current;
+      // Firefox often fires load (not error) for invalid raster data URIs, or
+      // marks them complete at 0×0. SVG placeholders can also report 0, so
+      // only treat non-SVG data URIs as failed. Cached images must not wait
+      // for onLoad.
+      if (img && rasterDataUriFailedToDecode(img)) {
+        setImageError(true);
+        setImageLoaded(false);
+        return;
+      }
+      setImageLoaded(Boolean(img?.complete));
+
+      if (
+        !img ||
+        typeof img.decode !== 'function' ||
+        !/^data:/i.test(img.src) ||
+        /^data:image\/svg/i.test(img.src)
+      ) {
+        return;
+      }
+
+      let cancelled = false;
+      img.decode().then(
+        () => {
+          if (cancelled) {
+            return;
+          }
+          if (rasterDataUriFailedToDecode(img)) {
+            setImageError(true);
+          }
+        },
+        () => {
+          if (!cancelled) {
+            setImageError(true);
+          }
+        },
+      );
+
+      return () => {
+        cancelled = true;
+      };
     }, [imageUrl, loading]);
 
     const labelled = Boolean(ariaLabel);
@@ -277,7 +323,18 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
               alt=""
               aria-hidden
               onError={() => setImageError(true)}
-              onLoad={() => setImageLoaded(true)}
+              onLoad={() => {
+                const img = imageRef.current;
+                if (
+                  img &&
+                  isEmptyDecodedImage(img) &&
+                  isNonSvgDataUri(img.src)
+                ) {
+                  setImageError(true);
+                  return;
+                }
+                setImageLoaded(true);
+              }}
               className={[
                 styles.image,
                 imageLoaded ? styles.imageLoaded : undefined,

@@ -238,6 +238,28 @@ describe('Avatar', () => {
       expect(screen.queryByRole('img')).toBeNull();
       expect(container.querySelector('svg')).toBeVisible();
     });
+
+    it('renders broken icon when a raster data URI loads as empty', () => {
+      const { container } = render(
+        <BraidTestProvider>
+          <Avatar
+            name="Leia Organa"
+            imageUrl="data:image/png;base64,not-an-image"
+          />
+        </BraidTestProvider>,
+      );
+
+      const imgElement = screen.queryByRole('presentation', { hidden: true });
+
+      if (imgElement) {
+        act(() => {
+          imgElement.dispatchEvent(new Event('load'));
+        });
+      }
+
+      expect(screen.queryByRole('presentation', { hidden: true })).toBeNull();
+      expect(container.querySelector('svg')).toBeVisible();
+    });
   });
 
   describe('Loading', () => {

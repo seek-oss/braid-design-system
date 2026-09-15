@@ -18,7 +18,7 @@ import {
 } from '../';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
-import { photoExampleUrl } from './photoPlaceholder.css';
+import { photoBrokenUrl, photoExampleUrl } from './photoPlaceholder.css';
 
 const docs: ComponentDocs = {
   category: 'Content',
@@ -282,6 +282,12 @@ const docs: ComponentDocs = {
               </Text>
             </Stack>
             <Stack space="small" align="center">
+              <Avatar name="Leia Organa" imageUrl={photoBrokenUrl} />
+              <Text size="small" tone="secondary">
+                broken
+              </Text>
+            </Stack>
+            <Stack space="small" align="center">
               <Avatar name="Leia Organa" />
               <Text size="small" tone="secondary">
                 no image
@@ -299,6 +305,15 @@ const docs: ComponentDocs = {
               />
               <Text size="small" tone="secondary">
                 image
+              </Text>
+            </Stack>
+            <Stack space="small" align="center">
+              <Avatar
+                name="Leia Organa"
+                imageUrl="https://invalid-path/photo.jpg"
+              />
+              <Text size="small" tone="secondary">
+                broken
               </Text>
             </Stack>
             <Stack space="small" align="center">
