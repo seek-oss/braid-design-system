@@ -1,17 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { Avatar, Inline, Stack, Text } from '../';
+import { Avatar, IconCompany, IconPhotoAdd, Inline, Stack, Text } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
-import { validAvatarSizes } from './Avatar';
-
+import * as styles from './Avatar.css';
 import { photoPlaceholderUrl as imageUrl } from './photoPlaceholder.css';
+
+const avatarSizes = Object.keys(styles.size) as Array<keyof typeof styles.size>;
 
 const meta = {
   title: 'Components/Avatar',
   component: Avatar,
   args: {
     name: 'Leia Organa',
+  },
+  argTypes: {
+    size: {
+      control: 'radio',
+      options: avatarSizes,
+    },
   },
 } satisfies Meta<typeof Avatar>;
 
@@ -34,7 +41,7 @@ export const InitialsSizes: Story = {
   name: 'Initials sizes',
   render: () => (
     <Inline space="medium" alignY="center">
-      {validAvatarSizes.map((size) => (
+      {avatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
           <Avatar name="Leia Organa" size={size} />
           <Text size="small">{size}</Text>
@@ -48,7 +55,7 @@ export const EmptySizes: Story = {
   name: 'Empty sizes',
   render: () => (
     <Inline space="medium" alignY="center">
-      {validAvatarSizes.map((size) => (
+      {avatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
           <Avatar size={size} />
           <Text size="small">{size}</Text>
@@ -62,7 +69,7 @@ export const ImageSizes: Story = {
   name: 'Image sizes',
   render: () => (
     <Inline space="medium" alignY="center">
-      {validAvatarSizes.map((size) => (
+      {avatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
           <Avatar name="Leia Organa" size={size} imageUrl={imageUrl} />
           <Text size="small">{size}</Text>
@@ -76,7 +83,7 @@ export const ImageErrorSizes: Story = {
   name: 'Image error sizes',
   render: () => (
     <Inline space="medium" alignY="center">
-      {validAvatarSizes.map((size) => (
+      {avatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
           <Avatar
             name="Leia Organa"
@@ -99,13 +106,46 @@ export const LoadingSizes: Story = {
   name: 'Loading sizes',
   render: () => (
     <Inline space="medium" alignY="center">
-      {validAvatarSizes.map((size) => (
+      {avatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
           <Avatar name="Leia Organa" size={size} loading />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
     </Inline>
+  ),
+};
+
+export const CompanyFallback: Story = {
+  name: 'Company icon fallback',
+  render: () => (
+    <Inline space="medium" alignY="center">
+      <Avatar icon={<IconCompany />} />
+      <Avatar imageUrl={imageUrl} />
+    </Inline>
+  ),
+};
+
+export const AddPhoto: Story = {
+  name: 'Add photo',
+  render: () => (
+    <Avatar
+      icon={<IconPhotoAdd />}
+      aria-label="Add photo"
+      onClick={() => undefined}
+    />
+  ),
+};
+
+export const UpdatePhoto: Story = {
+  name: 'Update photo hover overlay',
+  render: () => (
+    <Avatar
+      size="xxlarge"
+      imageUrl={imageUrl}
+      icon={<IconPhotoAdd />}
+      aria-label="Update photo"
+    />
   ),
 };
 

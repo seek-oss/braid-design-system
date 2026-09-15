@@ -1,6 +1,14 @@
 import source from '@braid-design-system/source.macro';
 
-import { Avatar, Inline, Stack, Text } from '../../playroom/components';
+import {
+  Avatar,
+  IconCompany,
+  IconPhotoAdd,
+  Inline,
+  Stack,
+  Text,
+  TooltipRenderer,
+} from '../../playroom/components';
 import type { Snippets } from '../private/Snippets';
 
 export const snippets: Snippets = [
@@ -36,15 +44,68 @@ export const snippets: Snippets = [
     description: 'Sizes',
     code: source(
       <Inline space="small" alignY="center">
+        <Avatar name="Leia Organa" size="xsmall" />
         <Avatar name="Leia Organa" size="small" />
+        <Avatar name="Leia Organa" size="medium" />
         <Avatar name="Leia Organa" size="standard" />
         <Avatar name="Leia Organa" size="large" />
         <Avatar name="Leia Organa" size="xlarge" />
+        <Avatar name="Leia Organa" size="xxlarge" />
       </Inline>,
     ),
   },
   {
     description: 'Loading',
     code: source(<Avatar name="Leia Organa" loading />),
+  },
+  {
+    description: 'Company',
+    code: source(<Avatar icon={<IconCompany />} />),
+  },
+  {
+    description: 'Add photo',
+    code: source(
+      <TooltipRenderer tooltip={<Text>Add photo</Text>}>
+        {({ triggerProps }) => (
+          <Avatar
+            size="xxlarge"
+            icon={<IconPhotoAdd />}
+            aria-label="Add photo"
+            onClick={() => undefined}
+            {...triggerProps}
+          />
+        )}
+      </TooltipRenderer>,
+    ),
+  },
+  {
+    description: 'Update photo',
+    code: source(
+      <TooltipRenderer tooltip={<Text>Update photo</Text>}>
+        {({ triggerProps }) => (
+          <Avatar
+            size="xxlarge"
+            imageUrl="https://example.com/photo.jpg"
+            icon={<IconPhotoAdd />}
+            aria-label="Update photo"
+            {...triggerProps}
+          />
+        )}
+      </TooltipRenderer>,
+    ),
+  },
+  {
+    description: 'With tooltip',
+    code: source(
+      <TooltipRenderer tooltip={<Text>Leia Organa</Text>}>
+        {({ triggerProps }) => (
+          <Avatar
+            name="Leia Organa"
+            aria-label="Leia Organa"
+            {...triggerProps}
+          />
+        )}
+      </TooltipRenderer>,
+    ),
   },
 ];
