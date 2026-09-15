@@ -78,9 +78,12 @@ const docs: ComponentDocs = {
       <Text>
         For a hover tip, wrap with{' '}
         <TextLink href="/components/TooltipRenderer">TooltipRenderer</TextLink>{' '}
-        and spread its trigger props onto Avatar. Do not put a tip on Avatar
-        when a parent is already the control, or when the name is visible beside
-        it.
+        and spread <Strong>triggerProps</Strong> last onto Avatar (or onto a
+        wrapping Box) so the tooltip keeps its ref. Skip a tip when the name is
+        already visible beside the face. For add/update photo with a{' '}
+        <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>, wrap
+        TooltipRenderer around the menu, and put trigger props on that wrapper —
+        not on Avatar inside the menu button.
       </Text>
       <Text>
         Do not use per-avatar <Strong>onClick</Strong> in overlapping clusters.
@@ -122,9 +125,13 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           While <Strong>loading</Strong>, a skeleton is shown. Else a loaded{' '}
-          <Strong>imageUrl</Strong> is shown (or a broken-image icon on error).
-          Else the first letter of <Strong>name</Strong>. Else{' '}
-          <Strong>icon</Strong> if you passed one. Else{' '}
+          <Strong>imageUrl</Strong> is shown. If that URL fails,{' '}
+          <TextLink href="/components/IconImageBroken">
+            IconImageBroken
+          </TextLink>{' '}
+          is shown — not initials or <Strong>icon</Strong>. Else the first
+          letter of <Strong>name</Strong>. Else <Strong>icon</Strong> if you
+          passed one. Else{' '}
           <TextLink href="/components/IconProfile">IconProfile</TextLink>.
           Passing <Strong>name</Strong> and <Strong>icon</Strong> together shows
           initials — omit <Strong>name</Strong> for company and add-photo
@@ -253,10 +260,14 @@ const docs: ComponentDocs = {
             so the visible face is slightly smaller.
           </Text>
           <Text>
-            If the image fails to load, a broken image icon is shown.{' '}
-            <Strong>loading</Strong> still takes precedence while data is
-            fetched. Omit <Strong>imageUrl</Strong> when the image must not be
-            shown, for example when names are hidden. A loaded image ignores{' '}
+            If the image fails to load,{' '}
+            <TextLink href="/components/IconImageBroken">
+              IconImageBroken
+            </TextLink>{' '}
+            is shown — not initials or <Strong>icon</Strong>. Omit{' '}
+            <Strong>imageUrl</Strong> when the image must not be shown, for
+            example when names are hidden. <Strong>loading</Strong> still takes
+            precedence while data is fetched. A loaded image ignores{' '}
             <Strong>icon</Strong> except as the hover overlay.
           </Text>
         </>
@@ -328,7 +339,8 @@ const docs: ComponentDocs = {
             and shows the icon. Keep the upload/delete menu, file input and crop
             on a{' '}
             <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>{' '}
-            wrapper.
+            inside that tooltip wrapper — put trigger props on the wrapper, not
+            on Avatar.
           </Text>
         </>
       ),
@@ -419,16 +431,16 @@ const docs: ComponentDocs = {
             <TextLink href="/components/TooltipRenderer">
               TooltipRenderer
             </TextLink>{' '}
-            and spread <Strong>triggerProps</Strong> onto Avatar. Use this when
-            the face is the only identifier (no name beside it), or for an
-            add-photo or update-photo control whose label should also show on
-            hover.
+            and spread <Strong>triggerProps</Strong> last onto Avatar so the
+            tooltip keeps its ref. Use this when the face is the only identifier
+            (no name beside it), or for add/update photo.
           </Text>
           <Text>
-            Do not wrap when the name is already visible in the layout, or when
-            a parent such as{' '}
-            <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink> is
-            already the control.
+            Skip a tip when the name is already visible beside the face. If
+            click opens a{' '}
+            <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>,
+            wrap TooltipRenderer around the menu and put trigger props on that
+            wrapper, not on Avatar inside the menu button.
           </Text>
         </>
       ),

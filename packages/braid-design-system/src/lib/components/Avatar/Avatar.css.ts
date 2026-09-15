@@ -68,6 +68,7 @@ export const imageLoaded = style({
 });
 
 export const overlayScrim = style({
+  // Match My Profile hover: SEEK grey 700 at 80%, not a theme surface token.
   opacity: 0,
   background: palette.grey[700],
   transition: 'opacity 200ms ease-in-out',
