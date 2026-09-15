@@ -3,6 +3,8 @@ import { palette } from '../../color/palette';
 export const photoExampleUrl =
   'https://images.unsplash.com/photo-1786908432787-3d7747c0707d?w=192&h=192&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.35&fp-z=2.25';
 
+export const photoBrokenUrl = 'data:image/png;base64,not-an-image';
+
 export const photoPlaceholderUrl = `data:image/svg+xml;base64,${Buffer.from(
   `<svg
 xmlns="http://www.w3.org/2000/svg"
