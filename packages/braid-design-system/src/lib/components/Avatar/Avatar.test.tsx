@@ -409,6 +409,48 @@ describe('Avatar', () => {
         ),
       ).toThrow('aria-label');
     });
+
+    it('hides a decorative avatar from assistive technologies', () => {
+      render(
+        <BraidTestProvider>
+          <Avatar name="Leia Organa" data={{ testid: 'avatar' }} />
+        </BraidTestProvider>,
+      );
+
+      expect(screen.getByTestId('avatar')).toHaveAttribute(
+        'aria-hidden',
+        'true',
+      );
+    });
+
+    it('exposes a labelled image when tooltip triggerProps are spread', () => {
+      render(
+        <BraidTestProvider>
+          <Avatar
+            name="Leia Organa"
+            aria-label="Leia Organa"
+            tabIndex={0}
+            aria-describedby="avatar-tooltip"
+            data={{ testid: 'avatar' }}
+          />
+        </BraidTestProvider>,
+      );
+
+      const avatar = screen.getByRole('img', { name: 'Leia Organa' });
+      expect(avatar).toHaveAttribute('tabindex', '0');
+      expect(avatar).toHaveAttribute('aria-describedby', 'avatar-tooltip');
+      expect(avatar).not.toHaveAttribute('aria-hidden');
+    });
+
+    it('throws when tabIndex is set without aria-label', () => {
+      expect(() =>
+        render(
+          <BraidTestProvider>
+            <Avatar name="Leia Organa" tabIndex={0} />
+          </BraidTestProvider>,
+        ),
+      ).toThrow('aria-label');
+    });
   });
 
   describe('Hover overlay', () => {

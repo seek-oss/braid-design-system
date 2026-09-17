@@ -15,7 +15,7 @@ import {
 
 import { palette } from '../../color/palette';
 import type { UseIconProps } from '../../hooks/useIcon';
-import { Box } from '../Box/Box';
+import { Box, type BoxProps } from '../Box/Box';
 import { Heading } from '../Heading/Heading';
 import { Text } from '../Text/Text';
 import { IconImageBroken, IconProfile } from '../icons';
@@ -31,11 +31,13 @@ type AvatarSize = keyof typeof styles.size;
 export interface AvatarProps {
   size?: AvatarSize;
   'aria-label'?: string;
+  'aria-describedby'?: string;
   name?: string;
   imageUrl?: string;
   icon?: ReactElement;
   loading?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  tabIndex?: BoxProps['tabIndex'];
   data?: DataAttributeMap;
 }
 
@@ -147,16 +149,23 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
       imageUrl,
       icon,
       onClick,
+      tabIndex,
       data,
       ...restProps
     },
     ref,
   ) => {
     const size = resolveAvatarSize(sizeProp);
+    const focusable = tabIndex != null;
 
     assert(
       !onClick || Boolean(ariaLabel),
       'Avatar with onClick requires aria-label so the button has an accessible name.',
+    );
+
+    assert(
+      !focusable || Boolean(ariaLabel),
+      'Avatar with tabIndex requires aria-label so the focusable avatar has an accessible name.',
     );
 
     if (icon) {
@@ -228,12 +237,15 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
       };
     } else if (labelled) {
       a11yProps = { role: 'img' as const, 'aria-label': ariaLabel };
-    } else {
+    } else if (!focusable) {
       a11yProps = { 'aria-hidden': true as const };
+    } else {
+      a11yProps = {};
     }
 
     const rootProps = {
       ref,
+      tabIndex,
       display: 'flex' as const,
       borderRadius,
       className: [

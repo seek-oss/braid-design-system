@@ -159,6 +159,7 @@ exports[`Avatar 1`] = `
 {
   exportType: component,
   props: {
+    aria-describedby?: string
     aria-label?: string
     data?: DataAttributeMap
     icon?: ReactElement<unknown, string | JSXElementConstructor<any>>
@@ -177,6 +178,7 @@ exports[`Avatar 1`] = `
         | "xlarge"
         | "xsmall"
         | "xxlarge"
+    tabIndex?: number
 },
 }
 `;
