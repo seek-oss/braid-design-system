@@ -5,13 +5,17 @@
 ---
 updated:
   - Accordion
+  - AccordionItem
 ---
 
-**Accordion:** Add `autoCollapse` prop
+**Accordion, AccordionItem:** Add `autoCollapse` and animate expand/collapse height
 
-Opening an item closes any other open item. Accordions with `autoCollapse` start collapsed and are not controlled with item-level `expanded`. `onToggle` fires on the item that was clicked, and with `false` on the item that was closed as a result.
+Opening an item with `autoCollapse` closes any other open item. These accordions start collapsed and cannot use item-level `expanded`.
+
+Items now animate height when opening and closing, unless `prefers-reduced-motion` is set. Collapsed panels stay in the document at zero height (`visibility: hidden`, `aria-hidden`, `inert`) instead of `display: none`.
 
 **EXAMPLE USAGE:**
+
 ```jsx
 <Accordion autoCollapse>
   <AccordionItem label="One">...</AccordionItem>

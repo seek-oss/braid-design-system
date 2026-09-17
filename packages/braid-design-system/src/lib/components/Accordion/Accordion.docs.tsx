@@ -203,11 +203,12 @@ const docs: ComponentDocs = {
               Clicking the open item collapses it. All items start collapsed.
             </Text>
             <Text>
-              Don&rsquo;t set <Strong>expanded</Strong> on items when{' '}
-              <Strong>autoCollapse</Strong> is on. Use <Strong>onToggle</Strong>{' '}
-              to observe changes. To start an item open, omit{' '}
-              <Strong>autoCollapse</Strong> and control{' '}
-              <Strong>expanded</Strong> yourself (see Managing state).
+              <Strong>autoCollapse</Strong> is uncontrolled and always starts
+              collapsed. Don&rsquo;t set <Strong>expanded</Strong> on items. Use{' '}
+              <Strong>onToggle</Strong> to observe changes. To start an item
+              open, or to open several at once, omit{' '}
+              <Strong>autoCollapse</Strong> and use <Strong>expanded</Strong>{' '}
+              (see Managing state).
             </Text>
           </Stack>
         ),
@@ -237,8 +238,8 @@ const docs: ComponentDocs = {
               <Strong>onToggle</Strong> props.
             </Text>
             <Text>
-              To start an item open, initialise your state to{' '}
-              <Strong>true</Strong>. Do not combine this with{' '}
+              To start an item open, or to open several at once, initialise{' '}
+              <Strong>expanded</Strong> on each item. Do not combine this with{' '}
               <Strong>autoCollapse</Strong>.
             </Text>
           </Stack>
