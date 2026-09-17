@@ -1,7 +1,6 @@
 import assert from 'assert';
 
 import {
-  cloneElement,
   forwardRef,
   isValidElement,
   useLayoutEffect,
@@ -14,7 +13,6 @@ import {
 } from 'react';
 
 import { palette } from '../../color/palette';
-import type { UseIconProps } from '../../hooks/useIcon';
 import { Box, type BoxProps } from '../Box/Box';
 import { Heading } from '../Heading/Heading';
 import { Text } from '../Text/Text';
@@ -223,8 +221,6 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
 
     const labelled = Boolean(ariaLabel);
     const clickable = Boolean(onClick);
-    const showImage = Boolean(imageUrl) && !imageError && !loading;
-    const showHoverOverlay = showImage && Boolean(icon);
     const borderRadius = avatarSizeToBorderRadius[size];
 
     let a11yProps;
@@ -251,7 +247,7 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
       className: [
         styles.root,
         styles.size[size],
-        clickable || showHoverOverlay ? styles.clickable : undefined,
+        clickable ? styles.clickable : undefined,
         clickable &&
         (size === 'xsmall' || size === 'small' || size === 'medium')
           ? styles.enlargedHitArea
@@ -269,35 +265,6 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
       height: 'full' as const,
       width: 'full' as const,
     };
-
-    const hoverOverlay = showHoverOverlay ? (
-      <>
-        <Box
-          position="absolute"
-          inset={0}
-          pointerEvents="none"
-          borderRadius={borderRadius}
-          className={styles.overlayScrim}
-        />
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          pointerEvents="none"
-          position="absolute"
-          inset={0}
-          zIndex={1}
-        >
-          <Box className={styles.overlayIcon}>
-            <AvatarTextContent size={size}>
-              {cloneElement(icon as ReactElement<UseIconProps>, {
-                alignY: undefined,
-              })}
-            </AvatarTextContent>
-          </Box>
-        </Box>
-      </>
-    ) : null;
 
     const face = (() => {
       if (loading) {
@@ -326,7 +293,7 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
 
       if (imageUrl) {
         return (
-          <Box {...faceProps} background="neutralLight" position="relative">
+          <Box {...faceProps} background="neutralLight">
             <Box
               component="img"
               key={imageUrl}
@@ -352,7 +319,6 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
                 imageLoaded ? styles.imageLoaded : undefined,
               ]}
             />
-            {hoverOverlay}
           </Box>
         );
       }
