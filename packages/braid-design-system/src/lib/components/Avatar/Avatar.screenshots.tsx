@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { Avatar, IconCompany, IconPhotoAdd, Inline, Stack, Text } from '../';
+import { Avatar, IconCompany, Inline, Stack, Text } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 import * as styles from './Avatar.css';
@@ -123,29 +123,6 @@ export const CompanyFallback: Story = {
       <Avatar icon={<IconCompany />} />
       <Avatar imageUrl={imageUrl} />
     </Inline>
-  ),
-};
-
-export const AddPhoto: Story = {
-  name: 'Add photo',
-  render: () => (
-    <Avatar
-      icon={<IconPhotoAdd />}
-      aria-label="Add photo"
-      onClick={() => undefined}
-    />
-  ),
-};
-
-export const UpdatePhoto: Story = {
-  name: 'Update photo hover overlay',
-  render: () => (
-    <Avatar
-      size="xxlarge"
-      imageUrl={imageUrl}
-      icon={<IconPhotoAdd />}
-      aria-label="Update photo"
-    />
   ),
 };
 
