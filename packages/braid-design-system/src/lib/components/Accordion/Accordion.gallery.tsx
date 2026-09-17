@@ -46,6 +46,40 @@ export const galleryItems: GalleryComponent = {
         ),
     },
     {
+      label: 'Auto collapse',
+      Example: () =>
+        source(
+          <Accordion autoCollapse>
+            <AccordionItem label="Item 1">
+              <Placeholder height={100} />
+            </AccordionItem>
+            <AccordionItem label="Item 2">
+              <Placeholder height={100} />
+            </AccordionItem>
+            <AccordionItem label="Item 3">
+              <Placeholder height={100} />
+            </AccordionItem>
+          </Accordion>,
+        ),
+    },
+    {
+      label: 'Auto collapse with default expanded',
+      Example: () =>
+        source(
+          <Accordion autoCollapse>
+            <AccordionItem id="item-1" label="Item 1" defaultExpanded>
+              <Placeholder height={100} />
+            </AccordionItem>
+            <AccordionItem label="Item 2">
+              <Placeholder height={100} />
+            </AccordionItem>
+            <AccordionItem label="Item 3">
+              <Placeholder height={100} />
+            </AccordionItem>
+          </Accordion>,
+        ),
+    },
+    {
       label: 'With a Badge',
       Example: () =>
         source(

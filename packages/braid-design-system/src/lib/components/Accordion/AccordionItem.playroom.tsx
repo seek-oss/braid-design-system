@@ -1,7 +1,8 @@
-import type { FC } from 'react';
+import { useContext, type FC } from 'react';
 
 import { type StateProp, useFallbackState } from '../../playroom/playroomState';
 
+import { AccordionContext } from './AccordionContext';
 import {
   type AccordionItemProps,
   type AccordionItemBaseProps,
@@ -13,13 +14,14 @@ type OptionalProps = 'id';
 type PlayroomAccordionItemProps = StateProp &
   AccordionItemBaseProps &
   AccordionItemStateProps &
-  Partial<Pick<AccordionItemProps, OptionalProps>>;
+  Partial<Pick<AccordionItemProps, OptionalProps | 'defaultExpanded'>>;
 
 export const AccordionItem: FC<PlayroomAccordionItemProps> = ({
   label,
   stateName,
   expanded,
   onToggle,
+  defaultExpanded,
   size,
   tone,
   weight,
@@ -27,17 +29,19 @@ export const AccordionItem: FC<PlayroomAccordionItemProps> = ({
   icon,
   ...restProps
 }) => {
+  const autoCollapse = Boolean(useContext(AccordionContext)?.autoCollapse);
   const [state, handleChange] = useFallbackState(
     stateName,
     expanded,
     onToggle,
-    false,
+    Boolean(defaultExpanded),
   );
 
   return (
     <BraidAccordionItem
-      expanded={state}
-      onToggle={handleChange}
+      {...(autoCollapse
+        ? { onToggle: handleChange, defaultExpanded }
+        : { expanded: state, onToggle: handleChange })}
       label={typeof label !== 'boolean' ? label : ''}
       size={typeof size === 'boolean' ? undefined : size}
       tone={typeof tone === 'boolean' ? undefined : tone}
