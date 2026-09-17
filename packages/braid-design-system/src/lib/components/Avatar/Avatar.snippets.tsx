@@ -3,7 +3,6 @@ import source from '@braid-design-system/source.macro';
 import {
   Avatar,
   IconCompany,
-  IconPhotoAdd,
   Inline,
   Stack,
   Text,
@@ -61,38 +60,6 @@ export const snippets: Snippets = [
   {
     description: 'Company',
     code: source(<Avatar icon={<IconCompany />} />),
-  },
-  {
-    description: 'Add photo',
-    code: source(
-      <TooltipRenderer tooltip={<Text>Add photo</Text>}>
-        {({ triggerProps }) => (
-          <Avatar
-            size="xxlarge"
-            icon={<IconPhotoAdd />}
-            aria-label="Add photo"
-            onClick={() => undefined}
-            {...triggerProps}
-          />
-        )}
-      </TooltipRenderer>,
-    ),
-  },
-  {
-    description: 'Update photo',
-    code: source(
-      <TooltipRenderer tooltip={<Text>Update photo</Text>}>
-        {({ triggerProps }) => (
-          <Avatar
-            size="xxlarge"
-            imageUrl="https://example.com/photo.jpg"
-            icon={<IconPhotoAdd />}
-            aria-label="Update photo"
-            {...triggerProps}
-          />
-        )}
-      </TooltipRenderer>,
-    ),
   },
   {
     description: 'With tooltip',

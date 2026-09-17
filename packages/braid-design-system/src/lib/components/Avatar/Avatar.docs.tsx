@@ -7,7 +7,6 @@ import {
   Column,
   Columns,
   IconCompany,
-  IconPhotoAdd,
   Inline,
   List,
   Stack,
@@ -54,50 +53,13 @@ const docs: ComponentDocs = {
     return { code, value };
   },
   accessibility: (
-    <>
-      <Text>
-        Avatar is decorative by default. The root is hidden from assistive
-        technologies, and images use an empty <Strong>alt</Strong>, so initials
-        and images are not announced. Name the person with adjacent text, or
-        pass <Strong>aria-label</Strong>.
-      </Text>
-      <Text>
-        If there is no adjacent name, pass <Strong>aria-label</Strong> so the
-        avatar is exposed as an image with that accessible name. Do not pass{' '}
-        <Strong>aria-label</Strong> when the name is already visible beside the
-        avatar.
-      </Text>
-      <Text>
-        <Strong>onClick</Strong> turns Avatar into a button and requires{' '}
-        <Strong>aria-label</Strong>. Use it only when the square itself is the
-        control — Avatar then enlarges the hit area on <Strong>xsmall</Strong>,{' '}
-        <Strong>small</Strong> and <Strong>medium</Strong>. If click opens a{' '}
-        <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>, put{' '}
-        <Strong>onClick</Strong> on the wrapper, not on Avatar.
-      </Text>
-      <Text>
-        For a hover tip, wrap with{' '}
-        <TextLink href="/components/TooltipRenderer">TooltipRenderer</TextLink>{' '}
-        and spread <Strong>triggerProps</Strong> last onto Avatar (or onto a
-        wrapping Box) so the tooltip keeps its ref. Those props set{' '}
-        <Strong>tabIndex</Strong>, so <Strong>aria-label</Strong> is required —
-        otherwise a decorative Avatar would be focusable and hidden from
-        assistive technologies. Skip a tip when the name is already visible
-        beside the face. For add/update photo with a{' '}
-        <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>, wrap
-        TooltipRenderer around the menu, and put trigger props on that wrapper —
-        not on Avatar inside the menu button.
-      </Text>
-      <Text>
-        Do not use per-avatar <Strong>onClick</Strong> in overlapping clusters.
-      </Text>
-      <Text>
-        The <Strong>loading</Strong> shimmer is visual only. It is paused when{' '}
-        <Strong>prefers-reduced-motion</Strong> is set, and is not announced. If
-        loading matters to the task, set <Strong>aria-busy</Strong> on the
-        surrounding content.
-      </Text>
-    </>
+    <Text>
+      Avatar is decorative by default. The root is hidden from assistive
+      technologies, and images use an empty <Strong>alt</Strong>. Name the
+      person with adjacent text. Pass <Strong>aria-label</Strong> when there is
+      no visible name, or when Avatar is a button (<Strong>onClick</Strong>) or
+      a tooltip trigger.
+    </Text>
   ),
   alternatives: [
     {
@@ -137,8 +99,8 @@ const docs: ComponentDocs = {
           passed one. Else{' '}
           <TextLink href="/components/IconProfile">IconProfile</TextLink>.
           Passing <Strong>name</Strong> and <Strong>icon</Strong> together shows
-          initials — omit <Strong>name</Strong> for company and add-photo
-          fallbacks.
+          initials — omit <Strong>name</Strong> for a custom{' '}
+          <Strong>icon</Strong> fallback.
         </Text>
       ),
     },
@@ -271,7 +233,7 @@ const docs: ComponentDocs = {
             <Strong>imageUrl</Strong> when the image must not be shown, for
             example when names are hidden. <Strong>loading</Strong> still takes
             precedence while data is fetched. A loaded image ignores{' '}
-            <Strong>icon</Strong> except as the hover overlay.
+            <Strong>icon</Strong>.
           </Text>
         </>
       ),
@@ -332,115 +294,6 @@ const docs: ComponentDocs = {
       },
     },
     {
-      label: 'Add and update photo',
-      description: (
-        <>
-          <Text>
-            Empty add-photo: omit <Strong>name</Strong>, pass{' '}
-            <Strong>icon</Strong> as{' '}
-            <TextLink href="/components/IconPhotoAdd">IconPhotoAdd</TextLink>,
-            plus <Strong>aria-label</Strong> and <Strong>onClick</Strong> when
-            this square is the file-picker control. Wrap with{' '}
-            <TextLink href="/components/TooltipRenderer">
-              TooltipRenderer
-            </TextLink>{' '}
-            so sighted pointer users see the same label on hover.
-          </Text>
-          <Text>
-            Update photo: pass <Strong>imageUrl</Strong> and the same{' '}
-            <Strong>icon</Strong>, wrap with{' '}
-            <TextLink href="/components/TooltipRenderer">
-              TooltipRenderer
-            </TextLink>{' '}
-            for the “Update photo” label, and do not set{' '}
-            <Strong>onClick</Strong> on Avatar. Hover or focus dims the image
-            and shows the icon. Keep the upload/delete menu, file input and crop
-            on a{' '}
-            <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>{' '}
-            inside that tooltip wrapper — put trigger props on the wrapper, not
-            on Avatar.
-          </Text>
-        </>
-      ),
-      Example: () => {
-        const { value } = source(
-          <Inline space="xlarge" alignY="bottom">
-            <Stack space="small" align="center">
-              <TooltipRenderer tooltip={<Text>Add photo</Text>}>
-                {({ triggerProps }) => (
-                  <Avatar
-                    size="xxlarge"
-                    icon={<IconPhotoAdd />}
-                    aria-label="Add photo"
-                    onClick={() => undefined}
-                    {...triggerProps}
-                  />
-                )}
-              </TooltipRenderer>
-              <Text size="small" tone="secondary">
-                Add photo
-              </Text>
-            </Stack>
-            <Stack space="small" align="center">
-              <TooltipRenderer tooltip={<Text>Update photo</Text>}>
-                {({ triggerProps }) => (
-                  <Avatar
-                    size="xxlarge"
-                    imageUrl={photoExampleUrl}
-                    icon={<IconPhotoAdd />}
-                    aria-label="Update photo"
-                    {...triggerProps}
-                  />
-                )}
-              </TooltipRenderer>
-              <Text size="small" tone="secondary">
-                Update photo
-              </Text>
-            </Stack>
-          </Inline>,
-        );
-
-        const { code } = source(
-          <Inline space="xlarge" alignY="bottom">
-            <Stack space="small" align="center">
-              <TooltipRenderer tooltip={<Text>Add photo</Text>}>
-                {({ triggerProps }) => (
-                  <Avatar
-                    size="xxlarge"
-                    icon={<IconPhotoAdd />}
-                    aria-label="Add photo"
-                    onClick={() => undefined}
-                    {...triggerProps}
-                  />
-                )}
-              </TooltipRenderer>
-              <Text size="small" tone="secondary">
-                Add photo
-              </Text>
-            </Stack>
-            <Stack space="small" align="center">
-              <TooltipRenderer tooltip={<Text>Update photo</Text>}>
-                {({ triggerProps }) => (
-                  <Avatar
-                    size="xxlarge"
-                    imageUrl="https://example.com/photo.jpg"
-                    icon={<IconPhotoAdd />}
-                    aria-label="Update photo"
-                    {...triggerProps}
-                  />
-                )}
-              </TooltipRenderer>
-              <Text size="small" tone="secondary">
-                Update photo
-              </Text>
-            </Stack>
-          </Inline>,
-        );
-
-        return { code, value };
-      },
-    },
-    {
       label: 'Tooltip',
       description: (
         <>
@@ -450,8 +303,9 @@ const docs: ComponentDocs = {
               TooltipRenderer
             </TextLink>{' '}
             and spread <Strong>triggerProps</Strong> last onto Avatar so the
-            tooltip keeps its ref. Use this when the face is the only identifier
-            (no name beside it), or for add/update photo.
+            tooltip keeps its ref. Those props set <Strong>tabIndex</Strong>, so{' '}
+            <Strong>aria-label</Strong> is required. Use this when the face is
+            the only identifier (no name beside it).
           </Text>
           <Text>
             Skip a tip when the name is already visible beside the face. If
@@ -480,7 +334,8 @@ const docs: ComponentDocs = {
       description: (
         <Text>
           Set <Strong>loading</Strong> to show a shimmering skeleton while user
-          data is fetched. This is shown instead of image, initials, or icon.
+          data is fetched. This is shown instead of image, initials, or icon,
+          and is not announced.
         </Text>
       ),
       Example: () => source(<Avatar name="Leia Organa" loading />),
@@ -573,8 +428,7 @@ const docs: ComponentDocs = {
                 to represent a person or company in a list, card, or header
               </Text>
               <Text>
-                with <Strong>icon</Strong> for an empty company mark or
-                add-photo control
+                with <Strong>icon</Strong> for an empty company mark
               </Text>
             </List>
           </Stack>

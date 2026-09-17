@@ -16,9 +16,4 @@ A rounded-square identity mark for a person or company. Shows an image, initials
 ```jsx
 <Avatar name="Leia Organa" />
 <Avatar icon={<IconCompany />} />
-<Avatar
-  icon={<IconPhotoAdd />}
-  aria-label="Add photo"
-  onClick={openPicker}
-/>
 ```

@@ -1,16 +1,12 @@
 import { act, render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 
-import { Avatar } from '..';
+import { Avatar, Text, TooltipRenderer } from '..';
 import { BraidTestProvider } from '../../../test';
 import { palette } from '../../color/palette';
 import { IconCompany, IconPhotoAdd } from '../icons';
 
-import {
-  keyline as keylineStyle,
-  imageLoaded,
-  overlayScrim,
-} from './Avatar.css';
+import { keyline as keylineStyle, imageLoaded } from './Avatar.css';
 import { photoPlaceholderUrl } from './photoPlaceholder.css';
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
 import { shimmerAnimation } from '../private/Skeleton/Skeleton.css';
@@ -451,35 +447,51 @@ describe('Avatar', () => {
         ),
       ).toThrow('aria-label');
     });
+
+    it('keeps click when tooltip triggerProps wrap an image avatar', () => {
+      const onClick = vi.fn();
+      render(
+        <BraidTestProvider>
+          <TooltipRenderer tooltip={<Text>Update photo</Text>}>
+            {({ triggerProps }) => (
+              <Avatar
+                imageUrl={photoPlaceholderUrl}
+                aria-label="Update photo"
+                onClick={onClick}
+                {...triggerProps}
+              />
+            )}
+          </TooltipRenderer>
+        </BraidTestProvider>,
+      );
+
+      const button = screen.getByRole('button', { name: 'Update photo' });
+      expect(button).not.toHaveAttribute('aria-hidden');
+      button.click();
+      expect(onClick).toHaveBeenCalledTimes(1);
+    });
   });
 
-  describe('Hover overlay', () => {
-    it('renders an overlay when imageUrl and icon are both set', () => {
-      render(
+  describe('Image and icon', () => {
+    it('ignores icon when an image is shown', () => {
+      const { container } = render(
         <BraidTestProvider>
           <Avatar
             imageUrl={photoPlaceholderUrl}
             icon={<IconPhotoAdd />}
             aria-label="Update photo"
+            onClick={() => undefined}
           />
         </BraidTestProvider>,
       );
 
-      expect(document.querySelector(`.${overlayScrim}`)).not.toBeNull();
-    });
-
-    it('does not render an overlay for a named image without icon', () => {
-      render(
-        <BraidTestProvider>
-          <Avatar
-            name="Leia Organa"
-            imageUrl={photoPlaceholderUrl}
-            aria-label="Leia"
-          />
-        </BraidTestProvider>,
-      );
-
-      expect(document.querySelector(`.${overlayScrim}`)).toBeNull();
+      expect(
+        screen.getByRole('button', { name: 'Update photo' }),
+      ).toBeVisible();
+      expect(
+        screen.getByRole('presentation', { hidden: true }),
+      ).toHaveAttribute('src', photoPlaceholderUrl);
+      expect(container.querySelector('svg')).toBeNull();
     });
   });
 });
