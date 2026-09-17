@@ -136,4 +136,103 @@ describe('Accordion', () => {
       ),
     ).toThrow(/expanded cannot be set/i);
   });
+
+  it('should start with defaultExpanded items open', async () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Accordion>
+          <AccordionItem label="One" defaultExpanded>
+            First
+          </AccordionItem>
+          <AccordionItem label="Two" defaultExpanded>
+            Second
+          </AccordionItem>
+          <AccordionItem label="Three">Third</AccordionItem>
+        </Accordion>
+      </BraidTestProvider>,
+    );
+
+    const first = getByRole('button', { name: 'One' });
+    const second = getByRole('button', { name: 'Two' });
+    const third = getByRole('button', { name: 'Three' });
+
+    expect(first).toHaveAttribute('aria-expanded', 'true');
+    expect(second).toHaveAttribute('aria-expanded', 'true');
+    expect(third).toHaveAttribute('aria-expanded', 'false');
+
+    await userEvent.click(first);
+    expect(first).toHaveAttribute('aria-expanded', 'false');
+    expect(second).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  it('should start with a defaultExpanded item open when autoCollapse', async () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Accordion autoCollapse>
+          <AccordionItem id="one" label="One" defaultExpanded>
+            First
+          </AccordionItem>
+          <AccordionItem label="Two">Second</AccordionItem>
+          <AccordionItem label="Three">Third</AccordionItem>
+        </Accordion>
+      </BraidTestProvider>,
+    );
+
+    const first = getByRole('button', { name: 'One' });
+    const second = getByRole('button', { name: 'Two' });
+    const third = getByRole('button', { name: 'Three' });
+
+    expect(first).toHaveAttribute('aria-expanded', 'true');
+    expect(second).toHaveAttribute('aria-expanded', 'false');
+    expect(third).toHaveAttribute('aria-expanded', 'false');
+
+    const firstContent = document.getElementById(
+      first.getAttribute('aria-controls')!,
+    );
+    const secondContent = document.getElementById(
+      second.getAttribute('aria-controls')!,
+    );
+
+    expect(firstContent).not.toHaveAttribute('aria-hidden');
+    expect(firstContent).not.toHaveAttribute('inert');
+    expect(firstContent?.style.height).toBe('');
+    expect(firstContent?.style.transitionDuration).toBe('');
+    expect(secondContent).toHaveAttribute('aria-hidden', 'true');
+
+    await userEvent.click(second);
+    expect(first).toHaveAttribute('aria-expanded', 'false');
+    expect(second).toHaveAttribute('aria-expanded', 'true');
+    expect(third).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('should not allow more than one defaultExpanded item when autoCollapse', () => {
+    expect(() =>
+      render(
+        <BraidTestProvider>
+          <Accordion autoCollapse>
+            <AccordionItem id="one" label="One" defaultExpanded>
+              First
+            </AccordionItem>
+            <AccordionItem id="two" label="Two" defaultExpanded>
+              Second
+            </AccordionItem>
+          </Accordion>
+        </BraidTestProvider>,
+      ),
+    ).toThrow(/only one accordionitem can set 'defaultexpanded'/i);
+  });
+
+  it('should not allow defaultExpanded without id when autoCollapse', () => {
+    expect(() =>
+      render(
+        <BraidTestProvider>
+          <Accordion autoCollapse>
+            <AccordionItem label="One" defaultExpanded>
+              First
+            </AccordionItem>
+          </Accordion>
+        </BraidTestProvider>,
+      ),
+    ).toThrow(/'id' must be set on accordionitem/i);
+  });
 });

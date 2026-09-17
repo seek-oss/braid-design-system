@@ -179,6 +179,47 @@ describe('AccordionItem', () => {
     expect(html).not.toMatch(/height:\s*0px/);
   });
 
+  it('should start expanded when defaultExpanded is set', async () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <AccordionItem label="Label" defaultExpanded>
+          Content
+        </AccordionItem>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
+    );
+
+    expect(button.getAttribute('aria-expanded')).toEqual('true');
+    expect(content).not.toHaveAttribute('aria-hidden');
+    expect(content).not.toHaveAttribute('inert');
+    expect(content?.style.height).toBe('');
+    expect(content?.style.transitionDuration).toBe('');
+
+    await userEvent.click(button);
+    expect(button.getAttribute('aria-expanded')).toEqual('false');
+  });
+
+  it('should not allow defaultExpanded when expanded is set', () => {
+    expect(() =>
+      render(
+        <BraidTestProvider>
+          <AccordionItem
+            label="Label"
+            defaultExpanded
+            expanded
+            onToggle={() => {}}
+          >
+            Content
+          </AccordionItem>
+        </BraidTestProvider>,
+      ),
+    ).toThrow(/'defaultexpanded' cannot be set when 'expanded' is set/i);
+  });
+
   it('should not pin expanded content to a 0px inline height on the client', () => {
     const { getByRole } = render(
       <BraidTestProvider>
