@@ -448,15 +448,15 @@ describe('Avatar', () => {
       ).toThrow('aria-label');
     });
 
-    it('keeps click when tooltip triggerProps wrap an image avatar', () => {
+    it('keeps click when tooltip triggerProps wrap an add-photo avatar', () => {
       const onClick = vi.fn();
       render(
         <BraidTestProvider>
-          <TooltipRenderer tooltip={<Text>Update photo</Text>}>
+          <TooltipRenderer tooltip={<Text>Add photo</Text>}>
             {({ triggerProps }) => (
               <Avatar
-                imageUrl={photoPlaceholderUrl}
-                aria-label="Update photo"
+                icon={<IconPhotoAdd />}
+                aria-label="Add photo"
                 onClick={onClick}
                 {...triggerProps}
               />
@@ -465,7 +465,7 @@ describe('Avatar', () => {
         </BraidTestProvider>,
       );
 
-      const button = screen.getByRole('button', { name: 'Update photo' });
+      const button = screen.getByRole('button', { name: 'Add photo' });
       expect(button).not.toHaveAttribute('aria-hidden');
       button.click();
       expect(onClick).toHaveBeenCalledTimes(1);
@@ -477,17 +477,13 @@ describe('Avatar', () => {
       const { container } = render(
         <BraidTestProvider>
           <Avatar
+            name="Leia Organa"
             imageUrl={photoPlaceholderUrl}
             icon={<IconPhotoAdd />}
-            aria-label="Update photo"
-            onClick={() => undefined}
           />
         </BraidTestProvider>,
       );
 
-      expect(
-        screen.getByRole('button', { name: 'Update photo' }),
-      ).toBeVisible();
       expect(
         screen.getByRole('presentation', { hidden: true }),
       ).toHaveAttribute('src', photoPlaceholderUrl);

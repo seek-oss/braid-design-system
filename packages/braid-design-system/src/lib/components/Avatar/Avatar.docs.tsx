@@ -7,6 +7,7 @@ import {
   Column,
   Columns,
   IconCompany,
+  IconPhotoAdd,
   Inline,
   List,
   Stack,
@@ -58,7 +59,9 @@ const docs: ComponentDocs = {
       technologies, and images use an empty <Strong>alt</Strong>. Name the
       person with adjacent text. Pass <Strong>aria-label</Strong> when there is
       no visible name, or when Avatar is a button (<Strong>onClick</Strong>) or
-      a tooltip trigger.
+      a tooltip trigger. Use <Strong>onClick</Strong> only when the square
+      itself is the control, such as a file picker — not inside a{' '}
+      <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>.
     </Text>
   ),
   alternatives: [
@@ -107,11 +110,18 @@ const docs: ComponentDocs = {
     {
       label: 'Empty',
       description: (
-        <Text>
-          Omit <Strong>name</Strong>, or pass a value with no letter, to show{' '}
-          <TextLink href="/components/IconProfile">IconProfile</TextLink>, or
-          pass <Strong>icon</Strong> for a custom empty state.
-        </Text>
+        <>
+          <Text>
+            Omit <Strong>name</Strong>, or pass a value with no letter, to show{' '}
+            <TextLink href="/components/IconProfile">IconProfile</TextLink>, or
+            pass <Strong>icon</Strong> for a custom empty state.
+          </Text>
+          <Text>
+            As a control, omit <Strong>name</Strong> and pass{' '}
+            <Strong>icon</Strong>, <Strong>aria-label</Strong> and{' '}
+            <Strong>onClick</Strong>.
+          </Text>
+        </>
       ),
       Example: () =>
         source(
@@ -138,6 +148,16 @@ const docs: ComponentDocs = {
               <Avatar name="2187" />
               <Text size="small" tone="secondary">
                 no letters
+              </Text>
+            </Stack>
+            <Stack space="small" align="center">
+              <Avatar
+                icon={<IconPhotoAdd />}
+                aria-label="Add photo"
+                onClick={() => undefined}
+              />
+              <Text size="small" tone="secondary">
+                add photo
               </Text>
             </Stack>
           </Inline>,
@@ -429,6 +449,10 @@ const docs: ComponentDocs = {
               </Text>
               <Text>
                 with <Strong>icon</Strong> for an empty company mark
+              </Text>
+              <Text>
+                with <Strong>icon</Strong>, <Strong>aria-label</Strong> and{' '}
+                <Strong>onClick</Strong> for an empty add-photo control
               </Text>
             </List>
           </Stack>

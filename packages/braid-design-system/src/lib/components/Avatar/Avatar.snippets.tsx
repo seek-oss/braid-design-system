@@ -3,6 +3,7 @@ import source from '@braid-design-system/source.macro';
 import {
   Avatar,
   IconCompany,
+  IconPhotoAdd,
   Inline,
   Stack,
   Text,
@@ -60,6 +61,16 @@ export const snippets: Snippets = [
   {
     description: 'Company',
     code: source(<Avatar icon={<IconCompany />} />),
+  },
+  {
+    description: 'Add photo',
+    code: source(
+      <Avatar
+        icon={<IconPhotoAdd />}
+        aria-label="Add photo"
+        onClick={() => undefined}
+      />,
+    ),
   },
   {
     description: 'With tooltip',
