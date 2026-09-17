@@ -435,6 +435,27 @@ export const AutoCollapseAccordion = {
   ),
 };
 
+export const AutoCollapseAccordionDefaultExpanded = {
+  name: 'Accordion with autoCollapse and defaultExpanded',
+  render: () => (
+    <Accordion autoCollapse>
+      <AccordionItem
+        id="accordion-item-1"
+        label="Accordion item 1"
+        defaultExpanded
+      >
+        <Placeholder height={80} />
+      </AccordionItem>
+      <AccordionItem label="Accordion item 2">
+        <Placeholder height={80} />
+      </AccordionItem>
+      <AccordionItem label="Accordion item 3">
+        <Placeholder height={80} />
+      </AccordionItem>
+    </Accordion>
+  ),
+};
+
 export const AccordionItemWithAnIconShouldFollowTone = {
   name: 'AccordionItem with an icon - should follow tone',
   render: () => (

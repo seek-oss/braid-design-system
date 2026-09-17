@@ -76,7 +76,8 @@ export interface AccordionItemBaseProps {
   badge?: ReactElement<BadgeProps> | null;
 }
 
-export type AccordionItemProps = AccordionItemBaseProps & UseDisclosureProps;
+export type AccordionItemProps = AccordionItemBaseProps &
+  UseDisclosureProps & { defaultExpanded?: boolean };
 export type AccordionItemStateProps = DisclosureStateProps;
 
 export const AccordionItem: FC<AccordionItemProps> = ({
@@ -89,6 +90,9 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   weight: weightProp,
   icon,
   data,
+  expanded: expandedProp,
+  onToggle,
+  defaultExpanded,
   ...restProps
 }) => {
   const accordionContext = useContext(AccordionContext);
@@ -144,12 +148,23 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   const autoCollapse = Boolean(accordionContext?.autoCollapse);
 
   assert(
-    !(autoCollapse && restProps.expanded !== undefined),
-    'expanded cannot be set on AccordionItem when autoCollapse is set on Accordion. Accordions with autoCollapse start collapsed and manage expansion themselves. Use onToggle to observe changes, or omit autoCollapse and control expanded on the item.',
+    !(autoCollapse && expandedProp !== undefined),
+    'expanded cannot be set on AccordionItem when autoCollapse is set on Accordion. Accordions with autoCollapse manage expansion themselves. Use defaultExpanded to start an item open, or onToggle to observe changes. Omit autoCollapse to control expanded on the item.',
   );
 
-  let disclosureState: DisclosureStateProps = {
-    onToggle: restProps.onToggle,
+  assert(
+    !(autoCollapse && defaultExpanded && !id),
+    "'id' must be set on AccordionItem when 'defaultExpanded' is set and 'autoCollapse' is set on Accordion.",
+  );
+
+  assert(
+    expandedProp === undefined || defaultExpanded === undefined,
+    "'defaultExpanded' cannot be set when 'expanded' is set. Use 'expanded' to control the state, or 'defaultExpanded' for the initial uncontrolled state.",
+  );
+
+  let disclosureState: DisclosureStateProps & { defaultExpanded?: boolean } = {
+    onToggle,
+    defaultExpanded,
   };
 
   if (autoCollapse) {
@@ -157,13 +172,13 @@ export const AccordionItem: FC<AccordionItemProps> = ({
       expanded: accordionContext?.openItemId === resolvedId,
       onToggle: (nextExpanded) => {
         accordionContext?.onItemToggle?.(resolvedId, nextExpanded);
-        restProps.onToggle?.(nextExpanded);
+        onToggle?.(nextExpanded);
       },
     };
-  } else if (restProps.expanded !== undefined) {
+  } else if (expandedProp !== undefined) {
     disclosureState = {
-      expanded: restProps.expanded,
-      onToggle: restProps.onToggle,
+      expanded: expandedProp,
+      onToggle,
     };
   }
 
@@ -198,11 +213,8 @@ export const AccordionItem: FC<AccordionItemProps> = ({
       return;
     }
 
-    return accordionContext?.registerItemToggle?.(
-      resolvedId,
-      restProps.onToggle,
-    );
-  }, [accordionContext, autoCollapse, resolvedId, restProps.onToggle]);
+    return accordionContext?.registerItemToggle?.(resolvedId, onToggle);
+  }, [accordionContext, autoCollapse, onToggle, resolvedId]);
 
   useLayoutEffect(() => {
     if (!isAnimating) {

@@ -2,6 +2,7 @@ import assert from 'assert';
 
 import {
   Children,
+  isValidElement,
   useCallback,
   useMemo,
   useRef,
@@ -44,6 +45,36 @@ export interface AccordionProps {
 }
 
 export const defaultSize = 'large';
+
+const resolveAutoCollapseDefaultOpenId = (
+  children: AccordionProps['children'],
+) => {
+  const defaultOpenIds: string[] = [];
+
+  for (const child of flattenChildren(children)) {
+    if (!isValidElement<{ defaultExpanded?: boolean; id?: string }>(child)) {
+      continue;
+    }
+
+    if (!child.props.defaultExpanded) {
+      continue;
+    }
+
+    assert(
+      typeof child.props.id === 'string' && child.props.id.length > 0,
+      "'id' must be set on AccordionItem when 'defaultExpanded' is set and 'autoCollapse' is set on Accordion.",
+    );
+
+    defaultOpenIds.push(child.props.id);
+  }
+
+  assert(
+    defaultOpenIds.length <= 1,
+    "Only one AccordionItem can set 'defaultExpanded' when 'autoCollapse' is set on Accordion.",
+  );
+
+  return defaultOpenIds[0] ?? null;
+};
 
 const defaultSpaceForSize = {
   divided: {
@@ -99,7 +130,10 @@ export const Accordion: FC<AccordionProps> = ({
     buildDataAttributes({ data, validateRestProps: restProps });
   }
 
-  const [openItemId, setOpenItemId] = useState<string | null>(null);
+  const autoCollapseDefaultOpenId = autoCollapse
+    ? resolveAutoCollapseDefaultOpenId(children)
+    : null;
+  const [openItemId, setOpenItemId] = useState(autoCollapseDefaultOpenId);
   const openItemIdRef = useRef<string | null>(null);
   const itemTogglesRef = useRef(new Map<string, (expanded: boolean) => void>());
 
