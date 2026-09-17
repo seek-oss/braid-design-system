@@ -200,13 +200,19 @@ const docs: ComponentDocs = {
             <Text>
               Set the <Strong>autoCollapse</Strong> prop so only one item can be
               open at a time. Opening an item closes any other open item.
-              Clicking the open item collapses it. All items start collapsed.
+              Clicking the open item collapses it.
             </Text>
             <Text>
-              <Strong>autoCollapse</Strong> is uncontrolled and always starts
-              collapsed. Don&rsquo;t set <Strong>expanded</Strong> on items. Use{' '}
-              <Strong>onToggle</Strong> to observe changes. To start an item
-              open, or to open several at once, omit{' '}
+              Start with one item open by setting{' '}
+              <Strong>defaultExpanded</Strong> and an explicit{' '}
+              <Strong>id</Strong> on that item. Starting with none open remains
+              valid. Don&rsquo;t set <Strong>defaultExpanded</Strong> on more
+              than one item.
+            </Text>
+            <Text>
+              <Strong>autoCollapse</Strong> is uncontrolled. Don&rsquo;t set{' '}
+              <Strong>expanded</Strong> on items. Use <Strong>onToggle</Strong>{' '}
+              to observe changes. To drive open state from the parent, omit{' '}
               <Strong>autoCollapse</Strong> and use <Strong>expanded</Strong>{' '}
               (see Managing state).
             </Text>
@@ -215,7 +221,11 @@ const docs: ComponentDocs = {
         Example: () =>
           source(
             <Accordion autoCollapse>
-              <AccordionItem label="Accordion item 1">
+              <AccordionItem
+                id="accordion-item-1"
+                label="Accordion item 1"
+                defaultExpanded
+              >
                 <Placeholder height={80} />
               </AccordionItem>
               <AccordionItem label="Accordion item 2">
@@ -233,16 +243,44 @@ const docs: ComponentDocs = {
           <Stack space="large">
             <Text>
               An <Strong>AccordionItem</Strong>, by default, manages its own
-              state internally. If you&rsquo;d like to take control of the
-              state, you can do so using the <Strong>expanded</Strong> and{' '}
-              <Strong>onToggle</Strong> props.
+              state internally. Set <Strong>defaultExpanded</Strong> to start
+              one or more items open without taking control of the state. After
+              mount, each item still manages itself. <Strong>onToggle</Strong>{' '}
+              can still be used as a listener.
             </Text>
             <Text>
-              To start an item open, or to open several at once, initialise{' '}
-              <Strong>expanded</Strong> on each item. Do not combine this with{' '}
-              <Strong>autoCollapse</Strong>.
+              If you&rsquo;d like to take control of the state, use the{' '}
+              <Strong>expanded</Strong> and <Strong>onToggle</Strong> props.{' '}
+              <Strong>expanded</Strong> is the way to drive open state from the
+              parent. Don&rsquo;t combine it with{' '}
+              <Strong>defaultExpanded</Strong> on the same item, or with{' '}
+              <Strong>autoCollapse</Strong> on Accordion.
             </Text>
           </Stack>
+        ),
+        Example: () =>
+          source(
+            <Accordion>
+              <AccordionItem label="Accordion item 1" defaultExpanded>
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 2" defaultExpanded>
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 3">
+                <Placeholder height={80} />
+              </AccordionItem>
+            </Accordion>,
+          ),
+      },
+      {
+        label: 'Controlled state',
+        description: (
+          <Text>
+            Drive open state from the parent with <Strong>expanded</Strong> and{' '}
+            <Strong>onToggle</Strong>. This remains incompatible with{' '}
+            <Strong>autoCollapse</Strong>.
+          </Text>
         ),
         Example: ({ setDefaultState, getState, toggleState }) =>
           source(
