@@ -1,7 +1,7 @@
 import source from '@braid-design-system/source.macro';
 import type { GalleryComponent } from 'site/types';
 
-import { Avatar, Inline } from '../';
+import { Avatar, IconPhotoAdd, Inline } from '../';
 
 import { photoExampleUrl } from './photoPlaceholder.css';
 
@@ -14,6 +14,17 @@ export const galleryItems: GalleryComponent = {
     {
       label: 'Empty',
       Example: () => source(<Avatar />),
+    },
+    {
+      label: 'Add photo',
+      Example: () =>
+        source(
+          <Avatar
+            icon={<IconPhotoAdd />}
+            aria-label="Add photo"
+            onClick={() => undefined}
+          />,
+        ),
     },
     {
       label: 'Image',

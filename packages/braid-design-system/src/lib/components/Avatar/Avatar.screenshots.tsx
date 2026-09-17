@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-import { Avatar, IconCompany, Inline, Stack, Text } from '../';
+import { Avatar, IconCompany, IconPhotoAdd, Inline, Stack, Text } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 import * as styles from './Avatar.css';
@@ -118,11 +118,17 @@ export const LoadingSizes: Story = {
 
 export const CompanyFallback: Story = {
   name: 'Company icon fallback',
+  render: () => <Avatar icon={<IconCompany />} />,
+};
+
+export const AddPhoto: Story = {
+  name: 'Add photo',
   render: () => (
-    <Inline space="medium" alignY="center">
-      <Avatar icon={<IconCompany />} />
-      <Avatar imageUrl={imageUrl} />
-    </Inline>
+    <Avatar
+      icon={<IconPhotoAdd />}
+      aria-label="Add photo"
+      onClick={() => undefined}
+    />
   ),
 };
 
