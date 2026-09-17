@@ -79,8 +79,11 @@ const docs: ComponentDocs = {
         For a hover tip, wrap with{' '}
         <TextLink href="/components/TooltipRenderer">TooltipRenderer</TextLink>{' '}
         and spread <Strong>triggerProps</Strong> last onto Avatar (or onto a
-        wrapping Box) so the tooltip keeps its ref. Skip a tip when the name is
-        already visible beside the face. For add/update photo with a{' '}
+        wrapping Box) so the tooltip keeps its ref. Those props set{' '}
+        <Strong>tabIndex</Strong>, so <Strong>aria-label</Strong> is required —
+        otherwise a decorative Avatar would be focusable and hidden from
+        assistive technologies. Skip a tip when the name is already visible
+        beside the face. For add/update photo with a{' '}
         <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>, wrap
         TooltipRenderer around the menu, and put trigger props on that wrapper —
         not on Avatar inside the menu button.
