@@ -7,7 +7,6 @@ import {
   Column,
   Hidden,
   Alert,
-  List,
   Divider,
 } from 'braid-design-system';
 import { vars } from 'braid-design-system/css';
@@ -347,19 +346,10 @@ const docs: CssDoc = {
           <TextLink href="/styles/atoms">atoms</TextLink>.
         </Text>
       </Alert>
-      <List space="medium">
-        {Object.entries(varDocs).map(([name]) => (
-          <Text key={name}>
-            <TextLink href={`#vars.${name.toLowerCase()}`} hitArea="large">
-              {name}
-            </TextLink>
-          </Text>
-        ))}
-      </List>
     </>
   ),
   additional: Object.entries(varDocs).map(([name, value]) => ({
-    label: `vars.${name}`,
+    label: `${name}`,
     description: value,
   })),
 };

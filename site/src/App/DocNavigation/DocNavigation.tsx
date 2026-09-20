@@ -48,11 +48,16 @@ import {
   isCssDoc,
   isCssFoundationDoc,
 } from '../routes/foundations/cssDocs';
+import { getFoundationPageDocs } from '../routes/foundations/getFoundationPageDocs';
 import {
   iconDocsPath,
   iconographyPath,
   isIconDocsName,
 } from '../routes/foundations/iconDocs';
+import {
+  getFoundationPageDocMeta,
+  isFoundationPageDoc,
+} from '../routes/foundations/pageDocs';
 import { getPatternDocs } from '../routes/patterns';
 import { getPatternEntry } from '../routes/patterns/catalog';
 
@@ -232,15 +237,20 @@ export const DocNavigation = () => {
   let history: DocsProviderContextValue['history'] = [];
   let docs: DocsProviderContextValue['docs'];
   const isPatternDocs = docsType === 'patterns';
+  const isFoundationPage = isFoundationPageDoc(docsType, docsName);
   let docsTitle = docsName;
   if (isPatternDocs) {
     docsTitle = getPatternEntry(docsName).title;
+  } else if (isFoundationPage) {
+    docsTitle = getFoundationPageDocMeta(docsName)?.title ?? docsName;
   } else if (isCssFoundationDoc(docsType, docsName)) {
     docsTitle = getCssFoundationDoc(docsName)?.title ?? docsName;
   }
 
   if (isPatternDocs) {
     docs = getPatternDocs(docsName);
+  } else if (isFoundationPage) {
+    docs = getFoundationPageDocs(docsName);
   } else if (isCssDoc(docsType, docsName)) {
     history = getHistory(getCssDocFileName(docsName));
     docs = getCssDoc(docsName);
@@ -282,7 +292,7 @@ export const DocNavigation = () => {
           ) : null}
           <Heading level="1">{docsTitle}</Heading>
         </Inline>
-        {isPatternDocs ? null : (
+        {isPatternDocs || isFoundationPage ? null : (
           <DocNavigationBar title="Subnavigation">
             <DocNavigationItem href={docsPath}>Details</DocNavigationItem>
             {showComponentProps ? (

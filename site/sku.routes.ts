@@ -8,6 +8,7 @@ import type { SkuConfig } from 'sku';
 
 import extractExports from './scripts/extractExports';
 import { cssFoundationDocs } from './src/App/routes/foundations/cssDocs';
+import { foundationPageDocs } from './src/App/routes/foundations/pageDocs';
 import { patternCatalog } from './src/App/routes/patterns/catalog';
 import { templatePathPrefix } from './src/App/routes/templates/templateDocs';
 import { slugify } from './src/slugify';
@@ -110,6 +111,7 @@ const routes: SkuConfig['routes'] = [
   { route: '/examples/job-summary' },
   { route: '/foundations', name: 'foundations' },
   getPages('src/App/routes/foundations/index.ts'),
+  foundationPageDocs.map((doc) => ({ route: doc.path })),
   { route: templatePathPrefix, name: 'templates' },
   { route: '/templates' },
   getTemplateRoutes(),
