@@ -73,6 +73,7 @@ export { IconPrint } from './IconPrint/IconPrint';
 export { IconProfile } from './IconProfile/IconProfile';
 export { IconPromote } from './IconPromote/IconPromote';
 export { IconQR } from './IconQR/IconQR';
+export { IconRating } from './IconRating/IconRating';
 export { IconRecommended } from './IconRecommended/IconRecommended';
 export { IconRedo } from './IconRedo/IconRedo';
 export { IconRefresh } from './IconRefresh/IconRefresh';

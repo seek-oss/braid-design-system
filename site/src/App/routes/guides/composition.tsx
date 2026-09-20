@@ -42,12 +42,12 @@ const Step = ({ heading, detail, children }: StepProps) => (
 );
 
 const page: Page = {
-  title: 'Job Summary',
+  title: 'Composition tutorial',
   element: (
     <TextStack>
       <Heading level="1">
-        <PageTitle title="Job Summary Tutorial" />
-        Job Summary
+        <PageTitle title="Composition tutorial" />
+        Composition tutorial
       </Heading>
 
       <Code collapsedByDefault>

@@ -112,7 +112,7 @@ export const HomePage = () => {
               development workflows.
             </Text>
             <Inline space="small">
-              {guideLandingCards.slice(0, 3).map(({ href, label }) => (
+              {guideLandingCards.slice(0, 3).map(({ href, homeLabel }) => (
                 <ButtonLink
                   key={href}
                   href={href}
@@ -120,7 +120,7 @@ export const HomePage = () => {
                   icon={<IconChevron direction="right" />}
                   iconPosition="trailing"
                 >
-                  {label}
+                  {homeLabel}
                 </ButtonLink>
               ))}
             </Inline>
