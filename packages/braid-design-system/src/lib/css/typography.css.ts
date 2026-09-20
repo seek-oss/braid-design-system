@@ -2,6 +2,7 @@ import { createTextStyle } from '@capsizecss/vanilla-extract';
 import {
   assignVars,
   createThemeContract,
+  globalStyle,
   style,
   styleVariants,
 } from '@vanilla-extract/css';
@@ -61,6 +62,12 @@ export const textSizeUntrimmed = styleVariants(
     }),
 );
 
+export const textSubSupScript = style({});
+globalStyle(`${textSubSupScript} sup, ${textSubSupScript} sub`, {
+  fontSize: '0.7em',
+  lineHeight: '1em',
+});
+
 export const headingWeight = styleVariants(
   vars.headingWeight,
   mapToProperty('fontWeight'),
@@ -88,6 +95,12 @@ export const heading = styleVariants(
     ),
   ],
 );
+
+export const headingSubSupScript = style({});
+globalStyle(`${headingSubSupScript} sup, ${headingSubSupScript} sub`, {
+  fontSize: '0.55em',
+  lineHeight: '1em',
+});
 
 const textToneVars = createThemeContract({
   critical: null,
