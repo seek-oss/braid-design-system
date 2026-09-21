@@ -214,7 +214,7 @@ const docs: ComponentDocs = {
               <Strong>expanded</Strong> on items. Use <Strong>onToggle</Strong>{' '}
               to observe changes. To drive open state from the parent, omit{' '}
               <Strong>autoCollapse</Strong> and use <Strong>expanded</Strong>{' '}
-              (see Managing state).
+              (see Controlled state).
             </Text>
           </Stack>
         ),
