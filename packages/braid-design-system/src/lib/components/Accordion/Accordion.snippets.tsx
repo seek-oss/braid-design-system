@@ -74,6 +74,38 @@ export const snippets: Snippets = [
     ),
   },
   {
+    description: 'Auto collapse',
+    code: source(
+      <Accordion autoCollapse>
+        <AccordionItem label="Item 1">
+          <Placeholder height={100} />
+        </AccordionItem>
+        <AccordionItem label="Item 2">
+          <Placeholder height={100} />
+        </AccordionItem>
+        <AccordionItem label="Item 3">
+          <Placeholder height={100} />
+        </AccordionItem>
+      </Accordion>,
+    ),
+  },
+  {
+    description: 'Auto collapse with default expanded',
+    code: source(
+      <Accordion autoCollapse>
+        <AccordionItem id="item-1" label="Item 1" defaultExpanded>
+          <Placeholder height={100} />
+        </AccordionItem>
+        <AccordionItem label="Item 2">
+          <Placeholder height={100} />
+        </AccordionItem>
+        <AccordionItem label="Item 3">
+          <Placeholder height={100} />
+        </AccordionItem>
+      </Accordion>,
+    ),
+  },
+  {
     description: 'Large standalone item',
     code: source(
       <AccordionItem label="Label">

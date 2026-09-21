@@ -13,8 +13,11 @@ export const useDisclosure = ({
   id,
   expanded: expandedProp,
   onToggle,
-}: UseDisclosureProps) => {
-  const [expandedFallback, setExpandedFallback] = useState(false);
+  defaultExpanded,
+}: UseDisclosureProps & { defaultExpanded?: boolean }) => {
+  const [expandedFallback, setExpandedFallback] = useState(
+    Boolean(defaultExpanded),
+  );
   const expanded = expandedProp ?? expandedFallback;
 
   const resolvedId = useFallbackId(id);

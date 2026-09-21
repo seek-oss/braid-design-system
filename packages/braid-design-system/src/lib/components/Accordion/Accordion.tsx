@@ -1,6 +1,14 @@
 import assert from 'assert';
 
-import { Children, useMemo, type FC } from 'react';
+import {
+  Children,
+  isValidElement,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+  type FC,
+} from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
 import { Divider } from '../Divider/Divider';
@@ -30,12 +38,43 @@ export interface AccordionProps {
   size?: AccordionContextValue['size'];
   tone?: AccordionContextValue['tone'];
   weight?: AccordionContextValue['weight'];
+  autoCollapse?: boolean;
   /** @deprecated The spacing is now derived from the `size` prop and will be removed in a future release. */
   space?: RequiredResponsiveValue<(typeof validSpaceValues)[number]>;
   data?: DataAttributeMap;
 }
 
 export const defaultSize = 'large';
+
+const resolveAutoCollapseDefaultOpenId = (
+  children: AccordionProps['children'],
+) => {
+  const defaultOpenIds: string[] = [];
+
+  for (const child of flattenChildren(children)) {
+    if (!isValidElement<{ defaultExpanded?: boolean; id?: string }>(child)) {
+      continue;
+    }
+
+    if (!child.props.defaultExpanded) {
+      continue;
+    }
+
+    assert(
+      typeof child.props.id === 'string' && child.props.id.length > 0,
+      "'id' must be set on AccordionItem when 'defaultExpanded' is set and 'autoCollapse' is set on Accordion.",
+    );
+
+    defaultOpenIds.push(child.props.id);
+  }
+
+  assert(
+    defaultOpenIds.length <= 1,
+    "Only one AccordionItem can set 'defaultExpanded' when 'autoCollapse' is set on Accordion.",
+  );
+
+  return defaultOpenIds[0] ?? null;
+};
 
 const defaultSpaceForSize = {
   divided: {
@@ -60,6 +99,7 @@ export const Accordion: FC<AccordionProps> = ({
   size = defaultSize,
   tone,
   weight,
+  autoCollapse = false,
   space: spaceProp,
   dividers = true,
   data,
@@ -90,9 +130,66 @@ export const Accordion: FC<AccordionProps> = ({
     buildDataAttributes({ data, validateRestProps: restProps });
   }
 
+  const autoCollapseDefaultOpenId = autoCollapse
+    ? resolveAutoCollapseDefaultOpenId(children)
+    : null;
+  const [openItemId, setOpenItemId] = useState(autoCollapseDefaultOpenId);
+  const openItemIdRef = useRef<string | null>(null);
+  const itemTogglesRef = useRef(new Map<string, (expanded: boolean) => void>());
+
+  openItemIdRef.current = openItemId;
+
+  const registerItemToggle = useCallback(
+    (itemId: string, onToggle?: (expanded: boolean) => void) => {
+      if (onToggle) {
+        itemTogglesRef.current.set(itemId, onToggle);
+      } else {
+        itemTogglesRef.current.delete(itemId);
+      }
+
+      return () => {
+        itemTogglesRef.current.delete(itemId);
+      };
+    },
+    [],
+  );
+
+  const onItemToggle = useCallback((itemId: string, expanded: boolean) => {
+    const current = openItemIdRef.current;
+
+    if (expanded) {
+      if (current && current !== itemId) {
+        itemTogglesRef.current.get(current)?.(false);
+      }
+
+      setOpenItemId(itemId);
+      return;
+    }
+
+    if (current === itemId) {
+      setOpenItemId(null);
+    }
+  }, []);
+
   const contextValue = useMemo(
-    () => ({ size, tone, weight }),
-    [size, tone, weight],
+    () => ({
+      size,
+      tone,
+      weight,
+      autoCollapse,
+      openItemId,
+      onItemToggle,
+      registerItemToggle,
+    }),
+    [
+      size,
+      tone,
+      weight,
+      autoCollapse,
+      openItemId,
+      onItemToggle,
+      registerItemToggle,
+    ],
   );
 
   const space =
