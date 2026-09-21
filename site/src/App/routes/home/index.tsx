@@ -108,11 +108,10 @@ export const HomePage = () => {
           <Stack space="medium">
             <Heading level="2">New to Braid?</Heading>
             <Text>
-              Browse the guides for a hands-on tutorial, then the design and
-              development workflows.
+              Browse the guides for the design and development workflows.
             </Text>
             <Inline space="small">
-              {guideLandingCards.slice(0, 3).map(({ href, homeLabel }) => (
+              {guideLandingCards.slice(0, 3).map(({ href, label }) => (
                 <ButtonLink
                   key={href}
                   href={href}
@@ -120,7 +119,7 @@ export const HomePage = () => {
                   icon={<IconChevron direction="right" />}
                   iconPosition="trailing"
                 >
-                  {homeLabel}
+                  {label}
                 </ButtonLink>
               ))}
             </Inline>

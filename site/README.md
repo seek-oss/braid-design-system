@@ -80,7 +80,7 @@ by section:
 | Folder                   | Section             | Notes                                           |
 | ------------------------ | ------------------- | ----------------------------------------------- |
 | `home/`                  | Landing page        | Marketing intro + section cards + guide links   |
-| `guides/`                | Guides              | Landing + composition tutorial, workflows, contribution |
+| `guides/`                | Guides              | Landing + workflows, contribution               |
 | `foundations/`           | Foundations         | layout, tones, iconography                      |
 | `patterns/`              | Patterns            | Pattern docs, templates, and how-tos            |
 | `templates/`             | Templates           | Nested under Patterns at `/patterns/templates`  |

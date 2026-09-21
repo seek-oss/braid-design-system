@@ -19,7 +19,7 @@ export const SectionLanding = ({
       </Heading>
       <Text>{intro}</Text>
     </Stack>
-    <Divider />
+
     {children}
   </Stack>
 );

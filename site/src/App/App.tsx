@@ -198,16 +198,24 @@ export const App = () => {
                   element={<Navigate to="/guides" replace />}
                 />
                 <Route
+                  path="/guides/composition"
+                  element={<Navigate to="/guides/development-workflow" replace />}
+                />
+                <Route
+                  path="/guides/development-workflow-preview"
+                  element={<Navigate to="/guides/development-workflow" replace />}
+                />
+                <Route
                   path="/guides/job-summary"
-                  element={<Navigate to="/guides/composition" replace />}
+                  element={<Navigate to="/guides/development-workflow" replace />}
                 />
                 <Route
                   path="/examples/job-summary"
-                  element={<Navigate to="/guides/composition" replace />}
+                  element={<Navigate to="/guides/development-workflow" replace />}
                 />
                 <Route
                   path="/getting-started/job-summary"
-                  element={<Navigate to="/guides/composition" replace />}
+                  element={<Navigate to="/guides/development-workflow" replace />}
                 />
                 <Route
                   path="/examples/basic-form"

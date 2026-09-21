@@ -14,11 +14,6 @@ export const SearchLanding = ({ onSelect }: SearchLandingProps) => (
             title="Guides"
             items={[
               {
-                name: 'Composition tutorial',
-                path: '/guides/composition',
-                onClick: onSelect,
-              },
-              {
                 name: 'Start designing',
                 path: '/guides/design-workflow',
                 onClick: onSelect,
