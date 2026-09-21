@@ -23,6 +23,7 @@ import buildDataAttributes, {
 } from '../private/buildDataAttributes';
 
 import * as styles from './Avatar.css';
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
 type AvatarSize = keyof typeof styles.size;
 
@@ -260,7 +261,7 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
         clickable ? styles.clickable : undefined,
         clickable &&
         (size === 'xsmall' || size === 'small' || size === 'medium')
-          ? styles.enlargedHitArea
+          ? virtualTouchable
           : undefined,
       ],
       ...a11yProps,

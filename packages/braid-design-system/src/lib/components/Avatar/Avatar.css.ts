@@ -26,22 +26,6 @@ export const clickable = style({
   cursor: 'pointer',
 });
 
-export const enlargedHitArea = style({
-  selectors: {
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      minHeight: vars.touchableSize,
-      minWidth: vars.touchableSize,
-      height: '100%',
-      width: '100%',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  },
-});
-
 export const keyline = style({
   borderWidth: vars.borderWidth.standard,
   borderStyle: 'solid',

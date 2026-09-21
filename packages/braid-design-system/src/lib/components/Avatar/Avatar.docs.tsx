@@ -355,7 +355,9 @@ const docs: ComponentDocs = {
         <Text>
           Set <Strong>loading</Strong> to show a shimmering skeleton while user
           data is fetched. This is shown instead of image, initials, or icon,
-          and is not announced.
+          and is not announced. A control with <Strong>onClick</Strong> still
+          fires while loading, so add or update photo can open before the
+          current image arrives.
         </Text>
       ),
       Example: () => source(<Avatar name="Leia Organa" loading />),
