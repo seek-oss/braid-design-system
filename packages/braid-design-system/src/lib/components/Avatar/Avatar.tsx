@@ -172,7 +172,16 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
 
     const [imageError, setImageError] = useState(false);
     const [imageLoaded, setImageLoaded] = useState(false);
+    const [imageSource, setImageSource] = useState(imageUrl);
+    const [loadingSource, setLoadingSource] = useState(loading);
     const imageRef = useRef<HTMLImageElement | null>(null);
+
+    if (imageUrl !== imageSource || loading !== loadingSource) {
+      setImageSource(imageUrl);
+      setLoadingSource(loading);
+      setImageError(false);
+      setImageLoaded(false);
+    }
 
     useLayoutEffect(() => {
       setImageError(false);
@@ -244,6 +253,7 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
       tabIndex,
       display: 'flex' as const,
       borderRadius,
+      outline: !clickable && focusable ? ('focus' as const) : undefined,
       className: [
         styles.root,
         styles.size[size],

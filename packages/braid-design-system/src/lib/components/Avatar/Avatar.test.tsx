@@ -4,12 +4,17 @@ import { vi } from 'vitest';
 import { Avatar, Text, TooltipRenderer } from '..';
 import { BraidTestProvider } from '../../../test';
 import { palette } from '../../color/palette';
+import { atoms } from '../../css/atoms/atoms';
 import { IconCompany, IconPhotoAdd } from '../icons';
 
 import { keyline as keylineStyle, imageLoaded } from './Avatar.css';
 import { photoPlaceholderUrl } from './photoPlaceholder.css';
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
 import { shimmerAnimation } from '../private/Skeleton/Skeleton.css';
+
+const focusOutlineClassNames = atoms({ outline: 'focus' })
+  .split(' ')
+  .filter(Boolean);
 
 const hexToRgbString = (hex: string): string => {
   const hexValue = hex.replace(/^#/, '');
@@ -235,6 +240,59 @@ describe('Avatar', () => {
       expect(container.querySelector('svg')).toBeVisible();
     });
 
+    it('does not keep a loaded photo visible when imageUrl changes', () => {
+      const { rerender } = render(
+        <BraidTestProvider>
+          <Avatar name="Leia Organa" imageUrl="https://example.com/leia.jpg" />
+        </BraidTestProvider>,
+      );
+
+      const firstImage = screen.getByRole('presentation', { hidden: true });
+      act(() => {
+        firstImage.dispatchEvent(new Event('load'));
+      });
+      expect(firstImage).toHaveClass(imageLoaded);
+
+      rerender(
+        <BraidTestProvider>
+          <Avatar name="Leia Organa" imageUrl="https://example.com/luke.jpg" />
+        </BraidTestProvider>,
+      );
+
+      const nextImage = screen.getByRole('presentation', { hidden: true });
+      expect(nextImage).toHaveAttribute('src', 'https://example.com/luke.jpg');
+      expect(nextImage).not.toHaveClass(imageLoaded);
+    });
+
+    it('mounts a new image instead of the broken icon when imageUrl changes', () => {
+      const { container, rerender } = render(
+        <BraidTestProvider>
+          <Avatar
+            name="Leia Organa"
+            imageUrl="https://invalid-path/photo.jpg"
+          />
+        </BraidTestProvider>,
+      );
+
+      const failedImage = screen.getByRole('presentation', { hidden: true });
+      act(() => {
+        failedImage.dispatchEvent(new Event('error'));
+      });
+      expect(screen.queryByRole('presentation', { hidden: true })).toBeNull();
+      expect(container.querySelector('svg')).toBeVisible();
+
+      rerender(
+        <BraidTestProvider>
+          <Avatar name="Leia Organa" imageUrl="https://example.com/leia.jpg" />
+        </BraidTestProvider>,
+      );
+
+      expect(
+        screen.getByRole('presentation', { hidden: true }),
+      ).toHaveAttribute('src', 'https://example.com/leia.jpg');
+      expect(container.querySelector('svg')).toBeNull();
+    });
+
     it('renders broken icon when a raster data URI loads as empty', () => {
       const { container } = render(
         <BraidTestProvider>
@@ -436,6 +494,23 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('tabindex', '0');
       expect(avatar).toHaveAttribute('aria-describedby', 'avatar-tooltip');
       expect(avatar).not.toHaveAttribute('aria-hidden');
+      expect(avatar).toHaveClass(...focusOutlineClassNames);
+    });
+
+    it('does not stack a Box focus outline on a clickable avatar', () => {
+      render(
+        <BraidTestProvider>
+          <Avatar
+            icon={<IconPhotoAdd />}
+            aria-label="Add photo"
+            onClick={() => undefined}
+          />
+        </BraidTestProvider>,
+      );
+
+      expect(screen.getByRole('button', { name: 'Add photo' })).not.toHaveClass(
+        ...focusOutlineClassNames,
+      );
     });
 
     it('throws when tabIndex is set without aria-label', () => {
