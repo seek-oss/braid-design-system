@@ -64,7 +64,7 @@ const avatarSizeToBorderRadius = {
   standard: 'standard',
   medium: 'standard',
   small: 'standard',
-  xsmall: 'standard',
+  xsmall: 'small',
 } as const satisfies Record<
   AvatarSize,
   ComponentProps<typeof Box>['borderRadius']
