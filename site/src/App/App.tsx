@@ -310,12 +310,6 @@ export const App = () => {
                   element={<RedirectToPatternTemplates />}
                 />
                 <Route path="/styles" element={<Styles />} />
-                <Route path="/styles/:docsName" element={<DocNavigation />}>
-                  <Route path="" element={<DocDetails />} />
-                  <Route path="props" element={<DocProps />} />
-                  <Route path="releases" element={<DocReleases />} />
-                  <Route path="snippets" element={<DocSnippets />} />
-                </Route>
                 <Route
                   path="/css"
                   element={<Navigate to="/styles" replace />}
