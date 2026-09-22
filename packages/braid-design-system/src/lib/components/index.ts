@@ -63,6 +63,7 @@ export { RadioGroup } from './RadioGroup/RadioGroup';
 export { RadioItem } from './RadioGroup/RadioItem';
 export { Rating } from './Rating/Rating';
 export { Secondary } from './Secondary/Secondary';
+export { Skeleton } from './Skeleton/Skeleton';
 export { Spread } from './Spread/Spread';
 export { Stack } from './Stack/Stack';
 export { Step } from './Stepper/Step';

@@ -37,6 +37,7 @@ import { snippets as PasswordField } from './snippets/PasswordField';
 import { snippets as RadioGroup } from './snippets/RadioGroup';
 import { snippets as Rating } from './snippets/Rating';
 import { snippets as Secondary } from './snippets/Secondary';
+import { snippets as Skeleton } from './snippets/Skeleton';
 import { snippets as SpaciousPage } from './snippets/SpaciousPage';
 import { snippets as Spread } from './snippets/Spread';
 import { snippets as Stack } from './snippets/Stack';
@@ -107,6 +108,7 @@ const snippetsMap = {
   RadioGroup,
   Rating,
   Secondary,
+  Skeleton,
   Spread,
   Stack,
   Stepper,

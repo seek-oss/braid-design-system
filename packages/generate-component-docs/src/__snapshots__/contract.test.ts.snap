@@ -8193,6 +8193,57 @@ exports[`Secondary 1`] = `
 }
 `;
 
+exports[`Skeleton 1`] = `
+{
+  exportType: component,
+  props: {
+    aria-label?: string
+    baseline?: boolean
+    data?: DataAttributeMap
+    delayVisibility?: boolean
+    height?: 
+        | "full"
+        | "large"
+        | "medium"
+        | "small"
+        | "xlarge"
+        | "xsmall"
+        | "xxlarge"
+        | "xxsmall"
+        | "xxxlarge"
+    icon?: 
+        | "circle"
+        | "square"
+        | false
+        | true
+    level?: 
+        | "1"
+        | "2"
+        | "3"
+        | "4"
+    lines?: number
+    size?: 
+        | "large"
+        | "small"
+        | "standard"
+        | "xsmall"
+    type?: 
+        | "button"
+        | "heading"
+        | "rectangle"
+        | "text"
+    width?: 
+        | "full"
+        | "large"
+        | "medium"
+        | "small"
+        | "xsmall"
+        | "xxsmall"
+        | number
+},
+}
+`;
+
 exports[`Spread 1`] = `
 {
   exportType: component,
