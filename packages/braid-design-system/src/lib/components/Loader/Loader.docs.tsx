@@ -43,7 +43,13 @@ const docs: ComponentDocs = {
       </Text>
     </>
   ),
-  alternatives: [],
+  alternatives: [
+    {
+      name: 'Skeleton',
+      description:
+        'For reserving layout while structured content is loading, without shifting when it arrives.',
+    },
+  ],
   additional: [
     {
       label: 'Sizes',
