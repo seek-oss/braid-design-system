@@ -99,31 +99,31 @@ const docs: ComponentDocs = {
       {
         label: 'Choosing an avatar treatment',
         description: (
-          <Stack space="large">
-            <Text>
-              Choose a treatment that matches the identity data you have. A
-              photo or company logo is the most recognisable. Initials work when
-              you have a name but no image. A company icon stands in for an
-              unnamed organisation. An empty avatar is for when there is no
-              identity yet.
-            </Text>
-            <Text>
-              Treatments follow a fixed order, not a menu of equals. While{' '}
-              <Strong>loading</Strong>, a skeleton replaces every other
-              treatment. Else a loaded <Strong>imageUrl</Strong> is shown; if
-              that URL fails,{' '}
-              <TextLink href="/components/IconImageBroken">
-                IconImageBroken
-              </TextLink>{' '}
-              is shown instead of initials or <Strong>icon</Strong>. Else the
-              first letter of <Strong>name</Strong>. Else <Strong>icon</Strong>{' '}
-              if you passed one, else{' '}
-              <TextLink href="/components/IconProfile">IconProfile</TextLink>.
-              Passing <Strong>name</Strong> and <Strong>icon</Strong> together
-              still shows initials — omit <Strong>name</Strong> for a custom{' '}
-              <Strong>icon</Strong>.
-            </Text>
-          </Stack>
+          <Text>
+            Choose a treatment that matches the identity data you have. A photo
+            or company logo is the most recognisable. Initials work when you
+            have a name but no image. A company icon stands in for an unnamed
+            organisation. An empty avatar is for when there is no identity yet.
+          </Text>
+        ),
+      },
+      {
+        label: 'Fallback order',
+        description: (
+          <Text>
+            While <Strong>loading</Strong>, a skeleton is shown. Else a loaded{' '}
+            <Strong>imageUrl</Strong> is shown. If that URL fails,{' '}
+            <TextLink href="/components/IconImageBroken">
+              IconImageBroken
+            </TextLink>{' '}
+            is shown — not initials or <Strong>icon</Strong>. Else the first
+            letter of <Strong>name</Strong>. Else <Strong>icon</Strong> if you
+            passed one. Else{' '}
+            <TextLink href="/components/IconProfile">IconProfile</TextLink>.
+            Passing <Strong>name</Strong> and <Strong>icon</Strong> together
+            shows initials — omit <Strong>name</Strong> for a custom{' '}
+            <Strong>icon</Strong> fallback.
+          </Text>
         ),
       },
       {
