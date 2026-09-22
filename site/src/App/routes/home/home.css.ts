@@ -1,12 +1,17 @@
 import { globalStyle, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { atoms } from 'braid-design-system/css';
+import { atoms, responsiveStyle } from 'braid-design-system/css';
 import { palette } from 'braid-src/lib/color/palette';
 import { colorModeStyle } from 'braid-src/lib/css/colorModeStyle';
 import { vars } from 'braid-src/lib/themes/vars.css';
 import { darken } from 'polished';
 
-import { contentBlockXLWidth } from '../../Navigation/navigationSizes';
+import {
+  contentBlockXLWidth,
+  pageContentSpaceTop,
+  pageContentSpaceY,
+  sideNavBreakpoint,
+} from '../../Navigation/navigationSizes';
 
 
 const canvasLight = darken(0.025, palette.grey['100']);
@@ -33,10 +38,27 @@ export const hero = style([
       backgroundImage: heroBackgroundImage.dark,
     },
   }),
+  responsiveStyle({
+    mobile: {
+      marginTop: calc.negate(
+        calc.add(
+          vars.space[pageContentSpaceY],
+          vars.space[pageContentSpaceTop.mobile],
+        ),
+      ),
+    },
+    [sideNavBreakpoint]: {
+      marginTop: calc.negate(
+        calc.add(
+          vars.space[pageContentSpaceY],
+          vars.space[pageContentSpaceTop[sideNavBreakpoint]],
+        ),
+      ),
+    },
+  }),
   {
     marginInline: 'calc(50% - 50vw)',
     minHeight: '50vh',
-    marginTop: calc.negate(calc.add(vars.space.small, vars.space.xxlarge)),
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'right center',
     backgroundSize: 'auto 100%',

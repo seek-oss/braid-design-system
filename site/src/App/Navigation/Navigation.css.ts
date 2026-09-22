@@ -6,17 +6,22 @@ import { colorModeStyle } from 'braid-src/lib/css/colorModeStyle';
 import {
   menuWidth,
   headerHeight,
+  headerHeightWide,
   gutterSize,
   contentBlockXLWidth,
+  sideNavBreakpoint,
 } from './navigationSizes';
 
 export const isOpen = style({});
 
-export const visibleNavBreakpoint = 'wide' as const;
+export const visibleNavBreakpoint = sideNavBreakpoint;
 
-const headerOffset = style({
-  top: headerHeight,
-});
+const headerOffset = style(
+  responsiveStyle({
+    mobile: { top: headerHeight },
+    [visibleNavBreakpoint]: { top: headerHeightWide },
+  }),
+);
 
 const fixedWidthAboveVisibleBreakpoint = style(
   responsiveStyle({

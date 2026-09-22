@@ -6,14 +6,14 @@ import { vars } from 'braid-src/lib/themes/vars.css';
 
 import {
   contentBlockXLWidth,
-  headerHeight,
+  headerHeightWide,
 } from '../Navigation/navigationSizes';
 
 const topOffset = vars.space.large;
 
 export const toc = style({
   position: 'sticky',
-  top: `calc(${topOffset} + ${headerHeight})`,
+  top: `calc(${topOffset} + ${headerHeightWide})`,
   maxHeight: calc.subtract('100vh', topOffset),
   alignSelf: 'flex-start',
   minWidth: '250px',

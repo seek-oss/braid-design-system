@@ -29,7 +29,13 @@ import { getActiveSection, navSections } from '../navigationSections';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { useSearchHotkey } from '../useSearchHotkey/useSearchHotkey';
 
-import { gutterSize, headerSpaceY } from './navigationSizes';
+import {
+  gutterSize,
+  headerLogoSize,
+  headerSpaceY,
+  pageContentSpaceTop,
+  pageContentSpaceY,
+} from './navigationSizes';
 
 import * as styles from './Navigation.css';
 
@@ -49,7 +55,7 @@ const Header = ({
       menuOpen={menuOpen}
       menuClick={menuClick}
       onSearchClick={onSearchClick}
-      logo={<Logo iconOnly height="28px" width="28px" />}
+      logo={<Logo iconOnly height={headerLogoSize} width={headerLogoSize} />}
       navLinks={navLinks}
     />
   </Box>
@@ -250,7 +256,7 @@ export const Navigation = () => {
           mobile: gutterSize,
           wide: 'xxlarge',
         }}
-        paddingY="small"
+        paddingY={pageContentSpaceY}
         paddingBottom="xxlarge"
         marginBottom="xxlarge"
         transition="fast"
@@ -262,7 +268,7 @@ export const Navigation = () => {
         ]}
       >
         <Box
-          paddingTop="xxlarge"
+          paddingTop={pageContentSpaceTop}
           paddingBottom="xxlarge"
           marginBottom="xxlarge"
         >
