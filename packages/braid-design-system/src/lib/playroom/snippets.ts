@@ -43,6 +43,7 @@ import { snippets as RadioGroup } from './snippets/RadioGroup';
 import { snippets as Rating } from './snippets/Rating';
 import { snippets as Secondary } from './snippets/Secondary';
 import { snippets as ServiceOutageBanner } from './snippets/ServiceOutageBanner';
+import { snippets as Skeleton } from './snippets/Skeleton';
 import { snippets as SkeletonLoader } from './snippets/SkeletonLoader';
 import { snippets as SocialShare } from './snippets/SocialShare';
 import { snippets as SpaciousPage } from './snippets/SpaciousPage';
@@ -117,6 +118,7 @@ const snippetsMap = {
   RadioGroup,
   Rating,
   Secondary,
+  Skeleton,
   Spread,
   Stack,
   Stepper,
