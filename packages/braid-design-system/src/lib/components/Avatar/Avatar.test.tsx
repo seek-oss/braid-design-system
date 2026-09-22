@@ -365,6 +365,28 @@ describe('Avatar', () => {
       expect(initials.className).toContain(heading['3']);
     });
 
+    it.each([
+      ['xsmall', 'small'],
+      ['small', 'standard'],
+      ['medium', 'standard'],
+      ['standard', 'standard'],
+      ['large', 'standard'],
+      ['xlarge', 'large'],
+      ['xxlarge', 'large'],
+    ] as const)('uses %s size with %s radius', (size, borderRadius) => {
+      const radiusClassNames = atoms({ borderRadius })
+        .split(' ')
+        .filter(Boolean);
+
+      render(
+        <BraidTestProvider>
+          <Avatar name="Leia Organa" size={size} data={{ testid: 'avatar' }} />
+        </BraidTestProvider>,
+      );
+
+      expect(screen.getByTestId('avatar')).toHaveClass(...radiusClassNames);
+    });
+
     it('does not throw on unknown sizes', () => {
       expect(() =>
         render(
