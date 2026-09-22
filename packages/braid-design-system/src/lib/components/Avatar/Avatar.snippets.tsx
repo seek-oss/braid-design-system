@@ -2,6 +2,8 @@ import source from '@braid-design-system/source.macro';
 
 import {
   Avatar,
+  Column,
+  Columns,
   IconCompany,
   IconPhotoAdd,
   Inline,
@@ -29,15 +31,19 @@ export const snippets: Snippets = [
   {
     description: 'With name',
     code: source(
-      <Inline space="medium" alignY="center">
-        <Avatar name="Leia Organa" />
-        <Stack space="xsmall">
-          <Text>Leia Organa</Text>
-          <Text size="small" tone="secondary">
-            Product Designer
-          </Text>
-        </Stack>
-      </Inline>,
+      <Columns space="medium" alignY="center">
+        <Column width="content">
+          <Avatar name="Leia Organa" />
+        </Column>
+        <Column>
+          <Stack space="xsmall">
+            <Text>Leia Organa</Text>
+            <Text size="small" tone="secondary">
+              Product Designer
+            </Text>
+          </Stack>
+        </Column>
+      </Columns>,
     ),
   },
   {
