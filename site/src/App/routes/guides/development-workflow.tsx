@@ -192,8 +192,9 @@ const DevelopmentWorkflow = () => (
             You&rsquo;ll notice that there is no space between components by
             default. This is actually a good thing! We now get to decide exactly
             how spaced out we want the content to be. To achieve this,
-            we&rsquo;ll use a <TextLink href="/components/Stack">Stack</TextLink>{' '}
-            component which applies space evenly between its child elements.
+            we&rsquo;ll use a{' '}
+            <TextLink href="/components/Stack">Stack</TextLink> component which
+            applies space evenly between its child elements.
           </Text>
         }
       >
@@ -463,10 +464,9 @@ const DevelopmentWorkflow = () => (
           <Text>
             For the save action we&rsquo;ll use a{' '}
             <TextLink href="/components/ButtonIcon">ButtonIcon</TextLink> with
-            an{' '}
-            <TextLink href="/components/IconBookmark">IconBookmark</TextLink>. We
-            can now replace our &ldquo;Save action&rdquo; Placeholder with the
-            ButtonIcon.
+            an <TextLink href="/components/IconBookmark">IconBookmark</TextLink>
+            . We can now replace our &ldquo;Save action&rdquo; Placeholder with
+            the ButtonIcon.
           </Text>
         }
       >

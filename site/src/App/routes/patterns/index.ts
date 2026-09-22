@@ -1,12 +1,12 @@
 import type { PatternDocs } from '../../../types';
 
-import bulkActions from './docs/bulk-actions';
 import {
   howToEntries,
   patternCatalog,
   patternEntries,
   patternHref,
 } from './catalog';
+import bulkActions from './docs/bulk-actions';
 import contentDensity from './docs/content-density';
 import dividedLists from './docs/divided-lists';
 import emptyStates from './docs/empty-states';

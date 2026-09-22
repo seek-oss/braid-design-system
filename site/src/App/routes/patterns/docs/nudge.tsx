@@ -19,7 +19,7 @@ import { Placeholder } from 'braid-design-system/playroom/components';
 
 import type { PatternDocs } from '../../../../types';
 
-export const docs: PatternDocs = {
+const docs: PatternDocs = {
   description: (
     <Text>
       Displays a prominent, actionable message that drives users toward a

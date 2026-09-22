@@ -24,7 +24,7 @@ import type { PatternDocs } from '../../../../types';
 
 import * as styles from './wide-screen-layouts.css';
 
-export const docs: PatternDocs = {
+const docs: PatternDocs = {
   description: (
     <Text>
       How to tailor page width and layout to balance readability, scannability,

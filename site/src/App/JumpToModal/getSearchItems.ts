@@ -21,7 +21,7 @@ export const searchCategories = [
   'Logic',
 ] as const;
 
-export type SearchCategory = (typeof searchCategories)[number];
+type SearchCategory = (typeof searchCategories)[number];
 
 export interface SearchItem {
   name: string;

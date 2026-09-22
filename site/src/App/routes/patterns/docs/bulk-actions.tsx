@@ -22,7 +22,7 @@ import {
 
 import type { PatternDocs } from '../../../../types';
 
-export const docs: PatternDocs = {
+const docs: PatternDocs = {
   description: (
     <Text>
       Allows users to select multiple items in a list and apply the same action

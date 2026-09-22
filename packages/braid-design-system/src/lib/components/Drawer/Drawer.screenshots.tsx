@@ -47,6 +47,19 @@ export const DefaultLayout: Story = {
   },
 };
 
+export const DefaultStackSpace: Story = {
+  name: 'Default stack space',
+  args: {
+    title: 'Default stack space',
+    children: (
+      <>
+        <Placeholder height={100} width="100%" />
+        <Placeholder height={100} width="100%" />
+      </>
+    ),
+  },
+};
+
 export const LayoutWithDescription: Story = {
   name: 'Layout with a description',
   args: {
@@ -145,8 +158,30 @@ export const SpreadContent: Story = {
     scrollLock: false,
     children: (
       <Spread space="none" direction="vertical">
-        <Text>Top of drawer</Text>
-        <Text>Bottom of drawer</Text>
+        <Placeholder height={50} width="100%" label="Content top" />
+        <Placeholder height={50} width="100%" label="Content bottom" />
+      </Spread>
+    ),
+  },
+  decorators: (Story) => (
+    <Box style={{ height: 500 }}>
+      <Story />
+    </Box>
+  ),
+};
+
+export const SpreadContentWithFooter: Story = {
+  name: 'Test: Content should be spread up to footer',
+  args: {
+    title: 'Spread to footer',
+    onClose: () => {},
+    width: 'medium',
+    scrollLock: false,
+    footer: <Placeholder height={50} width="100%" label="Footer" />,
+    children: (
+      <Spread space="none" direction="vertical">
+        <Placeholder height={50} width="100%" label="Content top" />
+        <Placeholder height={50} width="100%" label="Content bottom" />
       </Spread>
     ),
   },

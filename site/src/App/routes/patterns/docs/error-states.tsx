@@ -26,7 +26,7 @@ import { Placeholder } from 'braid-design-system/playroom/components';
 
 import type { PatternDocs } from '../../../../types';
 
-export const docs: PatternDocs = {
+const docs: PatternDocs = {
   description: (
     <Text>
       Displays a message when an expected action fails, alerting users to the

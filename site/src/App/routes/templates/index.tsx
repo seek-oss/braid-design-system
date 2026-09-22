@@ -22,7 +22,7 @@ import { templateDetailPath, templateGroupPath } from './templateDocs';
 
 import * as styles from './templateGroupPage.css';
 
-export const DefaultContainer = ({ children }: { children: ReactNode }) => (
+const DefaultContainer = ({ children }: { children: ReactNode }) => (
   <>{children}</>
 );
 

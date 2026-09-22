@@ -317,7 +317,7 @@ const RecommendedMessagesTable = ({
   </Table>
 );
 
-export const docs: PatternDocs = {
+const docs: PatternDocs = {
   description: (
     <Text>
       Informs users of an existing or upcoming outage or reduced service level,

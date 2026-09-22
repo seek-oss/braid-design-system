@@ -51,7 +51,7 @@ const SkeletonButtonSmall = ({ width }: { width: string | number }) => (
   />
 );
 
-export const docs: PatternDocs = {
+const docs: PatternDocs = {
   description: (
     <Text>
       Displays visual placeholders that mimic real content while it loads,

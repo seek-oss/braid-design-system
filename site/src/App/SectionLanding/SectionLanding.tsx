@@ -1,4 +1,4 @@
-import { Divider, Heading, Stack, Text, Tiles } from 'braid-design-system';
+import { Heading, Stack, Text, Tiles } from 'braid-design-system';
 import type { ComponentProps, ReactNode } from 'react';
 
 import { LandingCard, type LandingCardProps } from '../LandingCard/LandingCard';

@@ -13,7 +13,6 @@ import {
   sideNavBreakpoint,
 } from '../../Navigation/navigationSizes';
 
-
 const canvasLight = darken(0.025, palette.grey['100']);
 
 const heroBackgroundImage = {
@@ -103,4 +102,3 @@ export const gettingStartedCard = style([
     },
   }),
 ]);
-

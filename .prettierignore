@@ -8,6 +8,8 @@ componentUpdates.json
 componentDocs.json
 pnpm-lock.yaml
 
+packages/icons/svg/*.svg
+
 # generated snippets
 **/playroom/snippets/
 

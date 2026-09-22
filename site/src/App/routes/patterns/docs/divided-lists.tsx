@@ -44,7 +44,7 @@ interface DividedListItem {
   location: string;
 }
 
-export const docs: PatternDocs = {
+const docs: PatternDocs = {
   description: (
     <Text>
       Displays a list of related items separated by dividers, for easy
@@ -69,7 +69,8 @@ export const docs: PatternDocs = {
     {
       name: 'bulk-actions',
       section: 'patterns',
-      description: 'For applying a single action across multiple selected items.',
+      description:
+        'For applying a single action across multiple selected items.',
     },
   ],
   docSections: {

@@ -67,6 +67,11 @@ export const mask = style({
     `linear-gradient(to left, transparent 0, black ${right})`,
     `linear-gradient(to top, transparent 0, black ${bottom})`,
   ].join(','),
+  '@media': {
+    print: {
+      maskImage: 'none',
+    },
+  },
 });
 
 export const maskLeft = style({

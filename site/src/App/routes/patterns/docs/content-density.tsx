@@ -111,7 +111,7 @@ const DebugSpaceY = ({
   );
 };
 
-export const docs: PatternDocs = {
+const docs: PatternDocs = {
   description: (
     <Text>
       How to adjust the size and spacing of components to create a more airy or

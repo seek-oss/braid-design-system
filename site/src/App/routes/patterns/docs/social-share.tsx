@@ -18,7 +18,7 @@ import {
 
 import type { PatternDocs } from '../../../../types';
 
-export const docs: PatternDocs = {
+const docs: PatternDocs = {
   description: (
     <Text>
       Allows users to share content, such as a job ad or article, to their

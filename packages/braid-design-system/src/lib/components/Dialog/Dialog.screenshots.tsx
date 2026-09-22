@@ -54,6 +54,19 @@ export const DefaultLayout: Story = {
   },
 };
 
+export const DefaultStackSpace: Story = {
+  name: 'Default stack space',
+  args: {
+    title: 'Default stack space',
+    children: (
+      <>
+        <Placeholder height={100} width="100%" />
+        <Placeholder height={100} width="100%" />
+      </>
+    ),
+  },
+};
+
 export const CoverImageLayout: Story = {
   name: 'Cover Image layout (no width)',
   args: {
@@ -157,6 +170,21 @@ export const CoverImageXsmallWidthWithOverflowLayout: Story = {
           <Placeholder height={44} width={80} label="OK" />
           <Placeholder height={44} width={80} label="Cancel" />
         </Inline>
+      </Stack>
+    ),
+  },
+};
+
+export const CoverImageWithFooterAndOverflowLayout: Story = {
+  name: 'Cover Image layout (with footer & overflow)',
+  args: {
+    title: 'Cover image test',
+    coverImage: coverImagePlaceholderUrl,
+    width: 'small',
+    footer: <Placeholder height={50} width="100%" label="Footer" />,
+    children: (
+      <Stack space="xlarge">
+        <Placeholder width="100%" height={1000} />
       </Stack>
     ),
   },

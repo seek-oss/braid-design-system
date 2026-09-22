@@ -23,7 +23,7 @@ import { Placeholder } from 'braid-design-system/playroom/components';
 
 import type { PatternDocs } from '../../../../types';
 
-export const docs: PatternDocs = {
+const docs: PatternDocs = {
   description: (
     <Stack space="large">
       <Text>

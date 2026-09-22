@@ -30,9 +30,11 @@ const docs: TemplateDocs = {
       <Text>
         Opt for <Strong>Compact Page</Strong> when information density needs to
         be optimised, or{' '}
-        <TextLink href="/patterns/templates/layouts/spacious-page">Spacious Page</TextLink> for
-        landing pages and larger-form content where generous breathing room is
-        desired.
+        <TextLink href="/patterns/templates/layouts/spacious-page">
+          Spacious Page
+        </TextLink>{' '}
+        for landing pages and larger-form content where generous breathing room
+        is desired.
       </Text>
     </>
   ),

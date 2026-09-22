@@ -85,7 +85,7 @@ export const hideSideNavOnWide = style(
   }),
 );
 
-export const sideNavigationBorder = style(
+const sideNavigationBorder = style(
   colorModeStyle({
     lightMode: {
       borderRight: `1px solid ${vars.borderColor.neutralLight}`,

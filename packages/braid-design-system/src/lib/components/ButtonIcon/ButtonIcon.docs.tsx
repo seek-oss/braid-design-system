@@ -20,6 +20,7 @@ import {
   IconOverflow,
   IconAdd,
   IconArrow,
+  IconRenderer,
 } from '..';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
@@ -270,6 +271,39 @@ const docs: ComponentDocs = {
                 </Text>
               </Inline>
             </Stack>,
+          ),
+      },
+      {
+        label: 'Custom icons',
+        description: (
+          <Text>
+            Product-specific icons can be passed to the <Strong>icon</Strong>{' '}
+            slot using <Strong>IconRenderer</Strong>. See{' '}
+            <TextLink href="/foundations/iconography#custom-icons-size">
+              Using custom icons
+            </TextLink>{' '}
+            for guidance on sizing, colour and accessibility.
+          </Text>
+        ),
+        Example: () =>
+          source(
+            <ButtonIcon
+              label="Custom icon"
+              icon={
+                <IconRenderer>
+                  {({ className }) => (
+                    <svg
+                      viewBox="0 0 24 24"
+                      className={className}
+                      fill="currentColor"
+                      aria-hidden
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                    </svg>
+                  )}
+                </IconRenderer>
+              }
+            />,
           ),
       },
     ],

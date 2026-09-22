@@ -77,14 +77,14 @@ Component, CSS, icon and template pages are handled generically (see the
 Hand-authored pages live under [`src/App/routes/`](./src/App/routes/), grouped
 by section:
 
-| Folder                   | Section             | Notes                                           |
-| ------------------------ | ------------------- | ----------------------------------------------- |
-| `home/`                  | Landing page        | Marketing intro + section cards + guide links   |
-| `guides/`                | Guides              | Landing + workflows, contribution               |
-| `foundations/`           | Foundations         | layout, tones, iconography                      |
-| `patterns/`              | Patterns            | Pattern docs, templates, and how-tos            |
-| `templates/`             | Templates           | Nested under Patterns at `/patterns/templates`  |
-| `components/`, `styles/` | Components / Styles | Render docs sourced from the braid package      |
+| Folder                   | Section             | Notes                                          |
+| ------------------------ | ------------------- | ---------------------------------------------- |
+| `home/`                  | Landing page        | Marketing intro + section cards + guide links  |
+| `guides/`                | Guides              | Landing + workflows, contribution              |
+| `foundations/`           | Foundations         | layout, tones, iconography                     |
+| `patterns/`              | Patterns            | Pattern docs, templates, and how-tos           |
+| `templates/`             | Templates           | Nested under Patterns at `/patterns/templates` |
+| `components/`, `styles/` | Components / Styles | Render docs sourced from the braid package     |
 
 Each section `index.ts` exports an object keyed by route `path`, e.g.
 

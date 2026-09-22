@@ -12,7 +12,7 @@ import {
 
 import type { PatternDocs } from '../../../../types';
 
-export const docs: PatternDocs = {
+const docs: PatternDocs = {
   description: (
     <Text>
       Represents a group of components and patterns used to reveal non-critical,

@@ -1,4 +1,4 @@
-export type PatternKind = 'pattern' | 'how-to';
+type PatternKind = 'pattern' | 'how-to';
 
 export interface PatternEntry {
   slug: string;

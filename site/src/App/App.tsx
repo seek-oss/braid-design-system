@@ -26,6 +26,7 @@ import { DocSnippets } from './DocNavigation/DocSnippets';
 import { Navigation } from './Navigation/Navigation';
 import { AppMeta } from './Seo/AppMeta';
 import { ThemeSettingProvider } from './ThemeSetting';
+import { navSections } from './navigationSections';
 import { Components } from './routes/components/Components';
 import foundations, { cssFoundationDocs } from './routes/foundations';
 import { Foundations } from './routes/foundations/Foundations';
@@ -49,7 +50,6 @@ import {
   templateGroupPath,
   templatePathPrefix,
 } from './routes/templates/templateDocs';
-import { navSections } from './navigationSections';
 
 const CustomLink = makeLinkComponent(
   ({ href, rel, onClick, ...restProps }, ref) =>
@@ -112,7 +112,11 @@ const RedirectCssToStyles = () => {
   const suffix = page ? `/${page}` : '';
 
   return (
-    <Navigate to={`/styles/${docsName}${suffix}`} replace={true} state={state} />
+    <Navigate
+      to={`/styles/${docsName}${suffix}`}
+      replace={true}
+      state={state}
+    />
   );
 };
 
@@ -199,23 +203,33 @@ export const App = () => {
                 />
                 <Route
                   path="/guides/composition"
-                  element={<Navigate to="/guides/development-workflow" replace />}
+                  element={
+                    <Navigate to="/guides/development-workflow" replace />
+                  }
                 />
                 <Route
                   path="/guides/development-workflow-preview"
-                  element={<Navigate to="/guides/development-workflow" replace />}
+                  element={
+                    <Navigate to="/guides/development-workflow" replace />
+                  }
                 />
                 <Route
                   path="/guides/job-summary"
-                  element={<Navigate to="/guides/development-workflow" replace />}
+                  element={
+                    <Navigate to="/guides/development-workflow" replace />
+                  }
                 />
                 <Route
                   path="/examples/job-summary"
-                  element={<Navigate to="/guides/development-workflow" replace />}
+                  element={
+                    <Navigate to="/guides/development-workflow" replace />
+                  }
                 />
                 <Route
                   path="/getting-started/job-summary"
-                  element={<Navigate to="/guides/development-workflow" replace />}
+                  element={
+                    <Navigate to="/guides/development-workflow" replace />
+                  }
                 />
                 <Route
                   path="/examples/basic-form"
@@ -314,7 +328,10 @@ export const App = () => {
                   path="/css"
                   element={<Navigate to="/styles" replace />}
                 />
-                <Route path="/css/:docsName" element={<RedirectCssToStyles />} />
+                <Route
+                  path="/css/:docsName"
+                  element={<RedirectCssToStyles />}
+                />
                 <Route
                   path="/css/:docsName/:page"
                   element={<RedirectCssToStyles />}

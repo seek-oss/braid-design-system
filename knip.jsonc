@@ -11,7 +11,6 @@
     },
     "packages/braid-design-system": {
       "entry": ["src/**/*.{docs,gallery,screenshots,snippets}.tsx"],
-      "ignoreUnresolved": ["./Icon.*Svg"],
       // `site` is imported by .docs.tsx files which are only consumed by the site workspace
       "ignoreDependencies": ["assert", "site"],
     },

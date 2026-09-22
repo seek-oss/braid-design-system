@@ -1,6 +1,6 @@
-import { fills } from '../LandingCard.css';
-
 import { illustrationSvgProps } from './svgProps';
+
+import { fills } from '../LandingCard.css';
 
 export const PatternsIllustration = () => (
   <svg {...illustrationSvgProps('0 0 400 300')}>

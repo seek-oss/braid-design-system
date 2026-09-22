@@ -2,7 +2,7 @@ import { List, Stack, Text, TextLink } from 'braid-design-system';
 
 import type { PatternDocs } from '../../../../types';
 
-export const docs: PatternDocs = {
+const docs: PatternDocs = {
   description: (
     <Text>
       Allows users to narrow down content or data by one or more criteria,
