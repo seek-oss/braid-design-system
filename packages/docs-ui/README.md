@@ -80,7 +80,7 @@ import { SideNavigationSection } from '@braid-design-system/docs-ui';
 
 ### `HeaderNavigation`
 
-Layout for the site logo, a `MenuButton` on smaller screens, and an optional theme selector.
+Layout for the site logo, a `MenuButton` on smaller screens, search, and optional section links.
 
 ```tsx
 import { HeaderNavigation } from '@braid-design-system/docs-ui';
@@ -88,19 +88,22 @@ import { HeaderNavigation } from '@braid-design-system/docs-ui';
 <HeaderNavigation
   menuOpen={menuOpen}
   menuClick={handleMenuClick}
+  onSearchClick={handleSearchClick}
   logo={<Logo />}
-  logoLabel={logoLabel}
-  themeToggle={<ThemeToggle />}
+  navLinks={[
+    { label: 'Guides', href: '/guides' },
+    { label: 'Components', href: '/components', active: true },
+  ]}
 />;
 ```
 
 #### Props
 
-| props       | value             | description                                                                                                   |
-| ----------- | ----------------- | ------------------------------------------------------------------------------------------------------------- |
-| menuOpen    | `boolean`         | The Menu can either be open or closed. If open, the button will change to a close icon (defaults to `false`). |
-| menuClick   | `() => void`      | An optional callback function to handle events when the menu button is clicked.                               |
-| logo        | `React.ReactNode` | A React component for the logo of your site (which should act as a link to your homepage).                    |
-| logoLabel   | `string`          | An accessibility label for the logo.                                                                          |
-| logoHref    | `string`          | An optional href which sets the link for when the logo is clicked.                                            |
-| themeToggle | `React.ReactNode` | An optional React component for a theme selector.                                                             |
+| props         | value                                                                                                            | description                                                                                                   |
+| ------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| menuOpen      | `boolean`                                                                                                        | The Menu can either be open or closed. If open, the button will change to a close icon (defaults to `false`). |
+| menuClick     | `() => void`                                                                                                     | An optional callback function to handle events when the menu button is clicked.                               |
+| onSearchClick | `() => void`                                                                                                     | An optional callback function to handle events when the search button is clicked.                             |
+| logo          | `React.ReactNode`                                                                                                | A React component for the logo of your site.                                                                  |
+| logoHref      | `string`                                                                                                         | An optional href which sets the link for when the logo is clicked.                                            |
+| navLinks      | Array<{<br/>&nbsp;&nbsp;label: `string`<br/>&nbsp;&nbsp;href: `string`<br/>&nbsp;&nbsp;active?: `boolean`<br/>}> | Optional section links shown beside search on wide screens.                                                   |

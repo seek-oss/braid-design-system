@@ -26,7 +26,6 @@ interface HeaderNavigationProps {
   onSearchClick?: () => void;
   logo: ReactNode;
   logoHref?: string;
-  themeToggle?: ReactNode;
   navLinks?: NavLink[];
 }
 
@@ -49,7 +48,6 @@ export const HeaderNavigation = ({
   onSearchClick = () => {},
   logo,
   logoHref = '/',
-  // themeToggle = null,
   navLinks,
 }: HeaderNavigationProps) => {
   const [modifierKey, setModifierKey] = useState('⌘');

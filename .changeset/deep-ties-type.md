@@ -2,4 +2,4 @@
 '@braid-design-system/docs-ui': minor
 ---
 
-Update the Docs Site IA
+**HeaderNavigation:** Accept section links, and remove the logo label and theme toggle props
