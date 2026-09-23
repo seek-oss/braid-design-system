@@ -15,7 +15,6 @@ import { snippets as CompactPage } from './snippets/CompactPage';
 import { snippets as ContentBlock } from './snippets/ContentBlock';
 import { snippets as Dialog } from './snippets/Dialog';
 import { snippets as Disclosure } from './snippets/Disclosure';
-import { snippets as DividedList } from './snippets/DividedList';
 import { snippets as Divider } from './snippets/Divider';
 import { snippets as Drawer } from './snippets/Drawer';
 import { snippets as Dropdown } from './snippets/Dropdown';
@@ -65,7 +64,6 @@ const snippetsMap = {
   BrandedContainer,
   CardList,
   CompactPage,
-  DividedList,
   Form,
   SpaciousPage,
   StandardPage,
