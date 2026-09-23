@@ -5706,5 +5706,17 @@
         "summary": "**Table, Dialog, Drawer, MenuRenderer:** Hide scroll overflow gradient when printing"
       }
     ]
+  },
+  {
+    "version": "34.8.3",
+    "updates": [
+      {
+        "updated": [
+          "Text",
+          "Heading"
+        ],
+        "summary": "**Text, Heading:** Improve subscript & superscript sizing"
+      }
+    ]
   }
 ]

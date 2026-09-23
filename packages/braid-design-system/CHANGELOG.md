@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 34.8.3
+
+### Patch Changes
+
+- **Text, Heading:** Improve subscript & superscript sizing ([#2145](https://github.com/seek-oss/braid-design-system/pull/2145))
+
 ## 34.8.2
 
 ### Patch Changes
