@@ -115,7 +115,7 @@ const docs: PatternDocs = {
                   </Column>
                   <Column>
                     <Box display="flex">
-                      <ThemedExample transparent>
+                      <ThemedExample transparent showThemeToggle={false}>
                         <Box
                           background="formAccent"
                           paddingLeft={space}
@@ -145,7 +145,7 @@ const docs: PatternDocs = {
             </Column>
             <Column>
               <Box display="flex">
-                <ThemedExample transparent>
+                <ThemedExample transparent showThemeToggle={false}>
                   <Box
                     background="formAccent"
                     paddingLeft="gutter"

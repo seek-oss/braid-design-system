@@ -24,7 +24,6 @@ import { SideNavigation } from 'site/App/SideNavigation/SideNavigation';
 import { useConfig } from '../ConfigContext';
 import { JumpToModal } from '../JumpToModal/JumpToModal';
 import { Logo } from '../Logo/Logo';
-import { ThemeToggle } from '../ThemeSetting';
 import { getActiveSection, navSections } from '../navigationSections';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { useSearchHotkey } from '../useSearchHotkey/useSearchHotkey';
@@ -218,8 +217,6 @@ export const Navigation = () => {
           width="full"
           left={0}
           zIndex="sticky"
-          display="flex"
-          flexDirection="column"
           inert={navigationActive ? undefined : true}
           // background={{ lightMode: 'neutralSoft', darkMode: 'surfaceDark' }}
           className={[
@@ -228,25 +225,15 @@ export const Navigation = () => {
             isMenuOpen ? styles.isOpen : undefined,
           ]}
         >
-          <Box flexGrow={1} className={styles.scrollableNavArea}>
-            <ScrollContainer direction="vertical">
-              <Box paddingX={gutterSize} paddingBottom="xxlarge">
-                <SideNavigation
-                  menuOpen={isMenuOpen}
-                  wideLayout={isExpandedSize ?? true}
-                  onSelect={closeMenu}
-                />
-              </Box>
-            </ScrollContainer>
-          </Box>
-          <Box
-            paddingX={gutterSize}
-            paddingY="medium"
-            background="body"
-            className={styles.sideNavigationFooter}
-          >
-            <ThemeToggle size="small" />
-          </Box>
+          <ScrollContainer direction="vertical">
+            <Box paddingX={gutterSize} paddingBottom="xxlarge">
+              <SideNavigation
+                menuOpen={isMenuOpen}
+                wideLayout={isExpandedSize ?? true}
+                onSelect={closeMenu}
+              />
+            </Box>
+          </ScrollContainer>
         </Box>
       </RemoveScroll>
       <Box

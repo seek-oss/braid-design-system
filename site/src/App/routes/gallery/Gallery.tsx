@@ -173,7 +173,7 @@ const RenderExample = ({ example, isIcon }: RenderExampleProps) => {
   const children = [
     <CopyCodeButton key="copyCode" />,
     value ? (
-      <ThemedExample key="themedExample">
+      <ThemedExample key="themedExample" showThemeToggle={false}>
         <Container>
           <Box height="full" width="full" style={{ cursor: 'auto' }}>
             {value}
