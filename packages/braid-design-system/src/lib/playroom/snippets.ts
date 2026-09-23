@@ -43,7 +43,6 @@ import { snippets as StandardSection } from './snippets/StandardSection';
 import { snippets as Stepper } from './snippets/Stepper';
 import { snippets as Strong } from './snippets/Strong';
 import { snippets as Table } from './snippets/Table';
-import { snippets as TableSection } from './snippets/TableSection';
 import { snippets as Tabs } from './snippets/Tabs';
 import { snippets as Tag } from './snippets/Tag';
 import { snippets as Text } from './snippets/Text';
@@ -64,7 +63,6 @@ const snippetsMap = {
   SpaciousPage,
   StandardPage,
   StandardSection,
-  TableSection,
   Accordion,
   Actions,
   Alert,
