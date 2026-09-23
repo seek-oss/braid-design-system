@@ -14,6 +14,7 @@ import {
   Alert,
   Box,
   Actions,
+  Heading,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
@@ -122,6 +123,14 @@ const docs: ComponentDocs = {
             by a screen reader as well as visually forming part of the header
             block.
           </Text>
+          <Text>
+            A <Strong>title</Strong> is not required. To omit the visible title
+            and name the Drawer with <Strong>aria-label</Strong> instead, see{' '}
+            <TextLink href="#drawers-without-a-visible-title">
+              Drawers without a visible title
+            </TextLink>
+            .
+          </Text>
           <Alert>
             <Text>
               Open in Playroom and enable your screen reader to preview the
@@ -188,6 +197,7 @@ const docs: ComponentDocs = {
             open={true}
             onClose={() => {}}
           >
+            <Heading level="2">Job details</Heading>
             <Placeholder height={200} width="100%" label="Drawer Content" />
           </Drawer>,
         );
@@ -198,6 +208,7 @@ const docs: ComponentDocs = {
             <Box borderRadius="xlarge" overflow="hidden">
               <DrawerPreview>
                 <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
+                  <Heading level="2">Job details</Heading>
                   <Placeholder
                     height={200}
                     width="100%"
