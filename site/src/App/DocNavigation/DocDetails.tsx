@@ -12,7 +12,10 @@ import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 import { useContext, useMemo } from 'react';
 
 import { slugify } from '../../slugify';
+import { headerScrollOffset } from '../Navigation/navigationSizes';
 import { PageTitle } from '../Seo/PageTitle';
+import { iconDocsPath, isIconDocsName } from '../routes/foundations/iconDocs';
+import { patternCatalog } from '../routes/patterns/catalog';
 
 import { DocExample } from './DocExample';
 import { DocsContext } from './DocNavigation';
@@ -46,11 +49,63 @@ const hasContent = (example: {
   Example?: unknown;
 }) => Boolean(example.description || example.code || example.Example);
 
+const getAlternativeHref = (alt: { name: string; section?: string }) =>
+  !alt.section && isIconDocsName(alt.name)
+    ? iconDocsPath(alt.name)
+    : `/${alt.section || 'components'}/${alt.name}`;
+
+const getAlternativeLabel = (alt: { name: string; section?: string }) =>
+  alt.section === 'patterns'
+    ? (patternCatalog.find((entry) => entry.slug === alt.name)?.title ??
+      alt.name)
+    : alt.name;
+
+const AlternativesSection = ({
+  alternatives,
+  heading,
+}: {
+  alternatives: Array<{
+    name: string;
+    description: string;
+    section?: string;
+  }>;
+  heading: string;
+}) => (
+  <Stack space={headingSpacing}>
+    <Heading level="3">
+      <TitleLink copyable label={heading}>
+        {heading}
+      </TitleLink>
+    </Heading>
+    <List space="large">
+      {alternatives.map((alt) => (
+        <Text key={`${alt.section ?? 'components'}-${alt.name}`}>
+          <TextLink hitArea="large" href={getAlternativeHref(alt)}>
+            {getAlternativeLabel(alt)}
+          </TextLink>{' '}
+          <Secondary>— {alt.description}</Secondary>
+        </Text>
+      ))}
+    </List>
+  </Stack>
+);
+
 export const DocDetails = () => {
-  const { docs, docsName } = useContext(DocsContext);
+  const { docs, docsName, docsTitle, docsType } = useContext(DocsContext);
+
+  const alternatives =
+    docs && 'alternatives' in docs && docs.alternatives?.length
+      ? docs.alternatives
+      : undefined;
+
+  const alternativesHeading =
+    docsType === 'patterns' ? 'Related' : 'Alternatives';
+  const alternativesId = slugify(alternativesHeading);
 
   const hasBestPractices = Boolean(
-    docs?.docSections?.bestPractices?.some(hasContent),
+    docs &&
+    'docSections' in docs &&
+    docs.docSections?.bestPractices?.some(hasContent),
   );
 
   /*
@@ -62,7 +117,7 @@ export const DocDetails = () => {
         as for now as it's where most content sits currently,
         but will likely be deprecated in the future as we
         align content to the docSection structure.
-      - Alternatives (top-level when no bestPractices section, otherwise nested within it)
+      - Alternatives/Related (top-level when no bestPractices section, otherwise nested within it)
 
   */
   const tocSections = useMemo(() => {
@@ -80,7 +135,7 @@ export const DocDetails = () => {
       });
     }
 
-    if (docs.docSections) {
+    if ('docSections' in docs && docs.docSections) {
       Object.entries(docs.docSections).forEach(
         ([sectionKey, docSectionChildren]) => {
           const hasAnyContent = docSectionChildren.some(hasContent);
@@ -107,11 +162,11 @@ export const DocDetails = () => {
           if (sectionKey === 'bestPractices') {
             const bestPracticesChildren: TocSection[] = [...children];
 
-            if ('alternatives' in docs && docs.alternatives.length > 0) {
+            if (alternatives) {
               bestPracticesChildren.push({
-                id: 'alternatives',
-                label: 'Alternatives',
-                href: '#alternatives',
+                id: alternativesId,
+                label: alternativesHeading,
+                href: `#${alternativesId}`,
               });
             }
 
@@ -147,22 +202,36 @@ export const DocDetails = () => {
       }
     });
 
-    if (
-      !hasBestPractices &&
-      'alternatives' in docs &&
-      docs.alternatives.length > 0
-    ) {
+    if (!hasBestPractices && alternatives) {
       sections.push({
-        id: 'alternatives',
-        label: 'Alternatives',
-        href: '#alternatives',
+        id: alternativesId,
+        label: alternativesHeading,
+        href: `#${alternativesId}`,
       });
     }
 
     return sections;
-  }, [docs, hasBestPractices]);
+  }, [
+    alternatives,
+    alternativesHeading,
+    alternativesId,
+    docs,
+    hasBestPractices,
+  ]);
 
-  const handleTocClick = (_event: React.MouseEvent, id: string) => {
+  const handleTocClick = (event: React.MouseEvent, id: string) => {
+    event.preventDefault();
+
+    const target = document.getElementById(id);
+    if (target) {
+      window.scrollTo({
+        top:
+          window.scrollY +
+          target.getBoundingClientRect().top -
+          headerScrollOffset,
+      });
+    }
+
     try {
       window.history.pushState(null, '', `#${id}`);
     } catch {}
@@ -170,7 +239,7 @@ export const DocDetails = () => {
 
   return docs ? (
     <>
-      <PageTitle title={docsName} />
+      <PageTitle title={docsTitle ?? docsName} />
       <Box display="flex" gap="xlarge">
         <Box flexGrow={1} minWidth={0}>
           <Stack space="xxlarge">
@@ -183,8 +252,14 @@ export const DocDetails = () => {
                 <PlayroomStateProvider>
                   <DocExample
                     Example={docs.Example}
-                    background={docs.examplebackground}
-                    showCodeByDefault={docs.category === 'Logic'}
+                    background={
+                      'examplebackground' in docs
+                        ? docs.examplebackground
+                        : undefined
+                    }
+                    showCodeByDefault={
+                      'category' in docs && docs.category === 'Logic'
+                    }
                   />
                 </PlayroomStateProvider>
               ) : null}
@@ -198,7 +273,8 @@ export const DocDetails = () => {
                 </Stack>
               ) : null}
 
-              {docs.docSections &&
+              {'docSections' in docs &&
+                docs.docSections &&
                 Object.entries(docs.docSections)
                   .filter(([, docSectionChildren]) =>
                     docSectionChildren.some(hasContent),
@@ -223,30 +299,11 @@ export const DocDetails = () => {
                               />
                             ),
                           )}
-                          {sectionKey === 'bestPractices' &&
-                          'alternatives' in docs &&
-                          docs.alternatives.length > 0 ? (
-                            <Stack space={headingSpacing}>
-                              <Heading level="3">
-                                <TitleLink copyable label="Alternatives">
-                                  Alternatives
-                                </TitleLink>
-                              </Heading>
-
-                              <List space="medium">
-                                {docs.alternatives.map((alt) => (
-                                  <Text key={`${alt.name}`}>
-                                    <TextLink
-                                      hitArea="large"
-                                      href={`/${alt.section || 'components'}/${alt.name}`}
-                                    >
-                                      {alt.name}
-                                    </TextLink>{' '}
-                                    <Secondary>— {alt.description}</Secondary>
-                                  </Text>
-                                ))}
-                              </List>
-                            </Stack>
+                          {sectionKey === 'bestPractices' && alternatives ? (
+                            <AlternativesSection
+                              alternatives={alternatives}
+                              heading={alternativesHeading}
+                            />
                           ) : null}
                         </Stack>
                       </Stack>
@@ -261,29 +318,11 @@ export const DocDetails = () => {
                 />
               ))}
 
-              {'alternatives' in docs &&
-              !hasBestPractices &&
-              docs.alternatives.length > 0 ? (
-                <Stack space={headingSpacing}>
-                  <Heading level="3">
-                    <TitleLink copyable label="Alternatives">
-                      Alternatives
-                    </TitleLink>
-                  </Heading>
-                  <List space="medium">
-                    {docs.alternatives.map((alt) => (
-                      <Text key={`${alt.name}`}>
-                        <TextLink
-                          hitArea="large"
-                          href={`/${alt.section || 'components'}/${alt.name}`}
-                        >
-                          {alt.name}
-                        </TextLink>{' '}
-                        <Secondary>— {alt.description}</Secondary>
-                      </Text>
-                    ))}
-                  </List>
-                </Stack>
+              {!hasBestPractices && alternatives ? (
+                <AlternativesSection
+                  alternatives={alternatives}
+                  heading={alternativesHeading}
+                />
               ) : null}
             </Stack>
           </Stack>

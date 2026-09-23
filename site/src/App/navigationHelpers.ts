@@ -13,6 +13,11 @@ import type {
 } from '../types';
 import undocumentedExports from '../undocumentedExports.json';
 
+import {
+  cssFoundationDocs,
+  getCssDocFileName,
+} from './routes/foundations/cssDocs';
+
 const componentDocsContext = require.context(
   'braid-src/lib/components/',
   true,
@@ -45,7 +50,7 @@ export const getComponentDocs = (componentName: string) => {
 };
 
 export const getCssDoc = (cssName: string) =>
-  cssDocsContext(`./${cssName}.docs.tsx`).default as CssDoc;
+  cssDocsContext(`./${getCssDocFileName(cssName)}.docs.tsx`).default as CssDoc;
 
 const snippetsContext = require.context(
   'braid-src/lib/components/',
@@ -72,8 +77,13 @@ export const getComponentSnippets = (componentName: string) => {
   }));
 };
 
+const cssFoundationSourceNames = new Set<string>(
+  cssFoundationDocs.map((doc) => doc.docsFile ?? doc.name),
+);
+
 const documentedCssNames = Object.keys(css)
   .filter((name) => !undocumentedExports.css.includes(name))
+  .filter((name) => !cssFoundationSourceNames.has(name))
   .sort();
 
 const documentedComponentNames = Object.keys({
@@ -151,7 +161,8 @@ export const allTemplateDocs = templateDocsContext.keys().map((filename) => {
 
 /**
  * Static lookup mapping slugged template names to template metadata.
- * Enables URL-based resolution like `/templates/standard-page` without knowing the group.
+ * Enables URL-based resolution like `/patterns/templates/layouts/standard-page`
+ * from the slugged title without listing every path by hand.
  *
  * @example
  * const info = templateLookup['standard-page'];

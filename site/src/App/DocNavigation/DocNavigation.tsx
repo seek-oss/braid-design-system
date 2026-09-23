@@ -35,12 +35,31 @@ import {
   useNavigate,
 } from 'react-router';
 
+import type { PatternDocs } from '../../types';
 import { getHistory } from '../Updates';
 import {
   getComponentDocs,
   getComponentSnippets,
   getCssDoc,
 } from '../navigationHelpers';
+import {
+  getCssDocFileName,
+  getCssFoundationDoc,
+  isCssDoc,
+  isCssFoundationDoc,
+} from '../routes/foundations/cssDocs';
+import { getFoundationPageDocs } from '../routes/foundations/getFoundationPageDocs';
+import {
+  iconDocsPath,
+  iconographyPath,
+  isIconDocsName,
+} from '../routes/foundations/iconDocs';
+import {
+  getFoundationPageDocMeta,
+  isFoundationPageDoc,
+} from '../routes/foundations/pageDocs';
+import { getPatternDocs } from '../routes/patterns';
+import { getPatternEntry } from '../routes/patterns/catalog';
 
 import * as styles from './DocNavigation.css';
 
@@ -48,7 +67,11 @@ const DocNavigationItemIndexContext = createContext(-1);
 interface DocsProviderContextValue {
   docsName: string;
   docsType: string;
-  docs?: ReturnType<typeof getCssDoc | typeof getComponentDocs>;
+  docsTitle?: string;
+  docs?:
+    | ReturnType<typeof getCssDoc>
+    | ReturnType<typeof getComponentDocs>
+    | PatternDocs;
   history?: ReturnType<typeof getHistory>;
   snippets?: ReturnType<typeof getComponentSnippets>;
 }
@@ -196,22 +219,48 @@ export const DocNavigationBar = ({
 
 export const DocNavigation = () => {
   const { docsName = '', docsType = '' } = useParams();
-  const { state } = useLocation();
+  const { state, pathname } = useLocation();
   const navigate = useNavigate();
   const iconBrowseSearch: string | undefined = state?.iconBrowseSearch;
+  const isIconFoundationDoc =
+    docsType === '' &&
+    isIconDocsName(docsName) &&
+    pathname.startsWith(`${iconographyPath}/`);
+  const docsPath = isIconFoundationDoc
+    ? iconDocsPath(docsName)
+    : `/${docsType}/${docsName}`;
+  const showComponentProps =
+    (docsType === 'components' || isIconFoundationDoc) &&
+    docsName.indexOf('use') !== 0;
+
   let snippets: DocsProviderContextValue['snippets'] = [];
   let history: DocsProviderContextValue['history'] = [];
   let docs: DocsProviderContextValue['docs'];
+  const isPatternDocs = docsType === 'patterns';
+  const isFoundationPage = isFoundationPageDoc(docsType, docsName);
+  let docsTitle = docsName;
+  if (isPatternDocs) {
+    docsTitle = getPatternEntry(docsName).title;
+  } else if (isFoundationPage) {
+    docsTitle = getFoundationPageDocMeta(docsName)?.title ?? docsName;
+  } else if (isCssFoundationDoc(docsType, docsName)) {
+    docsTitle = getCssFoundationDoc(docsName)?.title ?? docsName;
+  }
 
-  if (docsType === 'css') {
-    history = getHistory(docsName);
+  if (isPatternDocs) {
+    docs = getPatternDocs(docsName);
+  } else if (isFoundationPage) {
+    docs = getFoundationPageDocs(docsName);
+  } else if (isCssDoc(docsType, docsName)) {
+    history = getHistory(getCssDocFileName(docsName));
     docs = getCssDoc(docsName);
   } else {
     snippets = getComponentSnippets(docsName) || [];
 
-    docs = getComponentDocs(docsName);
-    const relevantNames = docs.subComponents
-      ? [docsName, ...docs.subComponents]
+    const componentDocs = getComponentDocs(docsName);
+    docs = componentDocs;
+    const relevantNames = componentDocs.subComponents
+      ? [docsName, ...componentDocs.subComponents]
       : [docsName];
 
     history = getHistory(...relevantNames);
@@ -241,48 +290,48 @@ export const DocNavigation = () => {
               }}
             />
           ) : null}
-          <Heading level="1">{docsName}</Heading>
+          <Heading level="1">{docsTitle}</Heading>
         </Inline>
-        <DocNavigationBar title="Subnavigation">
-          <DocNavigationItem href={`/${docsType}/${docsName}`}>
-            Details
-          </DocNavigationItem>
-          {docsType === 'components' && docsName.indexOf('use') !== 0 ? (
-            <DocNavigationItem href={`/${docsType}/${docsName}/props`}>
-              Props
+        {isPatternDocs || isFoundationPage ? null : (
+          <DocNavigationBar title="Subnavigation">
+            <DocNavigationItem href={docsPath}>Details</DocNavigationItem>
+            {showComponentProps ? (
+              <DocNavigationItem href={`${docsPath}/props`}>
+                Props
+              </DocNavigationItem>
+            ) : null}
+            <DocNavigationItem
+              href={`${docsPath}/releases`}
+              badge={
+                updateCount > 0 ? (
+                  <Badge
+                    tone="promote"
+                    weight="strong"
+                    title={`${updateCount} release${
+                      updateCount === 1 ? '' : 's'
+                    } in the last two months`}
+                  >
+                    {String(updateCount)}
+                  </Badge>
+                ) : undefined
+              }
+            >
+              Releases
             </DocNavigationItem>
-          ) : null}
-          <DocNavigationItem
-            href={`/${docsType}/${docsName}/releases`}
-            badge={
-              updateCount > 0 ? (
-                <Badge
-                  tone="promote"
-                  weight="strong"
-                  title={`${updateCount} release${
-                    updateCount === 1 ? '' : 's'
-                  } in the last two months`}
-                >
-                  {String(updateCount)}
-                </Badge>
-              ) : undefined
-            }
-          >
-            Releases
-          </DocNavigationItem>
-          {snippets.length > 0 ? (
-            <DocNavigationItem href={`/${docsType}/${docsName}/snippets`}>
-              Snippets
-            </DocNavigationItem>
-          ) : null}
-        </DocNavigationBar>
-        {'deprecationWarning' in docs && docs.deprecationWarning ? (
+            {snippets.length > 0 ? (
+              <DocNavigationItem href={`${docsPath}/snippets`}>
+                Snippets
+              </DocNavigationItem>
+            ) : null}
+          </DocNavigationBar>
+        )}
+        {docs && 'deprecationWarning' in docs && docs.deprecationWarning ? (
           <Alert tone="caution">{docs.deprecationWarning}</Alert>
         ) : null}
-        {docs.banner}
+        {docs && 'banner' in docs ? docs.banner : null}
       </Stack>
       <DocsContext.Provider
-        value={{ docsName, docsType, docs, history, snippets }}
+        value={{ docsName, docsType, docsTitle, docs, history, snippets }}
       >
         <Outlet />
       </DocsContext.Provider>

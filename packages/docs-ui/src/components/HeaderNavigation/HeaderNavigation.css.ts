@@ -1,6 +1,10 @@
 import { createVar, style } from '@vanilla-extract/css';
 import { vars, colorModeStyle } from 'braid-design-system/css';
 
+export const navLinksContainer = style({
+  flexGrow: 1,
+});
+
 const searchBg = createVar();
 export const searchButton = style([
   {

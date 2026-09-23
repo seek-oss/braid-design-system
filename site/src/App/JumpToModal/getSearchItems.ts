@@ -1,22 +1,64 @@
 import {
+  allTemplateDocs,
   categorisedComponents,
   documentedComponents,
   documentedCss,
 } from '../navigationHelpers';
-import foundations from '../routes/foundations';
+import { foundationNavItems } from '../routes/foundations';
+import guides from '../routes/guides';
+import {
+  howToEntries,
+  patternEntries,
+  patternHref,
+} from '../routes/patterns/catalog';
+import { templateDetailPath } from '../routes/templates/templateDocs';
+
+export const searchCategories = [
+  'Guides',
+  'Foundations',
+  'Components',
+  'Patterns',
+  'Layouts',
+  'Sections',
+  'How to',
+  'Styles',
+  'Logic',
+] as const;
+
+type SearchCategory = (typeof searchCategories)[number];
 
 export interface SearchItem {
   name: string;
   path: string;
-  category: 'Foundations' | 'Components' | 'CSS' | 'Logic';
+  category: SearchCategory;
   hasProps: boolean;
 }
 
+const templateSearchCategory = (group: string): 'Layouts' | 'Sections' => {
+  if (group === 'layouts') {
+    return 'Layouts';
+  }
+
+  if (group === 'sections') {
+    return 'Sections';
+  }
+
+  throw new Error(`Unexpected template group: ${group}`);
+};
+
 export const searchItems: SearchItem[] = [
-  // Foundations
-  ...Object.entries(foundations).map(([path, foundation]) => ({
-    name: foundation.title,
+  // Guides
+  ...Object.entries(guides).map(([path, guide]) => ({
+    name: guide.title,
     path,
+    category: 'Guides' as const,
+    hasProps: false,
+  })),
+
+  // Foundations
+  ...foundationNavItems.map((item) => ({
+    name: item.name,
+    path: item.path,
     category: 'Foundations' as const,
     hasProps: false,
   })),
@@ -31,11 +73,35 @@ export const searchItems: SearchItem[] = [
       hasProps: true,
     })),
 
-  // CSS
+  // Patterns
+  ...patternEntries.map((entry) => ({
+    name: entry.title,
+    path: patternHref(entry.slug),
+    category: 'Patterns' as const,
+    hasProps: false,
+  })),
+
+  // Templates, grouped by their parent page
+  ...allTemplateDocs.map((doc) => ({
+    name: doc.title,
+    path: templateDetailPath(doc.group, doc.slug),
+    category: templateSearchCategory(doc.group),
+    hasProps: false,
+  })),
+
+  // How to
+  ...howToEntries.map((entry) => ({
+    name: entry.title,
+    path: patternHref(entry.slug),
+    category: 'How to' as const,
+    hasProps: false,
+  })),
+
+  // Styles
   ...documentedCss.map((doc) => ({
     name: doc.name,
-    path: `/css/${doc.name}`,
-    category: 'CSS' as const,
+    path: `/styles/${doc.name}`,
+    category: 'Styles' as const,
     hasProps: false,
   })),
 
@@ -48,15 +114,12 @@ export const searchItems: SearchItem[] = [
   })),
 ];
 
-export type GroupedResults = Record<SearchItem['category'], SearchItem[]>;
+export type GroupedResults = Record<SearchCategory, SearchItem[]>;
 
 export const groupSearchResults = (items: SearchItem[]): GroupedResults => {
-  const groups: GroupedResults = {
-    Foundations: [],
-    Components: [],
-    CSS: [],
-    Logic: [],
-  };
+  const groups = Object.fromEntries(
+    searchCategories.map((category) => [category, [] as SearchItem[]]),
+  ) as GroupedResults;
 
   items.forEach((item) => {
     groups[item.category].push(item);

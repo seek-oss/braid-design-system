@@ -69,7 +69,7 @@ const docs: ComponentDocs = {
     {
       name: 'responsiveStyle',
       description: 'For custom styles.',
-      section: 'css',
+      section: 'styles',
     },
   ],
   additional: [

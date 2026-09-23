@@ -3,10 +3,12 @@ import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContaine
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 
+import { SearchLanding } from './SearchLanding';
 import { SearchResults } from './SearchResults';
 import {
-  searchItems,
   groupSearchResults,
+  searchCategories,
+  searchItems,
   type SearchItem,
 } from './getSearchItems';
 
@@ -40,12 +42,7 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
 
   const flatResults = useMemo(() => {
     const results: SearchItem[] = [];
-    const categoryOrder = [
-      'Foundations',
-      'Components',
-      'CSS',
-      'Logic',
-    ] as const;
+    const categoryOrder = searchCategories;
 
     categoryOrder.forEach((category) => {
       results.push(...groupedResults[category]);
@@ -104,8 +101,8 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
                 : selectedItem.path;
             navigate(targetPath);
             onClose();
+            e.preventDefault();
           }
-          e.preventDefault();
           break;
       }
     };
@@ -138,7 +135,7 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
         icon={<IconSearch />}
         ref={inputRef}
         aria-label="Jump to a component"
-        placeholder="Jump to Foundations, Components, CSS, Logic..."
+        placeholder="Jump to Foundations, Components, Patterns..."
         value={searchQuery}
         onChange={(e) => {
           setSearchQuery(e.target.value);
@@ -159,6 +156,7 @@ export const JumpToModal = ({ isOpen, onClose }: JumpToModalProps) => {
                   navigate(path);
                   onClose();
                 }}
+                placeholder={<SearchLanding onSelect={onClose} />}
               />
             </Box>
           </Box>

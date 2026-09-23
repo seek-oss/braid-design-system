@@ -28,7 +28,7 @@ type GroupedHistory = Record<
 >;
 
 export const DocReleases = () => {
-  const { docsName, history = [] } = useContext(DocsContext);
+  const { docsName, docsTitle, history = [] } = useContext(DocsContext);
   const groupedHistory = history.reduce(
     (acc, { version, time, isRecent, summary }) => {
       if (acc[version]) {
@@ -48,7 +48,7 @@ export const DocReleases = () => {
 
   return (
     <>
-      <PageTitle title={`${docsName} Releases`} />
+      <PageTitle title={`${docsTitle ?? docsName} Releases`} />
 
       <Stack space="xxlarge">
         {Object.keys(groupedHistory).length > 0 ? (
