@@ -1,4 +1,5 @@
 import {
+  allTemplateDocs,
   categorisedComponents,
   documentedComponents,
   documentedCss,
@@ -10,12 +11,15 @@ import {
   patternEntries,
   patternHref,
 } from '../routes/patterns/catalog';
+import { templateDetailPath } from '../routes/templates/templateDocs';
 
 export const searchCategories = [
   'Guides',
   'Foundations',
   'Components',
   'Patterns',
+  'Layouts',
+  'Sections',
   'How to',
   'Styles',
   'Logic',
@@ -29,6 +33,18 @@ export interface SearchItem {
   category: SearchCategory;
   hasProps: boolean;
 }
+
+const templateSearchCategory = (group: string): 'Layouts' | 'Sections' => {
+  if (group === 'layouts') {
+    return 'Layouts';
+  }
+
+  if (group === 'sections') {
+    return 'Sections';
+  }
+
+  throw new Error(`Unexpected template group: ${group}`);
+};
 
 export const searchItems: SearchItem[] = [
   // Guides
@@ -62,6 +78,14 @@ export const searchItems: SearchItem[] = [
     name: entry.title,
     path: patternHref(entry.slug),
     category: 'Patterns' as const,
+    hasProps: false,
+  })),
+
+  // Templates, grouped by their parent page
+  ...allTemplateDocs.map((doc) => ({
+    name: doc.title,
+    path: templateDetailPath(doc.group, doc.slug),
+    category: templateSearchCategory(doc.group),
     hasProps: false,
   })),
 
