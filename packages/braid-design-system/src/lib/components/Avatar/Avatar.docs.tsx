@@ -6,6 +6,7 @@ import {
   Box,
   Column,
   Columns,
+  Heading,
   IconCompany,
   IconPhotoAdd,
   Inline,
@@ -24,8 +25,8 @@ const docs: ComponentDocs = {
   category: 'Content',
   description: (
     <Text>
-      A rounded-square identity mark for a person or company, used to recognise
-      them in a list, card, or header.
+      A visual representation of a person or company, helping users quickly
+      recognise entities within a list or group.
     </Text>
   ),
   Example: () => {
@@ -82,59 +83,36 @@ const docs: ComponentDocs = {
     },
     {
       name: 'Badge',
-      description:
-        'For status or a notification count, composed around Avatar.',
+      description: 'For communicating the status of an object.',
     },
     {
       name: 'TooltipRenderer',
-      description: 'For a hover label around Avatar.',
+      description:
+        'To provide non-critical, extra context on mouse hover or keyboard focus.',
     },
     {
       name: 'MenuRenderer',
-      description: 'For account or upload menus around Avatar.',
+      description:
+        "For custom menu triggers where standard components like OverflowMenu aren't suitable.",
     },
   ],
   docSections: {
     appearance: [
       {
-        label: 'Choosing an avatar treatment',
+        label: 'Choosing a treatment',
         description: (
-          <Text>
-            Choose a treatment that matches the identity data you have. A photo
-            or company logo is the most recognisable. Initials work when you
-            have a name but no image. A company icon stands in for an unnamed
-            organisation. An empty avatar is for when there is no identity yet.
-          </Text>
+          <Text>Match the treatment to the identity data you have.</Text>
         ),
       },
       {
-        label: 'Fallback order',
-        description: (
-          <Text>
-            While <Strong>loading</Strong>, a skeleton is shown. Else a loaded{' '}
-            <Strong>imageUrl</Strong> is shown. If that URL fails,{' '}
-            <TextLink href="/components/IconImageBroken">
-              IconImageBroken
-            </TextLink>{' '}
-            is shown — not initials or <Strong>icon</Strong>. Else the first
-            letter of <Strong>name</Strong>. Else <Strong>icon</Strong> if you
-            passed one. Else{' '}
-            <TextLink href="/components/IconProfile">IconProfile</TextLink>.
-            Passing <Strong>name</Strong> and <Strong>icon</Strong> together
-            shows initials — omit <Strong>name</Strong> for a custom{' '}
-            <Strong>icon</Strong> fallback.
-          </Text>
-        ),
-      },
-      {
-        label: 'Image',
         description: (
           <Stack space="large">
+            <Heading level="4">Image</Heading>
             <Text>
-              When a photo or company logo is available, pass it as{' '}
-              <Strong>imageUrl</Strong>. This is the strongest treatment and
-              should be preferred over initials whenever you can show a current
-              image.
+              The most recognisable treatment. When a photo or company logo is
+              available, pass it as <Strong>imageUrl</Strong>. This is the
+              strongest treatment and should be preferred over initials whenever
+              you can show a current image.
             </Text>
             <Text>
               Provide an image at least twice the box size so it stays sharp.
@@ -196,13 +174,16 @@ const docs: ComponentDocs = {
         },
       },
       {
-        label: 'Initials',
         description: (
-          <Text>
-            When there is a name but no image, Avatar shows the first letter of{' '}
-            <Strong>name</Strong>. The background colour is derived from that
-            name so the same identity stays consistent wherever they appear.
-          </Text>
+          <Stack space="large">
+            <Heading level="4">Initials</Heading>
+            <Text>
+              When there is a name but no image, Avatar shows the first letter
+              of <Strong>name</Strong>. The background colour is derived from
+              that name so the same identity stays consistent wherever they
+              appear.
+            </Text>
+          </Stack>
         ),
         Example: () =>
           source(
@@ -216,14 +197,16 @@ const docs: ComponentDocs = {
           ),
       },
       {
-        label: 'Language',
         description: (
-          <Text>
-            The first letter of <Strong>name</Strong> works across scripts such
-            as Latin, Thai and Chinese, with no extra configuration. Numbers,
-            punctuation and symbols are skipped. If no letter is found, the
-            empty treatment is used instead.
-          </Text>
+          <Stack space="large">
+            <Heading level="4">Language</Heading>
+            <Text>
+              The first letter of <Strong>name</Strong> works across scripts
+              such as Latin, Thai and Chinese, with no extra configuration.
+              Numbers, punctuation and symbols are skipped. If no letter is
+              found, the empty treatment is used instead.
+            </Text>
+          </Stack>
         ),
         Example: () =>
           source(
@@ -244,9 +227,24 @@ const docs: ComponentDocs = {
           ),
       },
       {
-        label: 'Empty',
         description: (
           <Stack space="large">
+            <Heading level="4">Company icon</Heading>
+            <Text>
+              For an organisation with no logo and no name, you may provide an{' '}
+              <Strong>icon</Strong>, typically{' '}
+              <TextLink href="/components/IconCompany">IconCompany</TextLink>.
+              Note that passing <Strong>name</Strong> and <Strong>icon</Strong>{' '}
+              together shows initials, not the icon.
+            </Text>
+          </Stack>
+        ),
+        Example: () => source(<Avatar icon={<IconCompany />} />),
+      },
+      {
+        description: (
+          <Stack space="large">
+            <Heading level="4">Empty</Heading>
             <Text>
               When there is no identity yet, omit <Strong>name</Strong> to show{' '}
               <TextLink href="/components/IconProfile">IconProfile</TextLink>.
@@ -260,17 +258,41 @@ const docs: ComponentDocs = {
         Example: () => source(<Avatar />),
       },
       {
-        label: 'Company',
+        label: 'Fallback order',
         description: (
-          <Text>
-            For an organisation, pass the logo as <Strong>imageUrl</Strong>.
-            With no logo and no name, pass <Strong>icon</Strong> — typically{' '}
-            <TextLink href="/components/IconCompany">IconCompany</TextLink>.
-            Passing <Strong>name</Strong> and <Strong>icon</Strong> together
-            shows initials, not the icon.
-          </Text>
+          <Stack space="large">
+            <List space="large">
+              <Text>
+                While <Strong>loading</Strong>, a skeleton is shown.
+              </Text>
+              <Text>
+                Otherwise a loaded <Strong>imageUrl</Strong> is shown. If the
+                URL fails,{' '}
+                <TextLink href="/components/IconImageBroken">
+                  IconImageBroken
+                </TextLink>{' '}
+                is shown (not initials or <Strong>icon</Strong>).
+              </Text>
+              <Text>
+                When no image is provided, the first letter of{' '}
+                <Strong>name</Strong> is shown.
+              </Text>
+              <Text>
+                When no image or name is provided, an <Strong>icon</Strong> is
+                shown.
+              </Text>
+              <Text>
+                When nothing is provided,{' '}
+                <TextLink href="/components/IconProfile">IconProfile</TextLink>{' '}
+                is shown.
+              </Text>
+            </List>
+            <Text>
+              Passing name and icon together shows initials — omit name for a
+              custom icon fallback.
+            </Text>
+          </Stack>
         ),
-        Example: () => source(<Avatar icon={<IconCompany />} />),
       },
       {
         label: 'Size',
@@ -338,15 +360,18 @@ const docs: ComponentDocs = {
     ],
     layout: [
       {
-        label: 'Composition',
+        label: 'Composition patterns',
         description: (
-          <Text>
-            Pair Avatar with visible text so the name is available to everyone.
-            The easiest way is{' '}
-            <TextLink href="/components/Columns">Columns</TextLink> or{' '}
-            <TextLink href="/components/Inline">Inline</TextLink>, with the
-            avatar sized to its content and aligned to the text.
-          </Text>
+          <Stack space="large">
+            <Heading level="4">Pairing with text</Heading>
+            <Text>
+              Pair Avatar with visible text so the name is available to
+              everyone. The easiest way is{' '}
+              <TextLink href="/components/Columns">Columns</TextLink> or{' '}
+              <TextLink href="/components/Inline">Inline</TextLink>, with the
+              Avatar sized to its content and aligned to the text.
+            </Text>
+          </Stack>
         ),
         Example: () =>
           source(
@@ -363,6 +388,41 @@ const docs: ComponentDocs = {
                 </Stack>
               </Column>
             </Columns>,
+          ),
+      },
+      {
+        description: (
+          <Stack space="large">
+            <Heading level="4">Tooltip</Heading>
+            <Text>
+              When the avatar is the only identifier, wrap Avatar with{' '}
+              <TextLink href="/components/TooltipRenderer">
+                TooltipRenderer
+              </TextLink>{' '}
+              so the name is available on hover and focus. Spread{' '}
+              <Strong>triggerProps</Strong> last onto Avatar, and pass{' '}
+              <Strong>aria-label</Strong> because those props make the avatar
+              focusable.
+            </Text>
+            <Text>
+              Skip a tooltip when the name is already visible beside the avatar.
+              If click opens a{' '}
+              <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>,
+              put the tooltip on the menu trigger, not on Avatar inside it.
+            </Text>
+          </Stack>
+        ),
+        Example: () =>
+          source(
+            <TooltipRenderer tooltip={<Text>Leia Organa</Text>}>
+              {({ triggerProps }) => (
+                <Avatar
+                  name="Leia Organa"
+                  aria-label="Leia Organa"
+                  {...triggerProps}
+                />
+              )}
+            </TooltipRenderer>,
           ),
       },
     ],
@@ -395,41 +455,6 @@ const docs: ComponentDocs = {
           ),
       },
       {
-        label: 'Tooltip',
-        description: (
-          <>
-            <Text>
-              When the avatar is the only identifier, wrap Avatar with{' '}
-              <TextLink href="/components/TooltipRenderer">
-                TooltipRenderer
-              </TextLink>{' '}
-              so the name is available on hover and focus. Spread{' '}
-              <Strong>triggerProps</Strong> last onto Avatar, and pass{' '}
-              <Strong>aria-label</Strong> because those props make the avatar
-              focusable.
-            </Text>
-            <Text>
-              Skip a tooltip when the name is already visible beside the avatar.
-              If click opens a{' '}
-              <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>,
-              put the tooltip on the menu trigger, not on Avatar inside it.
-            </Text>
-          </>
-        ),
-        Example: () =>
-          source(
-            <TooltipRenderer tooltip={<Text>Leia Organa</Text>}>
-              {({ triggerProps }) => (
-                <Avatar
-                  name="Leia Organa"
-                  aria-label="Leia Organa"
-                  {...triggerProps}
-                />
-              )}
-            </TooltipRenderer>,
-          ),
-      },
-      {
         label: 'Loading',
         description: (
           <Text>
@@ -445,7 +470,7 @@ const docs: ComponentDocs = {
     ],
     bestPractices: [
       {
-        label: 'Content guidelines',
+        label: 'General best practice',
         description: (
           <List space="large">
             <Text>
@@ -453,13 +478,22 @@ const docs: ComponentDocs = {
               that helps people scan a list or card.
             </Text>
             <Text>
-              If the avatar is the only identifier, pass{' '}
+              If the Avatar is the only identifier, pass{' '}
               <Strong>aria-label</Strong> — and consider a tooltip.
             </Text>
             <Text>
               Use a current photo or company logo when you have one, otherwise
               initials from the name. For an unnamed organisation, pass{' '}
               <Strong>icon</Strong>.
+            </Text>
+            <Text>
+              To show status, compose{' '}
+              <TextLink href="/components/Badge">Badge</TextLink> on the
+              wrapper.
+            </Text>
+            <Text>
+              Do not add <Strong>onClick</Strong> when a parent is already the
+              button.
             </Text>
           </List>
         ),
@@ -472,15 +506,16 @@ const docs: ComponentDocs = {
               <Text>Use an Avatar:</Text>
               <List space="large">
                 <Text>
-                  to represent a person or company in a list, card, or header
+                  to represent a person or company using a photo, initials, or
+                  icon, at various sizes
                 </Text>
                 <Text>
-                  with <Strong>icon</Strong> for an empty company mark
+                  to help users quickly recognise entities within a list or
+                  group
                 </Text>
                 <Text>
-                  as a control, with <Strong>icon</Strong>,{' '}
-                  <Strong>aria-label</Strong> and <Strong>onClick</Strong>, when
-                  the square itself is for adding a photo
+                  as <TextLink href="#as-a-control">a control</TextLink> that
+                  lets users add or update their Avatar photo.
                 </Text>
               </List>
             </Stack>
@@ -488,21 +523,12 @@ const docs: ComponentDocs = {
               <Text>Don&rsquo;t use an Avatar:</Text>
               <List space="large">
                 <Text>
+                  for company logos on job listing cards (use their existing
+                  components)
+                </Text>
+                <Text>
                   as the only identifier, unless you pass{' '}
                   <Strong>aria-label</Strong>
-                </Text>
-                <Text>
-                  for a wide rectangle lockup (existing job-card logos stay on
-                  their current components)
-                </Text>
-                <Text>
-                  to show status (compose{' '}
-                  <TextLink href="/components/Badge">Badge</TextLink> on the
-                  wrapper)
-                </Text>
-                <Text>
-                  with <Strong>onClick</Strong> when a parent is already the
-                  button
                 </Text>
               </List>
             </Stack>
