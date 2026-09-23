@@ -20,7 +20,6 @@ import { snippets as Drawer } from './snippets/Drawer';
 import { snippets as Dropdown } from './snippets/Dropdown';
 import { snippets as FieldLabel } from './snippets/FieldLabel';
 import { snippets as FieldMessage } from './snippets/FieldMessage';
-import { snippets as Form } from './snippets/Form';
 import { snippets as Heading } from './snippets/Heading';
 import { snippets as Inline } from './snippets/Inline';
 import { snippets as List } from './snippets/List';
@@ -64,7 +63,6 @@ const snippetsMap = {
   BrandedContainer,
   CardList,
   CompactPage,
-  Form,
   SpaciousPage,
   StandardPage,
   StandardSection,

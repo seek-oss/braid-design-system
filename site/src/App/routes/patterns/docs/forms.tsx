@@ -2,15 +2,19 @@ import source from '@braid-design-system/source.macro';
 import {
   Actions,
   Button,
+  Checkbox,
   Column,
   Columns,
   ContentBlock,
+  Dropdown,
   Heading,
   Hidden,
   IconArrow,
   IconSend,
   Inline,
   List,
+  MonthPicker,
+  PageBlock,
   Stack,
   Step,
   Stepper,
@@ -49,74 +53,85 @@ const docs: PatternDocs = {
   docSections: {
     appearance: [
       {
-        label: 'Basic form example',
-        Example: ({ getState, setState, setDefaultState }) =>
+        label: 'Standard form',
+        description: (
+          <Text>
+            Use <Strong>reserveMessageSpace</Strong> paired with a{' '}
+            <Strong>small Stack</Strong> for spacing input fields, and a{' '}
+            <Strong>large Stack</Strong> for spacing the actions from the input
+            fields.
+          </Text>
+        ),
+        Example: ({ getState, setState, setDefaultState, toggleState }) =>
           source(
             <>
-              {setDefaultState('shouldValidate', false)}
-              {setDefaultState('Name', '')}
-              {setDefaultState('RoleTitle', '')}
-              {setDefaultState('textfield', '')}
-              <ContentBlock width="small">
+              {setDefaultState('error', false)}
+              {setDefaultState('textField', '')}
+              {setDefaultState('dropdown', '')}
+              {setDefaultState('month', {})}
+              {setDefaultState('checkbox', false)}
+              <PageBlock width="small">
                 <Stack space="xlarge">
-                  <Heading level="2">Form heading</Heading>
+                  <Heading level="3">Heading</Heading>
                   <Stack space="large">
                     <Stack space="small">
                       <TextField
-                        label="Name"
-                        onChange={setState('Name')}
-                        value={getState('Name')}
+                        label="TextField"
+                        value={getState('textField')}
+                        onChange={setState('textField')}
                         reserveMessageSpace
+                        tone={getState('error') ? 'critical' : undefined}
                         message={
-                          getState('shouldValidate') === true &&
-                          getState('Name').length === 0
-                            ? 'Enter your name'
-                            : undefined
-                        }
-                        tone={
-                          getState('shouldValidate') === true &&
-                          getState('Name').length === 0
-                            ? 'critical'
-                            : undefined
+                          getState('error') ? 'Required field' : undefined
                         }
                       />
-                      <TextField
-                        label="Role title"
-                        onChange={setState('RoleTitle')}
-                        value={getState('RoleTitle')}
+
+                      <Dropdown
+                        label="Dropdown"
+                        value={getState('dropdown')}
+                        onChange={setState('dropdown')}
                         reserveMessageSpace
+                        tone={getState('error') ? 'critical' : undefined}
                         message={
-                          getState('shouldValidate') === true &&
-                          getState('RoleTitle').length === 0
-                            ? 'Enter your role title'
-                            : undefined
+                          getState('error') ? 'Required field' : undefined
                         }
-                        tone={
-                          getState('shouldValidate') === true &&
-                          getState('RoleTitle').length === 0
-                            ? 'critical'
-                            : undefined
+                      >
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                      </Dropdown>
+
+                      <MonthPicker
+                        label="MonthPicker"
+                        value={getState('month')}
+                        onChange={setState('month')}
+                        reserveMessageSpace
+                        tone={getState('error') ? 'critical' : undefined}
+                        message={
+                          getState('error') ? 'Required field' : undefined
                         }
                       />
-                      <TextField
-                        label="Phone number"
-                        onChange={setState('textfield')}
-                        value={getState('textfield')}
-                        secondaryLabel="optional"
+
+                      <Checkbox
+                        label="Checkbox"
+                        checked={getState('checkbox')}
+                        onChange={setState('checkbox')}
                         reserveMessageSpace
+                        tone={getState('error') ? 'critical' : undefined}
+                        message={
+                          getState('error') ? 'Required field' : undefined
+                        }
                       />
                     </Stack>
+
                     <Actions>
-                      <Button
-                        variant="solid"
-                        onClick={() => setState('shouldValidate', true)}
-                      >
+                      <Button onClick={() => toggleState('error')}>
                         Submit
                       </Button>
                     </Actions>
                   </Stack>
                 </Stack>
-              </ContentBlock>
+              </PageBlock>
             </>,
           ),
       },
@@ -290,146 +305,74 @@ const docs: PatternDocs = {
             <Stack space="large">
               <Heading level="4">Reserve message space</Heading>
               <Text>
-                If a form has several required fields, consider using the{' '}
-                <Strong>reserveMessageSpace</Strong> property. This reserves
-                space below the field and keeps content from shifting when a
-                validation message appears.
+                Use <Strong>reserveMessageSpace</Strong> by default. This
+                prevents elements from shifting when validation messages appear.
+              </Text>
+              <Text>
+                For simple forms where validation errors are unlikely or where
+                layout shift is acceptable, you can choose to leave it off. In
+                those cases, use a <Strong>large Stack</Strong> for spacing
+                input fields, and an <Strong>xlarge Stack</Strong> for spacing
+                the actions from the input fields.
               </Text>
             </Stack>
           </Stack>
         ),
-        Example: ({ getState, setState, setDefaultState }) =>
+        Example: ({ getState, setState, setDefaultState, toggleState }) =>
           source(
             <>
-              {setDefaultState('shouldValidate', false)}
-              {setDefaultState('Name', '')}
-              {setDefaultState('RoleTitle', '')}
-              {setDefaultState('shouldValidate2', false)}
-              {setDefaultState('Name2', '')}
-              {setDefaultState('RoleTitle2', '')}
-              {setDefaultState('textfield', '')}
-              <Columns space="xxlarge" collapseBelow="tablet">
-                <Column>
+              {setDefaultState('error', false)}
+              {setDefaultState('textField', '')}
+              {setDefaultState('dropdown', '')}
+              {setDefaultState('month', {})}
+              {setDefaultState('checkbox', false)}
+              <PageBlock width="small">
+                <Stack space="xlarge">
+                  <Heading level="3">Heading</Heading>
                   <Stack space="large">
-                    <Stack space="small">
-                      <Heading level="4">With reserve message space</Heading>
-                      <Text>Stack space = medium</Text>
-                    </Stack>
-                    <Stack space="medium">
-                      <TextField
-                        label="Name"
-                        onChange={setState('Name')}
-                        value={getState('Name')}
-                        reserveMessageSpace
-                        message={
-                          getState('shouldValidate') === true &&
-                          getState('Name').length === 0
-                            ? 'Enter your name'
-                            : undefined
-                        }
-                        tone={
-                          getState('shouldValidate') === true &&
-                          getState('Name').length === 0
-                            ? 'critical'
-                            : undefined
-                        }
-                      />
-                      <TextField
-                        label="Role title"
-                        onChange={setState('RoleTitle')}
-                        value={getState('RoleTitle')}
-                        reserveMessageSpace
-                        message={
-                          getState('shouldValidate') === true &&
-                          getState('RoleTitle').length === 0
-                            ? 'Enter your role title'
-                            : undefined
-                        }
-                        tone={
-                          getState('shouldValidate') === true &&
-                          getState('RoleTitle').length === 0
-                            ? 'critical'
-                            : undefined
-                        }
-                      />
-                      <TextField
-                        label="Phone number"
-                        onChange={setState('textfield')}
-                        value={getState('textfield')}
-                        secondaryLabel="optional"
-                        reserveMessageSpace
-                      />
-                      <Actions>
-                        <Button
-                          variant="solid"
-                          onClick={() => setState('shouldValidate', true)}
-                        >
-                          Submit
-                        </Button>
-                      </Actions>
-                    </Stack>
+                    <TextField
+                      label="TextField"
+                      value={getState('textField')}
+                      onChange={setState('textField')}
+                      secondaryLabel="optional"
+                    />
+
+                    <Dropdown
+                      label="Dropdown"
+                      value={getState('dropdown')}
+                      onChange={setState('dropdown')}
+                      tone={getState('error') ? 'critical' : undefined}
+                      message={getState('error') ? 'Required field' : undefined}
+                    >
+                      <option>Option 1</option>
+                      <option>Option 2</option>
+                      <option>Option 3</option>
+                    </Dropdown>
+
+                    <MonthPicker
+                      label="MonthPicker"
+                      value={getState('month')}
+                      onChange={setState('month')}
+                      secondaryLabel="optional"
+                    />
+
+                    <Checkbox
+                      label="Checkbox"
+                      checked={getState('checkbox')}
+                      onChange={setState('checkbox')}
+                    />
                   </Stack>
-                </Column>
-                <Column>
-                  <Stack space="large">
-                    <Stack space="small">
-                      <Heading level="4">Without reserve message space</Heading>
-                      <Text>Stack space = medium</Text>
-                    </Stack>
-                    <Stack space="medium">
-                      <TextField
-                        label="Name"
-                        onChange={setState('Name2')}
-                        value={getState('Name2')}
-                        message={
-                          getState('shouldValidate2') === true &&
-                          getState('Name2').length === 0
-                            ? 'Enter your name'
-                            : undefined
-                        }
-                        tone={
-                          getState('shouldValidate2') === true &&
-                          getState('Name2').length === 0
-                            ? 'critical'
-                            : undefined
-                        }
-                      />
-                      <TextField
-                        label="Role title"
-                        onChange={setState('RoleTitle2')}
-                        value={getState('RoleTitle2')}
-                        message={
-                          getState('shouldValidate2') === true &&
-                          getState('RoleTitle2').length === 0
-                            ? 'Enter your role title'
-                            : undefined
-                        }
-                        tone={
-                          getState('shouldValidate2') === true &&
-                          getState('RoleTitle2').length === 0
-                            ? 'critical'
-                            : undefined
-                        }
-                      />
-                      <TextField
-                        label="Phone number"
-                        onChange={setState('textfield')}
-                        value={getState('textfield')}
-                        secondaryLabel="optional"
-                        reserveMessageSpace
-                      />
-                      <Actions>
-                        <Button
-                          variant="solid"
-                          onClick={() => setState('shouldValidate2', true)}
-                        >
-                          Submit
-                        </Button>
-                      </Actions>
-                    </Stack>
-                  </Stack>
-                </Column>
-              </Columns>
+
+                  <Actions>
+                    <Button
+                      variant="ghost"
+                      onClick={() => toggleState('error')}
+                    >
+                      Submit
+                    </Button>
+                  </Actions>
+                </Stack>
+              </PageBlock>
             </>,
           ),
       },
