@@ -48,29 +48,6 @@ export const DefaultLayout: Story = {
   },
 };
 
-export const UntitledLayout: Story = {
-  name: 'Layout: No visible title',
-  args: {
-    'aria-label': 'Untitled test',
-    width: 'medium',
-    children: (
-      <>
-        <Placeholder height={100} />
-        <Placeholder height={100} width="100%" label="Second child" />
-      </>
-    ),
-  },
-};
-
-export const UntitledWithAriaAttributes: Story = {
-  name: 'Layout: Untitled with aria attributes',
-  args: {
-    'aria-label': 'Untitled with aria attributes',
-    'aria-description': 'Hello, this is a test',
-    width: 'medium',
-  },
-};
-
 export const UntitledWithSiblingChildren: Story = {
   name: 'Layout: Untitled with sibling children',
   args: {
@@ -78,10 +55,8 @@ export const UntitledWithSiblingChildren: Story = {
     width: 'medium',
     children: (
       <>
-        <Text tone="secondary">
-          <Strong>3</Strong> of <Strong>12</Strong>
-        </Text>
-        <Placeholder height={100} width="100%" label="Second child" />
+        <Placeholder height={100} width="100%" label="First child" />
+        <Placeholder height={1000} width="100%" label="Second child" />
       </>
     ),
   },
