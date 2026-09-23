@@ -158,7 +158,6 @@ export const SideNavigation = ({
           items: templateGroups.map((group) => ({
             name: group.at(0)?.toUpperCase() + group.slice(1),
             path: templateGroupPath(group.toLowerCase()),
-            badge: 'New' as const,
             active: isActive(templateGroupPath(group.toLowerCase())),
             onClick: onSelect,
           })),
