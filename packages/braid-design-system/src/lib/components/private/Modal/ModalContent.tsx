@@ -170,6 +170,7 @@ const ModalContentScrollLayout = ({
   applyPageBlockGutters,
   applyFullHeight,
   hasFooter,
+  reserveCloseArea,
 }: {
   children: ReactNode;
   applyPageBlockGutters: boolean;
@@ -177,6 +178,7 @@ const ModalContentScrollLayout = ({
   coverImageEnabled?: boolean;
   applyFullHeight?: boolean;
   hasFooter: boolean;
+  reserveCloseArea?: boolean;
 }) => (
   <ScrollContainer direction="vertical">
     {
@@ -191,6 +193,7 @@ const ModalContentScrollLayout = ({
       paddingTop={modalPadding}
       paddingBottom={!hasFooter ? modalPadding : undefined}
       paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
+      className={reserveCloseArea ? styles.reserveCloseArea : undefined}
     >
       {children}
     </Box>
@@ -313,6 +316,12 @@ export const ModalContent = ({
   )[position];
   const modalRadius = !isDrawer ? 'xlarge' : undefined;
 
+  /**
+   * Only Drawer supports omitting the title, in which case there is no header
+   * to hold the content clear of the close button.
+   */
+  const untitledDrawer = isDrawer && !title;
+
   const modalLayout = (
     <ModalContentScrollLayout
       applyPageBlockGutters={isDrawer}
@@ -322,18 +331,21 @@ export const ModalContent = ({
       contentStartRef={contentStartRef}
       coverImageEnabled={coverImageEnabled}
       hasFooter={Boolean(footer)}
+      reserveCloseArea={untitledDrawer}
     >
-      <ModalContentHeader
-        title={title}
-        headingLevel={headingLevel}
-        description={description}
-        descriptionId={descriptionId}
-        illustration={
-          illustration && !coverImageEnabled ? illustration : undefined
-        }
-        ref={headingRef}
-        reserveCloseArea
-      />
+      {untitledDrawer ? null : (
+        <ModalContentHeader
+          title={title}
+          headingLevel={headingLevel}
+          description={description}
+          descriptionId={descriptionId}
+          illustration={
+            illustration && !coverImageEnabled ? illustration : undefined
+          }
+          ref={headingRef}
+          reserveCloseArea
+        />
+      )}
       {children}
     </ModalContentScrollLayout>
   );

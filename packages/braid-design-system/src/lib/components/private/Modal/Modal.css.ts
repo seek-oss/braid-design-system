@@ -1,4 +1,9 @@
-import { createVar, fallbackVar, style } from '@vanilla-extract/css';
+import {
+  createVar,
+  fallbackVar,
+  globalStyle,
+  style,
+} from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
 import { atoms } from '../../../css/atoms/atoms';
@@ -153,6 +158,12 @@ export const modalContainer = style({
 
 export const headingRoot = style({
   overflowWrap: 'break-word',
+});
+
+export const reserveCloseArea = style({});
+globalStyle(`${reserveCloseArea} > :first-child`, {
+  marginRight: vars.touchableSize,
+  maxWidth: calc.subtract('100%', vars.touchableSize),
 });
 
 export const closeIconOffset = style({

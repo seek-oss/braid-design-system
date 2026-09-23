@@ -4,6 +4,7 @@ import { setChromatic } from 'braid-storybook/chromatic';
 import { Placeholder, Spread } from '../../playroom/components';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
+import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 
 import { DrawerContent } from './Drawer';
@@ -52,6 +53,37 @@ export const UntitledLayout: Story = {
   args: {
     'aria-label': 'Untitled test',
     width: 'medium',
+    children: (
+      <>
+        <Placeholder height={100} />
+        <Placeholder height={100} width="100%" label="Second child" />
+      </>
+    ),
+  },
+};
+
+export const UntitledWithAriaAttributes: Story = {
+  name: 'Layout: Untitled with aria attributes',
+  args: {
+    'aria-label': 'Untitled with aria attributes',
+    'aria-description': 'Hello, this is a test',
+    width: 'medium',
+  },
+};
+
+export const UntitledWithSiblingChildren: Story = {
+  name: 'Layout: Untitled with sibling children',
+  args: {
+    'aria-label': 'Untitled with siblings',
+    width: 'medium',
+    children: (
+      <>
+        <Text tone="secondary">
+          <Strong>3</Strong> of <Strong>12</Strong>
+        </Text>
+        <Placeholder height={100} width="100%" label="Second child" />
+      </>
+    ),
   },
 };
 

@@ -9,7 +9,6 @@ import {
   Text,
   TextLink,
   Strong,
-  Heading,
   IconLanguage,
   Checkbox,
   Alert,
