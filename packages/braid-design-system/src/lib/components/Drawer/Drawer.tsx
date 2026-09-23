@@ -1,7 +1,6 @@
 import assert from 'assert';
 
 import dedent from 'dedent';
-import type { FC } from 'react';
 
 import { type ModalProps, Modal } from '../private/Modal/Modal';
 import {
@@ -33,6 +32,16 @@ type DrawerHeaderProps =
       'aria-label': string;
       'aria-description'?: string;
     };
+
+type DrawerModalOmittedKeys =
+  | keyof typeof modalStyle
+  | 'width'
+  | 'position'
+  | 'coverImage'
+  | 'title'
+  | 'description'
+  | 'aria-label'
+  | 'aria-description';
 
 const docsUrl =
   'https://seek-oss.github.io/braid-design-system/components/Drawer';
@@ -74,26 +83,19 @@ const assertAccessibleName = ({
   );
 };
 
-export type DrawerProps = Omit<
-  ModalProps,
-  | keyof typeof modalStyle
-  | 'width'
-  | 'position'
-  | 'coverImage'
-  | keyof DrawerHeaderProps
-> &
+export type DrawerProps = Omit<ModalProps, DrawerModalOmittedKeys> &
   DrawerHeaderProps & {
     width?: (typeof validWidths)[number];
     position?: (typeof validPositions)[number];
     footer?: ModalContentProps['footer'];
   };
 
-export const Drawer: FC<DrawerProps> = ({
+export const Drawer = ({
   width = defaultWidth,
   position = defaultPosition,
   footer,
   ...restProps
-}) => {
+}: DrawerProps) => {
   assert(validWidths.indexOf(width) >= 0, `Invalid width: ${width}`);
   assert(
     validPositions.indexOf(position) >= 0,
@@ -112,14 +114,7 @@ export const Drawer: FC<DrawerProps> = ({
   );
 };
 
-type DrawerContentProps = Omit<
-  ModalContentProps,
-  | keyof typeof modalStyle
-  | 'width'
-  | 'position'
-  | 'coverImage'
-  | keyof DrawerHeaderProps
-> &
+type DrawerContentProps = Omit<ModalContentProps, DrawerModalOmittedKeys> &
   DrawerHeaderProps & {
     width?: (typeof validWidths)[number];
     position?: (typeof validPositions)[number];
