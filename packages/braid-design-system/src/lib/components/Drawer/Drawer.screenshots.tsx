@@ -4,7 +4,6 @@ import { setChromatic } from 'braid-storybook/chromatic';
 import { Placeholder, Spread } from '../../playroom/components';
 import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
-import { Strong } from '../Strong/Strong';
 import { Text } from '../Text/Text';
 
 import { DrawerContent } from './Drawer';
