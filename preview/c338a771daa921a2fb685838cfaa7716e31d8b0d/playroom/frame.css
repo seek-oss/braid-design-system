@@ -1,0 +1,10 @@
+._1czd1zu1 {
+  z-index: 99999;
+  cursor: crosshair;
+}
+._1czd1zu3 {
+  z-index: 99999;
+  background: var(--lbwfb2r);
+  transition: all 50ms ease;
+  transition-delay: 50ms;
+}
