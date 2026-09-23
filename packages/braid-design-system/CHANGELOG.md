@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 34.8.2
+
+### Patch Changes
+
+- **Table, Dialog, Drawer, MenuRenderer:** Hide scroll overflow gradient when printing ([#2141](https://github.com/seek-oss/braid-design-system/pull/2141))
+
 ## 34.8.1
 
 ### Patch Changes

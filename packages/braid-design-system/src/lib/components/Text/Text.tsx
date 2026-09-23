@@ -11,6 +11,8 @@ import { useDefaultTextProps } from '../private/defaultTextProps';
 
 import { TextContext } from './TextContext';
 
+import * as typographyStyles from '../../css/typography.css';
+
 export interface TextProps extends TypographyProps {
   size?: TextStyleProps['size'];
   tone?: TextStyleProps['tone'];
@@ -54,7 +56,10 @@ export const Text: FC<TextProps> = ({
       <Typography
         maxLines={maxLines}
         {...typographyProps}
-        className={textStyles(textStylingProps)}
+        className={[
+          textStyles(textStylingProps),
+          typographyStyles.textSubSupScript,
+        ]}
       />
     </TextContext.Provider>
   );

@@ -180,6 +180,27 @@ export const ResponsiveAlignmentWithIcon: Story = {
   ),
 };
 
+export const superScriptAndSubScript: Story = {
+  name: 'Superscript and Subscript',
+  render: () => (
+    <Stack space="large">
+      {headingLevels.map((level) => (
+        <Fragment key={level}>
+          <Box>
+            <Box style={{ border: '1px solid rgba(255, 0, 0, 0.2)' }} />
+            <Heading level={level}>
+              H{level}
+              <sub>Sub</sub> H{level}
+              <sup>Super</sup>
+            </Heading>
+            <Box style={{ border: '1px solid rgba(255, 0, 0, 0.2)' }} />
+          </Box>
+        </Fragment>
+      ))}
+    </Stack>
+  ),
+};
+
 export const IconLineHeight: Story = {
   name: 'Icon should not impact line height (Red line should not step)',
   render: () => (

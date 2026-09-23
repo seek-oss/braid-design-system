@@ -37,6 +37,7 @@ export const Heading: FC<HeadingProps> = ({
         typographyStyles.headingWeight[weight || 'regular'],
         typographyStyles.heading[level],
         typographyStyles.tone.neutral,
+        typographyStyles.headingSubSupScript,
       ]}
     />
   </HeadingContext.Provider>
