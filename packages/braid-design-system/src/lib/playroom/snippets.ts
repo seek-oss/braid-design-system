@@ -15,13 +15,11 @@ import { snippets as CompactPage } from './snippets/CompactPage';
 import { snippets as ContentBlock } from './snippets/ContentBlock';
 import { snippets as Dialog } from './snippets/Dialog';
 import { snippets as Disclosure } from './snippets/Disclosure';
-import { snippets as DividedList } from './snippets/DividedList';
 import { snippets as Divider } from './snippets/Divider';
 import { snippets as Drawer } from './snippets/Drawer';
 import { snippets as Dropdown } from './snippets/Dropdown';
 import { snippets as FieldLabel } from './snippets/FieldLabel';
 import { snippets as FieldMessage } from './snippets/FieldMessage';
-import { snippets as Form } from './snippets/Form';
 import { snippets as Heading } from './snippets/Heading';
 import { snippets as Inline } from './snippets/Inline';
 import { snippets as List } from './snippets/List';
@@ -42,12 +40,9 @@ import { snippets as Spread } from './snippets/Spread';
 import { snippets as Stack } from './snippets/Stack';
 import { snippets as StandardPage } from './snippets/StandardPage';
 import { snippets as StandardSection } from './snippets/StandardSection';
-import { snippets as SteppedSection } from './snippets/SteppedSection';
 import { snippets as Stepper } from './snippets/Stepper';
 import { snippets as Strong } from './snippets/Strong';
-import { snippets as TabbedSection } from './snippets/TabbedSection';
 import { snippets as Table } from './snippets/Table';
-import { snippets as TableSection } from './snippets/TableSection';
 import { snippets as Tabs } from './snippets/Tabs';
 import { snippets as Tag } from './snippets/Tag';
 import { snippets as Text } from './snippets/Text';
@@ -65,14 +60,9 @@ const snippetsMap = {
   BrandedContainer,
   CardList,
   CompactPage,
-  DividedList,
-  Form,
   SpaciousPage,
   StandardPage,
   StandardSection,
-  SteppedSection,
-  TabbedSection,
-  TableSection,
   Accordion,
   Actions,
   Alert,
