@@ -47,6 +47,19 @@ export const DefaultLayout: Story = {
   },
 };
 
+export const DefaultStackSpace: Story = {
+  name: 'Default stack space',
+  args: {
+    title: 'Default stack space',
+    children: (
+      <>
+        <Placeholder height={100} width="100%" />
+        <Placeholder height={100} width="100%" />
+      </>
+    ),
+  },
+};
+
 export const UntitledShortContent: Story = {
   name: 'Layout: Untitled with short content',
   args: {
@@ -63,21 +76,8 @@ export const UntitledWithSiblingChildren: Story = {
     width: 'medium',
     children: (
       <>
-        <Placeholder height={100} width="100%" label="First child" />
-        <Placeholder height={1000} width="100%" label="Second child" />
-      </>
-    ),
-  },
-};
-
-export const DefaultStackSpace: Story = {
-  name: 'Default stack space',
-  args: {
-    title: 'Default stack space',
-    children: (
-      <>
-        <Placeholder height={100} width="100%" />
-        <Placeholder height={100} width="100%" />
+        <Placeholder height={100} width="100%" label="Cover image" />
+        <Placeholder height={500} width="100%" label="Content" />
       </>
     ),
   },
