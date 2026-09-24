@@ -60,19 +60,10 @@ export const DefaultStackSpace: Story = {
   },
 };
 
-export const UntitledShortContent: Story = {
-  name: 'Layout: Untitled with short content',
+export const LayoutWithNoTitle: Story = {
+  name: 'Layout with no title',
   args: {
-    'aria-label': 'Untitled with short content',
-    width: 'medium',
-    children: <Placeholder height={100} width="100%" label="Content" />,
-  },
-};
-
-export const UntitledWithSiblingChildren: Story = {
-  name: 'Layout: Untitled with sibling children',
-  args: {
-    'aria-label': 'Untitled with siblings',
+    'aria-label': 'Layout with no title',
     width: 'medium',
     children: (
       <>
