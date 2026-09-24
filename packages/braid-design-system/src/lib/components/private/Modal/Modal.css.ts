@@ -155,6 +155,15 @@ export const headingRoot = style({
   overflowWrap: 'break-word',
 });
 
+/**
+ * Cancels column gap so the space reserved for the close
+ * button is exactly its touchable size. Must match the `gap` applied by
+ * `ModalContentScrollLayout`.
+ */
+export const closeAreaSpacer = style({
+  marginBottom: calc.negate(vars.space.large),
+});
+
 export const closeIconOffset = style({
   top: '-2px',
   right: '-2px',

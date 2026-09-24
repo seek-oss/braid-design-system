@@ -60,6 +60,20 @@ export const DefaultStackSpace: Story = {
   },
 };
 
+export const LayoutWithNoTitle: Story = {
+  name: 'Layout with no title',
+  args: {
+    'aria-label': 'Layout with no title',
+    width: 'medium',
+    children: (
+      <>
+        <Placeholder height={100} width="100%" label="Cover image" />
+        <Placeholder height={500} width="100%" label="Content" />
+      </>
+    ),
+  },
+};
+
 export const LayoutWithDescription: Story = {
   name: 'Layout with a description',
   args: {

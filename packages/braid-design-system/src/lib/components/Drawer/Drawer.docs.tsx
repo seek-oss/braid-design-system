@@ -14,6 +14,7 @@ import {
   Alert,
   Box,
   Actions,
+  Heading,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
@@ -122,6 +123,14 @@ const docs: ComponentDocs = {
             by a screen reader as well as visually forming part of the header
             block.
           </Text>
+          <Text>
+            A <Strong>title</Strong> is not required. To omit the visible title
+            and name the Drawer with <Strong>aria-label</Strong> instead, see{' '}
+            <TextLink href="#drawers-without-a-visible-title">
+              Drawers without a visible title
+            </TextLink>
+            .
+          </Text>
           <Alert>
             <Text>
               Open in Playroom and enable your screen reader to preview the
@@ -154,6 +163,58 @@ const docs: ComponentDocs = {
             <Box borderRadius="xlarge" overflow="hidden">
               <DrawerPreview>
                 <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
+                  <Placeholder
+                    height={200}
+                    width="100%"
+                    label="Drawer Content"
+                  />
+                </DrawerContent>
+                <Screen />
+              </DrawerPreview>
+            </Box>
+          ),
+        };
+      },
+    },
+    {
+      label: 'Drawers without a visible title',
+      description: (
+        <>
+          <Text>
+            To omit the visible title, provide a relevant{' '}
+            <Strong>aria-label</Strong> so the Drawer still has an accessible
+            name. An optional <Strong>aria-description</Strong> can provide
+            additional context to screen reader users. Include a level 2 heading
+            within the Drawer content to maintain a clear heading structure.
+          </Text>
+          <Text>
+            Space is reserved at the top of the Drawer to keep content clear of
+            the close button.
+          </Text>
+        </>
+      ),
+      background: false,
+      Example: () => {
+        const { code, value } = source<DrawerElement>(
+          <Drawer
+            aria-label="Job details"
+            aria-description="Details about the selected job"
+            width="small"
+            open={true}
+            onClose={() => {}}
+          >
+            <Heading level="2">Job details</Heading>
+            <Placeholder height={200} width="100%" label="Drawer Content" />
+          </Drawer>,
+        );
+
+        return {
+          code,
+          value: (
+            <Box borderRadius="xlarge" overflow="hidden">
+              <DrawerPreview>
+                <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
+                  <Heading level="2">Job details</Heading>
                   <Placeholder
                     height={200}
                     width="100%"
