@@ -5,7 +5,7 @@ import { Fragment, useContext } from 'react';
 import { PageTitle } from '../Seo/PageTitle';
 
 import { DocExample } from './DocExample';
-import { DocsContext } from './DocNavigation';
+import { DocsContext } from './DocsContext';
 
 export const DocSnippets = () => {
   const { docsName, snippets } = useContext(DocsContext);

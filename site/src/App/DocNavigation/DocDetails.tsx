@@ -15,9 +15,9 @@ import { slugify } from '../../slugify';
 import { PageTitle } from '../Seo/PageTitle';
 
 import { DocExample } from './DocExample';
-import { DocsContext } from './DocNavigation';
 import { DocSection } from './DocSection';
 import { Toc, type TocSection } from './DocToC';
+import { DocsContext } from './DocsContext';
 
 import * as styles from './DocDetails.css';
 

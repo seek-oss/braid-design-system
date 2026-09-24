@@ -42,20 +42,11 @@ import {
   getCssDoc,
 } from '../navigationHelpers';
 
+import { DocsContext, type DocsProviderContextValue } from './DocsContext';
+
 import * as styles from './DocNavigation.css';
 
 const DocNavigationItemIndexContext = createContext(-1);
-interface DocsProviderContextValue {
-  docsName: string;
-  docsType: string;
-  docs?: ReturnType<typeof getCssDoc | typeof getComponentDocs>;
-  history?: ReturnType<typeof getHistory>;
-  snippets?: ReturnType<typeof getComponentSnippets>;
-}
-export const DocsContext = createContext<DocsProviderContextValue>({
-  docsName: '',
-  docsType: '',
-});
 
 interface DocNavigationItemProps {
   href: string;
