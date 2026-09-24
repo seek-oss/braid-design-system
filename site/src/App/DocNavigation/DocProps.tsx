@@ -20,7 +20,7 @@ import { Fragment, useContext, useMemo } from 'react';
 
 import componentDocs from '../../../componentDocs.json';
 import { useConfig } from '../ConfigContext';
-import { DocsContext } from '../DocNavigation/DocNavigation';
+import { DocsContext } from '../DocNavigation/DocsContext';
 import { PageTitle } from '../Seo/PageTitle';
 
 type ComponentName = keyof typeof componentDocs;
