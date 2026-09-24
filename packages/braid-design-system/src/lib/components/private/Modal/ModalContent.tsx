@@ -170,7 +170,6 @@ const ModalContentScrollLayout = ({
   applyPageBlockGutters,
   applyFullHeight,
   hasFooter,
-  reserveCloseArea,
 }: {
   children: ReactNode;
   applyPageBlockGutters: boolean;
@@ -178,7 +177,6 @@ const ModalContentScrollLayout = ({
   coverImageEnabled?: boolean;
   applyFullHeight?: boolean;
   hasFooter: boolean;
-  reserveCloseArea?: boolean;
 }) => (
   <ScrollContainer direction="vertical">
     {
@@ -193,7 +191,6 @@ const ModalContentScrollLayout = ({
       paddingTop={modalPadding}
       paddingBottom={!hasFooter ? modalPadding : undefined}
       paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
-      className={reserveCloseArea ? styles.reserveCloseArea : undefined}
     >
       {children}
     </Box>
@@ -331,9 +328,14 @@ export const ModalContent = ({
       contentStartRef={contentStartRef}
       coverImageEnabled={coverImageEnabled}
       hasFooter={Boolean(footer)}
-      reserveCloseArea={untitledDrawer}
     >
-      {untitledDrawer ? null : (
+      {untitledDrawer ? (
+        <Box
+          height="touchable"
+          flexShrink={0}
+          className={styles.closeAreaSpacer}
+        />
+      ) : (
         <ModalContentHeader
           title={title}
           headingLevel={headingLevel}

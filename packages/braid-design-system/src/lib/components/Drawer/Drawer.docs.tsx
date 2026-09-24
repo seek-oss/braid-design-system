@@ -179,13 +179,20 @@ const docs: ComponentDocs = {
     {
       label: 'Drawers without a visible title',
       description: (
-        <Text>
-          To omit the visible title, provide a relevant{' '}
-          <Strong>aria-label</Strong> so the Drawer still has an accessible
-          name. An optional <Strong>aria-description</Strong> can provide
-          additional context to screen reader users. Include a level 2 heading
-          within the Drawer content to maintain a clear heading structure.
-        </Text>
+        <>
+          <Text>
+            To omit the visible title, provide a relevant{' '}
+            <Strong>aria-label</Strong> so the Drawer still has an accessible
+            name. An optional <Strong>aria-description</Strong> can provide
+            additional context to screen reader users. Include a level 2
+            heading within the Drawer content to maintain a clear heading
+            structure.
+          </Text>
+          <Text>
+            Space is reserved at the top of the Drawer to keep content clear of
+            the close button.
+          </Text>
+        </>
       ),
       background: false,
       Example: () => {

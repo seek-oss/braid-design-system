@@ -47,6 +47,15 @@ export const DefaultLayout: Story = {
   },
 };
 
+export const UntitledShortContent: Story = {
+  name: 'Layout: Untitled with short content',
+  args: {
+    'aria-label': 'Untitled with short content',
+    width: 'medium',
+    children: <Placeholder height={100} width="100%" label="Content" />,
+  },
+};
+
 export const UntitledWithSiblingChildren: Story = {
   name: 'Layout: Untitled with sibling children',
   args: {

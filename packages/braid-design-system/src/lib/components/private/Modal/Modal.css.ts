@@ -1,9 +1,4 @@
-import {
-  createVar,
-  fallbackVar,
-  globalStyle,
-  style,
-} from '@vanilla-extract/css';
+import { createVar, fallbackVar, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
 import { atoms } from '../../../css/atoms/atoms';
@@ -160,10 +155,13 @@ export const headingRoot = style({
   overflowWrap: 'break-word',
 });
 
-export const reserveCloseArea = style({});
-globalStyle(`${reserveCloseArea} > :first-child`, {
-  marginRight: vars.touchableSize,
-  maxWidth: calc.subtract('100%', vars.touchableSize),
+/**
+ * Cancels column gap so the space reserved for the close
+ * button is exactly its touchable size. Must match the `gap` applied by
+ * `ModalContentScrollLayout`.
+ */
+export const closeAreaSpacer = style({
+  marginBottom: calc.negate(vars.space.large),
 });
 
 export const closeIconOffset = style({
