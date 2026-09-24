@@ -333,13 +333,16 @@ export const ModalContent = ({
           ref={headingRef}
           reserveCloseArea
         />
-      ) : untitledDrawer ? (
+      ) : null}
+
+      {untitledDrawer ? (
         <Box
           height="touchable"
           flexShrink={0}
           className={styles.closeAreaSpacer}
         />
       ) : null}
+
       {children}
     </ModalContentScrollLayout>
   );
