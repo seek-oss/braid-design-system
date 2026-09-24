@@ -1,8 +1,6 @@
+import { version } from 'braid-design-system/package.json';
 import glob from 'fast-glob';
 import fs from 'fs-extra';
-
-// eslint-disable-next-line import-x/no-relative-packages
-import { version } from '../packages/braid-design-system/package.json';
 
 (async () => {
   const componentUpdateFiles = await glob('.changeset/*-data.json', {

@@ -41,3 +41,6 @@ export const dataAttributeDocs: CreateDataAttributeDocs = ({
   ),
   code,
 });
+
+// TODO: Adding a negative glob to the glob imports in navigationHelpers doesn't seem to fix the "No default export" problem. It's only a problem during build for some reason.
+export default 'dummy';

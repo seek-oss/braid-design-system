@@ -1,7 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema-jsonc.json",
   "tags": ["-lintignore"],
-  "ignoreDependencies": ["braid-src"],
   "workspaces": {
     ".": {
       "entry": ["scripts/**/*"],
