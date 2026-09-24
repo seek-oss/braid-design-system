@@ -15,6 +15,7 @@ minimumReleaseAgeExclude:
   - browserslist-config-seek
   - eslint-config-seek
   - sku
+  - playroom
 
 packageExtensions:
   babel-plugin-remove-unused-vars:
