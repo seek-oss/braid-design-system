@@ -73,9 +73,8 @@ const modalPadding = { mobile: 'gutter', tablet: 'large' } as const;
 
 interface ModalContentHeaderProps extends Pick<
   ModalContentProps,
-  'headingLevel' | 'description' | 'illustration'
+  'headingLevel' | 'description' | 'illustration' | 'title'
 > {
-  title?: string;
   descriptionId: string;
   reserveCloseArea?: boolean;
 }
@@ -99,26 +98,19 @@ const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
       >
         <Heading
           level={headingLevel}
-          component={title ? undefined : 'div'}
           align={illustration ? 'center' : undefined}
         >
-          {title ? (
-            <Box
-              ref={ref}
-              tabIndex={-1}
-              component="span"
-              position="relative"
-              outline="focus"
-              borderRadius="small" // Ensures focus ring is rounded
-              className={styles.headingRoot}
-            >
-              {title}
-            </Box>
-          ) : (
-            <Box component="span" aria-hidden>
-              {'\u00A0'}
-            </Box>
-          )}
+          <Box
+            ref={ref}
+            tabIndex={-1}
+            component="span"
+            position="relative"
+            outline="focus"
+            borderRadius="small" // Ensures focus ring is rounded
+            className={styles.headingRoot}
+          >
+            {title}
+          </Box>
         </Heading>
         {description ? <Box id={descriptionId}>{description}</Box> : null}
       </Stack>
@@ -329,13 +321,7 @@ export const ModalContent = ({
       coverImageEnabled={coverImageEnabled}
       hasFooter={Boolean(footer)}
     >
-      {untitledDrawer ? (
-        <Box
-          height="touchable"
-          flexShrink={0}
-          className={styles.closeAreaSpacer}
-        />
-      ) : (
+      {title ? (
         <ModalContentHeader
           title={title}
           headingLevel={headingLevel}
@@ -347,7 +333,13 @@ export const ModalContent = ({
           ref={headingRef}
           reserveCloseArea
         />
-      )}
+      ) : untitledDrawer ? (
+        <Box
+          height="touchable"
+          flexShrink={0}
+          className={styles.closeAreaSpacer}
+        />
+      ) : null}
       {children}
     </ModalContentScrollLayout>
   );
