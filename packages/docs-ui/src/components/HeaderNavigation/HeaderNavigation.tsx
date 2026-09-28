@@ -12,7 +12,7 @@ import { type ReactNode, useLayoutEffect, useState } from 'react';
 import { KeyboardShortcut } from '../KeyboardShortcut/KeyboardShortcut';
 import { MenuButton } from '../MenuButton/MenuButton';
 
-import { navLinksContainer, searchButton } from './HeaderNavigation.css';
+import { searchButton } from './HeaderNavigation.css';
 
 export interface NavLink {
   label: string;
@@ -81,23 +81,21 @@ export const HeaderNavigation = ({
             <MenuButton open={menuOpen} onClick={menuClick} />
           </Box>
         </Hidden>
-        <Box paddingRight="medium">
-          <Link href={logoHref} tabIndex={menuOpen ? -1 : undefined}>
-            <Inline space="small" alignY="center">
-              <>{logo}</>
-              <Text weight="medium" size="small">
-                Braid Design System
-              </Text>
-            </Inline>
-          </Link>
-        </Box>
+        <Link href={logoHref} tabIndex={menuOpen ? -1 : undefined}>
+          <Inline space="small" alignY="center">
+            <>{logo}</>
+            <Text weight="medium" size="small">
+              Braid Design System
+            </Text>
+          </Inline>
+        </Link>
       </Box>
 
       <Box
         display={{ mobile: 'none', wide: 'flex' }}
         alignItems="center"
         gap="large"
-        className={navLinksContainer}
+        flexGrow={1}
         justifyContent="flexEnd"
       >
         <Box
