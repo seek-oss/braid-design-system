@@ -71,6 +71,7 @@ type ModalContentInternalProps = Omit<ModalContentCommonProps, 'title'> &
   };
 
 const modalPadding = { mobile: 'gutter', tablet: 'large' } as const;
+const modalContentGap = 'large' as const;
 
 interface ModalContentHeaderProps extends Pick<
   ModalContentProps,
@@ -178,7 +179,7 @@ const ModalContentScrollLayout = ({
     }
     <Box
       display="flex"
-      gap="large"
+      gap={modalContentGap}
       flexDirection="column"
       height={applyFullHeight ? 'full' : undefined}
       paddingTop={modalPadding}
@@ -338,10 +339,10 @@ export const ModalContent = ({
 
       {untitledDrawer ? (
         /**
-         * Matches the close button size so content starts below it. `bottom`
-         * must match the `gap` of `ModalContentScrollLayout` to cancel it.
+         * Matches close button size so content starts below it. `bottom`
+         * cancels the gap that follows the spacer.
          */
-        <Bleed top="xxsmall" bottom="large">
+        <Bleed top="xxsmall" bottom={modalContentGap}>
           <Box padding="xsmall">
             <Box className={iconSize({ size: 'standard', crop: true })} />
           </Box>
