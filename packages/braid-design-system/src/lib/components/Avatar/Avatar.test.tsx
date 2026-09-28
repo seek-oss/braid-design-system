@@ -11,7 +11,6 @@ import { IconCompany, IconPhotoAdd } from '../icons';
 import {
   keyline as keylineStyle,
   imageLoaded,
-  root as rootStyle,
   size as sizeStyle,
 } from './Avatar.css';
 import { photoPlaceholderUrl } from './photoPlaceholder.css';
@@ -405,8 +404,11 @@ describe('Avatar', () => {
       );
 
       const avatar = screen.getByTestId('avatar');
-      expect(avatar).toHaveClass('consumer-class');
-      expect(avatar.className).toContain(rootStyle);
+      const positionClassNames = atoms({ position: 'relative' })
+        .split(' ')
+        .filter(Boolean);
+
+      expect(avatar).toHaveClass('consumer-class', ...positionClassNames);
       expect(avatar.className).toContain(sizeStyle.standard);
     });
 
@@ -484,6 +486,11 @@ describe('Avatar', () => {
       );
 
       const button = screen.getByRole('button', { name: 'Add photo' });
+      const cursorClassNames = atoms({ cursor: 'pointer' })
+        .split(' ')
+        .filter(Boolean);
+
+      expect(button).toHaveClass(...cursorClassNames);
       button.click();
       expect(onClick).toHaveBeenCalledTimes(1);
     });

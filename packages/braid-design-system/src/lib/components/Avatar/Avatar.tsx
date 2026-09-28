@@ -255,15 +255,15 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
       ref,
       tabIndex,
       display: 'flex' as const,
+      position: 'relative' as const,
+      cursor: clickable ? ('pointer' as const) : undefined,
       borderRadius,
       outline: !clickable && focusable ? ('focus' as const) : undefined,
       ...a11yProps,
       ...buildDataAttributes({ data, validateRestProps: restProps }),
       ...rest,
       className: [
-        styles.root,
         styles.size[size],
-        clickable ? styles.clickable : undefined,
         clickable && (size === 'xsmall' || size === 'small')
           ? virtualTouchable
           : undefined,
@@ -314,6 +314,9 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
               src={imageUrl}
               alt=""
               aria-hidden
+              width="full"
+              height="full"
+              opacity={imageLoaded ? undefined : 0}
               onError={() => setImageError(true)}
               onLoad={() => {
                 const img = imageRef.current;

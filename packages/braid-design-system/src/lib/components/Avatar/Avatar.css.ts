@@ -11,19 +11,10 @@ const avatarSizeInPx = {
   xxlarge: 96,
 } as const;
 
-export const root = style({
-  position: 'relative',
-});
-
 export const size = styleVariants(avatarSizeInPx, (pixels) => ({
   height: pixels,
   width: pixels,
-  boxSizing: 'border-box',
 }));
-
-export const clickable = style({
-  cursor: 'pointer',
-});
 
 export const keyline = style({
   borderWidth: vars.borderWidth.standard,
@@ -32,10 +23,7 @@ export const keyline = style({
 });
 
 export const image = style({
-  width: '100%',
-  height: '100%',
   objectFit: 'cover',
-  opacity: 0,
   transition: 'opacity 200ms ease-in-out',
   '@media': {
     'screen and (prefers-reduced-motion)': {
