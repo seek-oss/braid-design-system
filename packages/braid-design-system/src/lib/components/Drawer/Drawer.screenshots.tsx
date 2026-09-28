@@ -6,9 +6,9 @@ import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
 
-import { coverImagePlaceholderUrl } from '../Dialog/coverImagePlaceholder.css';
 import { DrawerContent } from './Drawer';
 
+import { coverImagePlaceholderUrl } from '../Dialog/coverImagePlaceholder.css';
 import * as styles from '../private/Modal/Modal.css';
 
 const meta = {
