@@ -1,4 +1,5 @@
 import { act, render, screen } from '@testing-library/react';
+import type { ComponentProps } from 'react';
 import { vi } from 'vitest';
 
 import { Avatar, Text, TooltipRenderer } from '..';
@@ -7,7 +8,12 @@ import { palette } from '../../color/palette';
 import { atoms } from '../../css/atoms/atoms';
 import { IconCompany, IconPhotoAdd } from '../icons';
 
-import { keyline as keylineStyle, imageLoaded } from './Avatar.css';
+import {
+  keyline as keylineStyle,
+  imageLoaded,
+  root as rootStyle,
+  size as sizeStyle,
+} from './Avatar.css';
 import { photoPlaceholderUrl } from './photoPlaceholder.css';
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
 import { shimmerAnimation } from '../private/Skeleton/Skeleton.css';
@@ -385,6 +391,25 @@ describe('Avatar', () => {
       );
 
       expect(screen.getByTestId('avatar')).toHaveClass(...radiusClassNames);
+    });
+
+    it('merges a passed className with avatar classes', () => {
+      const props: ComponentProps<typeof Avatar> & { className: string } = {
+        name: 'Leia Organa',
+        data: { testid: 'avatar' },
+        className: 'consumer-class',
+      };
+
+      render(
+        <BraidTestProvider>
+          <Avatar {...props} />
+        </BraidTestProvider>,
+      );
+
+      const avatar = screen.getByTestId('avatar');
+      expect(avatar).toHaveClass('consumer-class');
+      expect(avatar.className).toContain(rootStyle);
+      expect(avatar.className).toContain(sizeStyle.standard);
     });
 
     it('does not throw on unknown sizes', () => {

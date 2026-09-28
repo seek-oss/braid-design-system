@@ -232,6 +232,10 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
     const labelled = Boolean(ariaLabel);
     const clickable = Boolean(onClick);
     const borderRadius = avatarSizeToBorderRadius[size];
+    const { className: classNameProp, ...rest } =
+      restProps as typeof restProps & {
+        className?: BoxProps['className'];
+      };
 
     let a11yProps;
     if (clickable) {
@@ -255,6 +259,9 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
       display: 'flex' as const,
       borderRadius,
       outline: !clickable && focusable ? ('focus' as const) : undefined,
+      ...a11yProps,
+      ...buildDataAttributes({ data, validateRestProps: restProps }),
+      ...rest,
       className: [
         styles.root,
         styles.size[size],
@@ -263,10 +270,8 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
         (size === 'xsmall' || size === 'small' || size === 'medium')
           ? virtualTouchable
           : undefined,
+        classNameProp,
       ],
-      ...a11yProps,
-      ...buildDataAttributes({ data, validateRestProps: restProps }),
-      ...restProps,
     };
 
     const faceProps = {
