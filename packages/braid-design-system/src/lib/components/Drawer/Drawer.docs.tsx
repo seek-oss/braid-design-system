@@ -191,13 +191,13 @@ const docs: ComponentDocs = {
       Example: () => {
         const { code, value } = source<DrawerElement>(
           <Drawer
-            aria-label="Job details"
-            aria-description="Details about the selected job"
+            aria-label="Example Title"
+            aria-description="An optional description of the Drawer content"
             width="small"
             open={true}
             onClose={() => {}}
           >
-            <Heading level="2">Job details</Heading>
+            <Heading level="2">Example Title</Heading>
             <Placeholder height={200} width="100%" label="Drawer Content" />
           </Drawer>,
         );
@@ -208,7 +208,7 @@ const docs: ComponentDocs = {
             <Box borderRadius="xlarge" overflow="hidden">
               <DrawerPreview>
                 <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
-                  <Heading level="2">Job details</Heading>
+                  <Heading level="2">Example Title</Heading>
                   <Placeholder
                     height={200}
                     width="100%"

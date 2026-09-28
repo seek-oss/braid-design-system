@@ -15,8 +15,8 @@ A `title` is no longer required. Provide either a `title` or an `aria-label`. Us
 
 ```jsx
 <Drawer
-  aria-label="Job details"
-  aria-description="Details about the selected job"
+  aria-label="Example Title"
+  aria-description="An optional description of the Drawer content"
   open={open}
   onClose={setOpen}
 >

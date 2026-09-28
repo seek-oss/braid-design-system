@@ -11,23 +11,21 @@ describe('Drawer', () => {
     const { getByRole, getAllByRole } = render(
       <BraidTestProvider>
         <Drawer
-          aria-label="Job details"
-          aria-description="Details about the selected job"
+          aria-label="Drawer label"
+          aria-description="Drawer description"
           open={true}
           onClose={() => {}}
         >
-          <h2>Job details content</h2>
+          <h2>Drawer heading</h2>
         </Drawer>
       </BraidTestProvider>,
     );
 
     const dialog = await waitFor(() =>
-      getByRole('dialog', { name: 'Job details' }),
+      getByRole('dialog', { name: 'Drawer label' }),
     );
 
-    expect(dialog).toHaveAccessibleDescription(
-      'Details about the selected job',
-    );
+    expect(dialog).toHaveAccessibleDescription('Drawer description');
     expect(getAllByRole('heading', { level: 2 })).toHaveLength(1);
   });
 });
