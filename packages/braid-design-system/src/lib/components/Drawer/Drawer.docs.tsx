@@ -188,8 +188,8 @@ const docs: ComponentDocs = {
             within the Drawer content to maintain a clear heading structure.
           </Text>
           <Text>
-            A touchable-sized space is reserved at the top of the Drawer so
-            content stays clear of the close button.
+            Space matching the close button is reserved at the top of the
+            Drawer, so content starts directly below it and scrolls beneath it.
           </Text>
         </>
       ),

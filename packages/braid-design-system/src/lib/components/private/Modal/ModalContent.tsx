@@ -10,6 +10,7 @@ import {
 import { RemoveScroll } from 'react-remove-scroll';
 
 import { useFallbackId } from '../../../hooks/useFallbackId';
+import { iconSize } from '../../../hooks/useIcon';
 import { Bleed } from '../../Bleed/Bleed';
 import { type BoxProps, Box } from '../../Box/Box';
 import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
@@ -336,11 +337,15 @@ export const ModalContent = ({
       ) : null}
 
       {untitledDrawer ? (
-        <Box
-          height="touchable"
-          flexShrink={0}
-          className={styles.closeAreaSpacer}
-        />
+        /**
+         * Matches the close button size so content starts below it. `bottom`
+         * must match the `gap` of `ModalContentScrollLayout` to cancel it.
+         */
+        <Bleed top="xxsmall" bottom="large">
+          <Box padding="xsmall">
+            <Box className={iconSize({ size: 'standard', crop: true })} />
+          </Box>
+        </Bleed>
       ) : null}
 
       {children}
