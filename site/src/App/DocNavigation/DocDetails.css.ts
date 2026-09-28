@@ -13,7 +13,7 @@ const topOffset = vars.space.large;
 
 export const toc = style({
   position: 'sticky',
-  top: `calc(${topOffset} + ${headerHeightWide})`,
+  top: calc.add(topOffset, headerHeightWide),
   maxHeight: calc.subtract('100vh', topOffset),
   alignSelf: 'flex-start',
   minWidth: '250px',
