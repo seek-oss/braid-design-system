@@ -1,7 +1,10 @@
 export { LinkableHeading } from './components/LinkableHeading/LinkableHeading';
 export { MenuButton } from './components/MenuButton/MenuButton';
 export { SideNavigationSection } from './components/SideNavigation/SideNavigationSection';
-export { HeaderNavigation } from './components/HeaderNavigation/HeaderNavigation';
+export {
+  HeaderNavigation,
+  type NavLink,
+} from './components/HeaderNavigation/HeaderNavigation';
 export {
   KeyboardShortcut,
   KeyboardIcon,

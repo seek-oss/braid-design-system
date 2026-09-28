@@ -7,6 +7,10 @@ import { fileURLToPath } from 'node:url';
 import type { SkuConfig } from 'sku';
 
 import extractExports from './scripts/extractExports';
+import { cssFoundationDocs } from './src/App/routes/foundations/cssDocs';
+import { foundationPageDocs } from './src/App/routes/foundations/pageDocs';
+import { patternCatalog } from './src/App/routes/patterns/catalog';
+import { templatePathPrefix } from './src/App/routes/templates/templateDocs';
 import { slugify } from './src/slugify';
 import undocumentedExports from './src/undocumentedExports.json';
 
@@ -40,7 +44,12 @@ const getPages = (relativePath: string): NonNullable<SkuConfig['routes']> => {
 
 // TODO: COLORMODE RELEASE
 // Remove `colorModeStyle` from `undocumentedExports.json`
-const cssNames = getExports('src/css.ts', 'css');
+const cssFoundationSourceNames = new Set<string>(
+  cssFoundationDocs.map((doc) => doc.docsFile ?? doc.name),
+);
+const cssNames = getExports('src/css.ts', 'css').filter(
+  (name) => !cssFoundationSourceNames.has(name),
+);
 const componentNames = getExports('src/lib/components/index.ts');
 const testNames = getExports('src/test.ts');
 const iconNames = getExports('src/lib/components/icons/index.ts');
@@ -68,9 +77,14 @@ const getTemplateRoutes = (): NonNullable<SkuConfig['routes']> => {
           const [group, name] = parts;
           groups.add(group);
           const routeName = name.replace(/([a-z0-9])([A-Z])/g, '$1-$2');
-          templateRoutes.push({
-            route: `/templates/${group}/${slugify(routeName)}`,
-          });
+          templateRoutes.push(
+            {
+              route: `${templatePathPrefix}/${group}/${slugify(routeName)}`,
+            },
+            {
+              route: `/templates/${group}/${slugify(routeName)}`,
+            },
+          );
         }
       }
     }
@@ -78,9 +92,10 @@ const getTemplateRoutes = (): NonNullable<SkuConfig['routes']> => {
 
   scanDir(templatesDir);
 
-  const groupRoutes = [...groups].map((group) => ({
-    route: `/templates/${group}`,
-  }));
+  const groupRoutes = [...groups].flatMap((group) => [
+    { route: `${templatePathPrefix}/${group}` },
+    { route: `/templates/${group}` },
+  ]);
 
   return [...groupRoutes, ...templateRoutes];
 };
@@ -89,11 +104,27 @@ const routes: SkuConfig['routes'] = [
   { route: '/', name: 'home' },
   { route: '/releases', name: 'releases' },
   { route: '/gallery', name: 'gallery' },
+  { route: '/guides', name: 'guides' },
   getPages('src/App/routes/guides/index.ts'),
+  { route: '/getting-started' },
+  { route: '/getting-started/job-summary' },
+  { route: '/examples' },
+  { route: '/examples/job-summary' },
+  { route: '/examples/basic-form' },
+  { route: '/examples/marketing-banner' },
+  { route: '/guides/job-summary' },
+  { route: '/guides/composition' },
+  { route: '/guides/development-workflow-preview' },
+  { route: '/foundations', name: 'foundations' },
   getPages('src/App/routes/foundations/index.ts'),
+  foundationPageDocs.map((doc) => ({ route: doc.path })),
+  { route: templatePathPrefix, name: 'templates' },
+  { route: '/templates' },
   getTemplateRoutes(),
   { route: '/foundations/iconography/browse', name: 'browseIcons' },
-  getPages('src/App/routes/examples/index.ts'),
+  { route: '/patterns', name: 'patterns' },
+  patternCatalog.map((entry) => ({ route: `/patterns/${entry.slug}` })),
+  { route: '/patterns/revealing-secondary-information' },
   { route: '/components', name: 'components' }, // Pre-rendering this route for url backwards compatibility.
   [...componentNames, ...testNames].flatMap((name) =>
     [
@@ -103,12 +134,29 @@ const routes: SkuConfig['routes'] = [
       !name.startsWith('use') ? { route: `/components/${name}/props` } : null,
     ].filter((route) => route !== null),
   ),
+  { route: '/styles', name: 'styles' },
+  { route: '/css' },
   cssNames.flatMap((name) => [
+    { route: `/styles/${name}` },
+    { route: `/styles/${name}/releases` },
     { route: `/css/${name}` },
     { route: `/css/${name}/releases` },
   ]),
+  cssFoundationDocs.flatMap((doc) => [
+    { route: doc.path },
+    { route: `${doc.path}/releases` },
+    { route: `/css/${doc.name}` },
+    { route: `/css/${doc.name}/releases` },
+    ...(doc.redirectsFrom ?? []).flatMap((from) => [
+      { route: from },
+      { route: `${from}/releases` },
+    ]),
+  ]),
   iconNames.flatMap((name) => [
-    { route: `/components/${name}`, name },
+    { route: `/foundations/iconography/${name}`, name },
+    { route: `/foundations/iconography/${name}/props` },
+    { route: `/foundations/iconography/${name}/releases` },
+    { route: `/components/${name}` },
     { route: `/components/${name}/props` },
     { route: `/components/${name}/releases` },
   ]),

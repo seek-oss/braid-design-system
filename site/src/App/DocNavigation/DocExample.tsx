@@ -42,7 +42,11 @@ export const DocExample = ({
         </ThemedExample>
       ) : null}
       {code !== false && codeAsString ? (
-        <Code collapsedByDefault={!showCodeByDefault} playroom={playroom}>
+        <Code
+          collapsedByDefault={!showCodeByDefault}
+          playroom={playroom || Boolean(value)}
+          themeSelector={Boolean(value)}
+        >
           {codeAsString}
         </Code>
       ) : null}

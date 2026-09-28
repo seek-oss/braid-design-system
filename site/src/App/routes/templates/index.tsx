@@ -18,6 +18,8 @@ import { useThemeSettings } from '../../ThemeSetting';
 import { allTemplateDocs } from '../../navigationHelpers';
 import { useSourceFromExample } from '../../useSourceFromExample/useSourceFromExample';
 
+import { templateDetailPath, templateGroupPath } from './templateDocs';
+
 import * as styles from './templateGroupPage.css';
 
 const DefaultContainer = ({ children }: { children: ReactNode }) => (
@@ -30,7 +32,14 @@ const groupDescriptions: Record<string, string> = {
   sections: 'Composable content blocks intended to slot into page layouts.',
 };
 
-const ScaledPreview = (docs: (typeof allTemplateDocs)[number]) => {
+export const ScaledPreview = ({
+  aspectRatio = '8 / 5',
+  stageWidth = styles.STAGE_WIDTH,
+  ...docs
+}: Pick<(typeof allTemplateDocs)[number], 'Example' | 'Container'> & {
+  aspectRatio?: string;
+  stageWidth?: number;
+}) => {
   const outerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0);
   const Container = docs.Container ?? DefaultContainer;
@@ -43,11 +52,11 @@ const ScaledPreview = (docs: (typeof allTemplateDocs)[number]) => {
       return;
     }
     const obs = new ResizeObserver(([entry]) => {
-      setScale(entry.contentRect.width / styles.STAGE_WIDTH);
+      setScale(entry.contentRect.width / stageWidth);
     });
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [stageWidth]);
 
   useIsomorphicLayoutEffect(() => {
     // Remove in favour of direct DOM attribute when we drop React 18 support
@@ -55,11 +64,14 @@ const ScaledPreview = (docs: (typeof allTemplateDocs)[number]) => {
   }, []);
 
   return (
-    <div ref={outerRef} className={styles.tilePreview}>
+    <div ref={outerRef} className={styles.tilePreview} style={{ aspectRatio }}>
       <Box
         className={styles.tileStage}
         opacity={scale === 0 ? 0 : undefined}
-        style={assignInlineVars({ [styles.scaleVar]: String(scale) })}
+        style={assignInlineVars({
+          [styles.scaleVar]: String(scale),
+          [styles.stageWidthVar]: `${stageWidth}px`,
+        })}
       >
         {scale !== 0 ? (
           <BraidProvider styleBody={false} theme={theme}>
@@ -78,12 +90,12 @@ const TemplateTile = ({
   <PlayroomStateProvider>
     <Box position="relative">
       <Link
-        href={`/templates/${groupName}/${docs.slug}`}
+        href={templateDetailPath(groupName, docs.slug)}
         className={styles.tileLinkOverlay}
       />
       <Stack space="small">
         <Text weight="strong">{docs.title}</Text>
-        <ScaledPreview {...docs} />
+        <ScaledPreview {...docs} aspectRatio="8 / 5" />
       </Stack>
     </Box>
   </PlayroomStateProvider>
@@ -96,7 +108,7 @@ export const TemplateGroup = () => {
   const templates = allTemplateDocs.filter((doc) => doc.group === groupName);
 
   if (!description) {
-    return <Navigate to="/templates/layouts" replace />;
+    return <Navigate to={templateGroupPath('layouts')} replace />;
   }
 
   const title = groupName.charAt(0).toUpperCase() + groupName.slice(1);
@@ -110,7 +122,7 @@ export const TemplateGroup = () => {
         </Heading>
         <Text>{description}</Text>
       </Stack>
-      <Tiles space="xlarge" columns={[1, 2, 3]}>
+      <Tiles space="medium" columns={[1, 2, 3]}>
         {templates.map((docs) => (
           <TemplateTile key={docs.name} groupName={groupName} {...docs} />
         ))}
