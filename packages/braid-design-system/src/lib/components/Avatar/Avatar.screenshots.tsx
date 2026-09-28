@@ -4,7 +4,7 @@ import { Avatar, IconCompany, IconPhotoAdd, Inline, Stack, Text } from '../';
 import { BackgroundContrastTest } from '../../utils/BackgroundContrastTest';
 
 import * as styles from './Avatar.css';
-import { photoPlaceholderUrl as imageUrl } from './photoPlaceholder.css';
+import { photoPlaceholderUrl } from './photoPlaceholder.css';
 
 const avatarSizes = Object.keys(styles.size) as Array<keyof typeof styles.size>;
 
@@ -71,7 +71,11 @@ export const ImageSizes: Story = {
     <Inline space="medium" alignY="center">
       {avatarSizes.map((size) => (
         <Stack key={size} space="xsmall" align="center">
-          <Avatar name="Leia Organa" size={size} imageUrl={imageUrl} />
+          <Avatar
+            name="Leia Organa"
+            size={size}
+            imageUrl={photoPlaceholderUrl}
+          />
           <Text size="small">{size}</Text>
         </Stack>
       ))}
