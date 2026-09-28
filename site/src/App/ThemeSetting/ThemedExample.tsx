@@ -1,9 +1,8 @@
-import { BraidProvider, Stack } from 'braid-design-system';
+import { BraidProvider } from 'braid-design-system';
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import type { ReactNode } from 'react';
 
 import { useThemeSettings } from './ThemeSettingContext';
-import { ThemeToggle } from './ThemeToggle';
 
 import * as styles from './ThemedExample.css';
 
@@ -19,7 +18,6 @@ export function ThemedExample({
   background,
   transparent = false,
   darkCanvas = false,
-  showThemeToggle = true,
   children,
 }: ThemedExampleProps) {
   const { theme, ready } = useThemeSettings();
@@ -43,32 +41,20 @@ export function ThemedExample({
         }
         borderRadius="large"
       >
-        <Stack space="small">
-          {showThemeToggle ? (
+        <Box className={[styles.frameContext, ...canvasStyles]}>
+          <BraidProvider styleBody={false} theme={theme}>
             <Box
-              justifyContent="flexEnd"
-              display="flex"
-              flexDirection="row"
-              width="full"
+              background={!darkCanvas ? background : undefined}
+              padding={transparent ? undefined : 'gutter'}
+              className={[
+                transparent ? undefined : styles.frameShape,
+                showKeyline ? styles.frameKeyline : undefined,
+              ]}
             >
-              <ThemeToggle size="xsmall" tone="secondary" weight="regular" />
+              {children}
             </Box>
-          ) : null}
-          <Box className={[styles.frameContext, ...canvasStyles]}>
-            <BraidProvider styleBody={false} theme={theme}>
-              <Box
-                background={!darkCanvas ? background : undefined}
-                padding={transparent ? undefined : 'gutter'}
-                className={[
-                  transparent ? undefined : styles.frameShape,
-                  showKeyline ? styles.frameKeyline : undefined,
-                ]}
-              >
-                {children}
-              </Box>
-            </BraidProvider>
-          </Box>
-        </Stack>
+          </BraidProvider>
+        </Box>
       </Box>
     </Box>
   );

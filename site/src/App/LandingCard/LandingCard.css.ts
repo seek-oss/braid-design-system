@@ -1,45 +1,15 @@
-import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
+import {
+  createVar,
+  globalStyle,
+  style,
+  styleVariants,
+} from '@vanilla-extract/css';
 import { atoms, responsiveStyle } from 'braid-design-system/css';
-import { colorModeSelectors } from 'braid-src/lib/css/atoms/sprinkles.css';
+import { palette } from 'braid-src/lib/color/palette';
 import { colorModeStyle } from 'braid-src/lib/css/colorModeStyle';
 import { vars } from 'braid-src/lib/themes/vars.css';
 
-import {
-  type AdaptiveColor,
-  illustrationCanvas,
-  illustrationFills,
-} from './illustrationPalette';
-
-const colorTransition = '250ms ease';
-
-export const inColorMode = {
-  light: colorModeSelectors.light.replace(' &', ''),
-  dark: colorModeSelectors.dark.replace(' &', ''),
-} as const;
-
-const inMode = (mode: keyof typeof inColorMode, selector: string) =>
-  `${inColorMode[mode]} ${selector.replaceAll(', ', `, ${inColorMode[mode]} `)}`;
-
-const adaptiveStyle = (
-  property: 'backgroundColor' | 'fill' | 'color',
-  rest: AdaptiveColor,
-  hover: AdaptiveColor,
-  hoverSelector: string,
-) => {
-  const restMode = colorModeStyle({
-    lightMode: { [property]: rest.light },
-    darkMode: { [property]: rest.dark },
-  });
-
-  return {
-    ...restMode,
-    selectors: {
-      ...restMode.selectors,
-      [inMode('light', hoverSelector)]: { [property]: hover.light },
-      [inMode('dark', hoverSelector)]: { [property]: hover.dark },
-    },
-  };
-};
+const transitionTiming = '250ms ease';
 
 export const linkOverlay = style([
   atoms({
@@ -55,9 +25,25 @@ export const linkOverlay = style([
   },
 ]);
 
+const cardBorder = createVar();
+const cardBorderHover = createVar();
 export const card = style([
   atoms({
     position: 'relative',
+  }),
+  colorModeStyle({
+    lightMode: {
+      vars: {
+        [cardBorder]: vars.borderColor.neutralLight,
+        [cardBorderHover]: vars.borderColor.neutral,
+      },
+    },
+    darkMode: {
+      vars: {
+        [cardBorder]: vars.borderColor.neutral,
+        [cardBorderHover]: vars.borderColor.neutralLight,
+      },
+    },
   }),
   {
     '::after': {
@@ -66,21 +52,18 @@ export const card = style([
       inset: 0,
       borderRadius: 'inherit',
       pointerEvents: 'none',
-      boxShadow: `inset 0 0 0 ${vars.borderWidth.standard} ${vars.borderColor.neutralLight}`,
+      boxShadow: `inset 0 0 0 ${vars.borderWidth.standard} ${cardBorder}`,
       transition: 'box-shadow 150ms ease',
     },
     selectors: {
       [`${linkOverlay}:hover + &::after`]: {
-        boxShadow: `inset 0 0 0 ${vars.borderWidth.large} ${vars.borderColor.neutral}`,
+        boxShadow: `inset 0 0 0 ${vars.borderWidth.large} ${cardBorderHover}`,
       },
     },
   },
 ]);
 
-const mediaSlot = style({});
-
-export const media = style([
-  mediaSlot,
+const mediaSlot = style([
   atoms({
     display: 'flex',
     alignItems: 'center',
@@ -88,35 +71,28 @@ export const media = style([
     width: 'full',
     overflow: 'hidden',
   }),
+  {},
+]);
+
+export const media = style([
+  mediaSlot,
   {
     aspectRatio: '16/9',
   },
 ]);
 
-export const compactLayout = style(
-  responsiveStyle({
-    mobile: {
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100%',
-    },
-    tablet: {
-      flexDirection: 'row',
-    },
+export const compactLayout = style([
+  atoms({
+    display: 'flex',
+    flexDirection: { mobile: 'column', tablet: 'row' },
+    height: 'full',
   }),
-);
+]);
 
 export const mediaCompact = style([
   mediaSlot,
-  atoms({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden',
-  }),
   responsiveStyle({
     mobile: {
-      width: '100%',
       aspectRatio: '4 / 1',
     },
     tablet: {
@@ -130,17 +106,33 @@ export const mediaCompact = style([
   }),
 ]);
 
-const hoveredMedia = `${linkOverlay}:hover + ${card} &`;
-
-export const mediaCanvas = style({
-  transition: `background-color ${colorTransition}`,
-  ...adaptiveStyle(
-    'backgroundColor',
-    illustrationCanvas.rest,
-    illustrationCanvas.hover,
-    hoveredMedia,
-  ),
-});
+const canvasRestVar = createVar();
+const canvasHighlightVar = createVar();
+export const canvasHighlight = style([
+  colorModeStyle({
+    lightMode: {
+      vars: {
+        [canvasRestVar]: palette.grey['100'],
+        [canvasHighlightVar]: palette.seekPink['50'],
+      },
+    },
+    darkMode: {
+      vars: {
+        [canvasRestVar]: palette.grey['800'],
+        [canvasHighlightVar]: palette.grey['700'],
+      },
+    },
+  }),
+  {
+    transition: `background-color ${transitionTiming}`,
+    backgroundColor: canvasRestVar,
+    selectors: {
+      [`${linkOverlay}:is(:hover, :focus-visible) + ${card} &`]: {
+        backgroundColor: canvasHighlightVar,
+      },
+    },
+  },
+]);
 
 export const illustration = style({
   width: '80%',
@@ -153,61 +145,63 @@ export const illustrationCompact = style({
   aspectRatio: '1 / 1',
 });
 
-const hoveredFill = `${linkOverlay}:hover + ${card} ${mediaSlot} &`;
-
-export const fills = styleVariants(illustrationFills, ({ rest, hover }) => ({
-  transition: `fill ${colorTransition}`,
-  ...adaptiveStyle('fill', rest, hover, hoveredFill),
-}));
-
-const destinationColorTransition = '250ms ease';
-const hoveredDestination = `${linkOverlay}:hover + ${card} &`;
-
-const destinationRest = colorModeStyle({
-  lightMode: {
-    backgroundColor: illustrationCanvas.rest.light,
-    color: illustrationFills.neutral.rest.light,
+const illustrationFills = {
+  accentSoft: {
+    light: palette.seekPink['300'],
+    dark: palette.seekPink['400'],
   },
-  darkMode: {
-    backgroundColor: illustrationCanvas.rest.dark,
-    color: illustrationFills.neutral.rest.dark,
+  accent: {
+    light: palette.seekPink['500'],
+    dark: palette.seekPink['300'],
   },
-});
-
-export const destinationIcon = style([
-  atoms({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 'large',
+  neutral: {
+    light: palette.seekBlue['700'],
+    dark: palette.seekBlueLight['300'],
+  },
+} as const;
+export const fills = styleVariants(illustrationFills, ({ light, dark }) => [
+  colorModeStyle({
+    lightMode: {
+      fill: light,
+    },
+    darkMode: {
+      fill: dark,
+    },
   }),
-  destinationRest,
   {
-    width: 56,
-    height: 56,
-    transition: `background-color ${destinationColorTransition}, color ${destinationColorTransition}`,
+    transition: `transform ${transitionTiming}, opacity ${transitionTiming}`,
+    transformOrigin: 'center',
     selectors: {
-      ...destinationRest.selectors,
-      [inMode('light', hoveredDestination)]: {
-        backgroundColor: illustrationCanvas.hover.light,
-        color: illustrationFills.neutral.hover.light,
-      },
-      [inMode('dark', hoveredDestination)]: {
-        backgroundColor: illustrationCanvas.hover.dark,
-        color: illustrationFills.neutral.hover.dark,
+      [`${linkOverlay}:not(:hover, :focus-visible) + ${card} ${mediaSlot} &`]: {
+        opacity: 0.7,
+        transform: 'scale(.85)',
       },
     },
   },
 ]);
 
-export const destinationGlyph = style({
-  width: 28,
-  height: 28,
-  color: 'inherit',
-});
+export const destinationIcon = style([
+  canvasHighlight,
+  atoms({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 'large',
+    padding: 'small',
+  }),
+  {
+    width: 56,
+    height: 56,
+  },
+]);
+
+globalStyle(
+  `${linkOverlay}:not(:hover, :focus-visible) + ${card} ${destinationIcon} svg`,
+  {
+    transform: 'scale(.85)',
+  },
+);
 
 globalStyle(`${destinationIcon} svg`, {
-  color: 'inherit',
-  fill: 'currentColor',
-  transition: `fill ${destinationColorTransition}`,
+  transition: `fill ${transitionTiming}, transform ${transitionTiming}`,
 });

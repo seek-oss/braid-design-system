@@ -1,6 +1,6 @@
 import { createVar, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
-import { atoms } from 'braid-design-system/css';
+import { atoms, colorModeStyle } from 'braid-design-system/css';
 import { vars } from 'braid-src/lib/themes/vars.css';
 
 import { canvas, adaptiveCanvas } from '../../ThemeSetting/ThemedExample.css';
@@ -21,22 +21,38 @@ export const tileLinkOverlay = style([
   },
 ]);
 
+const cardBorder = createVar();
+const cardBorderHover = createVar();
 export const tilePreview = style([
   canvas,
   adaptiveCanvas,
+  colorModeStyle({
+    lightMode: {
+      vars: {
+        [cardBorder]: vars.borderColor.neutralLight,
+        [cardBorderHover]: vars.borderColor.neutral,
+      },
+    },
+    darkMode: {
+      vars: {
+        [cardBorder]: vars.borderColor.neutral,
+        [cardBorderHover]: vars.borderColor.neutralLight,
+      },
+    },
+  }),
   atoms({
     position: 'relative',
     overflow: 'hidden',
     borderRadius: 'large',
     padding: 'gutter',
-    boxShadow: 'borderNeutralLight',
   }),
   {
     aspectRatio: '8 / 5',
     transition: 'box-shadow 150ms ease',
+    boxShadow: `inset 0 0 0 ${vars.borderWidth.standard} ${cardBorder}`,
     selectors: {
       [`${tileLinkOverlay}:hover ~ * > &`]: {
-        boxShadow: `inset 0 0 0 2px ${vars.borderColor.neutral}`,
+        boxShadow: `inset 0 0 0 ${vars.borderWidth.large} ${cardBorderHover}`,
       },
     },
   },

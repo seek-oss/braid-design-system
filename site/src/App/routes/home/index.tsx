@@ -2,16 +2,15 @@ import {
   TextLink,
   Stack,
   Heading,
-  ButtonLink,
   Inline,
   Text,
   Tiles,
-  IconNewWindow,
   IconSocialGitHub,
-  IconHistory,
-  Bleed,
   IconChevron,
   Spread,
+  IconRocket,
+  IconImage,
+  IconRenderer,
 } from 'braid-design-system';
 import { Box } from 'braid-src/lib/components/Box/Box';
 
@@ -22,7 +21,6 @@ import { PatternsIllustration } from '../../LandingCard/Illustrations/PatternsIl
 import { StylesIllustration } from '../../LandingCard/Illustrations/StylesIllustration';
 import { TemplatesIllustration } from '../../LandingCard/Illustrations/TemplatesIllustration';
 import { LandingCard } from '../../LandingCard/LandingCard';
-import { Logo } from '../../Logo/Logo';
 import { guideLandingCards } from '../../routes/guides';
 
 import { HeroShowcase } from './HeroShowcase';
@@ -36,13 +34,18 @@ export const HomePage = () => {
       <Box className={styles.hero}>
         <Box className={styles.contentColumn}>
           <Spread space="xlarge" alignY="center">
-            <Box className={styles.heroColumn}>
-              <Heading level="1">
-                Welcome to Braid, the themeable design system for the{' '}
-                <TextLink href="https://au.seek.com/about">
-                  SEEK Group.
-                </TextLink>
-              </Heading>
+            <Box className={styles.heroColumn} background="customDark">
+              <Stack space="large">
+                <Heading level="1">
+                  <span style={{ fontSize: '1.2em' }}>Braid Design System</span>
+                </Heading>
+                <Text size="large" tone="secondary">
+                  A themeable design system for the{' '}
+                  <TextLink href="https://au.seek.com/about">
+                    SEEK Group.
+                  </TextLink>
+                </Text>
+              </Stack>
             </Box>
             <Box
               className={styles.heroColumn}
@@ -103,53 +106,73 @@ export const HomePage = () => {
         </Stack>
       </Stack>
 
-      <Bleed horizontal="xlarge">
-        <Box className={styles.gettingStartedCard}>
-          <Stack space="medium">
-            <Heading level="2">New to Braid?</Heading>
-            <Text>
-              Browse the guides for the design and development workflows.
-            </Text>
-            <Inline space="small">
-              {guideLandingCards.slice(0, 3).map(({ href, label }) => (
-                <ButtonLink
-                  key={href}
+      <Box className={styles.gettingStartedCard} background="formAccentSoft">
+        <Stack space="large">
+          <Heading level="2">New to Braid?</Heading>
+          <Text>
+            Browse the guides for the design and development workflows.
+          </Text>
+          <Inline space="medium">
+            {guideLandingCards.slice(0, 3).map(({ href, label }) => (
+              <Text weight="strong" key={href}>
+                <TextLink
                   href={href}
-                  variant="transparent"
+                  weight="weak"
                   icon={<IconChevron direction="right" />}
                   iconPosition="trailing"
                 >
                   {label}
-                </ButtonLink>
-              ))}
-            </Inline>
-          </Stack>
-        </Box>
-      </Bleed>
+                </TextLink>
+              </Text>
+            ))}
+          </Inline>
+        </Stack>
+      </Box>
 
       <Tiles space="medium" columns={[1, 2, 4]}>
         <LandingCard
           href="/releases"
           label="Releases"
-          description="What’s new in Braid."
-          icon={<IconHistory size="fill" />}
+          description="What’s new in Braid"
+          icon={<IconRocket size="fill" />}
         />
         <LandingCard
           href="/gallery"
           label="Gallery"
-          description="Browse every component in one place."
-          icon={<Logo iconOnly height="100%" width="100%" />}
+          description="Browse on canvas-style artboard"
+          icon={<IconImage size="fill" />}
         />
         <LandingCard
           href={playroomUrl}
           label="Playroom"
-          description="Prototype with live Braid components."
-          icon={<IconNewWindow size="fill" />}
+          description="Prototype with live components"
+          icon={
+            <IconRenderer size="fill">
+              {({ className }) => (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 100 100"
+                  focusable="false"
+                  display="block"
+                  className={className}
+                >
+                  <path
+                    d="M0 100V0L20.5 10.25V89.75L0 100Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M80 40L100 50L80 60L40.5 79.75V59.75L60 50L40.5 40.25V20.25L80 40Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              )}
+            </IconRenderer>
+          }
         />
         <LandingCard
           href="https://github.com/seek-oss/braid-design-system"
           label="GitHub"
-          description="Source, issues, and release history."
+          description="Source code, issues, and PRs"
           icon={<IconSocialGitHub size="fill" />}
         />
       </Tiles>

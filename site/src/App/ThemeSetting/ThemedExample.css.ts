@@ -11,13 +11,26 @@ const keylineWidth = createVar();
  * Resolves the frame values against whichever theme this element sits in, so
  * they can be inherited by the example rendering in its own theme below.
  */
-export const frameContext = style({
-  vars: {
-    [frameRadius]: vars.borderRadius.large,
-    [keylineColor]: vars.borderColor.neutralLight,
-    [keylineWidth]: vars.borderWidth.standard,
+export const frameContext = style([
+  colorModeStyle({
+    lightMode: {
+      vars: {
+        [keylineColor]: vars.borderColor.neutralLight,
+      },
+    },
+    darkMode: {
+      vars: {
+        [keylineColor]: vars.borderColor.neutral,
+      },
+    },
+  }),
+  {
+    vars: {
+      [frameRadius]: vars.borderRadius.large,
+      [keylineWidth]: vars.borderWidth.standard,
+    },
   },
-});
+]);
 
 export const frameShape = style({
   borderRadius: frameRadius,

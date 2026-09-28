@@ -21,7 +21,7 @@ export const HeroShowcase = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [jobTitle, setJobTitle] = useState('Product Designer');
-  const [remote, setRemote] = useState(true);
+  const [toggle, setToggle] = useState(true);
   const [saved, setSaved] = useState(true);
 
   // The collage is decorative, so it responds to pointers but never takes
@@ -52,12 +52,11 @@ export const HeroShowcase = () => {
             padding="gutter"
           >
             <Inline space="small">
-              <Badge tone="positive">New</Badge>
-              <Badge tone="promote" weight="strong">
-                Featured
-              </Badge>
-              <Badge tone="caution">Closing soon</Badge>
-              <Badge tone="neutral">Draft</Badge>
+              <Badge tone="positive">Positive</Badge>
+              <Badge tone="critical">Critical</Badge>
+              <Badge tone="promote">Promote</Badge>
+              <Badge tone="info">Info</Badge>
+              <Badge tone="caution">Caution</Badge>
             </Inline>
           </Box>
         </Box>
@@ -70,7 +69,7 @@ export const HeroShowcase = () => {
             padding="gutter"
           >
             <TextField
-              label="Job title"
+              label="Field label"
               value={jobTitle}
               onChange={(event) => setJobTitle(event.currentTarget.value)}
               onClear={() => setJobTitle('')}
@@ -84,8 +83,10 @@ export const HeroShowcase = () => {
             borderRadius="large"
             boxShadow="small"
             padding="gutter"
+            display="flex"
+            alignItems="flexEnd"
           >
-            <Toggle label="Remote friendly" on={remote} onChange={setRemote} />
+            <Toggle label="Toggle" on={toggle} onChange={setToggle} />
           </Box>
         </Box>
 

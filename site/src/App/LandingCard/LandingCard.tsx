@@ -27,7 +27,7 @@ export const LandingCard = ({
   const mediaClass = compact ? styles.mediaCompact : styles.media;
 
   const media = illustration ? (
-    <Box className={[mediaClass, styles.mediaCanvas]} aria-hidden>
+    <Box className={[mediaClass, styles.canvasHighlight]} aria-hidden>
       <Box
         className={compact ? styles.illustrationCompact : styles.illustration}
       >
@@ -41,10 +41,10 @@ export const LandingCard = ({
       <Stack space="medium">
         {icon ? (
           <Box className={styles.destinationIcon} aria-hidden>
-            <Box className={styles.destinationGlyph}>{icon}</Box>
+            {icon}
           </Box>
         ) : null}
-        <Stack space={icon ? 'small' : 'medium'}>
+        <Stack space="medium">
           <Heading level="4">{label}</Heading>
           <Text tone="secondary">{description}</Text>
         </Stack>
@@ -56,7 +56,7 @@ export const LandingCard = ({
     <Box position="relative" height="full">
       <Link href={href} className={styles.linkOverlay} aria-label={label} />
       <Box
-        background={{ lightMode: 'surface', darkMode: 'surfaceDark' }}
+        background="surface"
         overflow="hidden"
         borderRadius="large"
         height="full"

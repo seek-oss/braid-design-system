@@ -8,6 +8,7 @@ import {
   IconPositive,
   IconCopy,
   IconVideo,
+  Spread,
 } from 'braid-design-system';
 import usePlayroomScope from 'braid-design-system/playroom/scope';
 // TODO: COLORMODE RELEASE
@@ -28,7 +29,7 @@ import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 
 import { useConfig } from '../ConfigContext';
-import { ThemedExample } from '../ThemeSetting';
+import { ThemedExample, ThemeToggle } from '../ThemeSetting';
 
 import { editorTheme } from './editorTheme';
 import type { SupportedLanguage } from './supportedLanguages';
@@ -60,6 +61,7 @@ export const formatSnippet = memoize((snippet: string) => {
 
 interface CodeButtonProps extends BoxProps {
   successLabel?: string;
+  onDark?: boolean;
 }
 
 export const CodeButton = ({
@@ -67,6 +69,7 @@ export const CodeButton = ({
   children,
   className,
   onClick,
+  onDark,
   successLabel,
   ...restProps
 }: CodeButtonProps) => {
@@ -121,7 +124,11 @@ export const CodeButton = ({
       {...restProps}
     >
       <FieldOverlay
-        background={{ lightMode: 'neutralSoft', darkMode: 'surfaceDark' }}
+        background={
+          onDark
+            ? 'neutral'
+            : { lightMode: 'neutralSoft', darkMode: 'surfaceDark' }
+        }
         className={styles.hoverOverlay}
       />
       <FieldOverlay className={styles.activeOverlay} />
@@ -163,6 +170,16 @@ export const CodeBlock = ({
           {children}
         </SyntaxHighlighter>
       </Text>
+      <Box position="absolute" top={0} right={0} padding="xsmall">
+        <CodeButton
+          onClick={() => copy(children)}
+          title="Copy code to clipboard"
+          successLabel="Copied!"
+          onDark
+        >
+          <IconCopy /> Copy
+        </CodeButton>
+      </Box>
     </Box>
   );
 };
@@ -213,6 +230,7 @@ const parseInput = (
 
 interface CodeProps {
   playroom?: boolean;
+  themeSelector?: boolean;
   collapsedByDefault?: boolean;
   children:
     | ReactElementOrString
@@ -223,6 +241,7 @@ interface CodeProps {
 }
 const Code = ({
   playroom = true,
+  themeSelector = false,
   collapsedByDefault = false,
   children,
 }: CodeProps) => {
@@ -232,49 +251,48 @@ const Code = ({
   const { code, value } = parseInput(
     typeof children === 'function' ? children(playroomScope) : children,
   );
+  const codeIsRenderable = typeof children !== 'string';
 
   return (
     <Box position="relative">
       <Stack space="xsmall">
-        {typeof children !== 'string' && <ThemedExample>{value}</ThemedExample>}
+        {codeIsRenderable && <ThemedExample>{value}</ThemedExample>}
+        <Spread space="xsmall" alignY="center">
+          {themeSelector ? (
+            <ThemeToggle size="xsmall" tone="secondary" weight="regular" />
+          ) : (
+            <span />
+          )}
+          <Inline space="xxsmall" align="right">
+            {collapsedByDefault ? (
+              <CodeButton onClick={() => setHideCode(!hideCode)}>
+                <IconChevron direction={hideCode ? 'down' : 'up'} />
+                <Hidden inline below="tablet">
+                  {hideCode ? ' View code' : ' Hide code'}
+                </Hidden>
+                <Hidden inline above="mobile">
+                  {' '}
+                  Code
+                </Hidden>
+              </CodeButton>
+            ) : null}
+            {(/^import/m.test(code) || playroom) && (
+              <CodeButton
+                component="a"
+                target="_blank"
+                href={createUrl({ baseUrl: playroomUrl, code })}
+                title="Open in Playroom"
+              >
+                <IconVideo />{' '}
+                <Hidden inline below="tablet">
+                  Open in{' '}
+                </Hidden>
+                Playroom
+              </CodeButton>
+            )}
+          </Inline>
+        </Spread>
         {hideCode ? null : <CodeBlock>{code}</CodeBlock>}
-        <Inline space="xxsmall" align="right">
-          {collapsedByDefault ? (
-            <CodeButton onClick={() => setHideCode(!hideCode)}>
-              <IconChevron direction={hideCode ? 'down' : 'up'} />
-              <Hidden inline below="tablet">
-                {hideCode ? ' View code' : ' Hide code'}
-              </Hidden>
-              <Hidden inline above="mobile">
-                {' '}
-                Code
-              </Hidden>
-            </CodeButton>
-          ) : null}
-          {hideCode ? null : (
-            <CodeButton
-              onClick={() => copy(code)}
-              title="Copy code to clipboard"
-              successLabel="Copied!"
-            >
-              <IconCopy /> Copy
-            </CodeButton>
-          )}
-          {/^import/m.test(code) || !playroom ? null : (
-            <CodeButton
-              component="a"
-              target="_blank"
-              href={createUrl({ baseUrl: playroomUrl, code })}
-              title="Open in Playroom"
-            >
-              <IconVideo />{' '}
-              <Hidden inline below="tablet">
-                Open in{' '}
-              </Hidden>
-              Playroom
-            </CodeButton>
-          )}
-        </Inline>
       </Stack>
     </Box>
   );

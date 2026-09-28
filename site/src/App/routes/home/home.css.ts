@@ -2,9 +2,8 @@ import { globalStyle, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { atoms, responsiveStyle } from 'braid-design-system/css';
 import { palette } from 'braid-src/lib/color/palette';
-import { colorModeStyle } from 'braid-src/lib/css/colorModeStyle';
 import { vars } from 'braid-src/lib/themes/vars.css';
-import { darken } from 'polished';
+import { transparentize } from 'polished';
 
 import {
   contentBlockXLWidth,
@@ -13,32 +12,15 @@ import {
   sideNavBreakpoint,
 } from '../../Navigation/navigationSizes';
 
-const canvasLight = darken(0.025, palette.grey['100']);
-
-const heroBackgroundImage = {
-  light:
-    'url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAwIiBoZWlnaHQ9IjQ4NSIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDMwMDAgNDg1Ij48Y2lyY2xlIGN4PSI1ODgiIGN5PSIyMjQiIHI9IjIwMCIgZmlsbD0iIzgzOEZBNSIvPjxjaXJjbGUgY3g9IjI4MTYiIGN5PSIxMTYiIHI9IjEwMCIgZmlsbD0iIzgzOEZBNSIvPjxwYXRoIGZpbGw9IiM3NDhDRjAiIGQ9Ik0zNDkgMGExMDAgMTAwIDAgMSAxLTE3MCAweiIvPjxwYXRoIGZpbGw9IiNEMkQ3REYiIGQ9Ik0yNjQzIDBhNDAxIDQwMSAwIDAgMS0zOTEgNDg0QTQwMCA0MDAgMCAwIDEgMTg2MSAweiIvPjwvc3ZnPg==")',
-  dark: 'url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAwIiBoZWlnaHQ9IjQ4NSIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDMwMDAgNDg1Ij48Y2lyY2xlIGN4PSI1ODgiIGN5PSIyMjQiIHI9IjIwMCIgZmlsbD0iIzVBNjg4MSIvPjxjaXJjbGUgY3g9IjI4MTYiIGN5PSIxMTYiIHI9IjEwMCIgZmlsbD0iIzVBNjg4MSIvPjxwYXRoIGZpbGw9IiM0MTRDNjMiIGQ9Ik0zNDkgMGExMDAgMTAwIDAgMSAxLTE3MCAweiIvPjxwYXRoIGZpbGw9IiMyRTM4NDkiIGQ9Ik0yNjQzIDBhNDAxIDQwMSAwIDAgMS0zOTEgNDg0QTQwMCA0MDAgMCAwIDEgMTg2MSAweiIvPjwvc3ZnPg==")',
-} as const;
-
 export const hero = style([
   atoms({
     display: 'flex',
     alignItems: 'center',
     paddingY: 'xxlarge',
   }),
-  colorModeStyle({
-    lightMode: {
-      backgroundColor: canvasLight,
-      backgroundImage: heroBackgroundImage.light,
-    },
-    darkMode: {
-      backgroundColor: vars.backgroundColor.neutral,
-      backgroundImage: heroBackgroundImage.dark,
-    },
-  }),
   responsiveStyle({
     mobile: {
+      minHeight: '25vh',
       marginTop: calc.negate(
         calc.add(
           vars.space[pageContentSpaceY],
@@ -47,6 +29,7 @@ export const hero = style([
       ),
     },
     [sideNavBreakpoint]: {
+      minHeight: '35vh',
       marginTop: calc.negate(
         calc.add(
           vars.space[pageContentSpaceY],
@@ -57,7 +40,17 @@ export const hero = style([
   }),
   {
     marginInline: 'calc(50% - 50vw)',
-    minHeight: '50vh',
+    backgroundColor: palette.grey['900'],
+    backgroundImage: `url("data:image/svg+xml;base64,${Buffer.from(
+      [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="3000" height="485" fill="none" viewBox="0 0 3000 485">',
+        `  <circle cx="588" cy="224" r="200" fill="${palette.grey['800']}"/>`,
+        `  <circle cx="2816" cy="116" r="100" fill="${palette.grey['800']}"/>`,
+        `  <path fill="${palette.grey['800']}" d="M349 0a100 100 0 1 1-170 0z"/>`,
+        `  <path fill="${transparentize(0.6, palette.grey['800'])}" d="M2643 0a401 401 0 0 1-391 484A400 400 0 0 1 1861 0z"/>`,
+        '</svg>',
+      ].join(''),
+    ).toString('base64')}")`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'right center',
     backgroundSize: 'auto 100%',
@@ -89,16 +82,7 @@ globalStyle(`${hero} ${heroColumn}`, {
 
 export const gettingStartedCard = style([
   atoms({
-    paddingX: 'xlarge',
-    paddingY: 'xxlarge',
+    padding: 'xlarge',
     borderRadius: 'large',
-  }),
-  colorModeStyle({
-    lightMode: {
-      backgroundColor: canvasLight,
-    },
-    darkMode: {
-      backgroundColor: vars.backgroundColor.neutral,
-    },
   }),
 ]);
