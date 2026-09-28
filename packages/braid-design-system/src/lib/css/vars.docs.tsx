@@ -349,7 +349,7 @@ const docs: CssDoc = {
     </>
   ),
   additional: Object.entries(varDocs).map(([name, value]) => ({
-    label: `${name}`,
+    label: name,
     description: value,
   })),
 };
