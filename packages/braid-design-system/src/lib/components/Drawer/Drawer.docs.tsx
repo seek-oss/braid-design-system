@@ -41,7 +41,7 @@ const drawerPreviewPropsFromSourceValue = (element: DrawerElement) => ({
 });
 
 const DrawerPreview = ({ children }: { children: ReactNode }) => (
-  <Box position="relative">
+  <Box position="relative" zIndex={0}>
     <Box position="absolute" inset={0} className={styles.backdrop} />
     <Box position="relative" zIndex="modal">
       {children}
