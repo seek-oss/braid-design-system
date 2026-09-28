@@ -6,6 +6,7 @@ import { Box } from '../Box/Box';
 import { Stack } from '../Stack/Stack';
 import { Text } from '../Text/Text';
 
+import { coverImagePlaceholderUrl } from '../Dialog/coverImagePlaceholder.css';
 import { DrawerContent } from './Drawer';
 
 import * as styles from '../private/Modal/Modal.css';
@@ -67,8 +68,26 @@ export const LayoutWithNoTitle: Story = {
     width: 'medium',
     children: (
       <>
-        <Placeholder height={100} width="100%" label="Cover image" />
+        <Placeholder
+          height={180}
+          width="100%"
+          image={coverImagePlaceholderUrl}
+        />
         <Placeholder height={500} width="100%" label="Content" />
+      </>
+    ),
+  },
+};
+
+export const LayoutWithNoTitleOrCoverImage: Story = {
+  name: 'Layout with no title or cover image',
+  args: {
+    'aria-label': 'Layout with no title or cover image',
+    width: 'medium',
+    children: (
+      <>
+        <Placeholder height={100} width="100%" label="Content" />
+        <Placeholder height={500} width="100%" label="More content" />
       </>
     ),
   },
