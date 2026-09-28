@@ -342,7 +342,6 @@ describe('Avatar', () => {
     it.each([
       ['xsmall', textSizeUntrimmed.xsmall],
       ['small', textSizeUntrimmed.small],
-      ['medium', textSizeUntrimmed.small],
       ['standard', textSizeUntrimmed.standard],
       ['large', textSizeUntrimmed.large],
       ['xlarge', textSizeUntrimmed.large],
@@ -374,7 +373,6 @@ describe('Avatar', () => {
     it.each([
       ['xsmall', 'small'],
       ['small', 'standard'],
-      ['medium', 'standard'],
       ['standard', 'standard'],
       ['large', 'standard'],
       ['xlarge', 'large'],

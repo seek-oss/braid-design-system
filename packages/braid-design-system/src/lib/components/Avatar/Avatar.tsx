@@ -62,7 +62,6 @@ const avatarSizeToBorderRadius = {
   xlarge: 'large',
   large: 'standard',
   standard: 'standard',
-  medium: 'standard',
   small: 'standard',
   xsmall: 'small',
 } as const satisfies Record<
@@ -75,7 +74,6 @@ const avatarSizeToTextSize = {
   xlarge: 'large',
   large: 'large',
   standard: 'standard',
-  medium: 'small',
   small: 'small',
   xsmall: 'xsmall',
 } as const satisfies Record<AvatarSize, ComponentProps<typeof Text>['size']>;
@@ -266,8 +264,7 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
         styles.root,
         styles.size[size],
         clickable ? styles.clickable : undefined,
-        clickable &&
-        (size === 'xsmall' || size === 'small' || size === 'medium')
+        clickable && (size === 'xsmall' || size === 'small')
           ? virtualTouchable
           : undefined,
         classNameProp,

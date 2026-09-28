@@ -52,7 +52,6 @@ export const snippets: Snippets = [
       <Inline space="small" alignY="center">
         <Avatar name="Leia Organa" size="xsmall" />
         <Avatar name="Leia Organa" size="small" />
-        <Avatar name="Leia Organa" size="medium" />
         <Avatar name="Leia Organa" size="standard" />
         <Avatar name="Leia Organa" size="large" />
         <Avatar name="Leia Organa" size="xlarge" />
