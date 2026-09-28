@@ -7,7 +7,12 @@ import {
   Button,
   Card,
   Heading,
+  IconBookmark,
+  IconNote,
+  MenuItem,
+  OverflowMenu,
   PageBlock,
+  Spread,
   Stack,
   Text,
 } from '../../../../playroom/components';
@@ -21,46 +26,37 @@ export const snippets: TemplateSnippets = [
         <PageBlock width="medium">
           <Stack space="medium">
             <Heading level="3">Heading (optional)</Heading>
-
             <Stack component="ul" space="small">
-              {[
-                {
-                  title: 'Item 1',
-                  subTitle: 'Ea proident nulla veniam',
-                  description: 'Lorem ipsum',
-                  date: '2d ago',
-                },
-                {
-                  title: 'Item 2',
-                  subTitle: 'Occaecat ad sunt elit',
-                  description: 'Consectetur adipiscing',
-                  date: '6d ago',
-                },
-                {
-                  title: 'Item 3',
-                  subTitle: 'Commodo exercitation nisi laborum',
-                  description: 'Vel odio',
-                  date: '3w ago',
-                },
-              ].map((item) => (
-                <Box component="li" key={item.title}>
+              {[1, 2, 3].map((item) => (
+                <Box component="li" key={item}>
                   <Card component="article">
                     <Stack space="medium">
                       <Stack space="small">
-                        <Heading level="4">{item.title}</Heading>
-                        <Text>{item.subTitle}</Text>
+                        <Spread space="small">
+                          <Heading level="4">Heading level 4</Heading>
+                          <OverflowMenu label="Options">
+                            <MenuItem icon={<IconNote />}>Menu item 1</MenuItem>
+                            <MenuItem icon={<IconBookmark />}>
+                              Menu item 2
+                            </MenuItem>
+                          </OverflowMenu>
+                        </Spread>
+                        <Text>Standard text</Text>
                       </Stack>
-                      <Text>{item.description}</Text>
-                      <Text tone="secondary">{item.date}</Text>
+                      <Text>
+                        Standard text lorem ipsum dolor sit amet consectetur
+                        adipiscing elit. Vivamus iaculis ut neque sit amet
+                        egestas.
+                      </Text>
+                      <Text tone="secondary">Standard, secondary text</Text>
+                      <Actions>
+                        <Button>Button</Button>
+                      </Actions>
                     </Stack>
                   </Card>
                 </Box>
               ))}
             </Stack>
-
-            <Actions>
-              <Button>Action (optional)</Button>
-            </Actions>
           </Stack>
         </PageBlock>,
       ),

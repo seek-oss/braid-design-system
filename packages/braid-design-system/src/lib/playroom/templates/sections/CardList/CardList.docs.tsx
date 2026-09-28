@@ -1,6 +1,6 @@
 import type { TemplateDocs } from 'site/types';
 
-import { Text } from '../../../../playroom/components';
+import { Text, TextLink } from '../../../../playroom/components';
 
 import { snippets } from './CardList.snippets';
 
@@ -18,8 +18,9 @@ const docs: TemplateDocs = {
     <Text>
       Use when displaying a collection of similar items — such as search results
       or records — that benefit from defined visual boundaries. For lightweight
-      lists without card treatment, consider the <strong>Divided list</strong>{' '}
-      section instead.
+      lists without card treatment, consider the{' '}
+      <TextLink href="/patterns/divided-list">Divided list</TextLink> pattern
+      instead.
     </Text>
   ),
   Example: primarySnippet.code,

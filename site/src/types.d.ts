@@ -31,7 +31,19 @@ export type Page = RouteProps & {
 };
 
 type NavigationSection =
-  'guides' | 'foundations' | 'examples' | 'components' | 'css' | 'logic';
+  | 'guides'
+  | 'foundations'
+  | 'examples'
+  | 'components'
+  | 'styles'
+  | 'logic'
+  | 'patterns';
+
+interface DocAlternative {
+  name: string;
+  description: string;
+  section?: NavigationSection;
+}
 
 type PlayroomExampleProps = ReturnType<typeof useScope>;
 
@@ -54,11 +66,7 @@ export interface ComponentDocs {
   Example?: (
     props: ExampleProps & PlayroomExampleProps,
   ) => Source<ReactElement>;
-  alternatives: Array<{
-    name: string;
-    description: string;
-    section?: NavigationSection;
-  }>;
+  alternatives: DocAlternative[];
   accessibility?: ReactNodeNoStrings;
   docSections?: DocSections;
   additional?: ComponentExample[];
@@ -68,6 +76,14 @@ export interface CssDoc {
   banner?: ReactNodeNoStrings;
   description?: ReactNodeNoStrings;
   usage: ReactNodeNoStrings;
+  docSections?: DocSections;
+  additional?: ComponentExample[];
+}
+
+export interface PatternDocs {
+  description?: ReactNodeNoStrings;
+  alternatives?: DocAlternative[];
+  accessibility?: ReactNodeNoStrings;
   docSections?: DocSections;
   additional?: ComponentExample[];
 }

@@ -1,4 +1,4 @@
-import { HeaderNavigation } from '@braid-design-system/docs-ui';
+import { HeaderNavigation, type NavLink } from '@braid-design-system/docs-ui';
 import {
   Hidden,
   IconChevron,
@@ -14,7 +14,7 @@ import {
 // Use public import
 import { type BoxProps, Box } from 'braid-src/lib/components/Box/Box';
 import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContainer/ScrollContainer';
-import { useState, useRef, useEffect, forwardRef } from 'react';
+import { useState, useRef, useEffect, useCallback, forwardRef } from 'react';
 import { RemoveScroll } from 'react-remove-scroll';
 import { useLocation, Outlet } from 'react-router';
 import { useWindowScroll, useInterval } from 'react-use';
@@ -24,11 +24,17 @@ import { SideNavigation } from 'site/App/SideNavigation/SideNavigation';
 import { useConfig } from '../ConfigContext';
 import { JumpToModal } from '../JumpToModal/JumpToModal';
 import { Logo } from '../Logo/Logo';
-import { ThemeToggle } from '../ThemeSetting';
+import { getActiveSection, navSections } from '../navigationSections';
 import { useScrollLock } from '../useScrollLock/useScrollLock';
 import { useSearchHotkey } from '../useSearchHotkey/useSearchHotkey';
 
-import { gutterSize, headerSpaceY } from './navigationSizes';
+import {
+  gutterSize,
+  headerLogoSize,
+  headerSpaceY,
+  pageContentSpaceTop,
+  pageContentSpaceY,
+} from './navigationSizes';
 
 import * as styles from './Navigation.css';
 
@@ -36,19 +42,20 @@ const Header = ({
   menuOpen,
   menuClick,
   onSearchClick,
+  navLinks,
 }: {
   menuOpen: boolean;
   menuClick: () => void;
   onSearchClick: () => void;
+  navLinks: NavLink[];
 }) => (
   <Box paddingY={headerSpaceY} paddingX={gutterSize}>
     <HeaderNavigation
       menuOpen={menuOpen}
       menuClick={menuClick}
       onSearchClick={onSearchClick}
-      logo={<Logo iconOnly height="40px" width="40px" />}
-      logoLabel="Braid Logo"
-      themeToggle={<ThemeToggle size="xsmall" />}
+      logo={<Logo iconOnly height={headerLogoSize} width={headerLogoSize} />}
+      navLinks={navLinks}
     />
   </Box>
 );
@@ -143,6 +150,9 @@ export const Navigation = () => {
   const [showStickyHeader, setShowStickyHeader] = useState(false);
   const [direction, setDirection] = useState<'up' | 'down' | null>(null);
 
+  // Stable so the side navigation can memoise its item lists
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
   useSearchHotkey({ onOpen: () => setSearchOpen(true) });
 
   const location = useLocation();
@@ -170,14 +180,33 @@ export const Navigation = () => {
 
   const navigationActive = isExpandedSize || isMenuOpen;
 
+  const isHome = location.pathname === '/';
+
+  const activeSectionId = getActiveSection(location.pathname)?.id;
+
+  const navLinks: NavLink[] = navSections.map(({ id, label, href }) => ({
+    label,
+    href,
+    active: id === activeSectionId,
+  }));
+
   return (
     <Box width="full" className={styles.contentBlockXL}>
       <JumpToModal isOpen={isSearchOpen} onClose={() => setSearchOpen(false)} />
-      <Box position="fixed" top={0}>
+      <Box
+        position="fixed"
+        top={0}
+        left={0}
+        right={0}
+        zIndex="sticky"
+        background="body"
+        className={styles.fixedNavigationContainer}
+      >
         <Header
           menuOpen={isMenuOpen}
           menuClick={() => setMenuOpen(!isMenuOpen)}
           onSearchClick={() => setSearchOpen(true)}
+          navLinks={navLinks}
         />
       </Box>
       <RemoveScroll enabled={isMenuOpen} forwardProps>
@@ -186,16 +215,22 @@ export const Navigation = () => {
           bottom={0}
           transition="fast"
           width="full"
+          left={0}
           zIndex="sticky"
           inert={navigationActive ? undefined : true}
           className={[
             styles.sideNavigationContainer,
+            isHome ? styles.hideSideNavOnWide : undefined,
             isMenuOpen ? styles.isOpen : undefined,
           ]}
         >
           <ScrollContainer direction="vertical">
             <Box paddingX={gutterSize} paddingBottom="xxlarge">
-              <SideNavigation onSelect={() => setMenuOpen(false)} />
+              <SideNavigation
+                menuOpen={isMenuOpen}
+                wideLayout={isExpandedSize ?? true}
+                onSelect={closeMenu}
+              />
             </Box>
           </ScrollContainer>
         </Box>
@@ -207,14 +242,22 @@ export const Navigation = () => {
           mobile: gutterSize,
           wide: 'xxlarge',
         }}
-        paddingY="small"
+        paddingY={pageContentSpaceY}
         paddingBottom="xxlarge"
         marginBottom="xxlarge"
         transition="fast"
         pointerEvents={isMenuOpen ? 'none' : undefined}
-        className={[styles.pageContent, isMenuOpen ? styles.isOpen : undefined]}
+        className={[
+          styles.pageContent,
+          isHome ? undefined : styles.subNavOffset,
+          isMenuOpen ? styles.isOpen : undefined,
+        ]}
       >
-        <Box paddingBottom="xxlarge" marginBottom="xxlarge">
+        <Box
+          paddingTop={pageContentSpaceTop}
+          paddingBottom="xxlarge"
+          marginBottom="xxlarge"
+        >
           <Outlet />
           <PreviewBranchPanel />
         </Box>
@@ -236,6 +279,7 @@ export const Navigation = () => {
           menuOpen={isMenuOpen}
           menuClick={() => setMenuOpen(!isMenuOpen)}
           onSearchClick={() => setSearchOpen(true)}
+          navLinks={navLinks}
         />
       </FixedContentBlock>
     </Box>

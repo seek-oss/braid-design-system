@@ -13,6 +13,8 @@ import { DocExample } from '../../DocNavigation/DocExample';
 import { PageTitle } from '../../Seo/PageTitle';
 import { templateLookup } from '../../navigationHelpers';
 
+import { templateGroupPath } from './templateDocs';
+
 export const TemplateDetail = () => {
   const { groupName = '', templateName = '' } = useParams<{
     groupName: string;
@@ -26,7 +28,7 @@ export const TemplateDetail = () => {
       <Stack space="medium">
         <Text tone="secondary" size="small">
           <TextLink
-            href={`/templates/${groupName}`}
+            href={templateGroupPath(groupName)}
             weight="weak"
             icon={<IconArrow direction="left" />}
           >

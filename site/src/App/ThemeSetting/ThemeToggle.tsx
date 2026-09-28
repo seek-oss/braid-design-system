@@ -9,14 +9,16 @@ type TextProps = ComponentProps<typeof Text>;
 export function ThemeToggle({
   size,
   weight = 'strong',
+  tone = 'secondary',
 }: {
   size?: TextProps['size'];
   weight?: TextProps['weight'];
+  tone?: TextProps['tone'];
 }) {
   const { themeName, setThemeName, ready } = useThemeSettings();
 
   return (
-    <Text weight={weight} size={size}>
+    <Text weight={weight} size={size} tone={tone}>
       {ready ? (
         <TextDropdown
           label="Theme"
