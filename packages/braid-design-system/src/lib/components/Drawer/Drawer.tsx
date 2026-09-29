@@ -43,9 +43,6 @@ type DrawerModalOmittedKeys =
   | 'aria-label'
   | 'aria-description';
 
-const docsUrl =
-  'https://seek-oss.github.io/braid-design-system/components/Drawer';
-
 const assertAccessibleName = ({
   title,
   description,
@@ -57,12 +54,23 @@ const assertAccessibleName = ({
   'aria-label'?: string;
   'aria-description'?: string;
 }) => {
+  const docsMessage =
+    'See the Drawer documentation for more information: https://seek-oss.github.io/braid-design-system/components/Drawer#title-and-description';
+
   assert(
     (typeof title === 'string') !== (typeof ariaLabel === 'string'),
     dedent`
       Drawer requires either a title or an aria-label.
 
-      See the Drawer documentation for more information: ${docsUrl}#title-and-description
+      ${docsMessage}
+    `,
+  );
+  assert(
+    typeof ariaLabel !== 'string' || ariaLabel.trim() !== '',
+    dedent`
+      Drawer aria-label must not be empty.
+
+      ${docsMessage}
     `,
   );
   assert(
@@ -70,7 +78,7 @@ const assertAccessibleName = ({
     dedent`
       Drawer description can only be used with a title.
 
-      See the Drawer documentation for more information: ${docsUrl}#title-and-description
+      ${docsMessage}
     `,
   );
   assert(
@@ -78,7 +86,7 @@ const assertAccessibleName = ({
     dedent`
       Drawer aria-description can only be used with an aria-label.
 
-      See the Drawer documentation for more information: ${docsUrl}#title-and-description
+      ${docsMessage}
     `,
   );
 };
