@@ -46,7 +46,7 @@ const dialogPreviewPropsFromSourceValue = (element: DialogElement) => ({
 });
 
 const DialogPreview = ({ children }: { children: ReactNode }) => (
-  <Box position="relative">
+  <Box position="relative" zIndex={0}>
     <Box position="absolute" inset={0} className={styles.backdrop} />
     <Box position="relative" zIndex="modal" padding={externalGutter}>
       {children}
