@@ -180,7 +180,7 @@ export const ResponsiveAlignmentWithIcon: Story = {
   ),
 };
 
-export const superScriptAndSubScript: Story = {
+export const SuperscriptAndSubscript: Story = {
   name: 'Superscript and Subscript',
   render: () => (
     <Stack space="large">

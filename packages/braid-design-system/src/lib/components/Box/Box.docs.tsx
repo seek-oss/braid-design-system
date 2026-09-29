@@ -107,6 +107,7 @@ const docs: ComponentDocs = {
             The <Strong>className</Strong> prop supports the full{' '}
             <TextLink href="https://github.com/lukeed/clsx">clsx API.</TextLink>
           </Text>
+          {/* eslint-disable no-restricted-syntax */}
           <Code playroom={false}>
             {(() => {
               const styles = {
@@ -128,6 +129,7 @@ const docs: ComponentDocs = {
               ).code;
             })()}
           </Code>
+          {/* eslint-enable no-restricted-syntax */}
         </>
       ),
     },
