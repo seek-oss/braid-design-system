@@ -464,7 +464,8 @@ const docs: ComponentDocs = {
             image arrives.
           </Text>
         ),
-        Example: () => source(<Avatar name="Leia Organa" loading />),
+        Example: () =>
+          source(<Avatar name="Leia Organa" size="xxlarge" loading />),
       },
     ],
     bestPractices: [
