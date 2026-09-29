@@ -3083,6 +3083,8 @@ exports[`Drawer 1`] = `
 {
   exportType: component,
   props: {
+    aria-description?: string
+    aria-label?: string
     children: ReactNode
     closeLabel?: string
     data?: DataAttributeMap
@@ -3094,7 +3096,7 @@ exports[`Drawer 1`] = `
     position?: 
         | "left"
         | "right"
-    title: string
+    title?: string
     width?: 
         | "large"
         | "medium"

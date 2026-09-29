@@ -29,7 +29,12 @@ export const Drawer: FC<PlayroomDrawerProps> = ({
     <AllowCloseContext.Provider
       value={onClose !== undefined || stateName !== undefined}
     >
-      <BraidDrawer {...restProps} open={state} onClose={handleChange} />
+      {/* Required: Optional<DrawerProps> loses the exclusive title / aria-label props */}
+      <BraidDrawer
+        {...(restProps as DrawerProps)}
+        open={state}
+        onClose={handleChange}
+      />
     </AllowCloseContext.Provider>
   );
 };
