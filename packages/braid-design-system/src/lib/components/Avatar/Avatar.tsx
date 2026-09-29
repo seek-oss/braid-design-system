@@ -96,18 +96,16 @@ const AvatarTextContent = ({ size, children }: AvatarTextContentProps) => {
   );
 };
 
-const validCharactersRegex = /\p{L}/u;
+const letterRegex = /^\p{L}/u;
 
 const getInitials = (fullName: string): string | null => {
-  const names = fullName
-    .split(' ')
-    .filter((part) => part.length > 0 && validCharactersRegex.test(part[0]));
-
-  if (names.length === 0) {
-    return null;
+  for (const character of fullName) {
+    if (letterRegex.test(character)) {
+      return character.toLocaleUpperCase();
+    }
   }
 
-  return names[0][0].toLocaleUpperCase();
+  return null;
 };
 
 const backgroundColourForName = (name: string) => {

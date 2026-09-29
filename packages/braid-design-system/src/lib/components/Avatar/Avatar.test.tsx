@@ -93,6 +93,16 @@ describe('Avatar', () => {
       name: '李 伟',
       expectedInitials: '李',
     },
+    {
+      scenario: 'skip leading punctuation',
+      name: '@Leia Organa',
+      expectedInitials: 'L',
+    },
+    {
+      scenario: 'support supplementary Unicode letters',
+      name: '𐐨braham',
+      expectedInitials: '𐐀',
+    },
   ])('should $scenario', ({ name, expectedInitials }) => {
     render(
       <BraidTestProvider>
