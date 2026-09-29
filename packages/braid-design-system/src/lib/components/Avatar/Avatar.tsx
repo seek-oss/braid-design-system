@@ -303,13 +303,9 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
         tabIndex={tabIndex}
         aria-describedby={ariaDescribedBy}
         position="relative"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
         cursor={clickable ? 'pointer' : undefined}
         borderRadius={borderRadius}
         background={colour?.type ?? 'neutralLight'}
-        overflow="hidden"
         outline={!clickable && focusable ? 'focus' : undefined}
         className={{
           [styles.size[size]]: true,
@@ -327,7 +323,17 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
         {...a11yProps}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
-        {content}
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          width="full"
+          height="full"
+          overflow="hidden"
+          borderRadius={borderRadius}
+        >
+          {content}
+        </Box>
       </Box>
     );
   },

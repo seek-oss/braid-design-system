@@ -10,6 +10,7 @@ import { IconCompany, IconPhotoAdd } from '../icons';
 import { photoPlaceholderUrl } from './photoPlaceholder.css';
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
 import { shimmerAnimation } from '../private/Skeleton/Skeleton.css';
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
 const focusOutlineClassNames = atoms({ outline: 'focus' })
   .split(' ')
@@ -503,6 +504,29 @@ describe('Avatar', () => {
       expect(avatar).toHaveAttribute('aria-describedby', 'avatar-tooltip');
       expect(avatar).not.toHaveAttribute('aria-hidden');
       expect(avatar).toHaveClass(...focusOutlineClassNames);
+    });
+
+    it('keeps the expanded hit target outside the cropped face', () => {
+      render(
+        <BraidTestProvider>
+          <Avatar
+            size="small"
+            icon={<IconPhotoAdd />}
+            aria-label="Add photo"
+            onClick={() => undefined}
+            data={{ testid: 'avatar' }}
+          />
+        </BraidTestProvider>,
+      );
+
+      const avatar = screen.getByRole('button', { name: 'Add photo' });
+      const overflowHiddenClassNames = atoms({ overflow: 'hidden' })
+        .split(' ')
+        .filter(Boolean);
+
+      expect(avatar).toHaveClass(virtualTouchable);
+      expect(avatar).not.toHaveClass(...overflowHiddenClassNames);
+      expect(avatar.firstElementChild).toHaveClass(...overflowHiddenClassNames);
     });
 
     it('does not stack a Box focus outline on a clickable avatar', () => {
