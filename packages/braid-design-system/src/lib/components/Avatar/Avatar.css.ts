@@ -31,7 +31,3 @@ export const image = style({
     },
   },
 });
-
-export const imageLoaded = style({
-  opacity: 1,
-});

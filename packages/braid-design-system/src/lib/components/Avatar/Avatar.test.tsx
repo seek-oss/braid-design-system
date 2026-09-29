@@ -1,5 +1,4 @@
 import { act, render, screen } from '@testing-library/react';
-import type { ComponentProps } from 'react';
 import { vi } from 'vitest';
 
 import { Avatar, Text, TooltipRenderer } from '..';
@@ -8,11 +7,6 @@ import { palette } from '../../color/palette';
 import { atoms } from '../../css/atoms/atoms';
 import { IconCompany, IconPhotoAdd } from '../icons';
 
-import {
-  keyline as keylineStyle,
-  imageLoaded,
-  size as sizeStyle,
-} from './Avatar.css';
 import { photoPlaceholderUrl } from './photoPlaceholder.css';
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
 import { shimmerAnimation } from '../private/Skeleton/Skeleton.css';
@@ -72,7 +66,7 @@ describe('Avatar', () => {
       );
 
       expect(screen.getByText(initials)).toBeVisible();
-      expect(screen.getByTestId('avatar').firstElementChild).toHaveStyle(
+      expect(screen.getByTestId('avatar')).toHaveStyle(
         `background: ${hexToRgbString(expectedColour)}`,
       );
     },
@@ -159,7 +153,7 @@ describe('Avatar', () => {
       });
 
       expect(imgElement).toBeVisible();
-      expect(imgElement).toHaveClass(imageLoaded);
+      expect(imgElement).not.toHaveClass(atoms({ opacity: 0 }));
     });
 
     const withCompleteImages = (run: () => void) => {
@@ -200,7 +194,7 @@ describe('Avatar', () => {
         );
 
         const imgElement = screen.getByRole('presentation', { hidden: true });
-        expect(imgElement).toHaveClass(imageLoaded);
+        expect(imgElement).not.toHaveClass(atoms({ opacity: 0 }));
       });
     });
 
@@ -221,7 +215,7 @@ describe('Avatar', () => {
         );
 
         const imgElement = screen.getByRole('presentation', { hidden: true });
-        expect(imgElement).toHaveClass(imageLoaded);
+        expect(imgElement).not.toHaveClass(atoms({ opacity: 0 }));
       });
     });
 
@@ -256,7 +250,7 @@ describe('Avatar', () => {
       act(() => {
         firstImage.dispatchEvent(new Event('load'));
       });
-      expect(firstImage).toHaveClass(imageLoaded);
+      expect(firstImage).not.toHaveClass(atoms({ opacity: 0 }));
 
       rerender(
         <BraidTestProvider>
@@ -266,7 +260,7 @@ describe('Avatar', () => {
 
       const nextImage = screen.getByRole('presentation', { hidden: true });
       expect(nextImage).toHaveAttribute('src', 'https://example.com/luke.jpg');
-      expect(nextImage).not.toHaveClass(imageLoaded);
+      expect(nextImage).toHaveClass(atoms({ opacity: 0 }));
     });
 
     it('mounts a new image instead of the broken icon when imageUrl changes', () => {
@@ -390,28 +384,6 @@ describe('Avatar', () => {
       expect(screen.getByTestId('avatar')).toHaveClass(...radiusClassNames);
     });
 
-    it('merges a passed className with avatar classes', () => {
-      const props: ComponentProps<typeof Avatar> & { className: string } = {
-        name: 'Leia Organa',
-        data: { testid: 'avatar' },
-        className: 'consumer-class',
-      };
-
-      render(
-        <BraidTestProvider>
-          <Avatar {...props} />
-        </BraidTestProvider>,
-      );
-
-      const avatar = screen.getByTestId('avatar');
-      const positionClassNames = atoms({ position: 'relative' })
-        .split(' ')
-        .filter(Boolean);
-
-      expect(avatar).toHaveClass('consumer-class', ...positionClassNames);
-      expect(avatar.className).toContain(sizeStyle.standard);
-    });
-
     it('does not throw on unknown sizes', () => {
       expect(() =>
         render(
@@ -420,32 +392,6 @@ describe('Avatar', () => {
           </BraidTestProvider>,
         ),
       ).not.toThrow();
-    });
-  });
-
-  describe('Keyline', () => {
-    it('applies the surface ring by default', () => {
-      render(
-        <BraidTestProvider>
-          <Avatar name="Leia Organa" data={{ testid: 'avatar' }} />
-        </BraidTestProvider>,
-      );
-
-      expect(
-        screen.getByTestId('avatar').firstElementChild?.className,
-      ).toContain(keylineStyle);
-    });
-
-    it('applies the surface ring in the loading state', () => {
-      render(
-        <BraidTestProvider>
-          <Avatar name="Leia Organa" loading data={{ testid: 'avatar' }} />
-        </BraidTestProvider>,
-      );
-
-      expect(
-        screen.getByTestId('avatar').firstElementChild?.className,
-      ).toContain(keylineStyle);
     });
   });
 

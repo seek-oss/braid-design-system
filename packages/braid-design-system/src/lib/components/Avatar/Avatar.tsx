@@ -64,10 +64,7 @@ const avatarSizeToBorderRadius = {
   standard: 'standard',
   small: 'standard',
   xsmall: 'small',
-} as const satisfies Record<
-  AvatarSize,
-  ComponentProps<typeof Box>['borderRadius']
->;
+} satisfies Record<AvatarSize, ComponentProps<typeof Box>['borderRadius']>;
 
 const avatarSizeToTextSize = {
   xxlarge: 'large',
@@ -76,7 +73,7 @@ const avatarSizeToTextSize = {
   standard: 'standard',
   small: 'small',
   xsmall: 'xsmall',
-} as const satisfies Record<AvatarSize, ComponentProps<typeof Text>['size']>;
+} satisfies Record<AvatarSize, ComponentProps<typeof Text>['size']>;
 
 interface AvatarTextContentProps {
   size: AvatarSize;
@@ -141,6 +138,7 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
     {
       name = '',
       'aria-label': ariaLabel,
+      'aria-describedby': ariaDescribedBy,
       size: sizeProp = 'standard',
       loading = false,
       imageUrl,
@@ -230,115 +228,58 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
     const labelled = Boolean(ariaLabel);
     const clickable = Boolean(onClick);
     const borderRadius = avatarSizeToBorderRadius[size];
-    const { className: classNameProp, ...rest } =
-      restProps as typeof restProps & {
-        className?: BoxProps['className'];
-      };
 
     let a11yProps;
     if (clickable) {
       a11yProps = {
-        component: 'button' as const,
-        type: 'button' as const,
+        component: 'button',
+        type: 'button',
         onClick,
         'aria-label': ariaLabel,
-      };
+      } as const;
     } else if (labelled) {
-      a11yProps = { role: 'img' as const, 'aria-label': ariaLabel };
+      a11yProps = { role: 'img', 'aria-label': ariaLabel };
     } else if (!focusable) {
-      a11yProps = { 'aria-hidden': true as const };
+      a11yProps = { 'aria-hidden': true };
     } else {
       a11yProps = {};
     }
 
-    const rootProps = {
-      ref,
-      tabIndex,
-      display: 'flex' as const,
-      position: 'relative' as const,
-      cursor: clickable ? ('pointer' as const) : undefined,
-      borderRadius,
-      outline: !clickable && focusable ? ('focus' as const) : undefined,
-      ...a11yProps,
-      ...buildDataAttributes({ data, validateRestProps: restProps }),
-      ...rest,
-      className: [
-        styles.size[size],
-        clickable && (size === 'xsmall' || size === 'small')
-          ? virtualTouchable
-          : undefined,
-        classNameProp,
-      ],
-    };
-
-    const faceProps = {
-      className: styles.keyline,
-      borderRadius,
-      overflow: 'hidden' as const,
-      height: 'full' as const,
-      width: 'full' as const,
-    };
-
-    const face = (() => {
-      if (loading) {
-        return (
-          <Box {...faceProps}>
-            <Skeleton />
-          </Box>
-        );
-      }
-
-      if (imageUrl && imageError) {
-        return (
-          <Box
-            {...faceProps}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            background="neutralLight"
-          >
-            <AvatarTextContent size={size}>
-              <IconImageBroken />
-            </AvatarTextContent>
-          </Box>
-        );
-      }
-
-      if (imageUrl) {
-        return (
-          <Box {...faceProps} background="neutralLight">
-            <Box
-              component="img"
-              key={imageUrl}
-              ref={imageRef}
-              src={imageUrl}
-              alt=""
-              aria-hidden
-              width="full"
-              height="full"
-              opacity={imageLoaded ? undefined : 0}
-              onError={() => setImageError(true)}
-              onLoad={() => {
-                const img = imageRef.current;
-                if (
-                  img &&
-                  isEmptyDecodedImage(img) &&
-                  isNonSvgDataUri(img.src)
-                ) {
-                  setImageError(true);
-                  return;
-                }
-                setImageLoaded(true);
-              }}
-              className={[
-                styles.image,
-                imageLoaded ? styles.imageLoaded : undefined,
-              ]}
-            />
-          </Box>
-        );
-      }
-
+    let content;
+    let colour = null;
+    if (loading) {
+      content = <Skeleton />;
+    } else if (imageUrl && imageError) {
+      content = (
+        <AvatarTextContent size={size}>
+          <IconImageBroken />
+        </AvatarTextContent>
+      );
+    } else if (imageUrl) {
+      content = (
+        <Box
+          component="img"
+          key={imageUrl}
+          ref={imageRef}
+          src={imageUrl}
+          alt=""
+          aria-hidden
+          width="full"
+          height="full"
+          className={styles.image}
+          opacity={imageLoaded ? undefined : 0}
+          onError={() => setImageError(true)}
+          onLoad={() => {
+            const img = imageRef.current;
+            if (img && isEmptyDecodedImage(img) && isNonSvgDataUri(img.src)) {
+              setImageError(true);
+              return;
+            }
+            setImageLoaded(true);
+          }}
+        />
+      );
+    } else {
       const resolvedInitials = getInitials(name);
       const showCustomIcon = resolvedInitials === null && Boolean(icon);
       let textContent: ReactNode = resolvedInitials;
@@ -348,32 +289,49 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
         textContent = <IconProfile />;
       }
 
-      const colour =
+      colour =
         resolvedInitials && !showCustomIcon
           ? backgroundColourForName(name)
           : null;
 
-      return (
-        <Box
-          {...faceProps}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          background={colour?.type ?? 'neutralSoft'}
-          style={
-            colour
-              ? {
-                  background: colour.value,
-                }
-              : undefined
-          }
-        >
-          <AvatarTextContent size={size}>{textContent}</AvatarTextContent>
-        </Box>
+      content = (
+        <AvatarTextContent size={size}>{textContent}</AvatarTextContent>
       );
-    })();
+    }
 
-    return <Box {...rootProps}>{face}</Box>;
+    return (
+      <Box
+        ref={ref}
+        tabIndex={tabIndex}
+        aria-describedby={ariaDescribedBy}
+        position="relative"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        cursor={clickable ? 'pointer' : undefined}
+        borderRadius={borderRadius}
+        background={colour?.type ?? 'neutralLight'}
+        overflow="hidden"
+        outline={!clickable && focusable ? 'focus' : undefined}
+        className={{
+          [styles.size[size]]: true,
+          [styles.keyline]: true,
+          [virtualTouchable]:
+            clickable && (size === 'xsmall' || size === 'small'),
+        }}
+        style={
+          colour
+            ? {
+                background: colour.value,
+              }
+            : undefined
+        }
+        {...a11yProps}
+        {...buildDataAttributes({ data, validateRestProps: restProps })}
+      >
+        {content}
+      </Box>
+    );
   },
 );
 
