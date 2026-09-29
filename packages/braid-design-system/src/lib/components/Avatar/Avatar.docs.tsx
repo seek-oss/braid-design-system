@@ -55,22 +55,12 @@ const docs: ComponentDocs = {
     return { code, value };
   },
   accessibility: (
-    <>
-      <Text>
-        Avatar is decorative by default. The root is hidden from assistive
-        technologies, and images use an empty <Strong>alt</Strong>. Name the
-        person or company with adjacent text so everyone can tell who it is —
-        including people using a screen reader.
-      </Text>
-      <Text>
-        Pass <Strong>aria-label</Strong> when the avatar is the only identifier,
-        or when Avatar itself is a control (<Strong>onClick</Strong> or a
-        tooltip trigger). Use <Strong>onClick</Strong> only when the square is
-        the control, such as adding a photo — not inside a{' '}
-        <TextLink href="/components/MenuRenderer">MenuRenderer</TextLink>, where
-        the menu trigger is already the button.
-      </Text>
-    </>
+    <Text>
+      Avatar is decorative by default, hidden from assistive technologies. An{' '}
+      <Strong>aria-label</Strong> may be provided where more meaningful context
+      is needed, or required when{' '}
+      <TextLink href="#as-a-control">interactive</TextLink>.
+    </Text>
   ),
   alternatives: [
     {
