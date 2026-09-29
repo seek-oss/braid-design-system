@@ -62,7 +62,7 @@ const assertAccessibleName = ({
     dedent`
       Drawer requires either a title or an aria-label.
 
-      See the Drawer documentation for more information: ${docsUrl}#drawers-without-a-visible-title
+      See the Drawer documentation for more information: ${docsUrl}#title-and-description
     `,
   );
   assert(
@@ -78,7 +78,7 @@ const assertAccessibleName = ({
     dedent`
       Drawer aria-description can only be used with an aria-label.
 
-      See the Drawer documentation for more information: ${docsUrl}#drawers-without-a-visible-title
+      See the Drawer documentation for more information: ${docsUrl}#title-and-description
     `,
   );
 };
