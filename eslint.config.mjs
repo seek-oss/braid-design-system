@@ -114,6 +114,24 @@ export default [
     },
   },
   {
+    files: ['**/*.tsx'],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'CallExpression[callee.type="ArrowFunctionExpression"]',
+          message:
+            'Avoid IIFEs in the render cycle. Extract to a named function or use a conditional expression instead.',
+        },
+        {
+          selector: 'CallExpression[callee.type="FunctionExpression"]',
+          message:
+            'Avoid IIFEs in the render cycle. Extract to a named function or use a conditional expression instead.',
+        },
+      ],
+    },
+  },
+  {
     // Prevent importing via project paths, with exception for site-related files
     files: ['**/*.{js,ts,tsx}'],
     ignores: [

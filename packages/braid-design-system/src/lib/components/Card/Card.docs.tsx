@@ -29,6 +29,28 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { validCardComponents } from './Card';
 
+const VisualSpace = ({ space }: { space: 'small' | 'medium' | 'large' }) => (
+  <Box
+    background={
+      (
+        {
+          small: 'promoteLight',
+          medium: 'infoLight',
+          large: 'positiveLight',
+        } as const
+      )[space] ?? 'neutralLight'
+    }
+    display="flex"
+    alignItems="center"
+    paddingLeft="xxsmall"
+    style={{ height: vars.space[space] }}
+  >
+    <Text size="xsmall" weight="strong">
+      {space.substring(0, space.lastIndexOf('x') + 2).toUpperCase()}
+    </Text>
+  </Box>
+);
+
 const docs: ComponentDocs = {
   category: 'Content',
   description: (
@@ -137,61 +159,29 @@ const docs: ComponentDocs = {
       code: false,
       Example: () =>
         source(
-          (() => {
-            const VisualSpace = ({
-              space,
-            }: {
-              space: 'small' | 'medium' | 'large';
-            }) => (
-              <Box
-                background={
-                  (
-                    {
-                      small: 'promoteLight',
-                      medium: 'infoLight',
-                      large: 'positiveLight',
-                    } as const
-                  )[space] ?? 'neutralLight'
-                }
-                display="flex"
-                alignItems="center"
-                paddingLeft="xxsmall"
-                style={{ height: vars.space[space] }}
-              >
-                <Text size="xsmall" weight="strong">
-                  {space.substring(0, space.lastIndexOf('x') + 2).toUpperCase()}
-                </Text>
-              </Box>
-            );
-            return (
-              <Box padding="small">
-                <Card>
-                  <Spread space="small">
-                    <Heading level="4">Heading level 4</Heading>
+          <Card>
+            <Spread space="small">
+              <Heading level="4">Heading level 4</Heading>
 
-                    <OverflowMenu label="Options">
-                      <MenuItem icon={<IconNote />}>Menu item 1</MenuItem>
-                      <MenuItem icon={<IconBookmark />}>Menu item 2</MenuItem>
-                    </OverflowMenu>
-                  </Spread>
-                  <VisualSpace space="small" />
-                  <Text>Standard text</Text>
-                  <VisualSpace space="medium" />
-                  <Text>
-                    Standard text lorem ipsum dolor sit amet consectetur
-                    adipiscing elit. Vivamus iaculis ut neque sit amet
-                    egestas.{' '}
-                  </Text>
-                  <VisualSpace space="medium" />
-                  <Text tone="secondary">Standard, secondary text</Text>
-                  <VisualSpace space="medium" />
-                  <Actions>
-                    <Button>Button</Button>
-                  </Actions>
-                </Card>
-              </Box>
-            );
-          })(),
+              <OverflowMenu label="Options">
+                <MenuItem icon={<IconNote />}>Menu item 1</MenuItem>
+                <MenuItem icon={<IconBookmark />}>Menu item 2</MenuItem>
+              </OverflowMenu>
+            </Spread>
+            <VisualSpace space="small" />
+            <Text>Standard text</Text>
+            <VisualSpace space="medium" />
+            <Text>
+              Standard text lorem ipsum dolor sit amet consectetur adipiscing
+              elit. Vivamus iaculis ut neque sit amet egestas.{' '}
+            </Text>
+            <VisualSpace space="medium" />
+            <Text tone="secondary">Standard, secondary text</Text>
+            <VisualSpace space="medium" />
+            <Actions>
+              <Button>Button</Button>
+            </Actions>
+          </Card>,
         ),
     },
     {

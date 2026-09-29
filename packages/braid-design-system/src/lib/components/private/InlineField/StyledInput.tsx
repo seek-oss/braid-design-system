@@ -58,16 +58,12 @@ const Indicator = ({
   disabled?: boolean;
 }) => {
   const isCheckbox = type === 'checkbox';
-
-  const iconTone = (() => {
-    if (disabled) {
-      return 'secondary';
-    }
-
-    if (hover) {
-      return 'formAccent';
-    }
-  })();
+  let iconTone;
+  if (disabled) {
+    iconTone = 'secondary' as const;
+  } else if (hover) {
+    iconTone = 'formAccent' as const;
+  }
 
   return isCheckbox ? (
     <Box

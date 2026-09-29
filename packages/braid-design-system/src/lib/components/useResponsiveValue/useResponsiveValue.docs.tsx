@@ -42,6 +42,7 @@ const docs: ComponentDocs = {
     </>
   ),
   Example: () =>
+    /* eslint-disable no-restricted-syntax */
     source(
       <>
         {(function MyComponent() {
@@ -63,6 +64,7 @@ const docs: ComponentDocs = {
         })()}
       </>,
     ),
+  /* eslint-enable no-restricted-syntax */
   alternatives: [
     { name: 'Box', description: 'For custom layouts.' },
     { name: 'Hidden', description: 'For responsively hiding content.' },
