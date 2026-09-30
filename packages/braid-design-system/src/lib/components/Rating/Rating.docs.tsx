@@ -20,6 +20,15 @@ const docs: ComponentDocs = {
         <Strong>aria-label</Strong> can be customised by providing the{' '}
         <Strong>aria-label</Strong> prop.
       </Text>
+      <Text tone="promote">
+        <IconLanguage
+          title="Translation hint"
+          titleId="review-count-translations"
+        />{' '}
+        <Strong>reviewText</Strong> is rendered as provided, including when
+        it is a link. Supply the translated phrase, such as &ldquo;1
+        review&rdquo; or &ldquo;12 reviews&rdquo;.
+      </Text>
     </>
   ),
   alternatives: [],
@@ -150,6 +159,43 @@ const docs: ComponentDocs = {
         </>
       ),
       Example: () => source(<Rating rating={3.2} tone="neutral" />),
+    },
+    {
+      label: 'Displaying the review count',
+      description: (
+        <>
+          <Text>
+            Provide the full review count phrase via the{' '}
+            <Strong>reviewText</Strong> prop, including pluralisation and a
+            count of zero. If a <Strong>reviewLink</Strong> is provided, that
+            phrase is displayed as a link.
+          </Text>
+          <Text>
+            To handle clicks on the review count, you can provide a{' '}
+            <Strong>onClick</Strong> handler. When attaching a click handler,{' '}
+            <Strong>reviewLink</Strong> <Strong>must</Strong> be passed so the{' '}
+            <Strong>href</Strong> stays available for assistive technologies
+            while a handler can call <Strong>preventDefault()</Strong>.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        /* eslint-disable no-alert */
+        source(
+          <Stack space="large">
+            <Rating rating={3.2} reviewText="1 review" />
+            <Rating
+              rating={3.2}
+              reviewText="12 reviews"
+              reviewLink="/reviews"
+              onClick={(event) => {
+                event.preventDefault();
+                alert('Handle the reviews click');
+              }}
+            />
+          </Stack>,
+        ),
+      /* eslint-enable no-alert */
     },
     dataAttributeDocs({
       code: `
