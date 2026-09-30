@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import type { FC } from 'react';
+import dedent from 'dedent';
 
 import { type ModalProps, Modal } from '../private/Modal/Modal';
 import {
@@ -19,26 +19,97 @@ const modalStyle = {
   illustration: undefined,
 } as const;
 
-export interface DrawerProps extends Omit<
-  ModalProps,
-  keyof typeof modalStyle | 'width' | 'position' | 'coverImage'
-> {
-  width?: (typeof validWidths)[number];
-  position?: (typeof validPositions)[number];
-  footer?: ModalContentProps['footer'];
-}
+type DrawerHeaderProps =
+  | {
+      title: string;
+      description?: ModalContentProps['description'];
+      'aria-label'?: never;
+      'aria-description'?: never;
+    }
+  | {
+      title?: never;
+      description?: never;
+      'aria-label': string;
+      'aria-description'?: string;
+    };
 
-export const Drawer: FC<DrawerProps> = ({
+type DrawerModalOmittedKeys =
+  | keyof typeof modalStyle
+  | 'width'
+  | 'position'
+  | 'coverImage'
+  | 'title'
+  | 'description'
+  | 'aria-label'
+  | 'aria-description';
+
+const assertAccessibleName = ({
+  title,
+  description,
+  'aria-label': ariaLabel,
+  'aria-description': ariaDescription,
+}: {
+  title?: string;
+  description?: ModalContentProps['description'];
+  'aria-label'?: string;
+  'aria-description'?: string;
+}) => {
+  const docsMessage =
+    'See the Drawer documentation for more information: https://seek-oss.github.io/braid-design-system/components/Drawer#title-and-description';
+
+  assert(
+    (typeof title === 'string') !== (typeof ariaLabel === 'string'),
+    dedent`
+      Drawer requires either a title or an aria-label.
+
+      ${docsMessage}
+    `,
+  );
+  assert(
+    typeof ariaLabel !== 'string' || ariaLabel.trim() !== '',
+    dedent`
+      Drawer aria-label must not be empty.
+
+      ${docsMessage}
+    `,
+  );
+  assert(
+    description === undefined || typeof title === 'string',
+    dedent`
+      Drawer description can only be used with a title.
+
+      ${docsMessage}
+    `,
+  );
+  assert(
+    ariaDescription === undefined || typeof ariaLabel === 'string',
+    dedent`
+      Drawer aria-description can only be used with an aria-label.
+
+      ${docsMessage}
+    `,
+  );
+};
+
+export type DrawerProps = Omit<ModalProps, DrawerModalOmittedKeys> &
+  DrawerHeaderProps & {
+    width?: (typeof validWidths)[number];
+    position?: (typeof validPositions)[number];
+    footer?: ModalContentProps['footer'];
+  };
+
+export const Drawer = ({
   width = defaultWidth,
   position = defaultPosition,
   footer,
   ...restProps
-}) => {
+}: DrawerProps) => {
   assert(validWidths.indexOf(width) >= 0, `Invalid width: ${width}`);
   assert(
     validPositions.indexOf(position) >= 0,
     `Invalid position: ${position}`,
   );
+  assertAccessibleName(restProps);
 
   return (
     <Modal
@@ -51,14 +122,12 @@ export const Drawer: FC<DrawerProps> = ({
   );
 };
 
-interface DrawerContentProps extends Omit<
-  ModalContentProps,
-  keyof typeof modalStyle | 'width' | 'position' | 'coverImage'
-> {
-  width?: (typeof validWidths)[number];
-  position?: (typeof validPositions)[number];
-  footer?: ModalContentProps['footer'];
-}
+type DrawerContentProps = Omit<ModalContentProps, DrawerModalOmittedKeys> &
+  DrawerHeaderProps & {
+    width?: (typeof validWidths)[number];
+    position?: (typeof validPositions)[number];
+    footer?: ModalContentProps['footer'];
+  };
 
 export const DrawerContent = ({
   width = defaultWidth,
@@ -71,6 +140,7 @@ export const DrawerContent = ({
     validPositions.indexOf(position) >= 0,
     `Invalid position: ${position}`,
   );
+  assertAccessibleName(restProps);
 
   return (
     <ModalContent
