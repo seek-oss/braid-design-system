@@ -12,6 +12,7 @@ const separatorSlot = '1em';
 
 export const clip = style({
   display: 'block',
+  overflowX: 'clip',
   overflowInline: 'clip',
   overflowBlock: 'visible',
 });
