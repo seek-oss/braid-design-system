@@ -25,9 +25,9 @@ const docs: ComponentDocs = {
           title="Translation hint"
           titleId="review-count-translations"
         />{' '}
-        <Strong>reviewText</Strong> is rendered as provided, including when
-        it is a link. Supply the translated phrase, such as &ldquo;1
-        review&rdquo; or &ldquo;12 reviews&rdquo;.
+        <Strong>reviewText</Strong> is rendered as provided, including when it
+        is a link. Supply the translated phrase, such as &ldquo;1 review&rdquo;
+        or &ldquo;12 reviews&rdquo;.
       </Text>
     </>
   ),
