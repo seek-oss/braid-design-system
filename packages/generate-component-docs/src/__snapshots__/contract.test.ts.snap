@@ -8161,7 +8161,10 @@ exports[`Rating 1`] = `
   props: {
     aria-label?: string
     data?: DataAttributeMap
+    onClick?: MouseEventHandler<HTMLAnchorElement>
     rating: number
+    reviewLink?: string
+    reviewText?: string
     size?: 
         | "large"
         | "small"
