@@ -8,6 +8,7 @@ import { Text } from '../Text/Text';
 
 import { DrawerContent } from './Drawer';
 
+import { coverImagePlaceholderUrl } from '../Dialog/coverImagePlaceholder.css';
 import * as styles from '../private/Modal/Modal.css';
 
 const meta = {
@@ -55,6 +56,24 @@ export const DefaultStackSpace: Story = {
       <>
         <Placeholder height={100} width="100%" />
         <Placeholder height={100} width="100%" />
+      </>
+    ),
+  },
+};
+
+export const LayoutWithNoTitle: Story = {
+  name: 'Layout with no title',
+  args: {
+    'aria-label': 'Layout with no title',
+    width: 'medium',
+    children: (
+      <>
+        <Placeholder
+          height={180}
+          width="100%"
+          image={coverImagePlaceholderUrl}
+        />
+        <Placeholder height={500} width="100%" label="Content" />
       </>
     ),
   },

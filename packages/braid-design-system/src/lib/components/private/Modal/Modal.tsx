@@ -13,7 +13,11 @@ import FocusLockImport from 'react-focus-lock';
 import { Box } from '../../Box/Box';
 import { BraidPortal } from '../../BraidPortal/BraidPortal';
 
-import { type ModalContentProps, ModalContent } from './ModalContent';
+import {
+  type ModalAccessibleNameProps,
+  type ModalContentProps,
+  ModalContent,
+} from './ModalContent';
 import { externalGutter } from './ModalExternalGutter';
 import { ariaHideOthers } from './ariaHideOthers';
 
@@ -31,6 +35,8 @@ export interface ModalProps extends Omit<
   open: boolean;
   onClose: (openState: false) => void | false;
 }
+
+type ModalInternalProps = Omit<ModalProps, 'title'> & ModalAccessibleNameProps;
 
 export const AllowCloseContext = createContext(true);
 
@@ -135,10 +141,12 @@ export const Modal = ({
   closeLabel,
   illustration,
   title,
+  'aria-label': ariaLabel,
+  'aria-description': ariaDescription,
   headingLevel,
   position,
   ...restProps
-}: ModalProps) => {
+}: ModalInternalProps) => {
   const [trapActive, setTrapActive] = useState(true);
   const [state, dispatch] = useReducer(reducer, INITIAL);
 
@@ -149,6 +157,7 @@ export const Modal = ({
     document.hasFocus();
 
   const openRef = useRef<boolean>(open);
+  const dialogRef = useRef<HTMLElement>(null);
   const modalRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLElement>(null);
   const closeHandlerRef = useRef<ModalProps['onClose']>(onClose);
@@ -217,8 +226,8 @@ export const Modal = ({
             return;
           }
 
-          if (headingRef.current && shouldFocus) {
-            headingRef.current.focus();
+          if (shouldFocus) {
+            (headingRef.current || dialogRef.current)?.focus();
           }
 
           dispatch(ANIMATION_COMPLETE);
@@ -258,8 +267,11 @@ export const Modal = ({
             closeLabel={closeLabel}
             illustration={illustration}
             title={title}
+            aria-label={ariaLabel}
+            aria-description={ariaDescription}
             headingLevel={headingLevel}
             headingRef={headingRef}
+            dialogRef={dialogRef}
             modalRef={modalRef}
             position={position}
             scrollLock={!(state === CLOSING)}

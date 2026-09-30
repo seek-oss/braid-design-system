@@ -130,6 +130,36 @@ export const List: FC<ListProps> = ({
         {Children.map(listItems, (listItem, index) => {
           const resolvedIndex = index + (start - 1);
 
+          let indicator;
+          if (type === 'number') {
+            indicator = (
+              <CharacterBullet length={lastNumberLength}>
+                {resolvedIndex + 1}
+              </CharacterBullet>
+            );
+          } else if (type === 'alpha') {
+            indicator = (
+              <CharacterBullet>
+                {numberToAlpha(resolvedIndex + 1)}
+              </CharacterBullet>
+            );
+          } else if (type === 'roman') {
+            indicator = (
+              <CharacterBullet length={2}>
+                {numberToRomanNumerals(resolvedIndex + 1)}
+              </CharacterBullet>
+            );
+          } else if (type === 'icon' && 'icon' in restProps) {
+            indicator = restProps.icon;
+          } else {
+            indicator = (
+              <Box
+                borderRadius="full"
+                className={[styles.currentColor, styles.size[size]]}
+              />
+            );
+          }
+
           return (
             <Box component="li" display="flex">
               <Text component="div" size={size} tone={tone}>
@@ -142,42 +172,7 @@ export const List: FC<ListProps> = ({
                   userSelect="none"
                   aria-hidden
                 >
-                  {(() => {
-                    if (type === 'number') {
-                      return (
-                        <CharacterBullet length={lastNumberLength}>
-                          {resolvedIndex + 1}
-                        </CharacterBullet>
-                      );
-                    }
-
-                    if (type === 'alpha') {
-                      return (
-                        <CharacterBullet>
-                          {numberToAlpha(resolvedIndex + 1)}
-                        </CharacterBullet>
-                      );
-                    }
-
-                    if (type === 'roman') {
-                      return (
-                        <CharacterBullet length={2}>
-                          {numberToRomanNumerals(resolvedIndex + 1)}
-                        </CharacterBullet>
-                      );
-                    }
-
-                    if (type === 'icon' && 'icon' in restProps) {
-                      return restProps.icon;
-                    }
-
-                    return (
-                      <Box
-                        borderRadius="full"
-                        className={[styles.currentColor, styles.size[size]]}
-                      />
-                    );
-                  })()}
+                  {indicator}
                 </Box>
               </Text>
               <Box

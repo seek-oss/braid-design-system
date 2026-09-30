@@ -54,6 +54,8 @@ export function TextDropdown<Value>({
   ...restProps
 }: TextDropdownProps<Value>) {
   assert(
+    // Isolating the context checks to the assertion block so they are stripped from production.
+    // eslint-disable-next-line no-restricted-syntax
     (() => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const inText = useContext(TextContext);

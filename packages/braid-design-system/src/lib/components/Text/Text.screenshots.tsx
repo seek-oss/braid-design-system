@@ -228,7 +228,7 @@ export const ResponsiveAlignmentWithAnIcon: Story = {
   ),
 };
 
-export const superScriptAndSubscript: Story = {
+export const SuperscriptAndSubscript: Story = {
   name: 'Superscript and Subscript',
   render: () => (
     <Stack space="large">
