@@ -32,7 +32,7 @@ export const reviews = style({
   paddingInlineStart: separatorSlot,
   whiteSpace: 'nowrap',
   '::before': {
-    content: '"·"',
+    content: ['"·"', '"·" / ""'],
     position: 'absolute',
     insetInlineStart: 0,
     top: 0,
