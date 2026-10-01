@@ -1,5 +1,11 @@
 # @braid-design-system/docs-ui
 
+## 5.0.0
+
+### Major Changes
+
+- **HeaderNavigation:** Accept section links, remove the logo label and theme toggle props ([#2147](https://github.com/seek-oss/braid-design-system/pull/2147))
+
 ## 4.2.0
 
 ### Minor Changes
