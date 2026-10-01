@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { colorModeStyle, vars } from 'braid-design-system/css';
 
 import { virtualTouchable } from '../../private/virtualTouchable.css';
 
@@ -9,6 +10,14 @@ export const root = style([
     width: '18px',
     height: '14px',
   },
+  colorModeStyle({
+    lightMode: {
+      color: vars.foregroundColor.neutral,
+    },
+    darkMode: {
+      color: vars.foregroundColor.neutralInverted,
+    },
+  }),
   virtualTouchable,
 ]);
 
