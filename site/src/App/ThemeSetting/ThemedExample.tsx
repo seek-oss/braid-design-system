@@ -30,21 +30,17 @@ export function ThemedExample({
         styles.canvas,
         darkCanvas ? styles.explicitDark : styles.adaptiveCanvas,
       ];
+  const canvasBackground: BoxProps['background'] = darkCanvas
+    ? 'customDark'
+    : { lightMode: 'customLight', darkMode: 'customDark' };
 
   return (
     <Box opacity={!ready ? 0 : undefined} transition="fast">
-      <Box
-        background={
-          darkCanvas
-            ? 'customDark'
-            : { lightMode: 'customLight', darkMode: 'customDark' }
-        }
-        borderRadius="large"
-      >
+      <Box background={canvasBackground} borderRadius="large">
         <Box className={[styles.frameContext, ...canvasStyles]}>
           <BraidProvider styleBody={false} theme={theme}>
             <Box
-              background={!darkCanvas ? background : undefined}
+              background={(!darkCanvas && background) || canvasBackground}
               padding={transparent ? undefined : 'gutter'}
               className={[
                 transparent ? undefined : styles.frameShape,
