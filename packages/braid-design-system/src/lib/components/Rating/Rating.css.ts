@@ -1,5 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
+import { atoms } from '../../css/atoms/atoms';
+
 export const inlineFlex = style({
   display: 'inline-flex',
   gap: '1px',
@@ -10,12 +12,16 @@ export const inlineFlex = style({
 // the content is visible on a single line
 const separatorSlot = '1em';
 
-export const clip = style({
-  display: 'block',
-  overflowX: 'clip',
-  overflowInline: 'clip',
-  overflowBlock: 'visible',
-});
+export const clip = style([
+  atoms({
+    display: 'block',
+  }),
+  {
+    overflowX: 'clip',
+    overflowInline: 'clip',
+    overflowBlock: 'visible',
+  },
+]);
 
 export const row = style({
   display: 'flex',

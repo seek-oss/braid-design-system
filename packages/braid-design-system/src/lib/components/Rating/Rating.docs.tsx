@@ -179,8 +179,7 @@ const docs: ComponentDocs = {
           </Text>
         </>
       ),
-      Example: () =>
-        /* eslint-disable no-alert */
+      Example: ({ showToast }) =>
         source(
           <Stack space="large">
             <Rating rating={3.2} reviewText="1 review" />
@@ -190,12 +189,14 @@ const docs: ComponentDocs = {
               reviewLink="/reviews"
               onClick={(event) => {
                 event.preventDefault();
-                alert('Handle the reviews click');
+                showToast({
+                  message: 'Reviews clicked',
+                  tone: 'positive',
+                });
               }}
             />
           </Stack>,
         ),
-      /* eslint-enable no-alert */
     },
     dataAttributeDocs({
       code: `
