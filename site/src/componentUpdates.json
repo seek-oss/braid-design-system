@@ -5706,5 +5706,51 @@
         "summary": "**Table, Dialog, Drawer, MenuRenderer:** Hide scroll overflow gradient when printing"
       }
     ]
+  },
+  {
+    "version": "34.9.0",
+    "updates": [
+      {
+        "updated": [
+          "Rating"
+        ],
+        "summary": "**Rating:** Add support for a review count\n\n`reviewText` is a full phrase, so the caller controls translation and pluralisation. Provide `reviewLink` to render it as a link. `onClick` is optional and requires `reviewLink`.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<Rating\n  rating={4.2}\n  reviewText=\"128 reviews\"\n  reviewLink=\"/reviews\"\n/>\n```"
+      },
+      {
+        "updated": [
+          "Text",
+          "Heading"
+        ],
+        "summary": "**Text, Heading:** Improve subscript & superscript sizing"
+      },
+      {
+        "updated": [
+          "Drawer"
+        ],
+        "summary": "**Drawer:** Allow omitting the visible title when an `aria-label` names the dialog\n\nA `title` is no longer required. Provide either a `title` or an `aria-label`. Use `description` with a `title`, or `aria-description` with an `aria-label`. When untitled, content starts directly below the close button.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<Drawer\n  aria-label=\"Example Title\"\n  aria-description=\"An optional description of the Drawer content\"\n  open={open}\n  onClose={setOpen}\n>\n  ...\n</Drawer>\n```"
+      },
+      {
+        "new": [
+          "Avatar"
+        ],
+        "summary": "**Avatar:** Add component\n\nA rounded-square identity mark for a person or company, providing a choice between an image, initials from `name`, a provided `icon`, or `IconProfile`.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<Avatar name=\"Leia Organa\" />\n<Avatar icon={<IconCompany />} />\n```"
+      },
+      {
+        "updated": [
+          "List",
+          "Checkbox",
+          "CheckboxStandalone",
+          "RadioItem"
+        ],
+        "summary": "Optimise internal logic to remove excess function calls"
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer:** Ensure documentation previews remain behind the top navigation while scrolling"
+      }
+    ]
   }
 ]
