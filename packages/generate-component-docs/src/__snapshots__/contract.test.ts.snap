@@ -4,6 +4,7 @@ exports[`Accordion 1`] = `
 {
   exportType: component,
   props: {
+    autoCollapse?: boolean
     children: ReactNodeNoStrings
     data?: DataAttributeMap
     dividers?: boolean
@@ -36,6 +37,7 @@ exports[`AccordionItem 1`] = `
     badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
     children: ReactNode
     data?: DataAttributeMap
+    defaultExpanded?: boolean
     expanded?: boolean
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string

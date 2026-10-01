@@ -39,12 +39,27 @@ const docs: ComponentDocs = {
       </Accordion>,
     ),
   accessibility: (
-    <Text>
-      Follows the{' '}
-      <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">
-        WAI-ARIA Disclosure Pattern.
-      </TextLink>
-    </Text>
+    <Stack space="large">
+      <Text>
+        Follows the{' '}
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">
+          WAI-ARIA Disclosure Pattern
+        </TextLink>
+        . Each item is a disclosure, including when{' '}
+        <Strong>autoCollapse</Strong> is set. This is not the{' '}
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
+          Accordion Pattern
+        </TextLink>
+        .
+      </Text>
+      <Text>
+        Collapsed panels stay in the document at zero height so they can
+        animate, with <Strong>visibility: hidden</Strong>,{' '}
+        <Strong>aria-hidden</Strong> and <Strong>inert</Strong>. That replaces{' '}
+        <Strong>display: none</Strong>. Find-in-page or print behaviour can
+        differ.
+      </Text>
+    </Stack>
   ),
   alternatives: [
     {
@@ -179,13 +194,92 @@ const docs: ComponentDocs = {
     ],
     interaction: [
       {
+        label: 'Auto collapse',
+        description: (
+          <Stack space="large">
+            <Text>
+              Set the <Strong>autoCollapse</Strong> prop so only one item can be
+              open at a time. Opening an item closes any other open item.
+              Clicking the open item collapses it.
+            </Text>
+            <Text>
+              Start with one item open by setting{' '}
+              <Strong>defaultExpanded</Strong> and an explicit{' '}
+              <Strong>id</Strong> on that item. Starting with none open remains
+              valid. Don&rsquo;t set <Strong>defaultExpanded</Strong> on more
+              than one item.
+            </Text>
+            <Text>
+              <Strong>autoCollapse</Strong> is uncontrolled. Don&rsquo;t set{' '}
+              <Strong>expanded</Strong> on items. Use <Strong>onToggle</Strong>{' '}
+              to observe changes. To drive open state from the parent, omit{' '}
+              <Strong>autoCollapse</Strong> and use <Strong>expanded</Strong>{' '}
+              (see Controlled state).
+            </Text>
+          </Stack>
+        ),
+        Example: () =>
+          source(
+            <Accordion autoCollapse>
+              <AccordionItem
+                id="accordion-item-1"
+                label="Accordion item 1"
+                defaultExpanded
+              >
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 2">
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 3">
+                <Placeholder height={80} />
+              </AccordionItem>
+            </Accordion>,
+          ),
+      },
+      {
         label: 'Managing state',
         description: (
+          <Stack space="large">
+            <Text>
+              An <Strong>AccordionItem</Strong>, by default, manages its own
+              state internally. Set <Strong>defaultExpanded</Strong> to start
+              one or more items open without taking control of the state. After
+              mount, each item still manages itself. <Strong>onToggle</Strong>{' '}
+              can still be used as a listener.
+            </Text>
+            <Text>
+              If you&rsquo;d like to take control of the state, use the{' '}
+              <Strong>expanded</Strong> and <Strong>onToggle</Strong> props.{' '}
+              <Strong>expanded</Strong> is the way to drive open state from the
+              parent. Don&rsquo;t combine it with{' '}
+              <Strong>defaultExpanded</Strong> on the same item, or with{' '}
+              <Strong>autoCollapse</Strong> on Accordion.
+            </Text>
+          </Stack>
+        ),
+        Example: () =>
+          source(
+            <Accordion>
+              <AccordionItem label="Accordion item 1" defaultExpanded>
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 2" defaultExpanded>
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem label="Accordion item 3">
+                <Placeholder height={80} />
+              </AccordionItem>
+            </Accordion>,
+          ),
+      },
+      {
+        label: 'Controlled state',
+        description: (
           <Text>
-            An <Strong>AccordionItem</Strong>, by default, manages its own state
-            internally. If you&rsquo;d like to take control of the state, you
-            can do so using the <Strong>expanded</Strong> and{' '}
-            <Strong>onToggle</Strong> props.
+            Drive open state from the parent with <Strong>expanded</Strong> and{' '}
+            <Strong>onToggle</Strong>. This remains incompatible with{' '}
+            <Strong>autoCollapse</Strong>.
           </Text>
         ),
         Example: ({ setDefaultState, getState, toggleState }) =>
