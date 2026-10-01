@@ -1,11 +1,12 @@
 import assert from 'assert';
 
 import dedent from 'dedent';
-import type { FC } from 'react';
+import type { FC, MouseEventHandler, ReactNode } from 'react';
 
 import type { UseIconProps } from '../../hooks/useIcon';
 import { Box } from '../Box/Box';
 import { type TextProps, Text } from '../Text/Text';
+import { TextLink } from '../TextLink/TextLink';
 import { IconContainer } from '../icons/IconContainer';
 import { IconRatingEmptySvg } from '../icons/IconRating/IconRatingEmptySvg';
 import { IconRatingFullSvg } from '../icons/IconRating/IconRatingFullSvg';
@@ -48,7 +49,20 @@ interface RatingBaseProps {
 }
 type RatingVariants = 'full' | 'starsOnly' | 'minimal';
 
+type ReviewProps =
+  | {
+      reviewText?: string;
+      reviewLink?: never;
+      onClick?: never;
+    }
+  | {
+      reviewText: string;
+      reviewLink: string;
+      onClick?: MouseEventHandler<HTMLAnchorElement>;
+    };
+
 export type RatingProps = RatingBaseProps &
+  ReviewProps &
   (
     | { weight?: never; variant?: RatingVariants }
     | {
@@ -65,10 +79,23 @@ export const Rating: FC<RatingProps> = ({
   tone = 'brandAccent',
   'aria-label': ariaLabel,
   data,
+  reviewText,
+  reviewLink,
+  onClick,
 }) => {
   assert(
     !rating || (rating >= 0 && rating <= 5),
     'Rating must be between 0 and 5',
+  );
+
+  assert(
+    !reviewLink || typeof reviewText === 'string',
+    'reviewText must be set when reviewLink is provided',
+  );
+
+  assert(
+    !onClick || reviewLink,
+    'reviewLink must be set when onClick is provided',
   );
 
   if (process.env.NODE_ENV !== 'production') {
@@ -88,35 +115,70 @@ export const Rating: FC<RatingProps> = ({
     }
   }
 
-  return (
-    <Text size={size} data={data} weight={weight}>
-      <Box
-        component="span"
-        className={styles.inlineFlex}
-        role="img"
-        aria-label={
-          ariaLabel || `${rating.toFixed(1)} out of ${ratingArr.length}`
-        }
-      >
-        {variant === 'minimal' ? (
+  const stars = (
+    <Box
+      component="span"
+      className={styles.inlineFlex}
+      role="img"
+      aria-label={
+        ariaLabel || `${rating.toFixed(1)} out of ${ratingArr.length}`
+      }
+    >
+      {variant === 'minimal' ? (
+        <RatingStar
+          percent={100}
+          tone={tone === 'neutral' ? 'neutral' : 'brandAccent'}
+        />
+      ) : (
+        ratingArr.map((_, position) => (
           <RatingStar
-            percent={100}
+            key={position}
+            percent={getPercent(rating, position)}
             tone={tone === 'neutral' ? 'neutral' : 'brandAccent'}
           />
-        ) : (
-          ratingArr.map((_, position) => (
-            <RatingStar
-              key={position}
-              percent={getPercent(rating, position)}
-              tone={tone === 'neutral' ? 'neutral' : 'brandAccent'}
-            />
-          ))
-        )}
+        ))
+      )}
+    </Box>
+  );
+
+  const ratingText =
+    variant !== 'starsOnly' ? (
+      <Box component="span" paddingLeft={iconSlotSpace} aria-hidden={true}>
+        {rating.toFixed(1)}
       </Box>
-      {variant !== 'starsOnly' && (
-        <Box component="span" paddingLeft={iconSlotSpace} aria-hidden={true}>
-          {rating.toFixed(1)}
+    ) : null;
+
+  let reviewContent: string | ReactNode = null;
+
+  if (reviewText) {
+    reviewContent = reviewLink ? (
+      <TextLink href={reviewLink} weight="weak" onClick={onClick}>
+        {reviewText}
+      </TextLink>
+    ) : (
+      reviewText
+    );
+  }
+
+  return (
+    <Text size={size} data={data} weight={weight}>
+      {reviewContent ? (
+        <Box component="span" className={styles.clip}>
+          <Box component="span" className={styles.row}>
+            <Box component="span" className={styles.group}>
+              {stars}
+              {ratingText}
+            </Box>
+            <Box component="span" className={styles.reviews}>
+              {reviewContent}
+            </Box>
+          </Box>
         </Box>
+      ) : (
+        <>
+          {stars}
+          {ratingText}
+        </>
       )}
     </Text>
   );
