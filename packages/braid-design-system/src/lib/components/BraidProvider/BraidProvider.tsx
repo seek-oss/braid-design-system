@@ -99,10 +99,7 @@ export const BraidProvider: FC<BraidProviderProps> = ({
             html.${darkMode},html.${darkMode} body{color-scheme:dark;background:${theme.background.darkMode}}
           `}</style>
       ) : null}
-      <VanillaThemeContainer
-        theme={theme.vanillaTheme}
-        setDefaultTextTones={!alreadyInBraidProvider}
-      >
+      <VanillaThemeContainer theme={theme.vanillaTheme}>
         <LinkComponentContext.Provider
           value={linkComponent || linkComponentFromContext}
         >
