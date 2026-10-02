@@ -15,7 +15,7 @@ export const BraidPortal: FC<BraidPortalProps> = ({ children, container }) => {
 
   return createPortal(
     <TextContext.Provider value={null}>
-      <VanillaThemeContainer theme={vanillaTheme} setDefaultTextTones>
+      <VanillaThemeContainer theme={vanillaTheme}>
         {children}
       </VanillaThemeContainer>
     </TextContext.Provider>,

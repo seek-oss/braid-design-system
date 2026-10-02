@@ -5,6 +5,7 @@ import {
   Actions,
   Alert,
   Autosuggest,
+  Avatar,
   Badge,
   Bleed,
   Box,
@@ -27,6 +28,7 @@ import {
   IconAdd,
   IconBookmark,
   IconChevron,
+  IconCompany,
   IconHelp,
   IconOverflow,
   IconShare,
@@ -74,6 +76,7 @@ import {
   Tiles,
   Toggle,
 } from 'braid-design-system';
+import { photoExampleUrl } from 'braid-src/lib/components/Avatar/photoPlaceholder.css';
 import dialogDocs from 'braid-src/lib/components/Dialog/Dialog.docs';
 import drawerDocs from 'braid-src/lib/components/Drawer/Drawer.docs';
 import { Menu } from 'braid-src/lib/components/MenuRenderer/MenuRenderer';
@@ -211,6 +214,24 @@ export const componentPreviews: Partial<
               </Box>
             ))}
           </Box>
+        </Stack>,
+      ),
+  },
+  Avatar: {
+    stageWidth: 340,
+    Example: () =>
+      source(
+        <Stack space="none" align="center">
+          <Inline space="small" alignY="center">
+            <Avatar
+              name="Leia Organa"
+              size="xxlarge"
+              imageUrl={photoExampleUrl}
+            />
+            <Avatar name="Leia Organa" size="large" />
+            <Avatar icon={<IconCompany />} />
+            <Avatar />
+          </Inline>
         </Stack>,
       ),
   },
