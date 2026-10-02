@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 34.9.1
+
+### Patch Changes
+
+- **BraidProvider:** Ensure default text tone follows the theme ([#2163](https://github.com/seek-oss/braid-design-system/pull/2163))
+
+  Nested `BraidProvider` components using different themes now always apply the default text tones according to the selected theme.
+
 ## 34.9.0
 
 ### Minor Changes
