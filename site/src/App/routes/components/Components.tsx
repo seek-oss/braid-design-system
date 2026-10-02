@@ -1,7 +1,8 @@
-import { Box, Link, Stack, Text, Tiles } from 'braid-design-system';
+import { Badge, Box, Link, Stack, Text, Tiles } from 'braid-design-system';
 import { PlayroomStateProvider } from 'braid-src/lib/playroom/playroomState';
 
 import { SectionLanding } from '../../SectionLanding/SectionLanding';
+import { isNew } from '../../Updates';
 import { documentedComponents } from '../../navigationHelpers';
 import { ScaledPreview } from '../templates';
 
@@ -21,7 +22,9 @@ const ComponentTile = ({
       <Box position="relative">
         <Link href={`/components/${name}`} className={styles.tileLinkOverlay} />
         <Stack space="small">
-          <Text weight="strong">{name}</Text>
+          <Text weight="strong">
+            {name} {isNew(name) && <Badge tone="positive">New</Badge>}
+          </Text>
           <ScaledPreview
             Example={Example}
             aspectRatio=" 2 / 1 "
