@@ -12,14 +12,15 @@ import { debugLog, relativeTo } from './utils';
 const baseDir = path.join(__dirname, '..');
 const componentsDir = path.join(baseDir, 'src/lib/components');
 const templatesDir = path.join(baseDir, 'src/lib/playroom/templates');
+const patternsDir = path.join(baseDir, 'src/lib/playroom/patterns');
 const snippetsDir = path.join(baseDir, 'src/lib/playroom/snippets');
 const snippetsIndexFile = path.join(baseDir, 'src/lib/playroom/snippets.ts');
 
 /**
  * Resolves `code` properties that are arrow functions returning a string literal
- * to just the string literal. Template snippets define `code` as a function to
- * support passing state helpers for interactive docs examples, but Playroom only
- * needs the static code string.
+ * to just the string literal. Template and pattern snippets define `code` as a
+ * function to support passing state helpers for interactive docs examples, but
+ * Playroom only needs the static code string.
  */
 const resolveCodeFunctionPlugin = ({ types: t }: { types: typeof types }): PluginObj => ({
   name: 'resolveCodeFunctionPlugin',
@@ -120,22 +121,29 @@ const generateSnippetsForPaths = async (snippetPaths: string[]) => {
     absolute: true,
     onlyFiles: true,
   });
+  const patternsSnippetPaths = await glob('**/*.snippets.tsx', {
+    cwd: patternsDir,
+    absolute: true,
+    onlyFiles: true,
+  });
 
   await fs.emptyDir(snippetsDir);
 
   const { importStatements: templatesImportStatements, exportEntries: templatesExportEntries } =
     await generateSnippetsForPaths(templatesSnippetPaths);
+  const { importStatements: patternsImportStatements, exportEntries: patternsExportEntries } =
+    await generateSnippetsForPaths(patternsSnippetPaths);
   const { importStatements: componentImportStatements, exportEntries: componentExportEntries } =
     await generateSnippetsForPaths(componentSnippetPaths);
 
   const prettierOptions = (await prettier.resolveConfig(snippetsIndexFile)) ?? {};
   const snippetsIndexCode = await prettier.format(
-    ` ${[...templatesImportStatements, ...componentImportStatements].sort().join('\n')}
+    ` ${[...templatesImportStatements, ...patternsImportStatements, ...componentImportStatements].sort().join('\n')}
 
-      const groupOrder = ['Layouts', 'Sections', 'Components'];
+      const groupOrder = ['Layouts', 'Sections', 'Patterns', 'Components'];
       const allSnippets = [];
       const snippetsMap = {
-        ${[...templatesExportEntries, ...componentExportEntries].join(',\n')}
+        ${[...templatesExportEntries, ...patternsExportEntries, ...componentExportEntries].join(',\n')}
       };
 
       for (const [name, snippets] of Object.entries(snippetsMap)) {
@@ -151,7 +159,7 @@ const generateSnippetsForPaths = async (snippetPaths: string[]) => {
       allSnippets.sort((a, b) => {
         const aIndex = groupOrder.indexOf(a.group);
         const bIndex = groupOrder.indexOf(b.group);
-        return (aIndex === -1 ? 3 : aIndex) - (bIndex === -1 ? 3 : bIndex);
+        return (aIndex === -1 ? 4 : aIndex) - (bIndex === -1 ? 4 : bIndex);
       });
       
       export default allSnippets;
