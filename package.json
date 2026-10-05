@@ -75,7 +75,7 @@
   "volta": {
     "node": "24.21.0"
   },
-  "packageManager": "pnpm@11.28.0",
+  "packageManager": "pnpm@11.28.4",
   "manypkg": {
     "workspaceProtocol": "require"
   },
