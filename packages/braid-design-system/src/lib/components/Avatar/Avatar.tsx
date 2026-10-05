@@ -309,7 +309,6 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
         outline={!clickable && focusable ? 'focus' : undefined}
         className={{
           [styles.size[size]]: true,
-          [styles.keyline]: true,
           [virtualTouchable]:
             clickable && (size === 'xsmall' || size === 'small'),
         }}
@@ -331,6 +330,7 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
           height="full"
           overflow="hidden"
           borderRadius={borderRadius}
+          className={styles.keyline}
         >
           {content}
         </Box>
