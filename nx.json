@@ -10,6 +10,7 @@
           "build",
           "build:playroom",
           "build:site",
+          "generate",
           "generate:component-docs",
           "generate:icons",
           "generate:snippets"

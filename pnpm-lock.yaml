@@ -288,6 +288,9 @@ importers:
       title-case:
         specifier: ^3.0.3
         version: 3.0.3
+      tsx:
+        specifier: ^4.19.2
+        version: 4.23.15
 
   packages/codemod:
     devDependencies:
@@ -560,6 +563,9 @@ importers:
       sku:
         specifier: 16.4.0
         version: 16.4.0(2c835fc0d908978dc5ce93a50f1cf71b)
+      tsx:
+        specifier: ^4.19.2
+        version: 4.23.15
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.1.0
