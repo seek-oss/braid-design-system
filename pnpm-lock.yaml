@@ -585,8 +585,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/braid-design-system
       chromatic:
-        specifier: ^13.1.2
-        version: 13.3.5
+        specifier: ^18.10.2
+        version: 18.10.2
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -5116,16 +5116,20 @@ packages:
     resolution: {integrity: sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==}
     engines: {node: '>= 20.19.0'}
 
-  chromatic@13.3.5:
-    resolution: {integrity: sha512-MzPhxpl838qJUo0A55osCF2ifwPbjcIPeElr1d4SHcjnHoIcg7l1syJDrAYK/a+PcCBrOGi06jPNpQAln5hWgw==}
+  chromatic@18.10.2:
+    resolution: {integrity: sha512-LMvfsX9xg+Db+QGLCpqzY8ICdV4lf2HLo7VUIlGcuU7a6gcnH6SAEHZL45/r5OJ0ByE3FOMkiNiU2f9/osuESw==}
+    engines: {node: '>=22.0.0'}
     hasBin: true
     peerDependencies:
       '@chromatic-com/cypress': ^0.*.* || ^1.0.0
       '@chromatic-com/playwright': ^0.*.* || ^1.0.0
+      '@chromatic-com/vitest': ^0.*.* || ^1.0.0
     peerDependenciesMeta:
       '@chromatic-com/cypress':
         optional: true
       '@chromatic-com/playwright':
+        optional: true
+      '@chromatic-com/vitest':
         optional: true
 
   chrome-trace-event@1.0.4:
@@ -15342,7 +15346,9 @@ snapshots:
     dependencies:
       readdirp: 5.1.1
 
-  chromatic@13.3.5: {}
+  chromatic@18.10.2:
+    dependencies:
+      semver: 7.8.5
 
   chrome-trace-event@1.0.4: {}
 
