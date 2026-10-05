@@ -8,11 +8,11 @@ updated:
   - AccordionItem
 ---
 
-**Accordion, AccordionItem:** Add shared open state and height animation
+**Accordion, AccordionItem:** Add height animation and shared open state
 
-By default each item still manages itself. Set `multiple` to `false` so only one item can be open, or use `value`, `defaultValue`, and `onChange` on `Accordion`. Items need a `value` in that case.
+Items animate their height when opening and closing, unless reduced motion is set.
 
-Items animate their height unless reduced motion is set. Collapsed panels stay in the document at zero height instead of `display: none`.
+Set `multiple` to `false` so only one item can be open, or use `value`, `defaultValue`, and `onChange` on `Accordion` to choose which items are open.
 
 **EXAMPLE USAGE:**
 
