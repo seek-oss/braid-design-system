@@ -52,7 +52,7 @@
     "@manypkg/cli": "^0.21.4",
     "@octokit/rest": "^18.12.0",
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^22.16.0",
+    "@types/node": "^24.13.3",
     "@vanilla-extract/vite-plugin": "^5.0.7",
     "@vitejs/plugin-react": "^5.2.0",
     "concurrently": "^7.6.0",

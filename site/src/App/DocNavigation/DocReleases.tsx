@@ -15,7 +15,7 @@ import { Fragment, useContext } from 'react';
 import { Markdown } from '../Markdown/Markdown';
 import { PageTitle } from '../Seo/PageTitle';
 
-import { DocsContext } from './DocNavigation';
+import { DocsContext } from './DocsContext';
 
 type GroupedHistory = Record<
   string,

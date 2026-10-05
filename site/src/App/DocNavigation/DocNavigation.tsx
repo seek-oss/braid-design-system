@@ -35,7 +35,6 @@ import {
   useNavigate,
 } from 'react-router';
 
-import type { PatternDocs } from '../../types';
 import { getHistory } from '../Updates';
 import {
   getComponentDocs,
@@ -61,24 +60,11 @@ import {
 import { getPatternDocs } from '../routes/patterns';
 import { getPatternEntry } from '../routes/patterns/catalog';
 
+import { DocsContext, type DocsProviderContextValue } from './DocsContext';
+
 import * as styles from './DocNavigation.css';
 
 const DocNavigationItemIndexContext = createContext(-1);
-interface DocsProviderContextValue {
-  docsName: string;
-  docsType: string;
-  docsTitle?: string;
-  docs?:
-    | ReturnType<typeof getCssDoc>
-    | ReturnType<typeof getComponentDocs>
-    | PatternDocs;
-  history?: ReturnType<typeof getHistory>;
-  snippets?: ReturnType<typeof getComponentSnippets>;
-}
-export const DocsContext = createContext<DocsProviderContextValue>({
-  docsName: '',
-  docsType: '',
-});
 
 interface DocNavigationItemProps {
   href: string;

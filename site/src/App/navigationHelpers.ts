@@ -6,7 +6,6 @@ import type { Snippets } from 'braid-src/lib/components/private/Snippets';
 import { slugify } from '../slugify';
 import type {
   ComponentDocs,
-  ComponentExample,
   CssDoc,
   GalleryComponent,
   TemplateDocs,
@@ -18,26 +17,43 @@ import {
   getCssDocFileName,
 } from './routes/foundations/cssDocs';
 
-const componentDocsContext = require.context(
-  'braid-src/lib/components/',
-  true,
-  /.docs\.tsx$/,
-);
-const cssDocsContext = require.context(
-  'braid-src/lib/css/',
-  true,
-  /.docs\.tsx$/,
-);
-const galleryContext = require.context(
-  'braid-src/lib/components/',
-  true,
-  /.gallery\.tsx$/,
+const componentDocsContext = import.meta.glob<ComponentDocs>(
+  [
+    'braid-src/lib/components/**/*.docs.tsx',
+    // Exclude shared docs that are spread into other docs
+    '!./**/iconCommon.docs.tsx',
+    '!./**/dataAttribute.docs.tsx',
+  ],
+  {
+    eager: true,
+    import: 'default',
+    base: '../../../packages/braid-design-system/src/lib/components',
+  },
 );
 
-const templateDocsContext = require.context(
-  'braid-src/lib/playroom/templates/',
-  true,
-  /\.docs\.tsx$/,
+const cssDocsContext = import.meta.glob<CssDoc>(
+  'braid-src/lib/css/**/*.docs.tsx',
+  {
+    eager: true,
+    import: 'default',
+    base: '../../../packages/braid-design-system/src/lib/css',
+  },
+);
+
+const galleryContext = import.meta.glob<{ galleryItems: GalleryComponent }>(
+  'braid-src/lib/components/**/*.gallery.tsx',
+  {
+    eager: true,
+  },
+);
+
+const templateDocsContext = import.meta.glob<TemplateDocs>(
+  'braid-src/lib/playroom/templates/**/*.docs.tsx',
+  {
+    eager: true,
+    import: 'default',
+    base: '../../../packages/braid-design-system/src/lib/playroom/templates',
+  },
 );
 
 export const getComponentDocs = (componentName: string) => {
@@ -45,31 +61,30 @@ export const getComponentDocs = (componentName: string) => {
     ? `./icons/${componentName}/${componentName}.docs.tsx`
     : `./${componentName}/${componentName}.docs.tsx`;
 
-  return componentDocsContext(normalizedComponentRoute)
-    .default as ComponentDocs;
+  return componentDocsContext[normalizedComponentRoute];
 };
 
 export const getCssDoc = (cssName: string) =>
-  cssDocsContext(`./${getCssDocFileName(cssName)}.docs.tsx`).default as CssDoc;
+  cssDocsContext[`./${getCssDocFileName(cssName)}.docs.tsx`];
 
-const snippetsContext = require.context(
-  'braid-src/lib/components/',
-  true,
-  /\.snippets\.tsx?$/,
+const snippetsContext = import.meta.glob<{ snippets: Snippets }>(
+  'braid-src/lib/components/**/*.snippets.tsx?',
+  {
+    eager: true,
+  },
 );
 
 export const getComponentSnippets = (componentName: string) => {
   const normalizedComponentRoute = `./${componentName}/${componentName}.snippets.tsx`;
 
   if (
-    !snippetsContext.keys().includes(normalizedComponentRoute) ||
+    !Object.keys(snippetsContext).includes(normalizedComponentRoute) ||
     /^(drawer|dialog)$/i.test(componentName)
   ) {
     return;
   }
 
-  const snippets = snippetsContext(normalizedComponentRoute)
-    .snippets as Snippets;
+  const { snippets } = snippetsContext[normalizedComponentRoute];
 
   return snippets.map((snippet) => ({
     ...snippet,
@@ -133,14 +148,13 @@ const getComponentNameFromFilename = (filename: string) => {
   return componentName;
 };
 
-export const galleryComponents = galleryContext.keys().map((filename) => ({
-  name: getComponentNameFromFilename(filename),
-  itemWidth:
-    (galleryContext(filename).galleryItems
-      .itemWidth as GalleryComponent['itemWidth']) || 'standard',
-  examples: galleryContext(filename).galleryItems
-    .examples as ComponentExample[],
-}));
+export const galleryComponents = Object.keys(galleryContext).map(
+  (filename) => ({
+    name: getComponentNameFromFilename(filename),
+    itemWidth: galleryContext[filename].galleryItems.itemWidth || 'standard',
+    examples: galleryContext[filename].galleryItems.examples,
+  }),
+);
 
 // Template docs — path format: ./layouts/StandardPage/StandardPage.docs.tsx
 const getTemplateGroupAndNameFromFilename = (filename: string) => {
@@ -153,11 +167,13 @@ const getTemplateGroupAndNameFromFilename = (filename: string) => {
   return { group: match[1], name: match[2] };
 };
 
-export const allTemplateDocs = templateDocsContext.keys().map((filename) => {
-  const { group, name } = getTemplateGroupAndNameFromFilename(filename);
-  const docs = templateDocsContext(filename).default as TemplateDocs;
-  return { group, name, slug: slugify(docs.title), ...docs };
-});
+export const allTemplateDocs = Object.keys(templateDocsContext).map(
+  (filename) => {
+    const { group, name } = getTemplateGroupAndNameFromFilename(filename);
+    const docs = templateDocsContext[filename];
+    return { group, name, slug: slugify(docs.title), ...docs };
+  },
+);
 
 /**
  * Static lookup mapping slugged template names to template metadata.
