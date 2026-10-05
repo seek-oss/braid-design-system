@@ -5,7 +5,6 @@ import * as typographyStyles from '../../css/typography.css';
 interface Props {
   children: ReactNode;
   theme: string;
-  setDefaultTextTones: boolean;
 }
 
 const textTones = [
@@ -13,12 +12,6 @@ const textTones = [
   typographyStyles.darkModeTone.dark,
 ].join(' ');
 
-export const VanillaThemeContainer = ({
-  children,
-  theme,
-  setDefaultTextTones,
-}: Props) => (
-  <div className={`${theme}${setDefaultTextTones ? ` ${textTones}` : ''}`}>
-    {children}
-  </div>
+export const VanillaThemeContainer = ({ children, theme }: Props) => (
+  <div className={`${theme} ${textTones}`}>{children}</div>
 );

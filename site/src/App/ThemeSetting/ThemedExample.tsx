@@ -28,6 +28,7 @@ export function ThemedExample({
     : [
         styles.frameShape,
         styles.canvas,
+        showKeyline ? styles.frameKeyline : undefined,
         darkCanvas ? styles.explicitDark : styles.adaptiveCanvas,
       ];
 
@@ -40,21 +41,11 @@ export function ThemedExample({
             : { lightMode: 'customLight', darkMode: 'customDark' }
         }
         borderRadius="large"
+        className={[styles.frameContext, ...canvasStyles]}
       >
-        <Box className={[styles.frameContext, ...canvasStyles]}>
-          <BraidProvider styleBody={false} theme={theme}>
-            <Box
-              background={!darkCanvas ? background : undefined}
-              padding={transparent ? undefined : 'gutter'}
-              className={[
-                transparent ? undefined : styles.frameShape,
-                showKeyline ? styles.frameKeyline : undefined,
-              ]}
-            >
-              {children}
-            </Box>
-          </BraidProvider>
-        </Box>
+        <BraidProvider styleBody={false} theme={theme}>
+          <Box padding={transparent ? undefined : 'gutter'}>{children}</Box>
+        </BraidProvider>
       </Box>
     </Box>
   );

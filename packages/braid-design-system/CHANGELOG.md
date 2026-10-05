@@ -1,5 +1,55 @@
 # braid-design-system
 
+## 34.9.0
+
+### Minor Changes
+
+- **Rating:** Add support for a review count ([#2159](https://github.com/seek-oss/braid-design-system/pull/2159))
+
+  `reviewText` is a full phrase, so the caller controls translation and pluralisation. Provide `reviewLink` to render it as a link. `onClick` is optional and requires `reviewLink`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Rating rating={4.2} reviewText="128 reviews" reviewLink="/reviews" />
+  ```
+
+- **Drawer:** Allow omitting the visible title when an `aria-label` names the dialog ([#2148](https://github.com/seek-oss/braid-design-system/pull/2148))
+
+  A `title` is no longer required. Provide either a `title` or an `aria-label`. Use `description` with a `title`, or `aria-description` with an `aria-label`. When untitled, content starts directly below the close button.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Drawer
+    aria-label="Example Title"
+    aria-description="An optional description of the Drawer content"
+    open={open}
+    onClose={setOpen}
+  >
+    ...
+  </Drawer>
+  ```
+
+- **Avatar:** Add component ([#2153](https://github.com/seek-oss/braid-design-system/pull/2153))
+
+  A rounded-square identity mark for a person or company, providing a choice between an image, initials from `name`, a provided `icon`, or `IconProfile`.
+
+  **EXAMPLE USAGE:**
+
+  ```jsx
+  <Avatar name="Leia Organa" />
+  <Avatar icon={<IconCompany />} />
+  ```
+
+### Patch Changes
+
+- **Text, Heading:** Improve subscript & superscript sizing ([#2145](https://github.com/seek-oss/braid-design-system/pull/2145))
+
+- Optimise internal logic to remove excess function calls ([#2158](https://github.com/seek-oss/braid-design-system/pull/2158))
+
+- **Dialog, Drawer:** Ensure documentation previews remain behind the top navigation while scrolling ([#2155](https://github.com/seek-oss/braid-design-system/pull/2155))
+
 ## 34.8.2
 
 ### Patch Changes

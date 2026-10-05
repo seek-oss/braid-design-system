@@ -122,6 +122,13 @@ const docs: ComponentDocs = {
             by a screen reader as well as visually forming part of the header
             block.
           </Text>
+          <Text>
+            A <Strong>title</Strong> is not required. When omitting it, provide
+            a relevant <Strong>aria-label</Strong> so the Drawer still has an
+            accessible name, and optionally an <Strong>aria-description</Strong>{' '}
+            for additional context. Include a level 2 heading within the Drawer
+            content to maintain a clear heading structure.
+          </Text>
           <Alert>
             <Text>
               Open in Playroom and enable your screen reader to preview the
