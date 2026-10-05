@@ -32,13 +32,23 @@ import {
 
 const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 
+type AccordionValue = string | readonly string[];
+
 export interface AccordionProps {
   children: ReactNodeNoStrings;
   dividers?: boolean;
   size?: AccordionContextValue['size'];
   tone?: AccordionContextValue['tone'];
   weight?: AccordionContextValue['weight'];
-  autoCollapse?: boolean;
+  /**
+   * Allow more than one item to be open. Defaults to true.
+   * A later major release will default this to false.
+   * When false, `value` and `defaultValue` must be a string or a single-item array.
+   */
+  multiple?: boolean;
+  value?: AccordionValue;
+  defaultValue?: AccordionValue;
+  onChange?: (value: string[]) => void;
   /** @deprecated The spacing is now derived from the `size` prop and will be removed in a future release. */
   space?: RequiredResponsiveValue<(typeof validSpaceValues)[number]>;
   data?: DataAttributeMap;
@@ -46,34 +56,27 @@ export interface AccordionProps {
 
 export const defaultSize = 'large';
 
-const resolveAutoCollapseDefaultOpenId = (
-  children: AccordionProps['children'],
+const normalizeAccordionValue = (
+  input: AccordionValue | undefined,
+  multiple: boolean,
 ) => {
-  const defaultOpenIds: string[] = [];
-
-  for (const child of flattenChildren(children)) {
-    if (!isValidElement<{ defaultExpanded?: boolean; id?: string }>(child)) {
-      continue;
-    }
-
-    if (!child.props.defaultExpanded) {
-      continue;
-    }
-
-    assert(
-      typeof child.props.id === 'string' && child.props.id.length > 0,
-      "'id' must be set on AccordionItem when 'defaultExpanded' is set and 'autoCollapse' is set on Accordion.",
-    );
-
-    defaultOpenIds.push(child.props.id);
+  if (input == null || input === '') {
+    return [];
   }
 
+  const list = typeof input === 'string' ? [input] : [...input];
+
   assert(
-    defaultOpenIds.length <= 1,
-    "Only one AccordionItem can set 'defaultExpanded' when 'autoCollapse' is set on Accordion.",
+    list.every((item) => typeof item === 'string' && item.length > 0),
+    "Accordion 'value' and 'defaultValue' must be a non-empty string or an array of non-empty strings.",
   );
 
-  return defaultOpenIds[0] ?? null;
+  assert(
+    multiple || list.length <= 1,
+    "When 'multiple' is false, Accordion 'value' and 'defaultValue' must be a string or a single-item array.",
+  );
+
+  return list;
 };
 
 const defaultSpaceForSize = {
@@ -94,12 +97,38 @@ const defaultSpaceForSize = {
   Record<NonNullable<TextProps['size']>, (typeof validSpaceValues)[number]>
 >;
 
+const assertUniqueItemValues = (children: AccordionProps['children']) => {
+  const seen = new Set<string>();
+
+  for (const child of flattenChildren(children)) {
+    if (!isValidElement<{ value?: string }>(child)) {
+      continue;
+    }
+
+    const itemValue = child.props.value;
+
+    if (typeof itemValue !== 'string') {
+      continue;
+    }
+
+    assert(
+      !seen.has(itemValue),
+      `AccordionItem value "${itemValue}" is used more than once. Each AccordionItem value must be unique.`,
+    );
+
+    seen.add(itemValue);
+  }
+};
+
 export const Accordion: FC<AccordionProps> = ({
   children,
   size = defaultSize,
   tone,
   weight,
-  autoCollapse = false,
+  multiple = true,
+  value,
+  defaultValue,
+  onChange,
   space: spaceProp,
   dividers = true,
   data,
@@ -108,7 +137,8 @@ export const Accordion: FC<AccordionProps> = ({
   assert(
     spaceProp === undefined ||
       Object.values(normalizeResponsiveValue(spaceProp)).every(
-        (value) => value === undefined || validSpaceValues.includes(value),
+        (spaceValue) =>
+          spaceValue === undefined || validSpaceValues.includes(spaceValue),
       ),
     `To ensure adequate space for touch targets, 'space' prop values must be one of the following: ${validSpaceValues
       .map((x) => `"${x}"`)
@@ -120,6 +150,20 @@ export const Accordion: FC<AccordionProps> = ({
       .map((x) => `"${x}"`)
       .join(', ')}`,
   );
+  assert(
+    value === undefined || defaultValue === undefined,
+    "Accordion 'defaultValue' cannot be set when 'value' is set. Use 'value' to control the open items, or 'defaultValue' for the initial state.",
+  );
+  assert(
+    value === undefined || typeof onChange === 'function',
+    "Accordion 'onChange' must be set when 'value' is set.",
+  );
+
+  const managed =
+    multiple === false ||
+    value !== undefined ||
+    defaultValue !== undefined ||
+    onChange !== undefined;
 
   if (process.env.NODE_ENV !== 'production') {
     /**
@@ -127,68 +171,59 @@ export const Accordion: FC<AccordionProps> = ({
      * which will not work and are not validated by TypeScript.
      */
     buildDataAttributes({ data, validateRestProps: restProps });
+    assertUniqueItemValues(children);
   }
 
-  const autoCollapseDefaultOpenId = autoCollapse
-    ? resolveAutoCollapseDefaultOpenId(children)
-    : null;
-  const [openItemId, setOpenItemId] = useState(autoCollapseDefaultOpenId);
-  const openItemIdRef = useRef<string | null>(null);
-  const itemTogglesRef = useRef(new Map<string, (expanded: boolean) => void>());
-
-  openItemIdRef.current = openItemId;
-
-  const registerItemToggle = useCallback(
-    (itemId: string, onToggle?: (expanded: boolean) => void) => {
-      if (onToggle) {
-        itemTogglesRef.current.set(itemId, onToggle);
-      } else {
-        itemTogglesRef.current.delete(itemId);
-      }
-
-      return () => {
-        itemTogglesRef.current.delete(itemId);
-      };
-    },
-    [],
+  const normalizedValue = useMemo(
+    () =>
+      value === undefined
+        ? undefined
+        : normalizeAccordionValue(value, multiple),
+    [multiple, value],
   );
+  const [uncontrolledValue, setUncontrolledValue] = useState(() =>
+    normalizeAccordionValue(defaultValue, multiple),
+  );
+  const openValues = normalizedValue ?? uncontrolledValue;
+  const openValuesRef = useRef(openValues);
+  const onChangeRef = useRef(onChange);
 
-  const onItemToggle = useCallback((itemId: string, expanded: boolean) => {
-    const current = openItemIdRef.current;
+  openValuesRef.current = openValues;
+  onChangeRef.current = onChange;
 
-    if (expanded) {
-      if (current && current !== itemId) {
-        itemTogglesRef.current.get(current)?.(false);
+  const toggleValue = useCallback(
+    (itemValue: string) => {
+      const current = openValuesRef.current;
+      const isOpen = current.includes(itemValue);
+      let next: string[];
+
+      if (!multiple) {
+        next = isOpen ? [] : [itemValue];
+      } else if (isOpen) {
+        next = current.filter((openValue) => openValue !== itemValue);
+      } else {
+        next = [...current, itemValue];
       }
 
-      setOpenItemId(itemId);
-      return;
-    }
+      if (normalizedValue === undefined) {
+        setUncontrolledValue(next);
+      }
 
-    if (current === itemId) {
-      setOpenItemId(null);
-    }
-  }, []);
+      onChangeRef.current?.(next);
+    },
+    [multiple, normalizedValue],
+  );
 
   const contextValue = useMemo(
     () => ({
       size,
       tone,
       weight,
-      autoCollapse,
-      openItemId,
-      onItemToggle,
-      registerItemToggle,
+      managed,
+      openValues,
+      toggleValue,
     }),
-    [
-      size,
-      tone,
-      weight,
-      autoCollapse,
-      openItemId,
-      onItemToggle,
-      registerItemToggle,
-    ],
+    [size, tone, weight, managed, openValues, toggleValue],
   );
 
   const space =

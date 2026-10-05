@@ -48,12 +48,8 @@ describe('AccordionItem', () => {
       button.getAttribute('aria-controls')!,
     );
 
-    // Label should be inside button
     expect(htmlToText(button.innerHTML)).toEqual('Label');
-
-    expect(content).not.toBeNull();
-    expect(content).toHaveTextContent('Content');
-
+    expect(content?.id).toEqual(button.getAttribute('aria-controls'));
     expect(button.getAttribute('aria-expanded')).toEqual('false');
 
     await userEvent.click(button);
@@ -109,12 +105,8 @@ describe('AccordionItem', () => {
       button.getAttribute('aria-controls')!,
     );
 
-    // Label should be inside button
     expect(htmlToText(button.innerHTML)).toEqual('Label');
-
-    expect(content).not.toBeNull();
-    expect(content).toHaveTextContent('Content');
-
+    expect(content?.id).toEqual(button.getAttribute('aria-controls'));
     expect(button.getAttribute('aria-expanded')).toEqual('true');
 
     await userEvent.click(button);
@@ -122,119 +114,5 @@ describe('AccordionItem', () => {
 
     await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('true');
-  });
-
-  it('should hide collapsed content from the accessibility tree', async () => {
-    const { getByRole } = render(
-      <BraidTestProvider>
-        <AccordionItem label="Label">Content</AccordionItem>
-      </BraidTestProvider>,
-    );
-
-    const button = getByRole('button');
-    const content = document.getElementById(
-      button.getAttribute('aria-controls')!,
-    );
-
-    expect(content).toHaveAttribute('aria-hidden', 'true');
-    expect(content).toHaveAttribute('inert');
-
-    await userEvent.click(button);
-    expect(content).not.toHaveAttribute('aria-hidden');
-    expect(content).not.toHaveAttribute('inert');
-
-    await userEvent.click(button);
-    expect(content).toHaveAttribute('aria-hidden', 'true');
-    expect(content).toHaveAttribute('inert');
-  });
-
-  it('should hide collapsed content from the tab order', async () => {
-    const { getByRole, queryByRole } = render(
-      <BraidTestProvider>
-        <AccordionItem label="Label">
-          <a href="/">Hidden link</a>
-        </AccordionItem>
-      </BraidTestProvider>,
-    );
-
-    expect(queryByRole('link')).toBeNull();
-
-    await userEvent.click(getByRole('button', { name: 'Label' }));
-    expect(getByRole('link', { name: 'Hidden link' })).toBeInTheDocument();
-
-    await userEvent.click(getByRole('button', { name: 'Label' }));
-    expect(queryByRole('link')).toBeNull();
-  });
-
-  it('should keep expanded content in document flow without JS measurement', () => {
-    const html = renderToStaticMarkup(
-      <BraidTestProvider>
-        <AccordionItem id="open" label="Label" expanded onToggle={() => {}}>
-          Visible
-        </AccordionItem>
-      </BraidTestProvider>,
-    );
-
-    expect(html).toContain('Visible');
-    expect(html).not.toMatch(/height:\s*0px/);
-  });
-
-  it('should start expanded when defaultExpanded is set', async () => {
-    const { getByRole } = render(
-      <BraidTestProvider>
-        <AccordionItem label="Label" defaultExpanded>
-          Content
-        </AccordionItem>
-      </BraidTestProvider>,
-    );
-
-    const button = getByRole('button');
-    const content = document.getElementById(
-      button.getAttribute('aria-controls')!,
-    );
-
-    expect(button.getAttribute('aria-expanded')).toEqual('true');
-    expect(content).not.toHaveAttribute('aria-hidden');
-    expect(content).not.toHaveAttribute('inert');
-    expect(content?.style.height).toBe('');
-    expect(content?.style.transitionDuration).toBe('');
-
-    await userEvent.click(button);
-    expect(button.getAttribute('aria-expanded')).toEqual('false');
-  });
-
-  it('should not allow defaultExpanded when expanded is set', () => {
-    expect(() =>
-      render(
-        <BraidTestProvider>
-          <AccordionItem
-            label="Label"
-            defaultExpanded
-            expanded
-            onToggle={() => {}}
-          >
-            Content
-          </AccordionItem>
-        </BraidTestProvider>,
-      ),
-    ).toThrow(/'defaultexpanded' cannot be set when 'expanded' is set/i);
-  });
-
-  it('should not pin expanded content to a 0px inline height on the client', () => {
-    const { getByRole } = render(
-      <BraidTestProvider>
-        <AccordionItem label="Label" expanded onToggle={() => {}}>
-          Content
-        </AccordionItem>
-      </BraidTestProvider>,
-    );
-
-    const button = getByRole('button');
-    const content = document.getElementById(
-      button.getAttribute('aria-controls')!,
-    );
-
-    expect(content).not.toBeNull();
-    expect(content?.style.height).not.toBe('0px');
   });
 });

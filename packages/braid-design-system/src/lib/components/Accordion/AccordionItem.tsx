@@ -74,14 +74,19 @@ export interface AccordionItemBaseProps {
   icon?: TextProps['icon'];
   data?: DataAttributeMap;
   badge?: ReactElement<BadgeProps> | null;
+  /**
+   * Key used when Accordion owns the open items.
+   * Required when `multiple` is `false`, or when `value`, `defaultValue`, or `onChange` is set on Accordion.
+   */
+  value?: string;
 }
 
-export type AccordionItemProps = AccordionItemBaseProps &
-  UseDisclosureProps & { defaultExpanded?: boolean };
+export type AccordionItemProps = AccordionItemBaseProps & UseDisclosureProps;
 export type AccordionItemStateProps = DisclosureStateProps;
 
 export const AccordionItem: FC<AccordionItemProps> = ({
   id,
+  value,
   label,
   children,
   badge,
@@ -92,10 +97,10 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   data,
   expanded: expandedProp,
   onToggle,
-  defaultExpanded,
   ...restProps
 }) => {
   const accordionContext = useContext(AccordionContext);
+  const managed = Boolean(accordionContext?.managed);
 
   assert(
     !(accordionContext && sizeProp),
@@ -109,12 +114,19 @@ export const AccordionItem: FC<AccordionItemProps> = ({
     !(accordionContext && weightProp),
     'Weight cannot be set on AccordionItem when inside Accordion. Weight should be set on Accordion instead.',
   );
-
   assert(
     toneProp === undefined || validTones.includes(toneProp),
     `The 'tone' prop should be one of the following: ${validTones
-      .map((x) => `"${x}"`)
+      .map((tone) => `"${tone}"`)
       .join(', ')}`,
+  );
+  assert(
+    !managed || (typeof value === 'string' && value.length > 0),
+    "AccordionItem 'value' must be a non-empty string when Accordion controls which items are open.",
+  );
+  assert(
+    !(managed && expandedProp !== undefined),
+    "expanded cannot be set on AccordionItem when Accordion controls which items are open. Use 'value' and 'onChange' on Accordion.",
   );
 
   assert(
@@ -145,33 +157,13 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   );
 
   const resolvedId = useFallbackId(id);
-  const autoCollapse = Boolean(accordionContext?.autoCollapse);
+  let disclosureState: DisclosureStateProps = { onToggle };
 
-  assert(
-    !(autoCollapse && expandedProp !== undefined),
-    'expanded cannot be set on AccordionItem when autoCollapse is set on Accordion. Accordions with autoCollapse manage expansion themselves. Use defaultExpanded to start an item open, or onToggle to observe changes. Omit autoCollapse to control expanded on the item.',
-  );
-
-  assert(
-    !(autoCollapse && defaultExpanded && !id),
-    "'id' must be set on AccordionItem when 'defaultExpanded' is set and 'autoCollapse' is set on Accordion.",
-  );
-
-  assert(
-    expandedProp === undefined || defaultExpanded === undefined,
-    "'defaultExpanded' cannot be set when 'expanded' is set. Use 'expanded' to control the state, or 'defaultExpanded' for the initial uncontrolled state.",
-  );
-
-  let disclosureState: DisclosureStateProps & { defaultExpanded?: boolean } = {
-    onToggle,
-    defaultExpanded,
-  };
-
-  if (autoCollapse) {
+  if (managed && accordionContext && value) {
     disclosureState = {
-      expanded: accordionContext?.openItemId === resolvedId,
-      onToggle: (nextExpanded) => {
-        accordionContext?.onItemToggle?.(resolvedId, nextExpanded);
+      expanded: accordionContext.openValues.includes(value),
+      onToggle: (nextExpanded: boolean) => {
+        accordionContext.toggleValue(value);
         onToggle?.(nextExpanded);
       },
     };
@@ -207,14 +199,6 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   const finishAnimation = useCallback(() => {
     setAnimatedHeight(null);
   }, []);
-
-  useLayoutEffect(() => {
-    if (!autoCollapse) {
-      return;
-    }
-
-    return accordionContext?.registerItemToggle?.(resolvedId, onToggle);
-  }, [accordionContext, autoCollapse, onToggle, resolvedId]);
 
   useLayoutEffect(() => {
     if (!isAnimating) {

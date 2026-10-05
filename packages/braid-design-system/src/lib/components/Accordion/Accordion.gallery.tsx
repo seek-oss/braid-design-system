@@ -16,13 +16,13 @@ export const galleryItems: GalleryComponent = {
       Example: () =>
         source(
           <Accordion>
-            <AccordionItem label="Item 1">
+            <AccordionItem value="item-1" label="Item 1">
               <Placeholder height={100} />
             </AccordionItem>
-            <AccordionItem label="Item 2">
+            <AccordionItem value="item-2" label="Item 2">
               <Placeholder height={100} />
             </AccordionItem>
-            <AccordionItem label="Item 3">
+            <AccordionItem value="item-3" label="Item 3">
               <Placeholder height={100} />
             </AccordionItem>
           </Accordion>,
@@ -33,47 +33,47 @@ export const galleryItems: GalleryComponent = {
       Example: () =>
         source(
           <Accordion size="standard" dividers={false}>
-            <AccordionItem label="Item 1">
+            <AccordionItem value="item-1" label="Item 1">
               <Placeholder height={100} />
             </AccordionItem>
-            <AccordionItem label="Item 2">
+            <AccordionItem value="item-2" label="Item 2">
               <Placeholder height={100} />
             </AccordionItem>
-            <AccordionItem label="Item 3">
-              <Placeholder height={100} />
-            </AccordionItem>
-          </Accordion>,
-        ),
-    },
-    {
-      label: 'Auto collapse',
-      Example: () =>
-        source(
-          <Accordion autoCollapse>
-            <AccordionItem label="Item 1">
-              <Placeholder height={100} />
-            </AccordionItem>
-            <AccordionItem label="Item 2">
-              <Placeholder height={100} />
-            </AccordionItem>
-            <AccordionItem label="Item 3">
+            <AccordionItem value="item-3" label="Item 3">
               <Placeholder height={100} />
             </AccordionItem>
           </Accordion>,
         ),
     },
     {
-      label: 'Auto collapse with default expanded',
+      label: 'Single open item',
       Example: () =>
         source(
-          <Accordion autoCollapse>
-            <AccordionItem id="item-1" label="Item 1" defaultExpanded>
+          <Accordion multiple={false}>
+            <AccordionItem value="item-1" label="Item 1">
               <Placeholder height={100} />
             </AccordionItem>
-            <AccordionItem label="Item 2">
+            <AccordionItem value="item-2" label="Item 2">
               <Placeholder height={100} />
             </AccordionItem>
-            <AccordionItem label="Item 3">
+            <AccordionItem value="item-3" label="Item 3">
+              <Placeholder height={100} />
+            </AccordionItem>
+          </Accordion>,
+        ),
+    },
+    {
+      label: 'Single open item with a default value',
+      Example: () =>
+        source(
+          <Accordion multiple={false} defaultValue="item-1">
+            <AccordionItem value="item-1" label="Item 1">
+              <Placeholder height={100} />
+            </AccordionItem>
+            <AccordionItem value="item-2" label="Item 2">
+              <Placeholder height={100} />
+            </AccordionItem>
+            <AccordionItem value="item-3" label="Item 3">
               <Placeholder height={100} />
             </AccordionItem>
           </Accordion>,
@@ -84,10 +84,11 @@ export const galleryItems: GalleryComponent = {
       Example: () =>
         source(
           <Accordion size="standard" dividers={false}>
-            <AccordionItem label="Item 1">
+            <AccordionItem value="item-1" label="Item 1">
               <Placeholder height={100} />
             </AccordionItem>
             <AccordionItem
+              value="item-2"
               label="Item 2"
               badge={
                 <Badge tone="promote" weight="strong">
@@ -97,7 +98,7 @@ export const galleryItems: GalleryComponent = {
             >
               <Placeholder height={100} />
             </AccordionItem>
-            <AccordionItem label="Item 3">
+            <AccordionItem value="item-3" label="Item 3">
               <Placeholder height={100} />
             </AccordionItem>
           </Accordion>,
@@ -108,13 +109,13 @@ export const galleryItems: GalleryComponent = {
       Example: () =>
         source(
           <Accordion size="standard" dividers={false}>
-            <AccordionItem label="Item 1" icon={<IconImage />}>
+            <AccordionItem value="item-1" label="Item 1" icon={<IconImage />}>
               <Placeholder height={100} />
             </AccordionItem>
-            <AccordionItem label="Item 2" icon={<IconImage />}>
+            <AccordionItem value="item-2" label="Item 2" icon={<IconImage />}>
               <Placeholder height={100} />
             </AccordionItem>
-            <AccordionItem label="Item 3" icon={<IconImage />}>
+            <AccordionItem value="item-3" label="Item 3" icon={<IconImage />}>
               <Placeholder height={100} />
             </AccordionItem>
           </Accordion>,

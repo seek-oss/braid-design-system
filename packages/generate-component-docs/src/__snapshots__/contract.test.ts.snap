@@ -4,10 +4,14 @@ exports[`Accordion 1`] = `
 {
   exportType: component,
   props: {
-    autoCollapse?: boolean
     children: ReactNodeNoStrings
     data?: DataAttributeMap
+    defaultValue?: 
+        | readonly string[]
+        | string
     dividers?: boolean
+    multiple?: boolean
+    onChange?: (value: string[]) => void
     size?: 
         | "large"
         | "small"
@@ -22,6 +26,9 @@ exports[`Accordion 1`] = `
     tone?: 
         | "neutral"
         | "secondary"
+    value?: 
+        | readonly string[]
+        | string
     weight?: 
         | "medium"
         | "regular"
@@ -37,7 +44,6 @@ exports[`AccordionItem 1`] = `
     badge?: ReactElement<BadgeProps, string | JSXElementConstructor<any>>
     children: ReactNode
     data?: DataAttributeMap
-    defaultExpanded?: boolean
     expanded?: boolean
     icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
     id?: string
@@ -51,6 +57,7 @@ exports[`AccordionItem 1`] = `
     tone?: 
         | "neutral"
         | "secondary"
+    value?: string
     weight?: 
         | "medium"
         | "regular"

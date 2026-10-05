@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { useState } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 import { Accordion, AccordionItem } from '..';
 import { BraidTestProvider } from '../../../test';
@@ -9,8 +11,12 @@ describe('Accordion', () => {
     const { getByRole } = render(
       <BraidTestProvider>
         <Accordion>
-          <AccordionItem label="One">First</AccordionItem>
-          <AccordionItem label="Two">Second</AccordionItem>
+          <AccordionItem value="one" label="One">
+            First
+          </AccordionItem>
+          <AccordionItem value="two" label="Two">
+            Second
+          </AccordionItem>
         </Accordion>
       </BraidTestProvider>,
     );
@@ -25,13 +31,19 @@ describe('Accordion', () => {
     expect(second).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it('should close the open item when another is opened if autoCollapse', async () => {
+  it('should close the open item when another is opened if multiple is false', async () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Accordion autoCollapse>
-          <AccordionItem label="One">First</AccordionItem>
-          <AccordionItem label="Two">Second</AccordionItem>
-          <AccordionItem label="Three">Third</AccordionItem>
+        <Accordion multiple={false}>
+          <AccordionItem value="one" label="One">
+            First
+          </AccordionItem>
+          <AccordionItem value="two" label="Two">
+            Second
+          </AccordionItem>
+          <AccordionItem value="three" label="Three">
+            Third
+          </AccordionItem>
         </Accordion>
       </BraidTestProvider>,
     );
@@ -51,12 +63,16 @@ describe('Accordion', () => {
     expect(third).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('should allow the open item to be collapsed when autoCollapse', async () => {
+  it('should allow the open item to be collapsed when multiple is false', async () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Accordion autoCollapse>
-          <AccordionItem label="One">First</AccordionItem>
-          <AccordionItem label="Two">Second</AccordionItem>
+        <Accordion multiple={false}>
+          <AccordionItem value="one" label="One">
+            First
+          </AccordionItem>
+          <AccordionItem value="two" label="Two">
+            Second
+          </AccordionItem>
         </Accordion>
       </BraidTestProvider>,
     );
@@ -70,17 +86,16 @@ describe('Accordion', () => {
     expect(first).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('should fire onToggle on the item that was clicked when autoCollapse', async () => {
-    const onOne = vi.fn();
-    const onTwo = vi.fn();
+  it('should fire onChange with the next open values', async () => {
+    const onChange = vi.fn();
 
     const { getByRole } = render(
       <BraidTestProvider>
-        <Accordion autoCollapse>
-          <AccordionItem label="One" onToggle={onOne}>
+        <Accordion multiple={false} onChange={onChange}>
+          <AccordionItem value="one" label="One">
             First
           </AccordionItem>
-          <AccordionItem label="Two" onToggle={onTwo}>
+          <AccordionItem value="two" label="Two">
             Second
           </AccordionItem>
         </Accordion>
@@ -88,24 +103,30 @@ describe('Accordion', () => {
     );
 
     await userEvent.click(getByRole('button', { name: 'One' }));
-    expect(onOne).toHaveBeenCalledWith(true);
-    expect(onTwo).not.toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith(['one']);
 
     await userEvent.click(getByRole('button', { name: 'Two' }));
-    expect(onTwo).toHaveBeenCalledWith(true);
-    expect(onOne).toHaveBeenLastCalledWith(false);
+    expect(onChange).toHaveBeenLastCalledWith(['two']);
   });
 
-  it('should not share autoCollapse state across Accordion instances', async () => {
+  it('should not share open state across Accordion instances', async () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Accordion autoCollapse>
-          <AccordionItem label="A one">A</AccordionItem>
-          <AccordionItem label="A two">A2</AccordionItem>
+        <Accordion multiple={false}>
+          <AccordionItem value="one" label="A one">
+            A
+          </AccordionItem>
+          <AccordionItem value="two" label="A two">
+            A2
+          </AccordionItem>
         </Accordion>
-        <Accordion autoCollapse>
-          <AccordionItem label="B one">B</AccordionItem>
-          <AccordionItem label="B two">B2</AccordionItem>
+        <Accordion multiple={false}>
+          <AccordionItem value="one" label="B one">
+            B
+          </AccordionItem>
+          <AccordionItem value="two" label="B two">
+            B2
+          </AccordionItem>
         </Accordion>
       </BraidTestProvider>,
     );
@@ -123,31 +144,19 @@ describe('Accordion', () => {
     );
   });
 
-  it('should not allow expanded on AccordionItem when autoCollapse', () => {
-    expect(() =>
-      render(
-        <BraidTestProvider>
-          <Accordion autoCollapse>
-            <AccordionItem label="One" expanded onToggle={() => {}}>
-              First
-            </AccordionItem>
-          </Accordion>
-        </BraidTestProvider>,
-      ),
-    ).toThrow(/expanded cannot be set/i);
-  });
-
-  it('should start with defaultExpanded items open', async () => {
+  it('should start from defaultValue when multiple items can be open', async () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Accordion>
-          <AccordionItem label="One" defaultExpanded>
+        <Accordion defaultValue={['one', 'two']}>
+          <AccordionItem value="one" label="One">
             First
           </AccordionItem>
-          <AccordionItem label="Two" defaultExpanded>
+          <AccordionItem value="two" label="Two">
             Second
           </AccordionItem>
-          <AccordionItem label="Three">Third</AccordionItem>
+          <AccordionItem value="three" label="Three">
+            Third
+          </AccordionItem>
         </Accordion>
       </BraidTestProvider>,
     );
@@ -165,26 +174,28 @@ describe('Accordion', () => {
     expect(second).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it('should start with a defaultExpanded item open when autoCollapse', async () => {
+  it('should start from a string defaultValue when multiple is false', async () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Accordion autoCollapse>
-          <AccordionItem id="one" label="One" defaultExpanded>
+        <Accordion multiple={false} defaultValue="one">
+          <AccordionItem value="one" label="One">
             First
           </AccordionItem>
-          <AccordionItem label="Two">Second</AccordionItem>
-          <AccordionItem label="Three">Third</AccordionItem>
+          <AccordionItem value="two" label="Two">
+            Second
+          </AccordionItem>
+          <AccordionItem value="three" label="Three">
+            Third
+          </AccordionItem>
         </Accordion>
       </BraidTestProvider>,
     );
 
     const first = getByRole('button', { name: 'One' });
     const second = getByRole('button', { name: 'Two' });
-    const third = getByRole('button', { name: 'Three' });
 
     expect(first).toHaveAttribute('aria-expanded', 'true');
     expect(second).toHaveAttribute('aria-expanded', 'false');
-    expect(third).toHaveAttribute('aria-expanded', 'false');
 
     const firstContent = document.getElementById(
       first.getAttribute('aria-controls')!,
@@ -202,37 +213,210 @@ describe('Accordion', () => {
     await userEvent.click(second);
     expect(first).toHaveAttribute('aria-expanded', 'false');
     expect(second).toHaveAttribute('aria-expanded', 'true');
-    expect(third).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('should not allow more than one defaultExpanded item when autoCollapse', () => {
+  it('should accept a single-item array when multiple is false', () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Accordion multiple={false} defaultValue={['one']}>
+          <AccordionItem value="one" label="One">
+            First
+          </AccordionItem>
+          <AccordionItem value="two" label="Two">
+            Second
+          </AccordionItem>
+        </Accordion>
+      </BraidTestProvider>,
+    );
+
+    expect(getByRole('button', { name: 'One' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    );
+    expect(getByRole('button', { name: 'Two' })).toHaveAttribute(
+      'aria-expanded',
+      'false',
+    );
+  });
+
+  it('should follow a controlled value', async () => {
+    const TestCase = () => {
+      const [open, setOpen] = useState<string[]>(['two']);
+
+      return (
+        <BraidTestProvider>
+          <Accordion value={open} onChange={setOpen}>
+            <AccordionItem value="one" label="One">
+              First
+            </AccordionItem>
+            <AccordionItem value="two" label="Two">
+              Second
+            </AccordionItem>
+          </Accordion>
+        </BraidTestProvider>
+      );
+    };
+
+    const { getByRole } = render(<TestCase />);
+
+    expect(getByRole('button', { name: 'Two' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    );
+
+    await userEvent.click(getByRole('button', { name: 'One' }));
+
+    expect(getByRole('button', { name: 'One' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    );
+    expect(getByRole('button', { name: 'Two' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    );
+  });
+
+  it('should not allow more than one value when multiple is false', () => {
     expect(() =>
       render(
         <BraidTestProvider>
-          <Accordion autoCollapse>
-            <AccordionItem id="one" label="One" defaultExpanded>
+          <Accordion multiple={false} defaultValue={['one', 'two']}>
+            <AccordionItem value="one" label="One">
               First
             </AccordionItem>
-            <AccordionItem id="two" label="Two" defaultExpanded>
+            <AccordionItem value="two" label="Two">
               Second
             </AccordionItem>
           </Accordion>
         </BraidTestProvider>,
       ),
-    ).toThrow(/only one accordionitem can set 'defaultexpanded'/i);
+    ).toThrow(/single-item array/i);
   });
 
-  it('should not allow defaultExpanded without id when autoCollapse', () => {
+  it('should not allow defaultValue when value is set', () => {
     expect(() =>
       render(
         <BraidTestProvider>
-          <Accordion autoCollapse>
-            <AccordionItem label="One" defaultExpanded>
+          <Accordion value="one" defaultValue="one" onChange={() => {}}>
+            <AccordionItem value="one" label="One">
               First
             </AccordionItem>
           </Accordion>
         </BraidTestProvider>,
       ),
-    ).toThrow(/'id' must be set on accordionitem/i);
+    ).toThrow(/'defaultvalue' cannot be set when 'value' is set/i);
+  });
+
+  it('should not allow value without onChange', () => {
+    expect(() =>
+      render(
+        <BraidTestProvider>
+          <Accordion value="one">
+            <AccordionItem value="one" label="One">
+              First
+            </AccordionItem>
+          </Accordion>
+        </BraidTestProvider>,
+      ),
+    ).toThrow(/'onchange' must be set when 'value' is set/i);
+  });
+
+  it('should not allow duplicate item values', () => {
+    expect(() =>
+      render(
+        <BraidTestProvider>
+          <Accordion>
+            <AccordionItem value="one" label="One">
+              First
+            </AccordionItem>
+            <AccordionItem value="one" label="Also one">
+              Second
+            </AccordionItem>
+          </Accordion>
+        </BraidTestProvider>,
+      ),
+    ).toThrow(/used more than once/i);
+  });
+
+  it('should not allow expanded on AccordionItem when Accordion controls open items', () => {
+    expect(() =>
+      render(
+        <BraidTestProvider>
+          <Accordion multiple={false}>
+            <AccordionItem value="one" label="One" expanded onToggle={() => {}}>
+              First
+            </AccordionItem>
+          </Accordion>
+        </BraidTestProvider>,
+      ),
+    ).toThrow(/expanded cannot be set/i);
+  });
+
+  it('should not allow a managed AccordionItem without a value', () => {
+    expect(() =>
+      render(
+        <BraidTestProvider>
+          <Accordion multiple={false}>
+            <AccordionItem label="One">First</AccordionItem>
+          </Accordion>
+        </BraidTestProvider>,
+      ),
+    ).toThrow(/'value' must be a non-empty string/i);
+  });
+
+  it('should hide collapsed content from the accessibility tree', async () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Accordion>
+          <AccordionItem value="one" label="One">
+            First
+          </AccordionItem>
+        </Accordion>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button', { name: 'One' });
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
+    );
+
+    expect(content).toHaveAttribute('aria-hidden', 'true');
+    expect(content).toHaveAttribute('inert');
+
+    await userEvent.click(button);
+    expect(content).not.toHaveAttribute('aria-hidden');
+    expect(content).not.toHaveAttribute('inert');
+  });
+
+  it('should hide collapsed content from the tab order', async () => {
+    const { getByRole, queryByRole } = render(
+      <BraidTestProvider>
+        <Accordion>
+          <AccordionItem value="one" label="One">
+            <a href="/">Hidden link</a>
+          </AccordionItem>
+        </Accordion>
+      </BraidTestProvider>,
+    );
+
+    expect(queryByRole('link')).toBeNull();
+
+    await userEvent.click(getByRole('button', { name: 'One' }));
+    expect(getByRole('link', { name: 'Hidden link' })).toBeInTheDocument();
+  });
+
+  it('should keep expanded content in document flow without JS measurement', () => {
+    const html = renderToStaticMarkup(
+      <BraidTestProvider>
+        <Accordion defaultValue="one">
+          <AccordionItem value="one" label="One">
+            Visible
+          </AccordionItem>
+        </Accordion>
+      </BraidTestProvider>,
+    );
+
+    expect(html).toContain('Visible');
+    expect(html).not.toMatch(/height:\s*0px/);
   });
 });

@@ -27,13 +27,13 @@ const docs: ComponentDocs = {
   Example: () =>
     source(
       <Accordion>
-        <AccordionItem label="Accordion item 1">
+        <AccordionItem value="item-1" label="Accordion item 1">
           <Placeholder height={80} />
         </AccordionItem>
-        <AccordionItem label="Accordion item 2">
+        <AccordionItem value="item-2" label="Accordion item 2">
           <Placeholder height={80} />
         </AccordionItem>
-        <AccordionItem label="Accordion item 3">
+        <AccordionItem value="item-3" label="Accordion item 3">
           <Placeholder height={80} />
         </AccordionItem>
       </Accordion>,
@@ -45,8 +45,8 @@ const docs: ComponentDocs = {
         <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">
           WAI-ARIA Disclosure Pattern
         </TextLink>
-        . Each item is a disclosure, including when{' '}
-        <Strong>autoCollapse</Strong> is set. This is not the{' '}
+        . Each item is a disclosure, including when <Strong>multiple</Strong> is{' '}
+        <Strong>false</Strong>. This is not the{' '}
         <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
           Accordion Pattern
         </TextLink>
@@ -97,13 +97,13 @@ const docs: ComponentDocs = {
               weight="regular"
               dividers={false}
             >
-              <AccordionItem label="Accordion item 1">
+              <AccordionItem value="item-1" label="Accordion item 1">
                 <Placeholder height={80} />
               </AccordionItem>
-              <AccordionItem label="Accordion item 2">
+              <AccordionItem value="item-2" label="Accordion item 2">
                 <Placeholder height={80} />
               </AccordionItem>
-              <AccordionItem label="Accordion item 3">
+              <AccordionItem value="item-3" label="Accordion item 3">
                 <Placeholder height={80} />
               </AccordionItem>
             </Accordion>,
@@ -122,13 +122,13 @@ const docs: ComponentDocs = {
         Example: () =>
           source(
             <Accordion space="large">
-              <AccordionItem label="Accordion item 1">
+              <AccordionItem value="item-1" label="Accordion item 1">
                 <Placeholder height={80} />
               </AccordionItem>
-              <AccordionItem label="Accordion item 2">
+              <AccordionItem value="item-2" label="Accordion item 2">
                 <Placeholder height={80} />
               </AccordionItem>
-              <AccordionItem label="Accordion item 3">
+              <AccordionItem value="item-3" label="Accordion item 3">
                 <Placeholder height={80} />
               </AccordionItem>
             </Accordion>,
@@ -146,10 +146,11 @@ const docs: ComponentDocs = {
         Example: () =>
           source(
             <Accordion>
-              <AccordionItem label="Accordion item 1">
+              <AccordionItem value="item-1" label="Accordion item 1">
                 <Placeholder height={80} />
               </AccordionItem>
               <AccordionItem
+                value="item-2"
                 label="Accordion item 2"
                 badge={
                   <Badge tone="promote" weight="strong">
@@ -159,7 +160,7 @@ const docs: ComponentDocs = {
               >
                 <Placeholder height={80} />
               </AccordionItem>
-              <AccordionItem label="Accordion item 3">
+              <AccordionItem value="item-3" label="Accordion item 3">
                 <Placeholder height={80} />
               </AccordionItem>
             </Accordion>,
@@ -179,13 +180,25 @@ const docs: ComponentDocs = {
         Example: () =>
           source(
             <Accordion>
-              <AccordionItem label="Accordion item 1" icon={<IconImage />}>
+              <AccordionItem
+                value="item-1"
+                label="Accordion item 1"
+                icon={<IconImage />}
+              >
                 <Placeholder height={80} />
               </AccordionItem>
-              <AccordionItem label="Accordion item 2" icon={<IconImage />}>
+              <AccordionItem
+                value="item-2"
+                label="Accordion item 2"
+                icon={<IconImage />}
+              >
                 <Placeholder height={80} />
               </AccordionItem>
-              <AccordionItem label="Accordion item 3" icon={<IconImage />}>
+              <AccordionItem
+                value="item-3"
+                label="Accordion item 3"
+                icon={<IconImage />}
+              >
                 <Placeholder height={80} />
               </AccordionItem>
             </Accordion>,
@@ -194,80 +207,62 @@ const docs: ComponentDocs = {
     ],
     interaction: [
       {
-        label: 'Auto collapse',
+        label: 'Single open item',
         description: (
           <Stack space="large">
             <Text>
-              Set the <Strong>autoCollapse</Strong> prop so only one item can be
-              open at a time. Opening an item closes any other open item.
-              Clicking the open item collapses it.
+              Set <Strong>multiple</Strong> to <Strong>false</Strong> so only
+              one item can be open at a time. Opening an item closes any other
+              open item. Clicking the open item collapses it.
             </Text>
             <Text>
-              Start with one item open by setting{' '}
-              <Strong>defaultExpanded</Strong> and an explicit{' '}
-              <Strong>id</Strong> on that item. Starting with none open remains
-              valid. Don&rsquo;t set <Strong>defaultExpanded</Strong> on more
-              than one item.
-            </Text>
-            <Text>
-              <Strong>autoCollapse</Strong> is uncontrolled. Don&rsquo;t set{' '}
-              <Strong>expanded</Strong> on items. Use <Strong>onToggle</Strong>{' '}
-              to observe changes. To drive open state from the parent, omit{' '}
-              <Strong>autoCollapse</Strong> and use <Strong>expanded</Strong>{' '}
-              (see Controlled state).
+              By default, <Strong>multiple</Strong> is <Strong>true</Strong> and
+              each item manages its own open state, so several items can be open
+              together. Set a <Strong>value</Strong> on each{' '}
+              <Strong>AccordionItem</Strong> when <Strong>multiple</Strong> is{' '}
+              <Strong>false</Strong>, or when <Strong>value</Strong>,{' '}
+              <Strong>defaultValue</Strong>, or <Strong>onChange</Strong> is set
+              on <Strong>Accordion</Strong>.
             </Text>
           </Stack>
         ),
         Example: () =>
           source(
-            <Accordion autoCollapse>
-              <AccordionItem
-                id="accordion-item-1"
-                label="Accordion item 1"
-                defaultExpanded
-              >
+            <Accordion multiple={false}>
+              <AccordionItem value="item-1" label="Accordion item 1">
                 <Placeholder height={80} />
               </AccordionItem>
-              <AccordionItem label="Accordion item 2">
+              <AccordionItem value="item-2" label="Accordion item 2">
                 <Placeholder height={80} />
               </AccordionItem>
-              <AccordionItem label="Accordion item 3">
+              <AccordionItem value="item-3" label="Accordion item 3">
                 <Placeholder height={80} />
               </AccordionItem>
             </Accordion>,
           ),
       },
       {
-        label: 'Managing state',
+        label: 'Default value',
         description: (
-          <Stack space="large">
-            <Text>
-              An <Strong>AccordionItem</Strong>, by default, manages its own
-              state internally. Set <Strong>defaultExpanded</Strong> to start
-              one or more items open without taking control of the state. After
-              mount, each item still manages itself. <Strong>onToggle</Strong>{' '}
-              can still be used as a listener.
-            </Text>
-            <Text>
-              If you&rsquo;d like to take control of the state, use the{' '}
-              <Strong>expanded</Strong> and <Strong>onToggle</Strong> props.{' '}
-              <Strong>expanded</Strong> is the way to drive open state from the
-              parent. Don&rsquo;t combine it with{' '}
-              <Strong>defaultExpanded</Strong> on the same item, or with{' '}
-              <Strong>autoCollapse</Strong> on Accordion.
-            </Text>
-          </Stack>
+          <Text>
+            The accordion manages which items are open. Set{' '}
+            <Strong>defaultValue</Strong> to the <Strong>value</Strong> of the
+            items that should start open. Use a string, or an array of strings
+            when more than one item starts open. When <Strong>multiple</Strong>{' '}
+            is <Strong>false</Strong>, pass a string or an array with a single
+            item.
+          </Text>
         ),
         Example: () =>
           source(
-            <Accordion>
-              <AccordionItem label="Accordion item 1" defaultExpanded>
+            <Accordion defaultValue={['item-1', 'item-2']}>
+              <AccordionItem value="item-1" label="Accordion item 1">
                 <Placeholder height={80} />
               </AccordionItem>
-              <AccordionItem label="Accordion item 2" defaultExpanded>
+              <AccordionItem value="item-2" label="Accordion item 2">
                 <Placeholder height={80} />
               </AccordionItem>
-              <AccordionItem label="Accordion item 3">
+              <AccordionItem value="item-3" label="Accordion item 3">
                 <Placeholder height={80} />
               </AccordionItem>
             </Accordion>,
@@ -277,38 +272,27 @@ const docs: ComponentDocs = {
         label: 'Controlled state',
         description: (
           <Text>
-            Drive open state from the parent with <Strong>expanded</Strong> and{' '}
-            <Strong>onToggle</Strong>. This remains incompatible with{' '}
-            <Strong>autoCollapse</Strong>.
+            Pass <Strong>value</Strong> and <Strong>onChange</Strong> to control
+            which items are open. <Strong>value</Strong> matches the{' '}
+            <Strong>value</Strong> on each <Strong>AccordionItem</Strong>.{' '}
+            <Strong>onChange</Strong> receives the next open values as an array
+            of strings. Don&rsquo;t combine <Strong>value</Strong> with{' '}
+            <Strong>defaultValue</Strong>.
           </Text>
         ),
-        Example: ({ setDefaultState, getState, toggleState }) =>
+        Example: ({ setDefaultState, getState, setState }) =>
           source(
             <>
-              {setDefaultState('expanded1', false)}
-              {setDefaultState('expanded2', true)}
-              {setDefaultState('expanded3', false)}
+              {setDefaultState('open', ['item-2'])}
 
-              <Accordion>
-                <AccordionItem
-                  label="Accordion item 1"
-                  expanded={getState('expanded1')}
-                  onToggle={() => toggleState('expanded1')}
-                >
+              <Accordion value={getState('open')} onChange={setState('open')}>
+                <AccordionItem value="item-1" label="Accordion item 1">
                   <Placeholder height={80} />
                 </AccordionItem>
-                <AccordionItem
-                  label="Accordion item 2"
-                  expanded={getState('expanded2')}
-                  onToggle={() => toggleState('expanded2')}
-                >
+                <AccordionItem value="item-2" label="Accordion item 2">
                   <Placeholder height={80} />
                 </AccordionItem>
-                <AccordionItem
-                  label="Accordion item 3"
-                  expanded={getState('expanded3')}
-                  onToggle={() => toggleState('expanded3')}
-                >
+                <AccordionItem value="item-3" label="Accordion item 3">
                   <Placeholder height={80} />
                 </AccordionItem>
               </Accordion>
@@ -380,6 +364,7 @@ const docs: ComponentDocs = {
             // => data-testid="accordion-1"
           >
             <AccordionItem
+              value="item-1"
               data={{ testid: 'accordion-item-1' }}
               // => data-testid="accordion-item-1"
             >

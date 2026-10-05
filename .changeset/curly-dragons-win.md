@@ -8,19 +8,19 @@ updated:
   - AccordionItem
 ---
 
-**Accordion, AccordionItem:** Add `autoCollapse`, `defaultExpanded`, and animate expand/collapse height
+**Accordion, AccordionItem:** Add shared open state and height animation
 
-Opening an item with `autoCollapse` closes any other open item. These accordions start collapsed unless an item sets `defaultExpanded` with an explicit `id`. Item-level `expanded` remains incompatible with `autoCollapse`.
+By default each item still manages itself. Set `multiple` to `false` so only one item can be open, or use `value`, `defaultValue`, and `onChange` on `Accordion`. Items need a `value` in that case.
 
-Items now animate height when opening and closing, unless `prefers-reduced-motion` is set. Collapsed panels stay in the document at zero height (`visibility: hidden`, `aria-hidden`, `inert`) instead of `display: none`. Initial open state is not animated.
+Items animate their height unless reduced motion is set. Collapsed panels stay in the document at zero height instead of `display: none`.
 
 **EXAMPLE USAGE:**
 
 ```jsx
-<Accordion autoCollapse>
-  <AccordionItem id="one" label="One" defaultExpanded>
+<Accordion multiple={false} defaultValue="one">
+  <AccordionItem value="one" label="One">
     ...
   </AccordionItem>
-  <AccordionItem label="Two">...</AccordionItem>
+  <AccordionItem value="two" label="Two">...</AccordionItem>
 </Accordion>
 ```
