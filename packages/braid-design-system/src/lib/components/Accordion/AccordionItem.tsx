@@ -220,22 +220,10 @@ export const AccordionItem: FC<AccordionItemProps> = ({
       return;
     }
 
-    let cancelled = false;
-
     if (!expanded) {
-      requestAnimationFrame(() => {
-        if (cancelled) {
-          return;
-        }
-
-        requestAnimationFrame(() => {
-          if (cancelled) {
-            return;
-          }
-
-          setAnimatedHeight(0);
-        });
-      });
+      // Reading the height flushes layout so Safari records it before the collapse.
+      contentRef.current?.getBoundingClientRect();
+      setAnimatedHeight(0);
     }
 
     const timeoutId = window.setTimeout(
@@ -244,7 +232,6 @@ export const AccordionItem: FC<AccordionItemProps> = ({
     );
 
     return () => {
-      cancelled = true;
       window.clearTimeout(timeoutId);
     };
   }, [animationDurationMs, expanded, finishAnimation, isAnimating]);
