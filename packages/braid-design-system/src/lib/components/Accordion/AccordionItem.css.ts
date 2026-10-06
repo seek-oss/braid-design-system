@@ -32,8 +32,5 @@ export const contentOpen = style({
 
 export const contentClosed = style({
   height: 0,
-});
-
-export const contentHidden = style({
   visibility: 'hidden',
 });

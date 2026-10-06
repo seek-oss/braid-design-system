@@ -292,11 +292,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
       </Box>
       <Box
         overflow={expanded && !isAnimating ? undefined : 'hidden'}
-        className={[
-          styles.content,
-          heightClass,
-          expanded || isAnimating ? undefined : styles.contentHidden,
-        ]}
+        className={[styles.content, heightClass]}
         style={
           isAnimating
             ? {
