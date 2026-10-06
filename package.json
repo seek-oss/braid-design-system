@@ -47,7 +47,7 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.11.1",
-    "@changesets/cli": "^2.27.11",
+    "@changesets/cli": "^3.0.3",
     "@changesets/get-github-info": "^0.5.2",
     "@eslint/compat": "^1.2.5",
     "@manypkg/cli": "^0.21.4",
