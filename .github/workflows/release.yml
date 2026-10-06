@@ -92,7 +92,7 @@ jobs:
         run: pnpm i
 
       - name: Publish
-        uses: seek-oss/changesets-snapshot@v0
+        uses: seek-oss/changesets-snapshot@v1.0.0
         with:
           pre-publish: pnpm prepare-publish
         env:
