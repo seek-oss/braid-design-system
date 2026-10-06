@@ -149,6 +149,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   const tone = accordionContext?.tone ?? toneProp ?? 'neutral';
   const weight = accordionContext?.weight ?? weightProp ?? 'medium';
   const itemSpace = itemSpaceForSize[size] ?? 'none';
+  const contentRef = useRef<HTMLElement>(null);
   const contentSizeRef = useRef<HTMLElement>(null);
 
   assert(
@@ -199,6 +200,11 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   const finishAnimation = useCallback(() => {
     setAnimatedHeight(null);
   }, []);
+
+  useLayoutEffect(() => {
+    // Remove in favour of direct DOM attribute when we drop React 18 support
+    contentRef.current?.toggleAttribute('inert', !expanded);
+  }, [expanded]);
 
   useLayoutEffect(() => {
     if (!isAnimating) {
@@ -314,7 +320,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
           }
         }}
         aria-hidden={expanded ? undefined : true}
-        inert={expanded ? undefined : true}
+        ref={contentRef}
         {...contentProps}
       >
         <Box ref={contentSizeRef} paddingTop={itemSpace}>
