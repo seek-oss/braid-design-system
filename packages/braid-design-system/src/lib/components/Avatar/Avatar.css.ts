@@ -1,5 +1,7 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
+import { px } from '../../utils/px';
+
 import { vars } from '../../themes/vars.css';
 
 const avatarSizeInPx = {
@@ -13,7 +15,7 @@ const avatarSizeInPx = {
 
 export const size = styleVariants(avatarSizeInPx, (pixels) => ({
   height: pixels,
-  width: pixels,
+  width: `${px(pixels)} !important`,
 }));
 
 export const keyline = style({

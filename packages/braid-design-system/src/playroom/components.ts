@@ -1,9 +1,11 @@
 import dedent from 'dedent';
 
-const global = globalThis as typeof globalThis & {
-  __IS_PLAYROOM_ENVIRONMENT__?: string;
-};
-if (global.__IS_PLAYROOM_ENVIRONMENT__ !== 'clearly') {
+declare global {
+  // eslint-disable-next-line vars-on-top
+  var __IS_PLAYROOM_ENVIRONMENT__: string;
+}
+
+if (globalThis.__IS_PLAYROOM_ENVIRONMENT__ !== 'clearly') {
   throw new Error(dedent`
     Playroom prototyping components are being imported instead of Braid components.
     ‎
