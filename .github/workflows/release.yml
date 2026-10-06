@@ -44,8 +44,7 @@ jobs:
         with:
           version: pnpm run version
           publish: pnpm release
-        env:
-          GITHUB_TOKEN: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
+          github-token: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
 
       - name: Build site
         if: steps.changesets.outputs.published == 'true' || steps.changesets.outputs.hasChangesets == 'false'
