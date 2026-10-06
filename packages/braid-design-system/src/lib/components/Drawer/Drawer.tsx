@@ -66,6 +66,14 @@ const assertAccessibleName = ({
     `,
   );
   assert(
+    typeof title !== 'string' || title.trim() !== '',
+    dedent`
+      Drawer title must not be empty.
+
+      ${docsMessage}
+    `,
+  );
+  assert(
     typeof ariaLabel !== 'string' || ariaLabel.trim() !== '',
     dedent`
       Drawer aria-label must not be empty.
