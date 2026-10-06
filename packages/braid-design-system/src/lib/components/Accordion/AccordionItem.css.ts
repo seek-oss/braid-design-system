@@ -17,7 +17,6 @@ export const focusRing = style([
 ]);
 
 export const content = style({
-  overflow: 'hidden',
   transition: 'height 200ms ease',
   '@media': {
     'screen and (prefers-reduced-motion: reduce)': {
@@ -37,8 +36,4 @@ export const contentClosed = style({
 
 export const contentHidden = style({
   visibility: 'hidden',
-});
-
-export const contentUnclipped = style({
-  overflow: 'visible',
 });

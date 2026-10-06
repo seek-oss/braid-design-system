@@ -201,6 +201,15 @@ export const AccordionItem: FC<AccordionItemProps> = ({
     setAnimatedHeight(null);
   }, []);
 
+  const finishHeightTransition = useCallback(
+    (event: TransitionEvent<HTMLElement>) => {
+      if (isHeightTransition(event)) {
+        finishAnimation();
+      }
+    },
+    [finishAnimation],
+  );
+
   useLayoutEffect(() => {
     // Remove in favour of direct DOM attribute when we drop React 18 support
     contentRef.current?.toggleAttribute('inert', !expanded);
@@ -295,11 +304,11 @@ export const AccordionItem: FC<AccordionItemProps> = ({
         </Box>
       </Box>
       <Box
+        overflow={expanded && !isAnimating ? undefined : 'hidden'}
         className={[
           styles.content,
           heightClass,
           expanded || isAnimating ? undefined : styles.contentHidden,
-          expanded && !isAnimating ? styles.contentUnclipped : undefined,
         ]}
         style={
           isAnimating
@@ -309,16 +318,8 @@ export const AccordionItem: FC<AccordionItemProps> = ({
               }
             : undefined
         }
-        onTransitionEnd={(event: TransitionEvent<HTMLElement>) => {
-          if (isHeightTransition(event)) {
-            finishAnimation();
-          }
-        }}
-        onTransitionCancel={(event: TransitionEvent<HTMLElement>) => {
-          if (isHeightTransition(event)) {
-            finishAnimation();
-          }
-        }}
+        onTransitionEnd={finishHeightTransition}
+        onTransitionCancel={finishHeightTransition}
         aria-hidden={expanded ? undefined : true}
         ref={contentRef}
         {...contentProps}
