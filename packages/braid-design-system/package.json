@@ -170,7 +170,7 @@
     "@types/autosuggest-highlight": "^3.1.1",
     "@types/babel__core": "^7.20.1",
     "@types/lodash.curry": "^4.1.9",
-    "@types/node": "^22.16.0",
+    "@types/node": "^24.13.3",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@types/sanitize-html": "^2.13.0",
@@ -191,7 +191,8 @@
     "sanitize-html": "^2.12.1",
     "skott": "^0.32.1",
     "storybook": "^10.2.7",
-    "title-case": "^3.0.3"
+    "title-case": "^3.0.3",
+    "tsx": "^4.19.2"
   },
   "peerDependencies": {
     "react": "^18 || ^19",
@@ -259,6 +260,6 @@
     }
   },
   "inlinedDependencies": {
-    "@capsizecss/metrics": "4.2.0"
+    "@capsizecss/metrics": "4.3.0"
   }
 }
