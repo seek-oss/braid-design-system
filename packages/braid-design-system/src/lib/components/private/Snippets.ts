@@ -22,3 +22,5 @@ export type TemplateSnippets = Array<
     code: (props: PlayroomExampleProps) => Source<ReactElement>;
   }
 >;
+
+export type PatternSnippets = TemplateSnippets;
