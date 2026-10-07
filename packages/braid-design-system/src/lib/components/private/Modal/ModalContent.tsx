@@ -75,8 +75,9 @@ const modalContentGap = 'large' as const;
 
 interface ModalContentHeaderProps extends Pick<
   ModalContentProps,
-  'headingLevel' | 'description' | 'illustration' | 'title'
+  'headingLevel' | 'description' | 'illustration'
 > {
+  title: ModalAccessibleNameProps['title'];
   descriptionId: string;
   reserveCloseArea?: boolean;
 }
@@ -323,7 +324,7 @@ export const ModalContent = ({
       coverImageEnabled={coverImageEnabled}
       hasFooter={Boolean(footer)}
     >
-      {title ? (
+      {!untitledDrawer ? (
         <ModalContentHeader
           title={title}
           headingLevel={headingLevel}
@@ -363,10 +364,12 @@ export const ModalContent = ({
       role="dialog"
       aria-label={ariaLabel || title} // Using aria-labelledby would announce the heading after the dialog content.
       aria-describedby={
-        (title && description) || ariaDescription ? descriptionId : undefined
+        (!untitledDrawer && description) || ariaDescription
+          ? descriptionId
+          : undefined
       }
       aria-modal="true"
-      tabIndex={title ? undefined : -1}
+      tabIndex={untitledDrawer ? -1 : undefined}
       id={resolvedId}
       onKeyDown={handleEscape}
       position="relative"
