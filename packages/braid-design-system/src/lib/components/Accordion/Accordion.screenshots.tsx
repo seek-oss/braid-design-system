@@ -132,52 +132,43 @@ export const AccordionRegularWeight = {
 export const DefaultAccordionItem = {
   name: 'Default AccordionItem',
   render: () => (
-    <Accordion dividers={false}>
-      <AccordionItem value="item" label="Label">
-        <Text>Content</Text>
-      </AccordionItem>
-    </Accordion>
+    <AccordionItem label="Label">
+      <Text>Content</Text>
+    </AccordionItem>
   ),
 };
 
 export const AccordionItemWithSizeAndTone = {
   name: 'AccordionItem with size and tone',
   render: () => (
-    <Accordion dividers={false} size="small" tone="secondary">
-      <AccordionItem value="item" label="Label">
-        <Text size="small">Content</Text>
-      </AccordionItem>
-    </Accordion>
+    <AccordionItem label="Label" size="small" tone="secondary">
+      <Text size="small">Content</Text>
+    </AccordionItem>
   ),
 };
 
 export const AccordionItemWithRegularWeight = {
   name: 'AccordionItem with regular weight',
   render: () => (
-    <Accordion dividers={false} weight="regular">
-      <AccordionItem value="item" label="Label">
-        <Text>Content</Text>
-      </AccordionItem>
-    </Accordion>
+    <AccordionItem label="Label" weight="regular">
+      <Text>Content</Text>
+    </AccordionItem>
   ),
 };
 
 export const AccordionItemWithABadge = {
   name: 'AccordionItem with a badge',
   render: () => (
-    <Accordion dividers={false}>
-      <AccordionItem
-        value="item"
-        label="Label"
-        badge={
-          <Badge tone="promote" weight="strong">
-            Badge
-          </Badge>
-        }
-      >
-        <Text size="small">Content</Text>
-      </AccordionItem>
-    </Accordion>
+    <AccordionItem
+      label="Label"
+      badge={
+        <Badge tone="promote" weight="strong">
+          Badge
+        </Badge>
+      }
+    >
+      <Text size="small">Content</Text>
+    </AccordionItem>
   ),
 };
 
@@ -187,35 +178,27 @@ export const AccordionItemWithAnIconShouldFollowSize = {
     <Box paddingY="medium">
       <Stack space="medium">
         <Box background="surface">
-          <Accordion dividers={false} size="xsmall">
-            <AccordionItem value="item" label="Label" icon={<IconImage />}>
-              <Text size="small">Content</Text>
-            </AccordionItem>
-          </Accordion>
+          <AccordionItem label="Label" size="xsmall" icon={<IconImage />}>
+            <Text size="small">Content</Text>
+          </AccordionItem>
         </Box>
         <Divider />
         <Box background="surface">
-          <Accordion dividers={false} size="small">
-            <AccordionItem value="item" label="Label" icon={<IconImage />}>
-              <Text size="small">Content</Text>
-            </AccordionItem>
-          </Accordion>
+          <AccordionItem label="Label" size="small" icon={<IconImage />}>
+            <Text size="small">Content</Text>
+          </AccordionItem>
         </Box>
         <Divider />
         <Box background="surface">
-          <Accordion dividers={false} size="standard">
-            <AccordionItem value="item" label="Label" icon={<IconImage />}>
-              <Text size="small">Content</Text>
-            </AccordionItem>
-          </Accordion>
+          <AccordionItem label="Label" size="standard" icon={<IconImage />}>
+            <Text size="small">Content</Text>
+          </AccordionItem>
         </Box>
         <Divider />
         <Box background="surface">
-          <Accordion dividers={false} size="large">
-            <AccordionItem value="item" label="Label" icon={<IconImage />}>
-              <Text size="small">Content</Text>
-            </AccordionItem>
-          </Accordion>
+          <AccordionItem label="Label" size="large" icon={<IconImage />}>
+            <Text size="small">Content</Text>
+          </AccordionItem>
         </Box>
       </Stack>
     </Box>
@@ -231,11 +214,62 @@ export const VirtualTouchTarget = {
         [debugTouchableAttrForDataProp]: '',
       }}
     >
-      <Accordion dividers={false}>
-        <AccordionItem value="item" label="Accordion item">
-          <Placeholder height={80} />
-        </AccordionItem>
-      </Accordion>
+      <AccordionItem label="Accordion item" onToggle={() => {}}>
+        <Placeholder height={80} />
+      </AccordionItem>
+    </Box>
+  ),
+};
+
+export const AccordionItemWithAnIconShouldFollowTone = {
+  name: 'AccordionItem with an icon - should follow tone',
+  render: () => (
+    <Box paddingY="medium">
+      <Stack space="medium">
+        <Box background="surface">
+          <AccordionItem
+            label="Label"
+            size="xsmall"
+            tone="secondary"
+            icon={<IconImage />}
+          >
+            <Text size="small">Content</Text>
+          </AccordionItem>
+        </Box>
+        <Divider />
+        <Box background="surface">
+          <AccordionItem
+            label="Label"
+            size="small"
+            tone="secondary"
+            icon={<IconImage />}
+          >
+            <Text size="small">Content</Text>
+          </AccordionItem>
+        </Box>
+        <Divider />
+        <Box background="surface">
+          <AccordionItem
+            label="Label"
+            size="standard"
+            tone="secondary"
+            icon={<IconImage />}
+          >
+            <Text size="small">Content</Text>
+          </AccordionItem>
+        </Box>
+        <Divider />
+        <Box background="surface">
+          <AccordionItem
+            label="Label"
+            size="large"
+            tone="secondary"
+            icon={<IconImage />}
+          >
+            <Text size="small">Content</Text>
+          </AccordionItem>
+        </Box>
+      </Stack>
     </Box>
   ),
 };
@@ -255,46 +289,5 @@ export const SingleOpenAccordionDefaultValue = {
     <Accordion multiple={false} defaultValue="item-1">
       <Items />
     </Accordion>
-  ),
-};
-
-export const AccordionItemWithAnIconShouldFollowTone = {
-  name: 'AccordionItem with an icon - should follow tone',
-  render: () => (
-    <Box paddingY="medium">
-      <Stack space="medium">
-        <Box background="surface">
-          <Accordion dividers={false} size="xsmall" tone="secondary">
-            <AccordionItem value="item" label="Label" icon={<IconImage />}>
-              <Text size="small">Content</Text>
-            </AccordionItem>
-          </Accordion>
-        </Box>
-        <Divider />
-        <Box background="surface">
-          <Accordion dividers={false} size="small" tone="secondary">
-            <AccordionItem value="item" label="Label" icon={<IconImage />}>
-              <Text size="small">Content</Text>
-            </AccordionItem>
-          </Accordion>
-        </Box>
-        <Divider />
-        <Box background="surface">
-          <Accordion dividers={false} size="standard" tone="secondary">
-            <AccordionItem value="item" label="Label" icon={<IconImage />}>
-              <Text size="small">Content</Text>
-            </AccordionItem>
-          </Accordion>
-        </Box>
-        <Divider />
-        <Box background="surface">
-          <Accordion dividers={false} size="large" tone="secondary">
-            <AccordionItem value="item" label="Label" icon={<IconImage />}>
-              <Text size="small">Content</Text>
-            </AccordionItem>
-          </Accordion>
-        </Box>
-      </Stack>
-    </Box>
   ),
 };
