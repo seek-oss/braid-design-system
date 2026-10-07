@@ -236,12 +236,6 @@ export const AccordionItem: FC<AccordionItemProps> = ({
     };
   }, [animationDurationMs, expanded, finishAnimation, isAnimating]);
 
-  let heightClass: string | undefined;
-
-  if (!isAnimating) {
-    heightClass = expanded ? styles.contentOpen : styles.contentClosed;
-  }
-
   if (process.env.NODE_ENV !== 'production') {
     /**
      * Validate that consumers are not passing `data-*`props,
@@ -291,8 +285,11 @@ export const AccordionItem: FC<AccordionItemProps> = ({
         </Box>
       </Box>
       <Box
-        overflow={expanded && !isAnimating ? undefined : 'hidden'}
-        className={[styles.content, heightClass]}
+        className={{
+          [styles.content]: true,
+          [styles.contentOpen]: expanded && !isAnimating,
+          [styles.contentClosed]: !expanded && !isAnimating,
+        }}
         style={
           isAnimating
             ? {

@@ -16,19 +16,25 @@ export const focusRing = style([
   }),
 ]);
 
-export const content = style({
-  transition: 'height 200ms ease',
-  '@media': {
-    'screen and (prefers-reduced-motion: reduce)': {
-      transition: 'none',
+export const content = style([
+  atoms({ overflow: 'hidden' }),
+  {
+    transition: 'height 200ms ease',
+    '@media': {
+      'screen and (prefers-reduced-motion: reduce)': {
+        transition: 'none',
+      },
     },
   },
-});
+]);
 
-export const contentOpen = style({
-  height: 'auto',
-  transition: 'none',
-});
+export const contentOpen = style([
+  atoms({ overflow: 'visible' }),
+  {
+    height: 'auto',
+    transition: 'none',
+  },
+]);
 
 export const contentClosed = style({
   height: 0,
