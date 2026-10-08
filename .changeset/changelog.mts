@@ -1,20 +1,27 @@
 // Modified version of
 // https://github.com/atlassian/changesets/blob/master/packages/changelog-github/src/index.ts
 // changing the release line formatting
-const path = require('path');
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const { getInfo } = require('@changesets/get-github-info');
-const fs = require('fs-extra');
-const yaml = require('js-yaml');
+import { getCommitInfo } from '@changesets/get-github-info';
+import fs from 'fs-extra';
+import yaml from 'js-yaml';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const repo = 'seek-oss/braid-design-system';
 
-const parseSummary = (summary) => {
+interface ChangesetMeta {
+  new?: Record<string, string>;
+  updated?: Record<string, string>;
+}
+
+const parseSummary = (summary: string) => {
   const mdRegex = /\s*---([^]*?)\n\s*---\n([^]*)/;
 
   const execResult = mdRegex.exec(summary);
   if (!execResult) {
-    // No frontmatter found
     return {
       summary: summary.trim(),
     };
@@ -22,7 +29,7 @@ const parseSummary = (summary) => {
 
   const [, frontmatter, roughSummary] = execResult;
 
-  const data = yaml.load(frontmatter);
+  const data = yaml.load(frontmatter) as ChangesetMeta;
 
   return {
     summary: roughSummary.trim(),
@@ -30,17 +37,20 @@ const parseSummary = (summary) => {
   };
 };
 
+interface Changeset {
+  id: string;
+  commit?: string;
+  summary: string;
+}
+
 const changelogFunctions = {
-  getDependencyReleaseLine: async () => {
-    // Not implemented as Braid is not a monorepo
-    return '';
-  },
-  getReleaseLine: async (changeset) => {
+  getDependencyReleaseLine: async () => '',
+  getReleaseLine: async (changeset: Changeset) => {
     const { data, summary } = parseSummary(changeset.summary);
 
     const [firstLine, ...futureLines] = summary
       .split('\n')
-      .map((l) => l.trimRight());
+      .map((l) => l.trimEnd());
 
     if (data) {
       for (const key of Object.keys(data)) {
@@ -58,12 +68,12 @@ const changelogFunctions = {
     }
 
     if (changeset.commit) {
-      const { links } = await getInfo({
+      const commitInfo = await getCommitInfo({
         repo,
         commit: changeset.commit,
       });
 
-      const versionInfo = links.pull === null ? changeset.commit : links.pull;
+      const versionInfo = commitInfo?.pull?.markdownLink ?? changeset.commit;
 
       return `- ${firstLine} (${versionInfo})\n${futureLines
         .map((l) => `  ${l}`)
@@ -73,4 +83,4 @@ const changelogFunctions = {
   },
 };
 
-module.exports = changelogFunctions;
+export default changelogFunctions;
