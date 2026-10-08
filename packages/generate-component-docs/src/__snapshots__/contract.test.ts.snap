@@ -7,11 +7,13 @@ exports[`Accordion 1`] = `
     children: ReactNodeNoStrings
     data?: DataAttributeMap
     defaultValue?: 
-        | readonly string[]
         | string
+        | string[]
     dividers?: boolean
     multiple?: boolean
-    onChange?: (value: string[]) => void
+    onChange?: 
+        | (value: string) => void
+        | (value: string[]) => void
     size?: 
         | "large"
         | "small"
@@ -27,8 +29,8 @@ exports[`Accordion 1`] = `
         | "neutral"
         | "secondary"
     value?: 
-        | readonly string[]
         | string
+        | string[]
     weight?: 
         | "medium"
         | "regular"

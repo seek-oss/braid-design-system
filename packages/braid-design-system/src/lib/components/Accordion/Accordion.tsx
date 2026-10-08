@@ -34,25 +34,74 @@ const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 
 type AccordionValue = string | readonly string[];
 
-export interface AccordionProps {
+type ControlledStateSingle = {
+  /**
+   * Allow more than one item to be open. Defaults to true.
+   * Note: Will default to false next major release.
+   */
+  multiple: false;
+  /**
+   * Value of AccordionItem to expand.
+   */
+  value: string;
+  onChange: (value: string) => void;
+  defaultValue?: never;
+};
+type ControlledStateMultiple = {
+  /**
+   * Allow more than one item to be open. Defaults to true.
+   * Note: Will default to false next major release.
+   */
+  multiple?: true; // Optional due to current default
+  /**
+   * List of values of AccordionItems to expand.
+   */
+  value: string[];
+  onChange: (value: string[]) => void;
+  defaultValue?: never;
+};
+type UncontrolledStateSingle = {
+  /**
+   * Allow more than one item to be open. Defaults to true.
+   * Note: Will default to false next major release.
+   */
+  multiple: false;
+  /**
+   * Value of the AccordionItem to expand by default..
+   */
+  defaultValue?: string;
+  value?: never;
+  onChange?: never;
+};
+type UncontrolledStateMultiple = {
+  /**
+   * Allow more than one item to be open. Defaults to true.
+   * Note: Will default to false next major release.
+   */
+  multiple?: true; // Optional due to current default
+  /**
+   * List of values of AccordionItems to expand by default.
+   */
+  defaultValue?: string[];
+  value?: never;
+  onChange?: never;
+};
+
+export type AccordionProps = {
   children: ReactNodeNoStrings;
   dividers?: boolean;
   size?: AccordionContextValue['size'];
   tone?: AccordionContextValue['tone'];
   weight?: AccordionContextValue['weight'];
-  /**
-   * Allow more than one item to be open. Defaults to true.
-   * A later major release will default this to false.
-   * When false, `value` and `defaultValue` must be a string or a single-item array.
-   */
-  multiple?: boolean;
-  value?: AccordionValue;
-  defaultValue?: AccordionValue;
-  onChange?: (value: string[]) => void;
   /** @deprecated The spacing is now derived from the `size` prop and will be removed in a future release. */
   space?: RequiredResponsiveValue<(typeof validSpaceValues)[number]>;
   data?: DataAttributeMap;
-}
+} & (
+  | ControlledStateSingle
+  | ControlledStateMultiple
+  | UncontrolledStateSingle
+  | UncontrolledStateMultiple
+);
 
 export const defaultSize = 'large';
 
@@ -120,20 +169,20 @@ const assertUniqueItemValues = (children: AccordionProps['children']) => {
   }
 };
 
-export const Accordion: FC<AccordionProps> = ({
-  children,
-  size = defaultSize,
-  tone,
-  weight,
-  multiple = true,
-  value,
-  defaultValue,
-  onChange,
-  space: spaceProp,
-  dividers = true,
-  data,
-  ...restProps
-}) => {
+export const Accordion: FC<AccordionProps> = (props) => {
+  const {
+    children,
+    size = defaultSize,
+    tone,
+    weight,
+    multiple = true,
+    value,
+    defaultValue,
+    space: spaceProp,
+    dividers = true,
+    data,
+    ...restProps
+  } = props;
   assert(
     spaceProp === undefined ||
       Object.values(normalizeResponsiveValue(spaceProp)).every(
@@ -155,7 +204,7 @@ export const Accordion: FC<AccordionProps> = ({
     "Accordion 'defaultValue' cannot be set when 'value' is set. Use 'value' to control the open items, or 'defaultValue' for the initial state.",
   );
   assert(
-    value === undefined || typeof onChange === 'function',
+    value === undefined || typeof props.onChange === 'function',
     "Accordion 'onChange' must be set when 'value' is set.",
   );
 
@@ -163,7 +212,7 @@ export const Accordion: FC<AccordionProps> = ({
     multiple === false ||
     value !== undefined ||
     defaultValue !== undefined ||
-    onChange !== undefined;
+    props.onChange !== undefined;
 
   if (process.env.NODE_ENV !== 'production') {
     /**
@@ -186,10 +235,9 @@ export const Accordion: FC<AccordionProps> = ({
   );
   const openValues = normalizedValue ?? uncontrolledValue;
   const openValuesRef = useRef(openValues);
-  const onChangeRef = useRef(onChange);
-
+  const propsRef = useRef(props);
   openValuesRef.current = openValues;
-  onChangeRef.current = onChange;
+  propsRef.current = props;
 
   const toggleValue = useCallback(
     (itemValue: string) => {
@@ -209,7 +257,14 @@ export const Accordion: FC<AccordionProps> = ({
         setUncontrolledValue(next);
       }
 
-      onChangeRef.current?.(next);
+      // Narrowing on the un-destructured props so TypeScript
+      // can correlate `multiple` with the `onChange` signature.
+      const p = propsRef.current;
+      if (p.multiple === false) {
+        p.onChange?.(next[0] ?? '');
+      } else {
+        p.onChange?.(next);
+      }
     },
     [multiple, normalizedValue],
   );

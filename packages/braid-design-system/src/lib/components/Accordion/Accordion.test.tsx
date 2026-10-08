@@ -86,12 +86,35 @@ describe('Accordion', () => {
     expect(first).toHaveAttribute('aria-expanded', 'false');
   });
 
+  it('should fire onChange with the next open value', async () => {
+    const onChange = vi.fn();
+
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Accordion multiple={false} value="" onChange={onChange}>
+          <AccordionItem value="one" label="One">
+            First
+          </AccordionItem>
+          <AccordionItem value="two" label="Two">
+            Second
+          </AccordionItem>
+        </Accordion>
+      </BraidTestProvider>,
+    );
+
+    await userEvent.click(getByRole('button', { name: 'One' }));
+    expect(onChange).toHaveBeenCalledWith('one');
+
+    await userEvent.click(getByRole('button', { name: 'Two' }));
+    expect(onChange).toHaveBeenLastCalledWith('two');
+  });
+
   it('should fire onChange with the next open values', async () => {
     const onChange = vi.fn();
 
     const { getByRole } = render(
       <BraidTestProvider>
-        <Accordion multiple={false} onChange={onChange}>
+        <Accordion multiple={true} value={[]} onChange={onChange}>
           <AccordionItem value="one" label="One">
             First
           </AccordionItem>
@@ -218,7 +241,7 @@ describe('Accordion', () => {
   it('should accept a single-item array when multiple is false', () => {
     const { getByRole } = render(
       <BraidTestProvider>
-        <Accordion multiple={false} defaultValue={['one']}>
+        <Accordion multiple={false} defaultValue="one">
           <AccordionItem value="one" label="One">
             First
           </AccordionItem>
@@ -245,7 +268,7 @@ describe('Accordion', () => {
 
       return (
         <BraidTestProvider>
-          <Accordion value={open} onChange={setOpen}>
+          <Accordion value={open} onChange={(value) => setOpen(value)}>
             <AccordionItem value="one" label="One">
               First
             </AccordionItem>
@@ -276,10 +299,11 @@ describe('Accordion', () => {
     );
   });
 
-  it('should not allow more than one value when multiple is false', () => {
+  it('should not allow more than one defaultValue when multiple is false', () => {
     expect(() =>
       render(
         <BraidTestProvider>
+          {/* @ts-expect-error should error when 'defaultValue' is array and `multiple` is false */}
           <Accordion multiple={false} defaultValue={['one', 'two']}>
             <AccordionItem value="one" label="One">
               First
@@ -297,7 +321,8 @@ describe('Accordion', () => {
     expect(() =>
       render(
         <BraidTestProvider>
-          <Accordion value="one" defaultValue="one" onChange={() => {}}>
+          {/* @ts-expect-error should error as 'defaultValue' should not be set with `value` */}
+          <Accordion value={['one']} defaultValue={['one']} onChange={() => {}}>
             <AccordionItem value="one" label="One">
               First
             </AccordionItem>
@@ -311,7 +336,8 @@ describe('Accordion', () => {
     expect(() =>
       render(
         <BraidTestProvider>
-          <Accordion value="one">
+          {/* @ts-expect-error should error because 'onChange' is missing */}
+          <Accordion value={['one']}>
             <AccordionItem value="one" label="One">
               First
             </AccordionItem>
@@ -408,7 +434,7 @@ describe('Accordion', () => {
   it('should keep expanded content in document flow without JS measurement', () => {
     const html = renderToStaticMarkup(
       <BraidTestProvider>
-        <Accordion defaultValue="one">
+        <Accordion defaultValue={['one']}>
           <AccordionItem value="one" label="One">
             Visible
           </AccordionItem>

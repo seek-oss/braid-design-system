@@ -35,25 +35,17 @@ export const Accordion: FC<AccordionProps> = ({
   size,
   tone,
   weight,
-  multiple,
   ...restProps
-}) => {
-  const resolvedSpace =
-    typeof space === 'string' || Array.isArray(space)
-      ? filterSpace(space)
-      : undefined;
-
-  const sharedProps = {
-    ...restProps,
-    size: typeof size === 'boolean' ? undefined : size,
-    tone: typeof tone === 'boolean' ? undefined : tone,
-    weight: typeof weight === 'boolean' ? undefined : weight,
-    space: resolvedSpace,
-  };
-
-  if (multiple === false) {
-    return <BraidAccordion {...sharedProps} multiple={false} />;
-  }
-
-  return <BraidAccordion {...sharedProps} />;
-};
+}) => (
+  <BraidAccordion
+    size={typeof size === 'boolean' ? undefined : size}
+    tone={typeof tone === 'boolean' ? undefined : tone}
+    weight={typeof weight === 'boolean' ? undefined : weight}
+    space={
+      typeof space === 'string' || Array.isArray(space)
+        ? filterSpace(space)
+        : undefined
+    }
+    {...restProps}
+  />
+);
