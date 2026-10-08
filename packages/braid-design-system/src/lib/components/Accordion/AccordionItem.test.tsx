@@ -29,27 +29,27 @@ describe('AccordionItem', () => {
       ),
     ).toHTMLValidate({
       extends: ['html-validate:recommended'],
+      rules: {
+        // React generates `inert="true"` / `inert=""` which cannot be changed
+        'attribute-boolean-style': 'warn',
+      },
     });
   });
 
   it('should provide internal state by default', async () => {
-    const { getByRole, getByText } = render(
+    const { getByRole } = render(
       <BraidTestProvider>
         <AccordionItem label="Label">Content</AccordionItem>
       </BraidTestProvider>,
     );
 
     const button = getByRole('button');
-    const content = getByText('Content');
-
-    // Label should be inside button
-    expect(htmlToText(button.innerHTML)).toEqual('Label');
-
-    // 'aria-controls' should point at accordion content
-    expect(content.getAttribute('id')).toEqual(
-      button.getAttribute('aria-controls'),
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
     );
 
+    expect(htmlToText(button.innerHTML)).toEqual('Label');
+    expect(content?.id).toEqual(button.getAttribute('aria-controls'));
     expect(button.getAttribute('aria-expanded')).toEqual('false');
 
     await userEvent.click(button);
@@ -98,19 +98,15 @@ describe('AccordionItem', () => {
       );
     };
 
-    const { getByRole, getByText } = render(<TestCase />);
+    const { getByRole } = render(<TestCase />);
 
     const button = getByRole('button');
-    const content = getByText('Content');
-
-    // Label should be inside button
-    expect(htmlToText(button.innerHTML)).toEqual('Label');
-
-    // 'aria-controls' should point at accordion content
-    expect(content.getAttribute('id')).toEqual(
-      button.getAttribute('aria-controls'),
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
     );
 
+    expect(htmlToText(button.innerHTML)).toEqual('Label');
+    expect(content?.id).toEqual(button.getAttribute('aria-controls'));
     expect(button.getAttribute('aria-expanded')).toEqual('true');
 
     await userEvent.click(button);

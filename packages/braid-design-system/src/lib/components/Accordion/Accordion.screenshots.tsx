@@ -1,5 +1,4 @@
 import type { Meta } from '@storybook/react-webpack5';
-import { useState } from 'react';
 
 import {
   AccordionItem,
@@ -21,309 +20,113 @@ const meta = {
 
 export default meta;
 
+const Items = () => (
+  <>
+    <AccordionItem value="item-1" label="Accordion item 1">
+      <Placeholder height={80} />
+    </AccordionItem>
+    <AccordionItem value="item-2" label="Accordion item 2">
+      <Placeholder height={80} />
+    </AccordionItem>
+    <AccordionItem value="item-3" label="Accordion item 3">
+      <Placeholder height={80} />
+    </AccordionItem>
+  </>
+);
+
 export const DefaultAccordion = {
-  render: () => {
-    const [expanded1, setExpanded1] = useState(false);
-    const [expanded2, setExpanded2] = useState(true);
-    const [expanded3, setExpanded3] = useState(false);
-    return (
-      <Accordion>
-        <AccordionItem
-          label="Accordion item 1"
-          expanded={expanded1}
-          onToggle={setExpanded1}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 2"
-          expanded={expanded2}
-          onToggle={setExpanded2}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 3"
-          expanded={expanded3}
-          onToggle={setExpanded3}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-      </Accordion>
-    );
-  },
+  render: () => (
+    <Accordion defaultValue={['item-2']}>
+      <Items />
+    </Accordion>
+  ),
 };
 
 export const DefaultAccordionWithoutDividers = {
   name: 'Default Accordion without dividers',
-  render: () => {
-    const [expanded1, setExpanded1] = useState(false);
-    const [expanded2, setExpanded2] = useState(true);
-    const [expanded3, setExpanded3] = useState(false);
-    return (
-      <Accordion dividers={false}>
-        <AccordionItem
-          label="Accordion item 1"
-          expanded={expanded1}
-          onToggle={setExpanded1}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 2"
-          expanded={expanded2}
-          onToggle={setExpanded2}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 3"
-          expanded={expanded3}
-          onToggle={setExpanded3}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-      </Accordion>
-    );
-  },
+  render: () => (
+    <Accordion defaultValue={['item-2']} dividers={false}>
+      <Items />
+    </Accordion>
+  ),
 };
 
 export const StandardSecondaryAccordion = {
   name: 'Standard secondary Accordion',
-  render: () => {
-    const [expanded1, setExpanded1] = useState(false);
-    const [expanded2, setExpanded2] = useState(true);
-    const [expanded3, setExpanded3] = useState(false);
-    return (
-      <Accordion size="standard" tone="secondary">
-        <AccordionItem
-          label="Accordion item 1"
-          expanded={expanded1}
-          onToggle={setExpanded1}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 2"
-          expanded={expanded2}
-          onToggle={setExpanded2}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 3"
-          expanded={expanded3}
-          onToggle={setExpanded3}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-      </Accordion>
-    );
-  },
+  render: () => (
+    <Accordion defaultValue={['item-2']} size="standard" tone="secondary">
+      <Items />
+    </Accordion>
+  ),
 };
 
 export const StandardSecondaryAccordionWithoutDividers = {
   name: 'Standard secondary Accordion without dividers',
-  render: () => {
-    const [expanded1, setExpanded1] = useState(false);
-    const [expanded2, setExpanded2] = useState(true);
-    const [expanded3, setExpanded3] = useState(false);
-    return (
-      <Accordion size="standard" tone="secondary" dividers={false}>
-        <AccordionItem
-          label="Accordion item 1"
-          expanded={expanded1}
-          onToggle={setExpanded1}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 2"
-          expanded={expanded2}
-          onToggle={setExpanded2}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 3"
-          expanded={expanded3}
-          onToggle={setExpanded3}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-      </Accordion>
-    );
-  },
+  render: () => (
+    <Accordion
+      defaultValue={['item-2']}
+      size="standard"
+      tone="secondary"
+      dividers={false}
+    >
+      <Items />
+    </Accordion>
+  ),
 };
 
 export const SmallSecondaryAccordion = {
   name: 'Small secondary Accordion',
-  render: () => {
-    const [expanded1, setExpanded1] = useState(false);
-    const [expanded2, setExpanded2] = useState(true);
-    const [expanded3, setExpanded3] = useState(false);
-    return (
-      <Accordion size="small" tone="secondary">
-        <AccordionItem
-          label="Accordion item 1"
-          expanded={expanded1}
-          onToggle={setExpanded1}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 2"
-          expanded={expanded2}
-          onToggle={setExpanded2}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 3"
-          expanded={expanded3}
-          onToggle={setExpanded3}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-      </Accordion>
-    );
-  },
+  render: () => (
+    <Accordion defaultValue={['item-2']} size="small" tone="secondary">
+      <Items />
+    </Accordion>
+  ),
 };
 
 export const SmallSecondaryAccordionWithoutDividers = {
   name: 'Small secondary Accordion without dividers',
-  render: () => {
-    const [expanded1, setExpanded1] = useState(false);
-    const [expanded2, setExpanded2] = useState(true);
-    const [expanded3, setExpanded3] = useState(false);
-    return (
-      <Accordion size="small" tone="secondary" dividers={false}>
-        <AccordionItem
-          label="Accordion item 1"
-          expanded={expanded1}
-          onToggle={setExpanded1}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 2"
-          expanded={expanded2}
-          onToggle={setExpanded2}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 3"
-          expanded={expanded3}
-          onToggle={setExpanded3}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-      </Accordion>
-    );
-  },
+  render: () => (
+    <Accordion
+      defaultValue={['item-2']}
+      size="small"
+      tone="secondary"
+      dividers={false}
+    >
+      <Items />
+    </Accordion>
+  ),
 };
 
 export const XSmallSecondaryAccordion = {
   name: 'Xsmall secondary Accordion',
-  render: () => {
-    const [expanded1, setExpanded1] = useState(false);
-    const [expanded2, setExpanded2] = useState(true);
-    const [expanded3, setExpanded3] = useState(false);
-    return (
-      <Accordion size="xsmall" tone="secondary">
-        <AccordionItem
-          label="Accordion item 1"
-          expanded={expanded1}
-          onToggle={setExpanded1}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 2"
-          expanded={expanded2}
-          onToggle={setExpanded2}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 3"
-          expanded={expanded3}
-          onToggle={setExpanded3}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-      </Accordion>
-    );
-  },
+  render: () => (
+    <Accordion defaultValue={['item-2']} size="xsmall" tone="secondary">
+      <Items />
+    </Accordion>
+  ),
 };
 
 export const XSmallSecondaryAccordionWithoutDividers = {
   name: 'Xsmall secondary Accordion without dividers',
-  render: () => {
-    const [expanded1, setExpanded1] = useState(false);
-    const [expanded2, setExpanded2] = useState(true);
-    const [expanded3, setExpanded3] = useState(false);
-    return (
-      <Accordion size="xsmall" tone="secondary" dividers={false}>
-        <AccordionItem
-          label="Accordion item 1"
-          expanded={expanded1}
-          onToggle={setExpanded1}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 2"
-          expanded={expanded2}
-          onToggle={setExpanded2}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 3"
-          expanded={expanded3}
-          onToggle={setExpanded3}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-      </Accordion>
-    );
-  },
+  render: () => (
+    <Accordion
+      defaultValue={['item-2']}
+      size="xsmall"
+      tone="secondary"
+      dividers={false}
+    >
+      <Items />
+    </Accordion>
+  ),
 };
 
 export const AccordionRegularWeight = {
   name: 'Accordion regular weight',
-  render: () => {
-    const [expanded1, setExpanded1] = useState(false);
-    const [expanded2, setExpanded2] = useState(true);
-    const [expanded3, setExpanded3] = useState(false);
-    return (
-      <Accordion weight="regular">
-        <AccordionItem
-          label="Accordion item 1"
-          expanded={expanded1}
-          onToggle={setExpanded1}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 2"
-          expanded={expanded2}
-          onToggle={setExpanded2}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-        <AccordionItem
-          label="Accordion item 3"
-          expanded={expanded3}
-          onToggle={setExpanded3}
-        >
-          <Placeholder height={80} />
-        </AccordionItem>
-      </Accordion>
-    );
-  },
+  render: () => (
+    <Accordion defaultValue={['item-2']} weight="regular">
+      <Items />
+    </Accordion>
+  ),
 };
 
 export const DefaultAccordionItem = {
@@ -468,5 +271,23 @@ export const AccordionItemWithAnIconShouldFollowTone = {
         </Box>
       </Stack>
     </Box>
+  ),
+};
+
+export const SingleOpenAccordion = {
+  name: 'Accordion with a single open item',
+  render: () => (
+    <Accordion multiple={false}>
+      <Items />
+    </Accordion>
+  ),
+};
+
+export const SingleOpenAccordionDefaultValue = {
+  name: 'Accordion with a single open item and a default value',
+  render: () => (
+    <Accordion multiple={false} defaultValue="item-1">
+      <Items />
+    </Accordion>
   ),
 };

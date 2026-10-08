@@ -135,13 +135,13 @@ export const componentPreviews: Partial<
     Example: () =>
       source(
         <Accordion>
-          <AccordionItem label="Accordion item 1">
+          <AccordionItem value="item-1" label="Accordion item 1">
             <Text>This is the content of the accordion item.</Text>
           </AccordionItem>
-          <AccordionItem label="Accordion item 2">
+          <AccordionItem value="item-2" label="Accordion item 2">
             <Text>This is the content of the accordion item.</Text>
           </AccordionItem>
-          <AccordionItem label="Accordion item 3">
+          <AccordionItem value="item-3" label="Accordion item 3">
             <Text>This is the content of the accordion item.</Text>
           </AccordionItem>
         </Accordion>,
