@@ -20,24 +20,18 @@ const meta = {
 
 export default meta;
 
-const Items = () => (
-  <>
-    <AccordionItem value="item-1" label="Accordion item 1">
-      <Placeholder height={80} />
-    </AccordionItem>
-    <AccordionItem value="item-2" label="Accordion item 2">
-      <Placeholder height={80} />
-    </AccordionItem>
-    <AccordionItem value="item-3" label="Accordion item 3">
-      <Placeholder height={80} />
-    </AccordionItem>
-  </>
-);
+const accordionItemDefaults = (index: number) => ({
+  value: `item-${index}`,
+  label: `Accordion item ${index}`,
+  children: <Placeholder height={80} />,
+});
 
 export const DefaultAccordion = {
   render: () => (
     <Accordion defaultValue={['item-2']}>
-      <Items />
+      <AccordionItem {...accordionItemDefaults(1)} />
+      <AccordionItem {...accordionItemDefaults(2)} />
+      <AccordionItem {...accordionItemDefaults(3)} />
     </Accordion>
   ),
 };
@@ -46,7 +40,9 @@ export const DefaultAccordionWithoutDividers = {
   name: 'Default Accordion without dividers',
   render: () => (
     <Accordion defaultValue={['item-2']} dividers={false}>
-      <Items />
+      <AccordionItem {...accordionItemDefaults(1)} />
+      <AccordionItem {...accordionItemDefaults(2)} />
+      <AccordionItem {...accordionItemDefaults(3)} />
     </Accordion>
   ),
 };
@@ -55,7 +51,9 @@ export const StandardSecondaryAccordion = {
   name: 'Standard secondary Accordion',
   render: () => (
     <Accordion defaultValue={['item-2']} size="standard" tone="secondary">
-      <Items />
+      <AccordionItem {...accordionItemDefaults(1)} />
+      <AccordionItem {...accordionItemDefaults(2)} />
+      <AccordionItem {...accordionItemDefaults(3)} />
     </Accordion>
   ),
 };
@@ -69,7 +67,9 @@ export const StandardSecondaryAccordionWithoutDividers = {
       tone="secondary"
       dividers={false}
     >
-      <Items />
+      <AccordionItem {...accordionItemDefaults(1)} />
+      <AccordionItem {...accordionItemDefaults(2)} />
+      <AccordionItem {...accordionItemDefaults(3)} />
     </Accordion>
   ),
 };
@@ -78,7 +78,9 @@ export const SmallSecondaryAccordion = {
   name: 'Small secondary Accordion',
   render: () => (
     <Accordion defaultValue={['item-2']} size="small" tone="secondary">
-      <Items />
+      <AccordionItem {...accordionItemDefaults(1)} />
+      <AccordionItem {...accordionItemDefaults(2)} />
+      <AccordionItem {...accordionItemDefaults(3)} />
     </Accordion>
   ),
 };
@@ -92,7 +94,9 @@ export const SmallSecondaryAccordionWithoutDividers = {
       tone="secondary"
       dividers={false}
     >
-      <Items />
+      <AccordionItem {...accordionItemDefaults(1)} />
+      <AccordionItem {...accordionItemDefaults(2)} />
+      <AccordionItem {...accordionItemDefaults(3)} />
     </Accordion>
   ),
 };
@@ -101,7 +105,9 @@ export const XSmallSecondaryAccordion = {
   name: 'Xsmall secondary Accordion',
   render: () => (
     <Accordion defaultValue={['item-2']} size="xsmall" tone="secondary">
-      <Items />
+      <AccordionItem {...accordionItemDefaults(1)} />
+      <AccordionItem {...accordionItemDefaults(2)} />
+      <AccordionItem {...accordionItemDefaults(3)} />
     </Accordion>
   ),
 };
@@ -115,7 +121,9 @@ export const XSmallSecondaryAccordionWithoutDividers = {
       tone="secondary"
       dividers={false}
     >
-      <Items />
+      <AccordionItem {...accordionItemDefaults(1)} />
+      <AccordionItem {...accordionItemDefaults(2)} />
+      <AccordionItem {...accordionItemDefaults(3)} />
     </Accordion>
   ),
 };
@@ -124,7 +132,9 @@ export const AccordionRegularWeight = {
   name: 'Accordion regular weight',
   render: () => (
     <Accordion defaultValue={['item-2']} weight="regular">
-      <Items />
+      <AccordionItem {...accordionItemDefaults(1)} />
+      <AccordionItem {...accordionItemDefaults(2)} />
+      <AccordionItem {...accordionItemDefaults(3)} />
     </Accordion>
   ),
 };
@@ -278,7 +288,9 @@ export const SingleOpenAccordion = {
   name: 'Accordion with a single open item',
   render: () => (
     <Accordion multiple={false}>
-      <Items />
+      <AccordionItem {...accordionItemDefaults(1)} />
+      <AccordionItem {...accordionItemDefaults(2)} />
+      <AccordionItem {...accordionItemDefaults(3)} />
     </Accordion>
   ),
 };
@@ -287,7 +299,9 @@ export const SingleOpenAccordionDefaultValue = {
   name: 'Accordion with a single open item and a default value',
   render: () => (
     <Accordion multiple={false} defaultValue="item-1">
-      <Items />
+      <AccordionItem {...accordionItemDefaults(1)} />
+      <AccordionItem {...accordionItemDefaults(2)} />
+      <AccordionItem {...accordionItemDefaults(3)} />
     </Accordion>
   ),
 };
