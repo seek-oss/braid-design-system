@@ -1,5 +1,11 @@
 # @braid-design-system/docs-ui
 
+## 5.0.1
+
+### Patch Changes
+
+- **MenuButton:** Use the neutral text colour so the icon no longer inherits the browser's default button colour, e.g. blue on iOS Safari ([#2162](https://github.com/seek-oss/braid-design-system/pull/2162))
+
 ## 5.0.0
 
 ### Major Changes
