@@ -284,8 +284,8 @@ export const AccordionItemWithAnIconShouldFollowTone = {
   ),
 };
 
-export const SingleOpenAccordion = {
-  name: 'Accordion with a single open item',
+export const MultipleFalseNoValueOrDefault = {
+  name: 'Accordion with a multiple false, and no value or defaultValue',
   render: () => (
     <Accordion multiple={false}>
       <AccordionItem {...accordionItemDefaults(1)} />
@@ -295,13 +295,48 @@ export const SingleOpenAccordion = {
   ),
 };
 
-export const SingleOpenAccordionDefaultValue = {
-  name: 'Accordion with a single open item and a default value',
+export const MultipleFalseWithDefaultValue = {
+  name: 'Accordion with a multiple false and defaultValue of item-1',
   render: () => (
     <Accordion multiple={false} defaultValue="item-1">
-      <AccordionItem {...accordionItemDefaults(1)} />
-      <AccordionItem {...accordionItemDefaults(2)} />
-      <AccordionItem {...accordionItemDefaults(3)} />
+      <AccordionItem {...accordionItemDefaults(1)}>
+        <Box background="positiveLight">
+          <Placeholder height={80} label="Should be open" />
+        </Box>
+      </AccordionItem>
+      <AccordionItem {...accordionItemDefaults(2)}>
+        <Box background="critical">
+          <Placeholder height={80} label="Shouldnt be open" />
+        </Box>
+      </AccordionItem>
+      <AccordionItem {...accordionItemDefaults(3)}>
+        <Box background="critical">
+          <Placeholder height={80} label="Shouldnt be open" />
+        </Box>
+      </AccordionItem>
+    </Accordion>
+  ),
+};
+
+export const MultipleFalseWithValue = {
+  name: 'Accordion with a multiple false and value of item-3',
+  render: () => (
+    <Accordion multiple={false} value="item-3" onChange={() => {}}>
+      <AccordionItem {...accordionItemDefaults(1)}>
+        <Box background="critical">
+          <Placeholder height={80} label="Shouldnt be open" />
+        </Box>
+      </AccordionItem>
+      <AccordionItem {...accordionItemDefaults(2)}>
+        <Box background="critical">
+          <Placeholder height={80} label="Shouldnt be open" />
+        </Box>
+      </AccordionItem>
+      <AccordionItem {...accordionItemDefaults(3)}>
+        <Box background="positiveLight">
+          <Placeholder height={80} label="Should be open" />
+        </Box>
+      </AccordionItem>
     </Accordion>
   ),
 };
