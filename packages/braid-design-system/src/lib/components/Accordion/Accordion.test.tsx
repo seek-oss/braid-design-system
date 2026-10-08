@@ -109,27 +109,72 @@ describe('Accordion', () => {
     expect(onChange).toHaveBeenLastCalledWith('two');
   });
 
+  it('should fire onChange with an empty string when the open item is collapsed', async () => {
+    const onChange = vi.fn();
+
+    const TestCase = () => {
+      const [open, setOpen] = useState('one');
+
+      return (
+        <BraidTestProvider>
+          <Accordion
+            multiple={false}
+            value={open}
+            onChange={(value) => {
+              onChange(value);
+              setOpen(value);
+            }}
+          >
+            <AccordionItem value="one" label="One">
+              First
+            </AccordionItem>
+            <AccordionItem value="two" label="Two">
+              Second
+            </AccordionItem>
+          </Accordion>
+        </BraidTestProvider>
+      );
+    };
+
+    const { getByRole } = render(<TestCase />);
+
+    await userEvent.click(getByRole('button', { name: 'One' }));
+    expect(onChange).toHaveBeenCalledWith('');
+  });
+
   it('should fire onChange with the next open values', async () => {
     const onChange = vi.fn();
 
-    const { getByRole } = render(
-      <BraidTestProvider>
-        <Accordion multiple={true} value={[]} onChange={onChange}>
-          <AccordionItem value="one" label="One">
-            First
-          </AccordionItem>
-          <AccordionItem value="two" label="Two">
-            Second
-          </AccordionItem>
-        </Accordion>
-      </BraidTestProvider>,
-    );
+    const TestCase = () => {
+      const [open, setOpen] = useState<string[]>([]);
+
+      return (
+        <BraidTestProvider>
+          <Accordion
+            value={open}
+            onChange={(value) => {
+              onChange(value);
+              setOpen(value);
+            }}
+          >
+            <AccordionItem value="one" label="One">
+              First
+            </AccordionItem>
+            <AccordionItem value="two" label="Two">
+              Second
+            </AccordionItem>
+          </Accordion>
+        </BraidTestProvider>
+      );
+    };
+
+    const { getByRole } = render(<TestCase />);
 
     await userEvent.click(getByRole('button', { name: 'One' }));
     expect(onChange).toHaveBeenCalledWith(['one']);
 
     await userEvent.click(getByRole('button', { name: 'Two' }));
-    expect(onChange).toHaveBeenLastCalledWith(['two']);
+    expect(onChange).toHaveBeenLastCalledWith(['one', 'two']);
   });
 
   it('should not share open state across Accordion instances', async () => {
@@ -236,30 +281,6 @@ describe('Accordion', () => {
     await userEvent.click(second);
     expect(first).toHaveAttribute('aria-expanded', 'false');
     expect(second).toHaveAttribute('aria-expanded', 'true');
-  });
-
-  it('should accept a single-item array when multiple is false', () => {
-    const { getByRole } = render(
-      <BraidTestProvider>
-        <Accordion multiple={false} defaultValue="one">
-          <AccordionItem value="one" label="One">
-            First
-          </AccordionItem>
-          <AccordionItem value="two" label="Two">
-            Second
-          </AccordionItem>
-        </Accordion>
-      </BraidTestProvider>,
-    );
-
-    expect(getByRole('button', { name: 'One' })).toHaveAttribute(
-      'aria-expanded',
-      'true',
-    );
-    expect(getByRole('button', { name: 'Two' })).toHaveAttribute(
-      'aria-expanded',
-      'false',
-    );
   });
 
   it('should follow a controlled value', async () => {

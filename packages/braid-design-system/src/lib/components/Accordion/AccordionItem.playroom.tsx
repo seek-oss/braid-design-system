@@ -41,7 +41,7 @@ export const AccordionItem: FC<PlayroomAccordionItemProps> = ({
     <BraidAccordionItem
       value={typeof value === 'string' ? value : undefined}
       onToggle={handleChange}
-      expanded={managed ? state : undefined}
+      expanded={managed ? undefined : state}
       label={typeof label !== 'boolean' ? label : ''}
       size={typeof size === 'boolean' ? undefined : size}
       tone={typeof tone === 'boolean' ? undefined : tone}

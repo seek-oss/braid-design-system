@@ -34,6 +34,9 @@ const validSpaceValues = ['medium', 'large', 'xlarge'] as const;
 
 type AccordionValue = string | readonly string[];
 
+/** Open item value, or `""` when none are open. */
+type AccordionSingleValue = string | '';
+
 type ControlledStateSingle = {
   /**
    * Allow more than one item to be open. Defaults to true.
@@ -41,10 +44,10 @@ type ControlledStateSingle = {
    */
   multiple: false;
   /**
-   * Value of AccordionItem to expand.
+   * Value of the open AccordionItem, or `""` when none are open.
    */
-  value: string;
-  onChange: (value: string) => void;
+  value: AccordionSingleValue;
+  onChange: (value: AccordionSingleValue) => void;
   defaultValue?: never;
 };
 type ControlledStateMultiple = {
@@ -54,7 +57,7 @@ type ControlledStateMultiple = {
    */
   multiple?: true; // Optional due to current default
   /**
-   * List of values of AccordionItems to expand.
+   * Values of the open AccordionItems. Pass an empty array when none are open.
    */
   value: string[];
   onChange: (value: string[]) => void;
@@ -67,9 +70,9 @@ type UncontrolledStateSingle = {
    */
   multiple: false;
   /**
-   * Value of the AccordionItem to expand by default..
+   * Value of the AccordionItem to expand by default.
    */
-  defaultValue?: string;
+  defaultValue?: AccordionSingleValue;
   value?: never;
   onChange?: never;
 };
@@ -80,7 +83,7 @@ type UncontrolledStateMultiple = {
    */
   multiple?: true; // Optional due to current default
   /**
-   * List of values of AccordionItems to expand by default.
+   * Values of the AccordionItems to expand by default.
    */
   defaultValue?: string[];
   value?: never;

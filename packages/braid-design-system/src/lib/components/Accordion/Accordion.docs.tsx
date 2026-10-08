@@ -290,7 +290,11 @@ const docs: ComponentDocs = {
             If you&rsquo;d like to manage which items are open yourself, pass{' '}
             <Strong>value</Strong> and <Strong>onChange</Strong>. Give each{' '}
             <Strong>AccordionItem</Strong> a <Strong>value</Strong>, rather than
-            setting <Strong>expanded</Strong> on the item.
+            setting <Strong>expanded</Strong> on the item. When{' '}
+            <Strong>multiple</Strong> is <Strong>false</Strong>,{' '}
+            <Strong>value</Strong> is a string and <Strong>onChange</Strong>{' '}
+            receives a string. Use an empty string when no item is open.
+            Otherwise they are an array of strings.
           </Text>
         ),
         Example: ({ setDefaultState, getState, setState }) =>
