@@ -380,9 +380,9 @@ const docs: ComponentDocs = {
           <Text>
             A toast message can be dismissed via the close button, or
             automatically via the <Strong>duration</Strong> property.{' '}
-            <Strong>short</Strong> is 6 seconds and the default.{' '}
-            <Strong>long</Strong> is 10 seconds. <Strong>indefinite</Strong>{' '}
-            remains on screen until dismissed.
+            <Strong>short</Strong> is 6 seconds. <Strong>long</Strong> is 10
+            seconds and the default. <Strong>indefinite</Strong> remains on
+            screen until dismissed.
           </Text>
           <Text>
             Regardless of <Strong>duration</Strong>, a toast will not
