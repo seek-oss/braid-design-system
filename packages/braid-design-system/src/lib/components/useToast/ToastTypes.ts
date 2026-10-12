@@ -8,6 +8,8 @@ export interface ToastAction {
   onClick: () => void;
 }
 
+export type ToastDuration = 'short' | 'long' | 'indefinite';
+
 export interface InternalToast {
   /** Unique for each copy of a toast. Used to handle adding and removing from the DOM. */
   toastKey: string;
@@ -21,6 +23,7 @@ export interface InternalToast {
   action?: ToastAction;
   closeLabel?: string;
   data?: DataAttributeMap;
+  duration?: ToastDuration;
 }
 
 export type Toast = {
@@ -30,6 +33,7 @@ export type Toast = {
   action?: ToastAction;
   closeLabel?: string;
   data?: DataAttributeMap;
+  duration?: ToastDuration;
 } & (
   | {
       tone: 'positive' | 'critical';

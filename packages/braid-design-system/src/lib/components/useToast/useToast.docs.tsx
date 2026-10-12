@@ -16,7 +16,7 @@ import {
   List,
 } from '..';
 
-import Toast, { toastDuration } from './Toast';
+import Toast from './Toast';
 import { StaticToaster } from './Toaster';
 
 // For static Toast examples, keys do not need to be unique
@@ -376,19 +376,26 @@ const docs: ComponentDocs = {
     {
       label: 'Dismissing messages',
       description: (
-        <>
+        <Stack space="large">
           <Text>
-            {`A toast message can be dismissed via the close button or automatically after ${
-              toastDuration / 1000
-            } seconds.`}
+            A toast message can be dismissed via the close button, or
+            automatically via the <Strong>duration</Strong> property.{' '}
+            <Strong>short</Strong> is 6 seconds and the default.{' '}
+            <Strong>long</Strong> is 10 seconds. <Strong>indefinite</Strong>{' '}
+            remains on screen until dismissed.
           </Text>
-
+          <Text>
+            Regardless of <Strong>duration</Strong>, a toast will not
+            auto-dismiss while it has hover or keyboard focus. This ensures a
+            user actively reading or interacting with a toast is never cut off
+            mid-way.
+          </Text>
           <Text tone="promote" id="translations">
             <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
             <Strong>aria-label</Strong> for the close button can be customised
             by providing a <Strong>closeLabel</Strong> prop.
           </Text>
-        </>
+        </Stack>
       ),
       Example: ({ showToast }) => {
         const { code } = source(
@@ -427,6 +434,64 @@ const docs: ComponentDocs = {
           value,
         };
       },
+    },
+    {
+      label: 'Choosing a duration',
+      description: (
+        <Stack space="xlarge">
+          <Stack space="large">
+            <Text>
+              Use <Strong>short</Strong> if your message:
+            </Text>
+            <List space="large">
+              <Text>
+                is a simple confirmation the user doesn&rsquo;t need to act on
+              </Text>
+              <Text>
+                reads comfortably as a short phrase, roughly 10–12 words or
+                fewer
+              </Text>
+              <Text>
+                is reflected elsewhere in the UI, so nothing is lost if
+                it&rsquo;s missed
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>
+              Use <Strong>long</Strong> if your message:
+            </Text>
+            <List space="large">
+              <Text>includes an action, e.g. Undo or Retry</Text>
+              <Text>
+                is a little longer or less expected than a typical short
+                confirmation
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>
+              Use <Strong>indefinite</Strong> if your message:
+            </Text>
+            <List space="large">
+              <Text>is an error or warning the user needs to resolve</Text>
+              <Text>
+                is the only place the user can access this information
+              </Text>
+              <Text>
+                has an action important enough that it shouldn&rsquo;t risk
+                timing out before it&rsquo;s noticed
+              </Text>
+            </List>
+          </Stack>
+          <Text>
+            If you&rsquo;re unsure whether a message needs <Strong>long</Strong>{' '}
+            or <Strong>indefinite</Strong>, prefer <Strong>indefinite</Strong>.
+            A toast that outstays its welcome is a smaller problem than one that
+            disappears before a user has had a chance to read it.
+          </Text>
+        </Stack>
+      ),
     },
     {
       label: 'Deduping',

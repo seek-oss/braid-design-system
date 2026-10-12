@@ -20,7 +20,7 @@ import { IconPositive, IconCritical, IconClear } from '../icons';
 import { Overlay } from '../private/Overlay/Overlay';
 import buildDataAttributes from '../private/buildDataAttributes';
 
-import type { InternalToast, ToastAction } from './ToastTypes';
+import type { InternalToast, ToastAction, ToastDuration } from './ToastTypes';
 import { toastGap } from './consts';
 import { useTimeout } from './useTimeout';
 
@@ -32,7 +32,11 @@ const toneToIcon = {
   positive: IconPositive,
 };
 
-export const toastDuration = 10 * 1000;
+export const toastDuration: Record<ToastDuration, number | null> = {
+  short: 6 * 1000,
+  long: 10 * 1000,
+  indefinite: null,
+};
 
 const borderRadius = 'large';
 
@@ -84,6 +88,7 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
       toastKey,
       dedupeKey,
       message,
+      duration = 'long',
       description,
       tone,
       icon,
@@ -101,8 +106,10 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
       () => onClose(dedupeKey, toastKey),
       [onClose, dedupeKey, toastKey],
     );
+
+    const resolvedDuration = toastDuration[duration];
     const { stopTimeout, startTimeout } = useTimeout({
-      duration: toastDuration,
+      duration: resolvedDuration,
       onTimeout: remove,
     });
 
