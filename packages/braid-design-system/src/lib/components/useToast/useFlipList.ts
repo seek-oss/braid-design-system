@@ -197,11 +197,15 @@ export const useFlipList = (expanded: boolean) => {
                 to: px(fullHeight),
               },
               { property: 'transform', from: transform },
-              {
-                property: 'className',
-                from: expanded ? styles.collapsed : undefined,
-                to: undefined,
-              },
+              ...(element.classList.contains(styles.collapsed)
+                ? [
+                    {
+                      property: 'className' as const,
+                      from: styles.collapsed,
+                      to: undefined,
+                    },
+                  ]
+                : []),
             ],
           });
           break;
