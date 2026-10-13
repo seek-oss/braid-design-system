@@ -395,7 +395,7 @@ const docs: ComponentDocs = {
             <Strong>aria-label</Strong> for the close button can be customised
             by providing a <Strong>closeLabel</Strong> prop.
           </Text>
-        </Stack>
+        </>
       ),
       Example: ({ showToast }) => {
         const { code } = source(
