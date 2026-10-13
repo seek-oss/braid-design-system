@@ -379,9 +379,9 @@ const docs: ComponentDocs = {
         <>
           <Text>
             A toast message can be dismissed via the close button, or
-            automatically based on the <Strong>duration</Strong> property.{' '}
-            The default duration is <Strong>standard</Strong> (10 seconds), or
-            can be optionally set to either <Strong>short</Strong> (6 seconds) or{' '}
+            automatically based on the <Strong>duration</Strong> property. The
+            default duration is <Strong>standard</Strong> (10 seconds), or can
+            be optionally set to either <Strong>short</Strong> (6 seconds) or{' '}
             <Strong>indefinite</Strong> which remains on screen until dismissed.
           </Text>
           <Text>
@@ -458,7 +458,7 @@ const docs: ComponentDocs = {
                 is a simple confirmation the user doesn&rsquo;t need to act on
               </Text>
               <Text>
-                reads comfortably as a short phrase, roughly 10–12 words or
+                reads comfortably as a short phrase, roughly 10-12 words or
                 fewer
               </Text>
               <Text>
