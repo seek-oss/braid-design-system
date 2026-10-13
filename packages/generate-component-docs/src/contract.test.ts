@@ -68,3 +68,33 @@ it('expands the parameters of functions returned by hooks', () => {
   });
   expect(componentDocs).toHaveProperty('useResponsiveValue');
 });
+
+it('preserves DataAttributeMap for component data props', () => {
+  const componentsWithData = Object.keys(componentDocs).filter(
+    (name) =>
+      componentDocs[name].exportType === 'component' &&
+      componentDocs[name].props.props.data,
+  );
+
+  expect(componentsWithData.length).toBeGreaterThan(0);
+
+  for (const name of componentsWithData) {
+    expect({ [name]: componentDocs[name].props.props.data.type }).toEqual({
+      [name]: 'DataAttributeMap',
+    });
+  }
+});
+
+it('preserves DataAttributeMap in every Toast variant returned by useToast', () => {
+  const variants =
+    componentDocs.useToast.returnType.signatures[0].params[0].type.types;
+
+  expect(variants).toHaveLength(2);
+
+  for (const variant of variants) {
+    expect(variant.props.data).toMatchObject({
+      required: false,
+      type: 'DataAttributeMap',
+    });
+  }
+});

@@ -33,6 +33,7 @@ const stringAliases: Record<string, string> = {
   boolean: 'boolean',
   Element: 'Element',
   CSSProperties: 'CSSProperties',
+  DataAttributeMap: 'DataAttributeMap',
 };
 
 export interface NormalisedInterface {

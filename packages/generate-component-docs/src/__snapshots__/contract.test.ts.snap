@@ -9823,8 +9823,12 @@ exports[`useToast 1`] = `
             onClick: () => void
         }
         closeLabel?: string
-        data?: { [x: string]: string | number | boolean; }
+        data?: DataAttributeMap
         description?: string
+        duration?: 
+            | "indefinite"
+            | "short"
+            | "standard"
         key?: string
         message: string
         tone: 
@@ -9837,8 +9841,12 @@ exports[`useToast 1`] = `
             onClick: () => void
         }
         closeLabel?: string
-        data?: { [x: string]: string | number | boolean; }
+        data?: DataAttributeMap
         description?: string
+        duration?: 
+            | "indefinite"
+            | "short"
+            | "standard"
         icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
         key?: string
         message: string
