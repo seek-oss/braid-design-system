@@ -441,9 +441,19 @@ const docs: ComponentDocs = {
         <Stack space="xlarge">
           <Stack space="large">
             <Text>
+              <Strong>Standard</Strong> is set as a sensible default for most
+              usecases.
+            </Text>
+            <Text>
+              You may however decide to use <Strong>short</Strong> or{' '}
+              <Strong>indefinite</Strong> in specific cases.
+            </Text>
+          </Stack>
+          <Stack space="large">
+            <Text>
               Use <Strong>short</Strong> if your message:
             </Text>
-            <List space="large">
+            <List space="medium">
               <Text>
                 is a simple confirmation the user doesn&rsquo;t need to act on
               </Text>
@@ -459,21 +469,9 @@ const docs: ComponentDocs = {
           </Stack>
           <Stack space="large">
             <Text>
-              Use <Strong>standard</Strong> if your message:
-            </Text>
-            <List space="large">
-              <Text>includes an action, e.g. Undo or Retry</Text>
-              <Text>
-                is a little longer or less expected than a typical short
-                confirmation
-              </Text>
-            </List>
-          </Stack>
-          <Stack space="large">
-            <Text>
               Use <Strong>indefinite</Strong> if your message:
             </Text>
-            <List space="large">
+            <List space="medium">
               <Text>is an error or warning the user needs to resolve</Text>
               <Text>
                 is the only place the user can access this information
