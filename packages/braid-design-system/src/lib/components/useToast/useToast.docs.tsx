@@ -376,7 +376,7 @@ const docs: ComponentDocs = {
     {
       label: 'Dismissing messages',
       description: (
-        <Stack space="large">
+        <>
           <Text>
             A toast message can be dismissed via the close button, or
             automatically based on the <Strong>duration</Strong> property.{' '}
