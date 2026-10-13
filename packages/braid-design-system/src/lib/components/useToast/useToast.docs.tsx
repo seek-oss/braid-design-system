@@ -380,7 +380,7 @@ const docs: ComponentDocs = {
           <Text>
             A toast message can be dismissed via the close button, or
             automatically via the <Strong>duration</Strong> property.{' '}
-            <Strong>short</Strong> is 6 seconds. <Strong>long</Strong> is 10
+            <Strong>short</Strong> is 6 seconds. <Strong>standard</Strong> is 10
             seconds and the default. <Strong>indefinite</Strong> remains on
             screen until dismissed.
           </Text>
@@ -459,7 +459,7 @@ const docs: ComponentDocs = {
           </Stack>
           <Stack space="large">
             <Text>
-              Use <Strong>long</Strong> if your message:
+              Use <Strong>standard</Strong> if your message:
             </Text>
             <List space="large">
               <Text>includes an action, e.g. Undo or Retry</Text>
@@ -485,10 +485,10 @@ const docs: ComponentDocs = {
             </List>
           </Stack>
           <Text>
-            If you&rsquo;re unsure whether a message needs <Strong>long</Strong>{' '}
-            or <Strong>indefinite</Strong>, prefer <Strong>indefinite</Strong>.
-            A toast that outstays its welcome is a smaller problem than one that
-            disappears before a user has had a chance to read it.
+            For almost all uses, <Strong>standard</Strong> is the recommended
+            duration. If unsure whether to use short or standard, prefer
+            standard. A toast that outstays its welcome is a smaller problem
+            than one that disappears before a user has had a chance to read it.
           </Text>
         </Stack>
       ),

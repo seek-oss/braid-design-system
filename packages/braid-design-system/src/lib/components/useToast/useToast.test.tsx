@@ -540,7 +540,7 @@ describe('useToast', () => {
       vi.useRealTimers();
     });
 
-    it('clears short and long toasts at their respective times while indefinite toasts remain visible', async () => {
+    it('clears short and standard toasts at their respective times while indefinite toasts remain visible', async () => {
       const exitDelay = 200;
 
       const { showToast, queryAllToasts, findToastContentByMessage } =
@@ -549,7 +549,11 @@ describe('useToast', () => {
       expect(queryAllToasts()).toHaveLength(0);
 
       showToast({ tone: 'neutral', message: 'Short', duration: 'short' });
-      showToast({ tone: 'neutral', message: 'Long', duration: 'long' });
+      showToast({
+        tone: 'neutral',
+        message: 'Standard',
+        duration: 'standard',
+      });
       showToast({
         tone: 'neutral',
         message: 'Indefinite',
@@ -563,12 +567,12 @@ describe('useToast', () => {
       });
 
       expect(queryAllToasts()).toHaveLength(2);
-      expect(findToastContentByMessage('Long')).toBeTruthy();
+      expect(findToastContentByMessage('Standard')).toBeTruthy();
       expect(findToastContentByMessage('Indefinite')).toBeTruthy();
 
       act(() => {
         vi.advanceTimersByTime(
-          toastDuration.long! - toastDuration.short! + exitDelay,
+          toastDuration.standard! - toastDuration.short! + exitDelay,
         );
       });
       expect(queryAllToasts()).toHaveLength(1);

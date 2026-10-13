@@ -34,7 +34,7 @@ const toneToIcon = {
 
 export const toastDuration: Record<ToastDuration, number | null> = {
   short: 6 * 1000,
-  long: 10 * 1000,
+  standard: 10 * 1000,
   indefinite: null,
 };
 
@@ -88,7 +88,7 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>(
       toastKey,
       dedupeKey,
       message,
-      duration = 'long',
+      duration = 'standard',
       description,
       tone,
       icon,

@@ -8,7 +8,7 @@ export interface ToastAction {
   onClick: () => void;
 }
 
-export type ToastDuration = 'short' | 'long' | 'indefinite';
+export type ToastDuration = 'short' | 'standard' | 'indefinite';
 
 export interface InternalToast {
   /** Unique for each copy of a toast. Used to handle adding and removing from the DOM. */
