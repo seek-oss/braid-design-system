@@ -215,9 +215,7 @@ export const DocNavigation = () => {
   const docsPath = isIconFoundationDoc
     ? iconDocsPath(docsName)
     : `/${docsType}/${docsName}`;
-  const showComponentProps =
-    (docsType === 'components' || isIconFoundationDoc) &&
-    docsName.indexOf('use') !== 0;
+  const showComponentProps = docsType === 'components' || isIconFoundationDoc;
 
   let snippets: DocsProviderContextValue['snippets'] = [];
   let history: DocsProviderContextValue['history'] = [];
@@ -282,8 +280,10 @@ export const DocNavigation = () => {
           <DocNavigationBar title="Subnavigation">
             <DocNavigationItem href={docsPath}>Details</DocNavigationItem>
             {showComponentProps ? (
-              <DocNavigationItem href={`${docsPath}/props`}>
-                Props
+              <DocNavigationItem
+                href={`${docsPath}/${docsName.startsWith('use') ? 'api' : 'props'}`}
+              >
+                {docsName.startsWith('use') ? 'API' : 'Props'}
               </DocNavigationItem>
             ) : null}
             <DocNavigationItem

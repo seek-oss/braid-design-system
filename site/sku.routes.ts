@@ -130,7 +130,9 @@ const routes: SkuConfig['routes'] = [
       { route: `/components/${name}` },
       { route: `/components/${name}/releases` },
       { route: `/components/${name}/snippets` },
-      !name.startsWith('use') ? { route: `/components/${name}/props` } : null,
+      {
+        route: `/components/${name}/${name.startsWith('use') ? 'api' : 'props'}`,
+      },
     ].filter((route) => route !== null),
   ),
   { route: '/styles', name: 'styles' },

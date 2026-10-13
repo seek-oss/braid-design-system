@@ -10,3 +10,61 @@ it.each(Object.keys(componentDocs))('%s', (componentName) => {
 
   expect(componentProps).toMatchSnapshot();
 });
+
+it('expands the parameters of functions returned by hooks', () => {
+  expect(componentDocs.useToast).toMatchObject({
+    exportType: 'hook',
+    returnType: {
+      type: 'function',
+      signatures: [
+        {
+          params: [
+            {
+              name: 'toast',
+              type: {
+                type: 'union',
+                types: expect.arrayContaining([
+                  expect.objectContaining({
+                    type: 'interface',
+                    props: expect.objectContaining({
+                      key: expect.objectContaining({
+                        required: false,
+                        type: 'string',
+                      }),
+                      message: expect.objectContaining({
+                        required: true,
+                        type: 'string',
+                      }),
+                      action: expect.objectContaining({
+                        type: expect.objectContaining({
+                          type: 'interface',
+                          props: expect.objectContaining({
+                            label: expect.objectContaining({ type: 'string' }),
+                            onClick: expect.objectContaining({
+                              type: {
+                                type: 'function',
+                                signatures: [
+                                  {
+                                    typeParams: [],
+                                    params: [],
+                                    returnType: 'void',
+                                  },
+                                ],
+                              },
+                            }),
+                          }),
+                        }),
+                      }),
+                    }),
+                  }),
+                ]),
+              },
+            },
+          ],
+          returnType: 'void',
+        },
+      ],
+    },
+  });
+  expect(componentDocs).toHaveProperty('useResponsiveValue');
+});

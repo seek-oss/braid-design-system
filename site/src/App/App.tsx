@@ -339,6 +339,7 @@ export const App = () => {
                 <Route path=":docsType/:docsName" element={<DocNavigation />}>
                   <Route path="" element={<DocDetails />} />
                   <Route path="props" element={<DocProps />} />
+                  <Route path="api" element={<DocProps />} />
                   <Route path="releases" element={<DocReleases />} />
                   <Route path="snippets" element={<DocSnippets />} />
                 </Route>

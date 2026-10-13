@@ -15,6 +15,22 @@ export const typeSerializer = {
         .sort()
         .map((subType) => `\n${indent(`| ${serializer(subType)}`)}`)
         .join('');
+    } else if (type.type === 'function') {
+      return type.signatures
+        .map(({ typeParams, params, returnType }) => {
+          const generics = typeParams.length
+            ? `<${typeParams.join(', ')}>`
+            : '';
+          const parameters = params
+            .map(
+              ({ name, optional, rest, type: paramType }) =>
+                `${rest ? '...' : ''}${name}${optional ? '?' : ''}: ${serializer(paramType)}`,
+            )
+            .join(', ');
+
+          return `${generics}(${parameters}) => ${serializer(returnType)}`;
+        })
+        .join('\n');
     } else if (type.type === 'interface') {
       return `{${Object.values(type.props)
         .sort((a, b) => a.propName.localeCompare(b.propName))
@@ -33,7 +49,7 @@ export const typeSerializer = {
 
   test: (val: any) => {
     if (typeof val === 'object') {
-      return ['union', 'interface', 'alias'].includes(val.type);
+      return ['union', 'interface', 'alias', 'function'].includes(val.type);
     }
 
     return typeof val === 'string';

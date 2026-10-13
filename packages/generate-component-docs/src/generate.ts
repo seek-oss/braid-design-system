@@ -9,6 +9,9 @@ import ts, { type CompilerOptions } from 'typescript';
 const require = createRequire(import.meta.url);
 
 const MAX_DEPTH = 10;
+const HOOK_MAX_DEPTH = 20;
+const componentTypeOptions = { maxDepth: MAX_DEPTH, expandFunctions: false };
+const hookTypeOptions = { maxDepth: HOOK_MAX_DEPTH, expandFunctions: true };
 const aliasWhitelist = ['ClassValue'];
 const propBlacklist = ['key'];
 
@@ -51,6 +54,19 @@ export type NormalisedPropType =
   | string
   | { type: 'union'; types: NormalisedPropType[] }
   | { type: 'alias'; alias: string; params: NormalisedPropType[] }
+  | {
+      type: 'function';
+      signatures: Array<{
+        typeParams: string[];
+        params: Array<{
+          name: string;
+          optional: boolean;
+          rest: boolean;
+          type: NormalisedPropType;
+        }>;
+        returnType: NormalisedPropType;
+      }>;
+    }
   | NormalisedInterface;
 
 interface ComponentDoc {
@@ -86,8 +102,8 @@ const unionAliases = {
 
 export type ExportDoc = ComponentDoc | HookDoc;
 
-function extractTypeInfo(file: string, options: CompilerOptions) {
-  const program = ts.createProgram([file], options);
+function extractTypeInfo(file: string, compilerOptions: CompilerOptions) {
+  const program = ts.createProgram([file], compilerOptions);
 
   const checker = program.getTypeChecker();
 
@@ -133,6 +149,7 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
     propsObj: ts.Symbol,
     depth: number,
     extractComments?: boolean,
+    options = componentTypeOptions,
   ): NormalisedInterface {
     let props = propsType.getProperties();
 
@@ -154,7 +171,8 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
           .filter(
             (prop) =>
               !(
-                propBlacklist.includes(prop.getName()) ||
+                (!options.expandFunctions &&
+                  propBlacklist.includes(prop.getName())) ||
                 prop.getName().startsWith('__@')
               ),
           )
@@ -190,8 +208,12 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
             const isOptional =
               (prop.getFlags() & ts.SymbolFlags.Optional) !== 0;
 
+            const propDeclaration =
+              prop.valueDeclaration ?? prop.declarations?.[0];
             const typeAlias = checker.typeToString(
-              checker.getTypeAtLocation(resolveDeclaration(prop)),
+              propDeclaration
+                ? checker.getTypeAtLocation(propDeclaration)
+                : propType,
             );
 
             return {
@@ -200,7 +222,7 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
                 required: !isOptional,
                 type: aliasWhitelist.includes(typeAlias)
                   ? typeAlias
-                  : normaliseType(propType, propsObj, depth + 1),
+                  : normaliseType(propType, propsObj, depth + 1, options),
                 deprecated,
                 tags,
                 description,
@@ -215,6 +237,7 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
     type: ts.Type,
     propsObj: ts.Symbol,
     depth: number,
+    options = componentTypeOptions,
   ): NormalisedPropType {
     const typeString = checker.typeToString(type);
 
@@ -222,7 +245,7 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
       return stringAliases[typeString];
     }
 
-    if (depth > MAX_DEPTH) {
+    if (depth > options.maxDepth) {
       console.warn(
         'Max depth reached normalising type. Return builtin string representation',
       );
@@ -236,7 +259,7 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
         return {
           params: type.aliasTypeArguments
             ? type.aliasTypeArguments.map((aliasArg) =>
-                normaliseType(aliasArg, propsObj, depth + 1),
+                normaliseType(aliasArg, propsObj, depth + 1, options),
               )
             : [],
           alias,
@@ -266,13 +289,78 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
       return {
         type: 'union',
         types: type.types.map((unionItem) =>
-          normaliseType(unionItem, propsObj, depth + 1),
+          normaliseType(unionItem, propsObj, depth + 1, options),
         ),
       };
     }
 
-    if (type.isClassOrInterface()) {
-      return normalizeInterface(type, propsObj, depth + 1);
+    if (
+      options.expandFunctions &&
+      type
+        .getSymbol()
+        ?.declarations?.some((declaration) =>
+          program.isSourceFileFromExternalLibrary(declaration.getSourceFile()),
+        )
+    ) {
+      return typeString;
+    }
+
+    const callSignatures = type.getCallSignatures();
+
+    if (options.expandFunctions && callSignatures.length) {
+      return {
+        type: 'function',
+        signatures: callSignatures.map((signature) => ({
+          typeParams:
+            signature.typeParameters?.map((param) =>
+              checker.typeToString(param),
+            ) ?? [],
+          params: signature.getParameters().map((param) => {
+            const declaration = resolveDeclaration(param);
+
+            return {
+              name: param.getName(),
+              optional:
+                ts.isParameter(declaration) &&
+                Boolean(declaration.questionToken || declaration.initializer),
+              rest:
+                ts.isParameter(declaration) &&
+                Boolean(declaration.dotDotDotToken),
+              type: normaliseType(
+                checker.getTypeOfSymbolAtLocation(param, declaration),
+                param,
+                depth + 1,
+                options,
+              ),
+            };
+          }),
+          returnType: normaliseType(
+            signature.getReturnType(),
+            propsObj,
+            depth + 1,
+            options,
+          ),
+        })),
+      };
+    }
+
+    if (
+      type.isClassOrInterface() ||
+      (options.expandFunctions && type.isIntersection()) ||
+      (options.expandFunctions &&
+        type.flags & ts.TypeFlags.Object &&
+        !checker.isArrayType(type) &&
+        !checker.isTupleType(type))
+    ) {
+      if (options.expandFunctions && !type.getProperties().length) {
+        return checker.typeToString(
+          type,
+          undefined,
+          ts.TypeFormatFlags.InTypeAlias,
+        );
+      }
+
+      return normalizeInterface(type, propsObj, depth + 1, false, options);
     }
 
     const numericalUnions = typeString.match(/\d([0-9|\s]+)\d/g);
@@ -324,9 +412,14 @@ function extractTypeInfo(file: string, options: CompilerOptions) {
           resolveDeclaration(exp),
         );
 
-        return normaliseType(paramType, exp, 0);
+        return normaliseType(paramType, exp, 0, hookTypeOptions);
       }),
-      returnType: normaliseType(callSignature.getReturnType(), exp, 0),
+      returnType: normaliseType(
+        callSignature.getReturnType(),
+        exp,
+        0,
+        hookTypeOptions,
+      ),
     };
   }
 
