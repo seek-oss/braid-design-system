@@ -21,5 +21,11 @@
     "customConditions": ["braid-dev"],
     "types": ["vitest/globals"]
   },
-  "include": ["./integration", "./storybook", "./scripts", "vitest.config.ts"]
+  "include": [
+    "./integration",
+    "./storybook",
+    "./scripts",
+    ".changeset/changelog.mts",
+    "vitest.config.ts"
+  ]
 }

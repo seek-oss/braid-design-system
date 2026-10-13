@@ -1,5 +1,5 @@
 ---
-'braid-design-system': patch
+'braid-design-system': minor
 ---
 
 ---

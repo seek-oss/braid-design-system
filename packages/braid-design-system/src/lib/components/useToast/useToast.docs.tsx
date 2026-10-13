@@ -376,13 +376,13 @@ const docs: ComponentDocs = {
     {
       label: 'Dismissing messages',
       description: (
-        <Stack space="large">
+        <>
           <Text>
             A toast message can be dismissed via the close button, or
-            automatically via the <Strong>duration</Strong> property.{' '}
-            <Strong>short</Strong> is 6 seconds. <Strong>standard</Strong> is 10
-            seconds and the default. <Strong>indefinite</Strong> remains on
-            screen until dismissed.
+            automatically based on the <Strong>duration</Strong> property.{' '}
+            The default duration is <Strong>standard</Strong> (10 seconds), or
+            can be optionally set to either <Strong>short</Strong> (6 seconds) or{' '}
+            <Strong>indefinite</Strong> which remains on screen until dismissed.
           </Text>
           <Text>
             Regardless of <Strong>duration</Strong>, a toast will not
@@ -395,7 +395,7 @@ const docs: ComponentDocs = {
             <Strong>aria-label</Strong> for the close button can be customised
             by providing a <Strong>closeLabel</Strong> prop.
           </Text>
-        </Stack>
+        </>
       ),
       Example: ({ showToast }) => {
         const { code } = source(

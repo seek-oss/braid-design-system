@@ -4,10 +4,16 @@ import {
   type FC,
   type ReactElement,
   type ReactNode,
+  type TransitionEvent,
   cloneElement,
+  useCallback,
   useContext,
+  useLayoutEffect,
+  useRef,
+  useState,
 } from 'react';
 
+import { useFallbackId } from '../../hooks/useFallbackId';
 import type { BadgeProps } from '../Badge/Badge';
 import { Box } from '../Box/Box';
 import {
@@ -16,7 +22,6 @@ import {
   useDisclosure,
 } from '../Disclosure/useDisclosure';
 import { Spread } from '../Spread/Spread';
-import { Stack } from '../Stack/Stack';
 import { type TextProps, Text } from '../Text/Text';
 import { IconChevron } from '../icons';
 import { badgeSlotSpace } from '../private/badgeSlotSpace';
@@ -40,6 +45,26 @@ const itemSpaceForSize = {
   large: 'medium',
 } as const;
 
+const minDurationMs = 200;
+const maxDurationMs = 500;
+const pixelsPerSecond = 320;
+
+const durationMsForHeight = (height: number) =>
+  Math.round(
+    Math.min(
+      maxDurationMs,
+      Math.max(minDurationMs, (height / pixelsPerSecond) * 1000),
+    ),
+  );
+
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const isHeightTransition = (event: TransitionEvent<HTMLElement>) =>
+  event.propertyName === 'height' && event.target === event.currentTarget;
+
 export interface AccordionItemBaseProps {
   label: string;
   children: ReactNode;
@@ -49,6 +74,11 @@ export interface AccordionItemBaseProps {
   icon?: TextProps['icon'];
   data?: DataAttributeMap;
   badge?: ReactElement<BadgeProps> | null;
+  /**
+   * Key used when Accordion owns the open items.
+   * Required when `multiple` is `false`, or when `value`, `defaultValue`, or `onChange` is set on Accordion.
+   */
+  value?: string;
 }
 
 export type AccordionItemProps = AccordionItemBaseProps & UseDisclosureProps;
@@ -56,6 +86,7 @@ export type AccordionItemStateProps = DisclosureStateProps;
 
 export const AccordionItem: FC<AccordionItemProps> = ({
   id,
+  value,
   label,
   children,
   badge,
@@ -64,9 +95,12 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   weight: weightProp,
   icon,
   data,
+  expanded: expandedProp,
+  onToggle,
   ...restProps
 }) => {
   const accordionContext = useContext(AccordionContext);
+  const managed = Boolean(accordionContext?.managed);
 
   assert(
     !(accordionContext && sizeProp),
@@ -80,12 +114,19 @@ export const AccordionItem: FC<AccordionItemProps> = ({
     !(accordionContext && weightProp),
     'Weight cannot be set on AccordionItem when inside Accordion. Weight should be set on Accordion instead.',
   );
-
   assert(
     toneProp === undefined || validTones.includes(toneProp),
     `The 'tone' prop should be one of the following: ${validTones
-      .map((x) => `"${x}"`)
+      .map((tone) => `"${tone}"`)
       .join(', ')}`,
+  );
+  assert(
+    !managed || (typeof value === 'string' && value.length > 0),
+    "AccordionItem 'value' must be a non-empty string when Accordion controls which items are open.",
+  );
+  assert(
+    !(managed && expandedProp !== undefined),
+    "expanded cannot be set on AccordionItem when Accordion controls which items are open. Use 'value' and 'onChange' on Accordion.",
   );
 
   assert(
@@ -108,23 +149,92 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   const tone = accordionContext?.tone ?? toneProp ?? 'neutral';
   const weight = accordionContext?.weight ?? weightProp ?? 'medium';
   const itemSpace = itemSpaceForSize[size] ?? 'none';
+  const contentRef = useRef<HTMLElement>(null);
+  const contentSizeRef = useRef<HTMLElement>(null);
 
   assert(
     typeof label === 'undefined' || typeof label === 'string',
     'Label must be a string',
   );
 
+  const resolvedId = useFallbackId(id);
+  let disclosureState: DisclosureStateProps = { onToggle };
+
+  if (managed && accordionContext && value) {
+    disclosureState = {
+      expanded: accordionContext.openValues.includes(value),
+      onToggle: (nextExpanded: boolean) => {
+        accordionContext.toggleValue(value);
+        onToggle?.(nextExpanded);
+      },
+    };
+  } else if (expandedProp !== undefined) {
+    disclosureState = {
+      expanded: expandedProp,
+      onToggle,
+    };
+  }
+
   const { expanded, buttonProps, contentProps } = useDisclosure({
-    id,
-    ...(restProps.expanded !== undefined
-      ? {
-          onToggle: restProps.onToggle,
-          expanded: restProps.expanded,
-        }
-      : {
-          onToggle: restProps.onToggle,
-        }),
+    id: resolvedId,
+    ...disclosureState,
   });
+
+  const [trackedExpanded, setTrackedExpanded] = useState(expanded);
+  const [animatedHeight, setAnimatedHeight] = useState<number | null>(null);
+  const [animationDurationMs, setAnimationDurationMs] = useState(minDurationMs);
+  const isAnimating = animatedHeight !== null;
+
+  if (expanded !== trackedExpanded) {
+    setTrackedExpanded(expanded);
+
+    if (prefersReducedMotion()) {
+      setAnimatedHeight(null);
+    } else {
+      const height = contentSizeRef.current?.scrollHeight ?? 0;
+      setAnimatedHeight(height);
+      setAnimationDurationMs(durationMsForHeight(height));
+    }
+  }
+
+  const finishAnimation = useCallback(() => {
+    setAnimatedHeight(null);
+  }, []);
+
+  const finishHeightTransition = useCallback(
+    (event: TransitionEvent<HTMLElement>) => {
+      if (isHeightTransition(event)) {
+        finishAnimation();
+      }
+    },
+    [finishAnimation],
+  );
+
+  useLayoutEffect(() => {
+    // Remove in favour of direct DOM attribute when we drop React 18 support
+    contentRef.current?.toggleAttribute('inert', !expanded);
+  }, [expanded]);
+
+  useLayoutEffect(() => {
+    if (!isAnimating) {
+      return;
+    }
+
+    if (!expanded) {
+      // Reading the height flushes layout so Safari records it before the collapse.
+      contentRef.current?.getBoundingClientRect();
+      setAnimatedHeight(0);
+    }
+
+    const timeoutId = window.setTimeout(
+      finishAnimation,
+      animationDurationMs + 50,
+    );
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [animationDurationMs, expanded, finishAnimation, isAnimating]);
 
   if (process.env.NODE_ENV !== 'production') {
     /**
@@ -135,7 +245,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   }
 
   return (
-    <Stack space={itemSpace} data={data}>
+    <Box data={data}>
       <Box position="relative" display="flex">
         <Box
           component="button"
@@ -174,9 +284,30 @@ export const AccordionItem: FC<AccordionItemProps> = ({
           </Box>
         </Box>
       </Box>
-      <Box display={expanded ? 'block' : 'none'} {...contentProps}>
-        {children}
+      <Box
+        className={{
+          [styles.content]: true,
+          [styles.contentOpen]: expanded && !isAnimating,
+          [styles.contentClosed]: !expanded && !isAnimating,
+        }}
+        style={
+          isAnimating
+            ? {
+                height: animatedHeight,
+                transitionDuration: `${animationDurationMs}ms`,
+              }
+            : undefined
+        }
+        onTransitionEnd={finishHeightTransition}
+        onTransitionCancel={finishHeightTransition}
+        aria-hidden={expanded ? undefined : true}
+        ref={contentRef}
+        {...contentProps}
+      >
+        <Box ref={contentSizeRef} paddingTop={itemSpace}>
+          {children}
+        </Box>
       </Box>
-    </Stack>
+    </Box>
   );
 };

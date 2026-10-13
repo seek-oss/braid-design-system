@@ -42,8 +42,8 @@ jobs:
         id: changesets
         uses: changesets/action@v2
         with:
-          version: pnpm run version
-          publish: pnpm release
+          version-script: pnpm run version
+          publish-script: pnpm release
           github-token: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
 
       - name: Build site

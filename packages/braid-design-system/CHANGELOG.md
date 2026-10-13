@@ -1,5 +1,27 @@
 # braid-design-system
 
+## 34.9.1
+
+### Patch Changes
+
+- **Drawer:** Reject empty `title` ([#2171](https://github.com/seek-oss/braid-design-system/pull/2171))
+
+  An empty `title` is now treated as invalid, consistent with `aria-label`. Provide a non-empty `title`, or use `aria-label` for an untitled `Drawer`.
+
+- **Avatar:** Ensure loading background fills completely in dark mode ([#2169](https://github.com/seek-oss/braid-design-system/pull/2169))
+
+- playroom: Add Patterns group to snippets ([#2167](https://github.com/seek-oss/braid-design-system/pull/2167))
+
+- **Avatar:** Prevent layout collapse inside Inline component ([#2169](https://github.com/seek-oss/braid-design-system/pull/2169))
+
+- **BraidProvider:** Ensure default text tone follows the theme ([#2163](https://github.com/seek-oss/braid-design-system/pull/2163))
+
+  Nested `BraidProvider` components using different themes now always apply the default text tones according to the selected theme.
+
+- **Dialog:** Restore header rendering when `title` is empty ([#2171](https://github.com/seek-oss/braid-design-system/pull/2171))
+
+  Fixes a regression where a `Dialog` with an empty `title` no longer rendered its `illustration` or `description`.
+
 ## 34.9.0
 
 ### Minor Changes

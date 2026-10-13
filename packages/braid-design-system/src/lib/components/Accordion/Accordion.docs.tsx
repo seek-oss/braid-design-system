@@ -39,12 +39,19 @@ const docs: ComponentDocs = {
       </Accordion>,
     ),
   accessibility: (
-    <Text>
-      Follows the{' '}
-      <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">
-        WAI-ARIA Disclosure Pattern.
-      </TextLink>
-    </Text>
+    <Stack space="large">
+      <Text>
+        Follows the{' '}
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">
+          WAI-ARIA Disclosure Pattern.
+        </TextLink>
+      </Text>
+      <Text>
+        This remains the case when only one item can be open. Collapsed content
+        stays on the page so it can animate, and is hidden from assistive
+        technology.
+      </Text>
+    </Stack>
   ),
   alternatives: [
     {
@@ -183,9 +190,12 @@ const docs: ComponentDocs = {
         description: (
           <Text>
             An <Strong>AccordionItem</Strong>, by default, manages its own state
-            internally. If you&rsquo;d like to take control of the state, you
-            can do so using the <Strong>expanded</Strong> and{' '}
-            <Strong>onToggle</Strong> props.
+            internally, and several items can be open at once. If you&rsquo;d
+            like to take control of an individual item, you can do so using the{' '}
+            <Strong>expanded</Strong> and <Strong>onToggle</Strong> props. When
+            the accordion is managing which items are open, set a{' '}
+            <Strong>value</Strong> on each <Strong>AccordionItem</Strong>{' '}
+            instead.
           </Text>
         ),
         Example: ({ setDefaultState, getState, toggleState }) =>
@@ -215,6 +225,91 @@ const docs: ComponentDocs = {
                   expanded={getState('expanded3')}
                   onToggle={() => toggleState('expanded3')}
                 >
+                  <Placeholder height={80} />
+                </AccordionItem>
+              </Accordion>
+            </>,
+          ),
+      },
+      {
+        label: 'Single open item',
+        description: (
+          <Text>
+            If only one item should be open at a time, set{' '}
+            <Strong>multiple</Strong> to <Strong>false</Strong>. Opening an item
+            closes the others, and the open item can still be collapsed. Give
+            each <Strong>AccordionItem</Strong> a <Strong>value</Strong> so the
+            accordion can tell them apart.
+          </Text>
+        ),
+        Example: () =>
+          source(
+            <Accordion multiple={false}>
+              <AccordionItem value="item-1" label="Accordion item 1">
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem value="item-2" label="Accordion item 2">
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem value="item-3" label="Accordion item 3">
+                <Placeholder height={80} />
+              </AccordionItem>
+            </Accordion>,
+          ),
+      },
+      {
+        label: 'Default value',
+        description: (
+          <Text>
+            To have an item open when the accordion first appears, set{' '}
+            <Strong>defaultValue</Strong> to that item&rsquo;s{' '}
+            <Strong>value</Strong>. You can pass more than one value when
+            several items should start open. If only one item can be open, pass
+            a single value.
+          </Text>
+        ),
+        Example: () =>
+          source(
+            <Accordion defaultValue={['item-1', 'item-2']}>
+              <AccordionItem value="item-1" label="Accordion item 1">
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem value="item-2" label="Accordion item 2">
+                <Placeholder height={80} />
+              </AccordionItem>
+              <AccordionItem value="item-3" label="Accordion item 3">
+                <Placeholder height={80} />
+              </AccordionItem>
+            </Accordion>,
+          ),
+      },
+      {
+        label: 'Controlled state',
+        description: (
+          <Text>
+            If you&rsquo;d like to manage which items are open yourself, pass{' '}
+            <Strong>value</Strong> and <Strong>onChange</Strong>. Give each{' '}
+            <Strong>AccordionItem</Strong> a <Strong>value</Strong>, rather than
+            setting <Strong>expanded</Strong> on the item. When{' '}
+            <Strong>multiple</Strong> is <Strong>false</Strong>,{' '}
+            <Strong>value</Strong> is a string and <Strong>onChange</Strong>{' '}
+            receives a string. Use an empty string when no item is open.
+            Otherwise they are an array of strings.
+          </Text>
+        ),
+        Example: ({ setDefaultState, getState, setState }) =>
+          source(
+            <>
+              {setDefaultState('open', ['item-2'])}
+
+              <Accordion value={getState('open')} onChange={setState('open')}>
+                <AccordionItem value="item-1" label="Accordion item 1">
+                  <Placeholder height={80} />
+                </AccordionItem>
+                <AccordionItem value="item-2" label="Accordion item 2">
+                  <Placeholder height={80} />
+                </AccordionItem>
+                <AccordionItem value="item-3" label="Accordion item 3">
                   <Placeholder height={80} />
                 </AccordionItem>
               </Accordion>
