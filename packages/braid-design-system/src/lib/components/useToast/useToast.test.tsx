@@ -11,6 +11,8 @@ import type { ReactNode } from 'react';
 import { ToastProvider, useToast } from '..';
 import { BraidTestProvider } from '../../../test';
 
+import { toastDuration } from './Toast';
+
 type ShowToast = ReturnType<typeof useToast>;
 
 function App({ children }: { children: ReactNode }) {
@@ -528,5 +530,53 @@ describe('useToast', () => {
 
     await userEvent.keyboard('{Enter}');
     expect(actionHandler).toHaveBeenCalledTimes(1);
+  });
+
+  describe('duration', () => {
+    beforeEach(() => {
+      vi.useFakeTimers();
+    });
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it('clears short and standard toasts at their respective times while indefinite toasts remain visible', async () => {
+      const exitDelay = 200;
+
+      const { showToast, queryAllToasts, findToastContentByMessage } =
+        renderTestApp();
+
+      expect(queryAllToasts()).toHaveLength(0);
+
+      showToast({ tone: 'neutral', message: 'Short', duration: 'short' });
+      showToast({
+        tone: 'neutral',
+        message: 'Standard',
+        duration: 'standard',
+      });
+      showToast({
+        tone: 'neutral',
+        message: 'Indefinite',
+        duration: 'indefinite',
+      });
+
+      expect(queryAllToasts()).toHaveLength(3);
+
+      act(() => {
+        vi.advanceTimersByTime(toastDuration.short! + exitDelay);
+      });
+
+      expect(queryAllToasts()).toHaveLength(2);
+      expect(findToastContentByMessage('Standard')).toBeTruthy();
+      expect(findToastContentByMessage('Indefinite')).toBeTruthy();
+
+      act(() => {
+        vi.advanceTimersByTime(
+          toastDuration.standard! - toastDuration.short! + exitDelay,
+        );
+      });
+      expect(queryAllToasts()).toHaveLength(1);
+      expect(findToastContentByMessage('Indefinite')).toBeTruthy();
+    });
   });
 });

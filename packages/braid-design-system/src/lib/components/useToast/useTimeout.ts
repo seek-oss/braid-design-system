@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 
 interface UseTimeoutProps {
   onTimeout: () => void;
-  duration: number;
+  duration: number | null;
 }
 export const useTimeout = ({ onTimeout, duration }: UseTimeoutProps) => {
   const [activated, setActivated] = useState(true);
@@ -14,7 +14,7 @@ export const useTimeout = ({ onTimeout, duration }: UseTimeoutProps) => {
   }, []);
 
   useEffect(() => {
-    if (activated) {
+    if (activated && duration !== null) {
       timeoutRef.current = window.setTimeout(() => {
         onTimeout();
       }, duration);
