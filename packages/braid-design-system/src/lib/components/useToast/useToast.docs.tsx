@@ -442,7 +442,7 @@ const docs: ComponentDocs = {
           <Stack space="large">
             <Text>
               <Strong>Standard</Strong> is set as a sensible default for most
-              usecases.
+              use cases.
             </Text>
             <Text>
               You may however decide to use <Strong>short</Strong> or{' '}
