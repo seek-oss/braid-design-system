@@ -6,7 +6,14 @@ exports[`Accordion 1`] = `
   props: {
     children: ReactNodeNoStrings
     data?: DataAttributeMap
+    defaultValue?: 
+        | string
+        | string[]
     dividers?: boolean
+    multiple?: boolean
+    onChange?: 
+        | (value: string) => void
+        | (value: string[]) => void
     size?: 
         | "large"
         | "small"
@@ -21,6 +28,9 @@ exports[`Accordion 1`] = `
     tone?: 
         | "neutral"
         | "secondary"
+    value?: 
+        | string
+        | string[]
     weight?: 
         | "medium"
         | "regular"
@@ -49,6 +59,7 @@ exports[`AccordionItem 1`] = `
     tone?: 
         | "neutral"
         | "secondary"
+    value?: string
     weight?: 
         | "medium"
         | "regular"

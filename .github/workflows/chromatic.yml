@@ -1,10 +1,15 @@
 name: Chromatic
 
-on: workflow_dispatch
+on:
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
 
 jobs:
   chromatic:
     name: Run Chromatic
+    if: github.head_ref == 'changeset-release/master' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     env:
       CI: true

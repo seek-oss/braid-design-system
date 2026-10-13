@@ -5752,5 +5752,40 @@
         "summary": "**Dialog, Drawer:** Ensure documentation previews remain behind the top navigation while scrolling"
       }
     ]
+  },
+  {
+    "version": "34.9.1",
+    "updates": [
+      {
+        "updated": [
+          "Drawer"
+        ],
+        "summary": "**Drawer:** Reject empty `title`\n\nAn empty `title` is now treated as invalid, consistent with `aria-label`. Provide a non-empty `title`, or use `aria-label` for an untitled `Drawer`."
+      },
+      {
+        "updated": [
+          "Avatar"
+        ],
+        "summary": "**Avatar:** Ensure loading background fills completely in dark mode"
+      },
+      {
+        "updated": [
+          "Avatar"
+        ],
+        "summary": "**Avatar:** Prevent layout collapse inside Inline component"
+      },
+      {
+        "updated": [
+          "BraidProvider"
+        ],
+        "summary": "**BraidProvider:** Ensure default text tone follows the theme\n\nNested `BraidProvider` components using different themes now always apply the default text tones according to the selected theme."
+      },
+      {
+        "updated": [
+          "Dialog"
+        ],
+        "summary": "**Dialog:** Restore header rendering when `title` is empty\n\nFixes a regression where a `Dialog` with an empty `title` no longer rendered its `illustration` or `description`."
+      }
+    ]
   }
 ]
