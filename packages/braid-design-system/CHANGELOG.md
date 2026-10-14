@@ -1,5 +1,39 @@
 # braid-design-system
 
+## 34.10.0
+
+### Minor Changes
+
+- **Accordion, AccordionItem:** Add height animation and shared open state ([#2144](https://github.com/seek-oss/braid-design-system/pull/2144))
+  
+  Items animate their height when opening and closing, unless reduced motion is set.
+  
+  Set `multiple` to `false` so only one item can be open, or use `value`, `defaultValue`, and `onChange` on `Accordion` to choose which items are open.
+  
+  **EXAMPLE USAGE:**
+  
+  ```jsx
+  <Accordion multiple={false} defaultValue="one">
+    <AccordionItem value="one" label="One">
+      ...
+    </AccordionItem>
+    <AccordionItem value="two" label="Two">...</AccordionItem>
+  </Accordion>
+  ```
+- **useToast:** Add `duration` option ([#2181](https://github.com/seek-oss/braid-design-system/pull/2181))
+  
+  Toasts accept `short` (6 seconds), `standard` (10 seconds), or `indefinite`. The default is `standard`, matching the previous dismiss time.
+  
+  **EXAMPLE USAGE:**
+  
+  ```jsx
+  showToast({
+    tone: 'positive',
+    message: 'Saved',
+    duration: 'short',
+  });
+  ```
+
 ## 34.9.1
 
 ### Patch Changes
