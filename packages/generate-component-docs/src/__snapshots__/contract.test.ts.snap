@@ -9699,7 +9699,72 @@ exports[`useColor 1`] = `
 {
   exportType: hook,
   params: [],
-  returnType: { foreground: { brandAccentLight: string; brandAccent: string; cautionLight: string; caution: string; criticalLight: string; critical: string; formAccentLight: string; formAccent: string; infoLight: string; ... 13 more ...; secondaryInverted: string; }; background: { ...; }; },
+  returnType: {
+    background: {
+        body: string
+        brand: string
+        brandAccent: string
+        brandAccentActive: string
+        brandAccentHover: string
+        brandAccentSoft: string
+        brandAccentSoftActive: string
+        brandAccentSoftHover: string
+        caution: string
+        cautionLight: string
+        critical: string
+        criticalActive: string
+        criticalHover: string
+        criticalLight: string
+        criticalSoft: string
+        criticalSoftActive: string
+        criticalSoftHover: string
+        formAccent: string
+        formAccentActive: string
+        formAccentHover: string
+        formAccentSoft: string
+        formAccentSoftActive: string
+        formAccentSoftHover: string
+        info: string
+        infoLight: string
+        neutral: string
+        neutralActive: string
+        neutralHover: string
+        neutralLight: string
+        neutralSoft: string
+        neutralSoftActive: string
+        neutralSoftHover: string
+        positive: string
+        positiveLight: string
+        promote: string
+        promoteLight: string
+        surface: string
+    }
+    foreground: {
+        brandAccent: string
+        brandAccentLight: string
+        caution: string
+        cautionLight: string
+        critical: string
+        criticalLight: string
+        formAccent: string
+        formAccentLight: string
+        info: string
+        infoLight: string
+        link: string
+        linkHover: string
+        linkLight: string
+        linkLightVisited: string
+        linkVisited: string
+        neutral: string
+        neutralInverted: string
+        positive: string
+        positiveLight: string
+        promote: string
+        promoteLight: string
+        secondary: string
+        secondaryInverted: string
+    }
+},
 }
 `;
 
@@ -9707,7 +9772,14 @@ exports[`useResponsiveValue 1`] = `
 {
   exportType: hook,
   params: [],
-  returnType: <Value>(value: RequiredResponsiveObject<Value>) => Value | null,
+  returnType: <Value>(value: {
+    desktop?: Value & {}
+    mobile: Value & {}
+    tablet?: Value & {}
+    wide?: Value & {}
+}) => 
+    | Value
+    | null,
 }
 `;
 
@@ -9715,7 +9787,20 @@ exports[`useSpace 1`] = `
 {
   exportType: hook,
   params: [],
-  returnType: { grid: number; space: { gutter: number; xxsmall: number; xsmall: number; small: number; medium: number; large: number; xlarge: number; xxlarge: number; xxxlarge: number; }; },
+  returnType: {
+    grid: number
+    space: {
+        gutter: number
+        large: number
+        medium: number
+        small: number
+        xlarge: number
+        xsmall: number
+        xxlarge: number
+        xxsmall: number
+        xxxlarge: number
+    }
+},
 }
 `;
 
@@ -9731,6 +9816,41 @@ exports[`useToast 1`] = `
 {
   exportType: hook,
   params: [],
-  returnType: (toast: Toast) => void,
+  returnType: (toast: 
+    | {
+        action?: {
+            label: string
+            onClick: () => void
+        }
+        closeLabel?: string
+        data?: DataAttributeMap
+        description?: string
+        duration?: 
+            | "indefinite"
+            | "short"
+            | "standard"
+        key?: string
+        message: string
+        tone: 
+            | "critical"
+            | "positive"
+    }
+    | {
+        action?: {
+            label: string
+            onClick: () => void
+        }
+        closeLabel?: string
+        data?: DataAttributeMap
+        description?: string
+        duration?: 
+            | "indefinite"
+            | "short"
+            | "standard"
+        icon?: ReactElement<UseIconProps, string | JSXElementConstructor<any>>
+        key?: string
+        message: string
+        tone: "neutral"
+    }) => void,
 }
 `;

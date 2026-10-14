@@ -62,6 +62,33 @@ const PropType = ({ type }: { type: NormalisedPropType }) => {
     );
   }
 
+  if (type.type === 'function') {
+    return (
+      <Fragment>
+        {type.signatures.map(({ typeParams, params, returnType }, index) => (
+          <Fragment key={index}>
+            {index > 0 && '; '}
+            {typeParams.length > 0 && `<${typeParams.join(', ')}>`}
+            {'('}
+            {params.map(
+              ({ name, optional, rest, type: paramType }, paramIndex) => (
+                <Fragment key={paramIndex}>
+                  {paramIndex > 0 && ', '}
+                  {rest && '...'}
+                  {name}
+                  {optional ? '?: ' : ': '}
+                  <PropType type={paramType} />
+                </Fragment>
+              ),
+            )}
+            {') => '}
+            <PropType type={returnType} />
+          </Fragment>
+        ))}
+      </Fragment>
+    );
+  }
+
   if (type.type === 'interface') {
     return (
       <Fragment>
@@ -165,7 +192,33 @@ const ComponentProps = ({ componentName }: { componentName: string }) => {
   const doc = docsData[componentName];
 
   if (doc.exportType === 'hook') {
-    return null;
+    return (
+      <Stack space="xlarge">
+        {doc.params.length > 0 ? (
+          <Stack space="medium">
+            <Heading level="3">
+              <TitleLink copyable>Parameters</TitleLink>
+            </Heading>
+            {doc.params.map((paramType, index) => (
+              <Stack space="small" key={index}>
+                <Text weight="strong">Parameter {index + 1}</Text>
+                <Text size="small" tone="secondary">
+                  <PropType type={paramType} />
+                </Text>
+              </Stack>
+            ))}
+          </Stack>
+        ) : null}
+        <Stack space="medium">
+          <Heading level="3">
+            <TitleLink copyable>Return Type</TitleLink>
+          </Heading>
+          <Text size="small" tone="secondary">
+            <PropType type={doc.returnType} />
+          </Text>
+        </Stack>
+      </Stack>
+    );
   }
 
   return Object.keys(doc.props).length === 0 ? null : (
@@ -194,7 +247,9 @@ export const DocProps = () => {
 
   return (
     <>
-      <PageTitle title={`${docsName} Props`} />
+      <PageTitle
+        title={`${docsName} ${docsData[docsName].exportType === 'hook' ? 'API' : 'Props'}`}
+      />
 
       <Stack space="xxlarge">
         {Array.isArray(propsToDocument) ? (
