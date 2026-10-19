@@ -147,7 +147,6 @@ export const Modal = ({
   position,
   ...restProps
 }: ModalInternalProps) => {
-  const [trapActive, setTrapActive] = useState(true);
   const [state, dispatch] = useReducer(reducer, INITIAL);
 
   const allowClose = useContext(AllowCloseContext);
@@ -204,22 +203,10 @@ export const Modal = ({
     }
   }, [onClose]);
 
-  useEffect(() => {
-    const event = trapActive ? 'blur' : 'focus';
-    const handleEvent = () => setTrapActive(!trapActive);
-
-    window.addEventListener(event, handleEvent);
-
-    return () => {
-      window.removeEventListener(event, handleEvent);
-    };
-  }, [trapActive]);
-
   return state === OPENING || state === OPEN || state === CLOSING ? (
     <ModalPortal>
       <FocusLock
         className={styles.resetStackingContext}
-        disabled={!trapActive}
         autoFocus={false}
         onActivation={() => {
           if (state === OPEN) {
