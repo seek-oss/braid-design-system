@@ -5787,5 +5787,30 @@
         "summary": "**Dialog:** Restore header rendering when `title` is empty\n\nFixes a regression where a `Dialog` with an empty `title` no longer rendered its `illustration` or `description`."
       }
     ]
+  },
+  {
+    "version": "34.10.0",
+    "updates": [
+      {
+        "updated": [
+          "Accordion",
+          "AccordionItem"
+        ],
+        "summary": "**Accordion, AccordionItem:** Add height animation and shared open state\n\nItems animate their height when opening and closing, unless reduced motion is set.\n\nSet `multiple` to `false` so only one item can be open, or use `value`, `defaultValue`, and `onChange` on `Accordion` to choose which items are open.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<Accordion multiple={false} defaultValue=\"one\">\n  <AccordionItem value=\"one\" label=\"One\">\n    ...\n  </AccordionItem>\n  <AccordionItem value=\"two\" label=\"Two\">...</AccordionItem>\n</Accordion>\n```"
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer:** Fix focus in stacked modals\n\nFixes an issue where, with multiple modals open, focus could move to an underlying modal after switching away from and back to the browser window, preventing interaction with fields in the top-most modal."
+      },
+      {
+        "updated": [
+          "useToast"
+        ],
+        "summary": "**useToast:** Add `duration` option\n\nToasts accept `short` (6 seconds), `standard` (10 seconds), or `indefinite`. The default is `standard`, matching the previous dismiss time.\n\n**EXAMPLE USAGE:**\n\n```jsx\nshowToast({\n  tone: 'positive',\n  message: 'Saved',\n  duration: 'short',\n});\n```"
+      }
+    ]
   }
 ]
