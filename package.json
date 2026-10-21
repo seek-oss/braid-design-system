@@ -37,7 +37,7 @@
     "release": "pnpm prepare-publish && changeset publish",
     "prepare-publish": "pnpm build && tsx scripts/copyReadme.cts",
     "version": "changeset version && tsx scripts/versionComponentUpdates.cts && pnpm install --lockfile-only",
-    "changeset": "EDITOR=scripts/writeBraidFrontMatter.js ./node_modules/.bin/changeset add --open"
+    "changeset": "./node_modules/.bin/changeset add && node scripts/writeBraidFrontMatter.js"
   },
   "repository": {
     "type": "git",

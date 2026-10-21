@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable no-console,no-sync */
 const fs = require('fs');
+const path = require('path');
 
 const { prompt } = require('enquirer');
 
@@ -39,16 +40,33 @@ Example diff to generated changeset:
 ==========================================
 */
 
-(async () => {
-  const [changesetPath] = process.argv.slice(2);
-  const changesetSrc = fs.readFileSync(changesetPath, 'utf-8');
+const resolveChangesetPath = (changesetPath) => {
+  if (changesetPath) {
+    return path.resolve(changesetPath);
+  }
 
-  if (!changesetPath.includes('.changeset/')) {
-    // If changeset path is not in the changeset directory,
-    // i.e. when still in temp files, we are not ready to
-    // add the braid release front matter.
-    //
-    // (This happens when the changeset `summary` is empty)
+  const changesetDir = path.join(process.cwd(), '.changeset');
+  const [newestChangeset] = fs
+    .readdirSync(changesetDir)
+    .filter((name) => name.endsWith('.md') && name !== 'README.md')
+    .map((name) => path.join(changesetDir, name))
+    .sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs);
+
+  if (!newestChangeset) {
+    throw new Error('No changeset file found to add Braid front matter to.');
+  }
+
+  return newestChangeset;
+};
+
+(async () => {
+  const changesetPath = resolveChangesetPath(process.argv[2]);
+  const changesetSrc = fs.readFileSync(changesetPath, 'utf-8');
+  const changesetDir = `${path.join(process.cwd(), '.changeset')}${path.sep}`;
+
+  // Skip temp files from an external editor. Front matter is only added to
+  // a changeset that has already been written into .changeset/.
+  if (!changesetPath.startsWith(changesetDir)) {
     return;
   }
 
