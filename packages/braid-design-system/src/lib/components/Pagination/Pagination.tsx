@@ -162,17 +162,21 @@ export const Pagination: FC<PaginationProps> = ({
           opacity={!showPrevious ? 0 : undefined}
           pointerEvents={!showPrevious ? 'none' : undefined}
         >
-          <Link
-            {...linkProps({ page: page - 1, type: 'previous' })}
-            rel="prev"
-            aria-label={previousLabel}
-            title={previousLabel}
-            aria-hidden={!showPrevious}
-            tabIndex={!showPrevious ? -1 : undefined}
-            className={styles.focusRing}
-          >
-            <PageNav label={previousLabel} direction="prev" />
-          </Link>
+          {showPrevious ? (
+            <Link
+              {...linkProps({ page: page - 1, type: 'previous' })}
+              rel="prev"
+              aria-label={previousLabel}
+              title={previousLabel}
+              className={styles.focusRing}
+            >
+              <PageNav label={previousLabel} direction="prev" />
+            </Link>
+          ) : (
+            <Box component="span" aria-hidden={true}>
+              <PageNav label={previousLabel} direction="prev" />
+            </Box>
+          )}
         </Box>
 
         {pages.map((pageNumber, index) => {
@@ -217,17 +221,21 @@ export const Pagination: FC<PaginationProps> = ({
           opacity={!showNext ? 0 : undefined}
           pointerEvents={!showNext ? 'none' : undefined}
         >
-          <Link
-            {...linkProps({ page: page + 1, type: 'next' })}
-            rel="next"
-            aria-label={nextLabel}
-            title={nextLabel}
-            aria-hidden={!showNext}
-            tabIndex={!showNext ? -1 : undefined}
-            className={styles.focusRing}
-          >
-            <PageNav label={nextLabel} direction="next" />
-          </Link>
+          {showNext ? (
+            <Link
+              {...linkProps({ page: page + 1, type: 'next' })}
+              rel="next"
+              aria-label={nextLabel}
+              title={nextLabel}
+              className={styles.focusRing}
+            >
+              <PageNav label={nextLabel} direction="next" />
+            </Link>
+          ) : (
+            <Box component="span" aria-hidden={true}>
+              <PageNav label={nextLabel} direction="next" />
+            </Box>
+          )}
         </Box>
       </Box>
     </Box>

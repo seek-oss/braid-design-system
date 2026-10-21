@@ -59,7 +59,7 @@ describe('Pagination', () => {
       </BraidTestProvider>,
     );
 
-    expect(queryByLabelText('Prev')).not.toBeVisible();
+    expect(queryByLabelText('Prev')).not.toBeInTheDocument();
     expect(document.body).toHaveFocus();
     await userEvent.tab();
     expect(getByLabelText('Pg 1')).toHaveFocus();
@@ -85,7 +85,7 @@ describe('Pagination', () => {
       </BraidTestProvider>,
     );
 
-    expect(queryByLabelText('Next')).not.toBeVisible();
+    expect(queryByLabelText('Next')).not.toBeInTheDocument();
     expect(document.body).toHaveFocus();
     await userEvent.tab();
     expect(getByLabelText('Prev')).toHaveFocus();
@@ -96,5 +96,85 @@ describe('Pagination', () => {
     await userEvent.tab({ shift: true });
     await userEvent.tab({ shift: true });
     expect(getByLabelText('Prev')).toHaveFocus();
+  });
+
+  it('should not render a link before the first page when on the first page', () => {
+    const linkProps = vi.fn(({ page }: { page: number }) => ({
+      href: `/results?page=${page}`,
+    }));
+
+    const { container } = render(
+      <BraidTestProvider>
+        <Pagination page={1} total={10} linkProps={linkProps} label="Results" />
+      </BraidTestProvider>,
+    );
+
+    expect(container.querySelector('a[rel="prev"]')).not.toBeInTheDocument();
+    expect(
+      container.querySelector('a[href="/results?page=0"]'),
+    ).not.toBeInTheDocument();
+    expect(linkProps).not.toHaveBeenCalledWith({
+      page: 0,
+      type: 'previous',
+    });
+    expect(container.querySelector('a[rel="next"]')).toHaveAttribute(
+      'href',
+      '/results?page=2',
+    );
+  });
+
+  it('should not render a link past the last page when on the last page', () => {
+    const linkProps = vi.fn(({ page }: { page: number }) => ({
+      href: `/results?page=${page}`,
+    }));
+
+    const { container } = render(
+      <BraidTestProvider>
+        <Pagination
+          page={10}
+          total={10}
+          linkProps={linkProps}
+          label="Results"
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(container.querySelector('a[rel="next"]')).not.toBeInTheDocument();
+    expect(
+      container.querySelector('a[href="/results?page=11"]'),
+    ).not.toBeInTheDocument();
+    expect(linkProps).not.toHaveBeenCalledWith({
+      page: 11,
+      type: 'next',
+    });
+    expect(container.querySelector('a[rel="prev"]')).toHaveAttribute(
+      'href',
+      '/results?page=9',
+    );
+  });
+
+  it('should not render previous or next links when there is only one page', () => {
+    const linkProps = vi.fn(({ page }: { page: number }) => ({
+      href: `/results?page=${page}`,
+    }));
+
+    const { container } = render(
+      <BraidTestProvider>
+        <Pagination page={1} total={1} linkProps={linkProps} label="Results" />
+      </BraidTestProvider>,
+    );
+
+    expect(container.querySelector('a[rel="prev"]')).not.toBeInTheDocument();
+    expect(container.querySelector('a[rel="next"]')).not.toBeInTheDocument();
+    expect(container.querySelectorAll('a')).toHaveLength(1);
+    expect(container.querySelector('a')).toHaveAttribute(
+      'href',
+      '/results?page=1',
+    );
+    expect(linkProps).toHaveBeenCalledTimes(1);
+    expect(linkProps).toHaveBeenCalledWith({
+      page: 1,
+      type: 'pageNumber',
+    });
   });
 });
