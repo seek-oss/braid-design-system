@@ -29,7 +29,7 @@ My summary of the change
 Add a changeset as part of a PR if the changes impact the consumer. A changeset is basically a markdown file which also describes the size of the change (patch, minor or major).
 
 ```bash
-pnpm changeset add
+pnpm changeset
 ```
 
 A PR could theoretically have multiple changesets describing different changes.
