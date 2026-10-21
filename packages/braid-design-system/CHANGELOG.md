@@ -1,5 +1,13 @@
 # braid-design-system
 
+## 34.10.1
+
+### Patch Changes
+
+- **Pagination:** Only render next and prev as links when in range ([#2188](https://github.com/seek-oss/braid-design-system/pull/2188))
+  
+  Previous and Next stay in the layout on the first and last page, but they are no longer links. This stops crawlers from following a page 0 URL or a page past the end.
+
 ## 34.10.0
 
 ### Minor Changes
