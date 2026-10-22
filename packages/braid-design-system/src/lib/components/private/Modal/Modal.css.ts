@@ -1,4 +1,9 @@
-import { createVar, fallbackVar, style } from '@vanilla-extract/css';
+import {
+  createVar,
+  fallbackVar,
+  globalStyle,
+  style,
+} from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
 import { atoms } from '../../../css/atoms/atoms';
@@ -160,38 +165,62 @@ export const closeIconOffset = style({
   right: '-2px',
 });
 
-export const hideOverflowAboveMobile = style(
-  responsiveStyle({
-    tablet: {
-      overflow: 'hidden',
-    },
-  }),
-);
-
 export const maximumHeightForCoverImage = '70vh';
 
-export const coverImageHeightLimit = style(
-  responsiveStyle({
-    tablet: {
-      maxHeight: fallbackVar(
-        overrideMaxHeightForScreenshot,
-        maximumHeightForCoverImage,
-      ),
-    },
-  }),
+const coverImageMaxHeight = fallbackVar(
+  overrideMaxHeightForScreenshot,
+  maximumHeightForCoverImage,
 );
 
+export const coverImageSideBySide = style({
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gridTemplateRows: 'minmax(0, 1fr)',
+  height: 'fit-content',
+  maxHeight: coverImageMaxHeight,
+  overflow: 'hidden',
+});
+
+export const coverImageGridCell = style({
+  display: 'flex',
+  flexDirection: 'column',
+  minWidth: 0,
+  minHeight: 0,
+  height: '100%',
+  overflow: 'hidden',
+});
+
 export const coverImageVar = createVar();
-export const coverImage = style([
-  responsiveStyle({
-    mobile: {
-      aspectRatio: '16 / 9',
-    },
-  }),
-  {
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundImage: coverImageVar,
-  },
-]);
+export const coverImage = style({
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  backgroundImage: coverImageVar,
+});
+
+export const coverImageAspectRatio = style({
+  aspectRatio: '16 / 9',
+});
+
+export const dialogColumn = style({
+  display: 'grid',
+  gridTemplateRows: 'minmax(0, 1fr)',
+  height: 'fit-content',
+});
+
+export const verticalScrollMinHeight = style({
+  flex: '1 1 0%',
+  minHeight: 0,
+  overflow: 'hidden',
+});
+
+/**
+ * ScrollContainer always sets `height: 100%`. Use content height when the
+ * dialog can grow, then cap to the flex item once max-height kicks in so
+ * the same node scrolls instead of painting over a pinned footer.
+ */
+globalStyle(`${verticalScrollMinHeight} > *`, {
+  height: 'auto !important',
+  maxHeight: '100%',
+  minHeight: 0,
+});
