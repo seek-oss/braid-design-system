@@ -1,6 +1,7 @@
 import source from '@braid-design-system/source.macro';
 
 import {
+  Badge,
   Box,
   Card,
   Column,
@@ -8,7 +9,6 @@ import {
   Inline,
   Skeleton,
   Stack,
-  Text,
 } from '../../playroom/components';
 import type { Snippets } from '../private/Snippets';
 
@@ -79,20 +79,16 @@ export const snippets: Snippets = [
           <Columns space="small">
             <Column>
               <Stack space="small">
-                <Box
-                  position="relative"
-                  display="flex"
-                  paddingY="xxsmall"
-                  paddingX="xsmall"
-                  borderRadius="standard"
-                  overflow="hidden"
-                >
+                <Box position="relative" display="flex" maxWidth="content">
                   <Box opacity={0}>
-                    <Text size="xsmall" weight="medium" maxLines={1}>
-                      New
-                    </Text>
+                    <Badge tone="positive">New</Badge>
                   </Box>
-                  <Box position="absolute" inset={0}>
+                  <Box
+                    position="absolute"
+                    inset={0}
+                    borderRadius="standard"
+                    overflow="hidden"
+                  >
                     <Skeleton type="rectangle" height="full" />
                   </Box>
                 </Box>
