@@ -20,6 +20,7 @@ export { Button } from '../components/Button/Button.playroom';
 export { ButtonIcon } from '../components/ButtonIcon/ButtonIcon.playroom';
 export { ButtonLink } from '../components/ButtonLink/ButtonLink.playroom';
 export { Card } from '../components/Card/Card.playroom';
+export { ChatMessage } from '../components/ChatMessage/ChatMessage.playroom';
 export { Checkbox } from '../components/Checkbox/Checkbox.playroom';
 export { CheckboxStandalone } from '../components/Checkbox/CheckboxStandalone.playroom';
 export { Columns } from '../components/Columns/Columns.playroom';

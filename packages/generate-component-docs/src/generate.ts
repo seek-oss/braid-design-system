@@ -33,6 +33,7 @@ const stringAliases: Record<string, string> = {
   boolean: 'boolean',
   Element: 'Element',
   CSSProperties: 'CSSProperties',
+  Date: 'Date',
   DataAttributeMap: 'DataAttributeMap',
 };
 

@@ -2851,6 +2851,28 @@ exports[`Card 1`] = `
 }
 `;
 
+exports[`ChatMessage 1`] = `
+{
+  exportType: component,
+  props: {
+    avatar?: ReactNode
+    children: ReactNode
+    data?: DataAttributeMap
+    name: string
+    onCopy?: () => void
+    onFeedback?: (feedback: "positive" | "negative") => void
+    sender: 
+        | "assistant"
+        | "participant"
+        | "user"
+    sent?: 
+        | Date
+        | number
+        | string
+},
+}
+`;
+
 exports[`Checkbox 1`] = `
 {
   exportType: component,
