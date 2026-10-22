@@ -8,7 +8,7 @@ import { atoms } from '../../css/atoms/atoms';
 import { IconCompany, IconPhotoAdd } from '../icons';
 
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
-import { shimmerAnimation } from '../private/Skeleton/Skeleton.css';
+import { shimmerAnimation } from '../Skeleton/Skeleton.css';
 import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 import { photoPlaceholderUrl } from './photoPlaceholder.css';
 

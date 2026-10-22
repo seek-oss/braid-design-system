@@ -25,7 +25,13 @@ export const galleryItems: GalleryComponent = {
     },
     {
       label: 'Button',
-      Example: () => source(<Skeleton type="button" width="small" />),
+      Example: () =>
+        source(
+          <Stack space="small">
+            <Skeleton type="button" width="small" />
+            <Skeleton type="button" size="small" width="small" />
+          </Stack>,
+        ),
     },
     {
       label: 'Rectangle',
