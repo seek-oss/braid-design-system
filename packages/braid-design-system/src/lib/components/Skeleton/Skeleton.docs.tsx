@@ -38,21 +38,17 @@ const jobCardLoading = source(
     <Columns space="small">
       <Column>
         <Stack space="small">
-          <Box
-            position="relative"
-            display="flex"
-            paddingY="xxsmall"
-            paddingX="xsmall"
-            borderRadius="standard"
-            overflow="hidden"
-          >
+          <Box position="relative" display="flex" maxWidth="content">
             <Box opacity={0}>
-              <Text size="xsmall" weight="medium" maxLines={1}>
-                New
-              </Text>
+              <Badge tone="positive">New</Badge>
             </Box>
-            <Box position="absolute" inset={0}>
-              <Skeleton type="rectangle" height="full" width="xxsmall" />
+            <Box
+              position="absolute"
+              inset={0}
+              borderRadius="standard"
+              overflow="hidden"
+            >
+              <Skeleton type="rectangle" height="full" />
             </Box>
           </Box>
           <Skeleton type="heading" level="4" width="small" />
@@ -223,7 +219,7 @@ const docs: ComponentDocs = {
     },
     {
       name: 'Avatar',
-      description: 'For a loading disc. There is no Skeleton type="circle".',
+      description: 'For a loading disc.',
     },
   ],
   additional: [
@@ -237,12 +233,8 @@ const docs: ComponentDocs = {
           <TextLink href="/components/Button">Button</TextLink>, or a{' '}
           <Strong>rectangle</Strong> for cards, images and other blocks. A disc
           is <TextLink href="/components/Avatar">Avatar</TextLink> with{' '}
-          <Strong>loading</Strong> — there is no{' '}
-          <Strong>type=&quot;circle&quot;</Strong>. Do not wrap the real
-          content. Swap in the parent:{' '}
-          <Strong>{'isLoading ? <Skeleton width={n} /> : children'}</Strong>. A
-          character count becomes a percentage <Strong>width</Strong>, not a
-          prop.
+          <Strong>loading</Strong>. Swap in the parent:{' '}
+          <Strong>{'isLoading ? <Skeleton /> : children'}</Strong>.
         </Text>
       ),
       Example: () =>
@@ -328,7 +320,6 @@ const docs: ComponentDocs = {
           <Strong>circle</Strong>), then the text bone. Icons use the same{' '}
           <Strong>1.2em</Strong> size as Text icons, so they sit slightly
           outside the Capsize line. Pass a shape, not a real icon component.
-          There is no separate <Strong>SkeletonText</Strong> export.
         </Text>
       ),
       Example: () =>
@@ -361,8 +352,7 @@ const docs: ComponentDocs = {
           When <Strong>type</Strong> is <Strong>heading</Strong>, provide the
           same <Strong>level</Strong> as the{' '}
           <TextLink href="/components/Heading">Heading</TextLink> that will
-          replace it. The bone fills that heading’s Capsize box. There is no{' '}
-          <Strong>SkeletonHeading</Strong> export.
+          replace it. The bone fills that heading’s Capsize box.
         </Text>
       ),
       Example: () =>
@@ -424,13 +414,9 @@ const docs: ComponentDocs = {
           <Strong>full</Strong> (100%), <Strong>large</Strong> (75%),{' '}
           <Strong>medium</Strong> (50%), <Strong>small</Strong> (25%),{' '}
           <Strong>xsmall</Strong> (12.5%) and <Strong>xxsmall</Strong> (6.25%),
-          or a number for a custom percentage of the parent. Turn a character
-          count into that percentage — do not add a character-count prop. Only
-          bone fields that will actually appear. Dropping a row after load looks
-          like a failed request. A wizard of several bars is{' '}
-          <Strong>lines</Strong> or several{' '}
-          <Strong>type=&quot;text&quot;</Strong> bones with percentage widths,
-          not a wizard type.
+          or a number for a custom percentage of the parent. Only bone fields
+          that will actually appear — dropping a row after load looks like a
+          failed request.
         </Text>
       ),
       Example: () =>
@@ -488,11 +474,10 @@ const docs: ComponentDocs = {
           When <Strong>type</Strong> is <Strong>text</Strong>,{' '}
           <Strong>lines</Strong> draws a paragraph inside one{' '}
           <TextLink href="/components/Text">Text</TextLink> box. Stripes follow
-          cap height with a gap between lines. The last line is always 50% wide,
-          which covers chat and wizard paragraphs. For a set of bars with
-          different percentages, use several{' '}
+          cap height with a gap between lines. The last line is always 50% wide.
+          For bars of different lengths, use several{' '}
           <Strong>type=&quot;text&quot;</Strong> bones with{' '}
-          <Strong>width</Strong> numbers instead of a per-line array.
+          <Strong>width</Strong> instead.
         </Text>
       ),
       Example: () => source(<Skeleton type="text" lines={3} />),
@@ -504,10 +489,9 @@ const docs: ComponentDocs = {
           Rectangles use the space scale for height (<Strong>xxsmall</Strong> to{' '}
           <Strong>xxxlarge</Strong>, default <Strong>xxxlarge</Strong>), or{' '}
           <Strong>full</Strong> to fill a sized parent. This is useful for card
-          media and other blocks that are taller than the space scale. A 100×100
-          or 300px block in product code is still this bone inside a sized
-          parent, not a pixel height prop. A circular logo that is not an Avatar
-          is still this bone, clipped with{' '}
+          media and other blocks that are taller than the space scale. Size the
+          parent, then fill it with <Strong>height=&quot;full&quot;</Strong>. A
+          circular logo that is not an Avatar is this bone clipped with{' '}
           <Strong>borderRadius=&quot;full&quot;</Strong> on the parent.
         </Text>
       ),
@@ -562,13 +546,11 @@ const docs: ComponentDocs = {
       label: 'Composing a region',
       description: (
         <Text>
-          There is a single <Strong>Skeleton</Strong> export. Layout stays{' '}
-          <TextLink href="/components/Stack">Stack</TextLink>,{' '}
-          <TextLink href="/components/Card">Card</TextLink> and{' '}
-          <TextLink href="/components/Inline">Inline</TextLink>. Do not put{' '}
-          <Strong>aria-label</Strong> on every bar. Parent still swaps{' '}
-          <Strong>{'isLoading ? <Skeleton /> : children'}</Strong>. Skeleton
-          does not wrap children.
+          Compose bones with <TextLink href="/components/Stack">Stack</TextLink>
+          , <TextLink href="/components/Card">Card</TextLink> and{' '}
+          <TextLink href="/components/Inline">Inline</TextLink>. Put{' '}
+          <Strong>aria-label</Strong> on the region, not every bar, then swap in
+          the parent.
         </Text>
       ),
       Example: () =>
@@ -597,7 +579,6 @@ const docs: ComponentDocs = {
           <TextLink href="/components/Stack">Stack</TextLink> and{' '}
           <TextLink href="/components/Card">Card</TextLink>. The field slot uses
           button height because it is touchable, not because it is a Button.
-          There is no <Strong>Skeleton.Input</Strong>.
         </Text>
       ),
       Example: () =>
@@ -632,26 +613,20 @@ const docs: ComponentDocs = {
             the <TextLink href="/examples/job-summary">Job Summary</TextLink>{' '}
             example. Widths are approximate; heading level, text size and stack
             space should match so the swap does not move the page. For Badge,
-            size the slot with the same padding and <Strong>xsmall</Strong>{' '}
-            text, then fill it with a full-height <Strong>rectangle</Strong>. A{' '}
-            <Strong>medium</Strong> rectangle is 24px and will sit short.
+            reserve the slot with an invisible Badge, then fill it with a
+            full-height <Strong>rectangle</Strong>. A <Strong>medium</Strong>{' '}
+            rectangle is 24px and will sit short of the pill.
           </Text>
           <Text>
             Keep real chrome (here, the save action) while the body bones. The
             preview loops between loading and content so you can check for
-            layout shift. Replace product <Strong>JobSkeleton</Strong> SVGs and
-            search-result placeholders with this layout. There is no job type.
+            layout shift.
           </Text>
         </>
       ),
-      playroom: false,
       Example: () => ({
         code: `<Card>
-  {isLoading ? (
-    ${jobCardLoading.code.replace(/\n/g, '\n    ')}
-  ) : (
-    ${jobCardLoaded.code.replace(/\n/g, '\n    ')}
-  )}
+  ${jobCardLoading.code.replace(/\n/g, '\n  ')}
 </Card>
 `,
         value: <JobCardRecipe />,
