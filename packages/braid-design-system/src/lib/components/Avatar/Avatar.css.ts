@@ -19,9 +19,9 @@ export const size = styleVariants(avatarSizeInPx, (pixels) => ({
 }));
 
 export const keyline = style({
-  borderWidth: vars.borderWidth.standard,
-  borderStyle: 'solid',
-  borderColor: vars.backgroundColor.surface,
+  outlineWidth: vars.borderWidth.standard,
+  outlineStyle: 'solid',
+  outlineColor: vars.backgroundColor.surface,
 });
 
 export const image = style({

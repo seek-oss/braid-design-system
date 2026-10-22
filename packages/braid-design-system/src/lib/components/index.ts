@@ -28,6 +28,7 @@ export { Button } from './Button/Button';
 export { ButtonIcon } from './ButtonIcon/ButtonIcon';
 export { ButtonLink } from './ButtonLink/ButtonLink';
 export { Card } from './Card/Card';
+export { ChatMessage } from './ChatMessage/ChatMessage';
 export { Checkbox } from './Checkbox/Checkbox';
 export { CheckboxStandalone } from './Checkbox/CheckboxStandalone';
 export { Column } from './Column/Column';
