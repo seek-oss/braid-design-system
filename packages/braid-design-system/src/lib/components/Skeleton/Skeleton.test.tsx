@@ -92,15 +92,44 @@ describe('Skeleton', () => {
     ).toThrow('The "level" prop is required when type is "heading"');
   });
 
-  it('should reject size unless the bone is text', () => {
+  it('should reject size unless the bone is text or button', () => {
     expect(() =>
       render(
         <BraidTestProvider>
-          {/* @ts-expect-error -- size is only valid for text */}
-          <Skeleton type="button" size="small" />
+          {/* @ts-expect-error -- size is only valid for text or button */}
+          <Skeleton type="rectangle" size="small" />
         </BraidTestProvider>,
       ),
-    ).toThrow('The "size" prop is only valid when type is "text"');
+    ).toThrow(
+      'The "size" prop is only valid when type is "text", or "standard" or "small" when type is "button"',
+    );
+  });
+
+  it('should reject text sizes on a button bone', () => {
+    expect(() =>
+      render(
+        <BraidTestProvider>
+          {/* @ts-expect-error -- button size is standard or small */}
+          <Skeleton type="button" size="large" />
+        </BraidTestProvider>,
+      ),
+    ).toThrow(
+      'The "size" prop is only valid when type is "text", or "standard" or "small" when type is "button"',
+    );
+  });
+
+  it('should apply small button height', () => {
+    const { getByTestId } = render(
+      <BraidTestProvider>
+        <Skeleton
+          type="button"
+          size="small"
+          data={{ testid: 'small-button' }}
+        />
+      </BraidTestProvider>,
+    );
+
+    expect(getByTestId('small-button')).toHaveClass(styles.buttonSmall);
   });
 
   it('should reject lines unless the bone is text', () => {

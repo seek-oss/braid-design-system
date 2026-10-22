@@ -4,6 +4,7 @@ import {
   style,
   styleVariants,
 } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { responsiveStyle } from '../../css/responsiveStyle';
 
@@ -12,9 +13,40 @@ import { animationDelayValueInMs } from '../Loader/Loader.css';
 
 export { animationDelayValueInMs };
 
-const shimmer = keyframes({
-  '0%': { backgroundPosition: '240% 50%' },
-  '100%': { backgroundPosition: '40% 50%' },
+const bone = vars.backgroundColor.neutralLight;
+const sheen = vars.backgroundColor.surface;
+const sheenBandWidth = '40vw';
+const sheenTravel = keyframes({
+  '0%': { backgroundPosition: `-${sheenBandWidth} 0` },
+  '100%': { backgroundPosition: '100vw 0' },
+});
+const sheenHighlightStop = '36%';
+const sheenFadeOutStop = '72%';
+const sheenGradient = `linear-gradient(90deg, ${bone} 0%, ${sheen} ${sheenHighlightStop}, ${bone} ${sheenFadeOutStop})`;
+
+const sheenPassDuration = '2.8s';
+
+export const shimmerAnimation = style({
+  position: 'relative',
+  overflow: 'hidden',
+  backgroundColor: bone,
+});
+
+export const shimmerSheen = style({
+  position: 'absolute',
+  inset: 0,
+  pointerEvents: 'none',
+  backgroundImage: sheenGradient,
+  backgroundRepeat: 'no-repeat',
+  backgroundAttachment: 'fixed',
+  backgroundSize: `${sheenBandWidth} 100%`,
+  animation: `${sheenTravel} ${sheenPassDuration} linear infinite`,
+  '@media': {
+    'screen and (prefers-reduced-motion)': {
+      animation: 'none',
+      backgroundImage: 'none',
+    },
+  },
 });
 
 const fadeIn = keyframes({
@@ -23,23 +55,6 @@ const fadeIn = keyframes({
   },
   to: {
     opacity: 1,
-  },
-});
-
-const reducedMotionFill = {
-  animation: 'none',
-  background: vars.backgroundColor.neutralLight,
-  backgroundSize: 'auto',
-} as const;
-
-const shimmerDuration = '1.4s';
-
-export const shimmerAnimation = style({
-  animation: `${shimmer} ${shimmerDuration} infinite`,
-  background: `linear-gradient(90deg, ${vars.backgroundColor.neutralLight} 0%, ${vars.backgroundColor.neutralSoftHover} 28%, ${vars.backgroundColor.neutralLight} 56%)`,
-  backgroundSize: '200% 100%',
-  '@media': {
-    'screen and (prefers-reduced-motion)': reducedMotionFill,
   },
 });
 
@@ -97,6 +112,10 @@ export const percentWidthVar = createVar();
 
 export const percentWidth = style({
   width: percentWidthVar,
+});
+
+export const buttonSmall = style({
+  height: calc.multiply(vars.touchableSize, 0.8),
 });
 
 export const rectangleHeight = styleVariants(

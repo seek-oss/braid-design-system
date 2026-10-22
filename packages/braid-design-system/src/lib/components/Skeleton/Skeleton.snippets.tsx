@@ -30,6 +30,10 @@ export const snippets: Snippets = [
     code: source(<Skeleton type="button" width="small" />),
   },
   {
+    description: 'Small button',
+    code: source(<Skeleton type="button" size="small" width="small" />),
+  },
+  {
     description: 'Rectangle',
     code: source(<Skeleton type="rectangle" />),
   },
@@ -44,6 +48,27 @@ export const snippets: Snippets = [
         <Skeleton type="text" size="small" width="medium" />
         <Skeleton type="text" size="xsmall" width="small" />
       </Stack>,
+    ),
+  },
+  {
+    description: 'Form',
+    code: source(
+      <Card>
+        <Stack space="large">
+          <Stack space="small">
+            <Skeleton type="text" size="small" width="xsmall" />
+            <Skeleton type="button" />
+          </Stack>
+          <Stack space="small">
+            <Skeleton type="text" size="small" width="small" />
+            <Skeleton type="button" />
+          </Stack>
+          <Inline space="small">
+            <Skeleton type="button" width="small" />
+            <Skeleton type="button" size="small" width="small" />
+          </Inline>
+        </Stack>
+      </Card>,
     ),
   },
   {

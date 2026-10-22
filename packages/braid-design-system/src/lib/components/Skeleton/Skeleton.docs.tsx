@@ -216,6 +216,15 @@ const docs: ComponentDocs = {
       description:
         'For a compact spinner on small, simple, or short in-place waits.',
     },
+    {
+      name: 'Button',
+      description:
+        'For an in-place spinner on a control that is already on screen (loading prop).',
+    },
+    {
+      name: 'Avatar',
+      description: 'For a loading disc. There is no Skeleton type="circle".',
+    },
   ],
   additional: [
     {
@@ -224,10 +233,16 @@ const docs: ComponentDocs = {
         <Text>
           Choose a bone that matches what will load: <Strong>text</Strong> and{' '}
           <Strong>heading</Strong> sized to the matching typography component, a{' '}
-          <Strong>button</Strong> at touchable height, or a{' '}
-          <Strong>rectangle</Strong> for cards, images and other blocks. Do not
-          wrap the real content. Swap{' '}
-          <Strong>isLoading ? Skeleton : content</Strong>.
+          <Strong>button</Strong> matching{' '}
+          <TextLink href="/components/Button">Button</TextLink>, or a{' '}
+          <Strong>rectangle</Strong> for cards, images and other blocks. A disc
+          is <TextLink href="/components/Avatar">Avatar</TextLink> with{' '}
+          <Strong>loading</Strong> — there is no{' '}
+          <Strong>type=&quot;circle&quot;</Strong>. Do not wrap the real
+          content. Swap in the parent:{' '}
+          <Strong>{'isLoading ? <Skeleton width={n} /> : children'}</Strong>. A
+          character count becomes a percentage <Strong>width</Strong>, not a
+          prop.
         </Text>
       ),
       Example: () =>
@@ -250,6 +265,7 @@ const docs: ComponentDocs = {
                 button
               </Text>
               <Skeleton type="button" width="small" />
+              <Skeleton type="button" size="small" width="small" />
             </Stack>
             <Stack space="small">
               <Text tone="secondary" size="small">
@@ -318,18 +334,23 @@ const docs: ComponentDocs = {
       Example: () =>
         source(
           <Stack space="medium">
-            <Inline space="small" alignY="center">
-              <Box style={{ width: 120 }}>
-                <Text icon={<IconLocation />}>Melbourne</Text>
-              </Box>
-              <Skeleton type="text" icon width="medium" />
-            </Inline>
-            <Inline space="small" alignY="center">
-              <Box style={{ width: 120 }}>
-                <Text size="small">circle</Text>
-              </Box>
+            <Stack space="xsmall">
+              <Text tone="secondary" size="small">
+                square
+              </Text>
+              <Inline space="small" alignY="center">
+                <Box style={{ width: 120 }}>
+                  <Text icon={<IconLocation />}>Melbourne</Text>
+                </Box>
+                <Skeleton type="text" icon width="medium" />
+              </Inline>
+            </Stack>
+            <Stack space="xsmall">
+              <Text tone="secondary" size="small">
+                circle
+              </Text>
               <Skeleton type="text" icon="circle" width="medium" />
-            </Inline>
+            </Stack>
           </Stack>,
         ),
     },
@@ -340,7 +361,8 @@ const docs: ComponentDocs = {
           When <Strong>type</Strong> is <Strong>heading</Strong>, provide the
           same <Strong>level</Strong> as the{' '}
           <TextLink href="/components/Heading">Heading</TextLink> that will
-          replace it. The bone fills that heading’s Capsize box.
+          replace it. The bone fills that heading’s Capsize box. There is no{' '}
+          <Strong>SkeletonHeading</Strong> export.
         </Text>
       ),
       Example: () =>
@@ -354,14 +376,61 @@ const docs: ComponentDocs = {
         ),
     },
     {
+      label: 'Button size',
+      description: (
+        <>
+          <Text>
+            When <Strong>type</Strong> is <Strong>button</Strong>,{' '}
+            <Strong>size</Strong> matches{' '}
+            <TextLink href="/components/Button">Button</TextLink>:{' '}
+            <Strong>standard</Strong> (default, touchable height) or{' '}
+            <Strong>small</Strong>. Use this when the loaded control is a
+            Button. Small chips that are not Buttons stay a{' '}
+            <Strong>rectangle</Strong> in a sized Box.
+          </Text>
+          <Text>
+            Button’s own <Strong>loading</Strong> prop is an in-place spinner
+            for a short wait on a control that is already on screen. Skeleton{' '}
+            <Strong>type=&quot;button&quot;</Strong> replaces the control while
+            the layout is still loading. That is the same split as{' '}
+            <TextLink href="/components/Loader">Loader</TextLink> versus
+            Skeleton.
+          </Text>
+        </>
+      ),
+      Example: () =>
+        source(
+          <Stack space="medium">
+            <Stack space="xsmall">
+              <Text tone="secondary" size="small">
+                standard
+              </Text>
+              <Skeleton type="button" width="small" />
+            </Stack>
+            <Stack space="xsmall">
+              <Text tone="secondary" size="small">
+                small
+              </Text>
+              <Skeleton type="button" size="small" width="small" />
+            </Stack>
+          </Stack>,
+        ),
+    },
+    {
       label: 'Width',
       description: (
         <Text>
-          Width is the main control for avoiding layout shift: named sizes{' '}
-          <Strong>full</Strong>, <Strong>large</Strong>, <Strong>medium</Strong>{' '}
-          and <Strong>small</Strong> (100%, 75%, 50%, 25%), or a number for a
-          custom percentage of the parent. Only bone fields that will actually
-          appear. Dropping a row after load looks like a failed request.
+          Width is the main control for avoiding layout shift. Named sizes are{' '}
+          <Strong>full</Strong> (100%), <Strong>large</Strong> (75%),{' '}
+          <Strong>medium</Strong> (50%), <Strong>small</Strong> (25%),{' '}
+          <Strong>xsmall</Strong> (12.5%) and <Strong>xxsmall</Strong> (6.25%),
+          or a number for a custom percentage of the parent. Turn a character
+          count into that percentage — do not add a character-count prop. Only
+          bone fields that will actually appear. Dropping a row after load looks
+          like a failed request. A wizard of several bars is{' '}
+          <Strong>lines</Strong> or several{' '}
+          <Strong>type=&quot;text&quot;</Strong> bones with percentage widths,
+          not a wizard type.
         </Text>
       ),
       Example: () =>
@@ -393,6 +462,18 @@ const docs: ComponentDocs = {
             </Stack>
             <Stack space="xsmall">
               <Text tone="secondary" size="small">
+                xsmall
+              </Text>
+              <Skeleton type="text" width="xsmall" />
+            </Stack>
+            <Stack space="xsmall">
+              <Text tone="secondary" size="small">
+                xxsmall
+              </Text>
+              <Skeleton type="text" width="xxsmall" />
+            </Stack>
+            <Stack space="xsmall">
+              <Text tone="secondary" size="small">
                 40%
               </Text>
               <Skeleton type="text" width={40} />
@@ -407,7 +488,11 @@ const docs: ComponentDocs = {
           When <Strong>type</Strong> is <Strong>text</Strong>,{' '}
           <Strong>lines</Strong> draws a paragraph inside one{' '}
           <TextLink href="/components/Text">Text</TextLink> box. Stripes follow
-          cap height with a gap between lines. The last line is always 50% wide.
+          cap height with a gap between lines. The last line is always 50% wide,
+          which covers chat and wizard paragraphs. For a set of bars with
+          different percentages, use several{' '}
+          <Strong>type=&quot;text&quot;</Strong> bones with{' '}
+          <Strong>width</Strong> numbers instead of a per-line array.
         </Text>
       ),
       Example: () => source(<Skeleton type="text" lines={3} />),
@@ -419,7 +504,11 @@ const docs: ComponentDocs = {
           Rectangles use the space scale for height (<Strong>xxsmall</Strong> to{' '}
           <Strong>xxxlarge</Strong>, default <Strong>xxxlarge</Strong>), or{' '}
           <Strong>full</Strong> to fill a sized parent. This is useful for card
-          media and other blocks that are taller than the space scale.
+          media and other blocks that are taller than the space scale. A 100×100
+          or 300px block in product code is still this bone inside a sized
+          parent, not a pixel height prop. A circular logo that is not an Avatar
+          is still this bone, clipped with{' '}
+          <Strong>borderRadius=&quot;full&quot;</Strong> on the parent.
         </Text>
       ),
       Example: () =>
@@ -478,8 +567,8 @@ const docs: ComponentDocs = {
           <TextLink href="/components/Card">Card</TextLink> and{' '}
           <TextLink href="/components/Inline">Inline</TextLink>. Do not put{' '}
           <Strong>aria-label</Strong> on every bar. Parent still swaps{' '}
-          <Strong>isLoading ? … : content</Strong>. Skeleton does not wrap
-          children.
+          <Strong>{'isLoading ? <Skeleton /> : children'}</Strong>. Skeleton
+          does not wrap children.
         </Text>
       ),
       Example: () =>
@@ -496,6 +585,39 @@ const docs: ComponentDocs = {
               <Skeleton type="rectangle" />
             </Stack>
           </Box>,
+        ),
+    },
+    {
+      label: 'Form',
+      description: (
+        <Text>
+          A field is a text label plus a touchable slot. Compose that as{' '}
+          <Strong>type=&quot;text&quot;</Strong> and{' '}
+          <Strong>type=&quot;button&quot;</Strong> inside{' '}
+          <TextLink href="/components/Stack">Stack</TextLink> and{' '}
+          <TextLink href="/components/Card">Card</TextLink>. The field slot uses
+          button height because it is touchable, not because it is a Button.
+          There is no <Strong>Skeleton.Input</Strong>.
+        </Text>
+      ),
+      Example: () =>
+        source(
+          <Card>
+            <Stack space="large">
+              <Stack space="small">
+                <Skeleton type="text" size="small" width="xsmall" />
+                <Skeleton type="button" />
+              </Stack>
+              <Stack space="small">
+                <Skeleton type="text" size="small" width="small" />
+                <Skeleton type="button" />
+              </Stack>
+              <Inline space="small">
+                <Skeleton type="button" width="small" />
+                <Skeleton type="button" size="small" width="small" />
+              </Inline>
+            </Stack>
+          </Card>,
         ),
     },
     {
@@ -517,7 +639,8 @@ const docs: ComponentDocs = {
           <Text>
             Keep real chrome (here, the save action) while the body bones. The
             preview loops between loading and content so you can check for
-            layout shift.
+            layout shift. Replace product <Strong>JobSkeleton</Strong> SVGs and
+            search-result placeholders with this layout. There is no job type.
           </Text>
         </>
       ),
@@ -540,9 +663,12 @@ const docs: ComponentDocs = {
         <>
           <Text>
             Use <TextLink href="/components/Loader">Loader</TextLink> for
-            compact in-context waits. Use Skeleton when the loaded UI is
-            structured (cards, lists, forms, profiles) and a jump on swap would
-            be visible. Keep real chrome (section titles, navigation) while the
+            compact in-context waits, and Button’s <Strong>loading</Strong>{' '}
+            spinner when the control is already on screen. Use Skeleton when the
+            loaded UI is structured (cards, lists, forms, profiles) and a jump
+            on swap would be visible, including{' '}
+            <Strong>type=&quot;button&quot;</Strong> while the control is not on
+            screen yet. Keep real chrome (section titles, navigation) while the
             body bones.
           </Text>
           <Text>
