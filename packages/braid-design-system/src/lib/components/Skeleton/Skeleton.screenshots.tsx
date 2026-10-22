@@ -64,6 +64,8 @@ export const Widths: Story = {
       <Skeleton type="text" width="large" />
       <Skeleton type="text" width="medium" />
       <Skeleton type="text" width="small" />
+      <Skeleton type="text" width="xsmall" />
+      <Skeleton type="text" width="xxsmall" />
       <Skeleton type="text" width={40} />
     </Stack>
   ),
@@ -82,6 +84,16 @@ export const Button: Story = {
     type: 'button',
     width: 'small',
   },
+};
+
+export const ButtonSizes: Story = {
+  name: 'Button sizes',
+  render: () => (
+    <Stack space="medium">
+      <Skeleton type="button" width="small" />
+      <Skeleton type="button" size="small" width="small" />
+    </Stack>
+  ),
 };
 
 export const RectangleHeights: Story = {

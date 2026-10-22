@@ -15,9 +15,9 @@ import {
 import { palette } from '../../color/palette';
 import { Box, type BoxProps } from '../Box/Box';
 import { Heading } from '../Heading/Heading';
+import { Skeleton } from '../Skeleton/Skeleton';
 import { Text } from '../Text/Text';
 import { IconImageBroken, IconProfile } from '../icons';
-import { Skeleton } from '../private/Skeleton/Skeleton';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
@@ -246,7 +246,7 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
     let content;
     let colour = null;
     if (loading) {
-      content = <Skeleton />;
+      content = <Skeleton type="rectangle" height="full" />;
     } else if (imageUrl && imageError) {
       content = (
         <AvatarTextContent size={size}>

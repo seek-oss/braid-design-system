@@ -9,7 +9,7 @@ import { IconCompany, IconPhotoAdd } from '../icons';
 
 import { photoPlaceholderUrl } from './photoPlaceholder.css';
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
-import { shimmerAnimation } from '../private/Skeleton/Skeleton.css';
+import { shimmerAnimation } from '../Skeleton/Skeleton.css';
 import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
 const focusOutlineClassNames = atoms({ outline: 'focus' })

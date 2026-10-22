@@ -932,7 +932,11 @@ const docs: ComponentDocs = {
             <Text>
               You can indicate a loading state inline with the{' '}
               <Strong>loading</Strong> prop, which also ensures that the button
-              is disabled.
+              is disabled. Use this spinner for a short wait on a control that
+              is already on screen. If the layout is still loading and the
+              button is not there yet, replace the slot with{' '}
+              <TextLink href="/components/Skeleton">Skeleton</TextLink>{' '}
+              <Strong>type=&quot;button&quot;</Strong> instead.
             </Text>
           </>
         ),

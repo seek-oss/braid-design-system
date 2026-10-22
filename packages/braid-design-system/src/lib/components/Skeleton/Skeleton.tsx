@@ -5,6 +5,7 @@ import { Fragment, type FC } from 'react';
 
 import { iconSize } from '../../hooks/useIcon';
 import { type BoxProps, Box } from '../Box/Box';
+import type { ButtonStyleProps } from '../Button/Button';
 import { type HeadingProps, Heading } from '../Heading/Heading';
 import { type TextProps, Text } from '../Text/Text';
 import buildDataAttributes, {
@@ -16,6 +17,7 @@ import * as styles from './Skeleton.css';
 
 type SkeletonWidth = keyof typeof styles.width | number;
 type SkeletonRectangleHeight = keyof typeof styles.rectangleHeight | 'full';
+type SkeletonButtonSize = NonNullable<ButtonStyleProps['size']>;
 
 interface SkeletonSharedProps {
   delayVisibility?: boolean;
@@ -45,7 +47,7 @@ export type SkeletonProps =
     })
   | (SkeletonSharedProps & {
       type: 'button';
-      size?: never;
+      size?: SkeletonButtonSize;
       baseline?: never;
       icon?: never;
       lines?: never;
@@ -64,6 +66,8 @@ export type SkeletonProps =
 
 type SkeletonType = NonNullable<SkeletonProps['type']>;
 
+const ShimmerSheen = () => <Box aria-hidden className={styles.shimmerSheen} />;
+
 const resolveWidthClass = (width: SkeletonWidth | undefined) => {
   if (width === undefined) {
     return styles.width.full;
@@ -79,8 +83,9 @@ const resolveWidthClass = (width: SkeletonWidth | undefined) => {
 const resolveBoxHeight = (
   type: SkeletonType,
   height: SkeletonRectangleHeight | undefined,
+  size: TextProps['size'] | SkeletonButtonSize | undefined,
 ): BoxProps['height'] => {
-  if (type === 'button') {
+  if (type === 'button' && size !== 'small') {
     return 'touchable';
   }
 
@@ -106,8 +111,10 @@ export const Skeleton: FC<SkeletonProps> = ({
   ...restProps
 }) => {
   assert(
-    size === undefined || type === 'text',
-    'The "size" prop is only valid when type is "text"',
+    size === undefined ||
+      type === 'text' ||
+      (type === 'button' && (size === 'standard' || size === 'small')),
+    'The "size" prop is only valid when type is "text", or "standard" or "small" when type is "button"',
   );
   assert(
     baseline === undefined || type === 'text',
@@ -164,7 +171,14 @@ export const Skeleton: FC<SkeletonProps> = ({
 
   const dataAttrs = buildDataAttributes({ data, validateRestProps: restProps });
 
-  const rootClassName = [resolveWidthClass(width), spaceHeight, delayClass];
+  const buttonSizeClass =
+    type === 'button' && size === 'small' ? styles.buttonSmall : undefined;
+  const rootClassName = [
+    resolveWidthClass(width),
+    spaceHeight,
+    buttonSizeClass,
+    delayClass,
+  ];
   const lineCount = type === 'text' && lines ? lines : 1;
   const multiline = lineCount > 1;
   const resolvedTextSize = size ?? 'standard';
@@ -195,7 +209,9 @@ export const Skeleton: FC<SkeletonProps> = ({
           iconSize({ size: resolvedTextSize }),
           styles.shimmerAnimation,
         ]}
-      />
+      >
+        <ShimmerSheen />
+      </Box>
     ) : null;
 
     let paint = (
@@ -203,7 +219,9 @@ export const Skeleton: FC<SkeletonProps> = ({
         overflow="hidden"
         borderRadius="full"
         className={[styles.typographyBar, styles.shimmerAnimation]}
-      />
+      >
+        <ShimmerSheen />
+      </Box>
     );
 
     if (multiline) {
@@ -241,7 +259,9 @@ export const Skeleton: FC<SkeletonProps> = ({
                     styles.shimmerAnimation,
                     isLastLine ? styles.width.medium : styles.width.full,
                   ]}
-                />
+                >
+                  <ShimmerSheen />
+                </Box>
               </Box>
             );
           })}
@@ -261,7 +281,9 @@ export const Skeleton: FC<SkeletonProps> = ({
             overflow="hidden"
             borderRadius="full"
             className={[styles.shimmerAnimation, styles.width.full]}
-          />
+          >
+            <ShimmerSheen />
+          </Box>
         </Box>
       );
     }
@@ -288,11 +310,13 @@ export const Skeleton: FC<SkeletonProps> = ({
       overflow="hidden"
       pointerEvents="none"
       borderRadius="standard"
-      height={resolveBoxHeight(type, height)}
+      height={resolveBoxHeight(type, height, size)}
       className={[...rootClassName, styles.shimmerAnimation]}
       style={customWidthStyle}
       {...a11yProps}
       {...dataAttrs}
-    />
+    >
+      <ShimmerSheen />
+    </Box>
   );
 };
