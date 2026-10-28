@@ -209,7 +209,7 @@ const ModalScrollPort = ({
   startRef?: RefObject<HTMLElement | null>;
 }) => (
   <Box className={styles.verticalScrollMinHeight}>
-    <ScrollContainer direction="vertical" startRef={startRef}>
+    <ScrollContainer direction="vertical" startRef={startRef} height="content">
       {children}
     </ScrollContainer>
   </Box>

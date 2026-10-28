@@ -1,9 +1,4 @@
-import {
-  createVar,
-  fallbackVar,
-  globalStyle,
-  style,
-} from '@vanilla-extract/css';
+import { createVar, fallbackVar, style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
 import { atoms } from '../../../css/atoms/atoms';
@@ -218,15 +213,4 @@ export const verticalScrollMinHeight = style({
   flex: '1 1 0%',
   minHeight: 0,
   overflow: 'hidden',
-});
-
-/**
- * ScrollContainer always sets `height: 100%`. Use content height when the
- * dialog can grow, then cap to the flex item once max-height kicks in so
- * the same node scrolls instead of painting over a pinned footer.
- */
-globalStyle(`${verticalScrollMinHeight} > *`, {
-  height: 'auto !important',
-  maxHeight: '100%',
-  minHeight: 0,
 });
