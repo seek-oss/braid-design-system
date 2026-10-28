@@ -160,38 +160,57 @@ export const closeIconOffset = style({
   right: '-2px',
 });
 
-export const hideOverflowAboveMobile = style(
-  responsiveStyle({
-    tablet: {
-      overflow: 'hidden',
-    },
-  }),
-);
-
 export const maximumHeightForCoverImage = '70vh';
 
-export const coverImageHeightLimit = style(
-  responsiveStyle({
-    tablet: {
-      maxHeight: fallbackVar(
-        overrideMaxHeightForScreenshot,
-        maximumHeightForCoverImage,
-      ),
-    },
-  }),
+const coverImageMaxHeight = fallbackVar(
+  overrideMaxHeightForScreenshot,
+  maximumHeightForCoverImage,
 );
 
-export const coverImageVar = createVar();
-export const coverImage = style([
-  responsiveStyle({
-    mobile: {
-      aspectRatio: '16 / 9',
-    },
-  }),
+export const coverImageSideBySide = style([
+  atoms({ overflow: 'hidden' }),
   {
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundImage: coverImageVar,
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gridTemplateRows: 'minmax(0, 1fr)',
+    height: 'fit-content',
+    maxHeight: coverImageMaxHeight,
   },
 ]);
+
+export const coverImageGridCell = style([
+  atoms({
+    display: 'flex',
+    flexDirection: 'column',
+    minWidth: 0,
+    height: 'full',
+    overflow: 'hidden',
+  }),
+  {
+    minHeight: 0,
+  },
+]);
+
+export const coverImageVar = createVar();
+export const coverImage = style({
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  backgroundImage: coverImageVar,
+});
+
+export const coverImageAspectRatio = style({
+  aspectRatio: '16 / 9',
+});
+
+export const dialogColumn = style({
+  display: 'grid',
+  gridTemplateRows: 'minmax(0, 1fr)',
+  height: 'fit-content',
+});
+
+export const verticalScrollMinHeight = style({
+  flex: '1 1 0%',
+  minHeight: 0,
+  overflow: 'hidden',
+});
