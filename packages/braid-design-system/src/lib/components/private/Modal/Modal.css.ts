@@ -172,23 +172,29 @@ const coverImageMaxHeight = fallbackVar(
   maximumHeightForCoverImage,
 );
 
-export const coverImageSideBySide = style({
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  gridTemplateRows: 'minmax(0, 1fr)',
-  height: 'fit-content',
-  maxHeight: coverImageMaxHeight,
-  overflow: 'hidden',
-});
+export const coverImageSideBySide = style([
+  atoms({ overflow: 'hidden' }),
+  {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gridTemplateRows: 'minmax(0, 1fr)',
+    height: 'fit-content',
+    maxHeight: coverImageMaxHeight,
+  },
+]);
 
-export const coverImageGridCell = style({
-  display: 'flex',
-  flexDirection: 'column',
-  minWidth: 0,
-  minHeight: 0,
-  height: '100%',
-  overflow: 'hidden',
-});
+export const coverImageGridCell = style([
+  atoms({
+    display: 'flex',
+    flexDirection: 'column',
+    minWidth: 0,
+    height: 'full',
+    overflow: 'hidden',
+  }),
+  {
+    minHeight: 0,
+  },
+]);
 
 export const coverImageVar = createVar();
 export const coverImage = style({
