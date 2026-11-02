@@ -1,5 +1,6 @@
 import source from '@braid-design-system/source.macro';
 import { useEffect, useState } from 'react';
+import Code from 'site/App/Code/Code';
 import type { ComponentDocs } from 'site/types';
 
 import {
@@ -13,7 +14,7 @@ import {
   Divider,
   Heading,
   Inline,
-  Notice,
+  List,
   Rating,
   Skeleton,
   Stack,
@@ -31,6 +32,8 @@ import {
 } from '../icons';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
+import { CoverageRecipe, coveragePlayroom } from './Skeleton.coverage';
+
 import { animationDelayValueInMs } from './Skeleton.css';
 
 const jobCardLoading = source(
@@ -38,24 +41,11 @@ const jobCardLoading = source(
     <Columns space="small">
       <Column>
         <Stack space="small">
-          <Box position="relative" display="flex" maxWidth="content">
-            <Box opacity={0}>
-              <Badge tone="positive">New</Badge>
-            </Box>
-            <Box
-              position="absolute"
-              inset={0}
-              borderRadius="standard"
-              overflow="hidden"
-            >
-              <Skeleton type="rectangle" height="full" />
-            </Box>
-          </Box>
+          <Skeleton type="badge" />
           <Skeleton type="heading" level="4" width="small" />
           <Inline space="small" alignY="center">
             <Skeleton type="text" width="small" />
-            <Skeleton type="rectangle" height="small" width="xsmall" />
-            <Skeleton type="text" width="xxsmall" />
+            <Skeleton type="text" width="xsmall" />
           </Inline>
         </Stack>
       </Column>
@@ -78,7 +68,7 @@ const jobCardLoading = source(
     <Skeleton type="text" lines={2} />
     <Columns space="small" alignY="center">
       <Column>
-        <Skeleton type="text" size="standard" width="xxsmall" />
+        <Skeleton type="text" size="small" width="xxsmall" />
       </Column>
       <Column width="content">
         <ButtonIcon
@@ -156,11 +146,7 @@ const JobCardRecipe = () => {
   }, []);
 
   return (
-    <Box
-      aria-busy={isLoading}
-      aria-live="polite"
-      aria-label={isLoading ? 'Loading job' : undefined}
-    >
+    <Box aria-busy={isLoading}>
       <Card>{isLoading ? jobCardLoading.value : jobCardLoaded.value}</Card>
     </Box>
   );
@@ -170,37 +156,48 @@ const docs: ComponentDocs = {
   category: 'Content',
   description: (
     <Text>
-      A content placeholder that <Strong>reserves layout</Strong> while
-      structured UI is loading. Use it so real content can swap in and keep the
-      layout. Text and heading bones use the same Capsize box as{' '}
-      <TextLink href="/components/Text">Text</TextLink> and{' '}
-      <TextLink href="/components/Heading">Heading</TextLink> (cap-top to
-      baseline). Swap with the same <Strong>size</Strong> or{' '}
-      <Strong>level</Strong>. Letters may sit a pixel outside that box because
-      of font overshoot.
+      A placeholder that holds space while structured content is loading, so the
+      layout does not shift when it arrives.
     </Text>
   ),
   Example: () => source(<Skeleton />),
   accessibility: (
-    <>
+    <Stack space="large">
       <Text>
-        Unlabelled bones are hidden from assistive technologies (
-        <Strong>aria-hidden</Strong>
-        ). Announce <Strong>once per loading region</Strong> on the parent (for
-        example <Strong>aria-busy</Strong> and{' '}
-        <Strong>aria-live=&quot;polite&quot;</Strong>
-        ), then swap to the real content.
+        Skeletons are decorative by default, so they are hidden from assistive
+        technologies. Screen readers should hear that content is loading{' '}
+        <Strong>once</Strong>, not once per bar.
       </Text>
       <Text>
-        If a single bone is the whole region, an optional{' '}
-        <Strong>aria-label</Strong> is announced politely as a status.
+        For a card or section with several placeholders, put{' '}
+        <Strong>aria-busy</Strong> on the wrapper, then swap in the content:
       </Text>
+      <Code playroom={false}>
+        {
+          source(
+            <Box aria-busy="true">
+              <Stack space="medium">
+                <Skeleton type="heading" level="3" />
+                <Skeleton type="text" lines={2} />
+              </Stack>
+            </Box>,
+          ).code
+        }
+      </Code>
+      <Text>
+        If a single Skeleton is the whole loading state, give it an{' '}
+        <Strong>aria-label</Strong> instead. That one placeholder is announced
+        as a polite status:
+      </Text>
+      <Code playroom={false}>
+        {source(<Skeleton type="text" aria-label="Loading" />).code}
+      </Code>
       <Text tone="promote" id="translations">
         <IconLanguage title="Translation hint" titleId="translations" /> The{' '}
         announced message can be customised by providing the{' '}
         <Strong>aria-label</Strong> prop.
       </Text>
-    </>
+    </Stack>
   ),
   alternatives: [
     {
@@ -211,7 +208,7 @@ const docs: ComponentDocs = {
     {
       name: 'Button',
       description:
-        'For an in-place spinner on a control that is already on screen (loading prop).',
+        'For an in-place spinner on a control that is already on screen.',
     },
     {
       name: 'Avatar',
@@ -222,16 +219,21 @@ const docs: ComponentDocs = {
     {
       label: 'Types',
       description: (
-        <Text>
-          Choose a bone that matches what will load: <Strong>text</Strong> and{' '}
-          <Strong>heading</Strong> sized to the matching typography component, a{' '}
-          <Strong>button</Strong> matching{' '}
-          <TextLink href="/components/Button">Button</TextLink>, or a{' '}
-          <Strong>rectangle</Strong> for cards, images and other blocks. A disc
-          is <TextLink href="/components/Avatar">Avatar</TextLink> with{' '}
-          <Strong>loading</Strong>. Swap in the parent:{' '}
-          <Strong>{'isLoading ? <Skeleton /> : children'}</Strong>.
-        </Text>
+        <>
+          <Text>
+            A Skeleton can select an appearance via the <Strong>type</Strong>{' '}
+            prop, matching the height of the content that will load:{' '}
+            <Strong>text</Strong>, <Strong>heading</Strong>,{' '}
+            <Strong>button</Strong>, <Strong>rectangle</Strong> and{' '}
+            <Strong>badge</Strong>.
+          </Text>
+          <Text>
+            Use the same <Strong>size</Strong> or <Strong>level</Strong> as the
+            component it replaces. For an identity disc, use{' '}
+            <TextLink href="/components/Avatar">Avatar</TextLink> with{' '}
+            <Strong>loading</Strong> instead.
+          </Text>
+        </>
       ),
       Example: () =>
         source(
@@ -261,6 +263,12 @@ const docs: ComponentDocs = {
               </Text>
               <Skeleton type="rectangle" />
             </Stack>
+            <Stack space="small">
+              <Text tone="secondary" size="small">
+                badge
+              </Text>
+              <Skeleton type="badge" />
+            </Stack>
           </Stack>,
         ),
     },
@@ -268,11 +276,11 @@ const docs: ComponentDocs = {
       label: 'Text size',
       description: (
         <Text>
-          When <Strong>type</Strong> is <Strong>text</Strong>, height comes from
-          real <TextLink href="/components/Text">Text</TextLink> at the same{' '}
-          <Strong>size</Strong>, including baseline trim. Set{' '}
-          <Strong>{'baseline={false}'}</Strong> only when you want an untrimmed
-          line box.
+          Text placeholders are sized to the cap-height of the corresponding{' '}
+          <TextLink href="/components/Text">Text</TextLink>, including baseline
+          trim. This is particularly useful when swapping in a line of the same{' '}
+          <Strong>size</Strong>. Set <Strong>baseline</Strong> to{' '}
+          <Strong>false</Strong> if you need an untrimmed line box.
         </Text>
       ),
       Example: () =>
@@ -309,15 +317,11 @@ const docs: ComponentDocs = {
       label: 'Text with an icon',
       description: (
         <Text>
-          When <Strong>type</Strong> is <Strong>text</Strong>,{' '}
-          <Strong>icon</Strong> reserves the same slot as{' '}
-          <TextLink href="/components/Text">Text</TextLink>’s icon: a rounded
-          square (<Strong>true</Strong> or <Strong>square</Strong>) or a disc (
-          <Strong>circle</Strong>), then the text bone. Icons use the same{' '}
-          <Strong>1.2em</Strong> size as Text icons, so they sit slightly
-          outside the Capsize line. Pass a shape: <Strong>true</Strong> or{' '}
-          <Strong>square</Strong> for a rounded square, or{' '}
-          <Strong>circle</Strong> for a disc.
+          The <Strong>icon</Strong> prop reserves the same slot as{' '}
+          <TextLink href="/components/Text">Text</TextLink> — a rounded square
+          by default, or a disc when set to <Strong>circle</Strong>. Icons use
+          the same size as Text icons, so they sit slightly outside the line
+          box.
         </Text>
       ),
       Example: () =>
@@ -347,10 +351,9 @@ const docs: ComponentDocs = {
       label: 'Heading level',
       description: (
         <Text>
-          When <Strong>type</Strong> is <Strong>heading</Strong>, provide the
-          same <Strong>level</Strong> as the{' '}
-          <TextLink href="/components/Heading">Heading</TextLink> that will
-          replace it. The bone fills that heading’s Capsize box.
+          Heading placeholders are sized to the matching{' '}
+          <TextLink href="/components/Heading">Heading</TextLink>. Provide the
+          same <Strong>level</Strong> as the heading that will replace it.
         </Text>
       ),
       Example: () =>
@@ -368,20 +371,15 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            When <Strong>type</Strong> is <Strong>button</Strong>,{' '}
-            <Strong>size</Strong> matches{' '}
+            Button placeholders match{' '}
             <TextLink href="/components/Button">Button</TextLink>:{' '}
-            <Strong>standard</Strong> (default, touchable height) or{' '}
-            <Strong>small</Strong>. Use this when the loaded control is a
-            Button. Small chips use a <Strong>rectangle</Strong> in a sized Box.
+            <Strong>standard</Strong> (the default, at touchable height) or{' '}
+            <Strong>small</Strong>.
           </Text>
           <Text>
-            Button’s own <Strong>loading</Strong> prop is an in-place spinner
-            for a short wait on a control that is already on screen. Skeleton{' '}
-            <Strong>type=&quot;button&quot;</Strong> replaces the control while
-            the layout is still loading. That is the same split as{' '}
-            <TextLink href="/components/Loader">Loader</TextLink> versus
-            Skeleton.
+            Use a skeleton while the control is not yet on screen. Once the
+            button is visible, its own <Strong>loading</Strong> prop shows an
+            in-place spinner.
           </Text>
         </>
       ),
@@ -407,8 +405,8 @@ const docs: ComponentDocs = {
       label: 'Width',
       description: (
         <Text>
-          Width is the main control for avoiding layout shift. Named sizes are{' '}
-          <Strong>full</Strong> (100%), <Strong>large</Strong> (75%),{' '}
+          Placeholders can be sized via the <Strong>width</Strong> prop. Named
+          sizes are <Strong>full</Strong> (100%), <Strong>large</Strong> (75%),{' '}
           <Strong>medium</Strong> (50%), <Strong>small</Strong> (25%),{' '}
           <Strong>xsmall</Strong> (12.5%) and <Strong>xxsmall</Strong> (6.25%),
           or a number for a custom percentage of the parent.
@@ -466,13 +464,10 @@ const docs: ComponentDocs = {
       label: 'Multiple lines',
       description: (
         <Text>
-          When <Strong>type</Strong> is <Strong>text</Strong>,{' '}
-          <Strong>lines</Strong> draws a paragraph inside one{' '}
-          <TextLink href="/components/Text">Text</TextLink> box. Stripes follow
-          cap height with a gap between lines. The last line is always 50% wide.
-          For bars of different lengths, use several{' '}
-          <Strong>type=&quot;text&quot;</Strong> bones with{' '}
-          <Strong>width</Strong>.
+          The <Strong>lines</Strong> prop draws a paragraph inside one{' '}
+          <TextLink href="/components/Text">Text</TextLink> box. The last line
+          is always half width. For lines of different lengths, use separate
+          text placeholders with <Strong>width</Strong>.
         </Text>
       ),
       Example: () => source(<Skeleton type="text" lines={3} />),
@@ -481,15 +476,12 @@ const docs: ComponentDocs = {
       label: 'Rectangle height',
       description: (
         <Text>
-          Rectangles use the space scale for height (<Strong>xxsmall</Strong> to{' '}
-          <Strong>xxxlarge</Strong>, default <Strong>xxxlarge</Strong>), or{' '}
-          <Strong>full</Strong> to fill a sized parent. This is useful for card
-          media and other blocks that are taller than the space scale. Size the
-          parent, then fill it with <Strong>height=&quot;full&quot;</Strong>. A
-          circular logo uses this bone, clipped with{' '}
-          <Strong>borderRadius=&quot;full&quot;</Strong> on the parent. Identity
-          discs use <TextLink href="/components/Avatar">Avatar</TextLink> with{' '}
-          <Strong>loading</Strong>.
+          Rectangles use the space scale for height, from{' '}
+          <Strong>xxsmall</Strong> to <Strong>xxxlarge</Strong> (the default),
+          or <Strong>full</Strong> to fill a sized parent. This is particularly
+          useful for images and other blocks. For a circular logo, clip the
+          parent with <Strong>borderRadius</Strong> set to <Strong>full</Strong>
+          .
         </Text>
       ),
       Example: () =>
@@ -503,13 +495,19 @@ const docs: ComponentDocs = {
     {
       label: 'Delayed visibility',
       description: (
-        <Text>
-          If content loads quickly, users are likely to see a flash of
-          placeholders. Delay visibility by {animationDelayValueInMs}ms via{' '}
-          <Strong>delayVisibility</Strong>, matching{' '}
-          <TextLink href="/components/Loader">Loader</TextLink>. Apply it to{' '}
-          <Strong>every</Strong> bone in a region, or to none.
-        </Text>
+        <>
+          <Text>
+            If content loads quickly, users are likely to see a quick flash of
+            the placeholder. In order to reduce this visual noise, you can opt
+            to delay the visibility of the skeleton by {animationDelayValueInMs}
+            ms via the <Strong>delayVisibility</Strong> prop.
+          </Text>
+          <Text>
+            Apply it to every skeleton in a region, or to none. A shimmer is
+            shown by default, and stays static when the user prefers reduced
+            motion.
+          </Text>
+        </>
       ),
       Example: ({ setDefaultState, getState, setState }) =>
         source(
@@ -542,19 +540,18 @@ const docs: ComponentDocs = {
       label: 'Composing a region',
       description: (
         <Text>
-          Compose bones with <TextLink href="/components/Stack">Stack</TextLink>
-          , <TextLink href="/components/Card">Card</TextLink> and{' '}
-          <TextLink href="/components/Inline">Inline</TextLink>. Put{' '}
-          <Strong>aria-label</Strong> on the region, then swap in the parent.
+          Skeletons can be composed with{' '}
+          <TextLink href="/components/Stack">Stack</TextLink>,{' '}
+          <TextLink href="/components/Card">Card</TextLink> and{' '}
+          <TextLink href="/components/Inline">Inline</TextLink>. Match the
+          spacing and hierarchy of the loaded layout, then swap in the parent.
+          If a request fails, replace the skeleton with an inline error rather
+          than leaving it on screen.
         </Text>
       ),
       Example: () =>
         source(
-          <Box
-            aria-busy="true"
-            aria-live="polite"
-            aria-label="Loading job details"
-          >
+          <Box aria-busy="true">
             <Stack space="medium">
               <Skeleton type="heading" level="2" width="large" />
               <Skeleton type="text" lines={2} />
@@ -568,11 +565,10 @@ const docs: ComponentDocs = {
       label: 'Form',
       description: (
         <Text>
-          A field is a text label plus a touchable slot. Compose that as{' '}
-          <Strong>type=&quot;text&quot;</Strong> and{' '}
-          <Strong>type=&quot;button&quot;</Strong> inside{' '}
+          A field can be represented as a text placeholder for the label and a
+          button-sized placeholder for the input, composed inside{' '}
           <TextLink href="/components/Stack">Stack</TextLink> and{' '}
-          <TextLink href="/components/Card">Card</TextLink>. The field slot uses
+          <TextLink href="/components/Card">Card</TextLink>. The input uses
           button height because it is touchable.
         </Text>
       ),
@@ -590,7 +586,7 @@ const docs: ComponentDocs = {
               </Stack>
               <Inline space="small">
                 <Skeleton type="button" width="small" />
-                <Skeleton type="button" size="small" width="small" />
+                <Skeleton type="button" width="small" />
               </Inline>
             </Stack>
           </Card>,
@@ -601,21 +597,15 @@ const docs: ComponentDocs = {
       description: (
         <>
           <Text>
-            Match the loaded layout with the same{' '}
-            <TextLink href="/components/Stack">Stack</TextLink>,{' '}
-            <TextLink href="/components/Columns">Columns</TextLink> and spacing,
-            then put a <Strong>Skeleton</Strong> in each slot. This card follows
-            the <TextLink href="/examples/job-summary">Job Summary</TextLink>{' '}
-            example. Widths are approximate; heading level, text size and stack
-            space should match so the swap keeps layout. For Badge, reserve the
-            slot with an invisible Badge, then fill it with a full-height{' '}
-            <Strong>rectangle</Strong>. A <Strong>medium</Strong> rectangle is
-            24px, which is shorter than the pill.
+            This card follows the{' '}
+            <TextLink href="/examples/job-summary">Job Summary</TextLink>{' '}
+            example, with a skeleton in each slot. Widths can be approximate;
+            heading level, text size and spacing should match so the layout
+            holds when content arrives.
           </Text>
           <Text>
-            Keep real chrome (here, the save action) while the body bones. The
-            preview loops between loading and content so you can check for
-            layout shift.
+            Controls that are already on screen, such as the save action, can
+            stay in place. The preview loops between loading and content.
           </Text>
         </>
       ),
@@ -628,48 +618,62 @@ const docs: ComponentDocs = {
       }),
     },
     {
-      label: 'When to use',
+      label: 'Coverage',
       description: (
-        <>
-          <Text>
-            Use Skeleton when the loaded UI is structured (cards, lists, forms,
-            profiles) and a jump on swap would be visible, including{' '}
-            <Strong>type=&quot;button&quot;</Strong> while that control is still
-            loading. Keep real chrome (section titles, navigation, save) while
-            the body bones. Use{' '}
-            <TextLink href="/components/Loader">Loader</TextLink> for compact
-            in-context waits, and Button’s <Strong>loading</Strong> spinner when
-            the control is already on screen. Identity discs use{' '}
-            <TextLink href="/components/Avatar">Avatar</TextLink> with{' '}
-            <Strong>loading</Strong>.
-          </Text>
-          <Notice>
-            <Text>
-              Shimmer is on by default so a long wait still feels in progress.
-              It stays static when the user prefers reduced motion.
-            </Text>
-          </Notice>
-        </>
+        <Text>
+          A proof of concept of in-flow components swapping to content. Where
+          there is no Skeleton type, space is held with a rectangle over the
+          real control. Overlays such as{' '}
+          <TextLink href="/components/Dialog">Dialog</TextLink> and{' '}
+          <TextLink href="/components/Drawer">Drawer</TextLink> show a
+          placeholder for the trigger. The preview loops; Playroom shows a small
+          sample.
+        </Text>
       ),
+      Example: () => ({
+        code: coveragePlayroom.code,
+        value: <CoverageRecipe />,
+      }),
     },
     {
-      label: 'Do and don’t',
+      label: 'When to use',
       description: (
-        <Stack space="medium">
-          <Text>
-            <Strong>Do</Strong> match the loaded layout (same Stack, spacing,
-            heading level and text size). Bone only fields that will appear.
-            Apply <Strong>delayVisibility</Strong> to every bone in a region, or
-            to none. Announce once on the parent. After a failed request, show
-            an inline error and retry.
-          </Text>
-          <Text>
-            <Strong>Don’t</Strong> leave a skeleton up after a failed request.
-            Don’t put <Strong>aria-label</Strong> on every bar. Don’t delay only
-            the first bone in a region. Don’t pass an icon component to{' '}
-            <Strong>icon</Strong>. Don’t add a Skeleton type for Avatar or for
-            every Braid export.
-          </Text>
+        <Stack space="xlarge">
+          <Stack space="large">
+            <Text>Use a Skeleton:</Text>
+            <List space="large">
+              <Text>
+                when the loaded UI is structured (cards, lists, forms, profiles)
+                and a shift would be noticeable
+              </Text>
+              <Text>
+                to hold space for content that is not yet on screen, including
+                buttons that have not rendered.
+              </Text>
+            </List>
+          </Stack>
+          <Stack space="large">
+            <Text>Don&rsquo;t use a Skeleton:</Text>
+            <List space="large">
+              <Text>
+                for a compact, in-context wait (use a{' '}
+                <TextLink href="/components/Loader">Loader</TextLink> instead)
+              </Text>
+              <Text>
+                on a control that is already on screen (use the Button{' '}
+                <Strong>loading</Strong> prop instead)
+              </Text>
+              <Text>
+                for an identity disc (use{' '}
+                <TextLink href="/components/Avatar">Avatar</TextLink> with{' '}
+                <Strong>loading</Strong> instead)
+              </Text>
+              <Text>
+                after a request has failed (show an inline error and retry
+                instead).
+              </Text>
+            </List>
+          </Stack>
         </Stack>
       ),
     },
