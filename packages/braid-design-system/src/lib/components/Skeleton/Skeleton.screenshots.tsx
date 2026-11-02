@@ -96,6 +96,12 @@ export const ButtonSizes: Story = {
   ),
 };
 
+export const Badge: Story = {
+  args: {
+    type: 'badge',
+  },
+};
+
 export const RectangleHeights: Story = {
   name: 'Rectangle heights',
   render: () => (
