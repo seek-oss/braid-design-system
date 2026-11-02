@@ -4,6 +4,7 @@ import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { Fragment, type FC } from 'react';
 
 import { iconSize } from '../../hooks/useIcon';
+import { Badge } from '../Badge/Badge';
 import { type BoxProps, Box } from '../Box/Box';
 import type { ButtonStyleProps } from '../Button/Button';
 import { type HeadingProps, Heading } from '../Heading/Heading';
@@ -62,15 +63,27 @@ export type SkeletonProps =
       icon?: never;
       lines?: never;
       level?: never;
+    })
+  | (SkeletonSharedProps & {
+      type: 'badge';
+      size?: never;
+      baseline?: never;
+      icon?: never;
+      lines?: never;
+      level?: never;
+      height?: never;
     });
 
 type SkeletonType = NonNullable<SkeletonProps['type']>;
 
 const ShimmerSheen = () => <Box aria-hidden className={styles.shimmerSheen} />;
 
-const resolveWidthClass = (width: SkeletonWidth | undefined) => {
+const resolveWidthClass = (
+  type: SkeletonType,
+  width: SkeletonWidth | undefined,
+) => {
   if (width === undefined) {
-    return styles.width.full;
+    return type === 'badge' ? undefined : styles.width.full;
   }
 
   if (typeof width === 'number') {
@@ -161,7 +174,6 @@ export const Skeleton: FC<SkeletonProps> = ({
     type === 'rectangle' && height && height !== 'full'
       ? styles.rectangleHeight[height]
       : undefined;
-
   let iconShape: 'circle' | 'square' | undefined;
   if (icon === 'circle') {
     iconShape = 'circle';
@@ -174,7 +186,7 @@ export const Skeleton: FC<SkeletonProps> = ({
   const buttonSizeClass =
     type === 'button' && size === 'small' ? styles.buttonSmall : undefined;
   const rootClassName = [
-    resolveWidthClass(width),
+    resolveWidthClass(type, width),
     spaceHeight,
     buttonSizeClass,
     delayClass,
@@ -301,6 +313,42 @@ export const Skeleton: FC<SkeletonProps> = ({
           {typeMeasure}
         </Box>
         {paint}
+      </Box>
+    );
+  }
+
+  if (type === 'badge') {
+    const contentSized = width === undefined;
+
+    return (
+      <Box
+        position="relative"
+        display={contentSized ? 'flex' : undefined}
+        maxWidth={contentSized ? 'content' : undefined}
+        pointerEvents="none"
+        className={rootClassName}
+        style={customWidthStyle}
+        {...a11yProps}
+        {...dataAttrs}
+      >
+        <Box aria-hidden className={styles.invisibleInFlow}>
+          <Badge>{'\u00a0'}</Badge>
+        </Box>
+        <Box
+          display="flex"
+          alignItems="center"
+          className={styles.typographyBar}
+        >
+          <Box
+            height="full"
+            width="full"
+            overflow="hidden"
+            borderRadius="standard"
+            className={styles.shimmerAnimation}
+          >
+            <ShimmerSheen />
+          </Box>
+        </Box>
       </Box>
     );
   }

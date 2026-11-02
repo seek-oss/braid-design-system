@@ -92,7 +92,7 @@ describe('Skeleton', () => {
     ).toThrow('The "level" prop is required when type is "heading"');
   });
 
-  it('should reject size unless the bone is text or button', () => {
+  it('should reject size unless the bone supports it', () => {
     expect(() =>
       render(
         <BraidTestProvider>
@@ -151,6 +151,19 @@ describe('Skeleton', () => {
         </BraidTestProvider>,
       ),
     ).toThrow('The "lines" prop must be a positive integer');
+  });
+
+  it('should size a badge to the real control', () => {
+    const { getByTestId } = render(
+      <BraidTestProvider>
+        <Skeleton type="badge" data={{ testid: 'badge' }} />
+      </BraidTestProvider>,
+    );
+
+    expect(getByTestId('badge')).not.toHaveClass(styles.width.full);
+    expect(
+      getByTestId('badge').querySelector(`.${styles.shimmerAnimation}`),
+    ).toBeInTheDocument();
   });
 
   it('should shorten the last line of a paragraph to 50%', () => {

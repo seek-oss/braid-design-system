@@ -38,6 +38,10 @@ export const galleryItems: GalleryComponent = {
       Example: () => source(<Skeleton type="rectangle" />),
     },
     {
+      label: 'Badge',
+      Example: () => source(<Skeleton type="badge" />),
+    },
+    {
       label: 'Composed region',
       Example: () =>
         source(

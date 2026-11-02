@@ -1,7 +1,6 @@
 import source from '@braid-design-system/source.macro';
 
 import {
-  Badge,
   Box,
   Card,
   Column,
@@ -38,6 +37,10 @@ export const snippets: Snippets = [
     code: source(<Skeleton type="rectangle" />),
   },
   {
+    description: 'Badge',
+    code: source(<Skeleton type="badge" />),
+  },
+  {
     description: 'Paragraph',
     code: source(<Skeleton type="text" lines={3} />),
   },
@@ -65,7 +68,7 @@ export const snippets: Snippets = [
           </Stack>
           <Inline space="small">
             <Skeleton type="button" width="small" />
-            <Skeleton type="button" size="small" width="small" />
+            <Skeleton type="button" width="small" />
           </Inline>
         </Stack>
       </Card>,
@@ -79,23 +82,11 @@ export const snippets: Snippets = [
           <Columns space="small">
             <Column>
               <Stack space="small">
-                <Box position="relative" display="flex" maxWidth="content">
-                  <Box opacity={0}>
-                    <Badge tone="positive">New</Badge>
-                  </Box>
-                  <Box
-                    position="absolute"
-                    inset={0}
-                    borderRadius="standard"
-                    overflow="hidden"
-                  >
-                    <Skeleton type="rectangle" height="full" />
-                  </Box>
-                </Box>
+                <Skeleton type="badge" />
                 <Skeleton type="heading" level="4" width="large" />
                 <Inline space="small" alignY="center">
                   <Skeleton type="text" width="large" />
-                  <Skeleton type="text" width="small" />
+                  <Skeleton type="text" width="xsmall" />
                 </Inline>
               </Stack>
             </Column>

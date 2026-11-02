@@ -8271,6 +8271,7 @@ exports[`Skeleton 1`] = `
         | "standard"
         | "xsmall"
     type?: 
+        | "badge"
         | "button"
         | "heading"
         | "rectangle"
