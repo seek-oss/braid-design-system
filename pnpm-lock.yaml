@@ -722,8 +722,8 @@ importers:
         specifier: ^17.4.0
         version: 17.6.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       sku:
-        specifier: 16.5.0
-        version: 16.5.0(cc6a4348f64d60227c36dc9822733659)
+        specifier: 16.6.0
+        version: 16.6.0(cc6a4348f64d60227c36dc9822733659)
       tsx:
         specifier: ^4.19.2
         version: 4.23.15
@@ -764,8 +764,8 @@ importers:
         specifier: ^7.6.3
         version: 7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       sku:
-        specifier: 16.5.0
-        version: 16.5.0(be12e8a1acd9165724a6793da842d105)
+        specifier: 16.6.0
+        version: 16.6.0(be12e8a1acd9165724a6793da842d105)
       storybook:
         specifier: ^10.2.7
         version: 10.6.1(@types/react@19.3.0)(prettier@3.9.10)(react@19.3.0)
@@ -3563,8 +3563,8 @@ packages:
     resolution: {integrity: sha512-E8kDGIbPZSxNfJfDzvy8pBmcy33evsTZxUqwhoCR4IIDBT76gZ5qIEIkFemZDmDRb9XLiUZSZAunyqLxP/r85w==}
     engines: {node: '>=22.19.0'}
 
-  '@sku-lib/vite@2.0.3':
-    resolution: {integrity: sha512-mwoulG4uQZ6EQSZQN/K7mEsrnnxKZFpIK46G0r/+J89v+efzDQRB+A9wMGFfI3XrAKrPcD9EJjzNAxcPh1BHbg==}
+  '@sku-lib/vite@2.0.4':
+    resolution: {integrity: sha512-UTtkbgKUumYKh+asfOwxklGVHeGGw6IBlZfXWsuB1Y/5CsRUk7FMpO+i+Ayowua6qx4YHk6+yi8UZFaAG7oeCw==}
     engines: {node: '>=22.19.0'}
     peerDependencies:
       '@types/react': ^18.0.0 || ^19.0.0
@@ -9317,8 +9317,8 @@ packages:
     resolution: {integrity: sha512-r1X49+6Xnf5ahzf0KwoezYvyU97mo/K0tcUaIIUPaNNCG5epYxllnMZmo+XdmWmuxfk4jKcY+C5jz6Uwq69iAA==}
     hasBin: true
 
-  sku@16.5.0:
-    resolution: {integrity: sha512-nHKdHIVBAaUcjRagA3kHU8MqQKYFrn/divP/613srrgKEo63ep9/cWZFugo2rFbUwyIeVmWFvxHbmZwCdSbjOg==}
+  sku@16.6.0:
+    resolution: {integrity: sha512-C9Neei0TR3pexN9p5HLiq5WYW9T3Avo7ebbpyrXbnMNOafVmW2hGqkIlmCQmNi007lzQFmUFKJsqNGKIBIu2Dw==}
     engines: {node: '>=24.16.0'}
     hasBin: true
     peerDependencies:
@@ -13232,7 +13232,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@sku-lib/vite@2.0.3(@types/react@19.3.0)(react@19.3.0)(vite@8.3.4(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))':
+  '@sku-lib/vite@2.0.4(@types/react@19.3.0)(react@19.3.0)(vite@8.3.4(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))':
     dependencies:
       '@types/react': 19.3.0
       obug: 2.2.1
@@ -20494,7 +20494,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  sku@16.5.0(be12e8a1acd9165724a6793da842d105):
+  sku@16.6.0(be12e8a1acd9165724a6793da842d105):
     dependencies:
       '@babel/core': 7.29.7(supports-color@8.1.1)
       '@babel/generator': 7.29.8
@@ -20514,7 +20514,7 @@ snapshots:
       '@pmmmwh/react-refresh-webpack-plugin': 0.6.3(react-refresh@0.18.0)(type-fest@5.10.0)(webpack-dev-server@5.2.6(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)(webpack@5.111.1(@swc/core@1.16.18)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.29)(svgo@4.1.0)))(webpack-hot-middleware@2.26.1)(webpack@5.111.1(@swc/core@1.16.18)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.29)(svgo@4.1.0))
       '@rolldown/plugin-babel': 0.2.4(@babel/core@7.29.7(supports-color@8.1.1))(@babel/plugin-transform-runtime@7.29.7(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@babel/runtime@7.29.10)(rolldown@1.2.13)(vite@8.3.4(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
       '@sku-lib/babel-plugin-display-name': 0.0.2(supports-color@8.1.1)
-      '@sku-lib/vite': 2.0.3(@types/react@19.3.0)(react@19.3.0)(vite@8.3.4(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
+      '@sku-lib/vite': 2.0.4(@types/react@19.3.0)(react@19.3.0)(vite@8.3.4(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
       '@swc/core': 1.16.18
       '@types/express': 4.17.25
       '@types/express-serve-static-core': 4.19.9
@@ -20646,7 +20646,7 @@ snapshots:
       - webpack-plugin-serve
       - yaml
 
-  sku@16.5.0(cc6a4348f64d60227c36dc9822733659):
+  sku@16.6.0(cc6a4348f64d60227c36dc9822733659):
     dependencies:
       '@babel/core': 7.29.7(supports-color@8.1.1)
       '@babel/generator': 7.29.8
@@ -20666,7 +20666,7 @@ snapshots:
       '@pmmmwh/react-refresh-webpack-plugin': 0.6.3(react-refresh@0.18.0)(type-fest@5.10.0)(webpack-dev-server@5.2.6(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)(webpack@5.111.1(@swc/core@1.16.18)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.29)(svgo@4.1.0)))(webpack-hot-middleware@2.26.1)(webpack@5.111.1(@swc/core@1.16.18)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.29)(svgo@4.1.0))
       '@rolldown/plugin-babel': 0.2.4(@babel/core@7.29.7(supports-color@8.1.1))(@babel/plugin-transform-runtime@7.29.7(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@babel/runtime@7.29.10)(rolldown@1.2.13)(vite@8.3.4(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
       '@sku-lib/babel-plugin-display-name': 0.0.2(supports-color@8.1.1)
-      '@sku-lib/vite': 2.0.3(@types/react@19.3.0)(react@19.3.0)(vite@8.3.4(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
+      '@sku-lib/vite': 2.0.4(@types/react@19.3.0)(react@19.3.0)(vite@8.3.4(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
       '@swc/core': 1.16.18
       '@types/express': 4.17.25
       '@types/express-serve-static-core': 4.19.9
