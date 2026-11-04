@@ -38,7 +38,7 @@ export const Loader: FC<LoaderProps> = ({
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className={[
-        atoms({ reset: 'svg' }),
+        atoms({ reset: 'svg', overflow: 'visible' }),
         styles.size[size],
         styles.currentColor,
         typographyStyles.tone.neutral,
