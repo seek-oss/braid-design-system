@@ -1,5 +1,16 @@
 # braid-design-system
 
+## 34.10.1
+
+### Patch Changes
+
+- **Loader**: Fix clipping overflow on Loader ([#2193](https://github.com/seek-oss/braid-design-system/pull/2193))
+  
+  Fixes an issue where depending on the preceding content and sub-pixel rendering conditions, the final pixel of the loader is clipped
+- **Pagination:** Only render next and prev as links when in range ([#2188](https://github.com/seek-oss/braid-design-system/pull/2188))
+  
+  Previous and Next stay in the layout on the first and last page, but they are no longer links. This stops crawlers from following a page 0 URL or a page past the end.
+
 ## 34.10.0
 
 ### Minor Changes
