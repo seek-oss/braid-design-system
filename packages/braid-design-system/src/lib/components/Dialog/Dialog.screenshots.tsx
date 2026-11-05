@@ -190,6 +190,22 @@ export const CoverImageWithFooterAndOverflowLayout: Story = {
   },
 };
 
+export const CoverImageWithFooterAndShortCopyLayout: Story = {
+  name: 'Cover Image layout (with footer & short copy)',
+  args: {
+    title: "We're exploring Premium Plus",
+    coverImage: coverImagePlaceholderUrl,
+    width: 'medium',
+    footer: <Placeholder height={44} width="100%" label="Close" />,
+    children: (
+      <Text>
+        Premium Plus is not quite ready yet! We are working hard to bring this
+        to you soon.
+      </Text>
+    ),
+  },
+};
+
 export const IllustrationLayout: Story = {
   name: 'Illustration layout',
   args: {
@@ -294,6 +310,16 @@ export const FooterLayout: Story = {
     width: 'medium',
     footer: <Placeholder height={50} width="100%" label="Footer" />,
     children: <Placeholder height={100} width="100%" label="Small Drawer" />,
+  },
+};
+
+export const FooterOverflowLayout: Story = {
+  name: 'Test: Footer layout with overflow',
+  args: {
+    title: 'Footer test',
+    width: 'medium',
+    footer: <Placeholder height={50} width="100%" label="Footer" />,
+    children: <Placeholder height={1000} width="100%" label="Overflowing" />,
   },
 };
 

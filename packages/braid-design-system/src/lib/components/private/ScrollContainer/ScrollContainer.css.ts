@@ -6,6 +6,11 @@ export const container = style({
   maskComposite: 'intersect',
 });
 
+export const contentSized = style({
+  maxHeight: '100%',
+  minHeight: 0,
+});
+
 export const hideScrollbar = style({
   scrollbarWidth: 'none',
   msOverflowStyle: 'none',
