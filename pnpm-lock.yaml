@@ -722,8 +722,8 @@ importers:
         specifier: ^17.4.0
         version: 17.6.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       sku:
-        specifier: 16.6.0
-        version: 16.6.0(cc6a4348f64d60227c36dc9822733659)
+        specifier: 16.6.1
+        version: 16.6.1(cc6a4348f64d60227c36dc9822733659)
       tsx:
         specifier: ^4.19.2
         version: 4.23.15
@@ -764,8 +764,8 @@ importers:
         specifier: ^7.6.3
         version: 7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       sku:
-        specifier: 16.6.0
-        version: 16.6.0(be12e8a1acd9165724a6793da842d105)
+        specifier: 16.6.1
+        version: 16.6.1(be12e8a1acd9165724a6793da842d105)
       storybook:
         specifier: ^10.2.7
         version: 10.6.1(@types/react@19.3.0)(prettier@3.9.10)(react@19.3.0)
@@ -9317,8 +9317,8 @@ packages:
     resolution: {integrity: sha512-r1X49+6Xnf5ahzf0KwoezYvyU97mo/K0tcUaIIUPaNNCG5epYxllnMZmo+XdmWmuxfk4jKcY+C5jz6Uwq69iAA==}
     hasBin: true
 
-  sku@16.6.0:
-    resolution: {integrity: sha512-C9Neei0TR3pexN9p5HLiq5WYW9T3Avo7ebbpyrXbnMNOafVmW2hGqkIlmCQmNi007lzQFmUFKJsqNGKIBIu2Dw==}
+  sku@16.6.1:
+    resolution: {integrity: sha512-q2LN/R2yr00GGMSgGGTbXd/CtIhnUPnzZtHOav/ews5UW6k3ZxLG17O5Fxc5ifZTd4yhCk5g6VOtI78933WvFw==}
     engines: {node: '>=24.16.0'}
     hasBin: true
     peerDependencies:
@@ -20494,7 +20494,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  sku@16.6.0(be12e8a1acd9165724a6793da842d105):
+  sku@16.6.1(be12e8a1acd9165724a6793da842d105):
     dependencies:
       '@babel/core': 7.29.7(supports-color@8.1.1)
       '@babel/generator': 7.29.8
@@ -20646,7 +20646,7 @@ snapshots:
       - webpack-plugin-serve
       - yaml
 
-  sku@16.6.0(cc6a4348f64d60227c36dc9822733659):
+  sku@16.6.1(cc6a4348f64d60227c36dc9822733659):
     dependencies:
       '@babel/core': 7.29.7(supports-color@8.1.1)
       '@babel/generator': 7.29.8
