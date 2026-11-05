@@ -5812,5 +5812,22 @@
         "summary": "**useToast:** Add `duration` option\n\nToasts accept `short` (6 seconds), `standard` (10 seconds), or `indefinite`. The default is `standard`, matching the previous dismiss time.\n\n**EXAMPLE USAGE:**\n\n```jsx\nshowToast({\n  tone: 'positive',\n  message: 'Saved',\n  duration: 'short',\n});\n```"
       }
     ]
+  },
+  {
+    "version": "34.10.1",
+    "updates": [
+      {
+        "updated": [
+          "Loader"
+        ],
+        "summary": "**Loader**: Fix clipping overflow on Loader\n\nFixes an issue where depending on the preceding content and sub-pixel rendering conditions, the final pixel of the loader is clipped"
+      },
+      {
+        "updated": [
+          "Pagination"
+        ],
+        "summary": "**Pagination:** Only render next and prev as links when in range\n\nPrevious and Next stay in the layout on the first and last page, but they are no longer links. This stops crawlers from following a page 0 URL or a page past the end."
+      }
+    ]
   }
 ]
