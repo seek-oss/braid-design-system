@@ -1,4 +1,12 @@
-import { type ReactNode, useRef, useCallback, type RefObject } from 'react';
+import clsx from 'clsx';
+import {
+  forwardRef,
+  type ReactNode,
+  type Ref,
+  useRef,
+  useCallback,
+  type RefObject,
+} from 'react';
 import { throttle } from 'throttle-debounce';
 
 import { useIsomorphicLayoutEffect } from '../../../hooks/useIsomorphicLayoutEffect';
@@ -50,84 +58,112 @@ interface ScrollContainerProps {
   data?: DataAttributeMap;
 }
 
-export const ScrollContainer = ({
-  children,
-  direction = 'horizontal',
-  fadeSize = 'medium',
-  hideScrollbar = false,
-  startRef,
-  data,
-  ...restProps
-}: ScrollContainerProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const gateStartRef = useRef(Boolean(startRef?.current));
+const assignRef = (
+  ref: Ref<HTMLElement> | undefined,
+  node: HTMLElement | null,
+) => {
+  if (typeof ref === 'function') {
+    ref(node);
+    return;
+  }
 
-  // This must be called within a `useLayoutEffect` because `.scrollLeft`, `.scrollWidth` and `.offsetWidth` force a reflow
-  // https://gist.github.com/paulirish/5d52fb081b3570c81e3a
-  const updateMask = throttle(
-    100,
-    useCallback(() => {
-      if (containerRef.current) {
-        maskOverflow({
-          element: containerRef.current,
-          direction,
-          gateStart: gateStartRef.current,
-        });
-      }
-    }, [containerRef, direction]),
-  );
+  if (ref) {
+    ref.current = node;
+  }
+};
 
-  useIsomorphicLayoutEffect(() => {
-    if (containerRef.current) {
-      updateMask();
-    }
+export const ScrollContainer = forwardRef<HTMLElement, ScrollContainerProps>(
+  (
+    {
+      children,
+      direction = 'horizontal',
+      fadeSize = 'medium',
+      hideScrollbar = false,
+      startRef,
+      data,
+      ...restProps
+    },
+    forwardedRef,
+  ) => {
+    const containerRef = useRef<HTMLElement>(null);
+    const gateStartRef = useRef(Boolean(startRef?.current));
 
-    window.addEventListener('resize', updateMask);
-    return () => window.removeEventListener('resize', updateMask);
-  }, [updateMask]);
+    const setContainerRef = (node: HTMLElement | null) => {
+      containerRef.current = node;
+      assignRef(forwardedRef, node);
+    };
 
-  useIsomorphicLayoutEffect(() => {
-    if (!startRef?.current || !containerRef.current) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.rootBounds) {
-          return;
+    // This must be called within a `useLayoutEffect` because `.scrollLeft`, `.scrollWidth` and `.offsetWidth` force a reflow
+    // https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+    const updateMask = throttle(
+      100,
+      useCallback(() => {
+        if (containerRef.current) {
+          maskOverflow({
+            element: containerRef.current,
+            direction,
+            gateStart: gateStartRef.current,
+          });
         }
-
-        const clippedByStartEdge =
-          direction === 'horizontal' || direction === 'all'
-            ? entry.boundingClientRect.left < entry.rootBounds.left
-            : entry.boundingClientRect.top < entry.rootBounds.top;
-
-        gateStartRef.current = !clippedByStartEdge;
-        updateMask();
-      },
-      { root: containerRef.current, threshold: [0, 1] },
+      }, [containerRef, direction]),
     );
 
-    observer.observe(startRef.current);
-    return () => observer.disconnect();
-  }, [startRef, updateMask]);
+    useIsomorphicLayoutEffect(() => {
+      if (containerRef.current) {
+        updateMask();
+      }
 
-  return (
-    <Box
-      ref={containerRef}
-      onScroll={updateMask}
-      position="relative"
-      height="full"
-      className={[
-        styles.container,
-        styles.mask,
-        hideScrollbar ? styles.hideScrollbar : scrollbars,
-        styles.fadeSize[fadeSize],
-        styles.direction[direction],
-      ]}
-      {...buildDataAttributes({ data, validateRestProps: restProps })}
-    >
-      {children}
-    </Box>
-  );
-};
+      window.addEventListener('resize', updateMask);
+      return () => {
+        window.removeEventListener('resize', updateMask);
+      };
+    }, [children, direction, updateMask]);
+
+    useIsomorphicLayoutEffect(() => {
+      if (!startRef?.current || !containerRef.current) {
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.rootBounds) {
+            return;
+          }
+
+          const clippedByStartEdge =
+            direction === 'horizontal' || direction === 'all'
+              ? entry.boundingClientRect.left < entry.rootBounds.left
+              : entry.boundingClientRect.top < entry.rootBounds.top;
+
+          gateStartRef.current = !clippedByStartEdge;
+          updateMask();
+        },
+        { root: containerRef.current, threshold: [0, 1] },
+      );
+
+      observer.observe(startRef.current);
+      return () => observer.disconnect();
+    }, [startRef, updateMask]);
+
+    return (
+      <Box
+        ref={setContainerRef}
+        onScroll={updateMask}
+        position="relative"
+        height="full"
+        className={clsx([
+          styles.container,
+          styles.mask,
+          hideScrollbar ? styles.hideScrollbar : scrollbars,
+          styles.fadeSize[fadeSize],
+          styles.direction[direction],
+        ])}
+        {...buildDataAttributes({ data, validateRestProps: restProps })}
+      >
+        {children}
+      </Box>
+    );
+  },
+);
+
+ScrollContainer.displayName = 'ScrollContainer';

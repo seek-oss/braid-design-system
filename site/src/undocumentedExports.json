@@ -1,11 +1,14 @@
 {
   "components": [
     "AccordionItem",
+    "ChatMessage",
+    "ChatMessageGroup",
     "Bullet",
     "BoxRenderer",
     "Column",
     "CheckboxStandalone",
     "filterSuggestions",
+    "groupChatMessages",
     "IconRenderer",
     "makeLinkComponent",
     "MenuItemLink",

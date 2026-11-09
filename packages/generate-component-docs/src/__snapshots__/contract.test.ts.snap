@@ -2855,20 +2855,45 @@ exports[`ChatMessage 1`] = `
 {
   exportType: component,
   props: {
-    avatar?: ReactNode
     children: ReactNode
     data?: DataAttributeMap
-    name: string
     onCopy?: () => void
-    onFeedback?: (feedback: "positive" | "negative") => void
-    sender: 
-        | "assistant"
-        | "participant"
-        | "user"
-    sent?: 
+    onFeedback?: (feedback: Feedback) => void
+    sentDate?: 
         | Date
         | number
         | string
+},
+}
+`;
+
+exports[`ChatMessageGroup 1`] = `
+{
+  exportType: component,
+  props: {
+    avatar?: ReactNode
+    children: ReactNodeNoStrings
+    data?: DataAttributeMap
+    name?: string
+    sender: 
+        | "assistant"
+        | "participant"
+        | "system"
+        | "user"
+},
+}
+`;
+
+exports[`ChatMessageList 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNodeNoStrings
+    data?: DataAttributeMap
+    label: string
+    variant?: 
+        | "avatar"
+        | "name"
 },
 }
 `;
@@ -9703,6 +9728,38 @@ exports[`filterSuggestions 1`] = `
     toString: () => string
     unshift: (...items: (FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>)[]) => number
     values: () => ArrayIterator<FilterableSuggestion<Value> | FilterableGroupedSuggestions<Value>>
+},
+}
+`;
+
+exports[`groupChatMessages 1`] = `
+{
+  exportType: component,
+  props: {
+    at: (index: number) => Message | undefined
+    concat: { (...items: ConcatArray<Message>[]): Message[]; (...items: (Message | ConcatArray<Message>)[]): Message[]; }
+    entries: () => ArrayIterator<[number, Message]>
+    every: { <S extends Message>(predicate: (value: Message, index: number, array: readonly Message[]) => value is S, thisArg?: any): this is readonly S[]; (predicate: (value: Message, index: number, array: readonly Message[]) => unknown, thisArg?: any): boolean; }
+    filter: { <S extends Message>(predicate: (value: Message, index: number, array: readonly Message[]) => value is S, thisArg?: any): S[]; (predicate: (value: Message, index: number, array: readonly Message[]) => unknown, thisArg?: any): Message[]; }
+    find: { <S extends Message>(predicate: (value: Message, index: number, obj: readonly Message[]) => value is S, thisArg?: any): S | undefined; (predicate: (value: Message, index: number, obj: readonly Message[]) => unknown, thisArg?: any): Message | undefined; }
+    findIndex: (predicate: (value: Message, index: number, obj: readonly Message[]) => unknown, thisArg?: any) => number
+    flat: <A, D extends number = 1>(this: A, depth?: D | undefined) => FlatArray<A, D>[]
+    flatMap: <U, This = undefined>(callback: (this: This, value: Message, index: number, array: Message[]) => U | readonly U[], thisArg?: This | undefined) => U[]
+    forEach: (callbackfn: (value: Message, index: number, array: readonly Message[]) => void, thisArg?: any) => void
+    includes: (searchElement: Message, fromIndex?: number | undefined) => boolean
+    indexOf: (searchElement: Message, fromIndex?: number | undefined) => number
+    join: (separator?: string | undefined) => string
+    keys: () => ArrayIterator<number>
+    lastIndexOf: (searchElement: Message, fromIndex?: number | undefined) => number
+    length: number
+    map: <U>(callbackfn: (value: Message, index: number, array: readonly Message[]) => U, thisArg?: any) => U[]
+    reduce: { (callbackfn: (previousValue: Message, currentValue: Message, currentIndex: number, array: readonly Message[]) => Message): Message; (callbackfn: (previousValue: Message, currentValue: Message, currentIndex: number, array: readonly Message[]) => Message, initialValue: Message): Message; <U>(callbackfn: (previousVal...
+    reduceRight: { (callbackfn: (previousValue: Message, currentValue: Message, currentIndex: number, array: readonly Message[]) => Message): Message; (callbackfn: (previousValue: Message, currentValue: Message, currentIndex: number, array: readonly Message[]) => Message, initialValue: Message): Message; <U>(callbackfn: (previousVal...
+    slice: (start?: number | undefined, end?: number | undefined) => Message[]
+    some: (predicate: (value: Message, index: number, array: readonly Message[]) => unknown, thisArg?: any) => boolean
+    toLocaleString: { (): string; (locales: string | string[], options?: (NumberFormatOptions & DateTimeFormatOptions) | undefined): string; }
+    toString: () => string
+    values: () => ArrayIterator<Message>
 },
 }
 `;
