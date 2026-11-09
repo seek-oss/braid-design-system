@@ -4,7 +4,7 @@ import { px } from '../../utils/px';
 
 import { vars } from '../../themes/vars.css';
 
-const avatarSizeInPx = {
+export const avatarSizeInPx = {
   xsmall: 24,
   small: 32,
   standard: 48,

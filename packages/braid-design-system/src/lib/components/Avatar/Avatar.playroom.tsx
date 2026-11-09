@@ -22,3 +22,6 @@ export const Avatar = forwardRef<
 ));
 
 Avatar.displayName = 'Avatar';
+
+// @ts-expect-error __isAvatar__ Braid custom property
+Avatar.__isAvatar__ = true;

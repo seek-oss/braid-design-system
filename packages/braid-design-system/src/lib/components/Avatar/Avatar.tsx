@@ -340,3 +340,6 @@ export const Avatar = forwardRef<HTMLElement, AvatarProps>(
 );
 
 Avatar.displayName = 'Avatar';
+
+// @ts-expect-error __isAvatar__ Braid custom property
+Avatar.__isAvatar__ = true;
