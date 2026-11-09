@@ -28,6 +28,11 @@ const FocusLock =
   (FocusLockImport as unknown as { default: typeof FocusLockImport }).default ??
   FocusLockImport;
 
+// Allow iframes outside the modal to keep
+// focus instead of pulling back into the modal.
+const isNotIframe = (activeElement: HTMLElement) =>
+  activeElement.tagName !== 'IFRAME';
+
 export interface ModalProps extends Omit<
   ModalContentProps,
   'onClose' | 'scrollLock' | 'headingRef' | 'modalRef'
@@ -208,6 +213,7 @@ export const Modal = ({
       <FocusLock
         className={styles.resetStackingContext}
         autoFocus={false}
+        whiteList={isNotIframe}
         onActivation={() => {
           if (state === OPEN) {
             return;
