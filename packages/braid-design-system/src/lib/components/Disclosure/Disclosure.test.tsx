@@ -139,6 +139,7 @@ describe('Disclosure', () => {
 
     expect(content).toHaveAttribute('aria-hidden', 'true');
     expect(content).toHaveAttribute('inert');
+    expect(content).toHaveStyle({ display: 'none' });
     expect(content?.style.gridTemplateRows).toBe('');
     expect(content?.style.transitionDuration).toBe('');
 
@@ -196,6 +197,7 @@ describe('Disclosure', () => {
     expect(getByText('Before', { exact: false })).toBeInTheDocument();
     expect(content).toHaveAttribute('aria-hidden', 'true');
     expect(content).toHaveAttribute('inert');
+    expect(content).toHaveStyle({ display: 'none' });
 
     await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('true');

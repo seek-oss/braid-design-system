@@ -18,6 +18,8 @@ export const up = style({
   transform: 'rotate(180deg)',
 });
 
+// -90deg faces the same way as 270deg. Interpolating to down (0deg) is then
+// 90deg clockwise instead of 270deg the long way.
 export const right = style({
   transform: 'rotate(-90deg)',
 });

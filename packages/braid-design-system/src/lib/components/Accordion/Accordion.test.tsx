@@ -466,4 +466,48 @@ describe('Accordion', () => {
     expect(html).toContain('Visible');
     expect(html).not.toMatch(/grid-template-rows:\s*0fr/);
   });
+
+  it('should skip height animation when the user prefers reduced motion', async () => {
+    const matchMedia = window.matchMedia;
+    window.matchMedia = (query) =>
+      ({
+        matches: query.includes('prefers-reduced-motion'),
+        media: query,
+        onchange: null,
+        addListener() {},
+        removeListener() {},
+        addEventListener() {},
+        removeEventListener() {},
+        dispatchEvent() {
+          return false;
+        },
+      }) as MediaQueryList;
+
+    try {
+      const { getByRole } = render(
+        <BraidTestProvider>
+          <Accordion>
+            <AccordionItem value="one" label="One">
+              First
+            </AccordionItem>
+          </Accordion>
+        </BraidTestProvider>,
+      );
+
+      const button = getByRole('button', { name: 'One' });
+      const content = document.getElementById(
+        button.getAttribute('aria-controls')!,
+      );
+
+      await userEvent.click(button);
+
+      expect(button.getAttribute('aria-expanded')).toEqual('true');
+      expect(content).not.toHaveAttribute('aria-hidden');
+      expect(content).not.toHaveAttribute('inert');
+      expect(content?.style.gridTemplateRows).toBe('');
+      expect(content?.style.transitionDuration).toBe('');
+    } finally {
+      window.matchMedia = matchMedia;
+    }
+  });
 });

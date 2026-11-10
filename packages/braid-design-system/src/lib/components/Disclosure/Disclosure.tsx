@@ -146,7 +146,6 @@ export const Disclosure: FC<DisclosureProps> = ({
         }}
         style={contentStyle}
         onTransitionEnd={finishHeightTransition}
-        onTransitionCancel={finishHeightTransition}
         aria-hidden={expanded ? undefined : true}
         ref={contentRef}
         {...contentProps}

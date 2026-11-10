@@ -84,13 +84,20 @@ export const useCollapsibleHeight = ({
 
     if (openingFromNoneRef.current) {
       openingFromNoneRef.current = false;
-      // Reading the size flushes the 0fr start so Safari records it.
+      // Last paint was `display: none`. Let `0fr` paint before `1fr` so the
+      // open transition has a presented start (same idea as close below).
       contentRef.current?.getBoundingClientRect();
-      const height = measureCollapsibleHeight(contentSizeRef.current);
-      setDuration(durationMsForHeight(height));
-      setAnimatedRows('1fr');
-      const timeoutId = startTimeout();
-      return () => window.clearTimeout(timeoutId);
+      let timeoutId = 0;
+      const frame = window.requestAnimationFrame(() => {
+        const height = measureCollapsibleHeight(contentSizeRef.current);
+        setDuration(durationMsForHeight(height));
+        setAnimatedRows('1fr');
+        timeoutId = startTimeout();
+      });
+      return () => {
+        window.cancelAnimationFrame(frame);
+        window.clearTimeout(timeoutId);
+      };
     }
 
     if (expanded) {

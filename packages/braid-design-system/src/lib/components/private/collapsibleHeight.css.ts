@@ -40,3 +40,8 @@ export const contentInner = style([
 globalStyle(`${contentOpen} > ${contentInner}`, {
   overflow: 'visible',
 });
+
+export const contentClosed = style({
+  visibility: 'hidden',
+  height: 0,
+});

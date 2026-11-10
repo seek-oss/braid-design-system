@@ -18,11 +18,7 @@ export const focusRing = style([
 
 export {
   content,
+  contentClosed,
   contentInner,
   contentOpen,
 } from '../private/collapsibleHeight.css';
-
-export const contentClosed = style({
-  visibility: 'hidden',
-  height: 0,
-});

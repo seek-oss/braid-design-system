@@ -224,7 +224,6 @@ export const AccordionItem: FC<AccordionItemProps> = ({
         }}
         style={contentStyle}
         onTransitionEnd={finishHeightTransition}
-        onTransitionCancel={finishHeightTransition}
         aria-hidden={expanded ? undefined : true}
         ref={contentRef}
         {...contentProps}
