@@ -8,7 +8,6 @@ export const container = style({
 
 export const heightLimits = style({
   maxHeight: '100%',
-  minHeight: 0,
 });
 
 export const hideScrollbar = style({
@@ -49,9 +48,11 @@ export const direction = styleVariants({
   vertical: {
     overflowX: 'hidden',
     overflowY: 'auto',
+    minHeight: 0,
   },
   all: {
     overflow: 'auto',
+    minHeight: 0,
   },
 });
 
