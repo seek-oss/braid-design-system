@@ -6,7 +6,7 @@ export const container = style({
   maskComposite: 'intersect',
 });
 
-export const contentSized = style({
+export const heightLimits = style({
   maxHeight: '100%',
   minHeight: 0,
 });
