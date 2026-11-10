@@ -95,6 +95,8 @@ export const Disclosure: FC<DisclosureProps> = ({
     isAnimating,
     contentStyle,
     finishHeightTransition,
+    className,
+    innerClassName,
   } = useCollapsibleHeight({
     expanded,
     fromDisplayNone: true,
@@ -145,19 +147,17 @@ export const Disclosure: FC<DisclosureProps> = ({
       </Box>
       <Box
         component={component}
-        className={{
-          [styles.content]: true,
-          [styles.contentOpen]: expanded && !isAnimating,
-          [styles.contentClosed]: !expanded && !isAnimating,
-          [styles.hideWhenClosed]: !expanded && !isAnimating,
-        }}
+        className={[
+          className,
+          { [styles.hideWhenClosed]: !expanded && !isAnimating },
+        ]}
         style={contentStyle}
         onTransitionEnd={finishHeightTransition}
         aria-hidden={expanded ? undefined : true}
         ref={contentRef}
         {...contentProps}
       >
-        <Box component={component} className={styles.contentInner}>
+        <Box component={component} className={innerClassName}>
           <Box
             component={component}
             paddingTop={space ?? defaultSpace}

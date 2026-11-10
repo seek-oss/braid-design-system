@@ -1,18 +1,13 @@
-import { globalStyle, style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 
-import {
-  content,
-  contentClosed,
-  contentInner,
-  contentOpen,
-} from '../private/collapsibleHeight.css';
-
-export { content, contentClosed, contentInner, contentOpen };
+import { content } from '../private/collapsibleHeight.css';
 
 // Marker class so `display: none` cannot target Accordion, which shares
 // `content` + `contentClosed`. Combined with `content` to beat `display: grid`.
-export const hideWhenClosed = style({});
-
-globalStyle(`${content}${hideWhenClosed}`, {
-  display: 'none',
+export const hideWhenClosed = style({
+  selectors: {
+    [`${content}&`]: {
+      display: 'none',
+    },
+  },
 });

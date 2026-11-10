@@ -1,4 +1,4 @@
-import { globalStyle, style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 
 import { atoms } from '../../css/atoms/atoms';
 
@@ -34,12 +34,13 @@ export const contentInner = style([
   atoms({ overflow: 'hidden' }),
   {
     minHeight: 0,
+    selectors: {
+      [`${contentOpen} > &`]: {
+        overflow: 'visible',
+      },
+    },
   },
 ]);
-
-globalStyle(`${contentOpen} > ${contentInner}`, {
-  overflow: 'visible',
-});
 
 export const contentClosed = style({
   visibility: 'hidden',

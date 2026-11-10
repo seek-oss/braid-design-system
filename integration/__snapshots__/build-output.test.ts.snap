@@ -1,9 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`build > Vanilla Extract files imported as side-effects 1`] = `
-### dist/lib/components/Accordion/AccordionItem.css.mjs:
-4 │ import "../private/collapsibleHeight.css.mjs";
-
 ### dist/lib/css/atoms/sprinkles.css.mjs:
 2 │ import "../reset/reset.css.mjs";
 

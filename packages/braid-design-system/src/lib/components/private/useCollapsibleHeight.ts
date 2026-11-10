@@ -15,6 +15,8 @@ import {
   prefersReducedMotion,
 } from './collapsibleHeight';
 
+import * as styles from './collapsibleHeight.css';
+
 type GridRows = '0fr' | '1fr';
 
 interface UseCollapsibleHeightProps {
@@ -148,5 +150,11 @@ export const useCollapsibleHeight = ({
     isAnimating,
     contentStyle,
     finishHeightTransition,
+    className: {
+      [styles.content]: true,
+      [styles.contentOpen]: expanded && !isAnimating,
+      [styles.contentClosed]: !expanded && !isAnimating,
+    },
+    innerClassName: styles.contentInner,
   };
 };

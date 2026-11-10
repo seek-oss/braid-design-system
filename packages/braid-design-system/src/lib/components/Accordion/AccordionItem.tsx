@@ -158,9 +158,10 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   const {
     contentRef,
     contentSizeRef,
-    isAnimating,
     contentStyle,
     finishHeightTransition,
+    className,
+    innerClassName,
   } = useCollapsibleHeight({ expanded });
 
   useLayoutEffect(() => {
@@ -217,18 +218,14 @@ export const AccordionItem: FC<AccordionItemProps> = ({
         </Box>
       </Box>
       <Box
-        className={{
-          [styles.content]: true,
-          [styles.contentOpen]: expanded && !isAnimating,
-          [styles.contentClosed]: !expanded && !isAnimating,
-        }}
+        className={className}
         style={contentStyle}
         onTransitionEnd={finishHeightTransition}
         aria-hidden={expanded ? undefined : true}
         ref={contentRef}
         {...contentProps}
       >
-        <Box className={styles.contentInner}>
+        <Box className={innerClassName}>
           <Box ref={contentSizeRef} paddingTop={itemSpace}>
             {children}
           </Box>

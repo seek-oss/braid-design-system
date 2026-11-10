@@ -6,7 +6,6 @@
 updated:
   - Disclosure
   - AccordionItem
-  - IconChevron
 ---
 
 **Disclosure, AccordionItem:** Animate open and close

@@ -15,10 +15,3 @@ export const focusRing = style([
     borderRadius: 'small',
   }),
 ]);
-
-export {
-  content,
-  contentClosed,
-  contentInner,
-  contentOpen,
-} from '../private/collapsibleHeight.css';
