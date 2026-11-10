@@ -429,6 +429,7 @@ describe('Accordion', () => {
 
     expect(content).toHaveAttribute('aria-hidden', 'true');
     expect(content).toHaveAttribute('inert');
+    expect(content).not.toHaveStyle({ display: 'none' });
 
     await userEvent.click(button);
     expect(content).not.toHaveAttribute('aria-hidden');

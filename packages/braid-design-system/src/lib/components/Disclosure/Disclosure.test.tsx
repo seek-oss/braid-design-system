@@ -198,11 +198,39 @@ describe('Disclosure', () => {
     expect(content).toHaveAttribute('aria-hidden', 'true');
     expect(content).toHaveAttribute('inert');
     expect(content).toHaveStyle({ display: 'none' });
+    expect(content?.style.gridTemplateRows).toBe('');
 
     await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('true');
     expect(content).not.toHaveAttribute('inert');
     expect(getByText('Hidden')).toBeInTheDocument();
+
+    await userEvent.click(button);
+    expect(content).toHaveStyle({ display: 'none' });
+    expect(content?.style.gridTemplateRows).toBe('');
+    expect(getByText('After', { exact: false })).toBeInTheDocument();
+  });
+
+  it('should not snap shut when reversed during open', async () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Disclosure expandLabel="Expand" collapseLabel="Collapse">
+          Content
+        </Disclosure>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
+    );
+
+    await userEvent.click(button);
+    await userEvent.click(button);
+    await userEvent.click(button);
+
+    expect(content).not.toHaveStyle({ display: 'none' });
+    expect(content).not.toHaveAttribute('inert');
   });
 
   it('should skip height animation when the user prefers reduced motion', async () => {

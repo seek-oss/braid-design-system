@@ -95,7 +95,13 @@ export const Disclosure: FC<DisclosureProps> = ({
     isAnimating,
     contentStyle,
     finishHeightTransition,
-  } = useCollapsibleHeight({ expanded, fromDisplayNone: true });
+  } = useCollapsibleHeight({
+    expanded,
+    fromDisplayNone: true,
+    // Grid is `display: grid` on a `span` and would split the line for the
+    // whole tween. Instant `display: none` keeps "After" on the same line.
+    animate: !isInline,
+  });
 
   useLayoutEffect(() => {
     // Remove in favour of direct DOM attribute when we drop React 18 support
@@ -143,6 +149,7 @@ export const Disclosure: FC<DisclosureProps> = ({
           [styles.content]: true,
           [styles.contentOpen]: expanded && !isAnimating,
           [styles.contentClosed]: !expanded && !isAnimating,
+          [styles.hideWhenClosed]: !expanded && !isAnimating,
         }}
         style={contentStyle}
         onTransitionEnd={finishHeightTransition}

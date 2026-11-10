@@ -1,4 +1,4 @@
-import { globalStyle } from '@vanilla-extract/css';
+import { globalStyle, style } from '@vanilla-extract/css';
 
 import {
   content,
@@ -9,8 +9,10 @@ import {
 
 export { content, contentClosed, contentInner, contentOpen };
 
-// Must beat `.content { display: grid }` (same specificity, later file is
-// not enough when `display: none` is an atom).
-globalStyle(`${content}${contentClosed}`, {
+// Marker class so `display: none` cannot target Accordion, which shares
+// `content` + `contentClosed`. Combined with `content` to beat `display: grid`.
+export const hideWhenClosed = style({});
+
+globalStyle(`${content}${hideWhenClosed}`, {
   display: 'none',
 });

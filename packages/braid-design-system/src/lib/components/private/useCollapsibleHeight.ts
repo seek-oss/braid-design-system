@@ -24,11 +24,14 @@ interface UseCollapsibleHeightProps {
    * inner box in layout, so it can measure while closed.
    */
   fromDisplayNone?: boolean;
+  /** Skip the height tween (inline Disclosure, or `prefers-reduced-motion`). */
+  animate?: boolean;
 }
 
 export const useCollapsibleHeight = ({
   expanded,
   fromDisplayNone = false,
+  animate = true,
 }: UseCollapsibleHeightProps) => {
   const contentRef = useRef<HTMLElement>(null);
   const contentSizeRef = useRef<HTMLElement>(null);
@@ -47,12 +50,19 @@ export const useCollapsibleHeight = ({
   if (expanded !== trackedExpanded) {
     setTrackedExpanded(expanded);
 
-    if (prefersReducedMotion()) {
+    if (!animate || prefersReducedMotion()) {
       openingFromNoneRef.current = false;
       setAnimatedRows(null);
-    } else if (expanded && fromDisplayNone) {
+    } else if (expanded && fromDisplayNone && animatedRows === null) {
+      // Resting closed was `display: none`. Paint `0fr` before `1fr`.
       openingFromNoneRef.current = true;
       setAnimatedRows('0fr');
+    } else if (expanded && fromDisplayNone) {
+      // Reverse-open while already in the grid animation: do not force `0fr`.
+      openingFromNoneRef.current = false;
+      const height = measureCollapsibleHeight(contentSizeRef.current);
+      setDuration(durationMsForHeight(height));
+      setAnimatedRows('1fr');
     } else {
       openingFromNoneRef.current = false;
       const height = measureCollapsibleHeight(contentSizeRef.current);
@@ -83,12 +93,14 @@ export const useCollapsibleHeight = ({
       window.setTimeout(finishAnimation, animationDurationMsRef.current + 50);
 
     if (openingFromNoneRef.current) {
-      openingFromNoneRef.current = false;
       // Last paint was `display: none`. Let `0fr` paint before `1fr` so the
       // open transition has a presented start (same idea as close below).
+      // Keep the ref set until the frame runs so Strict Mode's effect
+      // re-run still takes this path instead of applying `1fr` before paint.
       contentRef.current?.getBoundingClientRect();
       let timeoutId = 0;
       const frame = window.requestAnimationFrame(() => {
+        openingFromNoneRef.current = false;
         const height = measureCollapsibleHeight(contentSizeRef.current);
         setDuration(durationMsForHeight(height));
         setAnimatedRows('1fr');
