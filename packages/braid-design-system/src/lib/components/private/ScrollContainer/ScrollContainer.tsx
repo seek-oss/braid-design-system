@@ -124,7 +124,7 @@ export const ScrollContainer = ({
         hideScrollbar ? styles.hideScrollbar : scrollbars,
         styles.fadeSize[fadeSize],
         styles.direction[direction],
-        styles.heightLimits,
+        styles.heightLimit,
       ]}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >
