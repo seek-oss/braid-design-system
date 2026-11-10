@@ -130,6 +130,7 @@ export const ChatMessage = ({
       <Box
         display="flex"
         alignItems="flexEnd"
+        justifyContent={sender === 'user' ? 'flexEnd' : undefined}
         gap="small"
         className={isLast ? undefined : avatarOffset}
       >
@@ -145,7 +146,6 @@ export const ChatMessage = ({
           className={[
             styles.bubble,
             bubbleRadius,
-            sender === 'user' ? styles.alignEnd : undefined,
             sender === 'user' ? styles.text : undefined,
           ]}
         >

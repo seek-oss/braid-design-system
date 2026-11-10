@@ -201,7 +201,9 @@ const docs: ComponentDocs = {
       </Text>
       <Text>
         The list can be focused. It opens on the latest message, and slides to
-        the bottom when a message is added.
+        the bottom when a message is added. A jump to latest button appears when
+        the reader is away from the end, and is hidden from assistive technology
+        while they are already there.
       </Text>
       <Text>
         Each <Strong>ChatMessageGroup</Strong> is one list item, so a run of
@@ -515,6 +517,11 @@ const docs: ComponentDocs = {
               opens at its start, below the top fade, so it can be read from the
               top. A reader who has scrolled up stays there. Following starts
               again when they return to the end.
+            </Text>
+            <Text>
+              While the reader is away from the end, a jump to latest button
+              slides up at the bottom of the list. Choosing it scrolls back to
+              the end.
             </Text>
             <Text>
               This example adds a message every two seconds, then starts again.

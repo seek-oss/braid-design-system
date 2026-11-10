@@ -32,10 +32,6 @@ export const radius = {
   }),
 };
 
-export const alignEnd = style({
-  marginLeft: 'auto',
-});
-
 export const avatarSize = 'small' as const;
 
 const avatarSizePx = px(avatarSizeInPx[avatarSize]);

@@ -1,4 +1,4 @@
-import { type ReactNode, type RefObject, useRef } from 'react';
+import { type ReactNode, type RefObject, useRef, useState } from 'react';
 
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 
@@ -151,7 +151,8 @@ export const pinTarget = (
  * while the messages are still shorter than the list. A message taller than
  * the list opens below the top fade until the reader scrolls to its end.
  * Scrolling away leaves that position in place until the reader returns to
- * the end.
+ * the end. `awayFromEnd` is that gap, so the list can offer a jump back.
+ * `scrollToEnd` returns there and starts following again.
  */
 export const usePinChatToEnd = (
   scrollerRef: RefObject<HTMLElement | null>,
@@ -171,6 +172,12 @@ export const usePinChatToEnd = (
   // leaves this clear, so a message that grows past the list still opens
   // at its top.
   const readerAtEnd = useRef(false);
+  const [awayFromEnd, setAwayFromEnd] = useState(false);
+  // Last value passed to setState. Showing waits one frame so the hidden
+  // styles can paint before the entrance runs.
+  const renderedAway = useRef(false);
+  const revealFrame = useRef(0);
+  const scrollToEnd = useRef<() => void>(() => {});
 
   useIsomorphicLayoutEffect(() => {
     const scroller = scrollerRef.current;
@@ -214,6 +221,37 @@ export const usePinChatToEnd = (
       writeScroll(readTarget());
     };
 
+    // Show on the next frame so the hidden state paints first and the
+    // entrance transition can run. Hiding is immediate, so the exit starts
+    // from the current frame. Tests skip the wait.
+    const syncAway = (sliding: boolean) => {
+      const away = !sliding && distanceFromEnd(scroller) > endThreshold;
+
+      if (away === renderedAway.current && revealFrame.current === 0) {
+        return;
+      }
+
+      cancelAnimationFrame(revealFrame.current);
+      revealFrame.current = 0;
+
+      if (!away || isJSDom || typeof requestAnimationFrame !== 'function') {
+        renderedAway.current = away;
+        setAwayFromEnd(away);
+        return;
+      }
+
+      revealFrame.current = requestAnimationFrame(() => {
+        revealFrame.current = 0;
+
+        if (distanceFromEnd(scroller) <= endThreshold) {
+          return;
+        }
+
+        renderedAway.current = true;
+        setAwayFromEnd(true);
+      });
+    };
+
     const stopSlide = () => {
       cancelAnimationFrame(slideFrame.current);
       slideFrame.current = 0;
@@ -240,6 +278,7 @@ export const usePinChatToEnd = (
       ) {
         moveGroups(0);
         jumpToTarget();
+        syncAway(false);
         return;
       }
 
@@ -265,6 +304,7 @@ export const usePinChatToEnd = (
         slideFrame.current = 0;
         moveGroups(0);
         jumpToTarget();
+        syncAway(false);
       };
 
       slideFrame.current = requestAnimationFrame(step);
@@ -317,6 +357,7 @@ export const usePinChatToEnd = (
         released.current = false;
         stopSlide();
         jumpToTarget();
+        syncAway(false);
         return;
       }
 
@@ -324,10 +365,20 @@ export const usePinChatToEnd = (
         if (!following) {
           stopSlide();
         }
+        syncAway(slideFrame.current !== 0);
         return;
       }
 
       slideToTarget(slack);
+      syncAway(slideFrame.current !== 0);
+    };
+
+    scrollToEnd.current = () => {
+      stopSlide();
+      released.current = false;
+      readerAtEnd.current = true;
+      writeScroll(Math.max(0, scroller.scrollHeight - scroller.clientHeight));
+      syncAway(false);
     };
 
     const onScroll = () => {
@@ -347,11 +398,11 @@ export const usePinChatToEnd = (
       released.current = !atEnd;
       readerAtEnd.current = atEnd;
 
-      if (atEnd) {
-        return;
+      if (!atEnd) {
+        stopSlide();
       }
 
-      stopSlide();
+      syncAway(false);
     };
 
     pinToEnd();
@@ -367,6 +418,8 @@ export const usePinChatToEnd = (
     return () => {
       scroller.removeEventListener('scroll', onScroll);
       observer.disconnect();
+      cancelAnimationFrame(revealFrame.current);
+      revealFrame.current = 0;
     };
   }, [children, logRef, scrollerRef]);
 
@@ -380,4 +433,11 @@ export const usePinChatToEnd = (
     },
     [logRef],
   );
+
+  return {
+    awayFromEnd,
+    scrollToEnd: () => {
+      scrollToEnd.current();
+    },
+  };
 };

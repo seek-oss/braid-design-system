@@ -4,6 +4,8 @@ import { type ReactNode, isValidElement, useRef } from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
+import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
+import { IconArrow } from '../icons';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
@@ -89,7 +91,11 @@ export const ChatMessageList = ({
   const scrollerRef = useRef<HTMLElement>(null);
   const logRef = useRef<HTMLElement>(null);
 
-  usePinChatToEnd(scrollerRef, logRef, children);
+  const { awayFromEnd, scrollToEnd } = usePinChatToEnd(
+    scrollerRef,
+    logRef,
+    children,
+  );
 
   assert(
     typeof label === 'string' && label.length > 0,
@@ -111,8 +117,18 @@ export const ChatMessageList = ({
   const daysStarted = daysStartedByGroup(groups);
 
   return (
-    <Box className={styles.frame}>
+    <Box
+      className={styles.frame}
+      position="relative"
+      flexGrow={1}
+      height="full"
+    >
       <ScrollContainer ref={scrollerRef} direction="vertical" fadeSize="small">
+        {/*
+          End padding keeps the last message's actions inside the clip.
+          Cropped text and touch targets can extend past their boxes, and
+          clipping them here keeps that overflow from making the list scroll.
+        */}
         <Box
           ref={logRef}
           component="ol"
@@ -120,12 +136,14 @@ export const ChatMessageList = ({
           flexDirection="column"
           justifyContent="flexEnd"
           gap="large"
+          overflow="hidden"
+          paddingBottom={styles.messageEndSpace}
+          outline="focus"
           className={styles.messages}
           role="log"
           aria-label={label}
           tabIndex={0}
           data={data}
-          style={{ minHeight: '100%' }}
           {...restProps}
         >
           <ChatMessageListContext.Provider value={variant}>
@@ -140,6 +158,30 @@ export const ChatMessageList = ({
           </ChatMessageListContext.Provider>
         </Box>
       </ScrollContainer>
+      <Box
+        className={[
+          styles.jumpToLatest,
+          awayFromEnd ? undefined : styles.jumpToLatestHidden,
+        ]}
+        transition="fast"
+        borderRadius="full"
+        boxShadow="medium"
+        position="absolute"
+        zIndex={1}
+        opacity={awayFromEnd ? undefined : 0}
+        pointerEvents={awayFromEnd ? undefined : 'none'}
+        aria-hidden={awayFromEnd ? undefined : true}
+      >
+        <ButtonIcon
+          variant="solid"
+          tone="neutral"
+          icon={<IconArrow direction="down" />}
+          label="Jump to latest"
+          tooltipPlacement="top"
+          tabIndex={awayFromEnd ? 0 : -1}
+          onClick={scrollToEnd}
+        />
+      </Box>
     </Box>
   );
 };

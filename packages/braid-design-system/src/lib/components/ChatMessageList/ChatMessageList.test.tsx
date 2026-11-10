@@ -8,7 +8,11 @@ import { Badge } from '../Badge/Badge';
 
 import * as styles from './ChatMessage.css';
 import { tight } from './ChatMessageGroup.css';
-import { messages } from './ChatMessageList.css';
+import {
+  jumpToLatest,
+  jumpToLatestHidden,
+  messages,
+} from './ChatMessageList.css';
 import { textSizeTrimmed, tone } from '../../css/typography.css';
 import { size as avatarSizes } from '../Avatar/Avatar.css';
 import { root as hiddenVisually } from '../HiddenVisually/HiddenVisually.css';
@@ -51,7 +55,15 @@ describe('ChatMessageList', () => {
     const log = screen.getByRole('log', { name: 'Conversation' });
 
     expect(log.tagName).toBe('OL');
-    expect(log).toHaveClass(...classNamesFor({ gap: 'large' }), messages);
+    expect(log).toHaveClass(
+      ...classNamesFor({
+        gap: 'large',
+        overflow: 'hidden',
+        paddingBottom: 'xxsmall',
+        outline: 'focus',
+      }),
+      messages,
+    );
     expect(log).toHaveAttribute('tabindex', '0');
     expect(within(log).getAllByRole('listitem')).toHaveLength(2);
     expect(log.parentElement).toHaveClass(
@@ -289,6 +301,99 @@ describe('ChatMessageList', () => {
     expect(top).toBe(40);
   });
 
+  it('shows a jump to latest button while the reader is away from the end', () => {
+    const conversation = (count: number) => (
+      <BraidTestProvider>
+        <ChatMessageList label="Conversation">
+          {Array.from({ length: count }, (_, index) => (
+            <ChatMessageGroup
+              key={index}
+              sender={index % 2 === 0 ? 'participant' : 'user'}
+              name={index % 2 === 0 ? 'Alex Nguyen' : 'You'}
+            >
+              <ChatMessage>Message {index}</ChatMessage>
+            </ChatMessageGroup>
+          ))}
+        </ChatMessageList>
+      </BraidTestProvider>
+    );
+
+    const { rerender } = render(conversation(2));
+    const scroller = screen.getByRole('log', {
+      name: 'Conversation',
+    }).parentElement;
+
+    if (!scroller) {
+      throw new Error('ChatMessageList log has no scroll container');
+    }
+
+    let height = 800;
+    const client = 280;
+    let top = 0;
+
+    Object.defineProperty(scroller, 'scrollHeight', {
+      configurable: true,
+      get: () => height,
+    });
+    Object.defineProperty(scroller, 'clientHeight', {
+      configurable: true,
+      get: () => client,
+    });
+    Object.defineProperty(scroller, 'scrollTop', {
+      configurable: true,
+      get: () => top,
+      set: (value: number) => {
+        top = value;
+      },
+    });
+
+    const jump = () => {
+      const button = document.querySelector(
+        'button[aria-label="Jump to latest"]',
+      );
+
+      if (!(button instanceof HTMLButtonElement)) {
+        throw new Error('Jump to latest button is missing');
+      }
+
+      return button;
+    };
+
+    rerender(conversation(2));
+
+    expect(top).toBe(height - client);
+    expect(
+      screen.queryByRole('button', { name: 'Jump to latest' }),
+    ).not.toBeInTheDocument();
+    expect(jump().parentElement).toHaveClass(jumpToLatest, jumpToLatestHidden);
+
+    top = 40;
+    fireEvent.scroll(scroller);
+
+    expect(jump().parentElement).toHaveClass(jumpToLatest);
+    expect(jump().parentElement).not.toHaveClass(jumpToLatestHidden);
+
+    height = 960;
+    rerender(conversation(3));
+
+    expect(top).toBe(40);
+    expect(jump().parentElement).toHaveClass(jumpToLatest);
+    expect(jump().parentElement).not.toHaveClass(jumpToLatestHidden);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Jump to latest' }));
+
+    expect(top).toBe(height - client);
+    expect(
+      screen.queryByRole('button', { name: 'Jump to latest' }),
+    ).not.toBeInTheDocument();
+    expect(jump().parentElement).toHaveClass(jumpToLatest, jumpToLatestHidden);
+
+    height = 1120;
+    rerender(conversation(4));
+
+    expect(top).toBe(height - client);
+  });
+
   it('rejects a child that is not a ChatMessageGroup', () => {
     expect(() =>
       render(
@@ -371,11 +476,13 @@ describe('ChatMessageGroup', () => {
     const largeRadius = classNamesFor({ borderRadius: 'large' });
 
     expect(document.querySelector(`.${CSS.escape(tight)}`)).not.toBeNull();
-    expect(bubbleFor('First')).toHaveClass(
-      ...largeRadius,
-      styles.radius.user,
-      styles.alignEnd,
+    expect(bubbleFor('First').parentElement).toHaveClass(
+      ...classNamesFor({ justifyContent: 'flexEnd' }),
     );
+    expect(bubbleFor('Second').parentElement).toHaveClass(
+      ...classNamesFor({ justifyContent: 'flexEnd' }),
+    );
+    expect(bubbleFor('First')).toHaveClass(...largeRadius, styles.radius.user);
     expect(bubbleFor('Second')).toHaveClass(
       ...largeRadius,
       styles.radius.userJoined,
