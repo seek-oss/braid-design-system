@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { useContext, type FC, type ReactNode } from 'react';
+import { useContext, useLayoutEffect, type FC, type ReactNode } from 'react';
 
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';
@@ -17,8 +17,11 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
+import { useCollapsibleHeight } from '../private/useCollapsibleHeight';
 
 import { type UseDisclosureProps, useDisclosure } from './useDisclosure';
+
+import * as styles from './Disclosure.css';
 
 export interface DisclosureBaseProps {
   expandLabel: string;
@@ -86,6 +89,19 @@ export const Disclosure: FC<DisclosureProps> = ({
         }),
   });
 
+  const {
+    contentRef,
+    contentSizeRef,
+    isAnimating,
+    contentStyle,
+    finishHeightTransition,
+  } = useCollapsibleHeight({ expanded, fromDisplayNone: true });
+
+  useLayoutEffect(() => {
+    // Remove in favour of direct DOM attribute when we drop React 18 support
+    contentRef.current?.toggleAttribute('inert', !expanded);
+  }, [contentRef, expanded]);
+
   const size = sizeProp ?? textContext?.size ?? 'standard';
   const defaultSpace = isInline
     ? /*
@@ -120,17 +136,33 @@ export const Disclosure: FC<DisclosureProps> = ({
       </Box>
       <Box
         component={component}
-        paddingTop={space ?? defaultSpace}
-        display={expanded ? 'block' : 'none'}
+        className={{
+          [styles.content]: true,
+          [styles.contentOpen]: expanded && !isAnimating,
+          [styles.contentClosed]: !expanded && !isAnimating,
+        }}
+        style={contentStyle}
+        onTransitionEnd={finishHeightTransition}
+        onTransitionCancel={finishHeightTransition}
+        aria-hidden={expanded ? undefined : true}
+        ref={contentRef}
         {...contentProps}
       >
-        {isInline ? (
-          children
-        ) : (
-          <DefaultTextPropsProvider size={size}>
-            {children}
-          </DefaultTextPropsProvider>
-        )}
+        <Box component={component} className={styles.contentInner}>
+          <Box
+            component={component}
+            paddingTop={space ?? defaultSpace}
+            ref={contentSizeRef}
+          >
+            {isInline ? (
+              children
+            ) : (
+              <DefaultTextPropsProvider size={size}>
+                {children}
+              </DefaultTextPropsProvider>
+            )}
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

@@ -274,7 +274,7 @@ describe('Accordion', () => {
 
     expect(firstContent).not.toHaveAttribute('aria-hidden');
     expect(firstContent).not.toHaveAttribute('inert');
-    expect(firstContent?.style.height).toBe('');
+    expect(firstContent?.style.gridTemplateRows).toBe('');
     expect(firstContent?.style.transitionDuration).toBe('');
     expect(secondContent).toHaveAttribute('aria-hidden', 'true');
 
@@ -464,6 +464,6 @@ describe('Accordion', () => {
     );
 
     expect(html).toContain('Visible');
-    expect(html).not.toMatch(/height:\s*0px/);
+    expect(html).not.toMatch(/grid-template-rows:\s*0fr/);
   });
 });
