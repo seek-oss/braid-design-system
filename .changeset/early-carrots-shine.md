@@ -6,13 +6,12 @@
 updated:
   - Disclosure
   - AccordionItem
+  - IconChevron
 ---
 
-**Disclosure, AccordionItem:** Animate Disclosure height when opening and closing
+**Disclosure, AccordionItem:** Animate open and close
 
-Disclosure animates its height unless reduced motion is set. There is no animation prop. After the close animation, collapsed content uses `display: none` so an inline Disclosure does not split the surrounding line.
-
-AccordionItem uses the same animation. Open and close interpolate `grid-template-rows` (`0fr` / `1fr`) so the panel does not snap when the animation ends.
+Height and chevron animate unless reduced motion is set. The chevron now points right when closed and down when opened.
 
 **EXAMPLE USAGE:**
 

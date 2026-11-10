@@ -115,7 +115,10 @@ export const Disclosure: FC<DisclosureProps> = ({
     <TextLinkButton hitArea="large" weight={weight} {...buttonProps}>
       {expanded ? collapseLabel : expandLabel}
       <AvoidWidowIcon iconPosition="trailing">
-        <IconChevron direction={expanded ? 'up' : 'down'} alignY="lowercase" />
+        <IconChevron
+          direction={expanded ? 'down' : 'right'}
+          alignY="lowercase"
+        />
       </AvoidWidowIcon>
     </TextLinkButton>
   );

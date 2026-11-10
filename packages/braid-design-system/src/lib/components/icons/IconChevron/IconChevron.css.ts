@@ -3,6 +3,11 @@ import { style } from '@vanilla-extract/css';
 export const root = style({
   transition: 'transform 0.3s ease',
   transformOrigin: '50% 50%',
+  '@media': {
+    'screen and (prefers-reduced-motion: reduce)': {
+      transition: 'none',
+    },
+  },
 });
 
 export const left = style({
@@ -14,5 +19,5 @@ export const up = style({
 });
 
 export const right = style({
-  transform: 'rotate(270deg)',
+  transform: 'rotate(-90deg)',
 });

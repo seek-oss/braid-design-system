@@ -210,7 +210,7 @@ export const AccordionItem: FC<AccordionItemProps> = ({
                 weight={weight}
                 tone={tone === 'neutral' ? 'secondary' : tone}
               >
-                <IconChevron direction={expanded ? 'up' : 'down'} />
+                <IconChevron direction={expanded ? 'down' : 'right'} />
               </Text>
             </Spread>
           </Box>
