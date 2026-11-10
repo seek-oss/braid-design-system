@@ -11,7 +11,7 @@ updated:
 
 **Disclosure, AccordionItem:** Animate open and close
 
-Height and chevron animate unless reduced motion is set. The chevron now points right when closed and down when opened.
+Height animates unless reduced motion is set. Disclosure’s chevron points right when closed and down when opened. AccordionItem’s chevron is unchanged (down when closed, up when opened).
 
 **EXAMPLE USAGE:**
 
