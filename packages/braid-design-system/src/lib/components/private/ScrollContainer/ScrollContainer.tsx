@@ -46,12 +46,6 @@ interface ScrollContainerProps {
   direction?: keyof typeof styles.direction;
   fadeSize?: keyof typeof styles.fadeSize;
   hideScrollbar?: boolean;
-  /**
-   * `full` fills the parent (Table, Menu, default Dialog/Drawer).
-   * `content` sizes to children, then caps at the parent so this node
-   * scrolls instead of overflowing a sibling (e.g. a pinned modal footer).
-   */
-  height?: 'full' | 'content';
   startRef?: RefObject<HTMLElement | null>;
   data?: DataAttributeMap;
 }
@@ -61,7 +55,6 @@ export const ScrollContainer = ({
   direction = 'horizontal',
   fadeSize = 'medium',
   hideScrollbar = false,
-  height = 'full',
   startRef,
   data,
   ...restProps
@@ -124,14 +117,14 @@ export const ScrollContainer = ({
       ref={containerRef}
       onScroll={updateMask}
       position="relative"
-      height={height === 'full' ? 'full' : undefined}
+      height="full"
       className={[
         styles.container,
         styles.mask,
         hideScrollbar ? styles.hideScrollbar : scrollbars,
         styles.fadeSize[fadeSize],
         styles.direction[direction],
-        height === 'content' ? styles.contentSized : undefined,
+        styles.heightLimit,
       ]}
       {...buildDataAttributes({ data, validateRestProps: restProps })}
     >

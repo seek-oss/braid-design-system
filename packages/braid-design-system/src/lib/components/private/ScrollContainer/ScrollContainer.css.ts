@@ -6,9 +6,8 @@ export const container = style({
   maskComposite: 'intersect',
 });
 
-export const contentSized = style({
+export const heightLimit = style({
   maxHeight: '100%',
-  minHeight: 0,
 });
 
 export const hideScrollbar = style({
@@ -49,9 +48,11 @@ export const direction = styleVariants({
   vertical: {
     overflowX: 'hidden',
     overflowY: 'auto',
+    minHeight: 0,
   },
   all: {
     overflow: 'auto',
+    minHeight: 0,
   },
 });
 
