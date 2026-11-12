@@ -21,8 +21,6 @@ import { useCollapsibleHeight } from '../private/useCollapsibleHeight';
 
 import { type UseDisclosureProps, useDisclosure } from './useDisclosure';
 
-import * as styles from './Disclosure.css';
-
 export interface DisclosureBaseProps {
   expandLabel: string;
   collapseLabel?: string;
@@ -92,7 +90,6 @@ export const Disclosure: FC<DisclosureProps> = ({
   const {
     contentRef,
     contentSizeRef,
-    isAnimating,
     contentStyle,
     finishHeightTransition,
     className,
@@ -147,10 +144,7 @@ export const Disclosure: FC<DisclosureProps> = ({
       </Box>
       <Box
         component={component}
-        className={[
-          className,
-          { [styles.hideWhenClosed]: !expanded && !isAnimating },
-        ]}
+        className={className}
         style={contentStyle}
         onTransitionEnd={finishHeightTransition}
         aria-hidden={expanded ? undefined : true}

@@ -147,13 +147,13 @@ export const useCollapsibleHeight = ({
   return {
     contentRef,
     contentSizeRef,
-    isAnimating,
     contentStyle,
     finishHeightTransition,
     className: {
       [styles.content]: true,
       [styles.contentOpen]: expanded && !isAnimating,
       [styles.contentClosed]: !expanded && !isAnimating,
+      [styles.hideWhenClosed]: fromDisplayNone && !expanded && !isAnimating,
     },
     innerClassName: styles.contentInner,
   };

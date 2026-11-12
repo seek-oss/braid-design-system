@@ -46,3 +46,11 @@ export const contentClosed = style({
   visibility: 'hidden',
   height: 0,
 });
+
+export const hideWhenClosed = style({
+  selectors: {
+    [`${content}&`]: {
+      display: 'none',
+    },
+  },
+});
