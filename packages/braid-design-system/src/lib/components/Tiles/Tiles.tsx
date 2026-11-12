@@ -8,11 +8,11 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-import * as styles from './Tiles.css';
 import {
   type RequiredResponsiveValue,
   normalizeResponsiveValue,
 } from '../../css/atoms/sprinkles.css';
+import * as styles from './Tiles.css';
 
 export interface TilesProps {
   children: ReactNodeNoStrings;

@@ -6,7 +6,7 @@ import eslintConfigSeek from 'eslint-config-seek';
 import { configs as storybookConfigs } from 'eslint-plugin-storybook';
 import fastGlob from 'fast-glob';
 import { load as loadYaml } from 'js-yaml';
-const { isDynamicPattern, globSync } = fastGlob; // eslint-disable-line import-x/no-named-as-default-member -- commonjs module, will move to built in with node 22.
+const { isDynamicPattern, globSync } = fastGlob;
 
 /**
  * Ignore linting for all files that are gitignored across all workspaces.

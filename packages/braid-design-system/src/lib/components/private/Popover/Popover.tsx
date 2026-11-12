@@ -26,8 +26,8 @@ import { useResponsiveValue } from '../../useResponsiveValue/useResponsiveValue'
 import { useSpace } from '../../useSpace/useSpace';
 import { animationTimeout } from '../animationTimeout';
 
-import * as styles from './Popover.css';
 import { normalizeResponsiveValue } from '../../../css/atoms/sprinkles.css';
+import * as styles from './Popover.css';
 
 type Placement = 'top' | 'bottom' | 'left' | 'right';
 type Align = 'start' | 'end' | 'center';

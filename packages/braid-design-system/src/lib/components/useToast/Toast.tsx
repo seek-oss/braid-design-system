@@ -24,8 +24,8 @@ import type { InternalToast, ToastAction, ToastDuration } from './ToastTypes';
 import { toastGap } from './consts';
 import { useTimeout } from './useTimeout';
 
-import * as styles from './Toast.css';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
+import * as styles from './Toast.css';
 
 const toneToIcon = {
   critical: IconCritical,

@@ -7,10 +7,10 @@ import { palette } from '../../color/palette';
 import { atoms } from '../../css/atoms/atoms';
 import { IconCompany, IconPhotoAdd } from '../icons';
 
-import { photoPlaceholderUrl } from './photoPlaceholder.css';
 import { heading, textSizeUntrimmed } from '../../css/typography.css';
 import { shimmerAnimation } from '../private/Skeleton/Skeleton.css';
 import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
+import { photoPlaceholderUrl } from './photoPlaceholder.css';
 
 const focusOutlineClassNames = atoms({ outline: 'focus' })
   .split(' ')
