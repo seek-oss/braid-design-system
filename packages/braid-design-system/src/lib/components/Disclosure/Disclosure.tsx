@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { useContext, type FC, type ReactNode } from 'react';
+import { useContext, useLayoutEffect, type FC, type ReactNode } from 'react';
 
 import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import { Box } from '../Box/Box';
@@ -17,6 +17,7 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 import { DefaultTextPropsProvider } from '../private/defaultTextProps';
+import { useCollapsibleHeight } from '../private/useCollapsibleHeight';
 
 import { type UseDisclosureProps, useDisclosure } from './useDisclosure';
 
@@ -86,6 +87,26 @@ export const Disclosure: FC<DisclosureProps> = ({
         }),
   });
 
+  const {
+    contentRef,
+    contentSizeRef,
+    contentStyle,
+    finishHeightTransition,
+    className,
+    innerClassName,
+  } = useCollapsibleHeight({
+    expanded,
+    fromDisplayNone: true,
+    // Grid is `display: grid` on a `span` and would split the line for the
+    // whole tween. Instant `display: none` keeps "After" on the same line.
+    animate: !isInline,
+  });
+
+  useLayoutEffect(() => {
+    // Remove in favour of direct DOM attribute when we drop React 18 support
+    contentRef.current?.toggleAttribute('inert', !expanded);
+  }, [contentRef, expanded]);
+
   const size = sizeProp ?? textContext?.size ?? 'standard';
   const defaultSpace = isInline
     ? /*
@@ -99,7 +120,10 @@ export const Disclosure: FC<DisclosureProps> = ({
     <TextLinkButton hitArea="large" weight={weight} {...buttonProps}>
       {expanded ? collapseLabel : expandLabel}
       <AvoidWidowIcon iconPosition="trailing">
-        <IconChevron direction={expanded ? 'up' : 'down'} alignY="lowercase" />
+        <IconChevron
+          direction={expanded ? 'down' : 'right'}
+          alignY="lowercase"
+        />
       </AvoidWidowIcon>
     </TextLinkButton>
   );
@@ -120,17 +144,28 @@ export const Disclosure: FC<DisclosureProps> = ({
       </Box>
       <Box
         component={component}
-        paddingTop={space ?? defaultSpace}
-        display={expanded ? 'block' : 'none'}
+        className={className}
+        style={contentStyle}
+        onTransitionEnd={finishHeightTransition}
+        aria-hidden={expanded ? undefined : true}
+        ref={contentRef}
         {...contentProps}
       >
-        {isInline ? (
-          children
-        ) : (
-          <DefaultTextPropsProvider size={size}>
-            {children}
-          </DefaultTextPropsProvider>
-        )}
+        <Box component={component} className={innerClassName}>
+          <Box
+            component={component}
+            paddingTop={space ?? defaultSpace}
+            ref={contentSizeRef}
+          >
+            {isInline ? (
+              children
+            ) : (
+              <DefaultTextPropsProvider size={size}>
+                {children}
+              </DefaultTextPropsProvider>
+            )}
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

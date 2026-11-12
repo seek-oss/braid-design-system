@@ -1,8 +1,9 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 
-import { Disclosure } from '..';
+import { Disclosure, Text } from '..';
 import { BraidTestProvider } from '../../../test';
 
 describe('Disclosure', () => {
@@ -16,14 +17,15 @@ describe('Disclosure', () => {
     );
 
     let button = getByRole('button', { name: 'Expand' });
-    const content = getByText('Content');
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
+    );
 
     expect(button).toBeInTheDocument();
 
     // 'aria-controls' should point at disclosure content
-    expect(content.getAttribute('id')).toEqual(
-      button.getAttribute('aria-controls'),
-    );
+    expect(content).toBeInTheDocument();
+    expect(getByText('Content')).toBeInTheDocument();
 
     expect(button.getAttribute('aria-expanded')).toEqual('false');
 
@@ -100,14 +102,15 @@ describe('Disclosure', () => {
     const { getByRole, getByText } = render(<TestCase />);
 
     const button = getByRole('button');
-    const content = getByText('Content');
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
+    );
 
     expect(button).toEqual(getByText('Collapse'));
 
     // 'aria-controls' should point at disclosure content
-    expect(content.getAttribute('id')).toEqual(
-      button.getAttribute('aria-controls'),
-    );
+    expect(content).toBeInTheDocument();
+    expect(getByText('Content')).toBeInTheDocument();
 
     expect(button.getAttribute('aria-expanded')).toEqual('true');
 
@@ -118,5 +121,157 @@ describe('Disclosure', () => {
     await userEvent.click(button);
     expect(button.getAttribute('aria-expanded')).toEqual('true');
     expect(button).toEqual(getByText('Collapse'));
+  });
+
+  it('should hide collapsed content from the accessibility tree', async () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Disclosure expandLabel="Expand" collapseLabel="Collapse">
+          Content
+        </Disclosure>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
+    );
+
+    expect(content).toHaveAttribute('aria-hidden', 'true');
+    expect(content).toHaveAttribute('inert');
+    expect(content).toHaveStyle({ display: 'none' });
+    expect(content?.style.gridTemplateRows).toBe('');
+    expect(content?.style.transitionDuration).toBe('');
+
+    await userEvent.click(button);
+    expect(content).not.toHaveAttribute('aria-hidden');
+    expect(content).not.toHaveAttribute('inert');
+  });
+
+  it('should hide collapsed content from the tab order', async () => {
+    const { getByRole, queryByRole } = render(
+      <BraidTestProvider>
+        <Disclosure expandLabel="Expand" collapseLabel="Collapse">
+          <a href="/">Hidden link</a>
+        </Disclosure>
+      </BraidTestProvider>,
+    );
+
+    expect(queryByRole('link')).toBeNull();
+
+    await userEvent.click(getByRole('button'));
+    expect(getByRole('link', { name: 'Hidden link' })).toBeInTheDocument();
+  });
+
+  it('should keep expanded content in document flow without JS measurement', () => {
+    const html = renderToStaticMarkup(
+      <BraidTestProvider>
+        <Disclosure expandLabel="Expand" expanded onToggle={() => {}}>
+          Visible
+        </Disclosure>
+      </BraidTestProvider>,
+    );
+
+    expect(html).toContain('Visible');
+    expect(html).not.toMatch(/grid-template-rows:\s*0fr/);
+  });
+
+  it('should support inline use inside Text', async () => {
+    const { getByRole, getByText } = render(
+      <BraidTestProvider>
+        <Text>
+          Before
+          <Disclosure expandLabel="Expand" collapseLabel="Collapse">
+            Hidden
+          </Disclosure>
+          After
+        </Text>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button', { name: 'Expand' });
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
+    );
+
+    expect(getByText('Before', { exact: false })).toBeInTheDocument();
+    expect(content).toHaveAttribute('aria-hidden', 'true');
+    expect(content).toHaveAttribute('inert');
+    expect(content).toHaveStyle({ display: 'none' });
+    expect(content?.style.gridTemplateRows).toBe('');
+
+    await userEvent.click(button);
+    expect(button.getAttribute('aria-expanded')).toEqual('true');
+    expect(content).not.toHaveAttribute('inert');
+    expect(getByText('Hidden')).toBeInTheDocument();
+
+    await userEvent.click(button);
+    expect(content).toHaveStyle({ display: 'none' });
+    expect(content?.style.gridTemplateRows).toBe('');
+    expect(getByText('After', { exact: false })).toBeInTheDocument();
+  });
+
+  it('should not snap shut when reversed during open', async () => {
+    const { getByRole } = render(
+      <BraidTestProvider>
+        <Disclosure expandLabel="Expand" collapseLabel="Collapse">
+          Content
+        </Disclosure>
+      </BraidTestProvider>,
+    );
+
+    const button = getByRole('button');
+    const content = document.getElementById(
+      button.getAttribute('aria-controls')!,
+    );
+
+    await userEvent.click(button);
+    await userEvent.click(button);
+    await userEvent.click(button);
+
+    expect(content).not.toHaveStyle({ display: 'none' });
+    expect(content).not.toHaveAttribute('inert');
+  });
+
+  it('should skip height animation when the user prefers reduced motion', async () => {
+    const matchMedia = window.matchMedia;
+    window.matchMedia = (query) =>
+      ({
+        matches: query.includes('prefers-reduced-motion'),
+        media: query,
+        onchange: null,
+        addListener() {},
+        removeListener() {},
+        addEventListener() {},
+        removeEventListener() {},
+        dispatchEvent() {
+          return false;
+        },
+      }) as MediaQueryList;
+
+    try {
+      const { getByRole } = render(
+        <BraidTestProvider>
+          <Disclosure expandLabel="Expand" collapseLabel="Collapse">
+            Content
+          </Disclosure>
+        </BraidTestProvider>,
+      );
+
+      const button = getByRole('button');
+      const content = document.getElementById(
+        button.getAttribute('aria-controls')!,
+      );
+
+      await userEvent.click(button);
+
+      expect(button.getAttribute('aria-expanded')).toEqual('true');
+      expect(content).not.toHaveAttribute('aria-hidden');
+      expect(content).not.toHaveAttribute('inert');
+      expect(content?.style.gridTemplateRows).toBe('');
+      expect(content?.style.transitionDuration).toBe('');
+    } finally {
+      window.matchMedia = matchMedia;
+    }
   });
 });

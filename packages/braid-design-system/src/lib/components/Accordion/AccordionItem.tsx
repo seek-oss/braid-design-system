@@ -4,13 +4,9 @@ import {
   type FC,
   type ReactElement,
   type ReactNode,
-  type TransitionEvent,
   cloneElement,
-  useCallback,
   useContext,
   useLayoutEffect,
-  useRef,
-  useState,
 } from 'react';
 
 import { useFallbackId } from '../../hooks/useFallbackId';
@@ -28,6 +24,7 @@ import { badgeSlotSpace } from '../private/badgeSlotSpace';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
+import { useCollapsibleHeight } from '../private/useCollapsibleHeight';
 
 import { defaultSize } from './Accordion';
 import {
@@ -44,26 +41,6 @@ const itemSpaceForSize = {
   standard: 'medium',
   large: 'medium',
 } as const;
-
-const minDurationMs = 200;
-const maxDurationMs = 500;
-const pixelsPerSecond = 320;
-
-const durationMsForHeight = (height: number) =>
-  Math.round(
-    Math.min(
-      maxDurationMs,
-      Math.max(minDurationMs, (height / pixelsPerSecond) * 1000),
-    ),
-  );
-
-const prefersReducedMotion = () =>
-  typeof window !== 'undefined' &&
-  typeof window.matchMedia === 'function' &&
-  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-const isHeightTransition = (event: TransitionEvent<HTMLElement>) =>
-  event.propertyName === 'height' && event.target === event.currentTarget;
 
 export interface AccordionItemBaseProps {
   label: string;
@@ -149,8 +126,6 @@ export const AccordionItem: FC<AccordionItemProps> = ({
   const tone = accordionContext?.tone ?? toneProp ?? 'neutral';
   const weight = accordionContext?.weight ?? weightProp ?? 'medium';
   const itemSpace = itemSpaceForSize[size] ?? 'none';
-  const contentRef = useRef<HTMLElement>(null);
-  const contentSizeRef = useRef<HTMLElement>(null);
 
   assert(
     typeof label === 'undefined' || typeof label === 'string',
@@ -180,61 +155,19 @@ export const AccordionItem: FC<AccordionItemProps> = ({
     ...disclosureState,
   });
 
-  const [trackedExpanded, setTrackedExpanded] = useState(expanded);
-  const [animatedHeight, setAnimatedHeight] = useState<number | null>(null);
-  const [animationDurationMs, setAnimationDurationMs] = useState(minDurationMs);
-  const isAnimating = animatedHeight !== null;
-
-  if (expanded !== trackedExpanded) {
-    setTrackedExpanded(expanded);
-
-    if (prefersReducedMotion()) {
-      setAnimatedHeight(null);
-    } else {
-      const height = contentSizeRef.current?.scrollHeight ?? 0;
-      setAnimatedHeight(height);
-      setAnimationDurationMs(durationMsForHeight(height));
-    }
-  }
-
-  const finishAnimation = useCallback(() => {
-    setAnimatedHeight(null);
-  }, []);
-
-  const finishHeightTransition = useCallback(
-    (event: TransitionEvent<HTMLElement>) => {
-      if (isHeightTransition(event)) {
-        finishAnimation();
-      }
-    },
-    [finishAnimation],
-  );
+  const {
+    contentRef,
+    contentSizeRef,
+    contentStyle,
+    finishHeightTransition,
+    className,
+    innerClassName,
+  } = useCollapsibleHeight({ expanded });
 
   useLayoutEffect(() => {
     // Remove in favour of direct DOM attribute when we drop React 18 support
     contentRef.current?.toggleAttribute('inert', !expanded);
-  }, [expanded]);
-
-  useLayoutEffect(() => {
-    if (!isAnimating) {
-      return;
-    }
-
-    if (!expanded) {
-      // Reading the height flushes layout so Safari records it before the collapse.
-      contentRef.current?.getBoundingClientRect();
-      setAnimatedHeight(0);
-    }
-
-    const timeoutId = window.setTimeout(
-      finishAnimation,
-      animationDurationMs + 50,
-    );
-
-    return () => {
-      window.clearTimeout(timeoutId);
-    };
-  }, [animationDurationMs, expanded, finishAnimation, isAnimating]);
+  }, [contentRef, expanded]);
 
   if (process.env.NODE_ENV !== 'production') {
     /**
@@ -285,27 +218,17 @@ export const AccordionItem: FC<AccordionItemProps> = ({
         </Box>
       </Box>
       <Box
-        className={{
-          [styles.content]: true,
-          [styles.contentOpen]: expanded && !isAnimating,
-          [styles.contentClosed]: !expanded && !isAnimating,
-        }}
-        style={
-          isAnimating
-            ? {
-                height: animatedHeight,
-                transitionDuration: `${animationDurationMs}ms`,
-              }
-            : undefined
-        }
+        className={className}
+        style={contentStyle}
         onTransitionEnd={finishHeightTransition}
-        onTransitionCancel={finishHeightTransition}
         aria-hidden={expanded ? undefined : true}
         ref={contentRef}
         {...contentProps}
       >
-        <Box ref={contentSizeRef} paddingTop={itemSpace}>
-          {children}
+        <Box className={innerClassName}>
+          <Box ref={contentSizeRef} paddingTop={itemSpace}>
+            {children}
+          </Box>
         </Box>
       </Box>
     </Box>

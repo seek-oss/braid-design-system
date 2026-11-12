@@ -19,12 +19,15 @@ const docs: ComponentDocs = {
       </Disclosure>,
     ),
   accessibility: (
-    <Text>
-      Follows the{' '}
-      <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">
-        WAI-ARIA Disclosure Pattern.
-      </TextLink>
-    </Text>
+    <Stack space="large">
+      <Text>
+        Follows the{' '}
+        <TextLink href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">
+          WAI-ARIA Disclosure Pattern.
+        </TextLink>
+      </Text>
+      <Text>Collapsed content is hidden from assistive technology.</Text>
+    </Stack>
   ),
   alternatives: [
     {
