@@ -5812,5 +5812,49 @@
         "summary": "**useToast:** Add `duration` option\n\nToasts accept `short` (6 seconds), `standard` (10 seconds), or `indefinite`. The default is `standard`, matching the previous dismiss time.\n\n**EXAMPLE USAGE:**\n\n```jsx\nshowToast({\n  tone: 'positive',\n  message: 'Saved',\n  duration: 'short',\n});\n```"
       }
     ]
+  },
+  {
+    "version": "34.11.0",
+    "updates": [
+      {
+        "updated": [
+          "Disclosure",
+          "AccordionItem"
+        ],
+        "summary": "**Disclosure, AccordionItem:** Animate open and close\n\nHeight animates unless reduced motion is set. Disclosure’s chevron points right when closed and down when opened. AccordionItem’s chevron is unchanged (down when closed, up when opened).\n\n**EXAMPLE USAGE:**\n\n```jsx\n<Disclosure expandLabel=\"Show content\" collapseLabel=\"Hide content\">\n  ...\n</Disclosure>\n```"
+      },
+      {
+        "updated": [
+          "Loader"
+        ],
+        "summary": "**Loader**: Fix clipping overflow on Loader\n\nFixes an issue where depending on the preceding content and sub-pixel rendering conditions, the final pixel of the loader is clipped"
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer:** Fix scrolling with cover images and footers\n\nRemoved second scroll container causing issues on smaller Dialogs, fix also applied to Drawer."
+      },
+      {
+        "updated": [
+          "Pagination"
+        ],
+        "summary": "**Pagination:** Only render next and prev as links when in range\n\nPrevious and Next stay in the layout on the first and last page, but they are no longer links. This stops crawlers from following a page 0 URL or a page past the end."
+      },
+      {
+        "updated": [
+          "IconChevron"
+        ],
+        "summary": "**IconChevron:** Rotate `right` by -90deg so it interpolates clockwise to `down`\n\nResting appearance is unchanged. Animating from `right` to `down` now travels 90deg clockwise instead of 270deg the long way.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<IconChevron direction=\"right\" />\n```"
+      },
+      {
+        "updated": [
+          "Dialog",
+          "Drawer"
+        ],
+        "summary": "**Dialog, Drawer:** Allow focus in iframes outside the modal\n\nFixes an issue where focus was pulled back into the modal from third-party iframes mounted outside it, so users could not type into them."
+      }
+    ]
   }
 ]

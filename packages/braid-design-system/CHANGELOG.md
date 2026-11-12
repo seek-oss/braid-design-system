@@ -1,5 +1,45 @@
 # braid-design-system
 
+## 34.11.0
+
+### Minor Changes
+
+- **Disclosure, AccordionItem:** Animate open and close ([#2198](https://github.com/seek-oss/braid-design-system/pull/2198))
+  
+  Height animates unless reduced motion is set. Disclosure’s chevron points right when closed and down when opened. AccordionItem’s chevron is unchanged (down when closed, up when opened).
+  
+  **EXAMPLE USAGE:**
+  
+  ```jsx
+  <Disclosure expandLabel="Show content" collapseLabel="Hide content">
+    ...
+  </Disclosure>
+  ```
+
+### Patch Changes
+
+- **Loader**: Fix clipping overflow on Loader ([#2193](https://github.com/seek-oss/braid-design-system/pull/2193))
+  
+  Fixes an issue where depending on the preceding content and sub-pixel rendering conditions, the final pixel of the loader is clipped
+- **Dialog, Drawer:** Fix scrolling with cover images and footers ([#2190](https://github.com/seek-oss/braid-design-system/pull/2190))
+  
+  Removed second scroll container causing issues on smaller Dialogs, fix also applied to Drawer.
+- **Pagination:** Only render next and prev as links when in range ([#2188](https://github.com/seek-oss/braid-design-system/pull/2188))
+  
+  Previous and Next stay in the layout on the first and last page, but they are no longer links. This stops crawlers from following a page 0 URL or a page past the end.
+- **IconChevron:** Rotate `right` by -90deg so it interpolates clockwise to `down` ([#2198](https://github.com/seek-oss/braid-design-system/pull/2198))
+  
+  Resting appearance is unchanged. Animating from `right` to `down` now travels 90deg clockwise instead of 270deg the long way.
+  
+  **EXAMPLE USAGE:**
+  
+  ```jsx
+  <IconChevron direction="right" />
+  ```
+- **Dialog, Drawer:** Allow focus in iframes outside the modal ([#2197](https://github.com/seek-oss/braid-design-system/pull/2197))
+  
+  Fixes an issue where focus was pulled back into the modal from third-party iframes mounted outside it, so users could not type into them.
+
 ## 34.10.0
 
 ### Minor Changes
