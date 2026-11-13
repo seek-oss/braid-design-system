@@ -5856,5 +5856,9 @@
         "summary": "**Dialog, Drawer:** Allow focus in iframes outside the modal\n\nFixes an issue where focus was pulled back into the modal from third-party iframes mounted outside it, so users could not type into them."
       }
     ]
+  },
+  {
+    "version": "34.11.1",
+    "updates": []
   }
 ]
