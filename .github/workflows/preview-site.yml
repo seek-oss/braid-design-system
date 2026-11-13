@@ -42,6 +42,9 @@ jobs:
           BRANCH_NAME: ${{ github.ref_name }}
           HEAD_BRANCH_NAME: ${{ github.head_ref }}
 
+      - name: Record preview deploy date
+        run: date -u +%Y-%m-%d > site/dist/deployed-at.txt
+
       - name: Deploy preview site
         uses: JamesIves/github-pages-deploy-action@v4
         with:
@@ -49,6 +52,9 @@ jobs:
           folder: ./site/dist
           target-folder: ${{ env.SITE_PREVIEW_PATH }}
           commit-message: Preview of `${{ github.ref_name }}`
+          # Rebase onto the latest gh-pages tip so a master deploy is kept.
+          # The cleanup workflow squashes this branch back to one commit.
+          force: false
 
       - name: Update PR status
         run: pnpm post-commit-status

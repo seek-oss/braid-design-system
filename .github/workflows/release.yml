@@ -46,18 +46,23 @@ jobs:
           publish-script: pnpm release
           github-token: ${{ secrets.SEEK_OSS_CI_GITHUB_TOKEN }}
 
+      # changesets/action@v2 renamed `hasChangesets` to `has-changesets`.
+      # Deploy after a publish, and when master has no pending changesets.
       - name: Build site
-        if: steps.changesets.outputs.published == 'true' || steps.changesets.outputs.hasChangesets == 'false'
+        if: steps.changesets.outputs.published == 'true' || steps.changesets.outputs['has-changesets'] == 'false'
         run: pnpm build:site
         env:
           BASE_NAME: /braid-design-system
 
       - name: Deploy site
-        if: steps.changesets.outputs.published == 'true' || steps.changesets.outputs.hasChangesets == 'false'
+        if: steps.changesets.outputs.published == 'true' || steps.changesets.outputs['has-changesets'] == 'false'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           folder: ./site/dist
+          # Rebase onto concurrent preview commits. History is collapsed weekly
+          # by the preview cleanup workflow, so this branch does not grow forever.
+          force: false
           # Preserve the preview deployment folder and custom grad-connection site
           clean-exclude: |
             /preview/*
