@@ -27,8 +27,8 @@
     "generate:snippets": {
       "inputs": ["{projectRoot}/src/**/*.snippets.tsx", "scripts"],
       "outputs": [
-        "{projectRoot}/src/**/playroom/snippets/*.ts",
-        "{projectRoot}/src/**/playroom/snippets.ts"
+        "{projectRoot}/src/lib/playroom/snippets/*.ts",
+        "{projectRoot}/src/lib/playroom/snippets.ts"
       ],
       "executor": "nx:run-script",
       "options": {
