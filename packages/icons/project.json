@@ -1,5 +1,6 @@
 {
-  "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.6.3/packages/nx/schemas/project-schema.json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "icons",
   "namedInputs": {
     "default": ["{projectRoot}/**/*"],
     "scripts": ["{projectRoot}/scripts/*"]

@@ -8,6 +8,11 @@ allowBuilds:
   sku: false
   unrs-resolver: true
 
+# One supports-color, so Vitest is installed once. A second copy makes
+# snapshot assertions run against a SnapshotClient that was never set up.
+overrides:
+  supports-color: 8.1.1
+
 minimumReleaseAgeExclude:
   - '@capsizecss/*'
   - '@sku-lib/*'
