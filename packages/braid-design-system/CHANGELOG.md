@@ -1,5 +1,11 @@
 # braid-design-system
 
+## 34.11.1
+
+### Patch Changes
+
+- Code formatting changes ([#2186](https://github.com/seek-oss/braid-design-system/pull/2186))
+
 ## 34.11.0
 
 ### Minor Changes
