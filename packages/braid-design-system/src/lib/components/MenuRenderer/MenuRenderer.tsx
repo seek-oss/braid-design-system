@@ -30,8 +30,8 @@ import { type Action, actionTypes } from './MenuRenderer.actions';
 import { MenuRendererContext } from './MenuRendererContext';
 import { MenuRendererItemContext } from './MenuRendererItemContext';
 
-import * as styles from './MenuRenderer.css';
 import { vars } from '../../themes/vars.css';
+import * as styles from './MenuRenderer.css';
 
 interface TriggerProps {
   'aria-haspopup': boolean;

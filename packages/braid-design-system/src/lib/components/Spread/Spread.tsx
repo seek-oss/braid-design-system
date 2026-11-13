@@ -13,8 +13,8 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-import * as styles from './Spread.css';
 import type { OptionalResponsiveValue } from '../../css/atoms/sprinkles.css';
+import * as styles from './Spread.css';
 
 type ValidSpreadComponent =
   | 'div'

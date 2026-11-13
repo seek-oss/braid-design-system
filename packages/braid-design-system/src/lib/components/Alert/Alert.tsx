@@ -18,8 +18,8 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-import * as styles from './Alert.css';
 import { textAlignedToIcon } from '../../css/textAlignedToIcon.css';
+import * as styles from './Alert.css';
 
 type Tone = 'promote' | 'info' | 'positive' | 'caution' | 'critical';
 

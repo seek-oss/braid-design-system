@@ -24,8 +24,8 @@ import { validateTabIndex } from '../validateTabIndex';
 
 import { fieldPaddingX } from './fieldPaddingX';
 
-import * as styles from './Field.css';
 import { touchableText } from '../../../css/typography.css';
+import * as styles from './Field.css';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 

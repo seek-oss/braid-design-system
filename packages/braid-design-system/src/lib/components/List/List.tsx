@@ -10,8 +10,8 @@ import {
   useDefaultTextProps,
 } from '../private/defaultTextProps';
 
-import * as styles from './List.css';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
+import * as styles from './List.css';
 
 function numberToAlpha(inputNumber: number) {
   let returnValue = '';

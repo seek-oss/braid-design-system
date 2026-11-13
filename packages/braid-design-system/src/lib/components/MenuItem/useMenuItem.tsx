@@ -26,8 +26,8 @@ import buildDataAttributes, {
 import { iconSlotSpace } from '../private/iconSlotSpace';
 import { normalizeKey } from '../private/normalizeKey';
 
-import * as styles from './useMenuItem.css';
 import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
+import * as styles from './useMenuItem.css';
 
 const {
   MENU_ITEM_UP,

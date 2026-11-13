@@ -12,9 +12,9 @@ import buildDataAttributes, {
 } from '../../components/private/buildDataAttributes';
 import { atoms } from '../../css/atoms/atoms';
 
-import * as styles from './icon.css';
 import { lineHeightContainer } from '../../css/lineHeightContainer.css';
 import * as typographyStyles from '../../css/typography.css';
+import * as styles from './icon.css';
 
 type IconSize = keyof typeof typographyStyles.textSizeUntrimmed | 'fill';
 

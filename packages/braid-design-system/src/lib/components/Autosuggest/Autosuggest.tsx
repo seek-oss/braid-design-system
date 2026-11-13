@@ -52,8 +52,8 @@ import {
 import { reverseMatches } from './reverseMatches';
 import { useScrollIntoView } from './useScrollIntoView';
 
-import * as styles from './Autosuggest.css';
 import { touchableText } from '../../css/typography.css';
+import * as styles from './Autosuggest.css';
 
 type SuggestionMatch = Array<{ start: number; end: number }>;
 

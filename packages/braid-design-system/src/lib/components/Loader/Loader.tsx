@@ -6,8 +6,8 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-import * as styles from './Loader.css';
 import * as typographyStyles from '../../css/typography.css';
+import * as styles from './Loader.css';
 
 interface LoaderProps {
   size?: keyof typeof styles.size;

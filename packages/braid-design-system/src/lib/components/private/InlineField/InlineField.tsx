@@ -24,8 +24,8 @@ import {
   StyledInput,
 } from './StyledInput';
 
-import * as styles from './InlineField.css';
 import { virtualTouchable } from '../touchable/virtualTouchable.css';
+import * as styles from './InlineField.css';
 
 interface InlineFieldBaseProps {
   label: NonNullable<FieldLabelProps['label']>;
