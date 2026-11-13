@@ -1,35 +1,36 @@
 {
-  "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.6.3/packages/nx/schemas/nx-schema.json",
-  "extends": "nx/presets/npm.json",
-  "npmScope": "braid-design-system",
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "cacheableOperations": [
-          "build",
-          "build:playroom",
-          "build:site",
-          "generate",
-          "generate:component-docs",
-          "generate:icons",
-          "generate:snippets"
-        ]
-      }
-    }
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "defaultBase": "master",
+  "useInferencePlugins": false,
+  "affected": {
+    "legacy": true
   },
   "targetDefaults": {
     "validate": {
       "dependsOn": ["validate:src", "validate:dist"],
       "executor": "nx:noop"
+    },
+    "build": {
+      "cache": true
+    },
+    "build:playroom": {
+      "cache": true
+    },
+    "build:site": {
+      "cache": true
+    },
+    "generate": {
+      "cache": true
+    },
+    "generate:component-docs": {
+      "cache": true
+    },
+    "generate:icons": {
+      "cache": true
+    },
+    "generate:snippets": {
+      "cache": true
     }
   },
-  "affected": {
-    "defaultBase": "master"
-  },
-  "pluginsConfig": {
-    "@nrwl/js": {
-      "analyzeSourceFiles": false
-    }
-  }
+  "analytics": false
 }
