@@ -75,7 +75,7 @@
     "vitest": "^4.1.0"
   },
   "volta": {
-    "node": "24.22.2"
+    "node": "26.13.1"
   },
   "packageManager": "pnpm@12.18.0",
   "manypkg": {
