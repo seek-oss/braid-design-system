@@ -1,5 +1,6 @@
 {
-  "$schema": "https://raw.githubusercontent.com/nrwl/nx/15.6.3/packages/nx/schemas/project-schema.json",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "name": "site",
   "namedInputs": {
     "default": ["{projectRoot}/**/*"]
   },
@@ -29,7 +30,7 @@
     "build:site": {
       "dependsOn": ["generate"],
       "inputs": ["default", "^default"],
-      "outputs": ["dist/(!playroom)/**/*"],
+      "outputs": ["{projectRoot}/dist/(!playroom)/**/*"],
       "executor": "nx:run-script",
       "options": {
         "script": "build:site"
@@ -38,7 +39,7 @@
     "build:playroom": {
       "dependsOn": ["generate"],
       "inputs": ["^default"],
-      "outputs": ["dist/playroom"],
+      "outputs": ["{projectRoot}/dist/playroom"],
       "executor": "nx:run-script",
       "options": {
         "script": "build:playroom"
