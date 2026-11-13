@@ -7,8 +7,8 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';
 
-import * as styles from './ScrollContainer.css';
 import { scrollbars } from '../scrollbars.css';
+import * as styles from './ScrollContainer.css';
 
 const scrollOffset = 2; // 2 instead of 1 to account for rounding errors in some browsers
 

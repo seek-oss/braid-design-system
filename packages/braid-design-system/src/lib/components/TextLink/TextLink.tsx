@@ -19,9 +19,9 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-import * as styles from './TextLink.css';
 import * as typographyStyles from '../../css/typography.css';
 import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
+import * as styles from './TextLink.css';
 
 export interface TextLinkStyles {
   weight?: 'regular' | 'weak';

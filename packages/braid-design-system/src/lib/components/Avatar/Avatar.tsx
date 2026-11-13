@@ -22,8 +22,8 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-import * as styles from './Avatar.css';
 import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
+import * as styles from './Avatar.css';
 
 type AvatarSize = keyof typeof styles.size;
 

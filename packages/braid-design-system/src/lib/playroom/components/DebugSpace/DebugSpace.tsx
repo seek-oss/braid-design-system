@@ -4,8 +4,8 @@ import { Box } from '../../../components/Box/Box';
 import type { StackProps } from '../../../components/Stack/Stack';
 import type { Space } from '../../../css/atoms/atoms';
 
-import * as styles from './DebugSpace.css';
 import { normalizeResponsiveValue } from '../../../css/atoms/sprinkles.css';
+import * as styles from './DebugSpace.css';
 
 /**
  * Map of hue and saturation values for each step of the space scale.

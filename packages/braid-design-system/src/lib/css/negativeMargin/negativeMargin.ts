@@ -3,8 +3,8 @@ import clsx from 'clsx';
 import { resolveResponsiveProp } from '../../utils/resolveResponsiveProp';
 import type { Space } from '../atoms/atoms';
 
-import * as styles from './negativeMargin.css';
 import type { RequiredResponsiveValue } from '../atoms/sprinkles.css';
+import * as styles from './negativeMargin.css';
 
 const directionStyles = {
   top: styles.top,

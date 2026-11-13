@@ -10,8 +10,8 @@ import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { Page } from './Page';
 
-import { heightLimit } from './Page.css';
 import { vars } from '../../themes/vars.css';
+import { heightLimit } from './Page.css';
 
 const ScreenOverlay = ({ screenHeight }: { screenHeight: number }) => (
   <Box

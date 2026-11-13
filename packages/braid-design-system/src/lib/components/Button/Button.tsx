@@ -30,8 +30,8 @@ import { iconSlotSpace } from '../private/iconSlotSpace';
 import { ButtonLoader } from './ButtonLoader';
 import type { buttonTones } from './buttonTones';
 
-import * as styles from './Button.css';
 import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
+import * as styles from './Button.css';
 
 export const buttonVariants = [
   'solid',

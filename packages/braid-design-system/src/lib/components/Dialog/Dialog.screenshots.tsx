@@ -8,8 +8,8 @@ import { externalGutter } from '../private/Modal/ModalExternalGutter';
 
 import { DialogContent } from './Dialog';
 
-import { coverImagePlaceholderUrl } from './coverImagePlaceholder.css';
 import * as styles from '../private/Modal/Modal.css';
+import { coverImagePlaceholderUrl } from './coverImagePlaceholder.css';
 
 const meta = {
   title: 'Components/Dialog',

@@ -15,8 +15,8 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-import * as styles from './Column.css';
 import { normalizeResponsiveValue } from '../../css/atoms/sprinkles.css';
+import * as styles from './Column.css';
 
 type ValidColumnComponent =
   | 'div'

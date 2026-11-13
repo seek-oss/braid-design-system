@@ -14,9 +14,9 @@ import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
+import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 import * as styles from './Toggle.css';
 import type { Size } from './Toggle.css';
-import { virtualTouchable } from '../private/touchable/virtualTouchable.css';
 
 type HTMLInputProps = AllHTMLAttributes<HTMLInputElement>;
 type ChangeHandler = (value: boolean) => void;
