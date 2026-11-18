@@ -6,7 +6,6 @@ import {
   useEffect,
   useRef,
   useState,
-  useCallback,
   type ReactElement,
   type ComponentProps,
   type FC,
@@ -17,8 +16,8 @@ import { negativeMargin } from '../../css/negativeMargin/negativeMargin';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
-import { useBraidTheme } from '../BraidProvider/BraidThemeContext';
 import { Divider } from '../Divider/Divider';
+import { ScrollContainer } from '../ScrollContainer/ScrollContainer';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
@@ -69,7 +68,7 @@ const getActiveTabLinePosition = (
 
 export const Tabs: FC<TabsProps> = (props) => {
   const tabsContext = useContext(TabsContext);
-  const tabsRef = useRef<HTMLElement>(null);
+  const tabsContentRef = useRef<HTMLElement>(null);
   const [activeTabPosition, setActiveTabPosition] = useState(
     tabLinePositionDefault,
   );
@@ -115,7 +114,8 @@ export const Tabs: FC<TabsProps> = (props) => {
         key={index}
         value={{
           tabListItemIndex: index,
-          scrollContainer: tabsRef.current,
+          // ScrollContainer renders its children directly inside the scrolling element
+          scrollContainer: tabsContentRef.current?.parentElement ?? null,
           isLast: childTabs.length === index + 1,
           size,
         }}
@@ -129,33 +129,6 @@ export const Tabs: FC<TabsProps> = (props) => {
     dispatch({ type: TAB_LIST_UPDATED, tabItems });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tabItems.join(), dispatch]);
-
-  const {
-    space: { grid, space },
-  } = useBraidTheme();
-  const [showMask, setShowMask] = useState(true);
-
-  // This must be called within a `useLayoutEffect` because `.scrollLeft`, `.scrollWidth` and `.offsetWidth` force a reflow
-  // https://gist.github.com/paulirish/5d52fb081b3570c81e3a
-  const updateMask = useCallback(() => {
-    if (!tabsRef.current) {
-      return;
-    }
-
-    setShowMask(
-      tabsRef.current.scrollWidth -
-        tabsRef.current.offsetWidth -
-        tabsRef.current.scrollLeft >
-        grid * space.small,
-    );
-  }, [tabsRef, setShowMask, grid, space]);
-
-  useIsomorphicLayoutEffect(() => {
-    updateMask();
-
-    window.addEventListener('resize', updateMask);
-    return () => window.removeEventListener('resize', updateMask);
-  }, [updateMask]);
 
   const selectedTabIndex =
     typeof selectedItem !== 'undefined'
@@ -178,79 +151,80 @@ export const Tabs: FC<TabsProps> = (props) => {
         }
       >
         <Box position="relative">
-          <Box
-            ref={tabsRef}
-            className={[
-              styles.scroll,
-              styles.nowrap,
-              showMask ? styles.mask : null,
-            ]}
-            display="flex"
-            onScroll={updateMask}
-            flexWrap="nowrap"
-          >
+          {divider === 'full' ? (
             <Box
+              position="absolute"
+              bottom={0}
+              left={0}
+              right={0}
+              className={styles.divider}
+            >
+              <Divider />
+            </Box>
+          ) : null}
+          <ScrollContainer fadeSize="large" hideScrollbar>
+            <Box
+              ref={tabsContentRef}
+              className={styles.nowrap}
               display="flex"
-              className={align === 'center' ? styles.marginAuto : undefined}
-              paddingX={gutter}
               flexWrap="nowrap"
-              position="relative"
-              zIndex={1}
             >
               <Box
-                {...a11y.tabListProps({ label })}
                 display="flex"
-                {...buildDataAttributes({ data, validateRestProps: restProps })}
+                className={align === 'center' ? styles.marginAuto : undefined}
+                paddingX={gutter}
                 flexWrap="nowrap"
                 position="relative"
+                zIndex={1}
               >
-                {tabs}
-                {divider === 'minimal' ? (
-                  <Box
-                    position="absolute"
-                    bottom={0}
-                    left={0}
-                    right={0}
-                    className={styles.divider}
-                  >
-                    <Divider />
-                  </Box>
-                ) : null}
-                {selectedTabButtonEl ? (
-                  <Box
-                    component="span"
-                    position="absolute"
-                    display="block"
-                    left={0}
-                    right={0}
-                    bottom={0}
-                    background="formAccent"
-                    pointerEvents="none"
-                    className={[
-                      styles.tabUnderline,
-                      styles.tabUnderlineActiveDarkMode,
-                    ]}
-                    style={assignInlineVars({
-                      [styles.underlineLeft]: activeTabPosition.left.toString(),
-                      [styles.underlineWidth]:
-                        activeTabPosition.width.toString(),
-                    })}
-                  />
-                ) : null}
+                <Box
+                  {...a11y.tabListProps({ label })}
+                  display="flex"
+                  {...buildDataAttributes({
+                    data,
+                    validateRestProps: restProps,
+                  })}
+                  flexWrap="nowrap"
+                  position="relative"
+                >
+                  {tabs}
+                  {divider === 'minimal' ? (
+                    <Box
+                      position="absolute"
+                      bottom={0}
+                      left={0}
+                      right={0}
+                      className={styles.divider}
+                    >
+                      <Divider />
+                    </Box>
+                  ) : null}
+                  {selectedTabButtonEl ? (
+                    <Box
+                      component="span"
+                      position="absolute"
+                      display="block"
+                      left={0}
+                      right={0}
+                      bottom={0}
+                      background="formAccent"
+                      pointerEvents="none"
+                      className={[
+                        styles.tabUnderline,
+                        styles.tabUnderlineActiveDarkMode,
+                      ]}
+                      style={assignInlineVars({
+                        [styles.underlineLeft]:
+                          activeTabPosition.left.toString(),
+                        [styles.underlineWidth]:
+                          activeTabPosition.width.toString(),
+                      })}
+                    />
+                  ) : null}
+                </Box>
               </Box>
             </Box>
-            {divider === 'full' ? (
-              <Box
-                position="absolute"
-                bottom={0}
-                left={0}
-                right={0}
-                className={styles.divider}
-              >
-                <Divider />
-              </Box>
-            ) : null}
-          </Box>
+          </ScrollContainer>
         </Box>
       </Box>
     </Box>

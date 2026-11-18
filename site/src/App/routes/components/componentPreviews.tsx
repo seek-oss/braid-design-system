@@ -931,6 +931,9 @@ export const componentPreviews: Partial<
         </Box>,
       ),
   },
+  ScrollContainer: {
+    stageWidth: 400,
+  },
   Secondary: {
     stageWidth: 320,
     Example: () =>
