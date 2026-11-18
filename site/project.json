@@ -6,10 +6,15 @@
   },
   "targets": {
     "start": {
-      "dependsOn": ["start:site", "start:playroom"],
-      "executor": "nx:noop"
+      "continuous": true,
+      "dependsOn": ["generate", "start:playroom"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "start:site"
+      }
     },
     "start:site": {
+      "continuous": true,
       "dependsOn": ["generate"],
       "executor": "nx:run-script",
       "options": {
@@ -17,6 +22,7 @@
       }
     },
     "start:playroom": {
+      "continuous": true,
       "dependsOn": ["generate"],
       "executor": "nx:run-script",
       "options": {
