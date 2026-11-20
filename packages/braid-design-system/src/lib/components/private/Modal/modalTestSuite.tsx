@@ -11,23 +11,39 @@ import { BraidTestProvider } from '../../../../test';
 import { Button } from '../../Button/Button';
 
 import type { ModalProps } from './Modal';
+import { shortViewportQuery } from './useShortViewport';
 
 export const modalTestSuite = (
   name: string,
   ModalImplementation: ComponentType<
     Pick<
       ModalProps,
-      'title' | 'closeLabel' | 'open' | 'onClose' | 'children' | 'footer'
+      | 'title'
+      | 'closeLabel'
+      | 'open'
+      | 'onClose'
+      | 'children'
+      | 'footer'
+      | 'description'
+      | 'stickyHeader'
     >
   >,
 ) => {
   const CLOSE_LABEL = 'Close button';
   const TITLE = 'Test Title';
+  const DESCRIPTION = 'Test description';
+
+  type TestCaseProps = Pick<
+    ModalProps,
+    'onClose' | 'footer' | 'description' | 'stickyHeader'
+  >;
 
   const TestCase = ({
     onClose,
     footer,
-  }: Pick<ModalProps, 'onClose' | 'footer'>) => {
+    description,
+    stickyHeader,
+  }: TestCaseProps) => {
     const [open, setOpen] = useState(false);
     return (
       <div>
@@ -48,6 +64,8 @@ export const modalTestSuite = (
             setOpen(newOpenState);
           }}
           footer={footer}
+          description={description}
+          stickyHeader={stickyHeader}
         >
           <Button data={{ testid: 'buttonInside' }}>Inside</Button>
         </ModalImplementation>
@@ -64,16 +82,49 @@ export const modalTestSuite = (
   function renderTestCase({
     onClose = vi.fn(),
     footer,
-  }: Optional<Pick<ModalProps, 'onClose' | 'footer'>> = {}) {
+    description,
+    stickyHeader,
+  }: Optional<TestCaseProps> = {}) {
     return {
       ...render(
         <BraidTestProvider>
-          <TestCase onClose={onClose} footer={footer} />
+          <TestCase
+            onClose={onClose}
+            footer={footer}
+            description={description}
+            stickyHeader={stickyHeader}
+          />
         </BraidTestProvider>,
       ),
       closeHandler: onClose,
     };
   }
+
+  const getScrollContainer = (element: HTMLElement) => {
+    let current = element.parentElement;
+    while (current && current.getAttribute('role') !== 'dialog') {
+      if (getComputedStyle(current).overflowY === 'auto') {
+        return current;
+      }
+      current = current.parentElement;
+    }
+    return null;
+  };
+
+  const mockShortViewport = () => {
+    const originalMatchMedia = window.matchMedia;
+    window.matchMedia = (query) =>
+      ({
+        matches: query === shortViewportQuery,
+        media: query,
+        addListener: () => {},
+        removeListener: () => {},
+      }) as unknown as MediaQueryList;
+
+    return () => {
+      window.matchMedia = originalMatchMedia;
+    };
+  };
 
   const EXIT_TIMEOUT = 1500;
 
@@ -85,6 +136,79 @@ export const modalTestSuite = (
       await userEvent.click(getByTestId('buttonBefore'));
 
       expect(getByText('Footer content')).toBeVisible();
+    });
+
+    it('should render the title inside the scroll container by default', async () => {
+      const { getByTestId, getByText } = renderTestCase();
+
+      await userEvent.click(getByTestId('buttonBefore'));
+
+      const contentScrollContainer = getScrollContainer(
+        getByTestId('buttonInside'),
+      );
+      expect(contentScrollContainer).not.toBeNull();
+      expect(getScrollContainer(getByText(TITLE))).toBe(contentScrollContainer);
+    });
+
+    it('should render the title outside the scroll container when stickyHeader is set', async () => {
+      const { getByTestId, getByText } = renderTestCase({ stickyHeader: true });
+
+      await userEvent.click(getByTestId('buttonBefore'));
+
+      expect(getScrollContainer(getByTestId('buttonInside'))).not.toBeNull();
+      expect(getScrollContainer(getByText(TITLE))).toBeNull();
+    });
+
+    it('should render the title inside the scroll container when stickyHeader is set on a short viewport', async () => {
+      const restoreMatchMedia = mockShortViewport();
+
+      try {
+        const { getByTestId, getByText } = renderTestCase({
+          stickyHeader: true,
+        });
+
+        await userEvent.click(getByTestId('buttonBefore'));
+
+        const contentScrollContainer = getScrollContainer(
+          getByTestId('buttonInside'),
+        );
+        expect(contentScrollContainer).not.toBeNull();
+        expect(getScrollContainer(getByText(TITLE))).toBe(
+          contentScrollContainer,
+        );
+      } finally {
+        restoreMatchMedia();
+      }
+    });
+
+    it('should preserve accessibility when stickyHeader is set', async () => {
+      const { getByTestId, getByText, getByRole } = renderTestCase({
+        stickyHeader: true,
+        description: <span>{DESCRIPTION}</span>,
+      });
+
+      await userEvent.click(getByTestId('buttonBefore'));
+
+      const dialog = getByRole('dialog', { name: TITLE });
+      expect(dialog).toHaveAccessibleDescription(DESCRIPTION);
+      expect(getByText(TITLE)).toHaveFocus();
+    });
+
+    it('should close when hitting escape when stickyHeader is set', async () => {
+      const { getByTestId, queryByRole, closeHandler } = renderTestCase({
+        stickyHeader: true,
+      });
+
+      await userEvent.click(getByTestId('buttonBefore'));
+      await userEvent.keyboard('{Escape}');
+
+      if (queryByRole('dialog') !== null) {
+        await waitForElementToBeRemoved(() => queryByRole('dialog'), {
+          timeout: EXIT_TIMEOUT,
+        });
+      }
+      expect(closeHandler).toHaveBeenCalledWith(false);
+      expect(queryByRole('dialog')).not.toBeInTheDocument();
     });
 
     it('should not focus content when closed', async () => {
