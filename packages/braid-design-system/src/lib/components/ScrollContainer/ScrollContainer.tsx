@@ -242,15 +242,15 @@ export const ScrollContainer = forwardRef<HTMLElement, ScrollContainerProps>(
         onScroll={supportsScrollTimeline() ? undefined : updateMask}
         position="relative"
         height="full"
-        className={[
-          styles.container,
-          styles.mask,
-          hideScrollbar ? styles.hideScrollbar : scrollbars,
-          styles.fadeSize[fadeSize],
-          styles.direction[direction],
-          styles.heightLimit,
-          direction !== 'vertical' && styles.minWidthOfMaxContent,
-        ]}
+        className={{
+          [styles.root]: true,
+          [styles.mask]: true,
+          [styles.fadeSize[fadeSize]]: true,
+          [styles.direction[direction]]: true,
+          [styles.hideScrollbar]: hideScrollbar,
+          [scrollbars]: !hideScrollbar,
+          [styles.minWidthOfMaxContent]: direction !== 'vertical',
+        }}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >
         {children}

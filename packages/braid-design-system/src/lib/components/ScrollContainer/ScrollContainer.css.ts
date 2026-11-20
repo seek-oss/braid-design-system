@@ -5,12 +5,12 @@ import {
   style,
   styleVariants,
 } from '@vanilla-extract/css';
+import type { StyleRule } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
-export const container = style({
+export const root = style({
   WebkitOverflowScrolling: 'touch',
-  WebkitMaskComposite: 'destination-in', // Fallback for browsers that don't support mask-composite
-  maskComposite: 'intersect',
+  maxHeight: '100%',
 });
 
 // Ensures direct children expand to their content width so trailing padding
@@ -18,10 +18,6 @@ export const container = style({
 export const minWidthOfMaxContent = style({});
 globalStyle(`${minWidthOfMaxContent} > *`, {
   minWidth: 'max-content',
-});
-
-export const heightLimit = style({
-  maxHeight: '100%',
 });
 
 export const hideScrollbar = style({
@@ -33,22 +29,21 @@ export const hideScrollbar = style({
   },
 });
 
-const scrollOverlaySize = createVar();
-
+const maskSize = createVar();
 export const fadeSize = styleVariants({
   small: {
     vars: {
-      [scrollOverlaySize]: '40px',
+      [maskSize]: '40px',
     },
   },
   medium: {
     vars: {
-      [scrollOverlaySize]: '60px',
+      [maskSize]: '60px',
     },
   },
   large: {
     vars: {
-      [scrollOverlaySize]: '80px',
+      [maskSize]: '80px',
     },
   },
 });
@@ -89,171 +84,161 @@ const bottom = property({
   initialValue: '0px',
 });
 
-const grow = (edge: typeof left) =>
-  keyframes({
-    from: { vars: { [edge]: '0px' } },
-    to: { vars: { [edge]: scrollOverlaySize } },
-  });
+const growLeft = keyframes({ to: { vars: { [left]: maskSize } } });
+const growTop = keyframes({ to: { vars: { [top]: maskSize } } });
+const shrinkRight = keyframes({ from: { vars: { [right]: maskSize } } });
+const shrinkBottom = keyframes({ from: { vars: { [bottom]: maskSize } } });
 
-const shrink = (edge: typeof left) =>
-  keyframes({
-    from: { vars: { [edge]: scrollOverlaySize } },
-    to: { vars: { [edge]: '0px' } },
-  });
+const fadeStartRange = `0px ${maskSize}`;
+const fadeEndRange = `${calc.subtract('100%', maskSize)} 100%`;
 
-const growLeft = grow(left);
-const shrinkRight = shrink(right);
-const growTop = grow(top);
-const shrinkBottom = shrink(bottom);
+const animationName = createVar();
+const animationTimeline = createVar();
+const animationRange = createVar();
 
-const fadeStartRange = `0px ${scrollOverlaySize}`;
-const fadeEndRange = `${calc.subtract('100%', scrollOverlaySize)} 100%`;
+const scrollTimelineQuery = '(animation-timeline: scroll())';
 
-const scrollTimelineSupported = '(animation-timeline: scroll())';
-
-const scrollTimeline = ({
-  name,
-  timeline,
-  range,
-}: {
-  name: string;
-  timeline: string;
-  range: string;
-}) => ({
-  animationName: name,
-  animationTimeline: timeline,
-  animationRange: range,
-  // Scroll timelines ignore duration. Firefox requires a non-zero time.
-  animationDuration: '1ms',
-  animationTimingFunction: 'linear',
-  animationFillMode: 'both',
-});
-const horizontalTimeline = scrollTimeline({
-  name: `${growLeft}, ${shrinkRight}`,
-  timeline: 'scroll(self x), scroll(self x)',
-  range: `${fadeStartRange}, ${fadeEndRange}`,
-});
-
-const verticalTimeline = scrollTimeline({
-  name: `${growTop}, ${shrinkBottom}`,
-  timeline: 'scroll(self y), scroll(self y)',
-  range: `${fadeStartRange}, ${fadeEndRange}`,
-});
-
-const bothTimeline = scrollTimeline({
-  name: `${growLeft}, ${shrinkRight}, ${growTop}, ${shrinkBottom}`,
-  timeline: 'scroll(self x), scroll(self x), scroll(self y), scroll(self y)',
-  range: `${fadeStartRange}, ${fadeEndRange}, ${fadeStartRange}, ${fadeEndRange}`,
-});
-
-// While the sentinel is visible, drop the leading-edge animation so that
-// edge stays at its 0px base value. The trailing animation keeps running.
-const horizontalGate = scrollTimeline({
-  name: shrinkRight,
-  timeline: 'scroll(self x)',
-  range: fadeEndRange,
-});
-
-const verticalGate = scrollTimeline({
-  name: shrinkBottom,
-  timeline: 'scroll(self y)',
-  range: fadeEndRange,
-});
-
-const bothGate = scrollTimeline({
-  name: `${shrinkRight}, ${shrinkBottom}`,
-  timeline: 'scroll(self x), scroll(self y)',
-  range: `${fadeEndRange}, ${fadeEndRange}`,
-});
-
-export const direction = styleVariants({
-  horizontal: {
-    overflowX: 'auto',
-    overflowY: 'hidden',
-    // Ensures content doesn't clip when inside nested flex containers with stretched siblings
-    minHeight: 'fit-content',
-    '@supports': {
-      [scrollTimelineSupported]: horizontalTimeline,
-    },
-  },
-  vertical: {
-    overflowX: 'hidden',
-    overflowY: 'auto',
-    // A flex item's default minimum is its content size, which stops this
-    // scroller getting shorter than its content.
-    minHeight: 0,
-    '@supports': {
-      [scrollTimelineSupported]: verticalTimeline,
-    },
-  },
-  all: {
-    overflow: 'auto',
-    '@supports': {
-      [scrollTimelineSupported]: bothTimeline,
-    },
-  },
-});
-
-export const gateStart = style({
+const supportsScrollTimeline = (
+  styleRule: NonNullable<StyleRule['@supports']>[string],
+) => ({
   '@supports': {
-    [scrollTimelineSupported]: {
-      selectors: {
-        [`&.${direction.horizontal}`]: horizontalGate,
-        [`&.${direction.vertical}`]: verticalGate,
-        [`&.${direction.all}`]: bothGate,
+    [scrollTimelineQuery]: styleRule,
+  },
+});
+
+const smoothMask = style([
+  supportsScrollTimeline({
+    animationName: animationName,
+    animationTimeline: animationTimeline,
+    animationRange: animationRange,
+    animationDuration: '1ms', // Scroll timelines ignore duration. Firefox requires a non-zero time.
+    animationTimingFunction: 'linear',
+    animationFillMode: 'both',
+  }),
+  {
+    '@supports': {
+      [`not ${scrollTimelineQuery}`]: {
+        transitionProperty: [left, right, top, bottom].join(', '),
+        transitionDuration: '100ms',
+        transitionTimingFunction: 'ease-out',
       },
     },
   },
+]);
+
+export const gateStart = style({});
+
+export const direction = styleVariants({
+  horizontal: [
+    {
+      overflowX: 'auto',
+      overflowY: 'hidden',
+      // Ensures content doesn't clip when inside nested flex containers with stretched siblings
+      minHeight: 'fit-content',
+    },
+    supportsScrollTimeline({
+      vars: {
+        [animationName]: `${growLeft}, ${shrinkRight}`,
+        [animationTimeline]: 'scroll(self x)',
+        [animationRange]: `${fadeStartRange}, ${fadeEndRange}`,
+      },
+      selectors: {
+        [`${gateStart}&`]: {
+          vars: {
+            [animationName]: shrinkRight,
+            [animationRange]: fadeEndRange,
+          },
+        },
+      },
+    }),
+  ],
+  vertical: [
+    {
+      overflowX: 'hidden',
+      overflowY: 'auto',
+      // A flex item's default minimum is its content size, which stops this
+      // scroller getting shorter than its content.
+      minHeight: 0,
+    },
+    supportsScrollTimeline({
+      vars: {
+        [animationName]: `${growTop}, ${shrinkBottom}`,
+        [animationTimeline]: 'scroll(self y)',
+        [animationRange]: `${fadeStartRange}, ${fadeEndRange}`,
+      },
+      selectors: {
+        [`${gateStart}&`]: {
+          vars: {
+            [animationName]: shrinkBottom,
+            [animationRange]: fadeEndRange,
+          },
+        },
+      },
+    }),
+  ],
+  all: [
+    {
+      overflow: 'auto',
+    },
+    supportsScrollTimeline({
+      vars: {
+        [animationName]: `${growLeft}, ${shrinkRight}, ${growTop}, ${shrinkBottom}`,
+        [animationTimeline]:
+          'scroll(self x), scroll(self x), scroll(self y), scroll(self y)',
+        [animationRange]: `${fadeStartRange}, ${fadeEndRange}`,
+      },
+      selectors: {
+        [`${gateStart}&`]: {
+          vars: {
+            [animationName]: `${shrinkRight}, ${shrinkBottom}`,
+            [animationTimeline]: 'scroll(self x), scroll(self y)',
+            [animationRange]: fadeEndRange,
+          },
+        },
+      },
+    }),
+  ],
 });
 
-export const mask = style({
-  vars: {
-    [left]: '0px',
-    [right]: '0px',
-    [top]: '0px',
-    [bottom]: '0px',
-  },
-  maskImage: [
-    `linear-gradient(to bottom, transparent 0, black var(${top}))`,
-    `linear-gradient(to right, transparent 0, black var(${left}))`,
-    `linear-gradient(to left, transparent 0, black var(${right}))`,
-    `linear-gradient(to top, transparent 0, black var(${bottom}))`,
-  ].join(','),
-  '@supports': {
-    // The timeline interpolates the lengths. The class toggle eases between them.
-    [`not ${scrollTimelineSupported}`]: {
-      transitionProperty: [left, right, top, bottom].join(', '),
-      transitionDuration: '100ms',
-      transitionTimingFunction: 'ease-out',
+export const mask = style([
+  smoothMask,
+  {
+    WebkitMaskComposite: 'destination-in', // Fallback for browsers that don't support mask-composite
+    maskComposite: 'intersect',
+    maskImage: [
+      `linear-gradient(to bottom, transparent 0, black var(${top}))`,
+      `linear-gradient(to right, transparent 0, black var(${left}))`,
+      `linear-gradient(to left, transparent 0, black var(${right}))`,
+      `linear-gradient(to top, transparent 0, black var(${bottom}))`,
+    ].join(','),
+    '@media': {
+      print: {
+        maskImage: 'none',
+      },
     },
   },
-  '@media': {
-    print: {
-      maskImage: 'none',
-    },
-  },
-});
+]);
 
 export const maskLeft = style({
   vars: {
-    [left]: scrollOverlaySize,
+    [left]: maskSize,
   },
 });
 
 export const maskRight = style({
   vars: {
-    [right]: scrollOverlaySize,
+    [right]: maskSize,
   },
 });
 
 export const maskTop = style({
   vars: {
-    [top]: scrollOverlaySize,
+    [top]: maskSize,
   },
 });
 
 export const maskBottom = style({
   vars: {
-    [bottom]: scrollOverlaySize,
+    [bottom]: maskSize,
   },
 });
