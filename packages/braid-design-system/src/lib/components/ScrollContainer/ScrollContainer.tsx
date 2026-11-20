@@ -249,7 +249,7 @@ export const ScrollContainer = forwardRef<HTMLElement, ScrollContainerProps>(
           [styles.direction[direction]]: true,
           [styles.hideScrollbar]: hideScrollbar,
           [scrollbars]: !hideScrollbar,
-          [styles.minWidthOfMaxContent]: direction !== 'vertical',
+          [styles.minWidthOfContent]: direction !== 'vertical',
         }}
         {...buildDataAttributes({ data, validateRestProps: restProps })}
       >

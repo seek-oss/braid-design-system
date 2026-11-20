@@ -15,9 +15,9 @@ export const root = style({
 
 // Ensures direct children expand to their content width so trailing padding
 // and backgrounds don't collapse when scrolling
-export const minWidthOfMaxContent = style({});
-globalStyle(`${minWidthOfMaxContent} > *`, {
-  minWidth: 'max-content',
+export const minWidthOfContent = style({});
+globalStyle(`${minWidthOfContent} > *`, {
+  minWidth: 'fit-content',
 });
 
 export const hideScrollbar = style({
