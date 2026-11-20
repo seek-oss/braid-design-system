@@ -1,11 +1,11 @@
 // Modified version of
 // https://github.com/atlassian/changesets/blob/master/packages/changelog-github/src/index.ts
 // changing the release line formatting
+import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { getCommitInfo } from '@changesets/get-github-info';
-import fs from 'fs-extra';
 import yaml from 'js-yaml';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -61,10 +61,10 @@ const changelogFunctions = {
         }
       }
 
-      await fs.writeJSON(path.join(__dirname, `${changeset.id}-data.json`), {
-        ...data,
-        summary,
-      });
+      await fs.writeFile(
+        path.join(__dirname, `${changeset.id}-data.json`),
+        `${JSON.stringify({ ...data, summary }, null, 2)}\n`,
+      );
     }
 
     if (changeset.commit) {

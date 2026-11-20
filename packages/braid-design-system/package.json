@@ -181,7 +181,6 @@
     "babel-plugin-transform-remove-imports": "^1.7.0",
     "change-case": "^4.1.2",
     "fast-glob": "^3.3.2",
-    "fs-extra": "^10.1.0",
     "html-validate": "^10.13.1",
     "picocolors": "^1.1.1",
     "playroom": "1.4.0",
