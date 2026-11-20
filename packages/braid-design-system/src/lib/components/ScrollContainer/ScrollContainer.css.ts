@@ -4,8 +4,8 @@ import {
   keyframes,
   style,
   styleVariants,
+  type StyleRule,
 } from '@vanilla-extract/css';
-import type { StyleRule } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
 export const root = style({
@@ -108,9 +108,9 @@ const supportsScrollTimeline = (
 
 const smoothMask = style([
   supportsScrollTimeline({
-    animationName: animationName,
-    animationTimeline: animationTimeline,
-    animationRange: animationRange,
+    animationName,
+    animationTimeline,
+    animationRange,
     animationDuration: '1ms', // Scroll timelines ignore duration. Firefox requires a non-zero time.
     animationTimingFunction: 'linear',
     animationFillMode: 'both',
