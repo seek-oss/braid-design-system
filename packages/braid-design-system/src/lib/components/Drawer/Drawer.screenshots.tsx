@@ -149,6 +149,46 @@ export const FooterLayout: Story = {
   },
 };
 
+export const StickyHeaderOverflowLayout: Story = {
+  name: 'Test: Sticky header layout with overflow',
+  args: {
+    title: 'Sticky header test',
+    width: 'medium',
+    stickyHeader: true,
+    description: <Placeholder height="auto" width="100%" label="Description" />,
+    children: (
+      <Box>
+        <Placeholder height={1000} width="100%" label="Overflowing" />
+      </Box>
+    ),
+  },
+  decorators: (Story) => (
+    <Box style={{ height: 500 }}>
+      <Story />
+    </Box>
+  ),
+};
+
+export const StickyHeaderWithFooterOverflowLayout: Story = {
+  name: 'Test: Sticky header layout with footer and overflow',
+  args: {
+    title: 'Sticky header test',
+    width: 'medium',
+    stickyHeader: true,
+    footer: <Placeholder height={50} width="100%" label="Footer" />,
+    children: (
+      <Box>
+        <Placeholder height={1000} width="100%" label="Overflowing" />
+      </Box>
+    ),
+  },
+  decorators: (Story) => (
+    <Box style={{ height: 500 }}>
+      <Story />
+    </Box>
+  ),
+};
+
 export const LeftAlignedInCenteredStack: Story = {
   name: 'Test: Should be left aligned in a centered Stack',
   args: {
@@ -196,6 +236,29 @@ export const SpreadContentWithFooter: Story = {
     onClose: () => {},
     width: 'medium',
     scrollLock: false,
+    footer: <Placeholder height={50} width="100%" label="Footer" />,
+    children: (
+      <Spread space="none" direction="vertical">
+        <Placeholder height={50} width="100%" label="Content top" />
+        <Placeholder height={50} width="100%" label="Content bottom" />
+      </Spread>
+    ),
+  },
+  decorators: (Story) => (
+    <Box style={{ height: 500 }}>
+      <Story />
+    </Box>
+  ),
+};
+
+export const SpreadContentWithStickyHeaderAndFooter: Story = {
+  name: 'Test: Content should be spread between sticky header and footer',
+  args: {
+    title: 'Spread between sticky header and footer',
+    onClose: () => {},
+    width: 'medium',
+    scrollLock: false,
+    stickyHeader: true,
     footer: <Placeholder height={50} width="100%" label="Footer" />,
     children: (
       <Spread space="none" direction="vertical">

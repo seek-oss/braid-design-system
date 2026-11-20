@@ -1,4 +1,5 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+import dedent from 'dedent';
 import {
   type ReactNode,
   type KeyboardEvent,
@@ -28,6 +29,8 @@ import buildDataAttributes, {
 } from '../buildDataAttributes';
 import { normalizeKey } from '../normalizeKey';
 
+import { useShortViewport } from './useShortViewport';
+
 import * as styles from './Modal.css';
 
 type ModalContentCommonProps = {
@@ -45,6 +48,7 @@ type ModalContentCommonProps = {
   modalRef?: Ref<HTMLElement>;
   data?: DataAttributeMap;
   footer?: ReactNode;
+  stickyHeader?: boolean;
 };
 
 export type ModalAccessibleNameProps = {
@@ -140,6 +144,23 @@ const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
   },
 );
 
+type ModalHeaderProps = {
+  applyPageBlockGutters: boolean;
+  children: ReactNode;
+};
+
+const ModalHeader = ({ applyPageBlockGutters, children }: ModalHeaderProps) => (
+  <Box
+    background="surface"
+    width="full"
+    flexShrink={0}
+    paddingTop={modalPadding}
+    paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
+  >
+    {children}
+  </Box>
+);
+
 type ModalFooterProps = {
   applyPageBlockGutters: boolean;
   children: ReactNode;
@@ -163,6 +184,7 @@ const ModalContentScrollLayout = ({
   coverImageEnabled,
   applyPageBlockGutters,
   applyFullHeight,
+  hasHeader,
   hasFooter,
   scrollable,
 }: {
@@ -171,6 +193,7 @@ const ModalContentScrollLayout = ({
   contentStartRef?: Ref<HTMLDivElement>;
   coverImageEnabled?: boolean;
   applyFullHeight?: boolean;
+  hasHeader: boolean;
   hasFooter: boolean;
   scrollable?: boolean;
 }) => {
@@ -185,7 +208,7 @@ const ModalContentScrollLayout = ({
         gap={modalContentGap}
         flexDirection="column"
         height={applyFullHeight ? 'full' : undefined}
-        paddingTop={modalPadding}
+        paddingTop={hasHeader ? modalContentGap : modalPadding}
         paddingBottom={hasFooter ? 'xsmall' : modalPadding}
         paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
       >
@@ -285,6 +308,7 @@ export const ModalContent = ({
   headingLevel,
   data,
   footer,
+  stickyHeader,
   ...restProps
 }: ModalContentInternalProps) => {
   const resolvedId = useFallbackId(id);
@@ -325,28 +349,56 @@ export const ModalContent = ({
    */
   const untitledDrawer = isDrawer && !title;
 
+  if (process.env.NODE_ENV !== 'production') {
+    if (stickyHeader && (coverImage || illustration)) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          The "stickyHeader" prop is not supported with "coverImage" or "illustration" and will be ignored.
+        `,
+      );
+    }
+
+    if (stickyHeader && untitledDrawer) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        dedent`
+          The "stickyHeader" prop requires a "title" on Drawer and will be ignored.
+        `,
+      );
+    }
+  }
+
+  const supportsStickyHeader =
+    Boolean(stickyHeader) && !untitledDrawer && !coverImage && !illustration;
+  const isShortViewport = useShortViewport(supportsStickyHeader);
+  const pinHeader = supportsStickyHeader && !isShortViewport;
+
+  const modalHeader = !untitledDrawer ? (
+    <ModalContentHeader
+      title={title}
+      headingLevel={headingLevel}
+      description={description}
+      descriptionId={descriptionId}
+      illustration={
+        illustration && !coverImageEnabled ? illustration : undefined
+      }
+      ref={headingRef}
+      reserveCloseArea
+    />
+  ) : null;
+
   const modalLayout = (
     <ModalContentScrollLayout
       applyPageBlockGutters={isDrawer}
       applyFullHeight={isDrawer}
       contentStartRef={contentStartRef}
       coverImageEnabled={coverImageEnabled}
+      hasHeader={pinHeader}
       hasFooter={Boolean(footer)}
       scrollable={!coverImageEnabled}
     >
-      {!untitledDrawer ? (
-        <ModalContentHeader
-          title={title}
-          headingLevel={headingLevel}
-          description={description}
-          descriptionId={descriptionId}
-          illustration={
-            illustration && !coverImageEnabled ? illustration : undefined
-          }
-          ref={headingRef}
-          reserveCloseArea
-        />
-      ) : null}
+      {!pinHeader ? modalHeader : null}
 
       {untitledDrawer ? (
         /**
@@ -449,6 +501,11 @@ export const ModalContent = ({
             }}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
+            {pinHeader ? (
+              <ModalHeader applyPageBlockGutters={isDrawer}>
+                {modalHeader}
+              </ModalHeader>
+            ) : null}
             {modalBody}
             {!sideBySideCoverImage && modalFooter}
           </Box>

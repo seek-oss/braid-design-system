@@ -43,6 +43,14 @@ export const snippets: Snippets = [
     ),
   },
   {
+    description: 'With sticky header',
+    code: source(
+      <Dialog title="Dialog Heading" stickyHeader open={true}>
+        <Placeholder width="100%" height={1000} />
+      </Dialog>,
+    ),
+  },
+  {
     description: 'Xsmall',
     code: source(
       <Dialog title="Dialog Heading" width="xsmall" open={true}>

@@ -14,6 +14,7 @@ import {
   Alert,
   Box,
   Actions,
+  Stack,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
@@ -217,6 +218,73 @@ const docs: ComponentDocs = {
                     label="Drawer Content"
                   />
                 </DrawerContent>
+                <Screen />
+              </DrawerPreview>
+            </Box>
+          ),
+        };
+      },
+    },
+    {
+      label: 'Sticky header',
+      description: (
+        <>
+          <Text>
+            You can use the <Strong>stickyHeader</Strong> prop to keep the{' '}
+            <Strong>title</Strong> and <Strong>description</Strong> visible
+            while the content scrolls. This is useful for long content where
+            keeping the context in view helps the user.
+          </Text>
+          <Text>
+            Keep the title and description short, ideally no more than two
+            lines, and place actions in the <Strong>footer</Strong> rather than
+            the header. On short viewports, for example a landscape phone or
+            when zoomed in, the header scrolls with the content so there is
+            enough room to read it.
+          </Text>
+          <Text>
+            A sticky header requires a <Strong>title</Strong>.
+          </Text>
+        </>
+      ),
+      background: false,
+      Example: () => {
+        const { code, value } = source<DrawerElement>(
+          <Drawer
+            title="Example Title"
+            description={<Text tone="secondary">Stays in view on scroll</Text>}
+            stickyHeader
+            width="small"
+            open={true}
+            onClose={() => {}}
+          >
+            <Stack space="large">
+              <Placeholder height={300} width="100%" label="Drawer Content" />
+              <Placeholder height={300} width="100%" label="Drawer Content" />
+            </Stack>
+          </Drawer>,
+        );
+        return {
+          code,
+          value: (
+            <Box borderRadius="xlarge" overflow="hidden">
+              <DrawerPreview>
+                <Box style={{ height: 400 }}>
+                  <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
+                    <Stack space="large">
+                      <Placeholder
+                        height={300}
+                        width="100%"
+                        label="Drawer Content"
+                      />
+                      <Placeholder
+                        height={300}
+                        width="100%"
+                        label="Drawer Content"
+                      />
+                    </Stack>
+                  </DrawerContent>
+                </Box>
                 <Screen />
               </DrawerPreview>
             </Box>

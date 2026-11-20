@@ -28,4 +28,33 @@ describe('Drawer', () => {
     expect(dialog).toHaveAccessibleDescription('Drawer description');
     expect(getAllByRole('heading', { level: 2 })).toHaveLength(1);
   });
+
+  it('should warn and ignore stickyHeader when title is omitted', () => {
+    const consoleWarn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    try {
+      const { getByRole } = render(
+        <BraidTestProvider>
+          {/* @ts-expect-error stickyHeader requires a title */}
+          <Drawer
+            aria-label="Drawer label"
+            stickyHeader
+            open={true}
+            onClose={() => {}}
+          >
+            <h2>Drawer heading</h2>
+          </Drawer>
+        </BraidTestProvider>,
+      );
+
+      expect(getByRole('dialog', { name: 'Drawer label' })).toBeInTheDocument();
+      expect(consoleWarn).toHaveBeenCalledWith(
+        expect.stringContaining(
+          'The "stickyHeader" prop requires a "title" on Drawer',
+        ),
+      );
+    } finally {
+      consoleWarn.mockRestore();
+    }
+  });
 });

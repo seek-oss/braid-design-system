@@ -3059,6 +3059,7 @@ exports[`Dialog 1`] = `
     illustration?: ReactNodeNoStrings
     onClose: (openState: false) => false | void
     open: boolean
+    stickyHeader?: boolean
     title: string
     width?: 
         | "content"
@@ -3134,6 +3135,7 @@ exports[`Drawer 1`] = `
     position?: 
         | "left"
         | "right"
+    stickyHeader?: boolean
     title?: string
     width?: 
         | "large"

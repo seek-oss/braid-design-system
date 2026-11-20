@@ -23,12 +23,14 @@ type DrawerHeaderProps =
   | {
       title: string;
       description?: ModalContentProps['description'];
+      stickyHeader?: ModalContentProps['stickyHeader'];
       'aria-label'?: never;
       'aria-description'?: never;
     }
   | {
       title?: never;
       description?: never;
+      stickyHeader?: never;
       'aria-label': string;
       'aria-description'?: string;
     };
@@ -40,6 +42,7 @@ type DrawerModalOmittedKeys =
   | 'coverImage'
   | 'title'
   | 'description'
+  | 'stickyHeader'
   | 'aria-label'
   | 'aria-description';
 
