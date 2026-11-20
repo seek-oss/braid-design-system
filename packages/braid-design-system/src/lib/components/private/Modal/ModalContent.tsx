@@ -18,11 +18,11 @@ import { ButtonIcon } from '../../ButtonIcon/ButtonIcon';
 import { Heading } from '../../Heading/Heading';
 import { HiddenVisually } from '../../HiddenVisually/HiddenVisually';
 import { pageBlockGutters } from '../../PageBlock/pageBlockGutters';
+import { ScrollContainer } from '../../ScrollContainer/ScrollContainer';
 import { Stack } from '../../Stack/Stack';
 import { IconClear } from '../../icons';
 import { useResponsiveValue } from '../../useResponsiveValue/useResponsiveValue';
 import type { ReactNodeNoStrings } from '../ReactNodeNoStrings';
-import { ScrollContainer } from '../ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../buildDataAttributes';

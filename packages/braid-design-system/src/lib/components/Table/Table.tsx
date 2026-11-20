@@ -1,7 +1,7 @@
 import { forwardRef, type ReactNode } from 'react';
 
 import { Box } from '../Box/Box';
-import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
+import { ScrollContainer } from '../ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
