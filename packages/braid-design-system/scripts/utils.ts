@@ -1,5 +1,8 @@
 /* eslint-disable no-console */
+import { createRequire } from 'module';
 import path from 'path';
+
+const require = createRequire(import.meta.url);
 
 /**
  * Log to console if CI or DEBUG env vars are set
