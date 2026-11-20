@@ -1,7 +1,7 @@
+import fs from 'fs/promises';
 import path from 'path';
 
 import glob from 'fast-glob';
-import fs from 'fs-extra';
 
 const svgComponentPaths = glob.sync('Icon*/*Svg.tsx', {
   cwd: __dirname,

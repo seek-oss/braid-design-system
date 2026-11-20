@@ -27,7 +27,6 @@
   "devDependencies": {
     "cheerio": "1.0.0-rc.11",
     "fast-glob": "^3.3.2",
-    "fs-extra": "^10.1.0",
     "svgo": "^2.8.0"
   },
   "publishConfig": {
