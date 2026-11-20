@@ -323,6 +323,49 @@ export const FooterOverflowLayout: Story = {
   },
 };
 
+export const StickyHeaderLayout: Story = {
+  name: 'Test: Sticky header layout',
+  args: {
+    title: 'Sticky header test',
+    width: 'medium',
+    stickyHeader: true,
+    children: <Placeholder height={100} width="100%" label="Content" />,
+  },
+};
+
+export const StickyHeaderOverflowLayout: Story = {
+  name: 'Test: Sticky header layout with overflow',
+  args: {
+    title: 'Sticky header test',
+    width: 'medium',
+    stickyHeader: true,
+    children: <Placeholder height={1000} width="100%" label="Overflowing" />,
+  },
+};
+
+export const StickyHeaderWithDescriptionAndFooterLayout: Story = {
+  name: 'Test: Sticky header layout with description, footer and overflow',
+  args: {
+    title: 'Sticky header test',
+    width: 'medium',
+    stickyHeader: true,
+    description: <Placeholder height="auto" width="100%" label="Description" />,
+    footer: <Placeholder height={50} width="100%" label="Footer" />,
+    children: <Placeholder height={1000} width="100%" label="Overflowing" />,
+  },
+};
+
+export const StickyHeaderLongTitleLayout: Story = {
+  name: 'Test: Sticky header layout with long title',
+  args: {
+    title:
+      'A long sticky header title that wraps onto multiple lines without overlapping the close button',
+    width: 'xsmall',
+    stickyHeader: true,
+    children: <Placeholder height={1000} width="100%" label="Overflowing" />,
+  },
+};
+
 export const CloseButtonLayout: Story = {
   name: 'Test: Close button layout',
   args: {
