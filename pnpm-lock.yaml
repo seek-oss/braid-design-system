@@ -225,9 +225,6 @@ importers:
       eslint-plugin-storybook:
         specifier: ^10.1.11
         version: 10.6.7(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3)
-      fast-glob:
-        specifier: ^3.3.2
-        version: 3.3.3
       js-yaml:
         specifier: ^4.1.0
         version: 4.3.2
@@ -268,9 +265,6 @@ importers:
       '@vscode/ripgrep':
         specifier: ^1.15.9
         version: 1.18.0
-      fast-glob:
-        specifier: ^3.3.2
-        version: 3.3.3
       webpack:
         specifier: ^5.109.0
         version: 5.112.2(@swc/core@1.16.22)(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.33.0)(postcss@8.5.33)(svgo@4.1.0)
@@ -419,9 +413,6 @@ importers:
       change-case:
         specifier: ^4.1.2
         version: 4.1.2
-      fast-glob:
-        specifier: ^3.3.2
-        version: 3.3.3
       html-validate:
         specifier: ^10.13.1
         version: 10.17.0(@jest/globals@30.5.2(supports-color@8.1.1))(jest-diff@30.5.2)(jest-snapshot@30.5.2(supports-color@8.1.1))(jest@30.5.2(@types/node@24.19.2)(babel-plugin-macros@3.1.0)(supports-color@8.1.1))(vitest@4.1.12(@types/node@24.19.2)(jsdom@26.1.0(supports-color@8.1.1))(vite@8.3.8(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)))
@@ -503,9 +494,6 @@ importers:
       esbuild:
         specifier: ^0.21.5
         version: 0.21.5
-      fast-glob:
-        specifier: ^3.3.2
-        version: 3.3.3
       ink:
         specifier: ^6.0.1
         version: 6.8.0(@types/react@19.3.0)(react@19.3.1)
@@ -558,9 +546,6 @@ importers:
       cheerio:
         specifier: 1.0.0-rc.11
         version: 1.0.0-rc.11
-      fast-glob:
-        specifier: ^3.3.2
-        version: 3.3.3
       svgo:
         specifier: ^2.8.0
         version: 2.8.4

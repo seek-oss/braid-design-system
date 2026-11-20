@@ -1,7 +1,5 @@
 import fs from 'fs/promises';
 
-import glob from 'fast-glob';
-
 // eslint-disable-next-line import-x/no-relative-packages
 import { version } from '../packages/braid-design-system/package.json';
 
@@ -9,13 +7,9 @@ const readJson = async (filePath: string) =>
   JSON.parse(await fs.readFile(filePath, 'utf-8'));
 
 (async () => {
-  const componentUpdateFiles = await glob('.changeset/*-data.json', {
-    absolute: true,
-  });
-
   const updates = [];
 
-  for (const updateFile of componentUpdateFiles) {
+  for await (const updateFile of fs.glob('.changeset/*-data.json')) {
     const update = await readJson(updateFile);
 
     updates.push(update);
