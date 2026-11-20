@@ -1,15 +1,23 @@
 import { exec as _exec } from 'child_process';
+import { glob } from 'fs/promises';
 import path from 'path';
 import { promisify } from 'util';
 
 import { cssFileFilter as isVanillaFile } from '@vanilla-extract/integration';
 import { rgPath } from '@vscode/ripgrep';
 import braidPkg from 'braid-design-system/package.json';
-import glob from 'fast-glob';
 import webpack from 'webpack';
 
 const { SideEffectsFlagPlugin } = webpack.optimize;
 const exec = promisify(_exec);
+
+const collect = async (iterable: AsyncIterable<string>) => {
+  const items: string[] = [];
+  for await (const item of iterable) {
+    items.push(item);
+  }
+  return items;
+};
 
 describe('build', () => {
   const cache = new Map<string, RegExp>();
@@ -33,14 +41,17 @@ describe('build', () => {
   );
 
   test('side-effects from src', async () => {
-    const srcFiles = await glob(
-      [
-        'src/**/*.{js,jsx,ts,tsx}',
-        '!**/*.{d,docs,gallery,playroom,screenshots,snippets,stories,test}.{ts,tsx}',
-      ],
-      {
-        cwd: rootDir,
-      },
+    const srcFiles = (
+      await collect(
+        glob('src/**/*.{js,jsx,ts,tsx}', {
+          cwd: rootDir,
+        }),
+      )
+    ).filter(
+      (file) =>
+        !/\.(d|docs|gallery|playroom|screenshots|snippets|stories|test)\.tsx?$/.test(
+          file,
+        ),
     );
 
     const filesWithSideEffects = srcFiles
@@ -52,9 +63,11 @@ describe('build', () => {
   });
 
   test('side-effects from dist', async () => {
-    const distFiles = await glob(['dist/**/*.{cjs,mjs}'], {
-      cwd: rootDir,
-    });
+    const distFiles = await collect(
+      glob('dist/**/*.{cjs,mjs}', {
+        cwd: rootDir,
+      }),
+    );
 
     const filesWithSideEffects = distFiles
       .sort()

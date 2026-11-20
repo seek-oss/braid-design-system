@@ -4,10 +4,10 @@
  * This catches packages without proper ESM exports that need fully qualified paths.
  */
 import { readFileSync, existsSync } from 'fs';
+import { glob } from 'fs/promises';
 import { createRequire } from 'module';
 import { join, dirname } from 'path';
 
-import fastGlob from 'fast-glob';
 import pc from 'picocolors';
 
 const require = createRequire(import.meta.url);
@@ -73,11 +73,10 @@ function hasExportsField(packageName: string): boolean {
   }
 }
 
-function validateEsmImports(distDir: string): ValidationError[] {
+async function validateEsmImports(distDir: string): Promise<ValidationError[]> {
   const errors: ValidationError[] = [];
-  const mjsFiles = fastGlob.sync('**/*.mjs', { cwd: distDir, absolute: true });
-
-  for (const file of mjsFiles) {
+  for await (const mjsFile of glob('**/*.mjs', { cwd: distDir })) {
+    const file = join(distDir, mjsFile);
     const lines = readFileSync(file, 'utf-8').split('\n');
 
     lines.forEach((line, index) => {
@@ -109,7 +108,7 @@ function validateEsmImports(distDir: string): ValidationError[] {
   return errors;
 }
 
-const errors = validateEsmImports(join(process.cwd(), 'dist'));
+const errors = await validateEsmImports(join(process.cwd(), 'dist'));
 
 if (errors.length === 0) {
   console.log('✅ All ESM imports are properly qualified');

@@ -1,12 +1,13 @@
 import { readFileSync } from 'fs';
+import { glob } from 'fs/promises';
 import { dirname, join, relative } from 'path';
 
 import { includeIgnoreFile } from '@eslint/compat';
 import eslintConfigSeek from 'eslint-config-seek';
 import { configs as storybookConfigs } from 'eslint-plugin-storybook';
-import fastGlob from 'fast-glob';
 import { load as loadYaml } from 'js-yaml';
-const { isDynamicPattern, globSync } = fastGlob;
+
+const isDynamicPattern = (pattern) => /[*?[\]{}()!]/.test(pattern);
 
 /**
  * Ignore linting for all files that are gitignored across all workspaces.
@@ -15,18 +16,22 @@ const rootDir = dirname(import.meta.filename);
 const { packages: workspaces } = loadYaml(
   readFileSync(join(rootDir, 'pnpm-workspace.yaml'), 'utf8'),
 );
-const gitIgnoresFromWorkspaces = workspaces
-  // Resolve workspace directories
-  .reduce((acc, workspace) => {
-    const pathFromRoot = join(rootDir, workspace);
-    const resolvedWorkspaceDirectories = isDynamicPattern(pathFromRoot)
-      ? globSync(pathFromRoot, {
-          onlyDirectories: true,
-        })
-      : [pathFromRoot];
+const workspaceDirectories = [];
+for (const workspace of workspaces) {
+  const pathFromRoot = join(rootDir, workspace);
 
-    return [...acc, ...resolvedWorkspaceDirectories];
-  }, [])
+  if (isDynamicPattern(pathFromRoot)) {
+    for await (const entry of glob(pathFromRoot, { withFileTypes: true })) {
+      if (entry.isDirectory()) {
+        workspaceDirectories.push(join(entry.parentPath, entry.name));
+      }
+    }
+  } else {
+    workspaceDirectories.push(pathFromRoot);
+  }
+}
+
+const gitIgnoresFromWorkspaces = workspaceDirectories
   // Resolve ignore paths from workspace gitignores and make paths root relative
   .map((workspacePath) => {
     try {

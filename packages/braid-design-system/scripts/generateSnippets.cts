@@ -4,7 +4,6 @@ import path from 'path';
 import { type NodePath, type PluginObj, transformFileAsync } from '@babel/core';
 import type * as types from '@babel/types';
 import type { ObjectExpression } from '@babel/types';
-import glob from 'fast-glob';
 import prettier from 'prettier';
 
 import { debugLog, relativeTo } from './utils';
@@ -62,6 +61,14 @@ const stripContainerPropertyPlugin = ({ types: t }: { types: typeof types }): Pl
   },
 });
 
+const glob = async (pattern: string, cwd: string) => {
+  const files: string[] = [];
+  for await (const file of fs.glob(pattern, { cwd })) {
+    files.push(path.join(cwd, file));
+  }
+  return files;
+};
+
 const relativeToProject = (p: string) => path.relative(baseDir, p);
 const transformWithBabel = async (fileName: string) => {
   const result = await transformFileAsync(fileName, {
@@ -111,21 +118,9 @@ const generateSnippetsForPaths = async (snippetPaths: string[]) => {
 };
 
 (async () => {
-  const componentSnippetPaths = await glob('**/*.snippets.tsx', {
-    cwd: componentsDir,
-    absolute: true,
-    onlyFiles: true,
-  });
-  const templatesSnippetPaths = await glob('**/*.snippets.tsx', {
-    cwd: templatesDir,
-    absolute: true,
-    onlyFiles: true,
-  });
-  const patternsSnippetPaths = await glob('**/*.snippets.tsx', {
-    cwd: patternsDir,
-    absolute: true,
-    onlyFiles: true,
-  });
+  const componentSnippetPaths = await glob('**/*.snippets.tsx', componentsDir);
+  const templatesSnippetPaths = await glob('**/*.snippets.tsx', templatesDir);
+  const patternsSnippetPaths = await glob('**/*.snippets.tsx', patternsDir);
 
   await fs.rm(snippetsDir, { recursive: true, force: true });
   await fs.mkdir(snippetsDir, { recursive: true });

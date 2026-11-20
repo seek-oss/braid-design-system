@@ -2,7 +2,6 @@ import fs from 'fs/promises';
 import path from 'path';
 
 import { load } from 'cheerio';
-import glob from 'fast-glob';
 // @ts-expect-error svgo@3 has types
 import { optimize } from 'svgo';
 
@@ -54,7 +53,10 @@ const optimiseSvg = (rawSvg: string, fileName: string) => {
 };
 
 (async () => {
-  const svgFilePaths = await glob('*.svg', { cwd: svgDir, absolute: true });
+  const svgFilePaths: string[] = [];
+  for await (const file of fs.glob('*.svg', { cwd: svgDir })) {
+    svgFilePaths.push(path.join(svgDir, file));
+  }
 
   await Promise.all(
     svgFilePaths.map(async (svgFilePath) => {
