@@ -1,4 +1,5 @@
 import source from '@braid-design-system/source.macro';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import type { ComponentProps, ReactElement, ReactNode } from 'react';
 import type { ComponentDocs } from 'site/types';
 
@@ -384,6 +385,80 @@ const docs: ComponentDocs = {
                 </DialogContent>
                 <Screen />
               </DialogPreview>
+            </Box>
+          ),
+        };
+      },
+    },
+    {
+      label: 'Sticky header',
+      description: (
+        <>
+          <Text>
+            You can use the <Strong>stickyHeader</Strong> prop to keep the{' '}
+            <Strong>title</Strong> and <Strong>description</Strong> visible
+            while the content scrolls. This is useful for long content where
+            keeping the context in view helps the user.
+          </Text>
+          <Text>
+            Keep the title and description short, ideally no more than two
+            lines, and place actions in the <Strong>footer</Strong> rather than
+            the header. On short viewports, for example a landscape phone or
+            when zoomed in, the header scrolls with the content so there is
+            enough room to read it.
+          </Text>
+          <Notice>
+            <Text>
+              A sticky header is not supported when using a{' '}
+              <Strong>coverImage</Strong> or an <Strong>illustration</Strong>.
+            </Text>
+          </Notice>
+        </>
+      ),
+      background: false,
+      Example: () => {
+        const { code, value } = source<DialogElement>(
+          <Dialog
+            title="Sticky Header Example"
+            description={<Text tone="secondary">Stays in view on scroll</Text>}
+            stickyHeader
+            open={true}
+            onClose={() => {}}
+            footer={
+              <Actions>
+                <Button variant="solid" tone="formAccent">
+                  Save
+                </Button>
+                <Button variant="transparent" tone="formAccent">
+                  Cancel
+                </Button>
+              </Actions>
+            }
+          >
+            <Placeholder height={600} width="100%" label="Dialog Content" />
+          </Dialog>,
+        );
+
+        return {
+          code,
+          value: (
+            <Box borderRadius="xlarge" overflow="hidden">
+              <Box
+                style={assignInlineVars({
+                  [styles.overrideMaxHeightForScreenshot]: '400px',
+                })}
+              >
+                <DialogPreview>
+                  <DialogContent {...dialogPreviewPropsFromSourceValue(value)}>
+                    <Placeholder
+                      height={600}
+                      width="100%"
+                      label="Dialog Content"
+                    />
+                  </DialogContent>
+                  <Screen />
+                </DialogPreview>
+              </Box>
             </Box>
           ),
         };
