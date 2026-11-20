@@ -7,7 +7,7 @@ import type * as types from '@babel/types';
 import type { ObjectExpression } from '@babel/types';
 import prettier from 'prettier';
 
-import { debugLog, relativeTo } from './utils';
+import { debugLog, relativeTo } from './utils.ts';
 
 const baseDir = path.join(import.meta.dirname, '..');
 const componentsDir = path.join(baseDir, 'src/lib/components');

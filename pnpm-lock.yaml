@@ -243,9 +243,6 @@ importers:
       tsdown:
         specifier: ^0.22.3
         version: 0.22.14(oxc-resolver@11.24.2)(tsx@4.23.15)(typescript@5.9.3)
-      tsx:
-        specifier: ^4.19.2
-        version: 4.23.15
       typescript:
         specifier: ~5.9.3
         version: 5.9.3
@@ -443,9 +440,6 @@ importers:
       title-case:
         specifier: ^3.0.3
         version: 3.0.3
-      tsx:
-        specifier: ^4.19.2
-        version: 4.23.15
 
   packages/codemod:
     devDependencies:
@@ -709,9 +703,6 @@ importers:
       sku:
         specifier: 16.7.0
         version: 16.7.0(73d44ad1fe12a904979d8425aa3a613f)
-      tsx:
-        specifier: ^4.19.2
-        version: 4.23.15
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.2.0
@@ -21397,6 +21388,7 @@ snapshots:
       esbuild: 0.28.2
     optionalDependencies:
       fsevents: 2.3.3
+    optional: true
 
   tsyringe@4.10.0:
     dependencies:
