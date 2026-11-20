@@ -129,11 +129,8 @@ const docs: ComponentDocs = {
         <Stack space="large">
           <Text>
             Use <Strong>fadeSize</Strong> to choose how far the fade reaches
-            into the content. <Strong>medium</Strong> is the default.
-          </Text>
-          <Text>
-            <Strong>small</Strong> is 40px, <Strong>medium</Strong> is 60px, and{' '}
-            <Strong>large</Strong> is 80px.
+            into the content. Available sizes are <Strong>small</Strong>,{' '}
+            <Strong>medium</Strong> (default), and <Strong>large</Strong>.
           </Text>
         </Stack>
       ),
@@ -195,8 +192,9 @@ const docs: ComponentDocs = {
       label: 'Hide the scrollbar',
       description: (
         <Text>
-          Set <Strong>hideScrollbar</Strong> to hide the scrollbar. People can
-          still scroll with a trackpad, wheel, touch, or keyboard.
+          Set <Strong>hideScrollbar</Strong> to hide the scrollbar, useful for
+          smaller elements where the scrollbar may be too dominant. Content can
+          still be scrolled with a trackpad, wheel, touch, or keyboard.
         </Text>
       ),
       Example: () =>
