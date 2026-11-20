@@ -5,7 +5,7 @@ import { load } from 'cheerio';
 // @ts-expect-error svgo@3 has types
 import { optimize } from 'svgo';
 
-const packageDir = path.join(__dirname, '..');
+const packageDir = path.join(import.meta.dirname, '..');
 const svgDir = path.join(packageDir, 'svg');
 
 const validColors = ['none', '#000'];
@@ -52,23 +52,21 @@ const optimiseSvg = (rawSvg: string, fileName: string) => {
   return optimisedSvg;
 };
 
-(async () => {
-  const svgFilePaths: string[] = [];
-  for await (const file of fs.glob('*.svg', { cwd: svgDir })) {
-    svgFilePaths.push(path.join(svgDir, file));
-  }
+const svgFilePaths: string[] = [];
+for await (const file of fs.glob('*.svg', { cwd: svgDir })) {
+  svgFilePaths.push(path.join(svgDir, file));
+}
 
-  await Promise.all(
-    svgFilePaths.map(async (svgFilePath) => {
-      const fileName = path.basename(svgFilePath);
-      const rawSvg = await fs.readFile(svgFilePath, 'utf-8');
-      const optimisedSvg = optimiseSvg(rawSvg, fileName);
+await Promise.all(
+  svgFilePaths.map(async (svgFilePath) => {
+    const fileName = path.basename(svgFilePath);
+    const rawSvg = await fs.readFile(svgFilePath, 'utf-8');
+    const optimisedSvg = optimiseSvg(rawSvg, fileName);
 
-      await fs.writeFile(svgFilePath, optimisedSvg, 'utf-8');
-    }),
-  );
+    await fs.writeFile(svgFilePath, optimisedSvg, 'utf-8');
+  }),
+);
 
-  if (failedColorSvgs.length > 0) {
-    throw new Error(`Invalid color: \n  ${failedColorSvgs.join('\n  ')}`);
-  }
-})();
+if (failedColorSvgs.length > 0) {
+  throw new Error(`Invalid color: \n  ${failedColorSvgs.join('\n  ')}`);
+}

@@ -1,21 +1,19 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 // @ts-expect-error svgr@6 has types
-import svgr from '@svgr/core';
+import svgrModule from '@svgr/core';
 import { pascalCase } from 'change-case';
 import dedent from 'dedent';
 
 import { debugLog, relativeTo } from './utils';
 
-const baseDir = path.join(__dirname, '..');
-const iconComponentsDir = path.join(baseDir, 'src/lib/components/icons');
+// `@svgr/core` is CJS, so the default import is the whole `module.exports`
+const svgr = svgrModule.default;
 
-const pathExists = (filePath: string) =>
-  fs.access(filePath).then(
-    () => true,
-    () => false,
-  );
+const baseDir = path.join(import.meta.dirname, '..');
+const iconComponentsDir = path.join(baseDir, 'src/lib/components/icons');
 
 const glob = async (pattern: string, cwd: string) => {
   const files: string[] = [];
@@ -24,6 +22,12 @@ const glob = async (pattern: string, cwd: string) => {
   }
   return files;
 };
+
+const pathExists = (filePath: string) =>
+  fs.access(filePath).then(
+    () => true,
+    () => false,
+  );
 
 const relativeToProject = (p: string) => path.relative(baseDir, p);
 
@@ -57,7 +61,10 @@ const svgrConfig = {
   },
   replaceAttrValues: { '#000': 'currentColor' },
   template: componentTemplate,
-  plugins: [require.resolve('@svgr/plugin-jsx'), require.resolve('@svgr/plugin-prettier')],
+  plugins: [
+    fileURLToPath(import.meta.resolve('@svgr/plugin-jsx')),
+    fileURLToPath(import.meta.resolve('@svgr/plugin-prettier')),
+  ],
   titleProp: true,
 };
 
@@ -108,53 +115,52 @@ const webSvgSources = (svgFilePaths: string[]): IconSvgSource[] => {
   return [...sourcesByStem.values()];
 };
 
-(async () => {
-  const packageDir = path.dirname(require.resolve('@braid-design-system/icons/package.json'));
-  const svgSources = webSvgSources(await glob('svg/*.svg', packageDir));
-  const writtenSvgComponents = new Set<string>();
+const packageDir = path.dirname(fileURLToPath(import.meta.resolve('@braid-design-system/icons/package.json')));
+const svgSources = webSvgSources(await glob('svg/*.svg', packageDir));
+const writtenSvgComponents = new Set<string>();
 
-  const filePromises = svgSources.map(async ({ filePath: svgFilePath, svgName, variantName }) => {
-    const svg = await fs.readFile(svgFilePath, 'utf-8');
-    const isAllCaps = svgName.toUpperCase() === svgName;
-    const iconName = `Icon${isAllCaps ? svgName : pascalCase(svgName)}`;
-    const svgComponentName = `${iconName}${variantName ? pascalCase(variantName) : ''}Svg`;
-    const svgComponent = await svgr(svg, svgrConfig, {
-      componentName: svgComponentName,
-    });
+const filePromises = svgSources.map(async ({ filePath: svgFilePath, svgName, variantName }) => {
+  const svg = await fs.readFile(svgFilePath, 'utf-8');
+  const isAllCaps = svgName.toUpperCase() === svgName;
+  const iconName = `Icon${isAllCaps ? svgName : pascalCase(svgName)}`;
+  const svgComponentName = `${iconName}${variantName ? pascalCase(variantName) : ''}Svg`;
+  const svgComponent = await svgr(svg, svgrConfig, {
+    componentName: svgComponentName,
+  });
 
-    // Create icon directory if it's missing
-    const iconDir = path.join(iconComponentsDir, iconName);
-    await fs.mkdir(iconDir, { recursive: true });
+  // Create icon directory if it's missing
+  const iconDir = path.join(iconComponentsDir, iconName);
+  await fs.mkdir(iconDir, { recursive: true });
 
-    const svgComponentPath = path.join(iconDir, `${svgComponentName}.tsx`);
-    await fs.writeFile(svgComponentPath, svgComponent, {
-      encoding: 'utf-8',
-    });
-    writtenSvgComponents.add(svgComponentPath);
+  const svgComponentPath = path.join(iconDir, `${svgComponentName}.tsx`);
+  await fs.writeFile(svgComponentPath, svgComponent, {
+    encoding: 'utf-8',
+  });
+  writtenSvgComponents.add(svgComponentPath);
 
-    // Bail out early if we're processing an icon variant (e.g. bookmark-active.svg)
-    // All subsequent steps should only happen once per icon component.
-    if (variantName) {
+  // Bail out early if we're processing an icon variant (e.g. bookmark-active.svg)
+  // All subsequent steps should only happen once per icon component.
+  if (variantName) {
+    return;
+  }
+
+  // Converts an absolute path to a relative path from the generated file
+  const relative = (absPath: string) => relativeTo(iconDir, absPath);
+
+  const templateFileIfMissing = async (fileName: string, contents: string) => {
+    const filePath = path.join(iconDir, fileName);
+    if (await pathExists(filePath)) {
+      debugLog('Skip', relativeToProject(filePath));
       return;
     }
+    debugLog('Write', relativeToProject(filePath));
+    await fs.writeFile(filePath, `${contents}\n`, 'utf-8');
+  };
 
-    // Converts an absolute path to a relative path from the generated file
-    const relative = (absPath: string) => relativeTo(iconDir, absPath);
-
-    const templateFileIfMissing = async (fileName: string, contents: string) => {
-      const filePath = path.join(iconDir, fileName);
-      if (await pathExists(filePath)) {
-        debugLog('Skip', relativeToProject(filePath));
-        return;
-      }
-      debugLog('Write', relativeToProject(filePath));
-      await fs.writeFile(filePath, `${contents}\n`, 'utf-8');
-    };
-
-    // Create icon wrapper component, if it doesn't already exist
-    await templateFileIfMissing(
-      `${iconName}.tsx`,
-      dedent /* ts */ `
+  // Create icon wrapper component, if it doesn't already exist
+  await templateFileIfMissing(
+    `${iconName}.tsx`,
+    dedent /* ts */ `
         import type { FC } from 'react';
 
         import { Box } from '${relative(`${baseDir}/src/lib/components/Box/Box`)}';
@@ -172,12 +178,12 @@ const webSvgSources = (svgFilePaths: string[]): IconSvgSource[] => {
           </IconContainer>
         );
       `,
-    );
+  );
 
-    // Create documentation, if it doesn't already exist
-    await templateFileIfMissing(
-      `${iconName}.docs.tsx`,
-      dedent /* ts */ `
+  // Create documentation, if it doesn't already exist
+  await templateFileIfMissing(
+    `${iconName}.docs.tsx`,
+    dedent /* ts */ `
         import source from '@braid-design-system/source.macro';
         import type { ComponentDocs } from 'site/types';
 
@@ -200,41 +206,40 @@ const webSvgSources = (svgFilePaths: string[]): IconSvgSource[] => {
 
         export default docs;
       `,
-    );
-  });
-
-  await Promise.all(filePromises);
-
-  const existingSvgComponentPaths = await glob('*/*Svg.tsx', iconComponentsDir);
-  await Promise.all(
-    existingSvgComponentPaths
-      .filter((existingSvgComponentPath) => !writtenSvgComponents.has(existingSvgComponentPath))
-      .map(async (existingSvgComponentPath) => {
-        await fs.rm(existingSvgComponentPath, { force: true });
-      }),
   );
+});
 
-  // Create icons/index.ts
-  const iconComponentDirs = (await fs.readdir(iconComponentsDir, { withFileTypes: true }))
-    .filter((entry) => entry.isDirectory() && entry.name.startsWith('Icon') && !entry.name.includes('.'))
-    .map((entry) => entry.name)
-    .sort();
-  const iconComponentNames = (
-    await Promise.all(
-      iconComponentDirs.map(async (componentDir) => {
-        const componentName = path.basename(componentDir);
-        const hasComponent = await pathExists(path.join(iconComponentsDir, componentName, `${componentName}.tsx`));
-        return hasComponent ? componentDir : null;
-      }),
-    )
-  ).filter((componentDir): componentDir is string => componentDir !== null);
+await Promise.all(filePromises);
 
-  const iconExports = iconComponentNames
-    .map((componentFile) => path.basename(componentFile, '.tsx'))
-    .map((component) => `export { ${component} } from './${component}/${component}';`)
-    .join('\n')
-    .concat('\n');
-  const iconsIndexPath = path.join(iconComponentsDir, 'index.ts');
-  debugLog('Update', relativeToProject(iconsIndexPath));
-  await fs.writeFile(iconsIndexPath, iconExports, 'utf-8');
-})();
+const existingSvgComponentPaths = await glob('*/*Svg.tsx', iconComponentsDir);
+await Promise.all(
+  existingSvgComponentPaths
+    .filter((existingSvgComponentPath) => !writtenSvgComponents.has(existingSvgComponentPath))
+    .map(async (existingSvgComponentPath) => {
+      await fs.rm(existingSvgComponentPath, { force: true });
+    }),
+);
+
+// Create icons/index.ts
+const iconComponentDirs = (await fs.readdir(iconComponentsDir, { withFileTypes: true }))
+  .filter((entry) => entry.isDirectory() && entry.name.startsWith('Icon') && !entry.name.includes('.'))
+  .map((entry) => entry.name)
+  .sort();
+const iconComponentNames = (
+  await Promise.all(
+    iconComponentDirs.map(async (componentDir) => {
+      const componentName = path.basename(componentDir);
+      const hasComponent = await pathExists(path.join(iconComponentsDir, componentName, `${componentName}.tsx`));
+      return hasComponent ? componentDir : null;
+    }),
+  )
+).filter((componentDir): componentDir is string => componentDir !== null);
+
+const iconExports = iconComponentNames
+  .map((componentFile) => path.basename(componentFile, '.tsx'))
+  .map((component) => `export { ${component} } from './${component}/${component}';`)
+  .join('\n')
+  .concat('\n');
+const iconsIndexPath = path.join(iconComponentsDir, 'index.ts');
+debugLog('Update', relativeToProject(iconsIndexPath));
+await fs.writeFile(iconsIndexPath, iconExports, 'utf-8');
