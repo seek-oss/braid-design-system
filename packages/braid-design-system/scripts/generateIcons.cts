@@ -5,7 +5,6 @@ import path from 'path';
 import svgr from '@svgr/core';
 import { pascalCase } from 'change-case';
 import dedent from 'dedent';
-import glob from 'fast-glob';
 
 import { debugLog, relativeTo } from './utils';
 
@@ -17,6 +16,14 @@ const pathExists = (filePath: string) =>
     () => true,
     () => false,
   );
+
+const glob = async (pattern: string, cwd: string) => {
+  const files: string[] = [];
+  for await (const file of fs.glob(pattern, { cwd })) {
+    files.push(path.join(cwd, file));
+  }
+  return files;
+};
 
 const relativeToProject = (p: string) => path.relative(baseDir, p);
 
@@ -103,7 +110,7 @@ const webSvgSources = (svgFilePaths: string[]): IconSvgSource[] => {
 
 (async () => {
   const packageDir = path.dirname(require.resolve('@braid-design-system/icons/package.json'));
-  const svgSources = webSvgSources(await glob('svg/*.svg', { cwd: packageDir, absolute: true }));
+  const svgSources = webSvgSources(await glob('svg/*.svg', packageDir));
   const writtenSvgComponents = new Set<string>();
 
   const filePromises = svgSources.map(async ({ filePath: svgFilePath, svgName, variantName }) => {
@@ -198,10 +205,7 @@ const webSvgSources = (svgFilePaths: string[]): IconSvgSource[] => {
 
   await Promise.all(filePromises);
 
-  const existingSvgComponentPaths = await glob('*/*Svg.tsx', {
-    cwd: iconComponentsDir,
-    absolute: true,
-  });
+  const existingSvgComponentPaths = await glob('*/*Svg.tsx', iconComponentsDir);
   await Promise.all(
     existingSvgComponentPaths
       .filter((existingSvgComponentPath) => !writtenSvgComponents.has(existingSvgComponentPath))
@@ -211,10 +215,10 @@ const webSvgSources = (svgFilePaths: string[]): IconSvgSource[] => {
   );
 
   // Create icons/index.ts
-  const iconComponentDirs = await glob(['Icon*', '!*.*'], {
-    cwd: iconComponentsDir,
-    onlyFiles: false,
-  });
+  const iconComponentDirs = (await fs.readdir(iconComponentsDir, { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory() && entry.name.startsWith('Icon') && !entry.name.includes('.'))
+    .map((entry) => entry.name)
+    .sort();
   const iconComponentNames = (
     await Promise.all(
       iconComponentDirs.map(async (componentDir) => {
