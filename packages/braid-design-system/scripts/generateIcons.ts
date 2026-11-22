@@ -7,7 +7,7 @@ import svgrModule from '@svgr/core';
 import { pascalCase } from 'change-case';
 import dedent from 'dedent';
 
-import { debugLog, relativeTo } from './utils';
+import { debugLog, relativeTo } from './utils.ts';
 
 // `@svgr/core` is CJS, so the default import is the whole `module.exports`
 const svgr = svgrModule.default;

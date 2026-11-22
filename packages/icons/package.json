@@ -18,11 +18,11 @@
     "svg"
   ],
   "scripts": {
-    "build": "tsx ./scripts/build.ts",
+    "build": "node ./scripts/build.ts",
     "prepublishOnly": "pnpm build",
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "tsc",
-    "lint:svgs": "tsx ./scripts/build.ts && git diff --quiet svg/* ",
+    "lint:svgs": "node ./scripts/build.ts && git diff --quiet svg/* ",
     "format:prettier": "prettier --cache --write ."
   },
   "devDependencies": {
