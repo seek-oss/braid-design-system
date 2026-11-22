@@ -1,10 +1,10 @@
+import fs from 'fs/promises';
 import path from 'path';
 
 import { type NodePath, type PluginObj, transformFileAsync } from '@babel/core';
 import type * as types from '@babel/types';
 import type { ObjectExpression } from '@babel/types';
 import glob from 'fast-glob';
-import fs from 'fs-extra';
 import prettier from 'prettier';
 
 import { debugLog, relativeTo } from './utils';
@@ -127,7 +127,8 @@ const generateSnippetsForPaths = async (snippetPaths: string[]) => {
     onlyFiles: true,
   });
 
-  await fs.emptyDir(snippetsDir);
+  await fs.rm(snippetsDir, { recursive: true, force: true });
+  await fs.mkdir(snippetsDir, { recursive: true });
 
   const { importStatements: templatesImportStatements, exportEntries: templatesExportEntries } =
     await generateSnippetsForPaths(templatesSnippetPaths);

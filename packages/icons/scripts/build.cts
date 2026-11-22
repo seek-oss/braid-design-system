@@ -1,8 +1,8 @@
+import fs from 'fs/promises';
 import path from 'path';
 
 import { load } from 'cheerio';
 import glob from 'fast-glob';
-import fs from 'fs-extra';
 // @ts-expect-error svgo@3 has types
 import { optimize } from 'svgo';
 

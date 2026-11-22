@@ -1,3 +1,4 @@
+import fs from 'fs/promises';
 import path from 'path';
 
 // @ts-expect-error svgr@6 has types
@@ -5,12 +6,17 @@ import svgr from '@svgr/core';
 import { pascalCase } from 'change-case';
 import dedent from 'dedent';
 import glob from 'fast-glob';
-import fs from 'fs-extra';
 
 import { debugLog, relativeTo } from './utils';
 
 const baseDir = path.join(__dirname, '..');
 const iconComponentsDir = path.join(baseDir, 'src/lib/components/icons');
+
+const pathExists = (filePath: string) =>
+  fs.access(filePath).then(
+    () => true,
+    () => false,
+  );
 
 const relativeToProject = (p: string) => path.relative(baseDir, p);
 
@@ -111,7 +117,7 @@ const webSvgSources = (svgFilePaths: string[]): IconSvgSource[] => {
 
     // Create icon directory if it's missing
     const iconDir = path.join(iconComponentsDir, iconName);
-    await fs.mkdirp(iconDir);
+    await fs.mkdir(iconDir, { recursive: true });
 
     const svgComponentPath = path.join(iconDir, `${svgComponentName}.tsx`);
     await fs.writeFile(svgComponentPath, svgComponent, {
@@ -130,7 +136,7 @@ const webSvgSources = (svgFilePaths: string[]): IconSvgSource[] => {
 
     const templateFileIfMissing = async (fileName: string, contents: string) => {
       const filePath = path.join(iconDir, fileName);
-      if (await fs.pathExists(filePath)) {
+      if (await pathExists(filePath)) {
         debugLog('Skip', relativeToProject(filePath));
         return;
       }
@@ -200,7 +206,7 @@ const webSvgSources = (svgFilePaths: string[]): IconSvgSource[] => {
     existingSvgComponentPaths
       .filter((existingSvgComponentPath) => !writtenSvgComponents.has(existingSvgComponentPath))
       .map(async (existingSvgComponentPath) => {
-        await fs.remove(existingSvgComponentPath);
+        await fs.rm(existingSvgComponentPath, { force: true });
       }),
   );
 
@@ -213,7 +219,7 @@ const webSvgSources = (svgFilePaths: string[]): IconSvgSource[] => {
     await Promise.all(
       iconComponentDirs.map(async (componentDir) => {
         const componentName = path.basename(componentDir);
-        const hasComponent = await fs.pathExists(path.join(iconComponentsDir, componentName, `${componentName}.tsx`));
+        const hasComponent = await pathExists(path.join(iconComponentsDir, componentName, `${componentName}.tsx`));
         return hasComponent ? componentDir : null;
       }),
     )
