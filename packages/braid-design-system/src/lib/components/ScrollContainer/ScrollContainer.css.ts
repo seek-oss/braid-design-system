@@ -106,7 +106,8 @@ const supportsScrollTimeline = (
   },
 });
 
-const smoothMask = style([
+// Exported for use in Storybook
+export const maskAnimation = style([
   supportsScrollTimeline({
     animationName,
     animationTimeline,
@@ -201,7 +202,7 @@ export const direction = styleVariants({
 });
 
 export const mask = style([
-  smoothMask,
+  maskAnimation,
   {
     WebkitMaskComposite: 'destination-in', // Fallback for browsers that don't support mask-composite
     maskComposite: 'intersect',

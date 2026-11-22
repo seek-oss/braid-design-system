@@ -1,5 +1,5 @@
 import { palette } from 'braid-src/lib/color/palette';
-import { container } from 'braid-src/lib/components/ScrollContainer/ScrollContainer.css';
+import { maskAnimation } from 'braid-src/lib/components/ScrollContainer/ScrollContainer.css';
 import clsx from 'clsx';
 import type { ReactNode } from 'react';
 
@@ -7,7 +7,7 @@ import type { ReactNode } from 'react';
 // is a scroll-driven animation, so its class is excluded here. Otherwise the
 // pause would remove the fade from the screenshot.
 const styleContent = `
-    .noAnimation *:not(.${container}) {
+    .noAnimation *:not(.${maskAnimation}) {
       animation-delay: -0.0001s !important;
       animation-play-state: paused !important;
       animation-duration: 0s !important;
