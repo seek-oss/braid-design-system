@@ -122,12 +122,12 @@
     "build": "tsdown",
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
-    "generate:icons": "tsx ./scripts/generateIcons.cts",
-    "generate:snippets": "tsx ./scripts/generateSnippets.cts",
+    "generate:icons": "node ./scripts/generateIcons.ts",
+    "generate:snippets": "node ./scripts/generateSnippets.ts",
     "lint:eslint": "eslint --cache .",
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "tsc",
-    "validate:dist": "tsx ./scripts/validateEsmImports.ts && pnpm %skott dist/index.mjs",
+    "validate:dist": "node ./scripts/validateEsmImports.ts && pnpm %skott dist/index.mjs",
     "validate:src": "pnpm %skott src"
   },
   "dependencies": {
@@ -180,8 +180,6 @@
     "babel-plugin-remove-unused-vars": "^2.2.0",
     "babel-plugin-transform-remove-imports": "^1.7.0",
     "change-case": "^4.1.2",
-    "fast-glob": "^3.3.2",
-    "fs-extra": "^10.1.0",
     "html-validate": "^10.13.1",
     "picocolors": "^1.1.1",
     "playroom": "1.4.0",
@@ -191,8 +189,7 @@
     "sanitize-html": "^2.12.1",
     "skott": "^0.32.1",
     "storybook": "^10.2.7",
-    "title-case": "^3.0.3",
-    "tsx": "^4.19.2"
+    "title-case": "^3.0.3"
   },
   "peerDependencies": {
     "react": "^18 || ^19",

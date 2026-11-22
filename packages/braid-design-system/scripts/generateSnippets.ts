@@ -1,15 +1,15 @@
+import fs from 'fs/promises';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 import { type NodePath, type PluginObj, transformFileAsync } from '@babel/core';
 import type * as types from '@babel/types';
 import type { ObjectExpression } from '@babel/types';
-import glob from 'fast-glob';
-import fs from 'fs-extra';
 import prettier from 'prettier';
 
-import { debugLog, relativeTo } from './utils';
+import { debugLog, relativeTo } from './utils.ts';
 
-const baseDir = path.join(__dirname, '..');
+const baseDir = path.join(import.meta.dirname, '..');
 const componentsDir = path.join(baseDir, 'src/lib/components');
 const templatesDir = path.join(baseDir, 'src/lib/playroom/templates');
 const patternsDir = path.join(baseDir, 'src/lib/playroom/patterns');
@@ -62,16 +62,24 @@ const stripContainerPropertyPlugin = ({ types: t }: { types: typeof types }): Pl
   },
 });
 
+const glob = async (pattern: string, cwd: string) => {
+  const files: string[] = [];
+  for await (const file of fs.glob(pattern, { cwd })) {
+    files.push(path.join(cwd, file));
+  }
+  return files;
+};
+
 const relativeToProject = (p: string) => path.relative(baseDir, p);
 const transformWithBabel = async (fileName: string) => {
   const result = await transformFileAsync(fileName, {
     plugins: [
-      [require.resolve('babel-plugin-transform-remove-imports'), { removeAll: true }],
-      [require.resolve('babel-plugin-macros'), { source: { codeOnly: true } }],
-      [require.resolve('@babel/plugin-transform-typescript'), { isTSX: true }],
+      [fileURLToPath(import.meta.resolve('babel-plugin-transform-remove-imports')), { removeAll: true }],
+      [fileURLToPath(import.meta.resolve('babel-plugin-macros')), { source: { codeOnly: true } }],
+      [fileURLToPath(import.meta.resolve('@babel/plugin-transform-typescript')), { isTSX: true }],
       [stripContainerPropertyPlugin],
       [resolveCodeFunctionPlugin],
-      [require.resolve('babel-plugin-remove-unused-vars')], // Clean up any unused vars as result of previous plugins
+      [fileURLToPath(import.meta.resolve('babel-plugin-remove-unused-vars'))], // Clean up any unused vars as result of previous plugins
     ],
     babelrc: false,
     configFile: false,
@@ -110,35 +118,23 @@ const generateSnippetsForPaths = async (snippetPaths: string[]) => {
   };
 };
 
-(async () => {
-  const componentSnippetPaths = await glob('**/*.snippets.tsx', {
-    cwd: componentsDir,
-    absolute: true,
-    onlyFiles: true,
-  });
-  const templatesSnippetPaths = await glob('**/*.snippets.tsx', {
-    cwd: templatesDir,
-    absolute: true,
-    onlyFiles: true,
-  });
-  const patternsSnippetPaths = await glob('**/*.snippets.tsx', {
-    cwd: patternsDir,
-    absolute: true,
-    onlyFiles: true,
-  });
+const componentSnippetPaths = await glob('**/*.snippets.tsx', componentsDir);
+const templatesSnippetPaths = await glob('**/*.snippets.tsx', templatesDir);
+const patternsSnippetPaths = await glob('**/*.snippets.tsx', patternsDir);
 
-  await fs.emptyDir(snippetsDir);
+await fs.rm(snippetsDir, { recursive: true, force: true });
+await fs.mkdir(snippetsDir, { recursive: true });
 
-  const { importStatements: templatesImportStatements, exportEntries: templatesExportEntries } =
-    await generateSnippetsForPaths(templatesSnippetPaths);
-  const { importStatements: patternsImportStatements, exportEntries: patternsExportEntries } =
-    await generateSnippetsForPaths(patternsSnippetPaths);
-  const { importStatements: componentImportStatements, exportEntries: componentExportEntries } =
-    await generateSnippetsForPaths(componentSnippetPaths);
+const { importStatements: templatesImportStatements, exportEntries: templatesExportEntries } =
+  await generateSnippetsForPaths(templatesSnippetPaths);
+const { importStatements: patternsImportStatements, exportEntries: patternsExportEntries } =
+  await generateSnippetsForPaths(patternsSnippetPaths);
+const { importStatements: componentImportStatements, exportEntries: componentExportEntries } =
+  await generateSnippetsForPaths(componentSnippetPaths);
 
-  const prettierOptions = (await prettier.resolveConfig(snippetsIndexFile)) ?? {};
-  const snippetsIndexCode = await prettier.format(
-    ` ${[...templatesImportStatements, ...patternsImportStatements, ...componentImportStatements].sort().join('\n')}
+const prettierOptions = (await prettier.resolveConfig(snippetsIndexFile)) ?? {};
+const snippetsIndexCode = await prettier.format(
+  ` ${[...templatesImportStatements, ...patternsImportStatements, ...componentImportStatements].sort().join('\n')}
 
       const groupOrder = ['Layouts', 'Sections', 'Patterns', 'Components'];
       const allSnippets = [];
@@ -164,9 +160,8 @@ const generateSnippetsForPaths = async (snippetPaths: string[]) => {
       
       export default allSnippets;
     `,
-    { ...prettierOptions, parser: 'babel-ts' },
-  );
+  { ...prettierOptions, parser: 'babel-ts' },
+);
 
-  debugLog('Update', relativeToProject(snippetsIndexFile));
-  await fs.writeFile(snippetsIndexFile, snippetsIndexCode, 'utf-8');
-})();
+debugLog('Update', relativeToProject(snippetsIndexFile));
+await fs.writeFile(snippetsIndexFile, snippetsIndexCode, 'utf-8');

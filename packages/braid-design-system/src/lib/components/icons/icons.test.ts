@@ -1,12 +1,10 @@
+import fs from 'fs/promises';
 import path from 'path';
 
-import glob from 'fast-glob';
-import fs from 'fs-extra';
-
-const svgComponentPaths = glob.sync('Icon*/*Svg.tsx', {
-  cwd: __dirname,
-  absolute: true,
-});
+const svgComponentPaths: string[] = [];
+for await (const file of fs.glob('Icon*/*Svg.tsx', { cwd: __dirname })) {
+  svgComponentPaths.push(path.join(__dirname, file));
+}
 
 svgComponentPaths.forEach((svgComponentPath) => {
   const componentName = path.basename(svgComponentPath, '.tsx');

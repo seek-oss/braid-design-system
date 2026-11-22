@@ -9,7 +9,7 @@
     "lint:eslint": "eslint --cache .",
     "lint:prettier": "prettier --cache --list-different .",
     "lint:tsc": "tsc",
-    "lint:changesets": "tsx ./scripts/lintChangesets.ts",
+    "lint:changesets": "node ./scripts/lintChangesets.ts",
     "format:eslint": "eslint --cache --fix .",
     "format:prettier": "prettier --cache --write .",
     "generate:component-docs": "generate-component-docs",
@@ -62,7 +62,6 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-use": "^17.4.0",
     "sku": "16.7.0",
-    "tsx": "^4.19.2",
     "unist-util-visit": "^5.0.0",
     "vite": "^8.0.13",
     "webpack": "^5.109.0"

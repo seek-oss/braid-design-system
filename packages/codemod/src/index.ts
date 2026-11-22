@@ -2,9 +2,10 @@
 
 /* eslint-disable no-console */
 
+import { glob } from 'fs/promises';
+
 import chalk from 'chalk';
 import cliProgress from 'cli-progress';
-import glob from 'fast-glob';
 import workerpool from 'workerpool';
 
 import type { CodemodResult } from './codemod';
@@ -23,9 +24,13 @@ $> yarn braid-upgrade v31 "**/*.{ts,tsx}"
   const version = process.argv[2];
   const pathGlob = process.argv[3];
 
-  const paths = glob.sync(pathGlob, {
-    ignore: ['**/node_modules/**', '*.d.ts'],
-  });
+  const paths: string[] = [];
+  for await (const filePath of glob(pathGlob, {
+    // `exclude` is called with the name of each file or directory
+    exclude: (name) => name === 'node_modules' || name.endsWith('.d.ts'),
+  })) {
+    paths.push(filePath);
+  }
 
   const progress = new cliProgress.SingleBar(
     {
