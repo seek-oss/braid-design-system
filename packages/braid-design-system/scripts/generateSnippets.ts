@@ -2,9 +2,10 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { type NodePath, type PluginObj, transformFileAsync } from '@babel/core';
+import { type NodePath, type PluginObj, transformAsync } from '@babel/core';
 import type * as types from '@babel/types';
 import type { ObjectExpression } from '@babel/types';
+import { transformSourceMacro } from '@braid-design-system/source.macro';
 import prettier from 'prettier';
 
 import { debugLog, relativeTo } from './utils.ts';
@@ -72,10 +73,13 @@ const glob = async (pattern: string, cwd: string) => {
 
 const relativeToProject = (p: string) => path.relative(baseDir, p);
 const transformWithBabel = async (fileName: string) => {
-  const result = await transformFileAsync(fileName, {
+  const source = await fs.readFile(fileName, 'utf-8');
+  const { code: macroResolved } = await transformSourceMacro(source, { filename: fileName, codeOnly: true });
+
+  const result = await transformAsync(macroResolved, {
+    filename: fileName,
     plugins: [
       [fileURLToPath(import.meta.resolve('babel-plugin-transform-remove-imports')), { removeAll: true }],
-      [fileURLToPath(import.meta.resolve('babel-plugin-macros')), { source: { codeOnly: true } }],
       [fileURLToPath(import.meta.resolve('@babel/plugin-transform-typescript')), { isTSX: true }],
       [stripContainerPropertyPlugin],
       [resolveCodeFunctionPlugin],

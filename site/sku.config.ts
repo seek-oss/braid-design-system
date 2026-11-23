@@ -1,5 +1,6 @@
 import path from 'node:path';
 
+import { sourceMacroPlugin } from '@braid-design-system/source.macro';
 import type { SkuConfig } from 'sku';
 import { defaultClientConditions, defaultServerConditions } from 'vite';
 
@@ -28,6 +29,7 @@ const skuConfig: SkuConfig = {
   __UNSAFE_EXPERIMENTAL__cjsInteropDependencies: ['react-use'],
   sourceMapsProd: false,
   bundler: 'vite',
+  vitePlugins: [sourceMacroPlugin()],
   dangerouslySetViteConfig: () => ({
     resolve: {
       alias: {

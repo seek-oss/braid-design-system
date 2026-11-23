@@ -12,6 +12,14 @@
       // `site` is imported by .docs.tsx files which are only consumed by the site workspace
       "ignoreDependencies": ["assert", "site"],
     },
+    "packages/source.macro": {
+      // The `source` macro is intentionally exported as both a named and a default export
+      // to make migration to the new major version easier. The default export will eventually
+      // be removed.
+      "ignoreIssues": { "src/index.ts": ["duplicates"] },
+      // Installed to satisfy the optional `vite` peer dependency
+      "ignoreDependencies": ["vite"],
+    },
     "packages/codemod": {
       "entry": ["src/index.ts", "src/wrapper.ts"],
     },
