@@ -1,12 +1,8 @@
 import { globalStyle, style } from '@vanilla-extract/css';
-import { calc } from '@vanilla-extract/css-utils';
-
-import { px } from '../../utils/px';
 
 import { darkMode } from '../../css/atoms/sprinkles.css';
 import { tone } from '../../css/typography.css';
 import { vars } from '../../themes/vars.css';
-import { avatarSizeInPx } from '../Avatar/Avatar.css';
 
 // Marks the message root so the list can align a tall message to its top.
 export const root = style({});
@@ -31,18 +27,6 @@ export const radius = {
     borderBottomLeftRadius: vars.borderRadius.small,
   }),
 };
-
-export const avatarSize = 'small' as const;
-
-const avatarSizePx = px(avatarSizeInPx[avatarSize]);
-
-export const avatarSlot = style({
-  width: avatarSizePx,
-});
-
-export const avatarOffset = style({
-  paddingLeft: calc.add(avatarSizePx, vars.space.small),
-});
 
 // Marker for user bubbles. Text sets `color` from its tone class and discards
 // `className`, so the override targets that class. On a dark background the

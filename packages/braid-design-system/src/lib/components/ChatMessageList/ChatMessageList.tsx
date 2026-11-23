@@ -10,14 +10,17 @@ import { IconArrow } from '../icons';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 
-import type { ChatMessageProps } from './ChatMessage';
 import {
   type ChatMessageListVariant,
   ChatMessageDayContext,
   ChatMessageListContext,
   validChatMessageListVariants,
 } from './ChatMessageListContext';
-import { getDayKey, parseSentDate } from './chatMessageDay';
+import {
+  type ChatMessageSentDate,
+  getDayKey,
+  parseSentDate,
+} from './chatMessageDay';
 import { usePinChatToEnd } from './pinChatToEnd';
 
 import * as styles from './ChatMessageList.css';
@@ -37,22 +40,14 @@ const isChatMessageGroupElement = (
   child.type.__isChatMessageGroup__ === true;
 
 /**
- * The first dated message in a group sets the day for that group.
+ * The group's sentDate sets the day for that group.
  */
-const firstSentDate = (group: ReactNode) => {
-  if (!isValidElement<{ children?: ReactNode }>(group)) {
+const sentDateForGroup = (group: ReactNode) => {
+  if (!isValidElement<{ sentDate?: ChatMessageSentDate }>(group)) {
     return undefined;
   }
 
-  const dated = flattenChildren(group.props.children).find(
-    (child) =>
-      isValidElement<ChatMessageProps>(child) &&
-      child.props.sentDate !== undefined,
-  );
-
-  return isValidElement<ChatMessageProps>(dated)
-    ? dated.props.sentDate
-    : undefined;
+  return group.props.sentDate;
 };
 
 /**
@@ -63,7 +58,7 @@ const daysStartedByGroup = (groups: ReturnType<typeof flattenChildren>) => {
   let currentDay: string | undefined;
 
   return groups.map((group) => {
-    const sentDate = parseSentDate(firstSentDate(group));
+    const sentDate = parseSentDate(sentDateForGroup(group));
 
     if (!sentDate) {
       return null;

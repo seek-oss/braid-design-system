@@ -11,7 +11,7 @@ const relativeDayFormat = new Intl.RelativeTimeFormat(undefined, {
 const dateFormat = new Intl.DateTimeFormat(undefined, { dateStyle: 'medium' });
 
 /**
- * Parses a `sentDate` the same way `ChatMessage` does, and throws if it is not a valid date.
+ * Parses a `sentDate` the same way `ChatMessageGroup` does, and throws if it is not a valid date.
  * Returns `undefined` when no date is set.
  */
 export const parseSentDate = (

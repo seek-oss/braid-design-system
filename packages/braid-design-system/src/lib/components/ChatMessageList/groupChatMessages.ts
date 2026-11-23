@@ -3,6 +3,7 @@ import assert from 'assert';
 import type { ReactNode } from 'react';
 
 import {
+  type ChatMessageFeedback,
   type ChatMessageSender,
   validChatMessageSenders,
 } from './ChatMessageGroupContext';
@@ -17,17 +18,24 @@ export interface GroupableChatMessage {
   /** Required unless the sender is `system`. */
   name?: string;
   avatar?: ReactNode;
-}
-
-interface DatedChatMessage {
   sentDate?: ChatMessageSentDate;
+  onCopy?: () => void;
+  onFeedback?: (feedback: ChatMessageFeedback) => void;
 }
 
 export interface ChatMessageRun<Message extends GroupableChatMessage> {
   sender: ChatMessageSender;
   name?: string;
   avatar?: ReactNode;
-  messages: Array<Omit<Message, keyof GroupableChatMessage>>;
+  sentDate?: ChatMessageSentDate;
+  onCopy?: () => void;
+  onFeedback?: (feedback: ChatMessageFeedback) => void;
+  messages: Array<
+    Omit<
+      Message,
+      keyof GroupableChatMessage | 'sentDate' | 'onCopy' | 'onFeedback'
+    >
+  >;
 }
 
 const isSender = (sender: unknown): sender is ChatMessageSender =>
@@ -42,10 +50,11 @@ const senderList = validChatMessageSenders
  * Groups messages into runs. A run ends when the sender changes, or when a dated
  * message falls on a different local day from the run's dated messages.
  * Messages without a `sentDate` join the current run.
+ * The run keeps the last `sentDate`, `onCopy` and `onFeedback` that were set.
  */
-export function groupChatMessages<
-  Message extends GroupableChatMessage & DatedChatMessage,
->(messages: readonly Message[]): Array<ChatMessageRun<Message>> {
+export function groupChatMessages<Message extends GroupableChatMessage>(
+  messages: readonly Message[],
+): Array<ChatMessageRun<Message>> {
   assert(
     Array.isArray(messages),
     'Expected an array of messages to be passed to "groupChatMessages".',
@@ -69,9 +78,10 @@ export function groupChatMessages<
       'Each message passed to "groupChatMessages" must have a name, unless its sender is "system".',
     );
 
-    const { sender, name, avatar, ...rest } = message;
-    const sentDate = parseSentDate(message.sentDate);
-    const day = sentDate ? getDayKey(sentDate) : undefined;
+    const { sender, name, avatar, sentDate, onCopy, onFeedback, ...rest } =
+      message;
+    const parsedSentDate = parseSentDate(sentDate);
+    const day = parsedSentDate ? getDayKey(parsedSentDate) : undefined;
     let group = groups[groups.length - 1];
 
     if (
@@ -90,6 +100,18 @@ export function groupChatMessages<
 
     if (avatar !== undefined) {
       group.avatar = avatar;
+    }
+
+    if (sentDate !== undefined) {
+      group.sentDate = sentDate;
+    }
+
+    if (onCopy !== undefined) {
+      group.onCopy = onCopy;
+    }
+
+    if (onFeedback !== undefined) {
+      group.onFeedback = onFeedback;
     }
 
     group.messages.push(rest);

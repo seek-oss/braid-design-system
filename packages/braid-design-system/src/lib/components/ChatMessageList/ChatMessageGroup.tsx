@@ -1,25 +1,31 @@
 import assert from 'assert';
 
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import {
+  cloneElement,
   type ReactElement,
   type ReactNode,
   isValidElement,
   useContext,
+  useState,
 } from 'react';
 
 import flattenChildren from '../../utils/flattenChildren';
-import { Avatar } from '../Avatar/Avatar';
+import { Avatar, type AvatarProps } from '../Avatar/Avatar';
 import { Badge } from '../Badge/Badge';
 import { Box } from '../Box/Box';
+import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { HiddenVisually } from '../HiddenVisually/HiddenVisually';
+import { Inline } from '../Inline/Inline';
 import { Text } from '../Text/Text';
+import { IconCopy, IconThumb } from '../icons';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';
 
-import type { ChatMessageProps } from './ChatMessage';
 import {
+  type ChatMessageFeedback,
   type ChatMessageSender,
   ChatMessageGroupContext,
   validChatMessageSenders,
@@ -28,36 +34,72 @@ import {
   ChatMessageDayContext,
   ChatMessageListContext,
 } from './ChatMessageListContext';
-import { formatDayLabel, getDayKey } from './chatMessageDay';
+import {
+  type ChatMessageSentDate,
+  formatDayLabel,
+  getDayKey,
+  parseSentDate,
+} from './chatMessageDay';
 
 import * as styles from './ChatMessageGroup.css';
+
+export type { ChatMessageFeedback };
 
 export interface ChatMessageGroupProps {
   sender: ChatMessageSender;
   /** Required for every sender except `system`. */
   name?: string;
   avatar?: ReactNode;
+  /** Shown under a `user` or `participant` group. Also sets the day stamp. */
+  sentDate?: ChatMessageSentDate;
+  /** Shows a copy button under an `assistant` group. */
+  onCopy?: () => void;
+  /** Shows feedback buttons under an `assistant` group. */
+  onFeedback?: (feedback: ChatMessageFeedback) => void;
   children: ReactNodeNoStrings;
   data?: DataAttributeMap;
 }
 
-const isChatMessageElement = (
-  child: ReturnType<typeof flattenChildren>[number],
-): child is ReactElement<ChatMessageProps> =>
-  isValidElement<ChatMessageProps>(child) &&
-  // @ts-expect-error __isChatMessage__ Braid custom property
-  child.type.__isChatMessage__ === true;
+const timeFormat = new Intl.DateTimeFormat(undefined, {
+  hour: 'numeric',
+  minute: '2-digit',
+  hour12: true,
+});
+
+const isBraidAvatar = (
+  avatar: ReactNode,
+): avatar is ReactElement<AvatarProps> =>
+  isValidElement<AvatarProps>(avatar) &&
+  // @ts-expect-error __isAvatar__ Braid custom property
+  avatar.type.__isAvatar__ === true;
+
+const avatarForGroup = (avatar: ReactNode) => {
+  if (!isBraidAvatar(avatar)) {
+    return avatar;
+  }
+
+  assert(
+    avatar.props.size === undefined,
+    'ChatMessageGroup sets the Avatar size so it lines up with the surrounding messages. Remove the size prop.',
+  );
+
+  return cloneElement(avatar, { size: styles.avatarSize });
+};
 
 export const ChatMessageGroup = ({
   sender,
   name,
   avatar,
+  sentDate,
+  onCopy,
+  onFeedback,
   children,
   data,
   ...restProps
 }: ChatMessageGroupProps) => {
   const variant = useContext(ChatMessageListContext);
   const dayStarted = useContext(ChatMessageDayContext);
+  const [feedback, setFeedback] = useState<ChatMessageFeedback>();
 
   assert(
     variant,
@@ -76,14 +118,8 @@ export const ChatMessageGroup = ({
     `ChatMessageGroup name of "${name}" is not valid. Only system runs can leave out name.`,
   );
 
-  const messages = flattenChildren(children);
-
-  assert(
-    messages.length > 0 && messages.every(isChatMessageElement),
-    'Only ChatMessage elements can be direct children of a ChatMessageGroup. See the documentation for correct usage: https://seek-oss.github.io/braid-design-system/components/ChatMessageList',
-  );
-
-  const chatMessages = messages.filter(isChatMessageElement);
+  const chatMessages = flattenChildren(children).filter(isValidElement);
+  const date = parseSentDate(sentDate);
 
   assert(
     variant === 'avatar' || avatar === undefined,
@@ -110,6 +146,103 @@ export const ChatMessageGroup = ({
   // space. A tighter gap is only for user and participant bubbles that join.
   const open = sender === 'assistant' || sender === 'system';
   const listGap = open ? 'small' : 'xsmall';
+  const showSent =
+    (sender === 'user' || sender === 'participant') && Boolean(date);
+  const showCopy = sender === 'assistant' && Boolean(onCopy);
+  const showFeedback = sender === 'assistant' && Boolean(onFeedback);
+  const align = sender === 'user' ? 'right' : 'left';
+  const selectFeedback = (value: ChatMessageFeedback) => {
+    setFeedback((current) => (current === value ? undefined : value));
+    onFeedback?.(value);
+  };
+
+  const sentTime =
+    showSent && date ? (
+      <Text size="xsmall" tone="secondary" align={align}>
+        {timeFormat.format(date)}
+      </Text>
+    ) : null;
+  const actions =
+    showCopy || showFeedback ? (
+      <Inline space="small">
+        {showCopy ? (
+          <ButtonIcon
+            icon={<IconCopy />}
+            label="Copy"
+            variant="transparent"
+            size="small"
+            type="button"
+            onClick={onCopy}
+          />
+        ) : null}
+        {showFeedback ? (
+          <ButtonIcon
+            icon={<IconThumb />}
+            label="Good response"
+            variant={feedback === 'positive' ? 'solid' : 'transparent'}
+            bleed
+            size="small"
+            type="button"
+            aria-pressed={feedback === 'positive'}
+            onClick={() => selectFeedback('positive')}
+          />
+        ) : null}
+        {showFeedback ? (
+          <ButtonIcon
+            icon={<IconThumb direction="down" />}
+            label="Bad response"
+            variant={feedback === 'negative' ? 'solid' : 'transparent'}
+            bleed
+            size="small"
+            type="button"
+            aria-pressed={feedback === 'negative'}
+            onClick={() => selectFeedback('negative')}
+          />
+        ) : null}
+      </Inline>
+    ) : null;
+
+  const messages = chatMessages.map((message, index) => (
+    <ChatMessageGroupContext.Provider
+      key={message.key}
+      value={{
+        sender,
+        isFirst: index === 0,
+      }}
+    >
+      {message}
+    </ChatMessageGroupContext.Provider>
+  ));
+
+  // The sent time and actions follow every child, so they still show when the
+  // last child is not a message. In the avatar grid they are later children,
+  // placed in the message column by the grid.
+  const trailing = (
+    <>
+      {sentTime && date ? (
+        <Box
+          component="time"
+          dateTime={date.toISOString()}
+          className={styles.sentRow}
+        >
+          {sentTime}
+        </Box>
+      ) : null}
+      {actions}
+    </>
+  );
+
+  const messageStack = (
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap={open ? 'small' : undefined}
+      className={open ? undefined : styles.tight}
+    >
+      {messages}
+      {trailing}
+    </Box>
+  );
 
   const content = (
     <>
@@ -121,26 +254,25 @@ export const ChatMessageGroup = ({
       {!showName && name !== undefined ? (
         <HiddenVisually>{name}</HiddenVisually>
       ) : null}
-      <Box
-        display="flex"
-        flexDirection="column"
-        gap={open ? 'small' : undefined}
-        className={open ? undefined : styles.tight}
-      >
-        {chatMessages.map((message, index) => (
-          <ChatMessageGroupContext.Provider
-            key={message.key}
-            value={{
-              sender,
-              avatar: resolvedAvatar,
-              isFirst: index === 0,
-              isLast: index === chatMessages.length - 1,
-            }}
-          >
-            {message}
-          </ChatMessageGroupContext.Provider>
-        ))}
-      </Box>
+      {resolvedAvatar ? (
+        <Box
+          className={[
+            styles.avatarGrid,
+            open ? styles.avatarGridRowGap.open : styles.avatarGridRowGap.tight,
+          ]}
+          style={assignInlineVars({
+            [styles.chatMessageCount]: String(Math.max(chatMessages.length, 1)),
+          })}
+        >
+          <Box className={styles.avatarSlot}>
+            {avatarForGroup(resolvedAvatar)}
+          </Box>
+          {messages}
+          {trailing}
+        </Box>
+      ) : (
+        messageStack
+      )}
     </>
   );
 

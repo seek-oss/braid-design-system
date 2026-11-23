@@ -72,7 +72,7 @@ describe('groupChatMessages', () => {
     expect(group.messages[0]).not.toHaveProperty('avatar');
   });
 
-  it('keeps sentDate and handlers on each message', () => {
+  it('lifts sentDate and handlers onto the run', () => {
     const onCopy = () => undefined;
     const onFeedback = () => undefined;
     const [group] = groupChatMessages([
@@ -80,9 +80,12 @@ describe('groupChatMessages', () => {
       { ...assistant('2'), sentDate: 2 },
     ]);
 
+    expect(group.sentDate).toBe(2);
+    expect(group.onCopy).toBe(onCopy);
+    expect(group.onFeedback).toBe(onFeedback);
     expect(group.messages).toEqual([
-      { id: '1', text: '1', sentDate: 1, onCopy, onFeedback },
-      { id: '2', text: '2', sentDate: 2 },
+      { id: '1', text: '1' },
+      { id: '2', text: '2' },
     ]);
   });
 

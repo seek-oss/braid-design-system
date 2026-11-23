@@ -11,7 +11,14 @@ import { size as avatarSizes } from '../Avatar/Avatar.css';
 import { root as hiddenVisually } from '../HiddenVisually/HiddenVisually.css';
 import { direction as scrollDirection } from '../ScrollContainer/ScrollContainer.css';
 import * as styles from './ChatMessage.css';
-import { tight } from './ChatMessageGroup.css';
+import {
+  avatarGrid,
+  avatarGridRowGap,
+  avatarSlot,
+  chatMessageCount,
+  sentRow,
+  tight,
+} from './ChatMessageGroup.css';
 import {
   jumpToLatest,
   jumpToLatestHidden,
@@ -19,6 +26,13 @@ import {
 } from './ChatMessageList.css';
 
 const sentAt = new Date('2026-10-23T09:41:00');
+
+// The message count the group sets on its avatar grid, for example "2".
+const chatMessageCountOf = (grid: Element | null) => {
+  const [, name] = /^var\((--[^,)]+)/.exec(chatMessageCount) ?? [];
+
+  return (grid as HTMLElement).style.getPropertyValue(name);
+};
 
 const classNamesFor = (value: Parameters<typeof atoms>[0]) =>
   atoms(value).split(' ').filter(Boolean);
@@ -419,15 +433,17 @@ describe('ChatMessageList', () => {
 });
 
 describe('ChatMessageGroup', () => {
-  it('shows the name once and the time on the last message', () => {
+  it('shows the name once and the time after the messages', () => {
     render(
       <BraidTestProvider>
         <ChatMessageList label="Conversation">
-          <ChatMessageGroup sender="participant" name="Alex Nguyen">
-            <ChatMessage sentDate={new Date('2026-10-23T09:40:00')}>
-              First
-            </ChatMessage>
-            <ChatMessage sentDate={sentAt}>Second</ChatMessage>
+          <ChatMessageGroup
+            sender="participant"
+            name="Alex Nguyen"
+            sentDate={sentAt}
+          >
+            <ChatMessage>First</ChatMessage>
+            <ChatMessage>Second</ChatMessage>
           </ChatMessageGroup>
         </ChatMessageList>
       </BraidTestProvider>,
@@ -495,7 +511,7 @@ describe('ChatMessageGroup', () => {
     ).toContain('borderRadius-small');
   });
 
-  it('shows the avatar once, beside the last message, with the name hidden visually', () => {
+  it('shows the avatar in its own column, beside the end of the bubbles', () => {
     render(
       <BraidTestProvider>
         <ChatMessageList label="Conversation" variant="avatar">
@@ -503,28 +519,71 @@ describe('ChatMessageGroup', () => {
             sender="participant"
             name="Alex Nguyen"
             avatar={<Avatar name="Alex Nguyen" />}
+            sentDate={sentAt}
           >
             <ChatMessage>First</ChatMessage>
-            <ChatMessage sentDate={sentAt}>Second</ChatMessage>
+            <ChatMessage>Second</ChatMessage>
           </ChatMessageGroup>
         </ChatMessageList>
       </BraidTestProvider>,
     );
 
-    const slots = document.querySelectorAll(
-      `.${CSS.escape(styles.avatarSlot)}`,
+    const slots = document.querySelectorAll(`.${CSS.escape(avatarSlot)}`);
+    const sent = document.querySelector(
+      `time[datetime="${sentAt.toISOString()}"]`,
     );
+    const first = screen.getByText('First').closest(`.${styles.root}`);
+    const second = screen.getByText('Second').closest(`.${styles.root}`);
+    const grid = slots[0].parentElement;
 
     expect(slots).toHaveLength(1);
     expect(slots[0].firstElementChild).toHaveClass(avatarSizes.small);
-    expect(bubbleFor('Second').parentElement).toContainElement(
-      slots[0] as HTMLElement,
+    expect(grid).toHaveClass(
+      avatarGrid,
+      avatarGridRowGap.tight,
+      ...classNamesFor({ alignItems: 'flexEnd' }),
     );
-    expect(bubbleFor('First').parentElement).toHaveClass(styles.avatarOffset);
-    expect(
-      document.querySelector(`time[datetime="${sentAt.toISOString()}"]`),
-    ).toHaveClass(styles.avatarOffset);
+    // The grid holds the count, and the avatar slot spans that many rows.
+    expect(chatMessageCountOf(grid)).toBe('2');
+    expect(slots[0]).not.toHaveAttribute('style');
+    expect(slots[0]).toHaveStyle({ gridColumn: '1' });
+    expect(first).toHaveStyle({ gridColumn: '2' });
+    expect(second).toHaveStyle({ gridColumn: '2' });
+    expect(second).not.toContainElement(slots[0] as HTMLElement);
+    // The time is the next row in the message column, so the avatar lines up
+    // with the last message rather than the time.
+    expect(sent).toHaveClass(sentRow);
+    expect(sent).toHaveStyle({ gridColumn: '2' });
+    expect(second).not.toContainElement(sent as HTMLElement);
+    expect(grid).toContainElement(sent as HTMLElement);
     expect(screen.getByText('Alex Nguyen')).toHaveClass(hiddenVisually);
+  });
+
+  it('uses the small row gap for assistant text in the avatar grid', () => {
+    render(
+      <BraidTestProvider>
+        <ChatMessageList label="Conversation" variant="avatar">
+          <ChatMessageGroup
+            sender="assistant"
+            name="Assistant"
+            avatar={<Avatar name="Assistant" />}
+            onCopy={() => undefined}
+          >
+            <ChatMessage>First</ChatMessage>
+            <ChatMessage>Second</ChatMessage>
+          </ChatMessageGroup>
+        </ChatMessageList>
+      </BraidTestProvider>,
+    );
+
+    const grid = document.querySelector(`.${CSS.escape(avatarGrid)}`);
+
+    expect(grid).toHaveClass(avatarGridRowGap.open);
+    expect(grid).not.toHaveClass(avatarGridRowGap.tight);
+    expect(
+      screen.getByRole('button', { name: 'Copy' }).closest(`.${styles.root}`),
+    ).toBeNull();
+    expect(grid).toContainElement(screen.getByRole('button', { name: 'Copy' }));
   });
 
   it('renders a custom avatar unchanged', () => {
@@ -542,9 +601,7 @@ describe('ChatMessageGroup', () => {
       </BraidTestProvider>,
     );
 
-    expect(screen.getByText('Agent').parentElement).toHaveClass(
-      styles.avatarSlot,
-    );
+    expect(screen.getByText('Agent').parentElement).toHaveClass(avatarSlot);
   });
 
   it('rejects a size on a Braid Avatar', () => {
@@ -580,12 +637,20 @@ describe('ChatMessageGroup', () => {
       </BraidTestProvider>,
     );
 
-    expect(screen.getByText('A')).toBeInTheDocument();
+    const slots = document.querySelectorAll(`.${CSS.escape(avatarSlot)}`);
+
+    expect(slots).toHaveLength(1);
+    expect(slots[0]).toContainElement(screen.getByText('A'));
+    expect(screen.getByText('First').closest(`.${styles.root}`)).toHaveStyle({
+      gridColumn: '2',
+    });
+    expect(screen.getByText('Second').closest(`.${styles.root}`)).toHaveStyle({
+      gridColumn: '2',
+    });
     expect(screen.getByText('Alex Nguyen')).toHaveClass(hiddenVisually);
-    expect(bubbleFor('First').parentElement).toHaveClass(styles.avatarOffset);
-    expect(bubbleFor('Reply').parentElement).not.toHaveClass(
-      styles.avatarOffset,
-    );
+    expect(
+      screen.getByText('Reply').closest(`.${styles.root}`),
+    ).not.toHaveStyle({ gridColumn: '2' });
   });
 
   it('rejects an avatar when the list shows names', () => {
@@ -610,14 +675,13 @@ describe('ChatMessageGroup', () => {
     render(
       <BraidTestProvider>
         <ChatMessageList label="Conversation" variant="avatar">
-          <ChatMessageGroup sender="system">
-            <ChatMessage
-              sentDate={sentAt}
-              onCopy={() => undefined}
-              onFeedback={() => undefined}
-            >
-              Alex Nguyen joined the conversation.
-            </ChatMessage>
+          <ChatMessageGroup
+            sender="system"
+            sentDate={sentAt}
+            onCopy={() => undefined}
+            onFeedback={() => undefined}
+          >
+            <ChatMessage>Alex Nguyen joined the conversation.</ChatMessage>
           </ChatMessageGroup>
         </ChatMessageList>
       </BraidTestProvider>,
@@ -631,9 +695,7 @@ describe('ChatMessageGroup', () => {
       textSizeTrimmed.xsmall,
     );
     expect(message.parentElement).not.toHaveClass(styles.bubble);
-    expect(
-      document.querySelector(`.${CSS.escape(styles.avatarSlot)}`),
-    ).toBeNull();
+    expect(document.querySelector(`.${CSS.escape(avatarSlot)}`)).toBeNull();
     expect(
       screen.getByRole('listitem').querySelector(`.${hiddenVisually}`),
     ).toBeNull();
@@ -706,19 +768,68 @@ describe('ChatMessageGroup', () => {
     ).toThrow(/end-aligned/);
   });
 
-  it('rejects a child that is not a ChatMessage', () => {
+  it('shows the sent time and actions after other group content', () => {
+    render(
+      <BraidTestProvider>
+        <ChatMessageList label="Conversation" variant="avatar">
+          <ChatMessageGroup
+            sender="participant"
+            name="Alex Nguyen"
+            sentDate={sentAt}
+          >
+            <ChatMessage>Hello</ChatMessage>
+            <span>Card</span>
+          </ChatMessageGroup>
+          <ChatMessageGroup
+            sender="assistant"
+            name="Assistant"
+            onCopy={() => undefined}
+            onFeedback={() => undefined}
+          >
+            <ChatMessage>Reply</ChatMessage>
+            <span>Sources</span>
+          </ChatMessageGroup>
+        </ChatMessageList>
+      </BraidTestProvider>,
+    );
+
+    const sent = document.querySelector(
+      `time[datetime="${sentAt.toISOString()}"]`,
+    );
+    const copy = screen.getByRole('button', { name: 'Copy' });
+    const card = screen.getByText('Card');
+    const sources = screen.getByText('Sources');
+    const participantGrid = card.closest(`.${CSS.escape(avatarGrid)}`);
+
+    expect(
+      card.compareDocumentPosition(sent as Node) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    expect(
+      sources.compareDocumentPosition(copy) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+    // The avatar spans the message and the other child, not the time or actions.
+    expect(chatMessageCountOf(participantGrid)).toBe('2');
+    // Any direct child of the grid goes in the message column, not only ChatMessage.
+    expect(card).toHaveStyle({ gridColumn: '2' });
+    expect(sources).toHaveStyle({ gridColumn: '2' });
+    expect(sent).toHaveClass(sentRow);
+    expect(sent).toHaveStyle({ gridColumn: '2' });
+    expect(copy.closest(`.${styles.root}`)).toBeNull();
+  });
+
+  it('rejects a sentDate that is not a valid date', () => {
     expect(() =>
       render(
         <BraidTestProvider>
           <ChatMessageList label="Conversation">
-            <ChatMessageGroup sender="user" name="You">
+            <ChatMessageGroup sender="user" name="You" sentDate="nope">
               <ChatMessage>Hello</ChatMessage>
-              <span>Nope</span>
             </ChatMessageGroup>
           </ChatMessageList>
         </BraidTestProvider>,
       ),
-    ).toThrow(/Only ChatMessage elements/);
+    ).toThrow(/not a valid date/);
   });
 
   it('rejects a group outside a list', () => {
@@ -735,25 +846,19 @@ describe('ChatMessageGroup', () => {
 });
 
 describe('ChatMessage', () => {
-  it('shows copy and feedback on the last assistant message only', () => {
+  it('shows copy and feedback after an assistant group', () => {
     render(
       <BraidTestProvider>
         <ChatMessageList label="Conversation">
-          <ChatMessageGroup sender="assistant" name="Assistant">
-            <ChatMessage
-              sentDate={sentAt}
-              onCopy={() => undefined}
-              onFeedback={() => undefined}
-            >
-              First
-            </ChatMessage>
-            <ChatMessage
-              sentDate={sentAt}
-              onCopy={() => undefined}
-              onFeedback={() => undefined}
-            >
-              Second
-            </ChatMessage>
+          <ChatMessageGroup
+            sender="assistant"
+            name="Assistant"
+            sentDate={sentAt}
+            onCopy={() => undefined}
+            onFeedback={() => undefined}
+          >
+            <ChatMessage>First</ChatMessage>
+            <ChatMessage>Second</ChatMessage>
           </ChatMessageGroup>
         </ChatMessageList>
       </BraidTestProvider>,
@@ -778,14 +883,17 @@ describe('ChatMessage', () => {
     expect(bad).toHaveAttribute('aria-pressed', 'false');
   });
 
-  it('does not show copy or feedback on a user message', () => {
+  it('does not show copy or feedback on a user group', () => {
     render(
       <BraidTestProvider>
         <ChatMessageList label="Conversation">
-          <ChatMessageGroup sender="user" name="You">
-            <ChatMessage onCopy={() => undefined} onFeedback={() => undefined}>
-              Hello
-            </ChatMessage>
+          <ChatMessageGroup
+            sender="user"
+            name="You"
+            onCopy={() => undefined}
+            onFeedback={() => undefined}
+          >
+            <ChatMessage>Hello</ChatMessage>
           </ChatMessageGroup>
         </ChatMessageList>
       </BraidTestProvider>,
@@ -817,14 +925,22 @@ describe('date stamps', () => {
     render(
       <BraidTestProvider>
         <ChatMessageList label="Conversation">
-          <ChatMessageGroup sender="participant" name="Alex Nguyen">
-            <ChatMessage sentDate={monday(9)}>First</ChatMessage>
+          <ChatMessageGroup
+            sender="participant"
+            name="Alex Nguyen"
+            sentDate={monday(9)}
+          >
+            <ChatMessage>First</ChatMessage>
           </ChatMessageGroup>
-          <ChatMessageGroup sender="user" name="You">
-            <ChatMessage sentDate={monday(9, 5)}>Second</ChatMessage>
+          <ChatMessageGroup sender="user" name="You" sentDate={monday(9, 5)}>
+            <ChatMessage>Second</ChatMessage>
           </ChatMessageGroup>
-          <ChatMessageGroup sender="participant" name="Alex Nguyen">
-            <ChatMessage sentDate={tuesday(8)}>Third</ChatMessage>
+          <ChatMessageGroup
+            sender="participant"
+            name="Alex Nguyen"
+            sentDate={tuesday(8)}
+          >
+            <ChatMessage>Third</ChatMessage>
           </ChatMessageGroup>
         </ChatMessageList>
       </BraidTestProvider>,
@@ -847,8 +963,12 @@ describe('date stamps', () => {
     render(
       <BraidTestProvider>
         <ChatMessageList label="Conversation">
-          <ChatMessageGroup sender="participant" name="Alex Nguyen">
-            <ChatMessage sentDate={monday(9)}>First</ChatMessage>
+          <ChatMessageGroup
+            sender="participant"
+            name="Alex Nguyen"
+            sentDate={monday(9)}
+          >
+            <ChatMessage>First</ChatMessage>
           </ChatMessageGroup>
         </ChatMessageList>
       </BraidTestProvider>,
@@ -871,11 +991,15 @@ describe('date stamps', () => {
     render(
       <BraidTestProvider>
         <ChatMessageList label="Conversation">
-          <ChatMessageGroup sender="participant" name="Alex Nguyen">
-            <ChatMessage sentDate={now}>Now</ChatMessage>
+          <ChatMessageGroup
+            sender="participant"
+            name="Alex Nguyen"
+            sentDate={now}
+          >
+            <ChatMessage>Now</ChatMessage>
           </ChatMessageGroup>
-          <ChatMessageGroup sender="user" name="You">
-            <ChatMessage sentDate={yesterday}>Before</ChatMessage>
+          <ChatMessageGroup sender="user" name="You" sentDate={yesterday}>
+            <ChatMessage>Before</ChatMessage>
           </ChatMessageGroup>
         </ChatMessageList>
       </BraidTestProvider>,
@@ -897,8 +1021,12 @@ describe('date stamps', () => {
           Reference
         </Badge>
         <ChatMessageList label="Conversation">
-          <ChatMessageGroup sender="participant" name="Alex Nguyen">
-            <ChatMessage sentDate={monday(9)}>First</ChatMessage>
+          <ChatMessageGroup
+            sender="participant"
+            name="Alex Nguyen"
+            sentDate={monday(9)}
+          >
+            <ChatMessage>First</ChatMessage>
           </ChatMessageGroup>
         </ChatMessageList>
       </BraidTestProvider>,
@@ -916,8 +1044,8 @@ describe('date stamps', () => {
           <ChatMessageGroup sender="participant" name="Alex Nguyen">
             <ChatMessage>Undated</ChatMessage>
           </ChatMessageGroup>
-          <ChatMessageGroup sender="user" name="You">
-            <ChatMessage sentDate={monday(9)}>Dated</ChatMessage>
+          <ChatMessageGroup sender="user" name="You" sentDate={monday(9)}>
+            <ChatMessage>Dated</ChatMessage>
           </ChatMessageGroup>
         </ChatMessageList>
       </BraidTestProvider>,

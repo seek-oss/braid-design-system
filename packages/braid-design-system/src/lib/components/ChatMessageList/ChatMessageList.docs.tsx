@@ -169,21 +169,30 @@ const docs: ComponentDocs = {
   Example: () =>
     source(
       <ChatMessageList label="Conversation">
-        <ChatMessageGroup sender="participant" name="Alex Nguyen">
-          <ChatMessage sentDate={new Date('2026-10-23T09:40:00')}>
-            Can you summarise this role?
-          </ChatMessage>
+        <ChatMessageGroup
+          sender="participant"
+          name="Alex Nguyen"
+          sentDate={new Date('2026-10-23T09:40:00')}
+        >
+          <ChatMessage>Can you summarise this role?</ChatMessage>
         </ChatMessageGroup>
-        <ChatMessageGroup sender="assistant" name="Assistant">
-          <ChatMessage onCopy={() => undefined} onFeedback={() => undefined}>
+        <ChatMessageGroup
+          sender="assistant"
+          name="Assistant"
+          onCopy={() => undefined}
+          onFeedback={() => undefined}
+        >
+          <ChatMessage>
             This is a product designer role, working with the hiring team on
             candidate experience.
           </ChatMessage>
         </ChatMessageGroup>
-        <ChatMessageGroup sender="user" name="You">
-          <ChatMessage sentDate={new Date('2026-10-23T09:42:00')}>
-            Make it shorter.
-          </ChatMessage>
+        <ChatMessageGroup
+          sender="user"
+          name="You"
+          sentDate={new Date('2026-10-23T09:42:00')}
+        >
+          <ChatMessage>Make it shorter.</ChatMessage>
         </ChatMessageGroup>
       </ChatMessageList>,
     ),
@@ -216,11 +225,11 @@ const docs: ComponentDocs = {
       </Text>
       <Text>
         Each <Strong>ChatMessage</Strong> is plain text inside that item. On a{' '}
-        <Strong>user</Strong> or <Strong>participant</Strong> run, the{' '}
+        <Strong>user</Strong> or <Strong>participant</Strong> group, the{' '}
         <Strong>sentDate</Strong> is a <Strong>time</Strong> element with a
         machine-readable <Strong>dateTime</Strong>, and the visible time uses
         the reader&rsquo;s locale. <Strong>assistant</Strong> and{' '}
-        <Strong>system</Strong> messages do not show a sent time.
+        <Strong>system</Strong> groups do not show a sent time.
       </Text>
       <Text>
         Copy is a button labelled Copy. Feedback follows the{' '}
@@ -229,7 +238,7 @@ const docs: ComponentDocs = {
         </TextLink>{' '}
         for toggle buttons. Good response and Bad response use{' '}
         <Strong>aria-pressed</Strong> to show the chosen response. These buttons
-        are only on the last message in a group.
+        are on an assistant group, after its content.
       </Text>
       <Text>
         The date stamp at the start of a day is a <Strong>time</Strong> element
@@ -347,28 +356,30 @@ const docs: ComponentDocs = {
             <Text>
               Wrap a run of messages from the same sender in{' '}
               <Strong>ChatMessageGroup</Strong>. The group shows the name and
-              avatar once, and decides which message is first and which is last.
+              avatar once, and the sent time and actions after the group&rsquo;s
+              content.
             </Text>
             <Text>
               The first message keeps the outer corner. Later messages square
-              that corner too, so the bubbles join. The{' '}
-              <Strong>sentDate</Strong> and actions are shown on the last
-              message.
+              that corner too, so the bubbles join.
             </Text>
             <Text>
               To turn a list of messages into those runs, use{' '}
               <Strong>groupChatMessages</Strong>. Each run has the{' '}
-              <Strong>sender</Strong>, <Strong>name</Strong> and{' '}
-              <Strong>avatar</Strong> for the group, and its{' '}
-              <Strong>messages</Strong>. Each message keeps its own fields, such
-              as <Strong>sentDate</Strong>, <Strong>onCopy</Strong> and{' '}
-              <Strong>onFeedback</Strong>.
+              <Strong>sender</Strong>, <Strong>name</Strong>,{' '}
+              <Strong>avatar</Strong>, <Strong>sentDate</Strong>,{' '}
+              <Strong>onCopy</Strong> and <Strong>onFeedback</Strong> for the
+              group, and its <Strong>messages</Strong>. The helper reads{' '}
+              <Strong>sentDate</Strong>, <Strong>onCopy</Strong> and{' '}
+              <Strong>onFeedback</Strong> from each message, and keeps the last
+              value that was set.
             </Text>
             <Text>
               A run also ends at local midnight. The first run on each day shows
               a date stamp above it, labelled Today, Yesterday or the date. Pass{' '}
-              <Strong>sentDate</Strong> to each message so the list can tell the
-              days apart.
+              <Strong>sentDate</Strong> on the messages you group so the helper
+              can tell the days apart, then pass the run&rsquo;s{' '}
+              <Strong>sentDate</Strong> to the group.
             </Text>
             <Code playroom={false}>
               {`
@@ -386,14 +397,12 @@ const docs: ComponentDocs = {
                       sender={group.sender}
                       name={group.name}
                       avatar={group.avatar}
+                      sentDate={group.sentDate}
+                      onCopy={group.onCopy}
+                      onFeedback={group.onFeedback}
                     >
                       {group.messages.map((message) => (
-                        <ChatMessage
-                          key={message.id}
-                          sentDate={message.sentDate}
-                          onCopy={message.onCopy}
-                          onFeedback={message.onFeedback}
-                        >
+                        <ChatMessage key={message.id}>
                           {message.text}
                         </ChatMessage>
                       ))}
@@ -414,21 +423,23 @@ const docs: ComponentDocs = {
         Example: () =>
           source(
             <ChatMessageList label="Conversation">
-              <ChatMessageGroup sender="participant" name="Alex Nguyen">
-                <ChatMessage sentDate={new Date('2026-10-23T09:40:00')}>
-                  Can you summarise this role?
-                </ChatMessage>
-                <ChatMessage sentDate={new Date('2026-10-23T09:41:00')}>
+              <ChatMessageGroup
+                sender="participant"
+                name="Alex Nguyen"
+                sentDate={new Date('2026-10-23T09:41:00')}
+              >
+                <ChatMessage>Can you summarise this role?</ChatMessage>
+                <ChatMessage>
                   The hiring manager wants a short version.
                 </ChatMessage>
               </ChatMessageGroup>
-              <ChatMessageGroup sender="user" name="You">
-                <ChatMessage sentDate={new Date('2026-10-23T09:42:00')}>
-                  I can do that.
-                </ChatMessage>
-                <ChatMessage sentDate={new Date('2026-10-23T09:43:00')}>
-                  Give me a minute.
-                </ChatMessage>
+              <ChatMessageGroup
+                sender="user"
+                name="You"
+                sentDate={new Date('2026-10-23T09:43:00')}
+              >
+                <ChatMessage>I can do that.</ChatMessage>
+                <ChatMessage>Give me a minute.</ChatMessage>
               </ChatMessageGroup>
             </ChatMessageList>,
           ),
@@ -465,29 +476,34 @@ const docs: ComponentDocs = {
         description: (
           <Stack space="large">
             <Text>
-              Pass <Strong>sentDate</Strong> to each{' '}
-              <Strong>ChatMessage</Strong> as a <Strong>Date</Strong>, date
+              Pass <Strong>sentDate</Strong> to{' '}
+              <Strong>ChatMessageGroup</Strong> as a <Strong>Date</Strong>, date
               string or timestamp. It is formatted as local time, such as 9:42
-              am, in <Strong>xsmall</Strong> secondary text under the last
-              message in the group. Earlier messages keep their{' '}
-              <Strong>sentDate</Strong> value without showing it.
+              am, in <Strong>xsmall</Strong> secondary text under the
+              group&rsquo;s content. The list also uses it for the day stamp.
             </Text>
             <Text>
-              Assistant messages do not show a sent time. An invalid date throws
-              in development.
+              <Strong>assistant</Strong> and <Strong>system</Strong> groups do
+              not show a sent time. An invalid date throws in development.
             </Text>
           </Stack>
         ),
         Example: () =>
           source(
             <ChatMessageList label="Conversation">
-              <ChatMessageGroup sender="user" name="You">
-                <ChatMessage sentDate={new Date('2026-10-23T09:42:00')}>
-                  Make it shorter.
-                </ChatMessage>
+              <ChatMessageGroup
+                sender="user"
+                name="You"
+                sentDate={new Date('2026-10-23T09:42:00')}
+              >
+                <ChatMessage>Make it shorter.</ChatMessage>
               </ChatMessageGroup>
-              <ChatMessageGroup sender="assistant" name="Assistant">
-                <ChatMessage sentDate={new Date('2026-10-23T09:43:00')}>
+              <ChatMessageGroup
+                sender="assistant"
+                name="Assistant"
+                sentDate={new Date('2026-10-23T09:43:00')}
+              >
+                <ChatMessage>
                   This is a product designer role, working with the hiring team.
                 </ChatMessage>
               </ChatMessageGroup>
@@ -616,14 +632,15 @@ const docs: ComponentDocs = {
             <Text>
               Set <Strong>variant</Strong> to <Strong>avatar</Strong> on{' '}
               <Strong>ChatMessageList</Strong>. Every{' '}
-              <Strong>participant</Strong> and <Strong>assistant</Strong> run
-              uses the avatar column, so the bubbles line up. Pass{' '}
-              <Strong>avatar</Strong> to <Strong>ChatMessageGroup</Strong> to
-              identify the sender. It can be an{' '}
-              <TextLink href="/components/Avatar">Avatar</TextLink> or your own
-              component. It is shown once, beside the last message. Earlier
-              messages, the sent time and actions are inset by a{' '}
-              <Strong>small</Strong> avatar plus a <Strong>small</Strong> space.
+              <Strong>participant</Strong> and <Strong>assistant</Strong> run is
+              two columns, so the bubbles line up. The first column is the
+              avatar, aligned to the end of the group&rsquo;s content. The
+              second column is that content. The sent time and actions sit under
+              it, in that column. Pass <Strong>avatar</Strong> to{' '}
+              <Strong>ChatMessageGroup</Strong> to identify the sender. It can
+              be an <TextLink href="/components/Avatar">Avatar</TextLink> or
+              your own component. A message stays as tall as its text, so the
+              avatar does not add space between messages.
             </Text>
             <Text>
               A run with no <Strong>avatar</Strong> shows an{' '}
@@ -636,8 +653,8 @@ const docs: ComponentDocs = {
             <Text>
               A Braid <Strong>Avatar</Strong> must not set <Strong>size</Strong>
               . The group renders it at <Strong>small</Strong>, which is the
-              width of that inset. Any other avatar is rendered as provided, so
-              it needs to fit that width.
+              width of the avatar column. Any other avatar is rendered as
+              provided, so it needs to fit that width.
             </Text>
           </Stack>
         ),
@@ -650,11 +667,10 @@ const docs: ComponentDocs = {
                 avatar={
                   <Avatar name="Alex Nguyen" imageUrl={photoExampleUrl} />
                 }
+                sentDate={new Date('2026-10-23T09:41:00')}
               >
-                <ChatMessage sentDate={new Date('2026-10-23T09:40:00')}>
-                  Can you summarise this role?
-                </ChatMessage>
-                <ChatMessage sentDate={new Date('2026-10-23T09:41:00')}>
+                <ChatMessage>Can you summarise this role?</ChatMessage>
+                <ChatMessage>
                   The hiring manager wants a short version.
                 </ChatMessage>
               </ChatMessageGroup>
@@ -662,11 +678,10 @@ const docs: ComponentDocs = {
                 sender="assistant"
                 name="Assistant"
                 avatar={<Avatar name="Assistant" imageUrl={photoExampleUrl} />}
+                onCopy={() => undefined}
+                onFeedback={() => undefined}
               >
-                <ChatMessage
-                  onCopy={() => undefined}
-                  onFeedback={() => undefined}
-                >
+                <ChatMessage>
                   This is a product designer role, working with the hiring team
                   on candidate experience.
                 </ChatMessage>
@@ -680,20 +695,23 @@ const docs: ComponentDocs = {
         label: 'Copy',
         description: (
           <Text>
-            Pass <Strong>onCopy</Strong> to each <Strong>ChatMessage</Strong> to
-            show a copy button on the last message in an{' '}
-            <Strong>assistant</Strong> group. It sits with the feedback buttons
-            under the message. <Strong>user</Strong>,{' '}
-            <Strong>participant</Strong> and <Strong>system</Strong> messages do
-            not show it. The handler is called with no arguments, so copy the
-            message text from your own state.
+            Pass <Strong>onCopy</Strong> to <Strong>ChatMessageGroup</Strong> to
+            show a copy button after the content in an{' '}
+            <Strong>assistant</Strong> group. It sits with the feedback buttons.
+            <Strong>user</Strong>, <Strong>participant</Strong> and{' '}
+            <Strong>system</Strong> groups do not show it. The handler is called
+            with no arguments, so copy the message text from your own state.
           </Text>
         ),
         Example: () =>
           source(
             <ChatMessageList label="Conversation">
-              <ChatMessageGroup sender="assistant" name="Assistant">
-                <ChatMessage onCopy={() => undefined}>
+              <ChatMessageGroup
+                sender="assistant"
+                name="Assistant"
+                onCopy={() => undefined}
+              >
+                <ChatMessage>
                   This is a product designer role, working with the hiring team
                   on candidate experience.
                 </ChatMessage>
@@ -705,23 +723,25 @@ const docs: ComponentDocs = {
         label: 'Feedback',
         description: (
           <Text>
-            Pass <Strong>onFeedback</Strong> to show the positive and negative
-            buttons together on the last message in an{' '}
-            <Strong>assistant</Strong> group. Choosing a response calls{' '}
-            <Strong>onFeedback</Strong> with <Strong>positive</Strong> or{' '}
-            <Strong>negative</Strong>, and that icon uses the{' '}
-            <Strong>positive</Strong> or <Strong>critical</Strong> tone.
-            Choosing the same response again clears it.
+            Pass <Strong>onFeedback</Strong> to{' '}
+            <Strong>ChatMessageGroup</Strong> to show the positive and negative
+            buttons together after the content in an <Strong>assistant</Strong>{' '}
+            group. Choosing a response calls <Strong>onFeedback</Strong> with{' '}
+            <Strong>positive</Strong> or <Strong>negative</Strong>, and that
+            icon uses the <Strong>positive</Strong> or <Strong>critical</Strong>{' '}
+            tone. Choosing the same response again clears it.
           </Text>
         ),
         Example: () =>
           source(
             <ChatMessageList label="Conversation">
-              <ChatMessageGroup sender="assistant" name="Assistant">
-                <ChatMessage
-                  onCopy={() => undefined}
-                  onFeedback={() => undefined}
-                >
+              <ChatMessageGroup
+                sender="assistant"
+                name="Assistant"
+                onCopy={() => undefined}
+                onFeedback={() => undefined}
+              >
+                <ChatMessage>
                   This is a product designer role, working with the hiring team
                   on candidate experience.
                 </ChatMessage>

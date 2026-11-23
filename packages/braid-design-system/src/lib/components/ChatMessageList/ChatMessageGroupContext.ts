@@ -1,4 +1,4 @@
-import { type ReactNode, createContext } from 'react';
+import { createContext } from 'react';
 
 export const validChatMessageSenders = [
   'user',
@@ -9,11 +9,11 @@ export const validChatMessageSenders = [
 
 export type ChatMessageSender = (typeof validChatMessageSenders)[number];
 
+export type ChatMessageFeedback = 'positive' | 'negative';
+
 export interface ChatMessageGroupContextValue {
   sender: ChatMessageSender;
-  avatar?: ReactNode;
   isFirst: boolean;
-  isLast: boolean;
 }
 
 export const ChatMessageGroupContext =
