@@ -8,6 +8,7 @@ import {
   HiddenVisually,
   IconEdit,
   Notice,
+  ScrollContainer,
   Stack,
   Strong,
   Table,
@@ -24,7 +25,6 @@ import {
 } from '../';
 import { palette } from '../../color/palette';
 import type { StackProps } from '../Stack/Stack';
-import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
 
 import { stripTypeAnyFromCode } from './stripTypeAnyFromCode';

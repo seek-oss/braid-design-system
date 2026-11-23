@@ -1,5 +1,4 @@
-import { Text, Box, Stack, Link } from 'braid-design-system';
-import { ScrollContainer } from 'braid-src/lib/components/private/ScrollContainer/ScrollContainer';
+import { Box, Link, ScrollContainer, Stack, Text } from 'braid-design-system';
 import { useEffect, useState } from 'react';
 
 import {

@@ -8225,6 +8225,39 @@ exports[`Rating 1`] = `
 }
 `;
 
+exports[`ScrollContainer 1`] = `
+{
+  exportType: component,
+  props: {
+    children: ReactNode
+    component?: 
+        | "article"
+        | "aside"
+        | "div"
+        | "main"
+        | "nav"
+        | "ol"
+        | "section"
+        | "span"
+        | "ul"
+    data?: DataAttributeMap
+    direction?: 
+        | "all"
+        | "horizontal"
+        | "vertical"
+    fadeSize?: 
+        | "large"
+        | "medium"
+        | "small"
+    hideScrollbar?: boolean
+    ref?: 
+        | (instance: HTMLElement | null) => void | (() => VoidOrUndefinedOnly)
+        | RefObject<HTMLElement | null>
+    startRef?: RefObject<HTMLElement | null>
+},
+}
+`;
+
 exports[`Secondary 1`] = `
 {
   exportType: component,

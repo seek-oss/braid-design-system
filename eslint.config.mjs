@@ -10,9 +10,13 @@ import { load as loadYaml } from 'js-yaml';
 const isDynamicPattern = (pattern) => /[*?[\]{}()!]/.test(pattern);
 
 /**
- * Ignore linting for all files that are gitignored across all workspaces.
+ * Ignore linting for all files that are gitignored at the repo root and across
+ * workspaces. Flat config does not read `.gitignore` itself, and un-ignoring
+ * `.storybook` below otherwise lets ESLint walk other dot directories such as
+ * `.nx/`.
  */
 const rootDir = dirname(import.meta.filename);
+const rootGitIgnore = includeIgnoreFile(join(rootDir, '.gitignore'));
 const { packages: workspaces } = loadYaml(
   readFileSync(join(rootDir, 'pnpm-workspace.yaml'), 'utf8'),
 );
@@ -52,6 +56,7 @@ const gitIgnoresFromWorkspaces = workspaceDirectories
   .filter(Boolean);
 
 export default [
+  rootGitIgnore,
   {
     ignores: ['**/bin.js', '!**/.storybook'],
   },

@@ -17,9 +17,9 @@ import type { ResponsiveSpace } from '../../css/atoms/atoms';
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
 import { MenuItemDivider } from '../MenuItemDivider/MenuItemDivider';
+import { ScrollContainer } from '../ScrollContainer/ScrollContainer';
 import { Overlay } from '../private/Overlay/Overlay';
 import { Popover, type PopoverProps } from '../private/Popover/Popover';
-import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
 import buildDataAttributes, {
   type DataAttributeMap,
 } from '../private/buildDataAttributes';

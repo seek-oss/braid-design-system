@@ -41,6 +41,7 @@ import { snippets as Pagination } from './snippets/Pagination';
 import { snippets as PasswordField } from './snippets/PasswordField';
 import { snippets as RadioGroup } from './snippets/RadioGroup';
 import { snippets as Rating } from './snippets/Rating';
+import { snippets as ScrollContainer } from './snippets/ScrollContainer';
 import { snippets as Secondary } from './snippets/Secondary';
 import { snippets as ServiceOutageBanner } from './snippets/ServiceOutageBanner';
 import { snippets as SkeletonLoader } from './snippets/SkeletonLoader';
@@ -116,6 +117,7 @@ const snippetsMap = {
   PasswordField,
   RadioGroup,
   Rating,
+  ScrollContainer,
   Secondary,
   Spread,
   Stack,
