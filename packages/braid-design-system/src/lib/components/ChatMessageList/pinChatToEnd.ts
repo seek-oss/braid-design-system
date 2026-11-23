@@ -3,7 +3,6 @@ import { type ReactNode, type RefObject, useRef, useState } from 'react';
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect';
 
 import { root as messageRoot } from './ChatMessage.css';
-import { scrollOverlaySizeName } from '../private/ScrollContainer/ScrollContainer.css';
 
 const messageClass = messageRoot.split(' ').find(Boolean) ?? messageRoot;
 
@@ -110,14 +109,12 @@ const offsetWithin = (element: HTMLElement, ancestor: HTMLElement) => {
 };
 
 /**
- * Distance the top fade covers. The configured size stays on the scroller
- * even while the fade is hidden at the top of the list.
+ * Distance the top fade covers. ScrollContainer reserves it as scroll
+ * padding, which stays in place even while the fade is hidden at the top
+ * of the list.
  */
 const topFadeOffset = (scroller: HTMLElement) => {
-  const value = getComputedStyle(scroller).getPropertyValue(
-    scrollOverlaySizeName,
-  );
-  const size = Number.parseFloat(value);
+  const size = Number.parseFloat(getComputedStyle(scroller).scrollPaddingTop);
 
   return Number.isFinite(size) ? size : 0;
 };

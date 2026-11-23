@@ -6,6 +6,10 @@ import { atoms } from '../../css/atoms/atoms';
 import { Avatar } from '../Avatar/Avatar';
 import { Badge } from '../Badge/Badge';
 
+import { textSizeTrimmed, tone } from '../../css/typography.css';
+import { size as avatarSizes } from '../Avatar/Avatar.css';
+import { root as hiddenVisually } from '../HiddenVisually/HiddenVisually.css';
+import { direction as scrollDirection } from '../ScrollContainer/ScrollContainer.css';
 import * as styles from './ChatMessage.css';
 import { tight } from './ChatMessageGroup.css';
 import {
@@ -13,13 +17,6 @@ import {
   jumpToLatestHidden,
   messages,
 } from './ChatMessageList.css';
-import { textSizeTrimmed, tone } from '../../css/typography.css';
-import { size as avatarSizes } from '../Avatar/Avatar.css';
-import { root as hiddenVisually } from '../HiddenVisually/HiddenVisually.css';
-import {
-  direction as scrollDirection,
-  scrollOverlaySizeName,
-} from '../private/ScrollContainer/ScrollContainer.css';
 
 const sentAt = new Date('2026-10-23T09:41:00');
 
@@ -185,7 +182,7 @@ describe('ChatMessageList', () => {
     const messageTop = 120;
     let messageHeight = 500;
 
-    scroller.style.setProperty(scrollOverlaySizeName, '40px');
+    scroller.style.scrollPaddingTop = '40px';
     Object.defineProperty(scroller, 'scrollHeight', {
       configurable: true,
       get: () => height,
@@ -278,7 +275,7 @@ describe('ChatMessageList', () => {
         top = value;
       },
     });
-    scroller.style.setProperty(scrollOverlaySizeName, '40px');
+    scroller.style.scrollPaddingTop = '40px';
     Object.defineProperty(latest, 'offsetTop', {
       configurable: true,
       get: () => 80,

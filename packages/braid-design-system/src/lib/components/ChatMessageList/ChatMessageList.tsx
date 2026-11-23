@@ -5,9 +5,9 @@ import { type ReactNode, isValidElement, useRef } from 'react';
 import flattenChildren from '../../utils/flattenChildren';
 import { Box } from '../Box/Box';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
+import { ScrollContainer } from '../ScrollContainer/ScrollContainer';
 import { IconArrow } from '../icons';
 import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import { ScrollContainer } from '../private/ScrollContainer/ScrollContainer';
 import type { DataAttributeMap } from '../private/buildDataAttributes';
 
 import type { ChatMessageProps } from './ChatMessage';

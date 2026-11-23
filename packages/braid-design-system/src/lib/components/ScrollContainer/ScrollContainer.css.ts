@@ -136,6 +136,9 @@ export const direction = styleVariants({
       overflowY: 'hidden',
       // Ensures content doesn't clip when inside nested flex containers with stretched siblings
       minHeight: 'fit-content',
+      // Keeps content scrolled into view clear of the fade
+      scrollPaddingLeft: maskSize,
+      scrollPaddingRight: maskSize,
     },
     supportsScrollTimeline({
       vars: {
@@ -160,6 +163,9 @@ export const direction = styleVariants({
       // A flex item's default minimum is its content size, which stops this
       // scroller getting shorter than its content.
       minHeight: 0,
+      // Keeps content scrolled into view clear of the fade
+      scrollPaddingTop: maskSize,
+      scrollPaddingBottom: maskSize,
     },
     supportsScrollTimeline({
       vars: {
@@ -180,6 +186,8 @@ export const direction = styleVariants({
   all: [
     {
       overflow: 'auto',
+      // Keeps content scrolled into view clear of the fade
+      scrollPadding: maskSize,
     },
     supportsScrollTimeline({
       vars: {
