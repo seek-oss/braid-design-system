@@ -2857,12 +2857,6 @@ exports[`ChatMessage 1`] = `
   props: {
     children: ReactNode
     data?: DataAttributeMap
-    onCopy?: () => void
-    onFeedback?: (feedback: Feedback) => void
-    sentDate?: 
-        | Date
-        | number
-        | string
 },
 }
 `;
@@ -2875,11 +2869,17 @@ exports[`ChatMessageGroup 1`] = `
     children: ReactNodeNoStrings
     data?: DataAttributeMap
     name?: string
+    onCopy?: () => void
+    onFeedback?: (feedback: ChatMessageFeedback) => void
     sender: 
         | "assistant"
         | "participant"
         | "system"
         | "user"
+    sentDate?: 
+        | Date
+        | number
+        | string
 },
 }
 `;

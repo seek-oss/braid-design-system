@@ -31,7 +31,7 @@ const measureContent = (log: HTMLElement) => {
   let bottom = -Infinity;
   let count = 0;
 
-  for (const item of log.children) {
+  for (const item of Array.from(log.children)) {
     if (!(item instanceof HTMLElement)) {
       continue;
     }
@@ -73,7 +73,7 @@ export const slackBeyondScroll = (
 const setShift = (log: HTMLElement, y: number) => {
   const transform = y === 0 ? '' : `translate3d(0, ${y}px, 0)`;
 
-  for (const item of log.children) {
+  for (const item of Array.from(log.children)) {
     if (item instanceof HTMLElement) {
       item.style.transform = transform;
     }
@@ -408,7 +408,7 @@ export const usePinChatToEnd = (
 
     const observer = new ResizeObserver(pinToEnd);
 
-    for (const item of log.children) {
+    for (const item of Array.from(log.children)) {
       observer.observe(item);
     }
 
