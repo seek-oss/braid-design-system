@@ -23,12 +23,14 @@ type DrawerHeaderProps =
   | {
       title: string;
       description?: ModalContentProps['description'];
+      header?: ModalContentProps['header'];
       'aria-label'?: never;
       'aria-description'?: never;
     }
   | {
       title?: never;
       description?: never;
+      header?: never;
       'aria-label': string;
       'aria-description'?: string;
     };
@@ -40,17 +42,20 @@ type DrawerModalOmittedKeys =
   | 'coverImage'
   | 'title'
   | 'description'
+  | 'header'
   | 'aria-label'
   | 'aria-description';
 
 const assertAccessibleName = ({
   title,
   description,
+  header,
   'aria-label': ariaLabel,
   'aria-description': ariaDescription,
 }: {
   title?: string;
   description?: ModalContentProps['description'];
+  header?: ModalContentProps['header'];
   'aria-label'?: string;
   'aria-description'?: string;
 }) => {
@@ -85,6 +90,14 @@ const assertAccessibleName = ({
     description === undefined || typeof title === 'string',
     dedent`
       Drawer description can only be used with a title.
+
+      ${docsMessage}
+    `,
+  );
+  assert(
+    header === undefined || typeof title === 'string',
+    dedent`
+      Drawer header can only be used with a title.
 
       ${docsMessage}
     `,

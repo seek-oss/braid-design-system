@@ -14,7 +14,7 @@ const modalStyle = {
 
 export interface DialogProps extends Omit<
   ModalProps,
-  keyof typeof modalStyle | 'width'
+  keyof typeof modalStyle | 'width' | 'header'
 > {
   width?: ModalProps['width'];
 }
@@ -26,7 +26,7 @@ export const Dialog: FC<DialogProps> = ({
 
 interface DialogContentProps extends Omit<
   ModalContentProps,
-  keyof typeof modalStyle | 'width'
+  keyof typeof modalStyle | 'width' | 'header'
 > {
   width?: ModalContentProps['width'];
   footer?: ModalContentProps['footer'];

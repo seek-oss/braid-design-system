@@ -44,6 +44,7 @@ type ModalContentCommonProps = {
   headingRef?: Ref<HTMLElement>;
   modalRef?: Ref<HTMLElement>;
   data?: DataAttributeMap;
+  header?: ReactNode;
   footer?: ReactNode;
 };
 
@@ -140,18 +141,41 @@ const ModalContentHeader = forwardRef<HTMLElement, ModalContentHeaderProps>(
   },
 );
 
-type ModalFooterProps = {
+type ModalHeaderProps = {
   applyPageBlockGutters: boolean;
   children: ReactNode;
 };
 
-const ModalFooter = ({ applyPageBlockGutters, children }: ModalFooterProps) => (
+const ModalHeader = ({ applyPageBlockGutters, children }: ModalHeaderProps) => (
+  <Box
+    background="surface"
+    width="full"
+    flexShrink={0}
+    paddingTop={modalPadding}
+    paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
+  >
+    {children}
+  </Box>
+);
+
+type ModalFooterProps = {
+  applyPageBlockGutters: boolean;
+  className?: string;
+  children: ReactNode;
+};
+
+const ModalFooter = ({
+  applyPageBlockGutters,
+  className,
+  children,
+}: ModalFooterProps) => (
   <Box
     background="surface"
     width="full"
     flexShrink={0}
     paddingY="medium"
     paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
+    className={className}
   >
     {children}
   </Box>
@@ -163,6 +187,7 @@ const ModalContentScrollLayout = ({
   coverImageEnabled,
   applyPageBlockGutters,
   applyFullHeight,
+  hasHeader,
   hasFooter,
   scrollable,
 }: {
@@ -171,6 +196,7 @@ const ModalContentScrollLayout = ({
   contentStartRef?: Ref<HTMLDivElement>;
   coverImageEnabled?: boolean;
   applyFullHeight?: boolean;
+  hasHeader: boolean;
   hasFooter: boolean;
   scrollable?: boolean;
 }) => {
@@ -185,7 +211,7 @@ const ModalContentScrollLayout = ({
         gap={modalContentGap}
         flexDirection="column"
         height={applyFullHeight ? 'full' : undefined}
-        paddingTop={modalPadding}
+        paddingTop={hasHeader ? modalContentGap : modalPadding}
         paddingBottom={hasFooter ? 'xsmall' : modalPadding}
         paddingX={applyPageBlockGutters ? pageBlockGutters : modalPadding}
       >
@@ -194,10 +220,18 @@ const ModalContentScrollLayout = ({
     </>
   );
 
-  return scrollable === false ? (
-    content
-  ) : (
+  if (scrollable === false) {
+    return content;
+  }
+
+  const scrollContainer = (
     <ScrollContainer direction="vertical">{content}</ScrollContainer>
+  );
+
+  return hasHeader ? (
+    <Box className={styles.pinnedHeaderScrollPort}>{scrollContainer}</Box>
+  ) : (
+    scrollContainer
   );
 };
 
@@ -284,6 +318,7 @@ export const ModalContent = ({
   position,
   headingLevel,
   data,
+  header,
   footer,
   ...restProps
 }: ModalContentInternalProps) => {
@@ -324,6 +359,21 @@ export const ModalContent = ({
    * to hold the content clear of the close button.
    */
   const untitledDrawer = isDrawer && !title;
+  const pinHeader = isDrawer && Boolean(header) && !untitledDrawer;
+
+  const modalHeading = !untitledDrawer ? (
+    <ModalContentHeader
+      title={title}
+      headingLevel={headingLevel}
+      description={description}
+      descriptionId={descriptionId}
+      illustration={
+        illustration && !coverImageEnabled ? illustration : undefined
+      }
+      ref={headingRef}
+      reserveCloseArea
+    />
+  ) : null;
 
   const modalLayout = (
     <ModalContentScrollLayout
@@ -331,22 +381,11 @@ export const ModalContent = ({
       applyFullHeight={isDrawer}
       contentStartRef={contentStartRef}
       coverImageEnabled={coverImageEnabled}
+      hasHeader={pinHeader}
       hasFooter={Boolean(footer)}
       scrollable={!coverImageEnabled}
     >
-      {!untitledDrawer ? (
-        <ModalContentHeader
-          title={title}
-          headingLevel={headingLevel}
-          description={description}
-          descriptionId={descriptionId}
-          illustration={
-            illustration && !coverImageEnabled ? illustration : undefined
-          }
-          ref={headingRef}
-          reserveCloseArea
-        />
-      ) : null}
+      {!pinHeader ? modalHeading : null}
 
       {untitledDrawer ? (
         /**
@@ -365,7 +404,12 @@ export const ModalContent = ({
   );
 
   const modalFooter = footer ? (
-    <ModalFooter applyPageBlockGutters={isDrawer}>{footer}</ModalFooter>
+    <ModalFooter
+      applyPageBlockGutters={isDrawer}
+      className={pinHeader ? styles.pinnedHeaderFooter : undefined}
+    >
+      {footer}
+    </ModalFooter>
   ) : null;
 
   const coverLayout =
@@ -436,7 +480,7 @@ export const ModalContent = ({
             flexDirection="column"
             background="surface"
             borderRadius={modalRadius}
-            overflow="hidden"
+            overflow={pinHeader ? undefined : 'hidden'}
             position="relative"
             width={width !== 'content' ? 'full' : undefined}
             height={isDrawer ? 'full' : undefined}
@@ -446,9 +490,18 @@ export const ModalContent = ({
               [styles.dialogColumn]: Boolean(
                 coverLayout && !sideBySideCoverImage,
               ),
+              [styles.pinnedHeaderColumn]: pinHeader,
             }}
             {...buildDataAttributes({ data, validateRestProps: restProps })}
           >
+            {pinHeader ? (
+              <ModalHeader applyPageBlockGutters={isDrawer}>
+                <Stack space={modalContentGap}>
+                  {modalHeading}
+                  <Box>{header}</Box>
+                </Stack>
+              </ModalHeader>
+            ) : null}
             {modalBody}
             {!sideBySideCoverImage && modalFooter}
           </Box>

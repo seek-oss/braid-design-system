@@ -1,4 +1,9 @@
-import { createVar, fallbackVar, style } from '@vanilla-extract/css';
+import {
+  createVar,
+  fallbackVar,
+  globalStyle,
+  style,
+} from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
 import { atoms } from '../../../css/atoms/atoms';
@@ -213,4 +218,50 @@ export const verticalScrollMinHeight = style({
   flex: '1 1 0%',
   minHeight: 0,
   overflow: 'hidden',
+});
+
+/**
+ * On short viewports the pinned header would leave too little room for the
+ * content, so the whole column scrolls instead and the header scrolls away.
+ */
+const shortViewport = 'screen and (max-height: 480px)';
+
+export const pinnedHeaderColumn = style({
+  overflow: 'hidden',
+  '@media': {
+    [shortViewport]: {
+      overflowY: 'auto',
+    },
+  },
+});
+
+export const pinnedHeaderScrollPort = style([
+  verticalScrollMinHeight,
+  {
+    '@media': {
+      [shortViewport]: {
+        flex: 'none',
+        overflow: 'visible',
+      },
+    },
+  },
+]);
+
+globalStyle(`${pinnedHeaderColumn} ${pinnedHeaderScrollPort} > *`, {
+  '@media': {
+    [shortViewport]: {
+      overflow: 'visible',
+      height: 'auto',
+      maxHeight: 'none',
+    },
+  },
+});
+
+export const pinnedHeaderFooter = style({
+  '@media': {
+    [shortViewport]: {
+      position: 'sticky',
+      bottom: 0,
+    },
+  },
 });

@@ -3128,6 +3128,7 @@ exports[`Drawer 1`] = `
     data?: DataAttributeMap
     description?: ReactNodeNoStrings
     footer?: ReactNode
+    header?: ReactNode
     id?: string
     onClose: (openState: false) => false | void
     open: boolean
