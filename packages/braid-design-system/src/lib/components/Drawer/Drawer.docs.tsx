@@ -14,6 +14,8 @@ import {
   Alert,
   Box,
   Actions,
+  Stack,
+  TextField,
 } from '../';
 import { Placeholder } from '../../playroom/components';
 import { dataAttributeDocs } from '../private/dataAttribute.docs';
@@ -167,6 +169,78 @@ const docs: ComponentDocs = {
                     label="Drawer Content"
                   />
                 </DrawerContent>
+                <Screen />
+              </DrawerPreview>
+            </Box>
+          ),
+        };
+      },
+    },
+    {
+      label: 'Header Content',
+      description: (
+        <>
+          <Text>
+            You can use the <Strong>header</Strong> prop to render fixed content
+            below the <Strong>title</Strong>, such as a search field or filters.
+            The <Strong>title</Strong> and <Strong>description</Strong> stay in
+            view with it while the content scrolls.
+          </Text>
+          <Text>
+            Keep the header short so there is room for the content. On short
+            viewports, for example a landscape phone or when zoomed in, the
+            header scrolls with the content.
+          </Text>
+          <Text>
+            A <Strong>header</Strong> requires a <Strong>title</Strong>.
+          </Text>
+        </>
+      ),
+      background: false,
+      Example: ({ getState, setState }) => {
+        const { code, value } = source<DrawerElement>(
+          <Drawer
+            title="Example Title"
+            width="small"
+            open={true}
+            onClose={() => {}}
+            header={
+              <TextField
+                label="Search"
+                value={getState('search') ?? ''}
+                onChange={(event) =>
+                  setState('search', event.currentTarget.value)
+                }
+              />
+            }
+          >
+            <Stack space="large">
+              <Placeholder height={300} width="100%" label="Drawer Content" />
+              <Placeholder height={300} width="100%" label="Drawer Content" />
+            </Stack>
+          </Drawer>,
+        );
+        return {
+          code,
+          value: (
+            <Box borderRadius="xlarge" overflow="hidden">
+              <DrawerPreview>
+                <Box style={{ height: 500 }}>
+                  <DrawerContent {...drawerPreviewPropsFromSourceValue(value)}>
+                    <Stack space="large">
+                      <Placeholder
+                        height={300}
+                        width="100%"
+                        label="Drawer Content"
+                      />
+                      <Placeholder
+                        height={300}
+                        width="100%"
+                        label="Drawer Content"
+                      />
+                    </Stack>
+                  </DrawerContent>
+                </Box>
                 <Screen />
               </DrawerPreview>
             </Box>
