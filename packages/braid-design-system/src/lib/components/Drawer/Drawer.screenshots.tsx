@@ -149,6 +149,56 @@ export const FooterLayout: Story = {
   },
 };
 
+export const HeaderLayout: Story = {
+  name: 'Test: Header layout',
+  args: {
+    title: 'Header test',
+    width: 'medium',
+    header: <Placeholder height={50} width="100%" label="Header" />,
+    children: <Placeholder height={100} width="100%" label="Content" />,
+  },
+};
+
+export const HeaderOverflowLayout: Story = {
+  name: 'Test: Header layout with description and overflow',
+  args: {
+    title: 'Header test',
+    width: 'medium',
+    description: <Placeholder height="auto" width="100%" label="Description" />,
+    header: <Placeholder height={50} width="100%" label="Header" />,
+    children: (
+      <Box>
+        <Placeholder height={1000} width="100%" label="Overflowing" />
+      </Box>
+    ),
+  },
+  decorators: (Story) => (
+    <Box style={{ height: 500 }}>
+      <Story />
+    </Box>
+  ),
+};
+
+export const HeaderWithFooterOverflowLayout: Story = {
+  name: 'Test: Header layout with footer and overflow',
+  args: {
+    title: 'Header test',
+    width: 'medium',
+    header: <Placeholder height={50} width="100%" label="Header" />,
+    footer: <Placeholder height={50} width="100%" label="Footer" />,
+    children: (
+      <Box>
+        <Placeholder height={1000} width="100%" label="Overflowing" />
+      </Box>
+    ),
+  },
+  decorators: (Story) => (
+    <Box style={{ height: 500 }}>
+      <Story />
+    </Box>
+  ),
+};
+
 export const LeftAlignedInCenteredStack: Story = {
   name: 'Test: Should be left aligned in a centered Stack',
   args: {
@@ -196,6 +246,29 @@ export const SpreadContentWithFooter: Story = {
     onClose: () => {},
     width: 'medium',
     scrollLock: false,
+    footer: <Placeholder height={50} width="100%" label="Footer" />,
+    children: (
+      <Spread space="none" direction="vertical">
+        <Placeholder height={50} width="100%" label="Content top" />
+        <Placeholder height={50} width="100%" label="Content bottom" />
+      </Spread>
+    ),
+  },
+  decorators: (Story) => (
+    <Box style={{ height: 500 }}>
+      <Story />
+    </Box>
+  ),
+};
+
+export const SpreadContentWithHeaderAndFooter: Story = {
+  name: 'Test: Content should be spread between header and footer',
+  args: {
+    title: 'Spread between header and footer',
+    onClose: () => {},
+    width: 'medium',
+    scrollLock: false,
+    header: <Placeholder height={50} width="100%" label="Header" />,
     footer: <Placeholder height={50} width="100%" label="Footer" />,
     children: (
       <Spread space="none" direction="vertical">
