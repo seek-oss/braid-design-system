@@ -1,35 +1,40 @@
-// @ts-expect-error
-import RegClient from 'npm-registry-client';
-
 type VersionMap = Record<string, string>;
 
 let inFlight: Promise<VersionMap> | undefined;
 let cache: VersionMap;
 
-const resolveVersions = (): Promise<VersionMap> =>
-  new Promise((resolve, reject) => {
-    const npmClient = new RegClient();
+interface RegistryResponse {
+  time: VersionMap;
+}
 
-    npmClient.get(
-      'https://registry.npmjs.org/braid-design-system',
-      {},
-      (err: Error, data: any) => {
-        if (err) {
-          reject(err);
-        }
+const isRegistryResponse = (value: unknown): value is RegistryResponse =>
+  typeof value === 'object' &&
+  value !== null &&
+  'time' in value &&
+  typeof value.time === 'object' &&
+  value.time !== null;
 
-        if (typeof data !== 'object') {
-          reject(
-            new Error(
-              `Package '${name}' returned with no data from npm client`,
-            ),
-          );
-        }
+const resolveVersions = async (): Promise<VersionMap> => {
+  const response = await fetch(
+    'https://registry.npmjs.org/braid-design-system',
+  );
 
-        resolve(data.time as VersionMap);
-      },
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch 'braid-design-system' from npm registry: ${response.status} ${response.statusText}`,
     );
-  });
+  }
+
+  const data: unknown = await response.json();
+
+  if (!isRegistryResponse(data)) {
+    throw new Error(
+      `Package 'braid-design-system' returned no valid 'time' data from npm registry`,
+    );
+  }
+
+  return data.time;
+};
 
 export const braidVersionToDate = () => {
   if (cache) {
