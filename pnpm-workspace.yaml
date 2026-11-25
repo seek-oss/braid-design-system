@@ -22,11 +22,6 @@ minimumReleaseAgeExclude:
   - sku
   - playroom
 
-packageExtensions:
-  babel-plugin-remove-unused-vars:
-    peerDependencies:
-      '@babel/types': '*'
-
 packages:
   - packages/*
   - integration
