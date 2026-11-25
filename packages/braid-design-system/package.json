@@ -176,7 +176,6 @@
     "@types/sanitize-html": "^2.13.0",
     "@types/throttle-debounce": "^5.0.2",
     "@vanilla-extract/rollup-plugin": "^1.5.1",
-    "babel-plugin-macros": "^3.1.0",
     "babel-plugin-remove-unused-vars": "^2.2.0",
     "babel-plugin-transform-remove-imports": "^1.7.0",
     "change-case": "^4.1.2",

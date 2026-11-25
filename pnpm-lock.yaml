@@ -398,9 +398,6 @@ importers:
       '@vanilla-extract/rollup-plugin':
         specifier: ^1.5.1
         version: 1.5.4(babel-plugin-macros@3.1.0)(rollup@4.68.3)(supports-color@8.1.1)
-      babel-plugin-macros:
-        specifier: ^3.1.0
-        version: 3.1.0
       babel-plugin-remove-unused-vars:
         specifier: ^2.2.0
         version: 2.2.0(@babel/types@7.29.14)
@@ -546,31 +543,25 @@ importers:
 
   packages/source.macro:
     dependencies:
-      '@babel/generator':
-        specifier: ^7.22.15
-        version: 7.29.14
-      '@prettier/sync':
-        specifier: ^0.5.5
-        version: 0.5.5(prettier@3.10.1)
-      babel-plugin-macros:
-        specifier: ^3.1.0
-        version: 3.1.0
+      magic-string:
+        specifier: ^1.4.5
+        version: 1.4.5
+      oxc-parser:
+        specifier: ^0.156.0
+        version: 0.156.0
       prettier:
         specifier: ^3.9.5
         version: 3.10.1
     devDependencies:
-      '@babel/plugin-syntax-jsx':
-        specifier: ^7.17.12
-        version: 7.29.7(@babel/core@7.29.13(supports-color@8.1.1))
-      '@babel/plugin-syntax-typescript':
-        specifier: ^7.17.12
-        version: 7.29.7(@babel/core@7.29.13(supports-color@8.1.1))
-      '@types/babel-plugin-macros':
-        specifier: ^3.1.0
-        version: 3.1.3
-      babel-plugin-tester:
-        specifier: ^11.0.4
-        version: 11.0.4(@babel/core@7.29.13(supports-color@8.1.1))(supports-color@8.1.1)
+      dedent:
+        specifier: ^1.5.3
+        version: 1.7.2(babel-plugin-macros@3.1.0)
+      rolldown:
+        specifier: ^1.2.19
+        version: 1.2.19
+      vite:
+        specifier: ^8.0.13
+        version: 8.3.8(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)
 
   site:
     dependencies:
@@ -3263,11 +3254,6 @@ packages:
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
 
-  '@prettier/sync@0.5.5':
-    resolution: {integrity: sha512-6BMtNr7aQhyNcGzmumkL0tgr1YQGfm9d7ZdmRpWqWuqpc9vZBind4xMe5NMiRECOhjuSiWHfBWLBnXkpeE90bw==}
-    peerDependencies:
-      prettier: '*'
-
   '@quansync/fs@1.1.0':
     resolution: {integrity: sha512-qAPG/t3HqML1TlN7sY/pTbEjzFVAKsMjNNMGheyDosro+kT4iw2KCUoHcVdmliwWjorm4elZbgNQyU2eD97eDg==}
 
@@ -3861,9 +3847,6 @@ packages:
 
   '@types/autosuggest-highlight@3.2.4':
     resolution: {integrity: sha512-4fUICINn5L2/CI1kBIINPc0CXMLRzbSb3mnkJZtDNT7pJ56ZzCzF+GM/WwPBjU5VTAWP6TkqYQjuXYisMzvsjQ==}
-
-  '@types/babel-plugin-macros@3.1.3':
-    resolution: {integrity: sha512-JU+MgpsHK3taY18mBETy5XlwY6LVngte7QXYzUuXEaaX0CN8dBqbjXtADe+gJmkSQE1FJHufzPj++OWZlhRmGw==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -7631,9 +7614,6 @@ packages:
     resolution: {integrity: sha512-hXdUTZYIVOt1Ex//jAQi+wTZZpUpwBj/0QsOzqegb3rGMMeJiSEu5xLHnYfBrRV4RH2+OCSOO95Is/7x1WJ4bw==}
     engines: {node: '>=10'}
 
-  make-synchronized@0.4.2:
-    resolution: {integrity: sha512-EwEJSg8gSGLicKXp/VzNi1tvzhdmNBxOzslkkJSoNUCQFZKH/NIUIp7xlfN+noaHrz4BJDN73gne8IHnjl/F/A==}
-
   matchit@1.1.0:
     resolution: {integrity: sha512-+nGYoOlfHmxe5BW5tE0EMJppXEwdSf8uBA1GTZC7Q77kbT35+VKLYJMzVNWCHSsga1ps1tPYFtFyvxvKzWVmMA==}
     engines: {node: '>=6'}
@@ -10310,12 +10290,15 @@ packages:
 
   yuku-ast@0.8.7:
     resolution: {integrity: sha512-h6+4bDfyootiMB9vckk5uKo5r5j0GHrkr17FQTDNfEsFT3DWlN9uu1HJwQwc64pgmLCI945fWM3lbTIqxjT3GQ==}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
   yuku-codegen@0.8.7:
     resolution: {integrity: sha512-adwDZSh8oVDzhE6Du9PwVWxcOxeV0e2EVhUuMKWfhSY4wkrDq9eqixlxFF3l/XGUV1E7UFzhpz9393MUumkyNw==}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
   yuku-parser@0.8.7:
     resolution: {integrity: sha512-vRD9nwt4L3aYpxNqeSC4WqLv58xrXef0Ong1Mc45CTXTIpvLafx7JO05sczmQZwdLEZvywrLOGdNC5+Rp5N1BQ==}
+    deprecated: 'Yuku is now one package with one core. Use "yuku" instead: https://yuku.fyi/javascript/. Existing installs keep working but get no more fixes.'
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -12835,11 +12818,6 @@ snapshots:
 
   '@polka/url@1.0.0-next.29': {}
 
-  '@prettier/sync@0.5.5(prettier@3.10.1)':
-    dependencies:
-      make-synchronized: 0.4.2
-      prettier: 3.10.1
-
   '@quansync/fs@1.1.0':
     dependencies:
       quansync: 1.0.0
@@ -13519,10 +13497,6 @@ snapshots:
   '@types/aria-query@5.0.4': {}
 
   '@types/autosuggest-highlight@3.2.4': {}
-
-  '@types/babel-plugin-macros@3.1.3':
-    dependencies:
-      '@types/babel__core': 7.20.5
 
   '@types/babel__core@7.20.5':
     dependencies:
@@ -18046,8 +18020,6 @@ snapshots:
   make-dir@4.0.0:
     dependencies:
       semver: 7.8.6
-
-  make-synchronized@0.4.2: {}
 
   matchit@1.1.0:
     dependencies:
