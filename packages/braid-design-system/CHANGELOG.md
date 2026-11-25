@@ -1,5 +1,27 @@
 # braid-design-system
 
+## 34.12.0
+
+### Minor Changes
+
+- **ScrollContainer:** Add component ([#2209](https://github.com/seek-oss/braid-design-system/pull/2209))
+  
+  Provides scroll affordance for content that overflows its container.
+  
+  **EXAMPLE USAGE:**
+  
+  ```jsx
+  <ScrollContainer>
+    <Inline space="small" noWrap>
+      ...
+    </Inline>
+  </ScrollContainer>
+  ```
+
+### Patch Changes
+
+- **Tabs:** Migrate scroll affordance to ScrollContainer ([#2209](https://github.com/seek-oss/braid-design-system/pull/2209))
+
 ## 34.11.1
 
 ### Patch Changes

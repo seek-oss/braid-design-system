@@ -5860,5 +5860,22 @@
   {
     "version": "34.11.1",
     "updates": []
+  },
+  {
+    "version": "34.12.0",
+    "updates": [
+      {
+        "updated": [
+          "Tabs"
+        ],
+        "summary": "**Tabs:** Migrate scroll affordance to ScrollContainer"
+      },
+      {
+        "new": [
+          "ScrollContainer"
+        ],
+        "summary": "**ScrollContainer:** Add component\n\nProvides scroll affordance for content that overflows its container.\n\n**EXAMPLE USAGE:**\n\n```jsx\n<ScrollContainer>\n  <Inline space=\"small\" noWrap>\n    ...\n  </Inline>\n</ScrollContainer>\n```"
+      }
+    ]
   }
 ]
